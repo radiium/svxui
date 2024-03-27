@@ -25,7 +25,7 @@
         select: undefined,
         date: undefined,
         radioGroup: undefined,
-        checkboxGroup: undefined,
+        checkboxGroup: [],
         switch: true,
         checkbox: true
     };
@@ -191,13 +191,13 @@
                 <Flexbox direction="column" gap="2" grow="1">
                     <Text size={size?.label}>Checkbox group</Text>
                     <Flexbox direction="column" gap="3">
-                        {#each groupOptions as opt}
+                        {#each groupOptions as opt, i}
                             <Flexbox as="label" gap="2" alignItems="center">
                                 <Checkbox
                                     size={size?.input}
                                     color={props.color}
                                     name="checkboxGroup"
-                                    value={opt}
+                                    value={i}
                                     bind:group={formData.checkboxGroup}
                                 />
                                 <Text size="2">{opt}</Text>

@@ -19,18 +19,20 @@
         'Checkbox-error': error
     });
 
-    $: if (group) {
+    const isValid = <T>(val: T): val is NonNullable<T> => value !== null && value !== undefined;
+
+    $: if (isValid(group)) {
         groupCheck();
     }
     function groupCheck() {
-        if (value) {
+        if (value !== null && value !== undefined) {
             checked = group?.includes(value);
         }
     }
 
     // Update group when checkbox changes
     function onChange() {
-        if (group && value) {
+        if (isValid(group) && isValid(value)) {
             let inGroup = group.includes(value);
             if (!inGroup) {
                 // Add to group
