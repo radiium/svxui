@@ -31,14 +31,16 @@
 
 <style lang="scss">
     .Badge {
+        box-sizing: border-box;
         display: inline-flex;
         align-items: center;
-        box-sizing: border-box;
         white-space: nowrap;
+        font-family: var(--default-font-family);
         font-weight: var(--font-weight-medium);
         flex-shrink: 0;
         line-height: 1;
         user-select: none;
+        height: fit-content;
         cursor: default;
         border: var(--badge-border);
         color: var(--badge-color);
