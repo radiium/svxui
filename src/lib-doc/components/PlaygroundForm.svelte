@@ -1,11 +1,10 @@
 <script lang="ts">
-    import ButtonGroup from '$lib/components/Button/ButtonGroup.svelte';
     import Flexbox from '$lib/components/Flexbox/Flexbox.svelte';
     import InputNumber from '$lib/components/InputNumber/InputNumber.svelte';
     import Input from '$lib/components/Input/Input.svelte';
     import Switch from '$lib/components/Switch/Switch.svelte';
-    import Select from '$lib/components/Select/Select.svelte';
     import Button from '$lib/components/Button/Button.svelte';
+    import Badge from '$lib/components/Badge/Badge.svelte';
     import Text from '$lib/components/Text/Text.svelte';
     import { onMount } from 'svelte';
 
@@ -16,7 +15,6 @@
     };
     export let propsString = '';
     export let props = {};
-    // export let propsExcluded = [];
     export let onChange = (data) => {};
 
     void onMount(() => {
@@ -33,6 +31,19 @@
 
     $: onChange({ props, propsString });
 
+    $: schema.props.sort((a, b) => {
+        if (a.type === 'enum' && a.name === 'color') {
+            return -1;
+        } else if (b.type === 'enum' && b.name === 'color') {
+            return 1;
+        } else if (a.type === 'boolean') {
+            return 1;
+        } else if (b.type === 'boolean') {
+            return -1;
+        } else {
+            0;
+        }
+    });
     $: propsString = schema.props
         .filter((prop) => prop.name !== 'elementRef')
         .map((prop) => {
@@ -47,83 +58,73 @@
             }
         })
         .join(' ');
+
+    function updateEnumProp(prop: any, value: any) {
+        if (prop.default === undefined && props[prop.name] === value) {
+            props[prop.name] = undefined;
+        } else {
+            props[prop.name] = value;
+        }
+    }
 </script>
 
 {#if schema && props}
     {#each schema.props as prop}
         <!-- Prop enum -->
         {#if prop.type === 'enum' && prop.values}
-            <!-- Prop values > 4 -->
-            {#if prop.values?.length > 4}
-                <Flexbox direction="column" gap="2">
-                    <Text size="2">{prop.name}: {props[prop.name]}</Text>
-                    <!-- Prop color only -->
-                    {#if prop.name === 'color'}
-                        <Flexbox wrap="wrap" gap="3">
-                            {#each prop.values as color}
-                                <button
-                                    class="color-btn"
-                                    class:active={color === props[prop.name]}
-                                    style:background-color="var(--accent-9)"
-                                    data-color={color}
-                                    on:click={() => (props[prop.name] = color)}
-                                ></button>
-                            {/each}
-                        </Flexbox>
-                    {:else}
-                        <Select
-                            size="1"
-                            bind:value={props[prop.name]}
-                            options={prop.values?.map((value) => ({ label: value, value })) ?? []}
-                        ></Select>
-                    {/if}
-                </Flexbox>
-            {:else}
-                <Flexbox direction="column" gap="2">
-                    <Text size="2">{prop.name}</Text>
-                    <ButtonGroup>
-                        {#each prop.values ?? [] as value}
+            <Flexbox direction="column" gap="1">
+                <Text size="3" weight="bold" transform="capitalize">{prop.name}: <Text size="3" transform="lowercase">{props[prop.name]}</Text></Text>
+                <!-- Prop color only -->
+                {#if prop.name === 'color'}
+                    <Flexbox wrap="wrap" gap="2">
+                        {#each prop.values as color}
                             <Button
-                                variant="soft"
+                                {color}
+                                iconOnly
                                 size="1"
-                                active={props[prop.name] === value}
-                                on:click={() => (props[prop.name] = value)}>{value}</Button
-                            >
+                                class="color-btn"
+                                active={color === props[prop.name]}
+                                on:click={() => updateEnumProp(prop, color)}
+                            ></Button>
                         {/each}
-                    </ButtonGroup>
-                </Flexbox>
-            {/if}
+                    </Flexbox>
+                {:else}
+                    <Flexbox wrap="wrap" gap="2">
+                        {#each prop.values as value}
+                            <Button
+                                size="1"
+                                iconOnly={prop.name === 'size'}
+                                variant={value === props[prop.name] ? 'soft' : 'outline'}
+                                on:click={() => updateEnumProp(prop, value)}
+                            >
+                                {value}
+                            </Button>
+                        {/each}
+                    </Flexbox>
+                {/if}
+            </Flexbox>
         {:else if prop.type === 'boolean'}
-            <Flexbox as="label" gap="2" alignItems="center">
+            <Flexbox as="label" gap="2" alignItems="center" class="mb-1">
                 <Switch color="primary" bind:checked={props[prop.name]} />
                 <Text size="2">{prop.name}</Text>
             </Flexbox>
         {:else if prop.type === 'number'}
             <Flexbox as="label" direction="column" gap="2">
                 <Text size="2">{prop.name}</Text>
-                <InputNumber color="primary" bind:value={props[prop.name]} />
+                <InputNumber size="2" color="primary" bind:value={props[prop.name]} />
             </Flexbox>
         {:else if prop.type === 'string'}
             <Flexbox as="label" direction="column" gap="2">
                 <Text size="2">{prop.name}</Text>
-                <Input size="1" color="primary" bind:value={props[prop.name]} />
+                <Input size="1" color="primary" bind:value={props[prop.name]} placeholder={prop.name} />
             </Flexbox>
         {/if}
     {/each}
 {/if}
 
 <style lang="scss">
-    .color-btn {
-        border: none;
-        height: 30px;
-        width: 30px;
-        border-radius: 3px;
-
-        &:hover,
-        &:focus,
-        &.active {
-            box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-            outline: none;
-        }
+    :global(.color-btn.Button-active) {
+        box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
+        outline: none;
     }
 </style>

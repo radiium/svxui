@@ -10,7 +10,7 @@
             <slot name="component" />
         </Flexbox>
         <div class="separator"></div>
-        <Flexbox direction="column" as="section" alignItems="start" gap="3" class="playground-form p-3">
+        <Flexbox direction="column" as="section" alignItems="stretch" gap="3" class="playground-form p-3">
             <slot name="form" />
         </Flexbox>
     </Flexbox>
@@ -27,8 +27,10 @@
     }
 
     :global(.playground-form) {
-        overflow-x: auto;
-        min-width: 40%;
+        // overflow-x: auto;
+        width: 40%;
+        min-width: 0;
+        flex-shrink: 0;
     }
 
     .separator {
