@@ -36,7 +36,7 @@
                 name: 'size',
                 type: 'enum',
                 values: ['small', 'medium', 'large'],
-                default: 'm'
+                default: 'medium'
             },
             {
                 name: 'color',
