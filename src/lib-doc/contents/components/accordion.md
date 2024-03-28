@@ -65,10 +65,10 @@ description: Accordion component
             </Card>
         </AccordionGroup>
     </div>
-    <Flexbox slot="form" direction="column" gap="3">
+    <Flexbox slot="form" direction="column" gap="1">
         <h5>Props AccordionGroup</h5>
         <PlaygroundForm bind:props={propsGroup} schema={docAccordionGroupPropsDefs} />
-        <h5>Props AccordioItem</h5>
+        <h5 class="mt-3">Props AccordioItem</h5>
         <PlaygroundForm bind:props={propsItem} schema={docAccordionItemPropsDefs} />
     </Flexbox>
 

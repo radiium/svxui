@@ -16,7 +16,7 @@ description: Textarea component
 ## Playground
 
 <Playground>
-    <Textarea slot="component" {...props}/>
+    <Textarea slot="component" {...props} bind:value={props.value} />
     <PlaygroundForm slot="form" bind:props schema={docTextareaPropsDefs} />
 </Playground>
 

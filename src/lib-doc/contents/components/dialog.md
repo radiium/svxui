@@ -11,7 +11,6 @@ description: Dialog component
     import Playground from '$lib-doc/components/Playground.svelte';
     import PlaygroundForm from '$lib-doc/components/PlaygroundForm.svelte';
 
-    let isOpen = false
     let props = {}
 </script>
 
@@ -19,21 +18,19 @@ description: Dialog component
 
 <Playground>
 <div slot="component">
-    <Button variant="soft" on:click={() => isOpen = true}>open</Button>
-    <Dialog  {...props} bind:isOpen>
+    <Button variant="soft" on:click={() => props.isOpen = true}>open</Button>
+    <Dialog  {...props} bind:isOpen={props.isOpen}>
         <div>
             Content
             <footer class="mt-6">
-                <Button color="primary" variant="soft" on:click={() => isOpen = false} fullWidth>
+                <Button color="primary" variant="soft" on:click={() => props.isOpen = false} fullWidth>
                     close
                 </Button>
             </footer>
         </div>
     </Dialog>
     </div>
-
     <PlaygroundForm slot="form" bind:props schema={docDialogPropsDefs} />
-
 </Playground>
 
 ## API Reference

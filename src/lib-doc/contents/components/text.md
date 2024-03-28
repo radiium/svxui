@@ -4,6 +4,7 @@ description: Text component
 ---
 
 <script lang="ts">
+    import Card from '$lib/components/Card/Card.svelte';
     import Text from '$lib/components/Text/Text.svelte';
     import {docTextPropsDefs} from '$lib/components/Text/Text.props.js';
     import ApiReference from '$lib-doc/components/ApiReference.svelte';

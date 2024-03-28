@@ -16,7 +16,7 @@ description: Checkbox component
 ## Playground
 
 <Playground>
-    <Checkbox slot="component" {...props}/>
+    <Checkbox slot="component" {...props} bind:checked={props.checked}/>
     <PlaygroundForm slot="form" bind:props schema={docCheckboxPropsDefs} />
 </Playground>
 
