@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
     import { tick } from 'svelte';
-    import { get } from 'svelte/store';
 
     /**
      * Usage: <div use:portal={'css selector'}> or <div use:portal={document.body}>
@@ -8,7 +7,7 @@
     export function portal(el: HTMLElement, target: HTMLElement | string = 'body') {
         let targetEl: HTMLElement | null;
 
-        async function update(newTarget) {
+        async function update(newTarget: HTMLElement | string) {
             target = newTarget;
             if (typeof target === 'string') {
                 targetEl = document.querySelector(target);
@@ -27,12 +26,6 @@
                         target === null ? 'null' : typeof target
                     }. Allowed types: string (CSS selector) or HTMLElement.`
                 );
-            }
-
-            const themeContext = useThemeContext();
-            const currentTheme = get(themeContext.scheme);
-            if (currentTheme) {
-                targetEl.setAttribute('data-theme', currentTheme);
             }
 
             targetEl.appendChild(el);
@@ -56,7 +49,6 @@
 <script lang="ts">
     import { defaultPortalProps } from './Portal.props.js';
     import type { PortalProps } from './Portal.types.js';
-    import { useThemeContext } from '$lib/theme/theme.context.js';
 
     type $$Props = PortalProps;
     export let target: $$Props['target'] = defaultPortalProps.target;
