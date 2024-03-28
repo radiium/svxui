@@ -27,6 +27,7 @@
     import Button from '../Button/Button.svelte';
     import { defaultDialogProps } from './Dialog.props.js';
     import type { DialogProps } from './Dialog.types.js';
+    import type { Sizes1To3, Sizes1To4 } from '$lib/constants.js';
 
     type $$Props = DialogProps;
     export let isOpen: $$Props['isOpen'] = defaultDialogProps.isOpen;
@@ -62,17 +63,14 @@
     };
 
     const open = () => {
-        console.log('[Dialog] open');
         isOpen = true;
     };
 
     const close = () => {
-        console.log('[Dialog] close');
         isOpen = false;
     };
 
     const onBackdropClick = () => {
-        console.log('[Dialog] onClickBackdrop');
         if (closeOnBackdropClick) {
             close();
         }
@@ -99,6 +97,9 @@
             window.onscroll = function () {};
         }
     }
+
+    let closeButtonSize: (typeof Sizes1To4)[number];
+    $: closeButtonSize = Number(size) >= 2 ? '2' : size!;
 
     $: cssClass = clsx($$restProps.class, `Dialog`, {
         [`Dialog-size-${size}`]: size
@@ -137,7 +138,7 @@
                     iconOnly
                     circle
                     variant="clear"
-                    size={Math.min(size, 2)}
+                    size={closeButtonSize}
                     class="Dialog-close-btn"
                     on:click={() => (isOpen = false)}
                 >
