@@ -191,6 +191,7 @@
             --button-background: transparent;
             --button-background-hover: var(--accent-a6);
             --button-background-active: var(--accent-a7);
+            --button-active-filter: none;
         }
         &.Button-outline {
             --button-border: 1px solid var(--accent-9);
@@ -198,6 +199,7 @@
             --button-background: transparent;
             --button-background-hover: var(--accent-a6);
             --button-background-active: var(--accent-a7);
+            --button-active-filter: none;
         }
         &.Button-soft {
             --button-border: none;
@@ -205,13 +207,15 @@
             --button-background: var(--accent-a6);
             --button-background-hover: var(--accent-a7);
             --button-background-active: var(--accent-a8);
+            --button-active-filter: none;
         }
         &.Button-solid {
             --button-border: none;
             --button-color: var(--contrast);
             --button-background: var(--accent-9);
             --button-background-hover: var(--accent-10);
-            --button-background-active: var(--accent-11);
+            --button-background-active: var(--accent-10);
+            --button-active-filter: brightness(0.92) saturate(1.1);
         }
 
         &.Button-icon-only {
@@ -219,7 +223,7 @@
             text-align: center;
 
             &.Button-circle {
-                --button-border-radius: var(--radius-full);
+                --button-border-radius: 50%;// TODO fixme var(--radius-full);
             }
         }
 
@@ -249,6 +253,7 @@
         &:active,
         &.Button-active {
             background: var(--button-background-active);
+            filter: var(--button-active-filter);
         }
         &:focus-visible {
             @include input-box-shadow-focus;

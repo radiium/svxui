@@ -85,12 +85,12 @@
             --badge-background: transparent;
         }
         &.Badge-soft {
-            --badge-border: none;
+            --badge-border: 1px solid var(--accent-6);
             --badge-color: var(--accent-a12);
             --badge-background: var(--accent-a6);
         }
         &.Badge-solid {
-            --badge-border: none;
+            --badge-border: 1px solid var(--accent-9);
             --badge-color: var(--contrast);
             --badge-background: var(--accent-9);
         }
