@@ -210,7 +210,7 @@
             text-align: center;
 
             &.Button-circle {
-                --button-border-radius: 50%;// TODO fixme var(--radius-full);
+                --button-border-radius: 50%; // TODO fixme var(--radius-full);
             }
         }
 
