@@ -19,7 +19,7 @@
         'Checkbox-error': error
     });
 
-    const isValid = <T>(val: T): val is NonNullable<T> => value !== null && value !== undefined;
+    const isValid = <T,>(val: T): val is NonNullable<T> => value !== null && value !== undefined;
 
     $: if (isValid(group)) {
         groupCheck();

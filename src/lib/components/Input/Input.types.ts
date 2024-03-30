@@ -3,7 +3,7 @@ import type { HTMLInputAttributes } from 'svelte/elements';
 
 export interface InputProps extends Omit<HTMLInputAttributes, 'size' | 'align'> {
     elementRef?: HTMLInputElement;
-    value?: string;
+    value?: string | number;
     type?: (typeof InputTypes)[number];
     size?: (typeof Sizes1To3)[number];
     align?: (typeof Aligns)[number];
