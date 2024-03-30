@@ -1,8 +1,6 @@
 import { Sizes1To4, Aligns, Colors, Variants } from '$lib/constants.js';
 import type { ButtonProps } from './Button.types.js';
 
-export const ButtonGroupContextKey = 'ButtonGroupContextKey';
-
 export const defaultButtonProps: ButtonProps = {
     size: '2',
     variant: 'solid',

@@ -40,3 +40,5 @@ export const TextUnderlines = ['auto', 'always', 'hover', 'none'] as const;
 export const TextWraps = ['wrap', 'nowrap', 'pretty', 'balance'] as const;
 export const Margins = ['m', 'mt', 'mr', 'mb', 'ml', 'mx', 'my'] as const;
 export const Paddings = ['p', 'pt', 'pr', 'pb', 'pl', 'px', 'py'] as const;
+
+export const InputGroupContextKey = 'InputGroupContextKey';
