@@ -1,7 +1,9 @@
 <script lang="ts">
+    import { getContext } from 'svelte';
     import { clsx } from '../../utils/clsx.js';
     import { defaultSelectProps } from './Select.props.js';
     import type { SelectProps } from './Select.types.js';
+    import { InputGroupContextKey } from '$lib/constants.js';
 
     type $$Props = SelectProps;
     export let elementRef: $$Props['elementRef'] = defaultSelectProps.elementRef;
@@ -10,9 +12,12 @@
     export let size: $$Props['size'] = defaultSelectProps.size;
     export let fullWidth: $$Props['fullWidth'] = defaultSelectProps.fullWidth;
 
+    const isInGroup = getContext<boolean | undefined>(InputGroupContextKey);
+
     $: cssClass = clsx($$restProps.class, `Select`, {
         [`Select-size-${size}`]: size,
-        'Select-full-width': fullWidth
+        'Select-full-width': fullWidth,
+        'is-in-group': isInGroup
     });
 </script>
 

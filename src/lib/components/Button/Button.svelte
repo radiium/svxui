@@ -1,8 +1,9 @@
 <script lang="ts">
     import { getContext } from 'svelte';
     import { clsx } from '../../utils/clsx.js';
-    import { ButtonGroupContextKey, defaultButtonProps } from './Button.props.js';
+    import { defaultButtonProps } from './Button.props.js';
     import type { ButtonProps } from './Button.types.js';
+    import { InputGroupContextKey } from '$lib/constants.js';
 
     type $$Props = ButtonProps;
     export let elementRef: $$Props['elementRef'] = undefined;
@@ -15,18 +16,18 @@
     export let circle: $$Props['circle'] = defaultButtonProps.fullWidth;
     export let fullWidth: $$Props['fullWidth'] = defaultButtonProps.fullWidth;
 
-    const isInGroup = getContext<boolean | undefined>(ButtonGroupContextKey);
+    const isInGroup = getContext<boolean | undefined>(InputGroupContextKey);
 
     $: cssClass = clsx($$restProps.class, 'Button', {
         [`Button-${variant}`]: variant,
         [`Button-size-${size}`]: size,
         [`Button-${color}`]: color,
         [`Button-align-${align}`]: align,
-        'Button-is-in-group': isInGroup,
         'Button-full-width': fullWidth,
         'Button-active': active,
         'Button-icon-only': iconOnly,
-        'Button-circle': iconOnly && circle
+        'Button-circle': iconOnly && circle,
+        'is-in-group': isInGroup
     });
 </script>
 
@@ -97,20 +98,6 @@
             width: auto;
             height: var(--button-icon-height);
             fill: var(--button-color);
-        }
-
-        // In group
-        &.Button-is-in-group {
-            border-radius: 0;
-
-            &:first-child {
-                border-top-left-radius: var(--button-border-radius);
-                border-bottom-left-radius: var(--button-border-radius);
-            }
-            &:last-child {
-                border-top-right-radius: var(--button-border-radius);
-                border-bottom-right-radius: var(--button-border-radius);
-            }
         }
 
         // Sizes

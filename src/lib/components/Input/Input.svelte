@@ -1,7 +1,9 @@
 <script lang="ts">
+    import { getContext } from 'svelte';
     import { clsx } from '../../utils/clsx.js';
     import { defaultInputProps } from './Input.props.js';
     import type { InputProps } from './Input.types.js';
+    import { InputGroupContextKey } from '$lib/constants.js';
 
     type $$Props = InputProps;
     export let elementRef: $$Props['elementRef'] = defaultInputProps.elementRef;
@@ -12,12 +14,15 @@
     export let error: $$Props['error'] = defaultInputProps.error;
     export let fullWidth: $$Props['fullWidth'] = defaultInputProps.fullWidth;
 
+    const isInGroup = getContext<boolean | undefined>(InputGroupContextKey);
+
     $: cssClass = clsx($$restProps.class, 'Input', {
         [`Input-size-${size}`]: size,
         [`Input-type-${type}`]: type,
         [`Input-align-${align}`]: align,
         'Input-full-width': fullWidth,
-        'Input-error': error
+        'Input-error': error,
+        'is-in-group': isInGroup
     });
 
     const setType = (node: HTMLInputElement, value: $$Props['type']) => {
