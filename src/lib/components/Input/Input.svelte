@@ -68,7 +68,6 @@
         -webkit-appearance: none;
         -webkit-tap-highlight-color: transparent;
         border-width: 0;
-        outline: none;
         font-family: inherit;
         text-overflow: ellipsis;
         color: var(--input-color);
