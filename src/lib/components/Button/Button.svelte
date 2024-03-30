@@ -211,7 +211,7 @@
         }
         &.Button-solid {
             --button-border: none;
-            --button-color: var(--contrast);
+            --button-color: var(--accent-contrast);
             --button-background: var(--accent-9);
             --button-background-hover: var(--accent-10);
             --button-background-active: var(--accent-10);
@@ -256,7 +256,7 @@
             filter: var(--button-active-filter);
         }
         &:focus-visible {
-            @include input-box-shadow-focus;
+            outline: var(--input-outline);
         }
         &:disabled {
             @include disabled;

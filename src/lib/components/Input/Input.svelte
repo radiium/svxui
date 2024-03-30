@@ -69,11 +69,11 @@
         color: var(--input-color);
         border-radius: var(--radius-3);
         background: var(--input-background);
-        @include input-box-shadow;
+        box-shadow: var(--input-box-shadow);
 
         // Input type search
         &::-webkit-search-cancel-button {
-            filter: invert(1);
+            filter: invert(1); // FIXME not work in light theme
             cursor: pointer;
             -webkit-appearance: none;
             appearance: none;
@@ -88,6 +88,11 @@
         // Input type date/datetime-local/month/time/week
         &::-webkit-calendar-picker-indicator {
             cursor: pointer;
+            border-radius: var(--radius-2);
+
+            &:focus {
+                outline: var(--input-outline);
+            }
         }
 
         // Sizes
@@ -131,19 +136,16 @@
         }
 
         // States
-        &:hover {
-            @include input-box-shadow-hover;
-        }
-
         &:active,
         &:focus,
         &:focus-visible {
-            @include input-box-shadow-focus;
+            outline: var(--input-outline);
         }
         &:disabled {
             @include disabled;
         }
-        &:readonly {
+        &:readonly,
+        &:read-only {
             cursor: default;
             outline: none !important;
             box-shadow: none !important;

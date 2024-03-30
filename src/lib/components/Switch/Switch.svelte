@@ -46,8 +46,8 @@
         height: var(--switch-height);
         border-radius: var(--radius-2);
         background: var(--switch-background);
-        box-shadow: inset 0 0 0 1px var(--gray-8);
         padding: var(--switch-padding);
+        box-shadow: inset var(--input-box-shadow);
         transition:
             background-color ease 0.2s,
             box-shadow ease 0.2s;
@@ -59,7 +59,7 @@
             width: var(--switch-thumb-size);
             background-color: var(--switch-check-color);
             border-radius: var(--radius-1);
-            box-shadow: 0 0 0 1px var(--gray-a3);
+            /* box-shadow: 0 0 0 1px var(--gray-a3); */
             transition:
                 background-color ease 0.2s,
                 box-shadow ease 0.2s,
@@ -82,7 +82,8 @@
         }
 
         &:focus-visible {
-            @include input-box-shadow-focus;
+            outline: var(--input-outline);
+            outline-offset: inherit;
         }
 
         // Colors

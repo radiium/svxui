@@ -51,10 +51,10 @@
         font-size: var(--font-size-3);
         letter-spacing: normal;
         resize: vertical;
-        color: var(--input-color);
         border-radius: var(--radius-3);
+        color: var(--input-color);
         background: var(--input-background);
-        @include input-box-shadow;
+        box-shadow: var(--input-box-shadow);
 
         // Sizes
         &.Textarea-size-1 {
@@ -85,14 +85,10 @@
         }
 
         // States
-        &:hover {
-            @include input-box-shadow-hover;
-        }
-
         &:active,
         &:focus,
         &:focus-visible {
-            @include input-box-shadow-focus;
+            outline: var(--input-outline);
         }
 
         &:disabled {

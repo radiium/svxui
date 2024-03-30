@@ -53,7 +53,6 @@
         min-width: calc(var(--input-size-m) * 3);
         margin: 0;
         padding: 0 var(--space-2);
-        color: var(--input-color);
         appearance: none;
         -webkit-appearance: none;
         -webkit-tap-highlight-color: transparent;
@@ -65,7 +64,9 @@
         border-radius: var(--radius-3);
         background: var(--input-background);
         height: var(--input-height);
-        @include input-box-shadow;
+        color: var(--input-color);
+        background: var(--input-background);
+        box-shadow: var(--input-box-shadow);
 
         &.InputRange-full-width {
             width: 100%;
@@ -100,10 +101,6 @@
         }
 
         // States
-        &:hover {
-            @include input-box-shadow-hover;
-        }
-
         &[disabled] {
             @include disabled;
         }
@@ -111,10 +108,7 @@
         &:active,
         &:focus,
         &:focus-visible {
-            @include input-box-shadow-focus;
-        }
-        &:focus {
-            outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+            outline: var(--input-outline);
         }
 
         &::-ms-track {

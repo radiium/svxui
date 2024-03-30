@@ -2,21 +2,6 @@
 /// MIXINS
 ///
 
-@mixin input-box-shadow {
-    box-shadow: var(--border-color) 0px 0px 0px 1px;
-    outline: none;
-}
-
-@mixin input-box-shadow-hover {
-    box-shadow: var(--border-color-hover) 0px 0px 0px 1px;
-    outline: none;
-}
-
-@mixin input-box-shadow-focus {
-    box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-    outline: none;
-}
-
 @mixin disabled {
     cursor: default !important;
     opacity: 0.5 !important;

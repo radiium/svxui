@@ -68,6 +68,7 @@
 
 <style lang="scss">
     .Checkbox {
+        position: relative;
         -webkit-appearance: none;
         appearance: none;
         outline: none;
@@ -76,8 +77,7 @@
         width: var(--checkbox-size);
         border-radius: calc(var(--radius-3) / 1.5);
         background-color: var(--checkbox-background);
-        box-shadow: inset 0 0 0 1px var(--gray-8);
-        position: relative;
+        box-shadow: var(--input-box-shadow);
 
         &:after {
             display: none;
@@ -115,13 +115,14 @@
         }
 
         &:focus-visible {
-            @include input-box-shadow-focus;
+            outline: var(--input-outline);
+            outline-offset: inherit;
         }
 
         // Color
         --checkbox-background: var(--gray-a3);
         --checkbox-background-checked: var(--accent-9);
-        --check-color: var(--contrast);
+        --check-color: var(--accent-contrast);
         // Sizes
         &.Checkbox-size-1 {
             --checkbox-size: calc(var(--space-4) * 0.875); // var(--space-4);

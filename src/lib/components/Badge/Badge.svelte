@@ -91,7 +91,7 @@
         }
         &.Badge-solid {
             --badge-border: 1px solid var(--accent-9);
-            --badge-color: var(--contrast);
+            --badge-color: var(--accent-contrast);
             --badge-background: var(--accent-9);
         }
 

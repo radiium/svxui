@@ -44,15 +44,15 @@
         outline: none;
         border: none;
         position: relative;
-        width: var(--radio-size);
-        height: var(--radio-size);
-        background: var(--radio--background);
-        box-shadow: inset 0 0 0 1px var(--gray-8);
         border-radius: 100%;
         pointer-events: none;
         display: flex;
         justify-content: center;
         align-items: center;
+        width: var(--radio-size);
+        height: var(--radio-size);
+        background: var(--input-background);
+        box-shadow: var(--input-box-shadow);
         transition:
             background-color ease 0.2s,
             box-shadow ease 0.2s;
@@ -81,6 +81,7 @@
         &[disabled] {
             @include disabled;
         }
+        
         &:checked {
             background-color: var(--radio-background-checked);
             box-shadow: none;
@@ -89,11 +90,10 @@
                 background-color: var(--check-color);
             }
         }
-        &:focus {
-            @include input-box-shadow-focus;
-        }
+
         &:focus-visible {
-            @include input-box-shadow-focus;
+            outline: var(--input-outline);
+            outline-offset: inherit;
         }
 
         // Colors

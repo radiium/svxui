@@ -77,10 +77,6 @@
 <style lang="scss">
     .Select {
         border: none;
-        border-radius: var(--radius-3);
-        box-shadow: inset 0 0 0 1px var(--gray-8);
-        color: var(--input-color);
-        background-color: var(--input-background);
         display: inline-flex;
         font-size: var(--font-size-3);
         letter-spacing: normal;
@@ -88,6 +84,10 @@
         -moz-appearance: none;
         -webkit-appearance: none;
         position: relative;
+        border-radius: var(--radius-3);
+        color: var(--input-color);
+        background: var(--input-background);
+        box-shadow: var(--input-box-shadow);
 
         &[multiple] {
             height: auto !important;
@@ -169,13 +169,11 @@
         }
 
         // States
-        &:hover {
-            box-shadow: inset 0 0 0 1px var(--gray-10);
-        }
         &:focus,
         &:focus-visible {
-            @include input-box-shadow-focus;
+            outline: var(--input-outline);
         }
+        
         &:disabled {
             @include disabled;
         }

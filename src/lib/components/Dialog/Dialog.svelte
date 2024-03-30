@@ -196,7 +196,8 @@
             align-items: center;
             justify-content: center;
             gap: var(--space-3);
-            @include input-box-shadow;
+            box-shadow: var(--input-box-shadow);
+
             .Dialog-content-inner {
                 width: 100%;
                 max-height: 50vh;
