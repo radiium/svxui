@@ -1,6 +1,9 @@
 <script lang="ts">
     import { clsx } from '$lib/utils/clsx.js';
     import { longpress } from '../../actions/longpress.js';
+    import Button from '../Button/Button.svelte';
+    import Input from '../Input/Input.svelte';
+    import InputGroup from '../InputGroup/InputGroup.svelte';
     import { defaultInputNumberProps } from './InputNumber.props.js';
     import type { InputNumberProps } from './InputNumber.types.js';
 
@@ -12,10 +15,11 @@
     export let max: $$Props['max'] = defaultInputNumberProps.max;
     export let size: $$Props['size'] = defaultInputNumberProps.size;
     export let color: $$Props['color'] = defaultInputNumberProps.color;
+    export let variant: $$Props['variant'] = defaultInputNumberProps.variant;
+    export let align: $$Props['align'] = defaultInputNumberProps.align;
     export let disabled: $$Props['disabled'] = defaultInputNumberProps.disabled;
     export let required: $$Props['required'] = defaultInputNumberProps.required;
     export let readonly: $$Props['readonly'] = defaultInputNumberProps.readonly;
-    let { class: _class, style, ...restProps } = $$restProps;
 
     // Input css classes
     let cssClass = '';
@@ -26,12 +30,6 @@
         'input-required': required,
         'input-readonly': readonly
     });
-
-    $: attributes = {
-        style,
-        autocomplete: 'off',
-        ...restProps
-    };
 
     let intervalId: any = undefined;
 
@@ -93,115 +91,47 @@
     }
 </script>
 
-<div class={cssClass}>
-    <button
-        tabindex="-1"
-        use:longpress={{ duration: 600 }}
-        on:startlongpress={decrementMouseDown}
-        on:endlongpress={mouseUp}
-        on:click={decrement}
-        {disabled}>-</button
-    >
-    <input
+<!--  class={cssClass} -->
+<InputGroup class={cssClass}>
+    <Button on:click={decrement} {variant} {size} {color} {disabled} iconOnly>-</Button>
+    <Input
         type="number"
         inputmode="numeric"
-        class:disabled
-        class:required
-        class:readonly
+        {size}
+        {align}
         {disabled}
         {required}
         {readonly}
-        {...attributes}
         {step}
         {min}
         {max}
         bind:value
-        bind:this={elementRef}
         on:input
         on:change
         on:focus
         on:blur
     />
-
-    <button
-        tabindex="-1"
-        use:longpress={{ duration: 600 }}
-        on:startlongpress={incrementMouseDown}
-        on:endlongpress={mouseUp}
-        on:click={increment}
-        {disabled}>+</button
-    >
-</div>
+    <Button on:click={increment} {variant} {size} {color} {disabled} iconOnly>+</Button>
+</InputGroup>
 
 <style lang="scss">
-    .InputNumber {
-        height: var(--input-size-m);
-        width: calc(var(--input-size-m) * 4);
+    /* .InputNumber {
         padding: 0;
         border: none;
-        border-radius: var(--radius-3);
-        box-shadow: var(--border-color) 0px 0px 0px 1px;
         display: inline-flex;
         font-size: var(--font-size-3);
         letter-spacing: normal;
-
-        &:hover:not(.input-disabled) {
-            @include input-box-shadow-hover;
-        }
-
-        button {
-            height: var(--input-size-m);
-            width: var(--input-size-m);
-            margin: 0;
-            border: none;
-            background-color: rgba(var(--color-primary-contrast-rgb), 0.1);
-            color: var(--input-color);
-            font-size: var(--font-size-5);
-            cursor: pointer;
-
-            &:last-child {
-                border-top-right-radius: var(--radius-3);
-                border-bottom-right-radius: var(--radius-3);
-            }
-
-            &:first-child {
-                border-top-left-radius: var(--radius-3);
-                border-bottom-left-radius: var(--radius-3);
-            }
-
-            &:disabled {
-                @include disabled;
-            }
-
-            &:hover {
-                background-color: rgba(var(--color-primary-contrast-rgb), 0.15);
-            }
-        }
-
-        input {
-            height: 100%;
-            width: 50%;
-            flex: 1 1 auto;
-            border: none;
-            margin: 0;
-            background-color: var(--input-background);
-            color: var(--input-color);
-            padding: 0 var(--space-3);
-            text-align: right;
-
-            &:disabled {
-                @include disabled;
-            }
-
-            &:focus-visible {
-                @include input-box-shadow-focus;
-            }
-        }
+        height: var(--input-size-m);
+        width: calc(var(--input-size-m) * 4);
+        border-radius: var(--radius-3);
+        color: var(--input-color);
+        background: var(--input-background);
+        box-shadow: var(--input-box-shadow);
     }
 
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
-    }
+    } */
 </style>

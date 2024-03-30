@@ -16,7 +16,7 @@ description: InputNumber component
 ## Playground
 
 <Playground>
-    <InputNumber slot="component" {...props}/>
+    <InputNumber slot="component" {...props} bind:value={props.value}/>
     <PlaygroundForm slot="form" bind:props schema={docInputNumberPropsDefs} />
 </Playground>
 

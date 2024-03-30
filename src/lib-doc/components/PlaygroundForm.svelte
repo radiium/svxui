@@ -109,7 +109,7 @@
                 <Text size="2">{prop.name}</Text>
             </Flexbox>
         {:else if prop.type === 'number'}
-            <Flexbox as="label" direction="column" gap="2">
+            <Flexbox direction="column" gap="2">
                 <Text size="2">{prop.name}</Text>
                 <InputNumber size="2" color="primary" bind:value={props[prop.name]} />
             </Flexbox>

@@ -1,4 +1,4 @@
-import { Sizes1To3, Colors } from '$lib/constants.js';
+import { Sizes1To3, Colors, Variants, Aligns } from '$lib/constants.js';
 import type { InputNumberProps } from './InputNumber.types.js';
 
 export const defaultInputNumberProps: InputNumberProps = {
@@ -9,6 +9,8 @@ export const defaultInputNumberProps: InputNumberProps = {
     max: undefined,
     size: '2',
     color: 'gray',
+    variant: 'clear',
+    align: 'end',
     disabled: false,
     required: false,
     readonly: false
@@ -51,6 +53,18 @@ export const docInputNumberPropsDefs = {
             type: 'enum',
             values: Colors,
             default: defaultInputNumberProps.color
+        },
+        {
+            name: 'variant',
+            type: 'enum',
+            values: Variants,
+            default: defaultInputNumberProps.variant
+        },
+        {
+            name: 'align',
+            type: 'enum',
+            values: Aligns,
+            default: defaultInputNumberProps.align
         },
         {
             name: 'disabled',
