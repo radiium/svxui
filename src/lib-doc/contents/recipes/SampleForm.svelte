@@ -13,6 +13,8 @@
 
     import PlaygroundForm from '../../components/PlaygroundForm.svelte';
     import { Colors } from '$lib/constants.js';
+    import InputGroup from '$lib/components/InputGroup/InputGroup.svelte';
+    import AppWindow from '$lib/icons/AppWindow.svelte';
 
     let groupOptions = ['opt1', 'opt2', 'opt3'];
     let selectOptions = groupOptions.map((o) => ({ label: o, value: o }));
@@ -35,8 +37,8 @@
             {
                 name: 'size',
                 type: 'enum',
-                values: ['small', 'medium', 'large'],
-                default: 'medium'
+                values: ['s', 'm', 'l'],
+                default: 'm'
             },
             {
                 name: 'color',
@@ -48,17 +50,17 @@
     };
 
     const sizesConfig: any = {
-        small: {
+        s: {
             card: '2',
             label: '2',
             input: '1'
         },
-        medium: {
+        m: {
             card: '3',
             label: '3',
             input: '2'
         },
-        large: {
+        l: {
             card: '4',
             label: '4',
             input: '3'
@@ -69,7 +71,6 @@
 
     $: size = sizesConfig[props.size];
     $: formDataJson = JSON.stringify(formData, null, 2);
-    // $: console.log(props?.size, size);
 </script>
 
 <Text as="h2" size="6" weight="bold" class="mt-7 mb-3">Form config</Text>
@@ -78,6 +79,107 @@
         <PlaygroundForm bind:props schema={propsConfig} />
     </Flexbox>
 </Card>
+
+<Flexbox direction="column" gap="4" alignItems="start" class="mt-9">
+    <InputGroup>
+        <Button size={size?.input}>one</Button>
+        <Button size={size?.input}>two</Button>
+        <Button size={size?.input}>three</Button>
+    </InputGroup>
+
+    <InputGroup>
+        <Button size="1" iconOnly>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="#000000"
+                viewBox="0 0 256 256"
+            >
+                <path
+                    d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,48H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,24H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm-48,40H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z"
+                ></path>
+            </svg>
+        </Button>
+        <Button size="1" iconOnly>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="#000000"
+                viewBox="0 0 256 256"
+            >
+                <path
+                    d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64ZM216,96H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,40H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,40H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"
+                ></path>
+            </svg>
+        </Button>
+        <Button size="1" iconOnly>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="#000000"
+                viewBox="0 0 256 256"
+            >
+                <path
+                    d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64ZM216,96H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,40H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,40H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"
+                ></path>
+            </svg>
+        </Button>
+    </InputGroup>
+
+
+
+    
+    <InputGroup>
+        <Select size={size?.input} options={selectOptions} placeholder="Select" value={undefined}/>
+        <Input size={size?.input} />
+    </InputGroup>
+
+    <InputGroup>
+        <Button variant="soft" size={size?.input} iconOnly><AppWindow/></Button>
+        <Input size={size?.input} />
+    </InputGroup>
+
+    <InputGroup>
+        <Input size={size?.input} />
+        <Button variant="soft" size={size?.input} iconOnly><AppWindow/></Button>
+    </InputGroup>
+
+    <InputGroup>
+        <Button variant="soft" size={size?.input}>leading</Button>
+        <Input size={size?.input} />
+    </InputGroup>
+
+    <InputGroup>
+        <Button variant="outline" size={size?.input}>leading</Button>
+        <Input size={size?.input} />
+    </InputGroup>
+
+
+    <InputGroup>
+        <Button variant="clear" size={size?.input}>leading</Button>
+        <Input size={size?.input} />
+    </InputGroup>
+
+    <InputGroup>
+        <Button variant="clear" size={size?.input}>leading</Button>
+        <Input size={size?.input} />
+        <Button variant="clear" size={size?.input}>leading</Button>
+    </InputGroup>
+
+    <InputGroup>
+        <Input size={size?.input} />
+        <Button variant="clear" size={size?.input}>center</Button>
+        <Input size={size?.input} />
+    </InputGroup>
+
+    <InputGroup>
+        <Input size={size?.input} />
+        <Button size={size?.input}>trailing</Button>
+    </InputGroup>
+</Flexbox>
 
 <Text as="h2" size="6" weight="bold" class="mt-7 mb-3">Form sample</Text>
 <Card size={size?.card}>
