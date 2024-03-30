@@ -1,7 +1,7 @@
 {
     "name": "svxui",
     "description": "Svelte ui components and other stuff",
-    "version": "0.0.15",
+    "version": "0.0.16",
     "license": "MIT",
     "homepage": "https://github.com/radiium/svxui",
     "keywords": [
