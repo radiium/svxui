@@ -63,11 +63,11 @@
         on:keypress
         on:keyup
     >
-        {#if !value}
+        <!-- {#if !value}
             <option value="" disabled selected>-- Select an option --</option>
-        {/if}
+        {/if} -->
         {#each options as option}
-            <option value={option.value}>
+            <option value={option.value} selected={option.value === value}>
                 {option.label}
             </option>
         {/each}
