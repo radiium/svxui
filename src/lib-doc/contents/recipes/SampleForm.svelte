@@ -18,7 +18,7 @@
 
     let groupOptions = ['opt1', 'opt2', 'opt3'];
     let selectOptions = groupOptions.map((o) => ({ label: o, value: o }));
-
+    
     let formData = {
         text: undefined,
         textarea: undefined,
