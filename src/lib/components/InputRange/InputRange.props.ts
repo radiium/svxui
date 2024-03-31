@@ -6,7 +6,6 @@ export const defaultInputRangeProps: InputRangeProps = {
     value: undefined,
     size: '2',
     color: 'gray',
-    error: false,
     fullWidth: false
 };
 
@@ -32,11 +31,6 @@ export const docInputRangePropsDefs = {
             type: 'enum',
             values: Colors,
             default: defaultInputRangeProps.color
-        },
-        {
-            name: 'error',
-            type: 'boolean',
-            default: defaultInputRangeProps.error
         },
         {
             name: 'fullWidth',

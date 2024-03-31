@@ -7,6 +7,5 @@ export interface InputProps extends Omit<HTMLInputAttributes, 'size' | 'align'> 
     type?: (typeof InputTypes)[number];
     size?: (typeof Sizes1To3)[number];
     align?: (typeof Aligns)[number];
-    error?: boolean;
     fullWidth?: boolean;
 }

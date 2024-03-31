@@ -8,13 +8,11 @@
     export let value: $$Props['value'] = defaultInputRangeProps.value;
     export let size: $$Props['size'] = defaultInputRangeProps.size;
     export let color: $$Props['color'] = defaultInputRangeProps.color;
-    export let error: $$Props['error'] = defaultInputRangeProps.error;
     export let fullWidth: $$Props['fullWidth'] = defaultInputRangeProps.fullWidth;
 
     $: cssClass = clsx($$restProps.class, 'InputRange', {
         [`InputRange-size-${size}`]: size,
         [`InputRange-color-${color}`]: color,
-        'InputRange-error': error,
         'InputRange-full-width': fullWidth
     });
 </script>

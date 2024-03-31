@@ -7,7 +7,6 @@ export const defaultInputProps: InputProps = {
     type: 'text',
     size: '2',
     align: 'start',
-    error: false,
     fullWidth: false
 };
 
@@ -39,11 +38,6 @@ export const docInputPropsDefs = {
             type: 'enum',
             values: Aligns,
             default: defaultInputProps.align
-        },
-        {
-            name: 'error',
-            type: 'boolean',
-            default: defaultInputProps.error
         },
         {
             name: 'fullWidth',

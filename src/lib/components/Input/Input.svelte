@@ -11,7 +11,6 @@
     export let type: $$Props['type'] = defaultInputProps.type;
     export let size: $$Props['size'] = defaultInputProps.size;
     export let align: $$Props['align'] = defaultInputProps.align;
-    export let error: $$Props['error'] = defaultInputProps.error;
     export let fullWidth: $$Props['fullWidth'] = defaultInputProps.fullWidth;
 
     const isInGroup = getContext<boolean | undefined>(InputGroupContextKey);
@@ -21,7 +20,6 @@
         [`Input-type-${type}`]: type,
         [`Input-align-${align}`]: align,
         'Input-full-width': fullWidth,
-        'Input-error': error,
         'is-in-group': isInGroup
     });
 
@@ -153,11 +151,6 @@
             cursor: default;
             outline: none !important;
             box-shadow: none !important;
-        }
-
-        &.Input-error {
-            box-shadow: var(--tomato-9) 0px 0px 0px 1px !important;
-            background-color: var(--tomato-a2);
         }
     }
 </style>

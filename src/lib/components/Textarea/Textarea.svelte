@@ -7,14 +7,10 @@
     export let elementRef: $$Props['elementRef'] = defaultTextareaProps.elementRef;
     export let value: $$Props['value'] = defaultTextareaProps.value;
     export let size: $$Props['size'] = defaultTextareaProps.size;
-    export let color: $$Props['color'] = defaultTextareaProps.color;
-    export let error: $$Props['error'] = defaultTextareaProps.error;
     export let fullWidth: $$Props['fullWidth'] = defaultTextareaProps.fullWidth;
 
     $: cssClass = clsx($$restProps.class, 'Textarea', {
-        [`Textarea-color-${color}`]: color,
         [`Textarea-size-${size}`]: size,
-        'Textarea-error': error,
         'Textarea-full-width': fullWidth
     });
 </script>
