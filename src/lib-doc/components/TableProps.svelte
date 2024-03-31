@@ -72,8 +72,8 @@
         thead {
             tr {
                 th {
-                    background-color: var(--gray-2);
-                    box-shadow: inset 0 -1px var(--gray-7);
+                    background-color: var(--slate-2);
+                    box-shadow: inset 0 -1px var(--slate-7);
                     box-sizing: border-box;
                     vertical-align: inherit;
                     padding: var(--space-3);
@@ -84,7 +84,7 @@
 
         tbody {
             tr {
-                --table-row-box-shadow: inset 0 -1px var(--gray-7);
+                --table-row-box-shadow: inset 0 -1px var(--slate-7);
 
                 &:last-child {
                     --table-row-box-shadow: none;

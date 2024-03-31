@@ -1,7 +1,6 @@
 <script lang="ts">
     import Card from '$lib/components/Card/Card.svelte';
     import Flexbox from '$lib/components/Flexbox/Flexbox.svelte';
-
 </script>
 
 <Card size="0" class="mt-3 mb-5 playground">
@@ -21,13 +20,13 @@
         min-height: 260px;
         min-width: 350px;
     }
+    
     :global(.playground-content) {
         min-height: 260px;
         min-width: 350px;
     }
 
     :global(.playground-form) {
-        // overflow-x: auto;
         width: 40%;
         min-width: 0;
         flex-shrink: 0;
@@ -36,7 +35,7 @@
     .separator {
         width: 1px;
         min-height: 100%;
-        background-color: var(--gray-5);
+        background-color: var(--slate-5);
         flex-shrink: 0;
     }
 </style>

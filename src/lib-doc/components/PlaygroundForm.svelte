@@ -4,7 +4,6 @@
     import Input from '$lib/components/Input/Input.svelte';
     import Switch from '$lib/components/Switch/Switch.svelte';
     import Button from '$lib/components/Button/Button.svelte';
-    import Badge from '$lib/components/Badge/Badge.svelte';
     import Text from '$lib/components/Text/Text.svelte';
     import { onMount } from 'svelte';
 
@@ -31,19 +30,6 @@
 
     $: onChange({ props, propsString });
 
-    $: schema.props.sort((a, b) => {
-        if (a.type === 'enum' && a.name === 'color') {
-            return -1;
-        } else if (b.type === 'enum' && b.name === 'color') {
-            return 1;
-        } else if (a.type === 'boolean') {
-            return 1;
-        } else if (b.type === 'boolean') {
-            return -1;
-        } else {
-            0;
-        }
-    });
     $: propsString = schema.props
         .filter((prop) => prop.name !== 'elementRef')
         .map((prop) => {
@@ -72,8 +58,10 @@
     {#each schema.props as prop}
         <!-- Prop enum -->
         {#if prop.type === 'enum' && prop.values}
-            <Flexbox direction="column" gap="1"  alignItems="start">
-                <Text size="3" weight="bold" transform="capitalize">{prop.name}: <Text size="3" transform="lowercase">{props[prop.name]}</Text></Text>
+            <Flexbox direction="column" gap="1" alignItems="start">
+                <Text size="2" weight="bold"
+                    >{prop.name}: <Text size="3" transform="lowercase">{props[prop.name]}</Text></Text
+                >
                 <!-- Prop color only -->
                 {#if prop.name === 'color'}
                     <Flexbox wrap="wrap" gap="2">
@@ -110,12 +98,12 @@
             </Flexbox>
         {:else if prop.type === 'number'}
             <Flexbox direction="column" gap="2" alignItems="start">
-                <Text size="2">{prop.name}</Text>
+                <Text size="2" weight="bold">{prop.name}</Text>
                 <InputNumber size="2" color="primary" bind:value={props[prop.name]} />
             </Flexbox>
         {:else if prop.type === 'string'}
             <Flexbox as="label" direction="column" gap="2" alignItems="start">
-                <Text size="2">{prop.name}</Text>
+                <Text size="2" weight="bold">{prop.name}</Text>
                 <Input size="1" color="primary" bind:value={props[prop.name]} placeholder={prop.name} />
             </Flexbox>
         {/if}
