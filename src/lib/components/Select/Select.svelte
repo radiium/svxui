@@ -91,8 +91,19 @@
         position: relative;
         border-radius: var(--radius-3);
         color: var(--input-color);
-        background: var(--input-background);
+        background-color: var(--input-background);
         box-shadow: var(--input-box-shadow);
+
+        // Custom arrow icon
+        background-image: linear-gradient(45deg, transparent 50%, var(--accent-a9) 50%),
+            linear-gradient(135deg, var(--accent-a9) 50%, transparent 50%);
+        background-position:
+            calc(100% - var(--space-3) - 5px) 50%,
+            calc(100% - var(--space-3)) 50%;
+        background-size:
+            5px 5px,
+            5px 5px;
+        background-repeat: no-repeat;
 
         &[multiple] {
             height: auto !important;
@@ -125,9 +136,9 @@
 
         // Sizes
         &.Select-size-1 {
+            ---padding-right: calc(var(--space-2) * 4);
             height: var(--space-5);
-            min-width: calc(var(--space-9) * 3);
-            padding: 0 var(--space-2);
+            padding: 0 var(---padding-right) 0 var(--space-2);
             border-radius: var(--radius-3);
 
             font-size: var(--font-size-1);
@@ -140,9 +151,9 @@
             }
         }
         &.Select-size-2 {
+            ---padding-right: calc(var(--space-2) * 4);
             height: var(--space-6);
-            min-width: calc(var(--space-9) * 3);
-            padding: 0 var(--space-2);
+            padding: 0 var(---padding-right) 0 var(--space-2);
             border-radius: var(--radius-3);
 
             font-size: var(--font-size-2);
@@ -155,9 +166,9 @@
             }
         }
         &.Select-size-3 {
+            ---padding-right: calc(var(--space-2) * 4);
             height: var(--space-7);
-            min-width: calc(var(--space-9) * 3);
-            padding: 0 var(--space-3);
+            padding: 0 var(---padding-right) 0 var(--space-3);
             border-radius: var(--radius-3);
 
             font-size: var(--font-size-3);
@@ -178,7 +189,7 @@
         &:focus-visible {
             outline: var(--input-outline);
         }
-        
+
         &:disabled {
             @include disabled;
         }

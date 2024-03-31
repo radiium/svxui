@@ -27,6 +27,11 @@ export const docSelectPropsDefs = {
             default: defaultSelectProps.value
         },
         {
+            name: 'multiple',
+            type: 'boolean',
+            default: defaultSelectProps.multiple
+        },
+        {
             name: 'size',
             type: 'enum',
             values: Sizes1To3,
