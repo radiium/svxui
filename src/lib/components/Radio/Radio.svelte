@@ -9,12 +9,10 @@
     export let value: $$Props['value'] = defaultRadioProps.value;
     export let size: $$Props['size'] = defaultRadioProps.size;
     export let color: $$Props['color'] = defaultRadioProps.color;
-    export let error: $$Props['error'] = defaultRadioProps.error;
 
     $: cssClass = clsx($$restProps.class, 'Radio', {
         [`Radio-size-${size}`]: size,
-        [`Radio-color-${color}`]: color,
-        'Radio-error': error
+        [`Radio-color-${color}`]: color
     });
 </script>
 
@@ -81,7 +79,7 @@
         &[disabled] {
             @include disabled;
         }
-        
+
         &:checked {
             background-color: var(--radio-background-checked);
             box-shadow: none;

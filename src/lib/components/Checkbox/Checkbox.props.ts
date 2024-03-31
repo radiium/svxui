@@ -9,7 +9,6 @@ export const defaultCheckboxProps: CheckboxProps = {
     indeterminate: false,
     size: '2',
     color: 'gray',
-    error: false
 };
 
 export const docCheckboxPropsDefs = {
@@ -50,12 +49,6 @@ export const docCheckboxPropsDefs = {
             type: 'boolean',
             default: defaultCheckboxProps.indeterminate
         },
-
-        {
-            name: 'error',
-            type: 'boolean',
-            default: defaultCheckboxProps.error
-        }
     ],
     slots: [],
     events: []

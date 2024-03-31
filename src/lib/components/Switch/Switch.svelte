@@ -8,12 +8,10 @@
     export let checked: $$Props['checked'] = defaultSwitchProps.checked;
     export let size: $$Props['size'] = defaultSwitchProps.size;
     export let color: $$Props['color'] = defaultSwitchProps.color;
-    export let error: $$Props['error'] = defaultSwitchProps.error;
 
     $: cssClass = clsx($$restProps.class, 'Switch', {
         [`Switch-size-${size}`]: size,
-        [`Switch-color-${color}`]: color,
-        'Switch-error': error
+        [`Switch-color-${color}`]: color
     });
 </script>
 
@@ -59,7 +57,6 @@
             width: var(--switch-thumb-size);
             background-color: var(--switch-check-color);
             border-radius: var(--radius-1);
-            /* box-shadow: 0 0 0 1px var(--gray-a3); */
             transition:
                 background-color ease 0.2s,
                 box-shadow ease 0.2s,

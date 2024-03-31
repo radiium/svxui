@@ -7,5 +7,4 @@ export interface RadioProps extends Omit<HTMLInputAttributes, 'size'> {
     value?: string | number;
     size?: (typeof Sizes1To3)[number];
     color?: (typeof Colors)[number];
-    error?: boolean;
 }

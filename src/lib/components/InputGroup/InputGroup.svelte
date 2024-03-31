@@ -3,14 +3,17 @@
     import { setContext } from 'svelte';
     import type { InputGroupProps } from './InputGroup.types.js';
     import { InputGroupContextKey } from '$lib/constants.js';
+    import { defaultInputGroupProps } from './InputGroup.props.js';
 
     type $$Props = InputGroupProps;
+    export let elementRef: $$Props['elementRef'] = defaultInputGroupProps.elementRef;
+
     $: cssClass = clsx($$restProps.class, `InputGroup`);
 
     setContext(InputGroupContextKey, true);
 </script>
 
-<div {...$$restProps} role="group" class={cssClass} style={$$restProps.style}>
+<div {...$$restProps} role="group" class={cssClass} style={$$restProps.style} bind:this={elementRef}>
     <slot />
 </div>
 
@@ -38,7 +41,7 @@
             border-radius: 0 0 0 0 !important;
             border-width: 0 1px 0 0 !important;
             border-style: solid !important;
-            border-color: var(--slate-a8) !important;
+            border-color: var(--slate-8) !important;
 
             &:focus,
             &:focus-visible {

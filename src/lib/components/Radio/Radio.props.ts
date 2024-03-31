@@ -6,8 +6,7 @@ export const defaultRadioProps: RadioProps = {
     group: undefined,
     value: undefined,
     size: '2',
-    color: 'gray',
-    error: false
+    color: 'gray'
 };
 
 export const docRadioPropsDefs = {
@@ -38,11 +37,6 @@ export const docRadioPropsDefs = {
             type: 'enum',
             values: Colors,
             default: defaultRadioProps.color
-        },
-        {
-            name: 'error',
-            type: 'boolean',
-            default: defaultRadioProps.error
         }
     ],
     slots: [],

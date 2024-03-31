@@ -11,12 +11,10 @@
     export let indeterminate: $$Props['indeterminate'] = defaultCheckboxProps.indeterminate;
     export let size: $$Props['size'] = defaultCheckboxProps.size;
     export let color: $$Props['color'] = defaultCheckboxProps.color;
-    export let error: $$Props['error'] = defaultCheckboxProps.error;
 
     $: cssClass = clsx($$restProps.class, 'Checkbox', {
         [`Checkbox-size-${size}`]: size,
-        [`Checkbox-color-${color}`]: color,
-        'Checkbox-error': error
+        [`Checkbox-color-${color}`]: color
     });
 
     const isValid = <T,>(val: T): val is NonNullable<T> => value !== null && value !== undefined;

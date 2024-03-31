@@ -17,6 +17,7 @@
     export let color: $$Props['color'] = defaultInputNumberProps.color;
     export let variant: $$Props['variant'] = defaultInputNumberProps.variant;
     export let align: $$Props['align'] = defaultInputNumberProps.align;
+    export let fullWidth: $$Props['fullWidth'] = defaultInputNumberProps.fullWidth;
     export let disabled: $$Props['disabled'] = defaultInputNumberProps.disabled;
     export let required: $$Props['required'] = defaultInputNumberProps.required;
     export let readonly: $$Props['readonly'] = defaultInputNumberProps.readonly;
@@ -92,13 +93,15 @@
 </script>
 
 <!--  class={cssClass} -->
-<InputGroup class={cssClass}>
+<InputGroup class={cssClass} bind:elementRef>
     <Button on:click={decrement} {variant} {size} {color} {disabled} iconOnly>-</Button>
     <Input
         type="number"
         inputmode="numeric"
+        class="InputNumber-input"
         {size}
         {align}
+        {fullWidth}
         {disabled}
         {required}
         {readonly}
@@ -115,6 +118,38 @@
 </InputGroup>
 
 <style lang="scss">
+    :global(.InputNumber-input::-webkit-outer-spin-button) {
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: textfield !important;
+        margin: 0;
+        outline: 1px solid red;
+    }
+
+    :global(.InputNumber-input) {
+        width: 6em;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: textfield !important;
+        margin: 0;
+
+        &::-webkit-outer-spin-button {
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: textfield !important;
+            margin: 0;
+            outline: 1px solid red;
+        }
+
+        ::-webkit-outer-spin-button {
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: textfield !important;
+            margin: 0;
+            outline: 1px solid red;
+        }
+    }
+
     /* .InputNumber {
         padding: 0;
         border: none;
