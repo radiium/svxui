@@ -95,19 +95,21 @@
         box-shadow: var(--input-box-shadow);
 
         // Custom arrow icon
-        background-image: linear-gradient(45deg, transparent 50%, var(--accent-a9) 50%),
-            linear-gradient(135deg, var(--accent-a9) 50%, transparent 50%);
-        background-position:
-            calc(100% - var(--space-3) - 5px) 50%,
-            calc(100% - var(--space-3)) 50%;
-        background-size:
-            5px 5px,
-            5px 5px;
-        background-repeat: no-repeat;
+        &:not([multiple]) {
+            background-image: linear-gradient(45deg, transparent 50%, var(--accent-a9) 50%),
+                linear-gradient(135deg, var(--accent-a9) 50%, transparent 50%);
+            background-position:
+                calc(100% - var(--space-3) - 5px) 50%,
+                calc(100% - var(--space-3)) 50%;
+            background-size:
+                5px 5px,
+                5px 5px;
+            background-repeat: no-repeat;
+        }
 
         &[multiple] {
             height: auto !important;
-            padding: 0 !important;
+            // padding: 0 !important;
 
             option {
                 position: relative;
@@ -117,7 +119,7 @@
 
                 &:checked {
                     color: var(--input-color);
-                    background-color: var(--gray-a6);
+                    background-color: var(--slate-a6);
 
                     &::before {
                         content: '';
@@ -145,6 +147,8 @@
             letter-spacing: var(--letter-spacing-1);
 
             &[multiple] {
+                padding: 0 var(--space-2) 0 0;
+
                 option {
                     height: var(--space-5);
                 }
@@ -160,6 +164,8 @@
             letter-spacing: var(--letter-spacing-2);
 
             &[multiple] {
+                padding: 0 var(--space-2) 0 0;
+
                 option {
                     height: var(--space-6);
                 }
@@ -175,6 +181,8 @@
             letter-spacing: var(--letter-spacing-3);
 
             &[multiple] {
+                padding: 0 var(--space-3) 0 0;
+
                 option {
                     height: var(--space-7);
                 }

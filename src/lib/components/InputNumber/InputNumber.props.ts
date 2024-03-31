@@ -24,6 +24,30 @@ export const docInputNumberPropsDefs = {
             type: 'HTMLInputElement'
         },
         {
+            name: 'color',
+            type: 'enum',
+            values: Colors,
+            default: defaultInputNumberProps.color
+        },
+        {
+            name: 'size',
+            type: 'enum',
+            values: Sizes1To3,
+            default: defaultInputNumberProps.size
+        },
+        {
+            name: 'variant',
+            type: 'enum',
+            values: Variants,
+            default: defaultInputNumberProps.variant
+        },
+        {
+            name: 'align',
+            type: 'enum',
+            values: Aligns,
+            default: defaultInputNumberProps.align
+        },
+        {
             name: 'value',
             type: 'number',
             default: defaultInputNumberProps.value
@@ -42,30 +66,6 @@ export const docInputNumberPropsDefs = {
             name: 'max',
             type: 'number',
             default: defaultInputNumberProps.max
-        },
-        {
-            name: 'size',
-            type: 'enum',
-            values: Sizes1To3,
-            default: defaultInputNumberProps.size
-        },
-        {
-            name: 'color',
-            type: 'enum',
-            values: Colors,
-            default: defaultInputNumberProps.color
-        },
-        {
-            name: 'variant',
-            type: 'enum',
-            values: Variants,
-            default: defaultInputNumberProps.variant
-        },
-        {
-            name: 'align',
-            type: 'enum',
-            values: Aligns,
-            default: defaultInputNumberProps.align
         },
         {
             name: 'fullWidth',

@@ -118,7 +118,7 @@
         }
 
         // Color
-        --checkbox-background: var(--gray-a3);
+        --checkbox-background: var(--input-background);
         --checkbox-background-checked: var(--accent-9);
         --check-color: var(--accent-contrast);
         // Sizes

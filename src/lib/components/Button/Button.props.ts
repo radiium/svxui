@@ -19,10 +19,10 @@ export const docButtonPropsDefs = {
             type: 'HTMLButtonElement'
         },
         {
-            name: 'variant',
+            name: 'color',
             type: 'enum',
-            values: Variants,
-            default: defaultButtonProps.variant
+            values: Colors,
+            default: defaultButtonProps.color
         },
         {
             name: 'size',
@@ -31,11 +31,11 @@ export const docButtonPropsDefs = {
             default: defaultButtonProps.size
         },
         {
-            name: 'color',
+            name: 'variant',
             type: 'enum',
-            values: Colors,
-            default: defaultButtonProps.color
-        },
+            values: Variants,
+            default: defaultButtonProps.variant
+        },  
         {
             name: 'align',
             type: 'enum',

@@ -27,11 +27,6 @@ export const docSelectPropsDefs = {
             default: defaultSelectProps.value
         },
         {
-            name: 'multiple',
-            type: 'boolean',
-            default: defaultSelectProps.multiple
-        },
-        {
             name: 'size',
             type: 'enum',
             values: Sizes1To3,
@@ -41,6 +36,11 @@ export const docSelectPropsDefs = {
             name: 'fullWidth',
             type: 'boolean',
             default: defaultSelectProps.fullWidth
+        },
+        {
+            name: 'multiple',
+            type: 'boolean',
+            default: defaultSelectProps.multiple
         }
     ],
     slots: [],

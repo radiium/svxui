@@ -17,17 +17,6 @@ export const docInputPropsDefs = {
             type: 'HTMLInputElement'
         },
         {
-            name: 'value',
-            type: 'string',
-            default: defaultInputProps.value
-        },
-        {
-            name: 'type',
-            type: 'enum',
-            values: InputTypes,
-            default: defaultInputProps.type
-        },
-        {
             name: 'size',
             type: 'enum',
             values: Sizes1To3,
@@ -40,9 +29,20 @@ export const docInputPropsDefs = {
             default: defaultInputProps.align
         },
         {
+            name: 'type',
+            type: 'enum',
+            values: InputTypes,
+            default: defaultInputProps.type
+        },
+        {
             name: 'fullWidth',
             type: 'boolean',
             default: defaultInputProps.fullWidth
+        },
+        {
+            name: 'value',
+            type: 'string',
+            default: defaultInputProps.value
         }
     ],
     slots: [],

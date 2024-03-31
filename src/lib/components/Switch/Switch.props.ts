@@ -15,16 +15,16 @@ export const docSwitchPropsDefs = {
             type: 'HTMLInputElement'
         },
         {
-            name: 'size',
-            type: 'enum',
-            values: Sizes1To3,
-            default: defaultSwitchProps.size
-        },
-        {
             name: 'color',
             type: 'enum',
             values: Colors,
             default: defaultSwitchProps.color
+        },
+        {
+            name: 'size',
+            type: 'enum',
+            values: Sizes1To3,
+            default: defaultSwitchProps.size
         }
     ],
     slots: [],

@@ -95,7 +95,7 @@
         }
 
         // Colors
-        --radio-background: var(--gray-a3);
+        --radio-background: var(--input-background);
         --radio-background-checked: var(--accent-9);
         --check-color: white;
 

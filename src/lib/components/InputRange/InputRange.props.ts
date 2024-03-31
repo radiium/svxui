@@ -21,16 +21,16 @@ export const docInputRangePropsDefs = {
             default: defaultInputRangeProps.value
         },
         {
-            name: 'size',
-            type: 'enum',
-            values: Sizes1To3,
-            default: defaultInputRangeProps.size
-        },
-        {
             name: 'color',
             type: 'enum',
             values: Colors,
             default: defaultInputRangeProps.color
+        },
+        {
+            name: 'size',
+            type: 'enum',
+            values: Sizes1To3,
+            default: defaultInputRangeProps.size
         },
         {
             name: 'fullWidth',

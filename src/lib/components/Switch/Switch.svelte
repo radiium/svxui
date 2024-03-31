@@ -84,7 +84,7 @@
         }
 
         // Colors
-        --switch-background: var(--gray-a3);
+        --switch-background: var(--input-background);
         --switch-background-checked: var(--accent-9);
         --switch-check-color: white;
 

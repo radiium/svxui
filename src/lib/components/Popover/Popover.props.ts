@@ -17,11 +17,6 @@ export const defaultPopoverProps: PopoverProps = {
 export const docPopoverPropsDefs = {
     props: [
         {
-            name: 'isOpen',
-            type: 'boolean',
-            default: defaultPopoverProps.isOpen
-        },
-        {
             name: 'strategy',
             type: 'enum',
             values: Strategies,
@@ -72,6 +67,11 @@ export const docPopoverPropsDefs = {
             name: 'shift',
             type: 'boolean',
             default: defaultPopoverProps.shift
+        },
+        {
+            name: 'isOpen',
+            type: 'boolean',
+            default: defaultPopoverProps.isOpen
         }
     ],
     slots: [

@@ -16,11 +16,6 @@ export const docTextareaPropsDefs = {
             type: 'HTMLTextAreaElement'
         },
         {
-            name: 'value',
-            type: 'string',
-            default: defaultTextareaProps.value
-        },
-        {
             name: 'size',
             type: 'enum',
             values: Sizes1To3,
@@ -30,6 +25,11 @@ export const docTextareaPropsDefs = {
             name: 'fullWidth',
             type: 'boolean',
             default: defaultTextareaProps.fullWidth
+        },
+        {
+            name: 'value',
+            type: 'string',
+            default: defaultTextareaProps.value
         }
     ],
     slots: [],

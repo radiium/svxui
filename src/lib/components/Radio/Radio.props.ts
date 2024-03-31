@@ -17,14 +17,10 @@ export const docRadioPropsDefs = {
             type: 'HTMLInputElement'
         },
         {
-            name: 'group',
-            type: 'any',
-            default: defaultRadioProps.group
-        },
-        {
-            name: 'value',
-            type: 'any',
-            default: defaultRadioProps.value
+            name: 'color',
+            type: 'enum',
+            values: Colors,
+            default: defaultRadioProps.color
         },
         {
             name: 'size',
@@ -33,10 +29,14 @@ export const docRadioPropsDefs = {
             default: defaultRadioProps.size
         },
         {
-            name: 'color',
-            type: 'enum',
-            values: Colors,
-            default: defaultRadioProps.color
+            name: 'group',
+            type: 'any',
+            default: defaultRadioProps.group
+        },
+        {
+            name: 'value',
+            type: 'any',
+            default: defaultRadioProps.value
         }
     ],
     slots: [],
