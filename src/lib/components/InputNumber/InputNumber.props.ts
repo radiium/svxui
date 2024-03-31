@@ -11,9 +11,10 @@ export const defaultInputNumberProps: InputNumberProps = {
     color: 'gray',
     variant: 'clear',
     align: 'end',
+    fullWidth: false,
     disabled: false,
     required: false,
-    readonly: false
+    readonly: undefined
 };
 
 export const docInputNumberPropsDefs = {
@@ -65,6 +66,11 @@ export const docInputNumberPropsDefs = {
             type: 'enum',
             values: Aligns,
             default: defaultInputNumberProps.align
+        },
+        {
+            name: 'fullWidth',
+            type: 'boolean',
+            default: defaultInputNumberProps.fullWidth
         },
         {
             name: 'disabled',

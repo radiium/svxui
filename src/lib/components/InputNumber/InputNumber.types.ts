@@ -10,6 +10,7 @@ export interface InputNumberProps {
     color?: (typeof Colors)[number];
     variant?: (typeof Variants)[number];
     align?: (typeof Aligns)[number];
+    fullWidth?: boolean;
     disabled?: boolean;
     required?: boolean;
     readonly?: boolean;

@@ -148,7 +148,7 @@
     [data-popover] {
         --popover-color: var(--color);
         --popover-background: var(--background-level-2);
-        --popover-border-color: var(--gray-5);
+        --popover-border-color: var(--accent-a8);
         --popover-border-radius: var(--radius-3);
     }
 
