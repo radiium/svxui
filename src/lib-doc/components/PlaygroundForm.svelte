@@ -72,7 +72,7 @@
     {#each schema.props as prop}
         <!-- Prop enum -->
         {#if prop.type === 'enum' && prop.values}
-            <Flexbox direction="column" gap="1">
+            <Flexbox direction="column" gap="1"  alignItems="start">
                 <Text size="3" weight="bold" transform="capitalize">{prop.name}: <Text size="3" transform="lowercase">{props[prop.name]}</Text></Text>
                 <!-- Prop color only -->
                 {#if prop.name === 'color'}
@@ -109,12 +109,12 @@
                 <Text size="2">{prop.name}</Text>
             </Flexbox>
         {:else if prop.type === 'number'}
-            <Flexbox direction="column" gap="2">
+            <Flexbox direction="column" gap="2" alignItems="start">
                 <Text size="2">{prop.name}</Text>
                 <InputNumber size="2" color="primary" bind:value={props[prop.name]} />
             </Flexbox>
         {:else if prop.type === 'string'}
-            <Flexbox as="label" direction="column" gap="2">
+            <Flexbox as="label" direction="column" gap="2" alignItems="start">
                 <Text size="2">{prop.name}</Text>
                 <Input size="1" color="primary" bind:value={props[prop.name]} placeholder={prop.name} />
             </Flexbox>

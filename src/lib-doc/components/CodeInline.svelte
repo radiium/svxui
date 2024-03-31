@@ -72,7 +72,7 @@
         &.demo-block {
             display: flex;
             align-items: center;
-            border-bottom: 1px solid var(--gray-8);
+            border-bottom: 1px solid var(--accent-a8);
             gap: var(--space-3);
 
             &.column {
