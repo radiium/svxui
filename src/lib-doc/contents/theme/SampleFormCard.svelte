@@ -10,12 +10,20 @@
 
 <Card>
     <Flexbox direction="column" gap="6" alignItems="start">
-        <Flexbox direction="column" gap="3" alignItems="start">
-            <Text size="5" weight="bold">{title}</Text>
-            <Input placeholder="Login" />
-            <Input placeholder="Passwword" type="password" />
-            <Button>Submit</Button>
-        </Flexbox>
+        <Card style="max-width: 300px">
+            <Flexbox direction="column" gap="3" alignItems="start">
+                <Text size="5" weight="bold">{title}</Text>
+                <Text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed eros ut turpis finibus
+                    mattis.
+                </Text>
+
+                <Flexbox gap="3" justify="center" alignItems="center" class="mt-4">
+                    <Input placeholder="Email" />
+                    <Button variant="soft">Submit</Button>
+                </Flexbox>
+            </Flexbox>
+        </Card>
 
         <slot />
     </Flexbox>

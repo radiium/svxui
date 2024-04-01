@@ -5,10 +5,11 @@ description:
 
 <script>
     import Badge from '$lib/components/Badge/Badge.svelte';
+    import CodeInline from '$lib-doc/components/CodeInline.svelte';
 </script>
 
 ## Description  
-The <Badge>```useThemeContext()```</Badge> allows access to the context of the closest <Badge>```<ThemeProvider/>```</Badge> component. Will generate an error if used outside of a <Badge>```<ThemeProvider/>```</Badge>.
+The <CodeInline>```useThemeContext()```</CodeInline> allows access to the context of the closest <CodeInline>```<ThemeProvider/>```</CodeInline> component. Will generate an error if used outside of a <CodeInline>```<ThemeProvider/>```</CodeInline>.
 
 ## Usage
 
