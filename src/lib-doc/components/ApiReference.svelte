@@ -15,13 +15,13 @@
     <!-- Props -->
     {#if hasPropsBloc}
         <H4>Props</H4>
-        <TableProps props={data.props} class="mb-5"/>
+        <TableProps props={data.props} class="mb-5" />
     {/if}
 
     <!-- Slots -->
     {#if hasSlotsBloc}
         <H4>Slots</H4>
-        <TableSlots slots={data.slots} class="mb-5"/>
+        <TableSlots slots={data.slots} class="mb-5" />
     {/if}
 
     <!-- Events -->

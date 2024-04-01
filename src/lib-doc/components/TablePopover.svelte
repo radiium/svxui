@@ -2,7 +2,6 @@
     import Info from 'phosphor-svelte/lib/Info';
     import Popover from '$lib/components/Popover/Popover.svelte';
     import Button from '$lib/components/Button/Button.svelte';
-
 </script>
 
 <Popover arrow={false}>

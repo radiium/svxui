@@ -51,10 +51,9 @@
         color: var(--accent-a11, var(--color));
         text-decoration-line: none;
 
-    text-decoration-thickness: min(2px, max(1px, 0.05em));
-    text-underline-offset: calc(0.025em + 2px);
-    text-decoration-color: var(--accent-a6);
-
+        text-decoration-thickness: min(2px, max(1px, 0.05em));
+        text-underline-offset: calc(0.025em + 2px);
+        text-decoration-color: var(--accent-a6);
 
         // Sizes
         &.Link-size-1 {
@@ -163,7 +162,6 @@
             white-space: normal;
             text-wrap: balance;
         }
-
 
         &.Link-truncate {
             overflow: hidden;

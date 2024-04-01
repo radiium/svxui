@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Text from '$lib/components/Text/Text.svelte';;
+    import Text from '$lib/components/Text/Text.svelte';
     import { page } from '$app/stores';
 
     let elementRef: HTMLHeadingElement;

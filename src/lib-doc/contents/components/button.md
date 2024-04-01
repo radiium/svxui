@@ -149,7 +149,7 @@ Extend HTMLButtonAttributes
 #### Import
 
 ```typescript example
-import Button from '$lib/components/Button/Button.svelte';;
+import Button from '$lib/components/Button/Button.svelte';
 ```
 
 ```bash example

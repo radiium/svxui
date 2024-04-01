@@ -35,7 +35,7 @@ export const docButtonPropsDefs = {
             type: 'enum',
             values: Variants,
             default: defaultButtonProps.variant
-        },  
+        },
         {
             name: 'align',
             type: 'enum',

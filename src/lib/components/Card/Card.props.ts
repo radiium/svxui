@@ -3,7 +3,7 @@ import type { CardProps } from './Card.types.js';
 
 export const defaultCardProps: CardProps = {
     elementRef: undefined,
-    size: '3',
+    size: '3'
 };
 
 export const docCardPropsDefs = {

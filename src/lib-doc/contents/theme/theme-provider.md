@@ -28,7 +28,6 @@ It allows you to configure and initialize the light/dark themes.
 </ThemeProvider>
 ```
 
-
 ## API Reference
 
 <ApiReference data={docThemeProviderPropsDefs}></ApiReference>

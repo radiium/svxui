@@ -20,7 +20,7 @@
         min-height: 260px;
         min-width: 350px;
     }
-    
+
     :global(.playground-content) {
         min-height: 260px;
         min-width: 350px;

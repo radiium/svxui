@@ -1,6 +1,6 @@
 ---
 title: ThemeContext
-description: 
+description:
 ---
 
 <script>
@@ -8,8 +8,9 @@ description:
     import CodeInline from '$lib-doc/components/CodeInline.svelte';
 </script>
 
-## Description  
-The <CodeInline>```useThemeContext()```</CodeInline> allows access to the context of the closest <CodeInline>```<ThemeProvider/>```</CodeInline> component. Will generate an error if used outside of a <CodeInline>```<ThemeProvider/>```</CodeInline>.
+## Description
+
+The <CodeInline>`useThemeContext()`</CodeInline> allows access to the context of the closest <CodeInline>`<ThemeProvider/>`</CodeInline> component. Will generate an error if used outside of a <CodeInline>`<ThemeProvider/>`</CodeInline>.
 
 ## Usage
 

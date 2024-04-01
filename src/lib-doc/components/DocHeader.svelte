@@ -10,13 +10,7 @@
 
 <div class="container pl-3 pr-3">
     <div class="side start">
-        <a
-            href="/"
-            target="_self"
-            rel="noreferrer"
-            data-sveltekit-preload-data="tap"
-            title={PUBLIC_PKG_NAME}
-        >
+        <a href="/" target="_self" rel="noreferrer" data-sveltekit-preload-data="tap" title={PUBLIC_PKG_NAME}>
             <Text size="7" class="mb-2">{PUBLIC_PKG_NAME}</Text>
         </a>
         <Badge title="Version">v{version}</Badge>
