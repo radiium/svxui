@@ -1,14 +1,3 @@
-<script lang="ts">
-    import Clipboard from 'phosphor-svelte/lib/Clipboard';
-    import Check from 'phosphor-svelte/lib/Check';
-    import Card from '$lib/components/Card/Card.svelte';
-    import Flexbox from '$lib/components/Flexbox/Flexbox.svelte';
-    import Button from '$lib/components/Button/Button.svelte';
-
-    export let src: string | undefined = undefined;
-    export let meta: Record<string, unknown> = {};
-</script>
-
 <span class="Code" data-color="primary">
     <slot />
 </span>
