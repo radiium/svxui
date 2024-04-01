@@ -11,7 +11,6 @@ description: Input component
     import PlaygroundForm from '$lib-doc/components/PlaygroundForm.svelte';
 
     let props = {}
-    let value = ''
 </script>
 
 ## Playground
