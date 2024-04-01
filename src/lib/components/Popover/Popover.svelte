@@ -29,7 +29,7 @@
     export let transitionDuration: $$Props['transitionDuration'] = defaultPopoverProps.transitionDuration;
 
     let triggerRef: HTMLDivElement | undefined = undefined;
-    let arrowRef: any | undefined = undefined;
+    let arrowRef: SVGElement | undefined = undefined;
     let popoverRef: HTMLDivElement | undefined = undefined;
 
     let side: Side;

@@ -35,7 +35,7 @@ async function parseModule([path, resolver]): Promise<DocPage> {
     const href = ['/docs', dir, slug].filter(Boolean).join('/');
 
     const pageResult = await resolver();
-    const { default: page, metadata } = pageResult as any;
+    const { default: page, metadata } = pageResult;
     return { path, slug, href, page, metadata };
 }
 

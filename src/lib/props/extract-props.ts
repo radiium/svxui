@@ -6,7 +6,7 @@ import { paddingKeys, type PaddingKey, type PaddingProps } from './padding.props
 type ExtractProps = LayoutProps & MarginProps & PaddingProps;
 type ExtractKeys = typeof layoutKeys | typeof marginKeys | typeof paddingKeys;
 
-export function extractPropsAlt<T extends ExtractProps>(props: T): ExtractProps & { restProps: any } {
+export function extractPropsAlt<T extends ExtractProps>(props: T): ExtractProps & { restProps: object } {
     // prettier-ignore
     const { position, inset, top, right, bottom, left, width, height, shrink, grow, m, mx, my, mt, mr, mb, ml, p, px, py, pt, pr, pb, pl, ...restProps } = props
     // prettier-ignore

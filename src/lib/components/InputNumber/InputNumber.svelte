@@ -32,7 +32,7 @@
         'input-readonly': readonly
     });
 
-    let intervalId: any = undefined;
+    let intervalId: ReturnType<typeof setInterval> | undefined = undefined;
 
     function decrement(): void {
         if (disabled) {
