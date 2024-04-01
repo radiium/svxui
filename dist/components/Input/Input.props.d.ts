@@ -4,18 +4,8 @@ export declare const docInputPropsDefs: {
     props: ({
         name: string;
         type: string;
+        values?: undefined;
         default?: undefined;
-        values?: undefined;
-    } | {
-        name: string;
-        type: string;
-        default: string | undefined;
-        values?: undefined;
-    } | {
-        name: string;
-        type: string;
-        values: readonly ["number", "time", "text", "search", "password", "email", "tel", "url", "date", "datetime-local", "month", "week"];
-        default: "number" | "time" | "text" | "search" | "password" | "email" | "tel" | "url" | "date" | "datetime-local" | "month" | "week" | undefined;
     } | {
         name: string;
         type: string;
@@ -29,7 +19,17 @@ export declare const docInputPropsDefs: {
     } | {
         name: string;
         type: string;
+        values: readonly ["number", "time", "text", "search", "password", "email", "tel", "url", "date", "datetime-local", "month", "week"];
+        default: "number" | "time" | "text" | "search" | "password" | "email" | "tel" | "url" | "date" | "datetime-local" | "month" | "week" | undefined;
+    } | {
+        name: string;
+        type: string;
         default: boolean | undefined;
+        values?: undefined;
+    } | {
+        name: string;
+        type: string;
+        default: string | number | undefined;
         values?: undefined;
     })[];
     slots: never[];

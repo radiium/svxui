@@ -4,12 +4,10 @@ export let elementRef = defaultInputRangeProps.elementRef;
 export let value = defaultInputRangeProps.value;
 export let size = defaultInputRangeProps.size;
 export let color = defaultInputRangeProps.color;
-export let error = defaultInputRangeProps.error;
 export let fullWidth = defaultInputRangeProps.fullWidth;
 $: cssClass = clsx($$restProps.class, 'InputRange', {
     [`InputRange-size-${size}`]: size,
     [`InputRange-color-${color}`]: color,
-    'InputRange-error': error,
     'InputRange-full-width': fullWidth
 });
 </script>
@@ -47,7 +45,6 @@ $: cssClass = clsx($$restProps.class, 'InputRange', {
   min-width: calc(var(--input-size-m) * 3);
   margin: 0;
   padding: 0 var(--space-2);
-  color: var(--input-color);
   appearance: none;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
@@ -59,8 +56,9 @@ $: cssClass = clsx($$restProps.class, 'InputRange', {
   border-radius: var(--radius-3);
   background: var(--input-background);
   height: var(--input-height);
-  box-shadow: var(--border-color) 0px 0px 0px 1px;
-  outline: none;
+  color: var(--input-color);
+  background: var(--input-background);
+  box-shadow: var(--input-box-shadow);
   --thumb-radius: var(--radius-2);
   --thumb-background: var(--accent-12);
   --track-radius: var(--radius-2);
@@ -90,10 +88,6 @@ $: cssClass = clsx($$restProps.class, 'InputRange', {
   --thumb-margin-top: calc(-1 * ((var(--thumb-height) - var(--space-3)) / 2));
   --track-height: var(--space-3);
 }
-.InputRange:hover {
-  box-shadow: var(--border-color-hover) 0px 0px 0px 1px;
-  outline: none;
-}
 .InputRange[disabled] {
   cursor: default !important;
   opacity: 0.5 !important;
@@ -105,11 +99,7 @@ $: cssClass = clsx($$restProps.class, 'InputRange', {
   outline: none !important;
 }
 .InputRange:active, .InputRange:focus, .InputRange:focus-visible {
-  box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-  outline: none;
-}
-.InputRange:focus {
-  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  outline: var(--input-outline);
 }
 .InputRange::-ms-track {
   width: 100%;

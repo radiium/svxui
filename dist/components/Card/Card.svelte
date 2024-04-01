@@ -15,9 +15,9 @@ $: cssClass = clsx($$restProps.class, 'Card', {
   padding: var(--card-padding);
   border-radius: var(--card-border-radius);
   background-color: var(--background-level-2);
-  border: 1px solid var(--gray-5);
+  box-shadow: var(--input-box-shadow);
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 .Card.Card-size-0 {
   --card-padding: var(--space-0);

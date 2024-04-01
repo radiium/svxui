@@ -1,13 +1,17 @@
-<script>import { clsx } from '../../utils/clsx.js';
+<script>import { getContext } from 'svelte';
+import { clsx } from '../../utils/clsx.js';
 import { defaultSelectProps } from './Select.props.js';
+import { InputGroupContextKey } from '../../constants.js';
 export let elementRef = defaultSelectProps.elementRef;
 export let options = defaultSelectProps.options;
 export let value = defaultSelectProps.value;
 export let size = defaultSelectProps.size;
 export let fullWidth = defaultSelectProps.fullWidth;
+const isInGroup = getContext(InputGroupContextKey);
 $: cssClass = clsx($$restProps.class, `Select`, {
     [`Select-size-${size}`]: size,
-    'Select-full-width': fullWidth
+    'Select-full-width': fullWidth,
+    'is-in-group': isInGroup
 });
 </script>
 
@@ -53,11 +57,11 @@ $: cssClass = clsx($$restProps.class, `Select`, {
         on:keypress
         on:keyup
     >
-        {#if !value}
+        <!-- {#if !value}
             <option value="" disabled selected>-- Select an option --</option>
-        {/if}
+        {/if} -->
         {#each options as option}
-            <option value={option.value}>
+            <option value={option.value} selected={option.value === value}>
                 {option.label}
             </option>
         {/each}
@@ -71,10 +75,6 @@ $: cssClass = clsx($$restProps.class, `Select`, {
 
 <style>.Select {
   border: none;
-  border-radius: var(--radius-3);
-  box-shadow: inset 0 0 0 1px var(--gray-8);
-  color: var(--input-color);
-  background-color: var(--input-background);
   display: inline-flex;
   font-size: var(--font-size-3);
   letter-spacing: normal;
@@ -82,10 +82,19 @@ $: cssClass = clsx($$restProps.class, `Select`, {
   -moz-appearance: none;
   -webkit-appearance: none;
   position: relative;
+  border-radius: var(--radius-3);
+  color: var(--input-color);
+  background-color: var(--input-background);
+  box-shadow: var(--input-box-shadow);
+}
+.Select:not([multiple]) {
+  background-image: linear-gradient(45deg, transparent 50%, var(--accent-a9) 50%), linear-gradient(135deg, var(--accent-a9) 50%, transparent 50%);
+  background-position: calc(100% - var(--space-3) - 5px) 50%, calc(100% - var(--space-3)) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
 }
 .Select[multiple] {
   height: auto !important;
-  padding: 0 !important;
 }
 .Select[multiple] option {
   position: relative;
@@ -95,7 +104,7 @@ $: cssClass = clsx($$restProps.class, `Select`, {
 }
 .Select[multiple] option:checked {
   color: var(--input-color);
-  background-color: var(--gray-a6);
+  background-color: var(--slate-a6);
 }
 .Select[multiple] option:checked::before {
   content: "";
@@ -109,34 +118,43 @@ $: cssClass = clsx($$restProps.class, `Select`, {
   transform: rotate(-45deg);
 }
 .Select.Select-size-1 {
+  ---padding-right: calc(var(--space-2) * 4);
   height: var(--space-5);
-  min-width: calc(var(--space-9) * 3);
-  padding: 0 var(--space-2);
+  padding: 0 var(---padding-right) 0 var(--space-2);
   border-radius: var(--radius-3);
   font-size: var(--font-size-1);
   letter-spacing: var(--letter-spacing-1);
+}
+.Select.Select-size-1[multiple] {
+  padding: 0 var(--space-2) 0 0;
 }
 .Select.Select-size-1[multiple] option {
   height: var(--space-5);
 }
 .Select.Select-size-2 {
+  ---padding-right: calc(var(--space-2) * 4);
   height: var(--space-6);
-  min-width: calc(var(--space-9) * 3);
-  padding: 0 var(--space-2);
+  padding: 0 var(---padding-right) 0 var(--space-2);
   border-radius: var(--radius-3);
   font-size: var(--font-size-2);
   letter-spacing: var(--letter-spacing-2);
+}
+.Select.Select-size-2[multiple] {
+  padding: 0 var(--space-2) 0 0;
 }
 .Select.Select-size-2[multiple] option {
   height: var(--space-6);
 }
 .Select.Select-size-3 {
+  ---padding-right: calc(var(--space-2) * 4);
   height: var(--space-7);
-  min-width: calc(var(--space-9) * 3);
-  padding: 0 var(--space-3);
+  padding: 0 var(---padding-right) 0 var(--space-3);
   border-radius: var(--radius-3);
   font-size: var(--font-size-3);
   letter-spacing: var(--letter-spacing-3);
+}
+.Select.Select-size-3[multiple] {
+  padding: 0 var(--space-3) 0 0;
 }
 .Select.Select-size-3[multiple] option {
   height: var(--space-7);
@@ -144,12 +162,8 @@ $: cssClass = clsx($$restProps.class, `Select`, {
 .Select.Select-full-width {
   width: 100%;
 }
-.Select:hover {
-  box-shadow: inset 0 0 0 1px var(--gray-10);
-}
 .Select:focus, .Select:focus-visible {
-  box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-  outline: none;
+  outline: var(--input-outline);
 }
 .Select:disabled {
   cursor: default !important;

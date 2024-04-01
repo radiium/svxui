@@ -3,7 +3,7 @@ import { SvelteComponent } from "svelte";
  * Usage: <div use:portal={'css selector'}> or <div use:portal={document.body}>
  */
 export declare function portal(el: HTMLElement, target?: HTMLElement | string): {
-    update: (newTarget: any) => Promise<void>;
+    update: (newTarget: HTMLElement | string) => Promise<void>;
     destroy: () => void;
 };
 import type { PortalProps } from './Portal.types.js';

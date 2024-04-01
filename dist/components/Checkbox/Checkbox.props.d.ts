@@ -4,8 +4,18 @@ export declare const docCheckboxPropsDefs: {
     props: ({
         name: string;
         type: string;
-        default?: undefined;
         values?: undefined;
+        default?: undefined;
+    } | {
+        name: string;
+        type: string;
+        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
+        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
+    } | {
+        name: string;
+        type: string;
+        values: readonly ["1", "2", "3"];
+        default: "1" | "2" | "3" | undefined;
     } | {
         name: string;
         type: string;
@@ -21,16 +31,6 @@ export declare const docCheckboxPropsDefs: {
         type: string;
         default: boolean | undefined;
         values?: undefined;
-    } | {
-        name: string;
-        type: string;
-        values: readonly ["1", "2", "3"];
-        default: "1" | "2" | "3" | undefined;
-    } | {
-        name: string;
-        type: string;
-        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
-        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
     })[];
     slots: never[];
     events: never[];

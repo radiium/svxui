@@ -1,5 +1,4 @@
 import type { ButtonProps } from './Button.types.js';
-export declare const ButtonGroupContextKey = "ButtonGroupContextKey";
 export declare const defaultButtonProps: ButtonProps;
 export declare const docButtonPropsDefs: {
     props: ({
@@ -10,8 +9,8 @@ export declare const docButtonPropsDefs: {
     } | {
         name: string;
         type: string;
-        values: readonly ["solid", "soft", "outline", "clear"];
-        default: "solid" | "soft" | "outline" | "clear" | undefined;
+        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
+        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
     } | {
         name: string;
         type: string;
@@ -20,8 +19,8 @@ export declare const docButtonPropsDefs: {
     } | {
         name: string;
         type: string;
-        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
-        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
+        values: readonly ["solid", "soft", "outline", "clear"];
+        default: "solid" | "soft" | "outline" | "clear" | undefined;
     } | {
         name: string;
         type: string;

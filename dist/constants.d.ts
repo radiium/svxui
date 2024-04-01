@@ -36,3 +36,4 @@ export declare const TextUnderlines: readonly ["auto", "always", "hover", "none"
 export declare const TextWraps: readonly ["wrap", "nowrap", "pretty", "balance"];
 export declare const Margins: readonly ["m", "mt", "mr", "mb", "ml", "mx", "my"];
 export declare const Paddings: readonly ["p", "pt", "pr", "pb", "pl", "px", "py"];
+export declare const InputGroupContextKey = "InputGroupContextKey";

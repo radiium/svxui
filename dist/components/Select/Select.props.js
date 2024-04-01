@@ -33,6 +33,11 @@ export const docSelectPropsDefs = {
             name: 'fullWidth',
             type: 'boolean',
             default: defaultSelectProps.fullWidth
+        },
+        {
+            name: 'multiple',
+            type: 'boolean',
+            default: defaultSelectProps.multiple
         }
     ],
     slots: [],

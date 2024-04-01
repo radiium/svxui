@@ -39,32 +39,6 @@
     --white-a11: rgba(255, 255, 255, 0.9);
     --white-a12: rgba(255, 255, 255, 0.95);
 
-    --gray-1: var(--slate-1);
-    --gray-2: var(--slate-2);
-    --gray-3: var(--slate-3);
-    --gray-4: var(--slate-4);
-    --gray-5: var(--slate-5);
-    --gray-6: var(--slate-6);
-    --gray-7: var(--slate-7);
-    --gray-8: var(--slate-8);
-    --gray-9: var(--slate-9);
-    --gray-10: var(--slate-10);
-    --gray-11: var(--slate-11);
-    --gray-12: var(--slate-12);
-
-    --gray-a1: var(--slate-a1);
-    --gray-a2: var(--slate-a2);
-    --gray-a3: var(--slate-a3);
-    --gray-a4: var(--slate-a4);
-    --gray-a5: var(--slate-a5);
-    --gray-a6: var(--slate-a6);
-    --gray-a7: var(--slate-a7);
-    --gray-a8: var(--slate-a8);
-    --gray-a9: var(--slate-a9);
-    --gray-a10: var(--slate-a10);
-    --gray-a11: var(--slate-a11);
-    --gray-a12: var(--slate-a12);
-
     [data-root='true'] {
         background-color: var(--background-level-0);
     }
@@ -86,13 +60,8 @@
 
         --input-color: var(--color);
         --input-background: #f0f0f0;
-
-        --gray-surface: white;
-        --teal-surface: var(--teal-a2);
-        --blue-surface: var(--blue-a2);
-        --grass-surface: var(--grass-a2);
-        --amber-surface: var(--amber-a2);
-        --tomato-surface: var(--tomato-a2);
+        --input-box-shadow: 0px 0px 0px 1px var(--slate-8);
+        --input-outline: 1px solid var(--black-a12);
     }
 
     // Dark theme
@@ -113,54 +82,26 @@
 
         --input-color: var(--color);
         --input-background: #242424;
-
-        // slate teal blue grass amber tomato
-        --gray-surface: var(--slate-a2);
-        --teal-surface: var(--teal-a2);
-        --blue-surface: var(--blue-a2);
-        --grass-surface: var(--grass-a2);
-        --amber-surface: var(--amber-a2);
-        --tomato-surface: var(--tomato-a2);
+        --input-box-shadow: 0px 0px 0px 1px var(--slate-8);
+        --input-outline: 1px solid var(--white-a12);
     }
+
+    --teal-contrast: white;
+    --slate-contrast: white;
+    --blue-contrast: white;
+    --grass-contrast: white;
+    --orange-contrast: white;
+    --amber-contrast: #21201c;
+    --tomato-contrast: white;
 }
 
-[data-color='gray'] {
-    --contrast: white;
-    --surface: var(--gray-surface);
-    --focus-ring: var(--sage-8);
-
-    --accent-1: var(--slate-1);
-    --accent-2: var(--slate-2);
-    --accent-3: var(--slate-3);
-    --accent-4: var(--slate-4);
-    --accent-5: var(--slate-5);
-    --accent-6: var(--slate-6);
-    --accent-7: var(--slate-7);
-    --accent-8: var(--slate-8);
-    --accent-9: var(--slate-9);
-    --accent-10: var(--slate-10);
-    --accent-11: var(--slate-11);
-    --accent-12: var(--slate-12);
-
-    --accent-a1: var(--slate-a1);
-    --accent-a2: var(--slate-a2);
-    --accent-a3: var(--slate-a3);
-    --accent-a4: var(--slate-a4);
-    --accent-a5: var(--slate-a5);
-    --accent-a6: var(--slate-a6);
-    --accent-a7: var(--slate-a7);
-    --accent-a8: var(--slate-a8);
-    --accent-a9: var(--slate-a9);
-    --accent-a10: var(--slate-a10);
-    --accent-a11: var(--slate-a11);
-    --accent-a12: var(--slate-a12);
-}
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            Theme colors             */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 [data-color='primary'] {
-    --contrast: white;
-    --surface: var(--teal-surface);
-    --focus-ring: var(--teal-8);
-
     --accent-1: var(--teal-1);
     --accent-2: var(--teal-2);
     --accent-3: var(--teal-3);
@@ -186,13 +127,47 @@
     --accent-a10: var(--teal-a10);
     --accent-a11: var(--teal-a11);
     --accent-a12: var(--teal-a12);
+
+    --accent-contrast: var(--teal-contrast);
+    --accent-surface: var(--teal-surface);
+    --accent-indicator: var(--teal-indicator);
+    --accent-track: var(--teal-track);
+}
+
+[data-color='gray'] {
+    --accent-1: var(--slate-1);
+    --accent-2: var(--slate-2);
+    --accent-3: var(--slate-3);
+    --accent-4: var(--slate-4);
+    --accent-5: var(--slate-5);
+    --accent-6: var(--slate-6);
+    --accent-7: var(--slate-7);
+    --accent-8: var(--slate-8);
+    --accent-9: var(--slate-9);
+    --accent-10: var(--slate-10);
+    --accent-11: var(--slate-11);
+    --accent-12: var(--slate-12);
+
+    --accent-a1: var(--slate-a1);
+    --accent-a2: var(--slate-a2);
+    --accent-a3: var(--slate-a3);
+    --accent-a4: var(--slate-a4);
+    --accent-a5: var(--slate-a5);
+    --accent-a6: var(--slate-a6);
+    --accent-a7: var(--slate-a7);
+    --accent-a8: var(--slate-a8);
+    --accent-a9: var(--slate-a9);
+    --accent-a10: var(--slate-a10);
+    --accent-a11: var(--slate-a11);
+    --accent-a12: var(--slate-a12);
+
+    --accent-contrast: var(--slate-contrast);
+    --accent-surface: var(--slate-surface);
+    --accent-indicator: var(--slate-indicator);
+    --accent-track: var(--slate-track);
 }
 
 [data-color='blue'] {
-    --contrast: white;
-    --surface: var(--blue-surface);
-    --focus-ring: var(--blue-8);
-
     --accent-1: var(--blue-1);
     --accent-2: var(--blue-2);
     --accent-3: var(--blue-3);
@@ -218,13 +193,14 @@
     --accent-a10: var(--blue-a10);
     --accent-a11: var(--blue-a11);
     --accent-a12: var(--blue-a12);
+
+    --accent-contrast: var(--blue-contrast);
+    --accent-surface: var(--blue-surface);
+    --accent-indicator: var(--blue-indicator);
+    --accent-track: var(--blue-track);
 }
 
 [data-color='green'] {
-    --contrast: white;
-    --surface: var(--grass-surface);
-    --focus-ring: var(--grass-8);
-
     --accent-1: var(--grass-1);
     --accent-2: var(--grass-2);
     --accent-3: var(--grass-3);
@@ -250,13 +226,14 @@
     --accent-a10: var(--grass-a10);
     --accent-a11: var(--grass-a11);
     --accent-a12: var(--grass-a12);
+
+    --accent-contrast: var(--grass-contrast);
+    --accent-surface: var(--grass-surface);
+    --accent-indicator: var(--grass-indicator);
+    --accent-track: var(--grass-track);
 }
 
 [data-color='yellow'] {
-    --contrast: hsl(50, 8%, 12%);
-    --surface: var(--amber-surface);
-    --focus-ring: var(--amber-8);
-
     --accent-1: var(--amber-1);
     --accent-2: var(--amber-2);
     --accent-3: var(--amber-3);
@@ -282,13 +259,14 @@
     --accent-a10: var(--amber-a10);
     --accent-a11: var(--amber-a11);
     --accent-a12: var(--amber-a12);
+
+    --accent-contrast: var(--amber-contrast);
+    --accent-surface: var(--amber-surface);
+    --accent-indicator: var(--amber-indicator);
+    --accent-track: var(--amber-track);
 }
 
 [data-color='orange'] {
-    --contrast: hsl(50, 8%, 12%);
-    --surface: var(--orange-surface);
-    --focus-ring: var(--orange-8);
-
     --accent-1: var(--orange-1);
     --accent-2: var(--orange-2);
     --accent-3: var(--orange-3);
@@ -314,13 +292,14 @@
     --accent-a10: var(--orange-a10);
     --accent-a11: var(--orange-a11);
     --accent-a12: var(--orange-a12);
+
+    --accent-contrast: var(--amber-contrast);
+    --accent-surface: var(--amber-surface);
+    --accent-indicator: var(--orange-indicator);
+    --accent-track: var(--orange-track);
 }
 
 [data-color='red'] {
-    --contrast: white;
-    --surface: var(--tomato-surface);
-    --focus-ring: var(--tomato-8);
-
     --accent-1: var(--tomato-1);
     --accent-2: var(--tomato-2);
     --accent-3: var(--tomato-3);
@@ -346,4 +325,9 @@
     --accent-a10: var(--tomato-a10);
     --accent-a11: var(--tomato-a11);
     --accent-a12: var(--tomato-a12);
+
+    --accent-contrast: var(--tomato-contrast);
+    --accent-surface: var(--tomato-surface);
+    --accent-indicator: var(--tomato-indicator);
+    --accent-track: var(--tomato-track);
 }

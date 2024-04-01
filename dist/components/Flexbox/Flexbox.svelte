@@ -15,7 +15,7 @@ $: cssClass = clsx($$restProps.class, {
     [`flex-direction-${direction}`]: direction,
     [`flex-align-items-${alignItems}`]: alignItems,
     [`flex-justify-content-${justify}`]: justify,
-    [`flex-wrap-${wrap}`]: wrap,
+    [`flex-${wrap}`]: wrap,
     [`gap-${gap}`]: gap,
     [`flex-grow-${grow}`]: grow === '0' || grow === '1',
     [`flex-shrink-${shrink}`]: shrink === '0' || shrink === '1'

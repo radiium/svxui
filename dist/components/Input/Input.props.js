@@ -5,7 +5,6 @@ export const defaultInputProps = {
     type: 'text',
     size: '2',
     align: 'start',
-    error: false,
     fullWidth: false
 };
 export const docInputPropsDefs = {
@@ -13,17 +12,6 @@ export const docInputPropsDefs = {
         {
             name: 'elementRef',
             type: 'HTMLInputElement'
-        },
-        {
-            name: 'value',
-            type: 'string',
-            default: defaultInputProps.value
-        },
-        {
-            name: 'type',
-            type: 'enum',
-            values: InputTypes,
-            default: defaultInputProps.type
         },
         {
             name: 'size',
@@ -38,14 +26,20 @@ export const docInputPropsDefs = {
             default: defaultInputProps.align
         },
         {
-            name: 'error',
-            type: 'boolean',
-            default: defaultInputProps.error
+            name: 'type',
+            type: 'enum',
+            values: InputTypes,
+            default: defaultInputProps.type
         },
         {
             name: 'fullWidth',
             type: 'boolean',
             default: defaultInputProps.fullWidth
+        },
+        {
+            name: 'value',
+            type: 'string',
+            default: defaultInputProps.value
         }
     ],
     slots: [],

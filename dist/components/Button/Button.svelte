@@ -1,6 +1,7 @@
 <script>import { getContext } from 'svelte';
 import { clsx } from '../../utils/clsx.js';
-import { ButtonGroupContextKey, defaultButtonProps } from './Button.props.js';
+import { defaultButtonProps } from './Button.props.js';
+import { InputGroupContextKey } from '../../constants.js';
 export let elementRef = undefined;
 export let size = defaultButtonProps.size;
 export let variant = defaultButtonProps.variant;
@@ -10,17 +11,17 @@ export let active = defaultButtonProps.active;
 export let iconOnly = defaultButtonProps.iconOnly;
 export let circle = defaultButtonProps.fullWidth;
 export let fullWidth = defaultButtonProps.fullWidth;
-const isInGroup = getContext(ButtonGroupContextKey);
+const isInGroup = getContext(InputGroupContextKey);
 $: cssClass = clsx($$restProps.class, 'Button', {
     [`Button-${variant}`]: variant,
     [`Button-size-${size}`]: size,
     [`Button-${color}`]: color,
     [`Button-align-${align}`]: align,
-    'Button-is-in-group': isInGroup,
     'Button-full-width': fullWidth,
     'Button-active': active,
     'Button-icon-only': iconOnly,
-    'Button-circle': iconOnly && circle
+    'Button-circle': iconOnly && circle,
+    'is-in-group': isInGroup
 });
 </script>
 
@@ -85,17 +86,6 @@ button.Button :global(svg) {
   width: auto;
   height: var(--button-icon-height);
   fill: var(--button-color);
-}
-button.Button.Button-is-in-group {
-  border-radius: 0;
-}
-button.Button.Button-is-in-group:first-child {
-  border-top-left-radius: var(--button-border-radius);
-  border-bottom-left-radius: var(--button-border-radius);
-}
-button.Button.Button-is-in-group:last-child {
-  border-top-right-radius: var(--button-border-radius);
-  border-bottom-right-radius: var(--button-border-radius);
 }
 button.Button.Button-size-1 {
   --button-height: var(--space-5);
@@ -164,6 +154,7 @@ button.Button.Button-clear {
   --button-background: transparent;
   --button-background-hover: var(--accent-a6);
   --button-background-active: var(--accent-a7);
+  --button-active-filter: none;
 }
 button.Button.Button-outline {
   --button-border: 1px solid var(--accent-9);
@@ -171,6 +162,7 @@ button.Button.Button-outline {
   --button-background: transparent;
   --button-background-hover: var(--accent-a6);
   --button-background-active: var(--accent-a7);
+  --button-active-filter: none;
 }
 button.Button.Button-soft {
   --button-border: none;
@@ -178,20 +170,22 @@ button.Button.Button-soft {
   --button-background: var(--accent-a6);
   --button-background-hover: var(--accent-a7);
   --button-background-active: var(--accent-a8);
+  --button-active-filter: none;
 }
 button.Button.Button-solid {
   --button-border: none;
-  --button-color: var(--contrast);
+  --button-color: var(--accent-contrast);
   --button-background: var(--accent-9);
   --button-background-hover: var(--accent-10);
-  --button-background-active: var(--accent-11);
+  --button-background-active: var(--accent-10);
+  --button-active-filter: brightness(0.92) saturate(1.1);
 }
 button.Button.Button-icon-only {
   justify-content: center;
   text-align: center;
 }
 button.Button.Button-icon-only.Button-circle {
-  --button-border-radius: var(--radius-full);
+  --button-border-radius: 50%;
 }
 button.Button:not(.Button-icon-only).Button-align-start {
   justify-content: flex-start;
@@ -213,10 +207,10 @@ button.Button:hover {
 }
 button.Button:active, button.Button.Button-active {
   background: var(--button-background-active);
+  filter: var(--button-active-filter);
 }
 button.Button:focus-visible {
-  box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-  outline: none;
+  outline: var(--input-outline);
 }
 button.Button:disabled {
   cursor: default !important;

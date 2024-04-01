@@ -10,11 +10,6 @@ export const defaultDialogProps = {
 export const docDialogPropsDefs = {
     props: [
         {
-            name: 'isOpen',
-            type: 'boolean',
-            default: defaultDialogProps.isOpen
-        },
-        {
             name: 'size',
             type: 'enum',
             values: Sizes1To4,
@@ -39,6 +34,11 @@ export const docDialogPropsDefs = {
             name: 'blockScroll',
             type: 'boolean',
             default: defaultDialogProps.blockScroll
+        },
+        {
+            name: 'isOpen',
+            type: 'boolean',
+            default: defaultDialogProps.isOpen
         }
     ],
     slots: [

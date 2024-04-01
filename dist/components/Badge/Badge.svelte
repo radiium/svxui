@@ -25,14 +25,16 @@ $: cssClass = clsx($$restProps.class, 'Badge', {
 </span>
 
 <style>.Badge {
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  box-sizing: border-box;
   white-space: nowrap;
+  font-family: var(--default-font-family);
   font-weight: var(--font-weight-medium);
   flex-shrink: 0;
   line-height: 1;
   user-select: none;
+  height: fit-content;
   cursor: default;
   border: var(--badge-border);
   color: var(--badge-color);
@@ -74,13 +76,13 @@ $: cssClass = clsx($$restProps.class, 'Badge', {
   --badge-background: transparent;
 }
 .Badge.Badge-soft {
-  --badge-border: none;
+  --badge-border: 1px solid var(--accent-6);
   --badge-color: var(--accent-a12);
   --badge-background: var(--accent-a6);
 }
 .Badge.Badge-solid {
-  --badge-border: none;
-  --badge-color: var(--contrast);
+  --badge-border: 1px solid var(--accent-9);
+  --badge-color: var(--accent-contrast);
   --badge-background: var(--accent-9);
 }
 .Badge.Badge-disabled {

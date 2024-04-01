@@ -1,7 +1,7 @@
 import { Sizes0To5 } from '../../constants.js';
 export const defaultCardProps = {
     elementRef: undefined,
-    size: '3',
+    size: '3'
 };
 export const docCardPropsDefs = {
     props: [

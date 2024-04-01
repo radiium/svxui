@@ -1,5 +1,4 @@
 <script context="module">import { tick } from 'svelte';
-import { get } from 'svelte/store';
 /**
  * Usage: <div use:portal={'css selector'}> or <div use:portal={document.body}>
  */
@@ -23,11 +22,6 @@ export function portal(el, target = 'body') {
         else {
             throw new TypeError(`Unknown portal target type: ${target === null ? 'null' : typeof target}. Allowed types: string (CSS selector) or HTMLElement.`);
         }
-        const themeContext = useThemeContext();
-        const currentTheme = get(themeContext.scheme);
-        if (currentTheme) {
-            targetEl.setAttribute('data-theme', currentTheme);
-        }
         targetEl.appendChild(el);
         el.hidden = false;
     }
@@ -45,7 +39,6 @@ export function portal(el, target = 'body') {
 </script>
 
 <script>import { defaultPortalProps } from './Portal.props.js';
-import { useThemeContext } from '../../theme/theme.context.js';
 export let target = defaultPortalProps.target;
 </script>
 

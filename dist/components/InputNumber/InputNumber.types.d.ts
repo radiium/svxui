@@ -1,4 +1,4 @@
-import type { Sizes1To3, Colors } from '../../constants.js';
+import type { Sizes1To3, Colors, Variants, Aligns } from '../../constants.js';
 export interface InputNumberProps {
     elementRef?: HTMLInputElement;
     value?: number;
@@ -7,6 +7,9 @@ export interface InputNumberProps {
     max?: number;
     size?: (typeof Sizes1To3)[number];
     color?: (typeof Colors)[number];
+    variant?: (typeof Variants)[number];
+    align?: (typeof Aligns)[number];
+    fullWidth?: boolean;
     disabled?: boolean;
     required?: boolean;
     readonly?: boolean;

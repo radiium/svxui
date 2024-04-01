@@ -5,13 +5,8 @@ export declare const docTextareaPropsDefs: {
     props: ({
         name: string;
         type: string;
+        values?: undefined;
         default?: undefined;
-        values?: undefined;
-    } | {
-        name: string;
-        type: string;
-        default: string | undefined;
-        values?: undefined;
     } | {
         name: string;
         type: string;
@@ -20,12 +15,12 @@ export declare const docTextareaPropsDefs: {
     } | {
         name: string;
         type: string;
-        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
-        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
+        default: boolean | undefined;
+        values?: undefined;
     } | {
         name: string;
         type: string;
-        default: boolean | undefined;
+        default: string | undefined;
         values?: undefined;
     })[];
     slots: never[];

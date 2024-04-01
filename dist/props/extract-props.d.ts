@@ -4,7 +4,7 @@ import { paddingKeys, type PaddingProps } from './padding.props.js';
 type ExtractProps = LayoutProps & MarginProps & PaddingProps;
 type ExtractKeys = typeof layoutKeys | typeof marginKeys | typeof paddingKeys;
 export declare function extractPropsAlt<T extends ExtractProps>(props: T): ExtractProps & {
-    restProps: any;
+    restProps: object;
 };
 export declare function buildPropsCssClass(props: ExtractProps): string;
 export declare function extractProps<T extends ExtractProps>(props: T, keys: ExtractKeys): string;

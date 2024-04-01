@@ -51,15 +51,12 @@ const handlekeydown = (event) => {
     }
 };
 const open = () => {
-    console.log('[Dialog] open');
     isOpen = true;
 };
 const close = () => {
-    console.log('[Dialog] close');
     isOpen = false;
 };
 const onBackdropClick = () => {
-    console.log('[Dialog] onClickBackdrop');
     if (closeOnBackdropClick) {
         close();
     }
@@ -83,6 +80,8 @@ function enableScroll() {
         window.onscroll = function () { };
     }
 }
+let closeButtonSize;
+$: closeButtonSize = Number(size) >= 2 ? '2' : size;
 $: cssClass = clsx($$restProps.class, `Dialog`, {
     [`Dialog-size-${size}`]: size
 });
@@ -120,7 +119,7 @@ $: cssClass = clsx($$restProps.class, `Dialog`, {
                     iconOnly
                     circle
                     variant="clear"
-                    size={Math.min(size, 2)}
+                    size={closeButtonSize}
                     class="Dialog-close-btn"
                     on:click={() => (isOpen = false)}
                 >
@@ -176,8 +175,7 @@ $: cssClass = clsx($$restProps.class, `Dialog`, {
   align-items: center;
   justify-content: center;
   gap: var(--space-3);
-  box-shadow: var(--border-color) 0px 0px 0px 1px;
-  outline: none;
+  box-shadow: var(--input-box-shadow);
 }
 .Dialog .Dialog-content .Dialog-content-inner {
   width: 100%;

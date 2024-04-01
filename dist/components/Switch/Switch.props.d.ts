@@ -10,18 +10,13 @@ export declare const docSwitchPropsDefs: {
     } | {
         name: string;
         type: string;
-        values: readonly ["1", "2", "3"];
-        default: "1" | "2" | "3" | undefined;
-    } | {
-        name: string;
-        type: string;
         values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
         default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
     } | {
         name: string;
         type: string;
-        default: boolean | undefined;
-        values?: undefined;
+        values: readonly ["1", "2", "3"];
+        default: "1" | "2" | "3" | undefined;
     })[];
     slots: never[];
     events: never[];

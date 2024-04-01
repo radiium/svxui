@@ -4,13 +4,13 @@ export declare const docInputNumberPropsDefs: {
     props: ({
         name: string;
         type: string;
-        default?: undefined;
         values?: undefined;
+        default?: undefined;
     } | {
         name: string;
         type: string;
-        default: number | undefined;
-        values?: undefined;
+        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
+        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
     } | {
         name: string;
         type: string;
@@ -19,8 +19,18 @@ export declare const docInputNumberPropsDefs: {
     } | {
         name: string;
         type: string;
-        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
-        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
+        values: readonly ["solid", "soft", "outline", "clear"];
+        default: "solid" | "soft" | "outline" | "clear" | undefined;
+    } | {
+        name: string;
+        type: string;
+        values: readonly ["start", "center", "end"];
+        default: "start" | "center" | "end" | undefined;
+    } | {
+        name: string;
+        type: string;
+        default: number | undefined;
+        values?: undefined;
     } | {
         name: string;
         type: string;

@@ -5,23 +5,8 @@ export declare const docRadioPropsDefs: {
     props: ({
         name: string;
         type: string;
+        values?: undefined;
         default?: undefined;
-        values?: undefined;
-    } | {
-        name: string;
-        type: string;
-        default: (string | number)[] | undefined;
-        values?: undefined;
-    } | {
-        name: string;
-        type: string;
-        default: string | number | undefined;
-        values?: undefined;
-    } | {
-        name: string;
-        type: string;
-        values: readonly ["1", "2", "3"];
-        default: "1" | "2" | "3" | undefined;
     } | {
         name: string;
         type: string;
@@ -30,7 +15,12 @@ export declare const docRadioPropsDefs: {
     } | {
         name: string;
         type: string;
-        default: boolean | undefined;
+        values: readonly ["1", "2", "3"];
+        default: "1" | "2" | "3" | undefined;
+    } | {
+        name: string;
+        type: string;
+        default: string | number | undefined;
         values?: undefined;
     })[];
     slots: never[];

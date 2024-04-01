@@ -4,11 +4,9 @@ export let elementRef = defaultSwitchProps.elementRef;
 export let checked = defaultSwitchProps.checked;
 export let size = defaultSwitchProps.size;
 export let color = defaultSwitchProps.color;
-export let error = defaultSwitchProps.error;
 $: cssClass = clsx($$restProps.class, 'Switch', {
     [`Switch-size-${size}`]: size,
-    [`Switch-color-${color}`]: color,
-    'Switch-error': error
+    [`Switch-color-${color}`]: color
 });
 </script>
 
@@ -40,10 +38,10 @@ $: cssClass = clsx($$restProps.class, 'Switch', {
   height: var(--switch-height);
   border-radius: var(--radius-2);
   background: var(--switch-background);
-  box-shadow: inset 0 0 0 1px var(--gray-8);
   padding: var(--switch-padding);
+  box-shadow: inset var(--input-box-shadow);
   transition: background-color ease 0.2s, box-shadow ease 0.2s;
-  --switch-background: var(--gray-a3);
+  --switch-background: var(--input-background);
   --switch-background-checked: var(--accent-9);
   --switch-check-color: white;
 }
@@ -54,7 +52,6 @@ $: cssClass = clsx($$restProps.class, 'Switch', {
   width: var(--switch-thumb-size);
   background-color: var(--switch-check-color);
   border-radius: var(--radius-1);
-  box-shadow: 0 0 0 1px var(--gray-a3);
   transition: background-color ease 0.2s, box-shadow ease 0.2s, transform ease 0.2s;
 }
 .Switch:checked {
@@ -76,8 +73,8 @@ $: cssClass = clsx($$restProps.class, 'Switch', {
   outline: none !important;
 }
 .Switch:focus-visible {
-  box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-  outline: none;
+  outline: var(--input-outline);
+  outline-offset: inherit;
 }
 .Switch.Switch-size-1 {
   --switch-padding: 3px;

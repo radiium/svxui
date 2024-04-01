@@ -2,8 +2,7 @@ import { Sizes1To3, Colors } from '../../constants.js';
 export const defaultSwitchProps = {
     elementRef: undefined,
     size: '2',
-    color: 'gray',
-    error: false
+    color: 'gray'
 };
 export const docSwitchPropsDefs = {
     title: 'Switch',
@@ -13,21 +12,16 @@ export const docSwitchPropsDefs = {
             type: 'HTMLInputElement'
         },
         {
-            name: 'size',
-            type: 'enum',
-            values: Sizes1To3,
-            default: defaultSwitchProps.size
-        },
-        {
             name: 'color',
             type: 'enum',
             values: Colors,
             default: defaultSwitchProps.color
         },
         {
-            name: 'error',
-            type: 'boolean',
-            default: defaultSwitchProps.error
+            name: 'size',
+            type: 'enum',
+            values: Sizes1To3,
+            default: defaultSwitchProps.size
         }
     ],
     slots: [],

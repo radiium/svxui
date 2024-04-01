@@ -7,23 +7,22 @@ export let checked = defaultCheckboxProps.checked;
 export let indeterminate = defaultCheckboxProps.indeterminate;
 export let size = defaultCheckboxProps.size;
 export let color = defaultCheckboxProps.color;
-export let error = defaultCheckboxProps.error;
 $: cssClass = clsx($$restProps.class, 'Checkbox', {
     [`Checkbox-size-${size}`]: size,
-    [`Checkbox-color-${color}`]: color,
-    'Checkbox-error': error
+    [`Checkbox-color-${color}`]: color
 });
-$: if (group) {
+const isValid = (val) => value !== null && value !== undefined;
+$: if (isValid(group)) {
     groupCheck();
 }
 function groupCheck() {
-    if (value) {
+    if (value !== null && value !== undefined) {
         checked = group?.includes(value);
     }
 }
 // Update group when checkbox changes
 function onChange() {
-    if (group && value) {
+    if (isValid(group) && isValid(value)) {
         let inGroup = group.includes(value);
         if (!inGroup) {
             // Add to group
@@ -59,6 +58,7 @@ function onChange() {
 />
 
 <style>.Checkbox {
+  position: relative;
   -webkit-appearance: none;
   appearance: none;
   outline: none;
@@ -67,11 +67,10 @@ function onChange() {
   width: var(--checkbox-size);
   border-radius: calc(var(--radius-3) / 1.5);
   background-color: var(--checkbox-background);
-  box-shadow: inset 0 0 0 1px var(--gray-8);
-  position: relative;
-  --checkbox-background: var(--gray-a3);
+  box-shadow: var(--input-box-shadow);
+  --checkbox-background: var(--input-background);
   --checkbox-background-checked: var(--accent-9);
-  --check-color: var(--contrast);
+  --check-color: var(--accent-contrast);
 }
 .Checkbox:after {
   display: none;
@@ -108,8 +107,8 @@ function onChange() {
   outline: none !important;
 }
 .Checkbox:focus-visible {
-  box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-  outline: none;
+  outline: var(--input-outline);
+  outline-offset: inherit;
 }
 .Checkbox.Checkbox-size-1 {
   --checkbox-size: calc(var(--space-4) * 0.875);

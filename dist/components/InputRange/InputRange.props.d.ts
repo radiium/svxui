@@ -14,13 +14,13 @@ export declare const docInputRangePropsDefs: {
     } | {
         name: string;
         type: string;
-        values: readonly ["1", "2", "3"];
-        default: "1" | "2" | "3" | undefined;
+        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
+        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
     } | {
         name: string;
         type: string;
-        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
-        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
+        values: readonly ["1", "2", "3"];
+        default: "1" | "2" | "3" | undefined;
     } | {
         name: string;
         type: string;

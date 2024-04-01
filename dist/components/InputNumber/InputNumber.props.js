@@ -1,4 +1,4 @@
-import { Sizes1To3, Colors } from '../../constants.js';
+import { Sizes1To3, Colors, Variants, Aligns } from '../../constants.js';
 export const defaultInputNumberProps = {
     elementRef: undefined,
     value: undefined,
@@ -7,15 +7,42 @@ export const defaultInputNumberProps = {
     max: undefined,
     size: '2',
     color: 'gray',
+    variant: 'clear',
+    align: 'end',
+    fullWidth: false,
     disabled: false,
     required: false,
-    readonly: false
+    readonly: undefined
 };
 export const docInputNumberPropsDefs = {
     props: [
         {
             name: 'elementRef',
             type: 'HTMLInputElement'
+        },
+        {
+            name: 'color',
+            type: 'enum',
+            values: Colors,
+            default: defaultInputNumberProps.color
+        },
+        {
+            name: 'size',
+            type: 'enum',
+            values: Sizes1To3,
+            default: defaultInputNumberProps.size
+        },
+        {
+            name: 'variant',
+            type: 'enum',
+            values: Variants,
+            default: defaultInputNumberProps.variant
+        },
+        {
+            name: 'align',
+            type: 'enum',
+            values: Aligns,
+            default: defaultInputNumberProps.align
         },
         {
             name: 'value',
@@ -38,16 +65,9 @@ export const docInputNumberPropsDefs = {
             default: defaultInputNumberProps.max
         },
         {
-            name: 'size',
-            type: 'enum',
-            values: Sizes1To3,
-            default: defaultInputNumberProps.size
-        },
-        {
-            name: 'color',
-            type: 'enum',
-            values: Colors,
-            default: defaultInputNumberProps.color
+            name: 'fullWidth',
+            type: 'boolean',
+            default: defaultInputNumberProps.fullWidth
         },
         {
             name: 'disabled',

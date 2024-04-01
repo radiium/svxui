@@ -6,7 +6,12 @@ import Button from '../../components/Button/Button.svelte';
 import Flexbox from '../../components/Flexbox/Flexbox.svelte';
 import { useThemeContext } from '../theme.context.js';
 import { ThemeStrategy } from '../theme.types.js';
-export let placement = 'bottom';
+import { defaultThemeSelectProps } from './ThemeSelect.props.js';
+export let color = defaultThemeSelectProps.color;
+export let size = defaultThemeSelectProps.size;
+export let variant = defaultThemeSelectProps.variant;
+export let showLabel = defaultThemeSelectProps.showLabel;
+export let placement = defaultThemeSelectProps.placement;
 const themeContext = useThemeContext();
 const { strategy, updateStrategy = () => { } } = themeContext;
 const themeOptions = [
@@ -21,7 +26,6 @@ const selectTheme = (option) => {
 };
 </script>
 
-<!-- placement="bottom" -->
 <Popover {placement} offset={10} backdrop>
     <Button
         slot="trigger"
@@ -29,15 +33,17 @@ const selectTheme = (option) => {
         let:isOpen
         on:click={open}
         active={isOpen}
-        size="2"
-        color="gray"
-        variant="outline"
-        iconOnly={false}
+        {color}
+        {size}
+        {variant}
+        iconOnly={!showLabel}
         title="Change theme"
     >
         {#if currentTheme}
             <svelte:component this={currentTheme.icon} />
-            {currentTheme.label}
+            {#if showLabel}
+                {currentTheme.label}
+            {/if}
         {/if}
     </Button>
 

@@ -8,5 +8,4 @@ export interface CheckboxProps extends Omit<HTMLInputAttributes, 'size' | 'check
     indeterminate?: boolean;
     size?: (typeof Sizes1To3)[number];
     color?: (typeof Colors)[number];
-    error?: boolean;
 }

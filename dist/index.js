@@ -8,13 +8,13 @@ export { default as AccordionGroup } from './components/Accordion/AccordionGroup
 export { default as AccordionItem } from './components/Accordion/AccordionItem.svelte';
 export { default as Badge } from './components/Badge/Badge.svelte';
 export { default as Button } from './components/Button/Button.svelte';
-export { default as ButtonGroup } from './components/Button/ButtonGroup.svelte';
 export { default as ButtonIcon } from './components/Button/ButtonIcon.svelte';
 export { default as Card } from './components/Card/Card.svelte';
 export { default as Checkbox } from './components/Checkbox/Checkbox.svelte';
 export { default as Flexbox } from './components/Flexbox/Flexbox.svelte';
 export { default as Box } from './components/Box/Box.svelte';
 export { default as Input } from './components/Input/Input.svelte';
+export { default as InputGroup } from './components/InputGroup/InputGroup.svelte';
 export { default as InputNumber } from './components/InputNumber/InputNumber.svelte';
 export { default as InputRange } from './components/InputRange/InputRange.svelte';
 export { default as Link } from './components/Link/Link.svelte';

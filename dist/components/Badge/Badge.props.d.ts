@@ -9,8 +9,8 @@ export declare const docBadgePropsDefs: {
     } | {
         name: string;
         type: string;
-        values: readonly ["solid", "soft", "outline"];
-        default: "solid" | "soft" | "outline" | undefined;
+        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
+        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
     } | {
         name: string;
         type: string;
@@ -19,8 +19,8 @@ export declare const docBadgePropsDefs: {
     } | {
         name: string;
         type: string;
-        values: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
-        default: "primary" | "gray" | "blue" | "green" | "yellow" | "orange" | "red" | undefined;
+        values: readonly ["solid", "soft", "outline"];
+        default: "solid" | "soft" | "outline" | undefined;
     } | {
         name: string;
         type: string;

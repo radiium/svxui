@@ -1,5 +1,4 @@
 import { Sizes1To4, Aligns, Colors, Variants } from '../../constants.js';
-export const ButtonGroupContextKey = 'ButtonGroupContextKey';
 export const defaultButtonProps = {
     size: '2',
     variant: 'solid',
@@ -17,10 +16,10 @@ export const docButtonPropsDefs = {
             type: 'HTMLButtonElement'
         },
         {
-            name: 'variant',
+            name: 'color',
             type: 'enum',
-            values: Variants,
-            default: defaultButtonProps.variant
+            values: Colors,
+            default: defaultButtonProps.color
         },
         {
             name: 'size',
@@ -29,10 +28,10 @@ export const docButtonPropsDefs = {
             default: defaultButtonProps.size
         },
         {
-            name: 'color',
+            name: 'variant',
             type: 'enum',
-            values: Colors,
-            default: defaultButtonProps.color
+            values: Variants,
+            default: defaultButtonProps.variant
         },
         {
             name: 'align',

@@ -4,11 +4,6 @@ export declare const docPopoverPropsDefs: {
     props: ({
         name: string;
         type: string;
-        default: boolean | undefined;
-        values?: undefined;
-    } | {
-        name: string;
-        type: string;
         values: readonly ["absolute", "fixed"];
         default: "absolute" | "fixed" | undefined;
     } | {
@@ -20,6 +15,11 @@ export declare const docPopoverPropsDefs: {
         name: string;
         type: string;
         default: number | undefined;
+        values?: undefined;
+    } | {
+        name: string;
+        type: string;
+        default: boolean | undefined;
         values?: undefined;
     })[];
     slots: {

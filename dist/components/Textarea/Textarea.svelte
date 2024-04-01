@@ -3,13 +3,9 @@ import { defaultTextareaProps } from './Textarea.props.js';
 export let elementRef = defaultTextareaProps.elementRef;
 export let value = defaultTextareaProps.value;
 export let size = defaultTextareaProps.size;
-export let color = defaultTextareaProps.color;
-export let error = defaultTextareaProps.error;
 export let fullWidth = defaultTextareaProps.fullWidth;
 $: cssClass = clsx($$restProps.class, 'Textarea', {
-    [`Textarea-color-${color}`]: color,
     [`Textarea-size-${size}`]: size,
-    'Textarea-error': error,
     'Textarea-full-width': fullWidth
 });
 </script>
@@ -45,11 +41,10 @@ $: cssClass = clsx($$restProps.class, 'Textarea', {
   font-size: var(--font-size-3);
   letter-spacing: normal;
   resize: vertical;
-  color: var(--input-color);
   border-radius: var(--radius-3);
+  color: var(--input-color);
   background: var(--input-background);
-  box-shadow: var(--border-color) 0px 0px 0px 1px;
-  outline: none;
+  box-shadow: var(--input-box-shadow);
 }
 .Textarea.Textarea-size-1 {
   min-width: calc(var(--space-9) * 3);
@@ -75,13 +70,8 @@ $: cssClass = clsx($$restProps.class, 'Textarea', {
 .Textarea.Textarea-full-width {
   width: 100%;
 }
-.Textarea:hover {
-  box-shadow: var(--border-color-hover) 0px 0px 0px 1px;
-  outline: none;
-}
 .Textarea:active, .Textarea:focus, .Textarea:focus-visible {
-  box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-  outline: none;
+  outline: var(--input-outline);
 }
 .Textarea:disabled {
   cursor: default !important;

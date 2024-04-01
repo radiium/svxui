@@ -6,14 +6,25 @@ export const defaultCheckboxProps = {
     checked: false,
     indeterminate: false,
     size: '2',
-    color: 'gray',
-    error: false
+    color: 'gray'
 };
 export const docCheckboxPropsDefs = {
     props: [
         {
             name: 'elementRef',
             type: 'HTMLInputElement'
+        },
+        {
+            name: 'color',
+            type: 'enum',
+            values: Colors,
+            default: defaultCheckboxProps.color
+        },
+        {
+            name: 'size',
+            type: 'enum',
+            values: Sizes1To3,
+            default: defaultCheckboxProps.size
         },
         {
             name: 'group',
@@ -31,26 +42,9 @@ export const docCheckboxPropsDefs = {
             default: defaultCheckboxProps.checked
         },
         {
-            name: 'size',
-            type: 'enum',
-            values: Sizes1To3,
-            default: defaultCheckboxProps.size
-        },
-        {
-            name: 'color',
-            type: 'enum',
-            values: Colors,
-            default: defaultCheckboxProps.color
-        },
-        {
             name: 'indeterminate',
             type: 'boolean',
             default: defaultCheckboxProps.indeterminate
-        },
-        {
-            name: 'error',
-            type: 'boolean',
-            default: defaultCheckboxProps.error
         }
     ],
     slots: [],

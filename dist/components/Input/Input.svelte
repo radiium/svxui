@@ -1,18 +1,20 @@
-<script>import { clsx } from '../../utils/clsx.js';
+<script>import { getContext } from 'svelte';
+import { clsx } from '../../utils/clsx.js';
 import { defaultInputProps } from './Input.props.js';
+import { InputGroupContextKey } from '../../constants.js';
 export let elementRef = defaultInputProps.elementRef;
 export let value = defaultInputProps.value;
 export let type = defaultInputProps.type;
 export let size = defaultInputProps.size;
 export let align = defaultInputProps.align;
-export let error = defaultInputProps.error;
 export let fullWidth = defaultInputProps.fullWidth;
+const isInGroup = getContext(InputGroupContextKey);
 $: cssClass = clsx($$restProps.class, 'Input', {
     [`Input-size-${size}`]: size,
     [`Input-type-${type}`]: type,
     [`Input-align-${align}`]: align,
     'Input-full-width': fullWidth,
-    'Input-error': error
+    'is-in-group': isInGroup
 });
 const setType = (node, value) => {
     if (value) {
@@ -55,14 +57,12 @@ const setType = (node, value) => {
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
   border-width: 0;
-  outline: none;
   font-family: inherit;
   text-overflow: ellipsis;
   color: var(--input-color);
   border-radius: var(--radius-3);
   background: var(--input-background);
-  box-shadow: var(--border-color) 0px 0px 0px 1px;
-  outline: none;
+  box-shadow: var(--input-box-shadow);
 }
 .Input::-webkit-search-cancel-button {
   filter: invert(1);
@@ -78,6 +78,10 @@ const setType = (node, value) => {
 }
 .Input::-webkit-calendar-picker-indicator {
   cursor: pointer;
+  border-radius: var(--radius-2);
+}
+.Input::-webkit-calendar-picker-indicator:focus {
+  outline: var(--input-outline);
 }
 .Input.Input-size-1 {
   height: var(--space-5);
@@ -112,13 +116,8 @@ const setType = (node, value) => {
 .Input.Input-full-width {
   width: 100%;
 }
-.Input:hover {
-  box-shadow: var(--border-color-hover) 0px 0px 0px 1px;
-  outline: none;
-}
 .Input:active, .Input:focus, .Input:focus-visible {
-  box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-  outline: none;
+  outline: var(--input-outline);
 }
 .Input:disabled {
   cursor: default !important;
@@ -130,12 +129,8 @@ const setType = (node, value) => {
   box-shadow: none !important;
   outline: none !important;
 }
-.Input:readonly {
+.Input:readonly, .Input:read-only {
   cursor: default;
   outline: none !important;
   box-shadow: none !important;
-}
-.Input.Input-error {
-  box-shadow: var(--tomato-9) 0px 0px 0px 1px !important;
-  background-color: var(--tomato-a2);
 }</style>

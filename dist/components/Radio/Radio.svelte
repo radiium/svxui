@@ -5,11 +5,9 @@ export let group = defaultRadioProps.group;
 export let value = defaultRadioProps.value;
 export let size = defaultRadioProps.size;
 export let color = defaultRadioProps.color;
-export let error = defaultRadioProps.error;
 $: cssClass = clsx($$restProps.class, 'Radio', {
     [`Radio-size-${size}`]: size,
-    [`Radio-color-${color}`]: color,
-    'Radio-error': error
+    [`Radio-color-${color}`]: color
 });
 </script>
 
@@ -38,17 +36,17 @@ $: cssClass = clsx($$restProps.class, 'Radio', {
   outline: none;
   border: none;
   position: relative;
-  width: var(--radio-size);
-  height: var(--radio-size);
-  background: var(--radio--background);
-  box-shadow: inset 0 0 0 1px var(--gray-8);
   border-radius: 100%;
   pointer-events: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: var(--radio-size);
+  height: var(--radio-size);
+  background: var(--input-background);
+  box-shadow: var(--input-box-shadow);
   transition: background-color ease 0.2s, box-shadow ease 0.2s;
-  --radio-background: var(--gray-a3);
+  --radio-background: var(--input-background);
   --radio-background-checked: var(--accent-9);
   --check-color: white;
 }
@@ -86,13 +84,9 @@ $: cssClass = clsx($$restProps.class, 'Radio', {
 .Radio:checked:after {
   background-color: var(--check-color);
 }
-.Radio:focus {
-  box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-  outline: none;
-}
 .Radio:focus-visible {
-  box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
-  outline: none;
+  outline: var(--input-outline);
+  outline-offset: inherit;
 }
 .Radio.Radio-size-1 {
   --radio-size: calc(var(--space-4) * 0.875);

@@ -4,8 +4,7 @@ export const defaultRadioProps = {
     group: undefined,
     value: undefined,
     size: '2',
-    color: 'gray',
-    error: false
+    color: 'gray'
 };
 export const docRadioPropsDefs = {
     title: 'Radio',
@@ -13,6 +12,18 @@ export const docRadioPropsDefs = {
         {
             name: 'elementRef',
             type: 'HTMLInputElement'
+        },
+        {
+            name: 'color',
+            type: 'enum',
+            values: Colors,
+            default: defaultRadioProps.color
+        },
+        {
+            name: 'size',
+            type: 'enum',
+            values: Sizes1To3,
+            default: defaultRadioProps.size
         },
         {
             name: 'group',
@@ -23,23 +34,6 @@ export const docRadioPropsDefs = {
             name: 'value',
             type: 'any',
             default: defaultRadioProps.value
-        },
-        {
-            name: 'size',
-            type: 'enum',
-            values: Sizes1To3,
-            default: defaultRadioProps.size
-        },
-        {
-            name: 'color',
-            type: 'enum',
-            values: Colors,
-            default: defaultRadioProps.color
-        },
-        {
-            name: 'error',
-            type: 'boolean',
-            default: defaultRadioProps.error
         }
     ],
     slots: [],
