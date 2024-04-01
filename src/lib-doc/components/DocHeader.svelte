@@ -12,7 +12,7 @@
     <div class="side start">
         <a
             href="/"
-            target="_blank"
+            target="_self"
             rel="noreferrer"
             data-sveltekit-preload-data="tap"
             title={PUBLIC_PKG_NAME}

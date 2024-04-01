@@ -12,15 +12,16 @@ export const docThemeProviderPropsDefs = {
         {
             name: 'strategy',
             type: 'enum',
-            values: [ThemeStrategy.DARK, ThemeStrategy.LIGHT, ThemeStrategy.SYSTEM] as const,
+            values: [ThemeStrategy.LIGHT, ThemeStrategy.DARK, ThemeStrategy.SYSTEM] as const,
             default: defaultThemeProviderProps.strategy
-        },
-        {
-            name: 'radius',
-            type: 'enum',
-            values: Radius,
-            default: defaultThemeProviderProps.radius
         }
+        // TODO not yet implemented
+        // {
+        //     name: 'radius',
+        //     type: 'enum',
+        //     values: Radius,
+        //     default: defaultThemeProviderProps.radius
+        // }
     ],
     slots: [
         {

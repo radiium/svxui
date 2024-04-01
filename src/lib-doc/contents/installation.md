@@ -5,11 +5,13 @@ description:
 
 <script>
     import Badge from '$lib/components/Badge/Badge.svelte';
+    import CodeInline from '$lib-doc/components/CodeInline.svelte';
+
 </script>
 
 ### 1. Install svxui
 
-Install <Badge>`svxui`</Badge> with the package manager of your choice
+Install <CodeInline>`svxui`</CodeInline> with the package manager of your choice
 
 ```bash
 npm install svxui
@@ -19,7 +21,7 @@ yarn add svxui
 
 ### 2. Add the ThemeProvider component
 
-Wrap your application with the <Badge>`<ThemeProvider/>`</Badge> component in the root <Badge>`+layout.svelte`</Badge>.
+Wrap your application with the <CodeInline>`<ThemeProvider/>`</CodeInline> component in the root <CodeInline>`+layout.svelte`</CodeInline>.
 
 ```svelte
 <script>
@@ -33,7 +35,7 @@ Wrap your application with the <Badge>`<ThemeProvider/>`</Badge> component in th
 
 ### 3. start building
 
-Your app is ready for use <Badge>`svxui`</Badge>!
+Your app is ready for use <CodeInline>`svxui`</CodeInline>!
 
 ```svelte
 <script>
