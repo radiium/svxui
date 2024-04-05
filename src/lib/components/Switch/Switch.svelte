@@ -79,8 +79,8 @@
         }
 
         &:focus-visible {
-            outline: var(--input-outline);
-            outline-offset: inherit;
+            box-shadow: var(--input-box-shadow-focus);
+            outline: none;
         }
 
         // Colors

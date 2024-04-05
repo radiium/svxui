@@ -37,7 +37,7 @@
 
         :global(.is-in-group) {
             position: relative;
-            box-shadow: none !important;
+            box-shadow: none;
             border-radius: 0 0 0 0 !important;
             border-width: 0 1px 0 0 !important;
             border-style: solid !important;
@@ -46,6 +46,11 @@
             &:focus,
             &:focus-visible {
                 z-index: 3000;
+            }
+
+            &:focus-visible {
+                z-index: 3000;
+                box-shadow: var(--input-box-shadow-focus);
             }
 
             &:first-child {

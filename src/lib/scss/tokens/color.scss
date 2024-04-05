@@ -60,8 +60,9 @@
 
         --input-color: var(--color);
         --input-background: #f0f0f0;
-        --input-box-shadow: 0px 0px 0px 1px var(--slate-8);
-        --input-outline: 1px solid var(--black-a12);
+        --input-box-shadow: inset 0px 0px 0px 1px var(--slate-8);
+        --input-box-shadow-hover: inset 0px 0px 0px 1px var(--black-a8);
+        --input-box-shadow-focus: inset 0px 0px 0px 1px var(--black-a12);
     }
 
     // Dark theme
@@ -82,8 +83,9 @@
 
         --input-color: var(--color);
         --input-background: #242424;
-        --input-box-shadow: 0px 0px 0px 1px var(--slate-8);
-        --input-outline: 1px solid var(--white-a12);
+        --input-box-shadow: inset 0px 0px 0px 1px var(--slate-8);
+        --input-box-shadow-hover: inset 0px 0px 0px 1px var(--white-a8);
+        --input-box-shadow-focus: inset 0px 0px 0px 1px var(--white-a12);
     }
 
     --teal-contrast: white;

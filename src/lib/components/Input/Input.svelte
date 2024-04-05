@@ -93,7 +93,8 @@
             border-radius: var(--radius-2);
 
             &:focus {
-                outline: var(--input-outline);
+                box-shadow: var(--input-box-shadow-focus);
+                outline: none;
             }
         }
 
@@ -141,7 +142,8 @@
         &:active,
         &:focus,
         &:focus-visible {
-            outline: var(--input-outline);
+            box-shadow: var(--input-box-shadow-focus);
+            outline: none;
         }
         &:disabled {
             @include disabled;

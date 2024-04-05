@@ -16,7 +16,7 @@ description: Link component
 ## Playground
 
 <Playground >
-    <Link {...props} slot="component">Link</Link>
+    <Link {...props} slot="component" style="width: 100%" href="#" target="_self">Link sample</Link>
     <PlaygroundForm bind:props schema={docLinkPropsDefs} slot="form" />
 </Playground>
 

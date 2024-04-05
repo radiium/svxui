@@ -16,7 +16,7 @@ description: Input component
 ## Playground
 
 <Playground>
-    <Input slot="component" {...props}/>
+    <Input slot="component" {...props} bind:value={props.value}/>
     <PlaygroundForm slot="form" bind:props schema={docInputPropsDefs} />
 </Playground>
 

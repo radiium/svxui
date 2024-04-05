@@ -64,6 +64,8 @@
             border-radius: 100%;
             background-color: transparent;
             transition: background-color ease 0.2s;
+            /* border: solid var(--check-color); */
+            
         }
 
         // States
@@ -90,8 +92,8 @@
         }
 
         &:focus-visible {
-            outline: var(--input-outline);
-            outline-offset: inherit;
+            box-shadow: var(--input-box-shadow-focus);
+            outline: none;
         }
 
         // Colors

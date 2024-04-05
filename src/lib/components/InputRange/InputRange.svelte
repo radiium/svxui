@@ -71,7 +71,8 @@
         }
 
         --thumb-radius: var(--radius-2);
-        --thumb-background: var(--accent-12);
+        --thumb-border: 1px solid var(--accent-12);
+        --thumb-background: white;
         --track-radius: var(--radius-2);
         --track-background: var(--accent-9);
 
@@ -106,7 +107,8 @@
         &:active,
         &:focus,
         &:focus-visible {
-            outline: var(--input-outline);
+            box-shadow: var(--input-box-shadow-focus);
+            outline: none;
         }
 
         &::-ms-track {
@@ -123,24 +125,27 @@
             -webkit-appearance: none;
             height: var(--thumb-height);
             width: var(--thumb-width);
-            background: var(--thumb-background);
             border-radius: var(--thumb-radius);
+            border: var(--thumb-border);
+            background: var(--thumb-background);
             margin-top: var(--thumb-margin-top);
             cursor: pointer;
         }
         &::-moz-range-thumb {
             height: var(--thumb-height);
             width: var(--thumb-width);
-            background: var(--thumb-background);
             border-radius: var(--thumb-radius);
+            border: var(--thumb-border);
+            background: var(--thumb-background);
             margin-top: var(--thumb-margin-top);
             cursor: pointer;
         }
         &::-ms-thumb {
             height: var(--thumb-height);
             width: var(--thumb-width);
-            background: var(--thumb-background);
             border-radius: var(--thumb-radius);
+            border: var(--thumb-border);
+            background: var(--thumb-background);
             margin-top: var(--thumb-margin-top);
             cursor: pointer;
         }

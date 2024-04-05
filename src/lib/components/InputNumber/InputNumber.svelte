@@ -92,7 +92,7 @@
     }
 </script>
 
-<!--  class={cssClass} -->
+<!-- TODO implement longpress -->
 <InputGroup class={cssClass} bind:elementRef>
     <Button on:click={decrement} {variant} {size} {color} {disabled} iconOnly>-</Button>
     <Input
@@ -118,16 +118,13 @@
 </InputGroup>
 
 <style lang="scss">
-    :global(.InputNumber-input::-webkit-outer-spin-button) {
-        appearance: none !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: textfield !important;
-        margin: 0;
-        outline: 1px solid red;
+    :global(.InputNumber-input) {
+        width: 6em; // TODO make it overridable
+        background: transparent !important;
     }
 
-    :global(.InputNumber-input) {
-        width: 6em;
+    :global(.InputNumber-input::-webkit-inner-spin-button),
+    :global(.InputNumber-input::-webkit-outer-spin-button) {
         appearance: none !important;
         -webkit-appearance: none !important;
         -moz-appearance: textfield !important;

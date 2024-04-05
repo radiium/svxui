@@ -195,7 +195,8 @@
         // States
         &:focus,
         &:focus-visible {
-            outline: var(--input-outline);
+            box-shadow: var(--input-box-shadow-focus);
+            outline: none;
         }
 
         &:disabled {

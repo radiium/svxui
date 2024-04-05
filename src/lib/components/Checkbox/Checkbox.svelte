@@ -113,14 +113,15 @@
         }
 
         &:focus-visible {
-            outline: var(--input-outline);
-            outline-offset: inherit;
+            box-shadow: var(--input-box-shadow-focus);
+            outline: none;
         }
 
         // Color
         --checkbox-background: var(--input-background);
         --checkbox-background-checked: var(--accent-9);
-        --check-color: var(--accent-contrast);
+        --check-color: white;
+
         // Sizes
         &.Checkbox-size-1 {
             --checkbox-size: calc(var(--space-4) * 0.875); // var(--space-4);
