@@ -20,6 +20,7 @@
     .Separator {
         display: block;
         background-color: var(--slate-a8);
+        flex-shrink: 0;
 
         // Sizes
         &.Separator-size-1 {
