@@ -27,7 +27,7 @@
     import Button from '../Button/Button.svelte';
     import { defaultDialogProps } from './Dialog.props.js';
     import type { DialogProps } from './Dialog.types.js';
-    import type { Sizes1To3, Sizes1To4 } from '$lib/constants.js';
+    import type { Sizes0To4, Sizes1To4 } from '$lib/constants.js';
 
     type $$Props = DialogProps;
     export let isOpen: $$Props['isOpen'] = defaultDialogProps.isOpen;
@@ -99,7 +99,19 @@
     }
 
     let closeButtonSize: (typeof Sizes1To4)[number];
-    $: closeButtonSize = Number(size) >= 2 ? '2' : size!;
+    $: closeButtonSize = getCloseButtonSize(size);
+    function getCloseButtonSize(s?: (typeof Sizes0To4)[number]): (typeof Sizes1To4)[number] {
+        switch (s) {
+            case '4':
+            case '3':
+            case '2':
+                return '2';
+            case '1':
+            case '0':
+            default:
+                return '1';
+        }
+    }
 
     $: cssClass = clsx($$restProps.class, `Dialog`, {
         [`Dialog-size-${size}`]: size
@@ -212,6 +224,10 @@
         }
 
         // Sizes
+        &.Dialog-size-0 {
+            --dialog-padding: var(--space-0);
+            --dialog-border-radius: var(--radius-4);
+        }
         &.Dialog-size-1 {
             --dialog-padding: var(--space-3);
             --dialog-border-radius: var(--radius-4);

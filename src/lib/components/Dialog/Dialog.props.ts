@@ -1,4 +1,4 @@
-import { Sizes1To4 } from '$lib/constants.js';
+import { Sizes0To4 } from '$lib/constants.js';
 import type { DialogProps } from './Dialog.types.js';
 
 export const defaultDialogProps: DialogProps = {
@@ -15,7 +15,7 @@ export const docDialogPropsDefs = {
         {
             name: 'size',
             type: 'enum',
-            values: Sizes1To4,
+            values: Sizes0To4,
             default: defaultDialogProps.size
         },
         {
