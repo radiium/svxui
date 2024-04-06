@@ -11,6 +11,7 @@ export const size9 = '9';
 export const Sizes0To1 = [size0, size1];
 export const Sizes1To2 = [size1, size2];
 export const Sizes1To3 = [size1, size2, size3];
+export const Sizes0To4 = [size0, size1, size2, size3, size4];
 export const Sizes1To4 = [size1, size2, size3, size4];
 export const Sizes0To5 = [size0, size1, size2, size3, size4, size5];
 export const Sizes1To9 = [size1, size2, size3, size4, size5, size6, size7, size8, size9];

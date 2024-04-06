@@ -4,8 +4,8 @@ export declare const docDialogPropsDefs: {
     props: ({
         name: string;
         type: string;
-        values: readonly ["1", "2", "3", "4"];
-        default: "1" | "2" | "3" | "4" | undefined;
+        values: readonly ["0", "1", "2", "3", "4"];
+        default: "0" | "1" | "2" | "3" | "4" | undefined;
     } | {
         name: string;
         type: string;

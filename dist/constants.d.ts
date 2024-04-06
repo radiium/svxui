@@ -11,6 +11,7 @@ export declare const size9: "9";
 export declare const Sizes0To1: readonly ["0", "1"];
 export declare const Sizes1To2: readonly ["1", "2"];
 export declare const Sizes1To3: readonly ["1", "2", "3"];
+export declare const Sizes0To4: readonly ["0", "1", "2", "3", "4"];
 export declare const Sizes1To4: readonly ["1", "2", "3", "4"];
 export declare const Sizes0To5: readonly ["0", "1", "2", "3", "4", "5"];
 export declare const Sizes1To9: readonly ["1", "2", "3", "4", "5", "6", "7", "8", "9"];

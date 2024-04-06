@@ -81,7 +81,19 @@ function enableScroll() {
     }
 }
 let closeButtonSize;
-$: closeButtonSize = Number(size) >= 2 ? '2' : size;
+$: closeButtonSize = getCloseButtonSize(size);
+function getCloseButtonSize(s) {
+    switch (s) {
+        case '4':
+        case '3':
+        case '2':
+            return '2';
+        case '1':
+        case '0':
+        default:
+            return '1';
+    }
+}
 $: cssClass = clsx($$restProps.class, `Dialog`, {
     [`Dialog-size-${size}`]: size
 });
@@ -186,6 +198,10 @@ $: cssClass = clsx($$restProps.class, `Dialog`, {
   position: absolute;
   top: var(--space-2);
   right: var(--space-2);
+}
+.Dialog.Dialog-size-0 {
+  --dialog-padding: var(--space-0);
+  --dialog-border-radius: var(--radius-4);
 }
 .Dialog.Dialog-size-1 {
   --dialog-padding: var(--space-3);
