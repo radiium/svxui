@@ -30,7 +30,7 @@ setContext(InputGroupContextKey, true);
 }
 .InputGroup :global(.is-in-group) {
   position: relative;
-  box-shadow: none !important;
+  box-shadow: none;
   border-radius: 0 0 0 0 !important;
   border-width: 0 1px 0 0 !important;
   border-style: solid !important;
@@ -38,6 +38,10 @@ setContext(InputGroupContextKey, true);
 }
 .InputGroup :global(.is-in-group):focus, .InputGroup :global(.is-in-group):focus-visible {
   z-index: 3000;
+}
+.InputGroup :global(.is-in-group):focus-visible {
+  z-index: 3000;
+  box-shadow: var(--input-box-shadow-focus);
 }
 .InputGroup :global(.is-in-group):first-child {
   border-radius: var(--radius-3) 0 0 var(--radius-3) !important;

@@ -73,8 +73,8 @@ $: cssClass = clsx($$restProps.class, 'Switch', {
   outline: none !important;
 }
 .Switch:focus-visible {
-  outline: var(--input-outline);
-  outline-offset: inherit;
+  box-shadow: var(--input-box-shadow-focus);
+  outline: none;
 }
 .Switch.Switch-size-1 {
   --switch-padding: 3px;

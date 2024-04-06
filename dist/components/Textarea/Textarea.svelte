@@ -71,7 +71,8 @@ $: cssClass = clsx($$restProps.class, 'Textarea', {
   width: 100%;
 }
 .Textarea:active, .Textarea:focus, .Textarea:focus-visible {
-  outline: var(--input-outline);
+  box-shadow: var(--input-box-shadow-focus);
+  outline: none;
 }
 .Textarea:disabled {
   cursor: default !important;

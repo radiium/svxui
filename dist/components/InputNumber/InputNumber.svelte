@@ -83,7 +83,7 @@ function clearIntervalId() {
 }
 </script>
 
-<!--  class={cssClass} -->
+<!-- TODO implement longpress -->
 <InputGroup class={cssClass} bind:elementRef>
     <Button on:click={decrement} {variant} {size} {color} {disabled} iconOnly>-</Button>
     <Input
@@ -108,16 +108,13 @@ function clearIntervalId() {
     <Button on:click={increment} {variant} {size} {color} {disabled} iconOnly>+</Button>
 </InputGroup>
 
-<style>:global(.InputNumber-input::-webkit-outer-spin-button) {
-  appearance: none !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: textfield !important;
-  margin: 0;
-  outline: 1px solid red;
+<style>:global(.InputNumber-input) {
+  width: 6em;
+  background: transparent !important;
 }
 
-:global(.InputNumber-input) {
-  width: 6em;
+:global(.InputNumber-input::-webkit-inner-spin-button),
+:global(.InputNumber-input::-webkit-outer-spin-button) {
   appearance: none !important;
   -webkit-appearance: none !important;
   -moz-appearance: textfield !important;

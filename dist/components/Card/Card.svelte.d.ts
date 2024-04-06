@@ -3,6 +3,11 @@ import type { CardProps } from './Card.types.js';
 declare const __propDef: {
     props: CardProps;
     events: {
+        click: MouseEvent;
+        submit: SubmitEvent;
+        focus: FocusEvent;
+        blur: FocusEvent;
+    } & {
         [evt: string]: CustomEvent<any>;
     };
     slots: {

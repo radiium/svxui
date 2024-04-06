@@ -1,7 +1,8 @@
 import { Sizes0To5 } from '../../constants.js';
 export const defaultCardProps = {
     elementRef: undefined,
-    size: '3'
+    size: '3',
+    asButton: false
 };
 export const docCardPropsDefs = {
     props: [
@@ -14,6 +15,11 @@ export const docCardPropsDefs = {
             type: 'enum',
             values: Sizes0To5,
             default: defaultCardProps.size
+        },
+        {
+            name: 'asButton',
+            type: 'boolean',
+            default: defaultCardProps.asButton
         }
     ],
     slots: [

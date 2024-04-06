@@ -210,7 +210,8 @@ button.Button:active, button.Button.Button-active {
   filter: var(--button-active-filter);
 }
 button.Button:focus-visible {
-  outline: var(--input-outline);
+  box-shadow: var(--input-box-shadow-focus);
+  outline: none;
 }
 button.Button:disabled {
   cursor: default !important;

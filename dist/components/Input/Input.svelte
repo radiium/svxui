@@ -81,7 +81,8 @@ const setType = (node, value) => {
   border-radius: var(--radius-2);
 }
 .Input::-webkit-calendar-picker-indicator:focus {
-  outline: var(--input-outline);
+  box-shadow: var(--input-box-shadow-focus);
+  outline: none;
 }
 .Input.Input-size-1 {
   height: var(--space-5);
@@ -117,7 +118,8 @@ const setType = (node, value) => {
   width: 100%;
 }
 .Input:active, .Input:focus, .Input:focus-visible {
-  outline: var(--input-outline);
+  box-shadow: var(--input-box-shadow-focus);
+  outline: none;
 }
 .Input:disabled {
   cursor: default !important;

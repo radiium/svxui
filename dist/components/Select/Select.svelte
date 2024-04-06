@@ -163,7 +163,8 @@ $: cssClass = clsx($$restProps.class, `Select`, {
   width: 100%;
 }
 .Select:focus, .Select:focus-visible {
-  outline: var(--input-outline);
+  box-shadow: var(--input-box-shadow-focus);
+  outline: none;
 }
 .Select:disabled {
   cursor: default !important;

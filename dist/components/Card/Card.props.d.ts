@@ -11,6 +11,11 @@ export declare const docCardPropsDefs: {
         type: string;
         values: readonly ["0", "1", "2", "3", "4", "5"];
         default: "0" | "1" | "2" | "3" | "4" | "5" | undefined;
+    } | {
+        name: string;
+        type: string;
+        default: boolean | undefined;
+        values?: undefined;
     })[];
     slots: {
         name: string;

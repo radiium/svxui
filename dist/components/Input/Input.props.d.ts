@@ -19,8 +19,8 @@ export declare const docInputPropsDefs: {
     } | {
         name: string;
         type: string;
-        values: readonly ["number", "time", "text", "search", "password", "email", "tel", "url", "date", "datetime-local", "month", "week"];
-        default: "number" | "time" | "text" | "search" | "password" | "email" | "tel" | "url" | "date" | "datetime-local" | "month" | "week" | undefined;
+        values: readonly ["text", "number", "search", "password", "email", "tel", "url", "date", "time", "datetime-local", "month", "week"];
+        default: "number" | "text" | "search" | "password" | "email" | "tel" | "url" | "date" | "time" | "datetime-local" | "month" | "week" | undefined;
     } | {
         name: string;
         type: string;

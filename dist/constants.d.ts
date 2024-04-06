@@ -30,7 +30,7 @@ export declare const Wraps: readonly ["nowrap", "wrap", "wrap-reverse"];
 export declare const Gaps: readonly ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 export declare const Grows: readonly ["0", "1"];
 export declare const Shrinks: readonly ["0", "1"];
-export declare const InputTypes: readonly ["number", "time", "text", "search", "password", "email", "tel", "url", "date", "datetime-local", "month", "week"];
+export declare const InputTypes: readonly ["text", "number", "search", "password", "email", "tel", "url", "date", "time", "datetime-local", "month", "week"];
 export declare const TextTags: readonly ["div", "span", "label", "h1", "h2", "h3", "h4", "h5", "h6", "p"];
 export declare const TextUnderlines: readonly ["auto", "always", "hover", "none"];
 export declare const TextWraps: readonly ["wrap", "nowrap", "pretty", "balance"];

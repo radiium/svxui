@@ -70,7 +70,7 @@ function onChange() {
   box-shadow: var(--input-box-shadow);
   --checkbox-background: var(--input-background);
   --checkbox-background-checked: var(--accent-9);
-  --check-color: var(--accent-contrast);
+  --check-color: white;
 }
 .Checkbox:after {
   display: none;
@@ -107,8 +107,8 @@ function onChange() {
   outline: none !important;
 }
 .Checkbox:focus-visible {
-  outline: var(--input-outline);
-  outline-offset: inherit;
+  box-shadow: var(--input-box-shadow-focus);
+  outline: none;
 }
 .Checkbox.Checkbox-size-1 {
   --checkbox-size: calc(var(--space-4) * 0.875);

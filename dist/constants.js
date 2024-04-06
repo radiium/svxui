@@ -33,7 +33,7 @@ export const Gaps = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 export const Grows = ['0', '1'];
 export const Shrinks = ['0', '1'];
 // prettier-ignore
-export const InputTypes = ['number', 'time', 'text', 'search', 'password', 'email', 'tel', 'url', 'date', 'datetime-local', 'month', 'week'];
+export const InputTypes = ['text', 'number', 'search', 'password', 'email', 'tel', 'url', 'date', 'time', 'datetime-local', 'month', 'week'];
 export const TextTags = ['div', 'span', 'label', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'];
 export const TextUnderlines = ['auto', 'always', 'hover', 'none'];
 export const TextWraps = ['wrap', 'nowrap', 'pretty', 'balance'];
