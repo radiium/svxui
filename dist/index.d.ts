@@ -21,6 +21,7 @@ export { default as Popover } from './components/Popover/Popover.svelte';
 export { default as Portal } from './components/Portal/Portal.svelte';
 export { default as Radio } from './components/Radio/Radio.svelte';
 export { default as Select } from './components/Select/Select.svelte';
+export { default as Separator } from './components/Separator/Separator.svelte';
 export { default as Switch } from './components/Switch/Switch.svelte';
 export { default as Text } from './components/Text/Text.svelte';
 export { default as Textarea } from './components/Textarea/Textarea.svelte';
