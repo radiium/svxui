@@ -17,7 +17,7 @@ description: Text component
 ## Playground
 
 <Playground>
-    <Text slot="component" {...props}>Super sample text !</Text>
+    <Text slot="component" style="width: 100%" {...props}>Super sample text !</Text>
     <PlaygroundForm slot="form" bind:props schema={docTextPropsDefs} />
 </Playground>
 
