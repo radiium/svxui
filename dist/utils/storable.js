@@ -73,10 +73,14 @@ export function storable(params) {
                 set(event.newValue ? JSON.parse(event.newValue) : null);
             }
         }
-        window.addEventListener('storage', onStorageChange);
+        if (isBrowser()) {
+            window.addEventListener('storage', onStorageChange);
+        }
         const stop = start && start(set, update);
         return () => {
-            window.removeEventListener('storage', onStorageChange);
+            if (isBrowser()) {
+                window?.removeEventListener('storage', onStorageChange);
+            }
             stop && stop();
         };
     });

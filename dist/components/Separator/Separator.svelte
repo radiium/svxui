@@ -14,6 +14,7 @@ $: cssClass = clsx($$restProps.class, 'Separator', {
 <style>.Separator {
   display: block;
   background-color: var(--slate-a8);
+  flex-shrink: 0;
 }
 .Separator.Separator-size-1 {
   --separator-size: var(--space-4);

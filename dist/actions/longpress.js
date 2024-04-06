@@ -1,3 +1,4 @@
+import { isBrowser } from '../index.js';
 import { listen } from '../utils/listen.js';
 /**
  * Listen long press on node
@@ -9,7 +10,7 @@ import { listen } from '../utils/listen.js';
 export function longpress(node, params) {
     let timer;
     function handlePress() {
-        timer = window.setTimeout(() => {
+        timer = setTimeout(() => {
             node.dispatchEvent(new CustomEvent('startlongpress'));
         }, params.duration);
     }
