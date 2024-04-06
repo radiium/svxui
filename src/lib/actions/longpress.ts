@@ -1,3 +1,4 @@
+import { isBrowser } from '$lib/index.js';
 import { listen } from '$lib/utils/listen.js';
 import type { ActionReturn } from 'svelte/action';
 
@@ -17,10 +18,10 @@ type Attributes = {
  * @returns
  */
 export function longpress(node: HTMLElement, params: Parameters): ActionReturn<Parameters, Attributes> {
-    let timer: number;
+    let timer: ReturnType<typeof setTimeout>;
 
     function handlePress(): void {
-        timer = window.setTimeout(() => {
+        timer = setTimeout(() => {
             node.dispatchEvent(new CustomEvent('startlongpress'));
         }, params.duration);
     }
