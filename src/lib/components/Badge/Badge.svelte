@@ -42,7 +42,7 @@
         user-select: none;
         height: fit-content;
         cursor: default;
-        border: var(--badge-border);
+        box-shadow: var(--badge-box-shadow);
         color: var(--badge-color);
         background-color: var(--badge-background);
         padding: var(--badge-padding);
@@ -80,17 +80,17 @@
 
         // Variants
         &.Badge-outline {
-            --badge-border: 1px solid var(--accent-9);
+            --badge-box-shadow: inset 0px 0px 0px 1px var(--accent-9);
             --badge-color: var(--accent-a12);
             --badge-background: transparent;
         }
         &.Badge-soft {
-            --badge-border: 1px solid var(--accent-6);
+            --badge-box-shadow: none;
             --badge-color: var(--accent-a12);
             --badge-background: var(--accent-a6);
         }
         &.Badge-solid {
-            --badge-border: 1px solid var(--accent-9);
+            --badge-box-shadow: none;
             --badge-color: var(--accent-contrast);
             --badge-background: var(--accent-9);
         }
