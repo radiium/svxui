@@ -10,7 +10,7 @@
 </script>
 
 {#if Array.isArray(props) && props}
-    <Card size="0" class={$$restProps.class}>
+    <Card size="0" variant="outline" class={$$restProps.class}>
         <table>
             <thead class="rt-TableHeader">
                 <tr class="rt-TableRow">
