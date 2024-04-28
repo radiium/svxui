@@ -68,15 +68,20 @@
             color: var(--color);
             cursor: pointer;
 
-            &:hover::after {
-                box-shadow: var(--card-box-shadow-hover);
+            &:hover {
                 background-color: var(--card-background-hover);
+
+                ::after {
+                    box-shadow: var(--card-box-shadow-hover);
+                }
             }
 
-            &:focus-visible::after,
-            &:active::after {
-                box-shadow: var(--card-box-shadow-focus);
-                background-color: var(--card-background-focus);
+            &:focus-visible,
+            &:active {
+                &::after {
+                    box-shadow: var(--card-box-shadow-focus);
+                    background-color: var(--card-background-focus);
+                }
             }
         }
 

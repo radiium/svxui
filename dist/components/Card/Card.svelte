@@ -61,9 +61,11 @@ $: cssClass = clsx($$restProps.class, 'Card', {
   color: var(--color);
   cursor: pointer;
 }
-.Card.Card-as-button:hover::after {
-  box-shadow: var(--card-box-shadow-hover);
+.Card.Card-as-button:hover {
   background-color: var(--card-background-hover);
+}
+.Card.Card-as-button:hover ::after {
+  box-shadow: var(--card-box-shadow-hover);
 }
 .Card.Card-as-button:focus-visible::after, .Card.Card-as-button:active::after {
   box-shadow: var(--card-box-shadow-focus);
