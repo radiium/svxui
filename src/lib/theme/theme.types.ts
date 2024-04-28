@@ -17,7 +17,7 @@ export const Radius = ['none', 'small', 'medium', 'large', 'full'] as const;
 
 export interface ThemeContext {
     /**
-     * true if we are inde root <ThemeProvider/>
+     * true if we are inside root <ThemeProvider/>
      */
     isRoot: boolean;
 

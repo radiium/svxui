@@ -27,7 +27,7 @@ The <CodeInline>`useThemeContext()`</CodeInline> allows access to the context of
 ```typescript
 interface ThemeContext {
     /**
-     * true if we are inde root <ThemeProvider/>
+     * true if we are inside root <ThemeProvider/>
      */
     isRoot: boolean;
 
