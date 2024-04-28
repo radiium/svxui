@@ -19,6 +19,7 @@ export const Sizes1To9 = [size1, size2, size3, size4, size5, size6, size7, size8
 export const Sizes0To9 = [size0, size1, size2, size3, size4, size5, size6, size7, size8, size9];
 export const Colors = ['primary', 'gray', 'blue', 'green', 'yellow', 'orange', 'red'];
 export const Variants = ['solid', 'soft', 'outline', 'clear'];
+export const VariantsCard = ['solid', 'soft', 'outline'];
 export const VariantsBadge = ['solid', 'soft', 'outline'];
 export const Weights = ['light', 'regular', 'medium', 'bold'];
 export const Aligns = ['start', 'center', 'end'];

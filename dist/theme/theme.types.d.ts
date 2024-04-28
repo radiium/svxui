@@ -14,7 +14,7 @@ export type ThemeSchemeType = `${ThemeScheme}`;
 export declare const Radius: readonly ["none", "small", "medium", "large", "full"];
 export interface ThemeContext {
     /**
-     * true if we are inde root <ThemeProvider/>
+     * true if we are inside root <ThemeProvider/>
      */
     isRoot: boolean;
     /**

@@ -18,6 +18,7 @@ export declare const Sizes1To9: readonly ["1", "2", "3", "4", "5", "6", "7", "8"
 export declare const Sizes0To9: readonly ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 export declare const Colors: readonly ["primary", "gray", "blue", "green", "yellow", "orange", "red"];
 export declare const Variants: readonly ["solid", "soft", "outline", "clear"];
+export declare const VariantsCard: readonly ["solid", "soft", "outline"];
 export declare const VariantsBadge: readonly ["solid", "soft", "outline"];
 export declare const Weights: readonly ["light", "regular", "medium", "bold"];
 export declare const Aligns: readonly ["start", "center", "end"];

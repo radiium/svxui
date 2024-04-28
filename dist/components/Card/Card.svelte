@@ -2,9 +2,11 @@
 import { defaultCardProps } from './Card.props.js';
 export let elementRef = defaultCardProps.elementRef;
 export let size = defaultCardProps.size;
+export let variant = defaultCardProps.variant;
 export let asButton = defaultCardProps.asButton;
 $: cssClass = clsx($$restProps.class, 'Card', {
     [`Card-size-${size}`]: size,
+    [`Card-${variant}`]: variant,
     'Card-as-button': asButton
 });
 </script>
@@ -31,18 +33,18 @@ $: cssClass = clsx($$restProps.class, 'Card', {
 <style>.Card {
   padding: var(--card-padding);
   border-radius: var(--card-border-radius);
-  background-color: var(--background-level-2);
+  background-color: var(--card-background);
+  /* var(--background-level-2); */
   position: relative;
   overflow: hidden;
 }
 .Card::after {
   content: "";
   position: absolute;
-  pointer-events: none;
-  transition: inherit;
-  inset: 0;
+  inset: 0 0 0 0;
   border-radius: var(--card-border-radius);
-  box-shadow: var(--input-box-shadow);
+  box-shadow: var(--card-box-shadow);
+  pointer-events: none;
 }
 .Card.Card-as-button {
   display: block;
@@ -60,10 +62,12 @@ $: cssClass = clsx($$restProps.class, 'Card', {
   cursor: pointer;
 }
 .Card.Card-as-button:hover::after {
-  box-shadow: var(--input-box-shadow-hover);
+  box-shadow: var(--card-box-shadow-hover);
+  background-color: var(--card-background-hover);
 }
-.Card.Card-as-button:focus-visible::after {
-  box-shadow: var(--input-box-shadow-focus);
+.Card.Card-as-button:focus-visible::after, .Card.Card-as-button:active::after {
+  box-shadow: var(--card-box-shadow-focus);
+  background-color: var(--card-background-focus);
 }
 .Card.Card-size-0 {
   --card-padding: var(--space-0);
@@ -88,4 +92,28 @@ $: cssClass = clsx($$restProps.class, 'Card', {
 .Card.Card-size-5 {
   --card-padding: var(--space-8);
   --card-border-radius: var(--radius-6);
+}
+.Card.Card-outline {
+  --card-background: transparent;
+  --card-background-hover: transparent;
+  --card-background-focus: transparent;
+  --card-box-shadow: var(--input-box-shadow);
+  --card-box-shadow-hover: var(--input-box-shadow-hover);
+  --card-box-shadow-focus: var(--input-box-shadow-focus);
+}
+.Card.Card-soft {
+  --card-background: var(--slate-a3);
+  --card-background-hover: var(--slate-a4);
+  --card-background-focus: var(--slate-a5);
+  --card-box-shadow: transparent;
+  --card-box-shadow-hover: transparent;
+  --card-box-shadow-focus: transparent;
+}
+.Card.Card-solid {
+  --card-background: var(--slate-4);
+  --card-background-hover: var(--slate-5);
+  --card-background-focus: var(--slate-6);
+  --card-box-shadow: transparent;
+  --card-box-shadow-hover: transparent;
+  --card-box-shadow-focus: transparent;
 }</style>

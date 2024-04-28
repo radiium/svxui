@@ -19,7 +19,7 @@ const themeOptions = [
     { icon: Sun, label: 'light', value: ThemeStrategy.LIGHT },
     { icon: Moon, label: 'dark', value: ThemeStrategy.DARK }
 ];
-let currentTheme = themeOptions.find((opts) => opts.value === $strategy);
+$: currentTheme = themeOptions.find((opts) => opts.value === $strategy);
 const selectTheme = (option) => {
     currentTheme = option;
     updateStrategy(option.value);

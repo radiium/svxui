@@ -1,7 +1,8 @@
-import { Sizes0To5 } from '../../constants.js';
+import { Sizes0To5, VariantsCard } from '../../constants.js';
 export const defaultCardProps = {
     elementRef: undefined,
     size: '3',
+    variant: 'solid',
     asButton: false
 };
 export const docCardPropsDefs = {
@@ -15,6 +16,12 @@ export const docCardPropsDefs = {
             type: 'enum',
             values: Sizes0To5,
             default: defaultCardProps.size
+        },
+        {
+            name: 'variant',
+            type: 'enum',
+            values: VariantsCard,
+            default: defaultCardProps.variant
         },
         {
             name: 'asButton',
