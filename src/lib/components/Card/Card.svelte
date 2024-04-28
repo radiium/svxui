@@ -39,11 +39,19 @@
     .Card {
         padding: var(--card-padding);
         border-radius: var(--card-border-radius);
-        box-shadow: var(--card-box-shadow);
         background-color: var(--card-background);
         /* var(--background-level-2); */
         position: relative;
         overflow: hidden;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0 0 0 0;
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--card-box-shadow);
+            pointer-events: none;
+        }
 
         &.Card-as-button {
             display: block;
@@ -60,13 +68,13 @@
             color: var(--color);
             cursor: pointer;
 
-            &:hover {
+            &:hover::after {
                 box-shadow: var(--card-box-shadow-hover);
                 background-color: var(--card-background-hover);
             }
 
-            &:focus-visible,
-            &:active {
+            &:focus-visible::after,
+            &:active::after {
                 box-shadow: var(--card-box-shadow-focus);
                 background-color: var(--card-background-focus);
             }
