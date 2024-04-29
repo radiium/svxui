@@ -11,6 +11,7 @@ description: Button component
     import Playground from '$lib-doc/components/Playground.svelte';
     import PlaygroundForm from '$lib-doc/components/PlaygroundForm.svelte';
     import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
+    import CodeInline from '$lib-doc/components/CodeInline.svelte';
 
     let props = {}
 </script>
@@ -30,7 +31,7 @@ description: Button component
 
 ## API Reference
 
-Extend HTMLButtonAttributes
+Extend <CodeInline>`HTMLButtonAttributes`</CodeInline>
 
 <ApiReference data={docButtonPropsDefs}></ApiReference>
 
@@ -39,7 +40,7 @@ Extend HTMLButtonAttributes
 #### Basic
 
 ```svelte example
-<script lang="ts">
+<script>
     import { Button } from 'svxui';
 </script>
 
@@ -137,29 +138,7 @@ Extend HTMLButtonAttributes
     import { Button } from 'svxui';
 </script>
 
-<Button align="start">Button</Button>
-<Button align="center">Button</Button>
-<Button align="end">Button</Button>
-```
-
-<hr/>
-
-### Usage
-
-#### Import
-
-```typescript example
-import Button from '$lib/components/Button/Button.svelte';
-```
-
-```bash example
-npm install svxui
-```
-
-```typescript
-const test: string = 'laal';
-```
-
-```typescript example
-import { Button } from 'svxui';
+<Button align="start" fullWidth>Button</Button>
+<Button align="center" fullWidth>Button</Button>
+<Button align="end" fullWidth>Button</Button>
 ```

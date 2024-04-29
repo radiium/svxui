@@ -9,12 +9,18 @@ description:
     import ApiReference from '$lib-doc/components/ApiReference.svelte';
     import Playground from '$lib-doc/components/Playground.svelte';
     import PlaygroundForm from '$lib-doc/components/PlaygroundForm.svelte';
+    import CodeInline from '$lib-doc/components/CodeInline.svelte';
 
     let props = {}
 </script>
 
-The `<InputGroup/>` can be used for grouping the following components:
-`<Input/>`, `<Select/>`, `<Button/>`.
+The <CodeInline>`<InputGroup/>`</CodeInline> can be used for grouping the following components: <CodeInline>`<Input/>`</CodeInline>, <CodeInline>`<Select/>`</CodeInline>, <CodeInline>`<Button/>`</CodeInline>.
+
+## API Reference
+
+Extend <CodeInline>`HTMLAttributes<HTMLDivElement>`</CodeInline>
+
+<ApiReference data={docInputGroupPropsDefs}></ApiReference>
 
 ## Examples
 
@@ -189,14 +195,3 @@ The `<InputGroup/>` can be used for grouping the following components:
     <Input />
 </InputGroup>
 ```
-
-## Playground
-
-<Playground>
-    <InputGroup slot="component" {...props}/>
-    <PlaygroundForm slot="form" bind:props schema={docInputGroupPropsDefs} />
-</Playground>
-
-## API Reference
-
-<ApiReference data={docInputGroupPropsDefs}></ApiReference>

@@ -6,7 +6,6 @@ description:
 <script>
     import Badge from '$lib/components/Badge/Badge.svelte';
     import CodeInline from '$lib-doc/components/CodeInline.svelte';
-
 </script>
 
 ### 1. Install svxui

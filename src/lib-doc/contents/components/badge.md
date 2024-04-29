@@ -9,6 +9,7 @@ description: Badge component
     import ApiReference from '$lib-doc/components/ApiReference.svelte';
     import Playground from '$lib-doc/components/Playground.svelte';
     import PlaygroundForm from '$lib-doc/components/PlaygroundForm.svelte';
+    import CodeInline from '$lib-doc/components/CodeInline.svelte';
 
     let props = {}
 </script>
@@ -21,5 +22,7 @@ description: Badge component
 </Playground>
 
 ## API Reference
+
+Extend <CodeInline>`HTMLAttributes<HTMLSpanElement>`</CodeInline>
 
 <ApiReference data={docBadgePropsDefs}></ApiReference>

@@ -10,6 +10,7 @@ description: Dialog component
     import ApiReference from '$lib-doc/components/ApiReference.svelte';
     import Playground from '$lib-doc/components/Playground.svelte';
     import PlaygroundForm from '$lib-doc/components/PlaygroundForm.svelte';
+    import CodeInline from '$lib-doc/components/CodeInline.svelte';
 
     let props = {}
 </script>
@@ -35,4 +36,6 @@ description: Dialog component
 
 ## API Reference
 
-<ApiReference data={docDialogPropsDefs}></ApiReference>
+Extend <CodeInline>`HTMLAttributes<HTMLDivElement>`</CodeInline>
+
+F<ApiReference data={docDialogPropsDefs}></ApiReference>
