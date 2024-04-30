@@ -3,7 +3,12 @@
     import Flexbox from '$lib/components/Flexbox/Flexbox.svelte';
 </script>
 
-<Card size="0" variant="outline" class="mt-3 mb-5 playground" style="background: var(--background-level-1);">
+<Card
+    size="0"
+    variant="clear"
+    outline
+    class="mt-3 mb-5 playground"
+>
     <Flexbox alignItems="stretch" class="playground-content">
         <Flexbox as="section" class="p-9" alignItems="center" justify="center" grow="1">
             <slot name="component" />

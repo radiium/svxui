@@ -7,10 +7,11 @@
     import TablePopover from './TablePopover.svelte';
 
     export let props: DocProps[] = [];
+    export let outline: boolean = true;
 </script>
 
 {#if Array.isArray(props) && props}
-    <Card size="0" variant="outline" class={$$restProps.class}>
+    <Card size="0" variant="clear" {outline} class={$$restProps.class}>
         <table>
             <thead class="rt-TableHeader">
                 <tr class="rt-TableRow">

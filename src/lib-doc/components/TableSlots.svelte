@@ -6,9 +6,10 @@
     import TablePopover from './TablePopover.svelte';
 
     export let slots: DocSlots[] = [];
+    export let outline: boolean = true;
 </script>
 
-<Card size="0" variant="outline" class={$$restProps.class}>
+<Card size="0" variant="clear" {outline} class={$$restProps.class}>
     <table>
         <thead class="rt-TableHeader">
             <tr class="rt-TableRow">

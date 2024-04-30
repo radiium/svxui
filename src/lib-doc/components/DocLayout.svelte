@@ -152,7 +152,7 @@
             display: flex;
             position: fixed;
             z-index: 99999;
-            top: 10px;
+            top: 12px;
             left: 10px;
         }
 

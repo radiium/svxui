@@ -81,8 +81,8 @@
                         {#each prop.values as value}
                             <Button
                                 size="1"
-                                iconOnly={prop.name === 'size'}
-                                variant={value === props[prop.name] ? 'soft' : 'outline'}
+                                iconOnly={prop.name === 'size' || prop.name === 'gap'}
+                                variant={value === props[prop.name] ? 'solid' : 'outline'}
                                 on:click={() => updateEnumProp(prop, value)}
                             >
                                 {value}
