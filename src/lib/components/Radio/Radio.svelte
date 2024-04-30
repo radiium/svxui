@@ -50,7 +50,7 @@
         width: var(--radio-size);
         height: var(--radio-size);
         background: var(--input-background);
-        box-shadow: var(--input-box-shadow);
+        box-shadow: inset var(--input-box-shadow);
         transition:
             background-color ease 0.2s,
             box-shadow ease 0.2s;
@@ -65,7 +65,6 @@
             background-color: transparent;
             transition: background-color ease 0.2s;
             /* border: solid var(--check-color); */
-            
         }
 
         // States
@@ -92,7 +91,7 @@
         }
 
         &:focus-visible {
-            box-shadow: var(--input-box-shadow-focus);
+            box-shadow: inset var(--input-box-shadow-focus);
             outline: none;
         }
 

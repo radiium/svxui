@@ -208,7 +208,7 @@
             align-items: center;
             justify-content: center;
             gap: var(--space-3);
-            box-shadow: var(--input-box-shadow);
+            box-shadow: inset var(--input-box-shadow);
 
             .Dialog-content-inner {
                 width: 100%;

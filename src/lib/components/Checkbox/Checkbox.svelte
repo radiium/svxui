@@ -75,7 +75,7 @@
         width: var(--checkbox-size);
         border-radius: calc(var(--radius-3) / 1.5);
         background-color: var(--checkbox-background);
-        box-shadow: var(--input-box-shadow);
+        box-shadow: inset var(--input-box-shadow);
 
         &:after {
             display: none;
@@ -113,7 +113,7 @@
         }
 
         &:focus-visible {
-            box-shadow: var(--input-box-shadow-focus);
+            box-shadow: inset var(--input-box-shadow-focus);
             outline: none;
         }
 

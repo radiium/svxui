@@ -71,7 +71,7 @@
         color: var(--input-color);
         border-radius: var(--radius-3);
         background: var(--input-background);
-        box-shadow: var(--input-box-shadow);
+        box-shadow: inset var(--input-box-shadow);
 
         // Input type search
         &::-webkit-search-cancel-button {
@@ -93,7 +93,7 @@
             border-radius: var(--radius-2);
 
             &:focus {
-                box-shadow: var(--input-box-shadow-focus);
+                box-shadow: inset var(--input-box-shadow-focus);
                 outline: none;
             }
         }
@@ -142,7 +142,7 @@
         &:active,
         &:focus,
         &:focus-visible {
-            box-shadow: var(--input-box-shadow-focus);
+            box-shadow: inset var(--input-box-shadow-focus);
             outline: none;
         }
         &:disabled {

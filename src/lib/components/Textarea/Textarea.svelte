@@ -50,7 +50,7 @@
         border-radius: var(--radius-3);
         color: var(--input-color);
         background: var(--input-background);
-        box-shadow: var(--input-box-shadow);
+        box-shadow: inset var(--input-box-shadow);
 
         // Sizes
         &.Textarea-size-1 {
@@ -84,7 +84,7 @@
         &:active,
         &:focus,
         &:focus-visible {
-            box-shadow: var(--input-box-shadow-focus);
+            box-shadow: inset var(--input-box-shadow-focus);
             outline: none;
         }
 

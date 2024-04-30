@@ -32,33 +32,40 @@
         font-weight: bold;
         transition: background-color linear 80ms;
         border-radius: var(--radius-3);
-        background: var(--input-background);
-        box-shadow: var(--input-box-shadow);
+        /* background: var(--input-background); */
+        //box-shadow: var(--input-box-shadow);
 
         :global(.is-in-group) {
             position: relative;
-            box-shadow: none;
+            border: none;
+            // box-shadow: none !important;
+            // box-shadow: inset var(--input-box-shadow);
             border-radius: 0 0 0 0 !important;
-            border-width: 0 1px 0 0 !important;
+            /* border-width: 1px !important;
             border-style: solid !important;
-            border-color: var(--slate-8) !important;
+            border-color: var(--slate-a5) !important; */
+            box-shadow: inset var(--input-box-shadow) !important;
 
             &:focus,
             &:focus-visible {
                 z-index: 3000;
+                box-shadow: inset var(--input-box-shadow-focus) !important;
             }
 
             &:focus-visible {
                 z-index: 3000;
-                box-shadow: var(--input-box-shadow-focus);
+                box-shadow: inset var(--input-box-shadow-focus);
             }
 
             &:first-child {
                 border-radius: var(--radius-3) 0 0 var(--radius-3) !important;
             }
+            &:not(:last-child) {
+                margin-right: -1px;
+            }
             &:last-child {
                 border-radius: 0 var(--radius-3) var(--radius-3) 0 !important;
-                border-width: 0 0 0 0 !important;
+                // border-width: 0 0 0 0 !important;
             }
         }
     }

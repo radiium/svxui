@@ -64,7 +64,7 @@
         height: var(--input-height);
         color: var(--input-color);
         background: var(--input-background);
-        box-shadow: var(--input-box-shadow);
+        box-shadow: inset var(--input-box-shadow);
 
         &.InputRange-full-width {
             width: 100%;
@@ -107,7 +107,7 @@
         &:active,
         &:focus,
         &:focus-visible {
-            box-shadow: var(--input-box-shadow-focus);
+            box-shadow: inset var(--input-box-shadow-focus);
             outline: none;
         }
 

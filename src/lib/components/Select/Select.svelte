@@ -92,7 +92,7 @@
         border-radius: var(--radius-3);
         color: var(--input-color);
         background-color: var(--input-background);
-        box-shadow: var(--input-box-shadow);
+        box-shadow: inset var(--input-box-shadow);
 
         // Custom arrow icon
         &:not([multiple]) {
@@ -195,7 +195,7 @@
         // States
         &:focus,
         &:focus-visible {
-            box-shadow: var(--input-box-shadow-focus);
+            box-shadow: inset var(--input-box-shadow-focus);
             outline: none;
         }
 
