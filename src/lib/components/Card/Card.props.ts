@@ -4,7 +4,8 @@ import type { CardProps } from './Card.types.js';
 export const defaultCardProps: CardProps = {
     elementRef: undefined,
     size: '3',
-    variant: 'solid',
+    variant: 'soft',
+    outline: true,
     asButton: false
 };
 
@@ -25,6 +26,11 @@ export const docCardPropsDefs = {
             type: 'enum',
             values: VariantsCard,
             default: defaultCardProps.variant
+        },
+        {
+            name: 'outline',
+            type: 'boolean',
+            default: defaultCardProps.outline
         },
         {
             name: 'asButton',

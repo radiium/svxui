@@ -5,5 +5,6 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
     elementRef?: HTMLDivElement | HTMLButtonElement;
     size?: (typeof Sizes0To5)[number];
     variant?: (typeof VariantsCard)[number];
+    outline?: boolean;
     asButton?: boolean;
 }
