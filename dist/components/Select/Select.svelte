@@ -85,7 +85,7 @@ $: cssClass = clsx($$restProps.class, `Select`, {
   border-radius: var(--radius-3);
   color: var(--input-color);
   background-color: var(--input-background);
-  box-shadow: var(--input-box-shadow);
+  box-shadow: inset var(--input-box-shadow);
 }
 .Select:not([multiple]) {
   background-image: linear-gradient(45deg, transparent 50%, var(--accent-a9) 50%), linear-gradient(135deg, var(--accent-a9) 50%, transparent 50%);
@@ -163,7 +163,7 @@ $: cssClass = clsx($$restProps.class, `Select`, {
   width: 100%;
 }
 .Select:focus, .Select:focus-visible {
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: inset var(--input-box-shadow-focus);
   outline: none;
 }
 .Select:disabled {

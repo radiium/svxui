@@ -14,8 +14,8 @@ export declare const docCardPropsDefs: {
     } | {
         name: string;
         type: string;
-        values: readonly ["solid", "soft", "outline"];
-        default: "solid" | "soft" | "outline" | undefined;
+        values: readonly ["soft", "clear"];
+        default: "soft" | "clear" | undefined;
     } | {
         name: string;
         type: string;

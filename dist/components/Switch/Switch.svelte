@@ -73,7 +73,7 @@ $: cssClass = clsx($$restProps.class, 'Switch', {
   outline: none !important;
 }
 .Switch:focus-visible {
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: inset var(--input-box-shadow-focus);
   outline: none;
 }
 .Switch.Switch-size-1 {

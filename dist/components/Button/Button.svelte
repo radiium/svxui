@@ -79,7 +79,7 @@ $: cssClass = clsx($$restProps.class, 'Button', {
   text-decoration: none;
   white-space: nowrap;
   user-select: none;
-  font-weight: bold;
+  font-weight: 500;
   transition: background-color linear 80ms;
 }
 button.Button :global(svg) {
@@ -152,24 +152,24 @@ button.Button.Button-clear {
   --button-border: none;
   --button-color: var(--accent-a12);
   --button-background: transparent;
-  --button-background-hover: var(--accent-a6);
-  --button-background-active: var(--accent-a7);
+  --button-background-hover: var(--accent-a5);
+  --button-background-active: var(--accent-a6);
   --button-active-filter: none;
 }
 button.Button.Button-outline {
   --button-border: 1px solid var(--accent-9);
   --button-color: var(--accent-a12);
   --button-background: transparent;
-  --button-background-hover: var(--accent-a6);
-  --button-background-active: var(--accent-a7);
+  --button-background-hover: var(--accent-a4);
+  --button-background-active: var(--accent-a5);
   --button-active-filter: none;
 }
 button.Button.Button-soft {
   --button-border: none;
   --button-color: var(--accent-a12);
-  --button-background: var(--accent-a6);
-  --button-background-hover: var(--accent-a7);
-  --button-background-active: var(--accent-a8);
+  --button-background: var(--accent-a4);
+  --button-background-hover: var(--accent-a5);
+  --button-background-active: var(--accent-a6);
   --button-active-filter: none;
 }
 button.Button.Button-solid {

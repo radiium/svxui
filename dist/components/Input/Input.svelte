@@ -62,7 +62,7 @@ const setType = (node, value) => {
   color: var(--input-color);
   border-radius: var(--radius-3);
   background: var(--input-background);
-  box-shadow: var(--input-box-shadow);
+  box-shadow: inset var(--input-box-shadow);
 }
 .Input::-webkit-search-cancel-button {
   filter: invert(1);
@@ -81,7 +81,7 @@ const setType = (node, value) => {
   border-radius: var(--radius-2);
 }
 .Input::-webkit-calendar-picker-indicator:focus {
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: inset var(--input-box-shadow-focus);
   outline: none;
 }
 .Input.Input-size-1 {
@@ -118,7 +118,7 @@ const setType = (node, value) => {
   width: 100%;
 }
 .Input:active, .Input:focus, .Input:focus-visible {
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: inset var(--input-box-shadow-focus);
   outline: none;
 }
 .Input:disabled {

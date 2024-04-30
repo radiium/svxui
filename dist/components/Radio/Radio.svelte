@@ -44,7 +44,7 @@ $: cssClass = clsx($$restProps.class, 'Radio', {
   width: var(--radio-size);
   height: var(--radio-size);
   background: var(--input-background);
-  box-shadow: var(--input-box-shadow);
+  box-shadow: inset var(--input-box-shadow);
   transition: background-color ease 0.2s, box-shadow ease 0.2s;
   --radio-background: var(--input-background);
   --radio-background-checked: var(--accent-9);
@@ -86,7 +86,7 @@ $: cssClass = clsx($$restProps.class, 'Radio', {
   background-color: var(--check-color);
 }
 .Radio:focus-visible {
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: inset var(--input-box-shadow-focus);
   outline: none;
 }
 .Radio.Radio-size-1 {

@@ -44,7 +44,7 @@ $: cssClass = clsx($$restProps.class, 'Textarea', {
   border-radius: var(--radius-3);
   color: var(--input-color);
   background: var(--input-background);
-  box-shadow: var(--input-box-shadow);
+  box-shadow: inset var(--input-box-shadow);
 }
 .Textarea.Textarea-size-1 {
   min-width: calc(var(--space-9) * 3);
@@ -71,7 +71,7 @@ $: cssClass = clsx($$restProps.class, 'Textarea', {
   width: 100%;
 }
 .Textarea:active, .Textarea:focus, .Textarea:focus-visible {
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: inset var(--input-box-shadow-focus);
   outline: none;
 }
 .Textarea:disabled {

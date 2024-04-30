@@ -58,7 +58,7 @@ $: cssClass = clsx($$restProps.class, 'InputRange', {
   height: var(--input-height);
   color: var(--input-color);
   background: var(--input-background);
-  box-shadow: var(--input-box-shadow);
+  box-shadow: inset var(--input-box-shadow);
   --thumb-radius: var(--radius-2);
   --thumb-border: 1px solid var(--accent-12);
   --thumb-background: white;
@@ -100,7 +100,7 @@ $: cssClass = clsx($$restProps.class, 'InputRange', {
   outline: none !important;
 }
 .InputRange:active, .InputRange:focus, .InputRange:focus-visible {
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: inset var(--input-box-shadow-focus);
   outline: none;
 }
 .InputRange::-ms-track {

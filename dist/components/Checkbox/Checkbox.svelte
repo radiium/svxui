@@ -67,7 +67,7 @@ function onChange() {
   width: var(--checkbox-size);
   border-radius: calc(var(--radius-3) / 1.5);
   background-color: var(--checkbox-background);
-  box-shadow: var(--input-box-shadow);
+  box-shadow: inset var(--input-box-shadow);
   --checkbox-background: var(--input-background);
   --checkbox-background-checked: var(--accent-9);
   --check-color: white;
@@ -107,7 +107,7 @@ function onChange() {
   outline: none !important;
 }
 .Checkbox:focus-visible {
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: inset var(--input-box-shadow-focus);
   outline: none;
 }
 .Checkbox.Checkbox-size-1 {
