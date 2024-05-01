@@ -76,16 +76,13 @@
                 }
             }
 
-            &:focus-visible {
+            &:focus-visible,
+            &:active {
                 background-color: var(--card-background-focus);
 
                 &::after {
                     box-shadow: var(--card-box-shadow-focus);
                 }
-            }
-
-            &:active {
-                background-color: var(--card-background-focus);
             }
         }
 
@@ -118,13 +115,25 @@
         // Variants
         &.Card-clear {
             --card-background: transparent;
-            --card-background-hover: transparent; //var(--slate-1);
-            --card-background-focus: var(--slate-2); //var(--slate-2);
+            --card-background-hover: var(--slate-a2);
+            --card-background-focus: var(--slate-a3);
+
+            &.Card-with-outline {
+                --card-background: transparent;
+                --card-background-hover: transparent;
+                --card-background-focus: transparent;
+            }
         }
         &.Card-soft {
-            --card-background: var(--slate-1);
-            --card-background-hover: var(--slate-1); // var(--slate-2);
-            --card-background-focus: var(--slate-2); // var(--slate-2);
+            --card-background: var(--slate-a2);
+            --card-background-hover: var(--slate-a3);
+            --card-background-focus: var(--slate-a4);
+
+            &.Card-with-outline {
+                --card-background: var(--slate-a2);
+                --card-background-hover: var(--slate-a2);
+                --card-background-focus: var(--slate-a2);
+            }
         }
 
         // Outline
@@ -137,8 +146,8 @@
             --card-box-shadow-focus: inset var(--input-box-shadow-focus); */
 
             --card-box-shadow: inset 0 0 0 1px var(--slate-a5);
-            --card-box-shadow-hover: inset 0 0 0 1px var(--slate-a7);
-            --card-box-shadow-focus: inset 0 0 0 1px var(--slate-a6);
+            --card-box-shadow-hover: inset 0 0 0 1px var(--slate-a6);
+            --card-box-shadow-focus: inset 0 0 0 1px var(--slate-a7);
         }
     }
 </style>
