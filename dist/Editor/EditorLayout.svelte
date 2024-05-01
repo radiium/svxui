@@ -105,6 +105,7 @@ import Toolbar from './Toolbar.svelte';
   --layout-toolbar-size: var(--toolbar-size-l);
   --layout-panel-left-size: 250px;
   --layout-panel-right-size: 250px;
+  --layout-border-color: rgba(55, 55, 55, 0.2);
 }
 
 .wrapper {
@@ -133,11 +134,10 @@ import Toolbar from './Toolbar.svelte';
 .wrapper header {
   width: 100%;
   height: var(--layout-header-size);
-  background: var(--background-level-2);
   overflow: hidden;
   border-style: solid;
   border-width: 0 0 1px 0;
-  border-color: var(--border-color);
+  border-color: var(--layout-border-color);
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -153,21 +153,19 @@ import Toolbar from './Toolbar.svelte';
 .wrapper main aside.toolbar {
   width: var(--layout-toolbar-size);
   height: 100%;
-  background: var(--background-level-2);
   overflow: hidden;
   border-style: solid;
   border-width: 0 1px 0 0;
-  border-color: var(--border-color);
+  border-color: var(--layout-border-color);
   flex-shrink: 0;
 }
 .wrapper main aside.left {
   width: 0;
   height: 100%;
-  background: var(--background-level-1);
   overflow: hidden;
   border-style: solid;
   border-width: 0;
-  border-color: var(--border-color);
+  border-color: var(--layout-border-color);
   position: relative;
   flex-shrink: 0;
   transition: width ease-in-out 300ms;
@@ -187,11 +185,10 @@ import Toolbar from './Toolbar.svelte';
 .wrapper main aside.right {
   width: 0;
   height: 100%;
-  background: var(--background-level-1);
   overflow: hidden;
   border-style: solid;
   border-width: 0;
-  border-color: var(--border-color);
+  border-color: var(--layout-border-color);
   position: relative;
   flex-shrink: 0;
   transition: width ease-in-out 300ms;
@@ -206,11 +203,10 @@ import Toolbar from './Toolbar.svelte';
 .wrapper footer {
   width: 100%;
   height: var(--layout-footer-size);
-  background: var(--background-level-2);
   overflow: hidden;
   border-style: solid;
   border-width: 1px 0 0 0;
-  border-color: var(--border-color);
+  border-color: var(--layout-border-color);
   display: flex;
   align-items: center;
   gap: 5px;
