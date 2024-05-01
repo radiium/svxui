@@ -103,7 +103,6 @@
             border-style: solid;
             border-color: var(--border-color);
             border-width: 0 0 1px 0;
-            background: var(--background-level-2);
             position: relative;
             overflow: visible;
             z-index: 110;
@@ -116,7 +115,6 @@
             border-style: solid;
             border-color: var(--border-color);
             border-width: 0 1px 0 0;
-            background: var(--background-level-1);
             position: relative;
             overflow: hidden;
             z-index: 120;
@@ -129,7 +127,6 @@
             border-style: solid;
             border-color: var(--border-color);
             border-width: 0 0 0 0;
-            background: var(--background-level-0);
             position: relative;
             overflow: hidden;
             z-index: 100;

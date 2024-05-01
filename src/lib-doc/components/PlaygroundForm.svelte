@@ -112,7 +112,7 @@
 
 <style lang="scss">
     :global(.color-btn.Button-active) {
-        box-shadow: var(--border-color-focus) 0px 0px 0px 1px;
+        box-shadow: 0px 0px 0px 1px var(--border-color-focus) ;
         outline: none;
     }
 </style>
