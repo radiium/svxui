@@ -4,6 +4,7 @@
     import Card from '$lib/components/Card/Card.svelte';
     import Flexbox from '$lib/components/Flexbox/Flexbox.svelte';
     import Button from '$lib/components/Button/Button.svelte';
+    import Separator from '$lib/components/Separator/Separator.svelte';
 
     export let src: string | undefined = undefined;
     export let meta: Record<string, unknown> = {};
@@ -45,6 +46,8 @@
             </section>
         {/if}
 
+        <Separator size="4"/>
+
         {#if $$slots.code}
             <section class="code-block">
                 <div class="display-flex px-5 py-4">
@@ -68,11 +71,17 @@
 </Card>
 
 <style lang="scss">
+    :global(.light .demo-block) {
+        background-color: white;
+    }
+    :global(.dark .demo-block) {
+        background-color: black;
+    }
+
     section {
         &.demo-block {
             display: flex;
             align-items: center;
-            border-bottom: 1px solid var(--accent-a8);
             gap: var(--space-3);
 
             &.column {
@@ -84,7 +93,7 @@
         &.code-block {
             overflow: hidden;
             position: relative;
-            background: var(--background-level-2) !important;
+            background: var(--background-level-1) !important;
 
             > div {
                 overflow-x: auto;

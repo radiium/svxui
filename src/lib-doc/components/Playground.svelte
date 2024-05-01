@@ -29,9 +29,19 @@
     :global(.playground-content) {
         min-height: 260px;
         min-width: 350px;
+        background-color: var(--background-level-2);
+        background-color: black;
+    }
+
+    :global(.light .playground-content) {
+        background-color: white;
+    }
+    :global(.dark .playground-content) {
+        background-color: black;
     }
 
     :global(.playground-form) {
+        background-color: var(--background-level-1);
         width: 40%;
         min-width: 0;
         flex-shrink: 0;
