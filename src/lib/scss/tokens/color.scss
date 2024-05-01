@@ -2,109 +2,68 @@
 /// COLOR TOKENS
 ///
 ///
-///
-@import './colors/palette.radix.dark.scss';
-@import './colors/palette.radix.light.scss';
-@import './colors/palette.radix.black.scss';
-@import './colors/palette.radix.white.scss';
+
+@import '@radix-ui/colors/black-alpha.css';
+@import '@radix-ui/colors/white-alpha.css';
+
+@import './colors/gray.scss';
+@import './colors/slate.scss';
+@import './colors/teal.scss';
+@import './colors/blue.scss';
+@import './colors/grass.scss';
+@import './colors/orange.scss';
+@import './colors/amber.scss';
+@import './colors/tomato.scss';
 
 :root {
-    --color-dark: #000000;
-    --color-medium: #92949c;
-    --color-light: #f4f5f8;
-
-    --black-a1: rgba(0, 0, 0, 0.05);
-    --black-a2: rgba(0, 0, 0, 0.1);
-    --black-a3: rgba(0, 0, 0, 0.15);
-    --black-a4: rgba(0, 0, 0, 0.2);
-    --black-a5: rgba(0, 0, 0, 0.3);
-    --black-a6: rgba(0, 0, 0, 0.4);
-    --black-a7: rgba(0, 0, 0, 0.5);
-    --black-a8: rgba(0, 0, 0, 0.6);
-    --black-a9: rgba(0, 0, 0, 0.7);
-    --black-a10: rgba(0, 0, 0, 0.8);
-    --black-a11: rgba(0, 0, 0, 0.9);
-    --black-a12: rgba(0, 0, 0, 0.95);
-
-    --white-a1: rgba(255, 255, 255, 0.05);
-    --white-a2: rgba(255, 255, 255, 0.1);
-    --white-a3: rgba(255, 255, 255, 0.15);
-    --white-a4: rgba(255, 255, 255, 0.2);
-    --white-a5: rgba(255, 255, 255, 0.3);
-    --white-a6: rgba(255, 255, 255, 0.4);
-    --white-a7: rgba(255, 255, 255, 0.5);
-    --white-a8: rgba(255, 255, 255, 0.6);
-    --white-a9: rgba(255, 255, 255, 0.7);
-    --white-a10: rgba(255, 255, 255, 0.8);
-    --white-a11: rgba(255, 255, 255, 0.9);
-    --white-a12: rgba(255, 255, 255, 0.95);
-
     [data-root='true'] {
         background-color: var(--background-level-0);
     }
 
     .light,
+    .theme-light,
     .system-light,
     [data-theme='light'],
     [data-theme='system-light'] {
         color-scheme: light;
 
         --color: #2e3440;
-        --background-level-0: #ffffff;
-        --background-level-1: #d5d5d5;
-        --background-level-2: #f3f1f1;
-
-        --border-color: rgba(55, 55, 55, 0.2);
-        --border-color-hover: rgba(55, 55, 55, 0.5);
-        --border-color-focus: rgba(55, 55, 55, 1);
+        --background-level-0: var(--gray-1);
+        --background-level-1: var(--gray-2);
+        --background-level-2: var(--gray-3);
 
         --input-color: var(--color);
         --input-background: #f0f0f0;
-
-        // --input-box-shadow: 0px 0px 0px 1px var(--slate-a5);
-        // --input-box-shadow-hover: 0px 0px 0px 1px var(--slate-a6);
-        // --input-box-shadow-focus: 0px 0px 0px 1px var(--slate-a7);
-
         --input-box-shadow: 0px 0px 0px 1px var(--slate-8);
         --input-box-shadow-hover: 0px 0px 0px 1px var(--black-a8);
         --input-box-shadow-focus: 0px 0px 0px 1px var(--black-a12);
+        // --input-box-shadow: 0px 0px 0px 1px var(--slate-a5);
+        // --input-box-shadow-hover: 0px 0px 0px 1px var(--slate-a6);
+        // --input-box-shadow-focus: 0px 0px 0px 1px var(--slate-a7);
     }
 
     // Dark theme
     .dark,
+    .theme-dark,
     .system-dark,
     [data-theme='dark'],
     [data-theme='system-dark'] {
         color-scheme: dark;
 
         --color: #c1c8d6;
-        --background-level-0: #101010;
-        --background-level-1: #121212;
-        --background-level-2: #181818;
-
-        --border-color: rgba(255, 255, 255, 0.2);
-        --border-color-hover: rgba(255, 255, 255, 0.5);
-        --border-color-focus: rgba(255, 255, 255, 1);
+        --background-level-0: var(--gray-1);
+        --background-level-1: var(--gray-2);
+        --background-level-2: var(--gray-3);
 
         --input-color: var(--color);
         --input-background: #242424;
-
-        // --input-box-shadow: 0px 0px 0px 1px var(--slate-a5);
-        // --input-box-shadow-hover: 0px 0px 0px 1px var(--white-a7);
-        // --input-box-shadow-focus: 0px 0px 0px 1px var(--white-a6);
-
         --input-box-shadow: 0px 0px 0px 1px var(--slate-8);
         --input-box-shadow-hover: 0px 0px 0px 1px var(--white-a8);
         --input-box-shadow-focus: 0px 0px 0px 1px var(--white-a12);
+        // --input-box-shadow: 0px 0px 0px 1px var(--slate-a5);
+        // --input-box-shadow-hover: 0px 0px 0px 1px var(--white-a7);
+        // --input-box-shadow-focus: 0px 0px 0px 1px var(--white-a6);
     }
-
-    --teal-contrast: white;
-    --slate-contrast: white;
-    --blue-contrast: white;
-    --grass-contrast: white;
-    --orange-contrast: white;
-    --amber-contrast: #21201c;
-    --tomato-contrast: white;
 }
 
 /* * * * * * * * * * * * * * * * * * * */
