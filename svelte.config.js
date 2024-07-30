@@ -1,7 +1,7 @@
 // import adapter from '@sveltejs/adapter-auto';
 // import adapter from '@sveltejs/adapter-static';
 import adapter from '@sveltejs/adapter-vercel';
-import sveltePreprocess from 'svelte-preprocess';
+import {sveltePreprocess} from 'svelte-preprocess';
 import { mdsvex } from 'mdsvex';
 import mdsvexConfig, { mdsvexExtensions } from './mdsvex.config.js';
 import { phosphorSvelteOptimize } from 'phosphor-svelte/preprocessor';
