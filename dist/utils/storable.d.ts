@@ -1,4 +1,3 @@
-/// <reference types="svelte" />
 import { type Writable, type StartStopNotifier } from 'svelte/store';
 export declare enum StorableStorageType {
     local = "local",

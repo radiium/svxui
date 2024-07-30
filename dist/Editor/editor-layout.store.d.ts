@@ -1,4 +1,3 @@
-/// <reference types="svelte" />
 export declare class EditorLayoutState {
     isPanelLeftOpen: boolean;
     isPanelRightOpen: boolean;

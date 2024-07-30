@@ -3,12 +3,12 @@ import { type FlyParams } from 'svelte/transition';
 import type { Placement } from '@floating-ui/dom';
 declare const __propDef: {
     props: {
-        defaultOpen?: boolean | undefined;
-        backdrop?: boolean | undefined;
-        arrow?: boolean | undefined;
-        placement?: Placement | undefined;
-        offset?: number | undefined;
-        transition?: FlyParams | undefined;
+        defaultOpen?: boolean;
+        backdrop?: boolean;
+        arrow?: boolean;
+        placement?: Placement;
+        offset?: number;
+        transition?: FlyParams;
     };
     events: {
         [evt: string]: CustomEvent<any>;

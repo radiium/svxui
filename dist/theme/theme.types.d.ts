@@ -1,4 +1,3 @@
-/// <reference types="svelte" />
 import type { Readable } from 'svelte/store';
 export declare enum ThemeStrategy {
     SYSTEM = "system",

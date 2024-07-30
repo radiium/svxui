@@ -2,8 +2,8 @@ import { SvelteComponent } from "svelte";
 declare const __propDef: {
     props: {
         [x: string]: any;
-        direction?: "horizontal" | "vertical" | undefined;
-        size?: "medium" | "small" | "large" | undefined;
+        direction?: ("horizontal" | "vertical") | undefined;
+        size?: ("small" | "medium" | "large") | undefined;
     };
     events: {
         [evt: string]: CustomEvent<any>;

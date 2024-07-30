@@ -1,4 +1,3 @@
-/// <reference types="svelte" />
 import type { ActionReturn } from 'svelte/action';
 type Parameters = boolean;
 type Attributes = {

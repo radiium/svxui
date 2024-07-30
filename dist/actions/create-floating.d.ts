@@ -1,4 +1,3 @@
-/// <reference types="svelte" />
 import { type ComputePositionConfig, type Middleware, type Placement, type OffsetOptions, type FlipOptions, type ArrowOptions, type ComputePositionReturn, type AutoUpdateOptions, type Strategy, type HideOptions, type ShiftOptions, type SizeOptions } from '@floating-ui/dom';
 import type { ActionReturn } from 'svelte/action';
 import { type Unsubscriber } from 'svelte/store';
