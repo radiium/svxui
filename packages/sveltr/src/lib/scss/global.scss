@@ -1,0 +1,27 @@
+html {
+    body {
+        margin: 0;
+        text-rendering: optimizeLegibility;
+        touch-action: manipulation;
+        -webkit-user-drag: none;
+        -ms-content-zooming: none;
+        overscroll-behavior: none;
+    }
+}
+
+.sveltr {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color: var(--color);
+    font-family: var(--default-font-family);
+    font-size: var(--default-font-size);
+    font-weight: var(--default-font-weight);
+    font-style: var(--default-font-style);
+    line-height: var(--default-line-height);
+    letter-spacing: var(--default-letter-spacing);
+    text-size-adjust: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    isolation: isolate;
+}

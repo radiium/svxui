@@ -1,0 +1,29 @@
+///
+/// TOKENS
+///
+
+@import './scss/tokens/color.scss';
+@import './scss/tokens/component.scss';
+@import './scss/tokens/radius.scss';
+@import './scss/tokens/shadow.scss';
+@import './scss/tokens/space.scss';
+@import './scss/tokens/typography.scss';
+
+///
+/// UTILITIES
+///
+
+@import './scss/utilities/display.scss';
+@import './scss/utilities/flex.scss';
+@import './scss/utilities/gap.scss';
+@import './scss/utilities/position.scss';
+@import './scss/utilities/size.scss';
+@import './scss/utilities/space.scss';
+
+///
+/// OTHERS
+///
+
+@import './scss/reset.scss';
+@import './scss/mixins.scss';
+@import './scss/global.scss';

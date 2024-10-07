@@ -1,0 +1,9 @@
+<script lang="ts">
+    import { Text } from 'sveltr';
+
+    export let id: string = '';
+</script>
+
+<Text as="h4" size="4" weight="bold" {id} class="mb-3" {...$$restProps}>
+    <slot />
+</Text>
