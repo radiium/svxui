@@ -1,0 +1,98 @@
+{
+    "name": "svxui",
+    "sideEffects": false,
+    "version": "0.0.3",
+    "description": "Svxui library",
+    "homepage": "https://github.com/radiium/svxui",
+    "license": "MIT",
+    "author": {
+        "name": "radiium",
+        "email": "remip.dev@gmail.com",
+        "url": "https://github.com/radiium"
+    },
+    "keywords": [
+        "svelte",
+        "sveltekit",
+        "ui",
+        "library",
+        "ui-components",
+        "components",
+        "components-library",
+        "open-source",
+        "typescript",
+        "web",
+        "monorepo"
+    ],
+    "bugs": {
+        "url": "https://github.com/radiium/svxui/issues"
+    },
+    "type": "module",
+    "svelte": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "svelte": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist",
+        "!dist/**/*.test.*",
+        "!dist/**/*.spec.*"
+    ],
+    "engines": {
+        "node": ">=18",
+        "pnpm": ">=9"
+    },
+    "scripts": {
+        "dev": "vite dev",
+        "build": "vite build && npm run package",
+        "preview": "vite preview",
+        "package": "svelte-kit sync && svelte-package && publint",
+        "package:watch": "svelte-kit sync && svelte-package --watch",
+        "prepublishOnly": "npm run package",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+        "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+        "lint": "prettier ./eslint.config.js --ignore-path=../../.prettierignore --check . && eslint .",
+        "format": "prettier ./eslint.config.js --ignore-path=../../.prettierignore --write . --cache && eslint --fix .",
+        "watch": "svelte-package --watch",
+        "sync": "svelte-kit sync",
+        "test": "npm run test:integration && npm run test:unit",
+        "test:integration": "playwright test",
+        "test:unit": "vitest",
+        "test:ui": "vitest --ui"
+    },
+    "peerDependencies": {
+        "svelte": "^4.2.19"
+    },
+    "dependencies": {
+        "@floating-ui/dom": "^1.6.11",
+        "@radix-ui/colors": "^3.0.0",
+        "nanoid": "^5.0.7"
+    },
+    "devDependencies": {
+        "@configs/eslint-config": "workspace:*",
+        "@configs/prettier-config": "workspace:*",
+        "@playwright/test": "^1.48.0",
+        "@sveltejs/adapter-auto": "^3.2.5",
+        "@sveltejs/adapter-vercel": "^5.4.5",
+        "@sveltejs/kit": "^2.7.0",
+        "@sveltejs/package": "^2.3.5",
+        "@sveltejs/vite-plugin-svelte": "^3.1.2",
+        "autoprefixer": "^10.4.20",
+        "eslint": "^9.12.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "postcss": "^8.4.47",
+        "postcss-load-config": "^6.0.1",
+        "prettier": "^3.3.3",
+        "publint": "^0.2.11",
+        "sass": "1.79.5",
+        "svelte": "^4.2.19",
+        "svelte-check": "^4.0.5",
+        "svelte-preprocess": "6.0.3",
+        "typescript": "^5.6.3",
+        "vite": "^5.4.8",
+        "vitest": "^2.1.2"
+    }
+}

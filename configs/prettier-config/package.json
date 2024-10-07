@@ -1,0 +1,23 @@
+{
+    "name": "@configs/prettier-config",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "main": "index.js",
+    "files": [
+        "index.js"
+    ],
+    "scripts": {
+        "lint:js": "eslint .",
+        "lint:prettier": "prettier . --check --ignore-path=../../.prettierignore",
+        "lint": "concurrently pnpm:lint:*",
+        "format:prettier": "prettier . --write --ignore-path=../../.prettierignore",
+        "format": "concurrently pnpm:format:*"
+    },
+    "peerDependencies": {
+        "prettier": "3.3.3"
+    },
+    "dependencies": {
+        "prettier-plugin-svelte": "^3.2.7"
+    }
+}

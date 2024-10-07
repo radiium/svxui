@@ -1,0 +1,82 @@
+/**
+ *
+ * Global style
+ *
+ */
+
+button.color-btn {
+    &.Button-active {
+        box-shadow: 0px 0px 0px 1px var(--border-color-focus);
+        outline: none;
+        position: relative;
+
+        &::after {
+            content: '';
+            top: 6px;
+            width: var(--space-3);
+            height: var(--space-2);
+            position: absolute;
+            transform: rotate(-45deg);
+            border-width: 0px 0px 2px 2px;
+            border-color: white;
+            border-style: solid;
+            z-index: 1;
+        }
+    }
+}
+
+table.api-reference-table {
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
+    overflow: hidden;
+    width: 100%;
+    text-align: left;
+    vertical-align: top;
+    border-collapse: collapse;
+    border-radius: 8px;
+    border-spacing: 0;
+    box-sizing: border-box;
+    height: 0;
+
+    thead {
+        tr {
+            th {
+                background-color: var(--slate-2);
+                box-shadow: inset 0 -1px var(--slate-7);
+                box-sizing: border-box;
+                vertical-align: inherit;
+                padding: var(--space-3);
+                height: 44px;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            --table-row-box-shadow: inset 0 -1px var(--slate-7);
+
+            &:last-child {
+                --table-row-box-shadow: none;
+            }
+
+            td {
+                background-color: var(--color-background-0);
+                box-sizing: border-box;
+                vertical-align: inherit;
+                padding: 0 12px;
+                height: 44px;
+                box-shadow: var(--table-row-box-shadow);
+
+                code {
+                    padding: 0.2rem 0.25rem;
+                    background-color: var(--accent-a3);
+                    color: var(--accent-a11);
+                    font-size: calc(var(--font-size-2) * 0.95);
+                    line-height: var(--line-height-2);
+                    box-sizing: border-box;
+                    border-radius: calc(0.5px + 0.2em);
+                }
+            }
+        }
+    }
+}
