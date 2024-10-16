@@ -25,7 +25,9 @@ const config = {
         vitePreprocess()
     ],
     kit: {
-        adapter: adapter()
+        adapter: adapter({
+            runtime: 'nodejs18.x'
+        })
     }
 };
 
