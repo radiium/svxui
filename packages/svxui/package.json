@@ -1,7 +1,7 @@
 {
     "name": "svxui",
     "sideEffects": false,
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Svxui library",
     "homepage": "https://github.com/radiium/svxui",
     "license": "MIT",
