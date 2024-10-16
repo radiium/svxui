@@ -5,7 +5,7 @@ category: doc
 ---
 
 <script lang="ts">
-    import { Card, Text, clickoutsideAction } from 'sveltr';
+    import { Card, Text, clickoutsideAction } from 'svxui';
 
     let isClickedOutside = undefined
     function onClickoutside(event: CustomEvent<MouseEvent>): void {
@@ -36,7 +36,7 @@ Clicked:
 
 ```svelte
 <script lang="ts">
-    import { clickoutsideAction } from 'sveltr';
+    import { clickoutsideAction } from 'svxui';
 
     function onClickoutside(event: CustomEvent<MouseEvent>): void {
         console.log(event.detail);

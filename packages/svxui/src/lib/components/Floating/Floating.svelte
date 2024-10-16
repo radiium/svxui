@@ -88,7 +88,7 @@
     <slot name="trigger" />
 </div>
 
-<Portal target=".sveltr[data-theme-root='true']" disabled={!portal}>
+<Portal target=".svxui[data-theme-root='true']" disabled={!portal}>
     {#if isOpen}
         <!-- Backfrop -->
         {#if backdrop}

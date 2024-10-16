@@ -1,7 +1,7 @@
 <script lang="ts">
     import { SchemaPropType, type SchemaProp } from '$lib/doc.types.js';
     import Minus from 'phosphor-svelte/lib/Minus';
-    import { Card, Flexbox, Text } from 'sveltr';
+    import { Card, Flexbox, Text } from 'svxui';
     import TablePopover from './TablePopover.svelte';
 
     export let props: SchemaProp[] = [];

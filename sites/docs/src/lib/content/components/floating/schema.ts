@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { defaultFloatingProps, Placements, Radius, Sizes0To5 } from 'sveltr';
+import { defaultFloatingProps, Placements, Radius, Sizes0To5 } from 'svxui';
 
 /**
  * Playground template
@@ -7,7 +7,7 @@ import { defaultFloatingProps, Placements, Radius, Sizes0To5 } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Floating, Button } from 'sveltr';
+    import { Floating, Button } from 'svxui';
 
     let isOpen = false;
 </script>

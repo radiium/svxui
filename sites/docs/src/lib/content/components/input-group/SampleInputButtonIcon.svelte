@@ -1,7 +1,7 @@
 <script>
     import PlusIcon from '$lib/components/icons/Plus.svelte';
     import Playground from '$lib/components/playground/Playground.svelte';
-    import { ButtonIcon, Flexbox, Input, InputGroup } from 'sveltr';
+    import { ButtonIcon, Flexbox, Input, InputGroup } from 'svxui';
 </script>
 
 <Playground class="mb-5">

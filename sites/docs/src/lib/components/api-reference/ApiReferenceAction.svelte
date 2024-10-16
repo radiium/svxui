@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { SchemaAction } from '$lib/doc.types';
-    import { Text } from 'sveltr';
+    import { Text } from 'svxui';
 
     export let schema: SchemaAction;
 

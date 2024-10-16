@@ -1,6 +1,6 @@
-import { defaultRadioProps } from 'sveltr';
+import { defaultRadioProps } from 'svxui';
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { Colors, Sizes1To3 } from 'sveltr';
+import { Colors, Sizes1To3 } from 'svxui';
 
 /**
  * Playground template
@@ -8,7 +8,7 @@ import { Colors, Sizes1To3 } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Radio } from 'sveltr';
+    import { Radio } from 'svxui';
 </script>
 
 <Radio:props />   

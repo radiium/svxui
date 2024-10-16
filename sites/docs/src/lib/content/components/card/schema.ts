@@ -1,6 +1,6 @@
-import { defaultCardProps, Radius } from 'sveltr';
+import { defaultCardProps, Radius } from 'svxui';
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { Sizes0To5, VariantsCard } from 'sveltr';
+import { Sizes0To5, VariantsCard } from 'svxui';
 
 /**
  * Playground template
@@ -8,7 +8,7 @@ import { Sizes0To5, VariantsCard } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Card } from 'sveltr';
+    import { Card } from 'svxui';
 </script>
 
 <Card:props>Card content<Card>    

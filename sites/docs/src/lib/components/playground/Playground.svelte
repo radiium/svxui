@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { useMediaQuery } from 'sveltr';
+    import { useMediaQuery } from 'svxui';
     import { createPlaygroundMask } from './playground-mask';
 
     export let forceColumn = false;

@@ -1,5 +1,5 @@
 import type { ComponentType } from 'svelte';
-import type { SelectOption } from '../../../../packages/sveltr/dist/components/Select/Select.types';
+import type { SelectOption } from '../../../../packages/svxui/dist/components/Select/Select.types';
 
 /**
  *

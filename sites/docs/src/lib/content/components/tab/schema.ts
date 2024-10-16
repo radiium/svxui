@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { defaultTabGroupProps, defaultTabPanelProps, defaultTabTriggerProps } from 'sveltr';
+import { defaultTabGroupProps, defaultTabPanelProps, defaultTabTriggerProps } from 'svxui';
 
 /**
  * Playground template
@@ -7,7 +7,7 @@ import { defaultTabGroupProps, defaultTabPanelProps, defaultTabTriggerProps } fr
 
 export const template = `
 <script lang="ts">
-    import { AccordionGroup, AccordionItem, Card, Flexbox, Text, Button } from 'sveltr';
+    import { AccordionGroup, AccordionItem, Card, Flexbox, Text, Button } from 'svxui';
     import { slide } from 'svelte/transition';
 
     let state = [false, false, false];

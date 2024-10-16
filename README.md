@@ -1,4 +1,4 @@
-# sveltr
+# svxui
 
 SveltR is free and open-source UI component library for svelte app.
 Most components are directly based on their [Radix UI Themes](https://www.radix-ui.com/themes/docs/overview/getting-started) equivalent (without any affiliation).
@@ -16,9 +16,9 @@ Features:
 ## Installation
 
 ```bash
-npm install sveltr
-pnpm install sveltr
-yarn add sveltr
+npm install svxui
+pnpm install svxui
+yarn add svxui
 ```
 
 ## Documentation

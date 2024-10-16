@@ -9,7 +9,7 @@ import { mdsxConfig } from './mdsx.config.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const libPackageJson = JSON.parse(
-    String(readFileSync(resolve(__dirname, '../../packages/sveltr/package.json')))
+    String(readFileSync(resolve(__dirname, '../../packages/svxui/package.json')))
 );
 
 process.env.PUBLIC_PKG_VERSION = libPackageJson.version;

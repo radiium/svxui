@@ -5,7 +5,7 @@ category: doc
 ---
 
 <script lang="ts">
-    import { Card, Flexbox, Button, Text, longpressAction } from 'sveltr';
+    import { Card, Flexbox, Button, Text, longpressAction } from 'svxui';
 
     let isLongPressed = false;
 
@@ -35,7 +35,7 @@ category: doc
 
 ```svelte
 <script lang="ts">
-    import { longpressAction } from 'sveltr';
+    import { longpressAction } from 'svxui';
 
     let isLongPressed = false;
 

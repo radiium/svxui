@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Card, Flexbox, Input, Text } from 'sveltr';
+    import { Button, Card, Flexbox, Input, Text } from 'svxui';
 
     export let title: string = '';
 </script>

@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { SchemaSlot } from '$lib/doc.types';
     import Minus from 'phosphor-svelte/lib/Minus';
-    import { Card } from 'sveltr';
+    import { Card } from 'svxui';
     import TablePopover from './TablePopover.svelte';
     import TableProps from './TableProps.svelte';
 

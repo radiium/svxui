@@ -2,7 +2,7 @@
     import List from 'phosphor-svelte/lib/List';
     import X from 'phosphor-svelte/lib/X';
     import { fade } from 'svelte/transition';
-    import { Button, useMediaQuery } from 'sveltr';
+    import { Button, useMediaQuery } from 'svxui';
     import { closeMenu, handleEscape, isMobileMenuOpen, toggleMenu } from './menu';
 
     const isSmallScreen = useMediaQuery('(max-width: 825px)');

@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { AlignItems, defaultFlexboxProps, Directions, FlexDisplays, Gaps, Justifys, Wraps } from 'sveltr';
+import { AlignItems, defaultFlexboxProps, Directions, FlexDisplays, Gaps, Justifys, Wraps } from 'svxui';
 
 /**
  * Playground template

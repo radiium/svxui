@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Portal, Card, Badge, Flexbox } from 'sveltr';
+    import { Portal, Card, Badge, Flexbox } from 'svxui';
 </script>
 
 <Flexbox gap="3" class="mb-3">

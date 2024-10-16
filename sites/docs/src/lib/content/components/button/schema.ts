@@ -1,6 +1,6 @@
-import { defaultButtonProps, Radius, Transforms } from 'sveltr';
+import { defaultButtonProps, Radius, Transforms } from 'svxui';
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { Aligns, Colors, Sizes1To4, Variants } from 'sveltr';
+import { Aligns, Colors, Sizes1To4, Variants } from 'svxui';
 
 /**
  * Playground template
@@ -8,7 +8,7 @@ import { Aligns, Colors, Sizes1To4, Variants } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Button } from 'sveltr';
+    import { Button } from 'svxui';
 </script>
 
 <Button:props>:slot<Button>    

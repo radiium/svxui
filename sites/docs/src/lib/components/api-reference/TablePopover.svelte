@@ -1,6 +1,6 @@
 <script lang="ts">
     import Info from 'phosphor-svelte/lib/Info';
-    import { Button, Floating } from 'sveltr';
+    import { Button, Floating } from 'svxui';
 
     let isOpen = false;
 </script>

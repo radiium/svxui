@@ -7,7 +7,7 @@
     import { nav } from '$lib/utils/nav';
     import IconContext from 'phosphor-svelte/lib/IconContext';
     import { onMount } from 'svelte';
-    import { ThemeProvider } from 'sveltr';
+    import { ThemeProvider } from 'svxui';
 
     let mainRef: HTMLDivElement | null;
 

@@ -1,16 +1,16 @@
-export const snippetInstall = `npm install -D sveltr`;
+export const snippetInstall = `npm install -D svxui`;
 export const snippetThemeProvider = `<ThemeProvider />`;
 export const snippetThemeSelect = `<ThemeSelect />`;
 
 export const snippetImport = `
 <script>
-    import { ThemeProvider } from 'sveltr';
+    import { ThemeProvider } from 'svxui';
 </script>
 `;
 
 export const snippetUsage = `
 <script lang="ts">
-    import { ThemeProvider } from 'sveltr';
+    import { ThemeProvider } from 'svxui';
     export let title = '';
     let lala = $state();
 </script>

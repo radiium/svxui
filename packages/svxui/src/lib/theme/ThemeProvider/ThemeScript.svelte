@@ -32,7 +32,7 @@
         lightColor: ThemeColorLight
     };
 
-    $: initSveltr = ({
+    $: initSvxui = ({
         defaultStrategy,
         storageKeyStrategy,
         darkName,
@@ -68,5 +68,5 @@
 <svelte:head>
     <meta name="theme-color" content={themeColor} />
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html `<script>(` + initSveltr.toString() + `)(` + JSON.stringify(themeConfig) + `);</script>`}
+    {@html `<script>(` + initSvxui.toString() + `)(` + JSON.stringify(themeConfig) + `);</script>`}
 </svelte:head>

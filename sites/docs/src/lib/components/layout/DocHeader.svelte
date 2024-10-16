@@ -1,6 +1,6 @@
 <script lang="ts">
     import { PUBLIC_PKG_HOMEPAGE, PUBLIC_PKG_NAME, PUBLIC_PKG_VERSION } from '$env/static/public';
-    import { Badge, Button, Text, ThemeSelect } from 'sveltr';
+    import { Badge, Button, Text, ThemeSelect } from 'svxui';
     import GithubIcon from '../icons/GithubIcon.svelte';
 </script>
 

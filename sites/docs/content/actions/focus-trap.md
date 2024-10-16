@@ -5,7 +5,7 @@ category: doc
 ---
 
 <script lang="ts">
-    import { Card, Flexbox, Text, Button, Input, focusTrapAction } from 'sveltr';
+    import { Card, Flexbox, Text, Button, Input, focusTrapAction } from 'svxui';
 
     let isEnabled = false;
 </script>
@@ -41,7 +41,7 @@ category: doc
 
 ```svelte
 <script lang="ts">
-    import { focusTrapAction } from 'sveltr';
+    import { focusTrapAction } from 'svxui';
 
     let enabled = false;
 </script>

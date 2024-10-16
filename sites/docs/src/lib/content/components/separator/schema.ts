@@ -1,6 +1,6 @@
-import { Colors, defaultSeparatorProps } from 'sveltr';
+import { Colors, defaultSeparatorProps } from 'svxui';
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { Orientations, Sizes1To4 } from 'sveltr';
+import { Orientations, Sizes1To4 } from 'svxui';
 
 /**
  * Playground template
@@ -8,7 +8,7 @@ import { Orientations, Sizes1To4 } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Separator } from 'sveltr';
+    import { Separator } from 'svxui';
 </script>
 
 <Separator:props />   

@@ -1,6 +1,6 @@
 <script lang="ts">
     import Playground from '$lib/components/playground/Playground.svelte';
-    import { Button, ButtonIcon, Flexbox, Input, InputGroup, Select } from 'sveltr';
+    import { Button, ButtonIcon, Flexbox, Input, InputGroup, Select } from 'svxui';
 
     const selectOptions = ['opt1', 'opt2', 'opt3'];
 </script>

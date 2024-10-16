@@ -1,7 +1,7 @@
 import { getContext, setContext } from 'svelte';
 import type { AccordionContext } from './Accordion.types.js';
 
-const contextKeyAccordion = 'sveltr-context-accordion';
+const contextKeyAccordion = 'svxui-context-accordion';
 
 export function setAccordionContext(ctx: AccordionContext): void {
     setContext(contextKeyAccordion, ctx);

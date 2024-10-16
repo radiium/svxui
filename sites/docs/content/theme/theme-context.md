@@ -14,7 +14,7 @@ The `getThemeContext(){:ts}` allows access to the context of the closest `<Theme
 
 ```svelte
 <script>
-    import { getThemeContext } from 'sveltr';
+    import { getThemeContext } from 'svxui';
 
     const { isRoot, scheme, strategy, radius, setStrategy, setRadius } = getThemeContext();
 </script>

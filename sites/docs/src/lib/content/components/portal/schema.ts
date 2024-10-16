@@ -1,4 +1,4 @@
-import { defaultPortalProps } from 'sveltr';
+import { defaultPortalProps } from 'svxui';
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
 
 export const portalSchema: SchemaComponent = {

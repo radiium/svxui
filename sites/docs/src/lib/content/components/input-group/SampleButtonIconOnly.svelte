@@ -3,7 +3,7 @@
     import AlignLeftIcon from '$lib/components/icons/AlignLeft.svelte';
     import AlignRightIcon from '$lib/components/icons/AlignRight.svelte';
     import Playground from '$lib/components/playground/Playground.svelte';
-    import { ButtonIcon, Flexbox, InputGroup, Sizes1To3 } from 'sveltr';
+    import { ButtonIcon, Flexbox, InputGroup, Sizes1To3 } from 'svxui';
 
     const sizes = Sizes1To3;
 </script>

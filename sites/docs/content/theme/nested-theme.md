@@ -5,7 +5,7 @@ category: theme
 ---
 
 <script>
-    import { ThemeProvider } from 'sveltr';
+    import { ThemeProvider } from 'svxui';
     import SampleFormCard from '$lib/components/samples/SampleFormCard.svelte';
 </script>
 
@@ -19,7 +19,7 @@ The `<ThemeProvider/>{:svelte}` component can be nested.
 
 ```svelte
 <script>
-    import { ThemeProvider } from 'sveltr';
+    import { ThemeProvider } from 'svxui';
 </script>
 
 <!-- Root theme, default to system -->

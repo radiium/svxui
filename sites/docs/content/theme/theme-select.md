@@ -5,7 +5,7 @@ category: theme
 ---
 
 <script>
-    import { ThemeSelect, Flexbox } from 'sveltr';
+    import { ThemeSelect, Flexbox } from 'svxui';
     import ApiReferenceComponent from '$lib/components/api-reference/ApiReferenceComponent.svelte';
     import Playground from '$lib/components/playground/Playground.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
@@ -23,7 +23,7 @@ You can also build your own with by retrieving the `ThemeContext`
 
 ```svelte
 <script>
-    import { ThemeSelect } from 'sveltr';
+    import { ThemeSelect } from 'svxui';
 </script>
 
 <ThemeSelect />

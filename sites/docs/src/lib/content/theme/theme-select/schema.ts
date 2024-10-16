@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types';
-import { Colors, defaultThemeSelectProps, Placements, Sizes1To4, Variants } from 'sveltr';
+import { Colors, defaultThemeSelectProps, Placements, Sizes1To4, Variants } from 'svxui';
 
 export const themeSelectSchema: SchemaComponent = {
     props: [

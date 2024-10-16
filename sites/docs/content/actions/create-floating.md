@@ -5,7 +5,7 @@ category: doc
 ---
 
 <script lang="ts">
-    import { Card, Flexbox, Button, createFloating } from 'sveltr';
+    import { Card, Flexbox, Button, createFloating } from 'svxui';
     import { fade } from 'svelte/transition';
 
     let isOpen = false;
@@ -47,7 +47,7 @@ category: doc
 
 ```svelte
 <script lang="ts">
-    import { createFloating } from 'sveltr';
+    import { createFloating } from 'svxui';
     import { fade } from 'svelte/transition';
 
     let isOpen = false;

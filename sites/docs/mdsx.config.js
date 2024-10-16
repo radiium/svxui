@@ -191,7 +191,7 @@ const component_api_by_name = component_api.components.reduce((a, c) => {
 
 //     return `
 // <script>
-//     import {${ccs_imports.join(',')}} from "sveltr";
+//     import {${ccs_imports.join(',')}} from "svxui";
 // </script>
 
 // `;

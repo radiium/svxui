@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { defaultDialogProps, Radius, Sizes0To4 } from 'sveltr';
+import { defaultDialogProps, Radius, Sizes0To4 } from 'svxui';
 
 /**
  * Playground template
@@ -7,7 +7,7 @@ import { defaultDialogProps, Radius, Sizes0To4 } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Dialog, Button } from 'sveltr';
+    import { Dialog, Button } from 'svxui';
 
     let isOpen = false;
 </script>

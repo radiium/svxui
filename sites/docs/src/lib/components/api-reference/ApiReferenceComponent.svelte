@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { SchemaComponent } from '$lib/doc.types';
-    import { Text } from 'sveltr';
+    import { Text } from 'svxui';
     import CodeInline from '../CodeInline.svelte';
     import TableEvents from './TableEvents.svelte';
     import TableProps from './TableProps.svelte';

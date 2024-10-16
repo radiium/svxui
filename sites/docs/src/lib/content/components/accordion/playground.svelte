@@ -2,7 +2,7 @@
     import Playground from '$lib/components/playground/Playground.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
     import { slide } from 'svelte/transition';
-    import { AccordionGroup, AccordionItem, Button, Card, Flexbox, Text } from 'sveltr';
+    import { AccordionGroup, AccordionItem, Button, Card, Flexbox, Text } from 'svxui';
     import { template, accordionGroupSchema, accordionItemSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
 

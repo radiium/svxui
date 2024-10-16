@@ -43,7 +43,7 @@
 {/if}
 
 <div
-    class="sveltr {$theme}"
+    class="svxui {$theme}"
     data-theme-root={isRoot}
     data-theme={$theme}
     data-has-background={hasBackground}

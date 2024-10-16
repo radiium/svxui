@@ -1,7 +1,7 @@
 <script lang="ts">
     import Check from 'phosphor-svelte/lib/Check';
     import Clipboard from 'phosphor-svelte/lib/Clipboard';
-    import { Button } from 'sveltr';
+    import { Button } from 'svxui';
 
     export let copied = false;
 </script>

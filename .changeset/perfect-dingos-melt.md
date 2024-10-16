@@ -1,5 +1,5 @@
 ---
-'sveltr': major
+'svxui': major
 ---
 
-Sveltr first release
+Svxui first release

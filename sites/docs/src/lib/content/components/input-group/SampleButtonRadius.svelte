@@ -1,6 +1,6 @@
 <script lang="ts">
     import Playground from '$lib/components/playground/Playground.svelte';
-    import { Button, Flexbox, InputGroup, Radius, Sizes1To3 } from 'sveltr';
+    import { Button, Flexbox, InputGroup, Radius, Sizes1To3 } from 'svxui';
 
     const radiusList = Radius;
 </script>

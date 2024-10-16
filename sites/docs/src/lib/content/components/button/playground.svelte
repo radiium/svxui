@@ -2,7 +2,7 @@
     import Playground from '$lib/components/playground/Playground.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
     import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
-    import { Button, defaultButtonProps } from 'sveltr';
+    import { Button, defaultButtonProps } from 'svxui';
     import { template, buttonSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
 

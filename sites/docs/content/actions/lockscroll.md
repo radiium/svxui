@@ -5,7 +5,7 @@ category: doc
 ---
 
 <script lang="ts">
-    import { Card, Flexbox, Button, Text, lockscrollAction } from 'sveltr';
+    import { Card, Flexbox, Button, Text, lockscrollAction } from 'svxui';
 
     let isEnabled = false;
 </script>
@@ -41,7 +41,7 @@ category: doc
 
 ```svelte
 <script lang="ts">
-    import { Button, lockscroll } from 'sveltr';
+    import { Button, lockscroll } from 'svxui';
 
     let enabled = false;
     function onLockScrollChange(event: CustomEvent<HTMLElement>): void {

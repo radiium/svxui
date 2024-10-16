@@ -1,5 +1,5 @@
 <script>
-    import { Card, ThemeProvider } from 'sveltr';
+    import { Card, ThemeProvider } from 'svxui';
     import SampleFormCard from '$lib/components/samples/SampleFormCard.svelte';
     import H2 from '$lib/components/markdown/h2.svelte';
     import Blockquote from '$lib/components/markdown/blockquote.svelte';

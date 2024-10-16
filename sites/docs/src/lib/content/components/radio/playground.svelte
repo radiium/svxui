@@ -1,7 +1,7 @@
 <script lang="ts">
     import Playground from '$lib/components/playground/Playground.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
-    import { Radio, defaultRadioProps } from 'sveltr';
+    import { Radio, defaultRadioProps } from 'svxui';
     import { template, radioSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
 

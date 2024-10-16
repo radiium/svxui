@@ -19,7 +19,7 @@ category: doc
 
 ```svelte
 <script lang="ts">
-    import { Button, Card, Flexbox, TabGroup, TabPanel, TabTrigger } from 'sveltr';
+    import { Button, Card, Flexbox, TabGroup, TabPanel, TabTrigger } from 'svxui';
 
     const tabs = ['Tab1', 'Tab2', 'Tab3', 'Tab4'];
 </script>
@@ -53,7 +53,7 @@ category: doc
 
 ```svelte
 <script lang="ts">
-    import { Button, Card, Flexbox, TabGroup, TabPanel, TabTrigger } from 'sveltr';
+    import { Button, Card, Flexbox, TabGroup, TabPanel, TabTrigger } from 'svxui';
 
     const tabs = ['Tab1', 'Tab2', 'Tab3', 'Tab4'];
 </script>

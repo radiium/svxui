@@ -1,4 +1,4 @@
-import { defaultThemeProviderProps, Radius, Strategies, ThemeLight } from 'sveltr';
+import { defaultThemeProviderProps, Radius, Strategies, ThemeLight } from 'svxui';
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
 
 export const themeProviderSchema: SchemaComponent = {

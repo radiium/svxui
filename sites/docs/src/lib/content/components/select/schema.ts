@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { Colors, defaultSelectProps, Radius, Sizes1To3 } from 'sveltr';
+import { Colors, defaultSelectProps, Radius, Sizes1To3 } from 'svxui';
 
 /**
  * Playground template
@@ -7,7 +7,7 @@ import { Colors, defaultSelectProps, Radius, Sizes1To3 } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Select } from 'sveltr';
+    import { Select } from 'svxui';
 </script>
 
 <Select options={["opt1", "opt2", "opt3"]}:props />    

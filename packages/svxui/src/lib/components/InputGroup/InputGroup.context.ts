@@ -1,6 +1,6 @@
 import { getContext, setContext } from 'svelte';
 
-const contextKeyInputGroup = 'sveltr-context-input-group';
+const contextKeyInputGroup = 'svxui-context-input-group';
 
 export function setInputGroupContext(ctx: boolean): void {
     setContext(contextKeyInputGroup, ctx);

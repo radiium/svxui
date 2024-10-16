@@ -35,7 +35,7 @@ category: doc
 
 ```svelte title="lala"
 <script>
-    import { Portal, Card, Text } from 'sveltr';
+    import { Portal, Card, Text } from 'svxui';
 </script>
 
 <Portal target="#portal-target">

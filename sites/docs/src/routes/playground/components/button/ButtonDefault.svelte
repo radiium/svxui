@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Variants } from 'sveltr';
+    import { Button, Variants } from 'svxui';
 </script>
 
 <table>

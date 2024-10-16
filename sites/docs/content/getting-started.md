@@ -5,14 +5,14 @@ category: guide
 ---
 
 <script>
-    import { Badge, TabGroup, TabTrigger, TabPanel, Card, Flexbox, Button } from 'sveltr';
+    import { Badge, TabGroup, TabTrigger, TabPanel, Card, Flexbox, Button } from 'svxui';
 
 let selectedTab = 'npm'
 </script>
 
-### 1. Install sveltr
+### 1. Install svxui
 
-Install `sveltr` with the package manager of your choice
+Install `svxui` with the package manager of your choice
 
 <TabGroup>
     <Flexbox gap="1" class="p-1 mb-3">
@@ -30,21 +30,21 @@ Install `sveltr` with the package manager of your choice
 <TabPanel value="pnpm">
 
 ```bash
-pnpm install sveltr
+pnpm install svxui
 ```
 
 </TabPanel>
 <TabPanel value="npm">
 
 ```bash
-npm install sveltr
+npm install svxui
 ```
 
 </TabPanel>
 <TabPanel value="yarn">
 
 ```bash
-yarn add sveltr
+yarn add svxui
 ```
 
 </TabPanel>
@@ -56,7 +56,7 @@ Wrap your application with the `<ThemeProvider/>{:svelte}` component in the root
 
 ```svelte title="+layout.svelte"
 <script>
-    import { ThemeProvider } from 'sveltr';
+    import { ThemeProvider } from 'svxui';
 </script>
 
 <ThemeProvider>
@@ -66,11 +66,11 @@ Wrap your application with the `<ThemeProvider/>{:svelte}` component in the root
 
 ### 3. start building
 
-Your app is ready for use **sveltr**!
+Your app is ready for use **svxui**!
 
 ```svelte
 <script>
-    import { Button } from 'sveltr';
+    import { Button } from 'svxui';
 </script>
 
 <Button>Button</Button>

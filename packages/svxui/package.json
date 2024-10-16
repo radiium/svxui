@@ -1,9 +1,9 @@
 {
-    "name": "sveltr",
+    "name": "svxui",
     "sideEffects": false,
     "version": "0.0.1",
-    "description": "Sveltr library",
-    "homepage": "https://github.com/radiium/sveltr",
+    "description": "Svxui library",
+    "homepage": "https://github.com/radiium/svxui",
     "license": "MIT",
     "author": {
         "name": "radiium",
@@ -24,7 +24,7 @@
         "monorepo"
     ],
     "bugs": {
-        "url": "https://github.com/radiium/sveltr/issues"
+        "url": "https://github.com/radiium/svxui/issues"
     },
     "type": "module",
     "svelte": "./dist/index.js",

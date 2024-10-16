@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { Colors, defaultTextareaProps, Radius, Sizes1To3 } from 'sveltr';
+import { Colors, defaultTextareaProps, Radius, Sizes1To3 } from 'svxui';
 
 /**
  * Playground template
@@ -7,7 +7,7 @@ import { Colors, defaultTextareaProps, Radius, Sizes1To3 } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Textarea } from 'sveltr';
+    import { Textarea } from 'svxui';
 </script>
 
 <Textarea:props />   

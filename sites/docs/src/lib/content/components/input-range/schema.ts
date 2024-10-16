@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { Colors, defaultInputRangeProps, Radius, Sizes1To3 } from 'sveltr';
+import { Colors, defaultInputRangeProps, Radius, Sizes1To3 } from 'svxui';
 
 /**
  * Playground template
@@ -7,7 +7,7 @@ import { Colors, defaultInputRangeProps, Radius, Sizes1To3 } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { InputRange } from 'sveltr';
+    import { InputRange } from 'svxui';
 </script>
 
 <InputRange:props />   

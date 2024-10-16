@@ -1,7 +1,7 @@
 <script lang="ts">
     import Playground from '$lib/components/playground/Playground.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
-    import { Switch, defaultSwitchProps } from 'sveltr';
+    import { Switch, defaultSwitchProps } from 'svxui';
     import { template, switchSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
 

@@ -2,8 +2,8 @@
     "name": "root",
     "private": true,
     "version": "0.0.0",
-    "description": "Monorepo of Sveltr library",
-    "homepage": "https://github.com/radiium/sveltr",
+    "description": "Monorepo of Svxui library",
+    "homepage": "https://github.com/radiium/svxui",
     "license": "MIT",
     "author": {
         "name": "radiium",
@@ -24,7 +24,7 @@
         "monorepo"
     ],
     "bugs": {
-        "url": "https://github.com/radiium/sveltr/issues"
+        "url": "https://github.com/radiium/svxui/issues"
     },
     "main": "index.js",
     "engines": {
@@ -34,19 +34,19 @@
     "scripts": {
         "-- DEV": "",
         "dev": "concurrently \"pnpm:dev:lib:watch\" \"pnpm:dev:docs\"",
-        "dev:lib": "pnpm --filter=sveltr -r dev",
-        "dev:lib:watch": "pnpm --filter=sveltr -r package:watch",
+        "dev:lib": "pnpm --filter=svxui -r dev",
+        "dev:lib:watch": "pnpm --filter=svxui -r package:watch",
         "dev:docs": "pnpm --filter=docs -r dev",
         "-- BUILD": "",
         "build": "pnpm --filter=!@configs/** -r build",
-        "build:packages": "pnpm --filter=sveltr package",
+        "build:packages": "pnpm --filter=svxui package",
         "build:sites": "pnpm --filter=docs build",
         "-- UTILS": "",
         "check": "pnpm --filter=!@configs/** -r check",
         "lint": "pnpm --filter=!@configs/** -r lint",
         "format": "pnpm --filter=!@configs/** -r format",
-        "test": "pnpm --filter=sveltr -r test",
-        "package": " pnpm --filter=sveltr -r package",
+        "test": "pnpm --filter=svxui -r test",
+        "package": " pnpm --filter=svxui -r package",
         "ci:publish": " pnpm build:packages && changeset publish"
     },
     "devDependencies": {

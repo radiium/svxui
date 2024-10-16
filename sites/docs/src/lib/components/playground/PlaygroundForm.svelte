@@ -1,7 +1,7 @@
 <script lang="ts">
     import { SchemaPropType, type SchemaComponent, type SchemaProp } from '$lib/doc.types';
     import { onMount } from 'svelte';
-    import { Button, Colors, Flexbox, Input, InputNumber, Select, Switch, Text } from 'sveltr';
+    import { Button, Colors, Flexbox, Input, InputNumber, Select, Switch, Text } from 'svxui';
 
     type PropsType = { [key: SchemaProp['name']]: any };
     export let schema: SchemaComponent = {

@@ -1,7 +1,7 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { defaultBadgeProps, Radius } from 'sveltr';
+import { defaultBadgeProps, Radius } from 'svxui';
 
-import { Colors, Sizes1To3, VariantsBadge } from 'sveltr';
+import { Colors, Sizes1To3, VariantsBadge } from 'svxui';
 
 /**
  * Playground template
@@ -9,7 +9,7 @@ import { Colors, Sizes1To3, VariantsBadge } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Badge } from 'sveltr';
+    import { Badge } from 'svxui';
 </script>
 
 <Badge:props>Badge</Badge>    

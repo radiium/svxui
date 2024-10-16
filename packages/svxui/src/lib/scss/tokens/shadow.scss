@@ -45,7 +45,7 @@
 
 /* prettier-ignore */
 @supports (color: color-mix(in oklab, white, black)) {
-    :where(.sveltr) {
+    :where(.svxui) {
         --shadow-1:
             inset 0 0 0 1px var(--gray-a5),
             inset 0 1.5px 2px 0 var(--gray-a2),
@@ -84,7 +84,7 @@
 
 /* prettier-ignore */
 :is(.dark, [data-theme='dark']),
-:is(.dark, [data-theme='dark']) :where(.sveltr:not(.light, [data-theme='light'])) {
+:is(.dark, [data-theme='dark']) :where(.svxui:not(.light, [data-theme='light'])) {
     --shadow-1:
         inset 0 -1px 1px 0 var(--gray-a3),
         inset 0 0 0 1px var(--gray-a3),

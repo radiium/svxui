@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { Colors, defaultCalloutProps, Radius, Sizes1To3, VariantsCallout } from 'sveltr';
+import { Colors, defaultCalloutProps, Radius, Sizes1To3, VariantsCallout } from 'svxui';
 
 /**
  * Playground template
@@ -7,7 +7,7 @@ import { Colors, defaultCalloutProps, Radius, Sizes1To3, VariantsCallout } from 
 
 export const template = `
 <script lang="ts">
-    import { Callout } from 'sveltr';
+    import { Callout } from 'svxui';
 </script>
 
 <Callout:props>:slot<Callout>    

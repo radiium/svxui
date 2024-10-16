@@ -29,7 +29,7 @@ The `<InputGroup/>` can be used for grouping the following components: `<Input/>
 
 ```svelte
 <script>
-    import { InputGroup, Button } from 'sveltr';
+    import { InputGroup, Button } from 'svxui';
 
     const sizes = ['1', '2', '3'];
 </script>
@@ -49,7 +49,7 @@ The `<InputGroup/>` can be used for grouping the following components: `<Input/>
 
 ```svelte
 <script>
-    import { InputGroup, Input, Button } from 'sveltr';
+    import { InputGroup, Input, Button } from 'svxui';
     import AlignLeftIcon from '$lib/icons/AlignLeft.svelte';
     import AlignCenterIcon from '$lib/icons/AlignCenter.svelte';
     import AlignRightIcon from '$lib/icons/AlignRight.svelte';
@@ -78,7 +78,7 @@ The `<InputGroup/>` can be used for grouping the following components: `<Input/>
 
 ```svelte
 <script>
-    import { InputGroup, Button } from 'sveltr';
+    import { InputGroup, Button } from 'svxui';
 
     const radiusList = ['none', 'small', 'medium', 'large'];
 </script>
@@ -98,7 +98,7 @@ The `<InputGroup/>` can be used for grouping the following components: `<Input/>
 
 ```svelte column
 <script>
-    import { InputGroup, Input, Select, Button } from 'sveltr';
+    import { InputGroup, Input, Select, Button } from 'svxui';
 
     const selectOptions = [
         {
@@ -154,7 +154,7 @@ The `<InputGroup/>` can be used for grouping the following components: `<Input/>
 
 ```svelte column
 <script>
-    import { InputGroup, Input, Button } from 'sveltr';
+    import { InputGroup, Input, Button } from 'svxui';
 </script>
 
 <InputGroup>
@@ -192,7 +192,7 @@ The `<InputGroup/>` can be used for grouping the following components: `<Input/>
 
 ```svelte column
 <script>
-    import { InputGroup, Input, Button } from 'sveltr';
+    import { InputGroup, Input, Button } from 'svxui';
     import PlusIcon from '$lib/icons/Plus.svelte';
 </script>
 

@@ -1,6 +1,6 @@
-import { defaultCheckboxProps, Radius } from 'sveltr';
+import { defaultCheckboxProps, Radius } from 'svxui';
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { Colors, Sizes1To3 } from 'sveltr';
+import { Colors, Sizes1To3 } from 'svxui';
 
 /**
  * Playground template
@@ -8,7 +8,7 @@ import { Colors, Sizes1To3 } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Checkbox } from 'sveltr';
+    import { Checkbox } from 'svxui';
 </script>
 
 <Checkbox:props />  

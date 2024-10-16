@@ -18,7 +18,7 @@
         Switch,
         Text,
         Textarea
-    } from 'sveltr';
+    } from 'svxui';
 
     type SizesConfig = {
         [key: string]: {

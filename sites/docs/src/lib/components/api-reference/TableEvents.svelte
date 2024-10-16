@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { SchemaEvent } from '$lib/doc.types';
     import Minus from 'phosphor-svelte/lib/Minus';
-    import { Card } from 'sveltr';
+    import { Card } from 'svxui';
 
     export let slots: SchemaEvent[] = [];
 </script>

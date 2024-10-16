@@ -1,7 +1,7 @@
 <script lang="ts">
     import Playground from '$lib/components/playground/Playground.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
-    import { InputNumber, defaultInputNumberProps } from 'sveltr';
+    import { InputNumber, defaultInputNumberProps } from 'svxui';
     import { template, inputNumberSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
 

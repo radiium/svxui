@@ -1,6 +1,6 @@
-import { defaultTextProps } from 'sveltr';
+import { defaultTextProps } from 'svxui';
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { Aligns, Colors, Sizes1To9, TextWraps, Transforms, Weights } from 'sveltr';
+import { Aligns, Colors, Sizes1To9, TextWraps, Transforms, Weights } from 'svxui';
 
 /**
  * Playground template
@@ -8,7 +8,7 @@ import { Aligns, Colors, Sizes1To9, TextWraps, Transforms, Weights } from 'svelt
 
 export const template = `
 <script lang="ts">
-    import { Text } from 'sveltr';
+    import { Text } from 'svxui';
 </script>
 
 <Text:props>Super sample text !</Text>   

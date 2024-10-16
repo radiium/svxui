@@ -3,7 +3,7 @@
     import type { NavSection } from '$lib/utils/nav';
     import { CaretRight } from 'phosphor-svelte';
     import { slide } from 'svelte/transition';
-    import { AccordionGroup, AccordionItem, ButtonUnstyled, Flexbox, Text } from 'sveltr';
+    import { AccordionGroup, AccordionItem, ButtonUnstyled, Flexbox, Text } from 'svxui';
     import { closeMenu } from './menu';
 
     export let nav: NavSection[] = [];

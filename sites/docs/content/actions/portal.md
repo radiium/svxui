@@ -5,7 +5,7 @@ category: doc
 ---
 
 <script lang="ts">
-    import { Card, Flexbox, Text, portalAction } from 'sveltr';
+    import { Card, Flexbox, Text, portalAction } from 'svxui';
 
     let isEnabled = false;
 </script>
@@ -37,7 +37,7 @@ category: doc
 
 ```svelte
 <script lang="ts">
-    import { portalAction } from 'sveltr';
+    import { portalAction } from 'svxui';
 </script>
 
 <div id="destination">destination</div>

@@ -2,7 +2,7 @@
     import Playground from '$lib/components/playground/Playground.svelte';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
-    import { Callout, defaultCalloutProps } from 'sveltr';
+    import { Callout, defaultCalloutProps } from 'svxui';
     import { calloutSchema, template } from './schema.js';
     import Info from '$lib/components/icons/Info.svelte';
 

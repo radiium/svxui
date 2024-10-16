@@ -1,4 +1,4 @@
-import { defaultAccordionGroupProps, defaultAccordionItemProps } from 'sveltr';
+import { defaultAccordionGroupProps, defaultAccordionItemProps } from 'svxui';
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
 
 /**
@@ -7,7 +7,7 @@ import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
 
 export const template = `
 <script lang="ts">
-    import { AccordionGroup, AccordionItem, Card, Flexbox, Text, Button } from 'sveltr';
+    import { AccordionGroup, AccordionItem, Card, Flexbox, Text, Button } from 'svxui';
     import { slide } from 'svelte/transition';
 
     let state = [false, false, false];

@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { BlockDisplays, defaultBoxProps } from 'sveltr';
+import { BlockDisplays, defaultBoxProps } from 'svxui';
 
 /**
  * Playground template
@@ -7,7 +7,7 @@ import { BlockDisplays, defaultBoxProps } from 'sveltr';
 
 export const template = `
 <script lang="ts">
-    import { Badge } from 'sveltr';
+    import { Badge } from 'svxui';
 </script>
 
 <Badge:props>Badge</Badge>    

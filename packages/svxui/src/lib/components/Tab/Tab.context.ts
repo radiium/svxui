@@ -1,7 +1,7 @@
 import { getContext, setContext } from 'svelte';
 import type { TabContext, TabGroupProps, TabPanelProps, TabTriggerProps } from './Tab.types.js';
 
-const contextKeyTab = 'sveltr-context-tab';
+const contextKeyTab = 'svxui-context-tab';
 
 export function setTabContext(ctx: TabContext): void {
     setContext(contextKeyTab, ctx);

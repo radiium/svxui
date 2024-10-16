@@ -49,7 +49,7 @@ importers:
         specifier: ^3.2.7
         version: 3.2.7(prettier@3.3.3)(svelte@4.2.19)
 
-  packages/sveltr:
+  packages/svxui:
     dependencies:
       '@floating-ui/dom':
         specifier: ^1.6.11
@@ -139,9 +139,9 @@ importers:
       phosphor-svelte:
         specifier: ^2.0.1
         version: 2.0.1(svelte@4.2.19)
-      sveltr:
+      svxui:
         specifier: workspace:*
-        version: link:../../packages/sveltr
+        version: link:../../packages/svxui
     devDependencies:
       '@configs/eslint-config':
         specifier: workspace:*

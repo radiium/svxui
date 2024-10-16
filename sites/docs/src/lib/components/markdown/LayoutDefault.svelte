@@ -12,7 +12,7 @@
 </script>
 
 <script lang="ts">
-    import { Flexbox, useMediaQuery } from 'sveltr';
+    import { Flexbox, useMediaQuery } from 'svxui';
 
     export let metadata: {
         title: string;

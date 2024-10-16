@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Text } from 'sveltr';
+    import { Text } from 'svxui';
 
     export let id: string = '';
 </script>
