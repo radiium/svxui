@@ -4,7 +4,6 @@
 
     export let schema: SchemaAction;
 
-    $: console.log(schema);
     $: hasParamsBloc = schema.params && schema.params.length > 0;
     $: hasAttributesBloc = schema.attributes && schema.attributes.length > 0;
 </script>
