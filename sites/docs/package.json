@@ -55,6 +55,7 @@
         "@configs/eslint-config": "workspace:*",
         "@configs/prettier-config": "workspace:*",
         "@sveltejs/adapter-auto": "^3.2.5",
+        "@sveltejs/adapter-vercel": "^5.4.5",
         "@sveltejs/kit": "^2.7.0",
         "@sveltejs/vite-plugin-svelte": "^3.1.2",
         "concurrently": "^9.0.1",

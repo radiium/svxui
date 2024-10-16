@@ -152,6 +152,9 @@ importers:
       '@sveltejs/adapter-auto':
         specifier: ^3.2.5
         version: 3.2.5(@sveltejs/kit@2.7.0(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.5.5)(sass@1.79.5)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.5.5)(sass@1.79.5)))
+      '@sveltejs/adapter-vercel':
+        specifier: ^5.4.5
+        version: 5.4.5(@sveltejs/kit@2.7.0(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.5.5)(sass@1.79.5)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.5.5)(sass@1.79.5)))
       '@sveltejs/kit':
         specifier: ^2.7.0
         version: 2.7.0(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.5.5)(sass@1.79.5)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.5.5)(sass@1.79.5))
