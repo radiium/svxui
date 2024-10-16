@@ -36,6 +36,7 @@
         "dev": "pnpm run /^dev:.*/",
         "dev:content": "contentlayer dev",
         "dev:svelte": "vite dev",
+        "build:all": "pnpm -w build",
         "build": "pnpm run /^build:.*/",
         "build:content": "contentlayer build",
         "build:svelte": "vite build",
