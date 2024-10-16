@@ -2,6 +2,6 @@
     import { Text } from 'sveltr';
 </script>
 
-<Text as="p" size="3" class="mb-3">
+<Text as="p" size="3" class="markdown mb-3">
     <slot />
 </Text>

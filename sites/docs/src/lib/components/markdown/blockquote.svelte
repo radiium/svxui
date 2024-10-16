@@ -1,4 +1,4 @@
-<blockquote class="pl-5 py-3 my-3" data-color="blue" {...$$restProps}>
+<blockquote class="markdown pl-5 py-3 my-3" data-color="blue" {...$$restProps}>
     <slot />
 </blockquote>
 

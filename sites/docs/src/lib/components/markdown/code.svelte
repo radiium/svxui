@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<code {...$$restProps}>
+<code {...$$restProps} class="markdown">
     code
     <slot />
 </code>

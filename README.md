@@ -1,6 +1,7 @@
 # sveltr
 
-This library is an attempt to port the great [Radix UI Themes](https://www.radix-ui.com/themes/docs/overview/getting-started) to svelte using html tags whenever possible
+SveltR is free and open-source UI component library for svelte app.
+Most components are directly based on their [Radix UI Themes](https://www.radix-ui.com/themes/docs/overview/getting-started) equivalent (without any affiliation).
 
 Features: 
 -  [x] 23 components (some from Radix UI Themes others not)
@@ -9,8 +10,8 @@ Features:
 -  [x] No flash of unstyled content
 -  [x] Configurable radius, global or by component 
 -  [x] Theme persisted in localstorage
--  [ ] Customizable colors palette (gray/primary/green/blue/yellow/orange/red) **soon**
--  [ ] Compatible ssr/ssg **soon**
+-  [ ] Customizable colors palette (gray/primary/green/blue/yellow/orange/red) **_soon_**
+-  [ ] Compatible ssr/ssg **_soon_**
 
 ## Installation
 

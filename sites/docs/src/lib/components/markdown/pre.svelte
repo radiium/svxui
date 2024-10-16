@@ -5,7 +5,7 @@
     const { copied, codeString, copyCode, setCodeString } = createCopy();
 </script>
 
-<pre use:setCodeString {...$$restProps}>
+<pre use:setCodeString {...$$restProps} class="markdown">
     <slot />	
 </pre>
 
