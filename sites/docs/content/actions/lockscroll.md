@@ -8,9 +8,6 @@ category: doc
     import { Card, Flexbox, Button, Text, lockscrollAction } from 'sveltr';
 
     let isEnabled = false;
-    function onLockScrollChange(event: CustomEvent<HTMLElement>): void {
-        console.log(event.detail);
-    }
 </script>
 
 ## Example
@@ -32,7 +29,7 @@ category: doc
 </Flexbox>
 
 <Card variant="outline" size="0" style="display: block;">
-    <ul use:lockscrollAction={isEnabled} on:lockscrollchange={onLockScrollChange} class="py-3" style="height: 100px; display: flex; flex-direction: column; overflow: scroll;">
+    <ul use:lockscrollAction={isEnabled} class="py-3" style="height: 100px; display: flex; flex-direction: column; overflow: scroll;">
         {#each Array(10) as _, i}
             <li>{i} item</li>
         {/each}

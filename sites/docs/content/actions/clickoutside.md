@@ -9,7 +9,6 @@ category: doc
 
     let isClickedOutside = undefined
     function onClickoutside(event: CustomEvent<MouseEvent>): void {
-        console.log('onClickoutside');
         isClickedOutside = true
     }
 </script>
