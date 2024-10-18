@@ -1,6 +1,7 @@
 <script lang="ts">
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
     import { SchemaPropType, type SchemaComponent } from '$lib/doc.types';
+    import { isMobile } from '$lib/utils/reponsive';
     import type { ComponentProps } from 'svelte';
     import {
         Button,
@@ -106,7 +107,7 @@
 
 <Text as="h2" size="6" weight="bold" class="mt-7 mb-3">Form sample</Text>
 <Card size={size?.card}>
-    <form>
+    <form class:mobile={$isMobile}>
         <Flexbox direction="column" gap="4">
             <!--  Input text -->
             <Flexbox direction="column" gap="2">
@@ -285,6 +286,15 @@
 </Card>
 
 <style lang="scss">
+    form {
+        &.mobile {
+            .row {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-4);
+            }
+        }
+    }
     .row {
         display: grid;
         grid-template-columns: 1fr 1fr;

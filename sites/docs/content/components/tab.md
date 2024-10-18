@@ -21,7 +21,7 @@ category: doc
 <script lang="ts">
     import { Button, Card, Flexbox, TabGroup, TabPanel, TabTrigger } from 'svxui';
 
-    const tabs = ['Tab1', 'Tab2', 'Tab3', 'Tab4'];
+    const tabs = ['Tab1', 'Tab2', 'Tab3'];
 </script>
 
 <TabGroup>
@@ -55,7 +55,7 @@ category: doc
 <script lang="ts">
     import { Button, Card, Flexbox, TabGroup, TabPanel, TabTrigger } from 'svxui';
 
-    const tabs = ['Tab1', 'Tab2', 'Tab3', 'Tab4'];
+    const tabs = ['Tab1', 'Tab2', 'Tab3'];
 </script>
 
 <TabGroup>

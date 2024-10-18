@@ -2,7 +2,7 @@
     import Playground from '$lib/components/playground/Playground.svelte';
     import { Button, Card, Flexbox, TabGroup, TabPanel, TabTrigger } from 'svxui';
 
-    const tabs = ['Tab1', 'Tab2', 'Tab3', 'Tab4'];
+    const tabs = ['Tab1', 'Tab2', 'Tab3'];
 </script>
 
 <Playground class="mb-5">

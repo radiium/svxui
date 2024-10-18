@@ -14,8 +14,8 @@
             <thead class="rt-TableHeader">
                 <tr class="rt-TableRow">
                     <th scope="col" style="width: auto;">Name</th>
-                    <th scope="col">Description</th>
                     <th scope="col">Slot props</th>
+                    <th scope="col">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,19 +29,19 @@
                             {/if}
                         </td>
                         <td data-color="gray">
-                            {#if slot.description}
-                                <code class="default">
-                                    {slot.description}
-                                </code>
+                            {#if Array.isArray(slot.props) && slot.props?.length > 0}
+                                <TablePopover>
+                                    <TableProps props={slot.props} />
+                                </TablePopover>
                             {:else}
                                 <Minus color="var(--accent-a11)" size="15" />
                             {/if}
                         </td>
                         <td data-color="gray">
-                            {#if Array.isArray(slot.props) && slot.props?.length > 0}
-                                <TablePopover>
-                                    <TableProps props={slot.props} />
-                                </TablePopover>
+                            {#if slot.description}
+                                <code class="default">
+                                    {slot.description}
+                                </code>
                             {:else}
                                 <Minus color="var(--accent-a11)" size="15" />
                             {/if}

@@ -3,8 +3,14 @@
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
     import { slide } from 'svelte/transition';
     import { AccordionGroup, AccordionItem, Button, Card, Flexbox, Text } from 'svxui';
-    import { template, accordionGroupSchema, accordionItemSchema } from './schema.js';
+    import { template, accordionGroupSchema, accordionItemSchema as itemSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
+    import P from '$lib/components/markdown/p.svelte';
+
+    let accordionItemSchema = {
+        ...itemSchema,
+        props: itemSchema.props.filter((p) => p.name !== 'id')
+    };
 
     let propsGroup = {};
     let propsString = '';

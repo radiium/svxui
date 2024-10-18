@@ -100,11 +100,11 @@ export const accordionGroupSchema: SchemaComponent = {
 export const accordionItemSchema: SchemaComponent = {
     name: 'Accordion Item',
     props: [
-        // {
-        //     name: 'id',
-        //     type: SchemaPropType.string,
-        //     default: defaultAccordionItemProps.id
-        // },
+        {
+            name: 'id',
+            type: SchemaPropType.string,
+            default: defaultAccordionItemProps.id
+        },
         {
             name: 'expanded',
             type: SchemaPropType.boolean,
