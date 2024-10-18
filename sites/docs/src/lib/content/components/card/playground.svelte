@@ -7,10 +7,16 @@
 
     let props = defaultCardProps;
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
 <Playground>
     <Card {...props} slot="component">Card content</Card>
     <PlaygroundForm bind:props bind:propsString schema={cardSchema} slot="form" />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

@@ -7,10 +7,16 @@
 
     let props = { ...defaultSeparatorProps };
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
 <Playground>
     <Separator slot="component" {...props} />
     <PlaygroundForm slot="form" bind:props bind:propsString schema={separatorSchema} />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

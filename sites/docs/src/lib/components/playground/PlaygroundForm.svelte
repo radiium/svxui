@@ -1,5 +1,6 @@
 <script lang="ts">
     import { SchemaPropType, type SchemaComponent, type SchemaProp } from '$lib/doc.types';
+    import { isMobile } from '$lib/utils/reponsive';
     import { onMount } from 'svelte';
     import { Button, Colors, Flexbox, Input, InputNumber, Select, Switch, Text } from 'svxui';
 
@@ -79,9 +80,9 @@
                         {/each}
                     </Flexbox>
                 {:else}
-                    <Select size="2" fullWidth options={[...prop.values]} bind:value={props[prop.name]} />
+                    <!-- <Select size="2" fullWidth options={[...prop.values]} bind:value={props[prop.name]} /> -->
 
-                    <!-- <Flexbox wrap="wrap" gap="1">
+                    <Flexbox wrap="wrap" gap="1">
                         {#each prop.values as value}
                             <Button
                                 size="1"
@@ -92,7 +93,7 @@
                                 {value}
                             </Button>
                         {/each}
-                    </Flexbox> -->
+                    </Flexbox>
                 {/if}
             </Flexbox>
         {:else if prop.type === SchemaPropType.boolean}
@@ -103,13 +104,19 @@
         {:else if prop.type === SchemaPropType.number}
             <Flexbox direction="column" gap="1" align="start">
                 <Text size="2" weight="bold">{prop.name}</Text>
-                <Input type="number" size="2" bind:value={props[prop.name]} />
+                <Input type="number" size="2" bind:value={props[prop.name]} fullWidth />
                 <!-- <InputNumber size="1" variant="soft" bind:value={props[prop.name]} /> -->
             </Flexbox>
         {:else if prop.type === SchemaPropType.string}
             <Flexbox as="label" direction="column" gap="1" align="start">
                 <Text size="2" weight="bold">{prop.name}</Text>
-                <Input size="2" bind:value={props[prop.name]} placeholder={prop.name} name={prop.name} />
+                <Input
+                    size="2"
+                    bind:value={props[prop.name]}
+                    placeholder={prop.name}
+                    name={prop.name}
+                    fullWidth
+                />
             </Flexbox>
         {/if}
     {/each}

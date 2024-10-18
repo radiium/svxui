@@ -7,10 +7,35 @@
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
 
     let propsGroup = {};
-    let propsItem1 = { expanded: false };
-    let propsItem2 = { expanded: false };
-    let propsItem3 = { expanded: false };
     let propsString = '';
+
+    let propsItem1 = { expanded: false };
+    let propsString1 = '';
+
+    let propsItem2 = { expanded: false };
+    let propsString2 = '';
+
+    let propsItem3 = { expanded: false };
+    let propsString3 = '';
+
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        },
+        {
+            key: ':props1',
+            value: propsString1
+        },
+        {
+            key: ':props2',
+            value: propsString2
+        },
+        {
+            key: ':props3',
+            value: propsString3
+        }
+    ];
 </script>
 
 <Playground forceColumn>
@@ -73,14 +98,26 @@
         </AccordionGroup>
     </div>
     <Flexbox slot="form" direction="column" gap="1">
-        <h5>Props AccordionGroup</h5>
+        <h4>Props AccordionGroup</h4>
         <PlaygroundForm bind:props={propsGroup} bind:propsString schema={accordionGroupSchema} />
-        <h5 class="mt-3">Props AccordioItem 1</h5>
-        <PlaygroundForm bind:props={propsItem1} schema={accordionItemSchema} />
-        <h5 class="mt-3">Props AccordioItem 2</h5>
-        <PlaygroundForm bind:props={propsItem2} schema={accordionItemSchema} />
-        <h5 class="mt-3">Props AccordioItem 3</h5>
-        <PlaygroundForm bind:props={propsItem3} schema={accordionItemSchema} />
+        <h4 class="mt-5">Props AccordioItem 1</h4>
+        <PlaygroundForm
+            bind:props={propsItem1}
+            bind:propsString={propsString1}
+            schema={accordionItemSchema}
+        />
+        <h4 class="mt-5">Props AccordioItem 2</h4>
+        <PlaygroundForm
+            bind:props={propsItem2}
+            bind:propsString={propsString2}
+            schema={accordionItemSchema}
+        />
+        <h4 class="mt-5">Props AccordioItem 3</h4>
+        <PlaygroundForm
+            bind:props={propsItem3}
+            bind:propsString={propsString3}
+            schema={accordionItemSchema}
+        />
     </Flexbox>
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

@@ -25,6 +25,11 @@ button.color-btn {
     }
 }
 
+.table-wrapper {
+    width: 100%;
+    overflow: auto;
+}
+
 table.api-reference-table {
     font-size: var(--font-size-2);
     line-height: var(--line-height-2);

@@ -15,7 +15,7 @@ export const template = `
 
 <AccordionGroup:props>
     <Card size="1" class="mb-3">
-        <AccordionItem {...propsItem1} bind:expanded={state[0]}>
+        <AccordionItem:props1>
             <Flexbox
                 slot="header"
                 let:toggle
@@ -33,7 +33,7 @@ export const template = `
         </AccordionItem>
     </Card>
     <Card size="1" class="mb-3">
-        <AccordionItem {...propsItem2} bind:expanded={state[1]}>
+        <AccordionItem:props2>
             <Flexbox
                 slot="header"
                 let:toggle
@@ -51,7 +51,7 @@ export const template = `
         </AccordionItem>
     </Card>
     <Card size="1" class="mb-3">
-        <AccordionItem {...propsItem3} bind:expanded={state[2]}>
+        <AccordionItem:props3>
             <Flexbox
                 slot="header"
                 let:toggle
@@ -100,11 +100,11 @@ export const accordionGroupSchema: SchemaComponent = {
 export const accordionItemSchema: SchemaComponent = {
     name: 'Accordion Item',
     props: [
-        {
-            name: 'id',
-            type: SchemaPropType.string,
-            default: defaultAccordionItemProps.id
-        },
+        // {
+        //     name: 'id',
+        //     type: SchemaPropType.string,
+        //     default: defaultAccordionItemProps.id
+        // },
         {
             name: 'expanded',
             type: SchemaPropType.boolean,

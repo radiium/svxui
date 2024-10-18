@@ -7,6 +7,12 @@
 
     let props = { ...defaultFlexboxProps, isOpen: false };
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
 <Playground>
@@ -23,5 +29,5 @@
         </Flexbox>
     </Card>
     <PlaygroundForm bind:props bind:propsString schema={flexboxSchema} slot="form" />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

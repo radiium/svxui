@@ -30,7 +30,7 @@ export function createPlaygroundMask(): {
     }>;
     getComponentSize: (node: HTMLElement) => void;
 } {
-    const padding = 10;
+    const padding = 0;
     const maskStyles = writable({
         top: '0px',
         left: '0px',

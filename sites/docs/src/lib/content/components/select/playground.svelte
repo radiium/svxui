@@ -7,6 +7,12 @@
 
     let props = { ...defaultSelectProps };
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 
     let options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
 </script>
@@ -14,5 +20,5 @@
 <Playground>
     <Select slot="component" {...props} bind:value={props.value} {options} placeholder="Select an option" />
     <PlaygroundForm slot="form" bind:props bind:propsString schema={selectSchema} />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

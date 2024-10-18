@@ -60,6 +60,7 @@
         flex-direction: column;
         height: 100%;
         overflow: auto;
+        flex-shrink: 0;
 
         section {
             width: 100%;

@@ -7,10 +7,16 @@
 
     let props = { ...defaultInputRangeProps };
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
 <Playground>
     <InputRange slot="component" {...props} bind:value={props.value} />
     <PlaygroundForm slot="form" bind:props bind:propsString schema={inputRangeSchema} />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

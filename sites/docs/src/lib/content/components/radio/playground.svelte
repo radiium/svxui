@@ -8,10 +8,16 @@
     let props = { ...defaultRadioProps };
     let group: string | number | undefined = undefined;
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
 <Playground>
     <Radio slot="component" {...props} bind:group />
     <PlaygroundForm slot="form" bind:props bind:propsString schema={radioSchema} />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

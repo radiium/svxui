@@ -1,15 +1,14 @@
 <script lang="ts">
+    import { isTablet, isMobile } from '$lib/utils/reponsive';
     import List from 'phosphor-svelte/lib/List';
     import X from 'phosphor-svelte/lib/X';
     import { fade } from 'svelte/transition';
-    import { Button, useMediaQuery } from 'svxui';
+    import { Button } from 'svxui';
     import { closeMenu, handleEscape, isMobileMenuOpen, toggleMenu } from './menu';
-
-    const isSmallScreen = useMediaQuery('(max-width: 825px)');
 </script>
 
-<div class="wrapper" class:mobile={$isSmallScreen}>
-    {#if $isSmallScreen}
+<div class="wrapper" class:tablet={$isTablet || $isMobile}>
+    {#if $isTablet}
         {#if $isMobileMenuOpen}
             <div
                 class="backdrop"
@@ -36,7 +35,7 @@
     <header>
         <slot name="header" />
     </header>
-    <aside class:is-open={$isMobileMenuOpen && $isSmallScreen}>
+    <aside class:is-open={$isMobileMenuOpen && $isTablet}>
         <slot name="aside" />
     </aside>
     <main>
@@ -144,7 +143,7 @@
         background: rgba(0, 0, 0, 0.4);
     }
 
-    .wrapper.mobile {
+    .wrapper.tablet {
         grid-template-columns: 1fr;
         grid-template-rows: var(--header-height) 1fr;
         grid-template-areas:
@@ -158,6 +157,7 @@
         aside {
             grid-area: unset;
             position: fixed;
+            height: calc(100vh - var(--header-height));
             top: var(--header-height);
             bottom: 0;
             left: 0;

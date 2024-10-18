@@ -7,10 +7,16 @@
 
     let props = defaultBadgeProps;
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
 <Playground>
     <Badge {...props} slot="component">Badge</Badge>
     <PlaygroundForm bind:props bind:propsString schema={badgeSchema} slot="form" />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

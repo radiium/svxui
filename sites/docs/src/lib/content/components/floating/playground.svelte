@@ -7,6 +7,12 @@
 
     let props = { ...defaultFloatingProps, isOpen: false };
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 
     function toggle() {
         props.isOpen = !props.isOpen;
@@ -19,5 +25,5 @@
         <div slot="content">Floating content</div>
     </Floating>
     <PlaygroundForm slot="form" bind:props bind:propsString schema={floatingSchema} />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

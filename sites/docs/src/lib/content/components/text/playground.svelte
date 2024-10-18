@@ -7,10 +7,16 @@
 
     let props = { ...defaultTextProps };
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
-<Playground>
+<Playground mask={false}>
     <Text slot="component" style="width: 100%" {...props}>Super sample text !</Text>
     <PlaygroundForm slot="form" bind:props bind:propsString schema={textSchema} />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

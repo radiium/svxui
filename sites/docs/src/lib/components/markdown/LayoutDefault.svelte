@@ -12,7 +12,8 @@
 </script>
 
 <script lang="ts">
-    import { Flexbox, useMediaQuery } from 'svxui';
+    import { isMobile, isTablet } from '$lib/utils/reponsive';
+    import { Flexbox } from 'svxui';
 
     export let metadata: {
         title: string;
@@ -20,10 +21,10 @@
         category: string;
     };
 
-    const isSmallScreen = useMediaQuery('(max-width: 825px)');
+    $: padding = $isMobile ? 'p-3' : $isTablet ? 'p-5' : 'p-9';
 </script>
 
-<Flexbox direction="column" class="{metadata.category} {$isSmallScreen ? 'p-5' : 'p-9'}">
+<Flexbox direction="column" class="{metadata.category} {padding}">
     <!-- Headers -->
     <Flexbox as="header" direction="column">
         {#if metadata.title}

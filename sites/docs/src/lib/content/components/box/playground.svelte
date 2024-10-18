@@ -7,6 +7,12 @@
 
     let props = defaultBoxProps;
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
 <Playground>
@@ -23,5 +29,5 @@
         </Box>
     </Card>
     <PlaygroundForm bind:props bind:propsString schema={boxSchema} slot="form" />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

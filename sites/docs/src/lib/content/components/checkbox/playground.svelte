@@ -7,10 +7,16 @@
 
     let props = { ...defaultCheckboxProps, checked: false };
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
 <Playground>
     <Checkbox slot="component" {...props} bind:checked={props.checked} />
     <PlaygroundForm slot="form" bind:props bind:propsString schema={checkboxSchema} />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

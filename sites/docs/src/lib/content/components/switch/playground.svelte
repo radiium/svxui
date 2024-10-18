@@ -7,10 +7,16 @@
 
     let props = { ...defaultSwitchProps };
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
 <Playground>
     <Switch slot="component" {...props} />
     <PlaygroundForm slot="form" bind:props bind:propsString schema={switchSchema} />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

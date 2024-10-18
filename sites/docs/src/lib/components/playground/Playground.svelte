@@ -1,18 +1,18 @@
 <script lang="ts">
-    import { useMediaQuery } from 'svxui';
     import { createPlaygroundMask } from './playground-mask';
+    import { isMobile, isTablet } from '$lib/utils/reponsive';
 
     export let forceColumn = false;
+    export let mask = true;
 
-    const isSmallScreen = useMediaQuery('(max-width: 825px)');
     const { maskStyles, getComponentSize } = createPlaygroundMask();
 </script>
 
-<div class="playground-wrapper {$$restProps.class}">
-    <div class="preview-contols" class:layout-column={forceColumn || $isSmallScreen}>
+<div class="playground-wrapper {$$restProps.class}" class:mobile={$isMobile}>
+    <div class="preview-contols" class:layout-column={forceColumn || $isTablet || $isMobile}>
         <div class="preview">
             <div class="preview-background">
-                {#if $maskStyles}
+                {#if mask && $maskStyles}
                     <div
                         class="preview-mask"
                         style:top={$maskStyles.top}
@@ -48,16 +48,30 @@
         border-radius: var(--radius-5);
         overflow: hidden;
 
+        &.mobile {
+            .preview-contols {
+                .preview {
+                    .preview-content {
+                        padding: var(--space-5);
+                    }
+                }
+                .controls {
+                    padding: var(--space-3);
+                }
+            }
+        }
         .preview-contols {
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
             min-height: 260px;
             min-width: 350px;
+            max-width: 100%;
 
             &.layout-column {
                 flex-direction: column;
                 flex-wrap: nowrap;
+                min-width: 0;
             }
 
             .preview {

@@ -7,10 +7,16 @@
 
     let props = { ...defaultLinkProps };
     let propsString = '';
+    $: templateProps = [
+        {
+            key: ':props',
+            value: propsString
+        }
+    ];
 </script>
 
-<Playground>
+<Playground mask={false}>
     <Link slot="component" {...props} style="width: 100%" href="#" target="_self">Link sample</Link>
     <PlaygroundForm slot="form" bind:props bind:propsString schema={linkSchema} />
-    <PlaygroundCode slot="code" {template} {propsString} />
+    <PlaygroundCode slot="code" {template} {templateProps} />
 </Playground>

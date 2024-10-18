@@ -3,18 +3,17 @@
     import CopyCodeButton from '../code/CopyCodeButton.svelte';
     import { shiki } from '../code/shiki';
 
-    export let template = ':props';
-    export let templateSlot = ':slot';
-    export let propsString = '';
+    export let template = '';
+    export let templateProps: { key: string; value: string }[] = [];
 
     const { copyCode, copied } = createCopy();
     let code = '';
     let highlighted = '';
     $: {
-        code = template.replace(':props', propsString ? ' ' + propsString : '').trim();
-        if (templateSlot) {
-            code = code.replace(':slot', templateSlot);
-        }
+        code = templateProps.reduce((acc, next) => {
+            return acc.replace(next.key, next.value ? ` ${next.value}` : '').trim();
+        }, template);
+
         if ($shiki!.codeToHtml) {
             highlighted = $shiki.codeToHtml(code, { lang: 'svelte' });
         }
