@@ -5,6 +5,7 @@ category: doc
 ---
 
 <script lang="ts">
+    import { isMobile } from '$lib/utils/reponsive.js';
     import { Card, Flexbox, Text, portalAction } from 'svxui';
 
     let isEnabled = false;
@@ -13,7 +14,7 @@ category: doc
 ## Example
 
 <Card>
-<Flexbox gap="3" wrap="nowrap">
+<Flexbox gap="3" wrap="nowrap" direction={$isMobile ? 'column' : 'row'}>
 <Card variant="outline" style="min-height: 100%">
     <Flexbox gap="3" direction="column" >
     <Text>Source container</Text>
