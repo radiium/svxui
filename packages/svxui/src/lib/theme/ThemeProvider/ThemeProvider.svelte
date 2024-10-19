@@ -7,6 +7,7 @@
     import type { ThemeProviderProps } from './ThemeProvider.types.js';
     import ThemeScript from './ThemeScript.svelte';
     import { createThemeProvider, systemeThemeStore } from './theme.store.js';
+    import { clsx } from '$lib/utils/clsx.js';
 
     type $$Props = ThemeProviderProps;
     export let defaultStrategy: $$Props['defaultStrategy'] = defaultThemeProviderProps.defaultStrategy;
@@ -36,6 +37,8 @@
             systemeThemeStore.update();
         }
     });
+
+    $: cssClass = clsx($$restProps.class, 'svxui', $theme);
 </script>
 
 {#if isRoot}
@@ -43,7 +46,8 @@
 {/if}
 
 <div
-    class="svxui {$theme}"
+    style={$$restProps.style}
+    class={cssClass}
     data-theme-root={isRoot}
     data-theme={$theme}
     data-has-background={hasBackground}

@@ -1,7 +1,7 @@
 ///
 /// GAP UTILITIES
 ///
-$gapSizes: (
+$gaps: (
     '0': 0px,
     '1': var(--space-1),
     '2': var(--space-2),
@@ -16,7 +16,7 @@ $gapSizes: (
 
 /// WIDTHS
 
-@each $sizeKey, $sizeValue in $gapSizes {
+@each $sizeKey, $sizeValue in $gaps {
     .gap-#{$sizeKey} {
         gap: $sizeValue;
     }
