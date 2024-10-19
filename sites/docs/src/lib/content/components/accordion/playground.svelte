@@ -1,11 +1,10 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
+    import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
     import { slide } from 'svelte/transition';
     import { AccordionGroup, AccordionItem, Button, Card, Flexbox, Text } from 'svxui';
-    import { template, accordionGroupSchema, accordionItemSchema as itemSchema } from './schema.js';
-    import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
-    import P from '$lib/components/markdown/p.svelte';
+    import { accordionGroupSchema, accordionItemSchema as itemSchema, template } from './schema.js';
 
     let accordionItemSchema = {
         ...itemSchema,
@@ -44,7 +43,7 @@
     ];
 </script>
 
-<Playground forceColumn>
+<PlaygroundWrapper forceColumn>
     <div slot="component" style="min-width: 100%; min-height: 100%;">
         <AccordionGroup {...propsGroup}>
             <Card size="1" class="mb-3">
@@ -126,4 +125,4 @@
         />
     </Flexbox>
     <PlaygroundCode slot="code" {template} {templateProps} />
-</Playground>
+</PlaygroundWrapper>

@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
     import { Button, Flexbox, Input, InputGroup } from 'svxui';
 </script>
 
-<Playground class="mb-5">
+<PlaygroundWrapper class="mb-5">
     <Flexbox slot="component" direction="column" gap="3">
         <InputGroup>
             <Button variant="soft">button</Button>
@@ -33,4 +33,4 @@
             <Input />
         </InputGroup>
     </Flexbox>
-</Playground>
+</PlaygroundWrapper>

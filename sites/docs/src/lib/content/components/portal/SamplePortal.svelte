@@ -1,15 +1,24 @@
 <script lang="ts">
-    import { Portal, Card, Badge, Flexbox } from 'svxui';
+    import { isMobile } from '$lib/utils/reponsive';
+    import { Portal, Card, Badge, Flexbox, Text } from 'svxui';
 </script>
 
-<Flexbox gap="3" class="mb-3">
-    <Card class="flex-grow-1">
-        Portal source
+<Card>
+    <Flexbox gap="3" wrap="nowrap" direction={$isMobile ? 'column' : 'row'}>
+        <Card variant="outline" style="min-height: 100%">
+            <Flexbox gap="3" direction="column">
+                <Text>Source container</Text>
+                <Portal target="#portal-target">
+                    <Card variant="surface" color="primary">Portal content</Card>
+                </Portal>
+            </Flexbox>
+        </Card>
 
-        <Portal target="#portal-target">
-            <Badge color="primary" size="3">Portal content</Badge>
-        </Portal>
-    </Card>
-
-    <Card id="portal-target" class="flex-grow-1">Portal target</Card>
-</Flexbox>
+        <Card variant="outline">
+            <Flexbox gap="3" direction="column">
+                <Text>Destination container</Text>
+                <div id="portal-target"></div>
+            </Flexbox>
+        </Card>
+    </Flexbox>
+</Card>

@@ -1,11 +1,11 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
     import { Button, Card, Flexbox, TabGroup, TabPanel, TabTrigger } from 'svxui';
 
     const tabs = ['Tab1', 'Tab2', 'Tab3'];
 </script>
 
-<Playground class="mb-5">
+<PlaygroundWrapper class="mb-5">
     <TabGroup slot="component">
         <Flexbox gap="1" class="mb-5">
             <Card variant="soft" size="0">
@@ -27,4 +27,4 @@
             </Card>
         </Flexbox>
     </TabGroup>
-</Playground>
+</PlaygroundWrapper>

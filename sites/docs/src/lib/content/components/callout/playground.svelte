@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
+    import Info from '$lib/components/icons/Info.svelte';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
     import { Callout, defaultCalloutProps } from 'svxui';
     import { calloutSchema, template } from './schema.js';
-    import Info from '$lib/components/icons/Info.svelte';
 
     let props = defaultCalloutProps;
     let propsString = '';
@@ -16,11 +16,11 @@
     ];
 </script>
 
-<Playground>
+<PlaygroundWrapper>
     <Callout slot="component" {...props}>
         <Info slot="icon" />
         Callout content
     </Callout>
     <PlaygroundForm slot="form" bind:props bind:propsString schema={calloutSchema} />
     <PlaygroundCode slot="code" {template} {templateProps} />
-</Playground>
+</PlaygroundWrapper>

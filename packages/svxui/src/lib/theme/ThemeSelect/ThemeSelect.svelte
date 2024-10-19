@@ -82,14 +82,3 @@
         </Flexbox>
     </svelte:fragment>
 </Floating>
-
-<!-- <Select
-	class={$$restProps.class}
-	options={themeOptions}
-	value={$themeStore.theme}
-	on:input={handleChange}
-	on:input
-	on:change
-	on:focus
-	on:blur
-/> -->

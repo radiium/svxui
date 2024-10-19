@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
-    import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
-    import { Card, Flexbox, defaultFlexboxProps } from 'svxui';
-    import { template, flexboxSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
+    import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
+    import { Card, Flexbox, defaultFlexboxProps } from 'svxui';
+    import { flexboxSchema, template } from './schema.js';
 
     let props = { ...defaultFlexboxProps, isOpen: false };
     let propsString = '';
@@ -15,7 +15,7 @@
     ];
 </script>
 
-<Playground>
+<PlaygroundWrapper>
     <Card slot="component" size="1" style="width: 100%; height: 100%;">
         <Flexbox {...props} style="width: 100%; height: 100%;">
             {#each [1, 2, 3] as n}
@@ -30,4 +30,4 @@
     </Card>
     <PlaygroundForm bind:props bind:propsString schema={flexboxSchema} slot="form" />
     <PlaygroundCode slot="code" {template} {templateProps} />
-</Playground>
+</PlaygroundWrapper>

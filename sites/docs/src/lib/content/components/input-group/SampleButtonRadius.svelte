@@ -1,11 +1,11 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
-    import { Button, Flexbox, InputGroup, Radius, Sizes1To3 } from 'svxui';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
+    import { Button, Flexbox, InputGroup, Radius } from 'svxui';
 
     const radiusList = Radius;
 </script>
 
-<Playground class="mb-5">
+<PlaygroundWrapper class="mb-5">
     <Flexbox slot="component" direction="column" gap="3">
         {#each radiusList as radius}
             <InputGroup>
@@ -15,4 +15,4 @@
             </InputGroup>
         {/each}
     </Flexbox>
-</Playground>
+</PlaygroundWrapper>

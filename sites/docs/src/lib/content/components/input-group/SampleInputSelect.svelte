@@ -1,11 +1,11 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
     import { Button, ButtonIcon, Flexbox, Input, InputGroup, Select } from 'svxui';
 
     const selectOptions = ['opt1', 'opt2', 'opt3'];
 </script>
 
-<Playground class="mb-5">
+<PlaygroundWrapper class="mb-5">
     <Flexbox slot="component" direction="column" gap="3">
         <InputGroup>
             <Input />
@@ -23,4 +23,4 @@
             <Button variant="soft">button</Button>
         </InputGroup>
     </Flexbox>
-</Playground>
+</PlaygroundWrapper>

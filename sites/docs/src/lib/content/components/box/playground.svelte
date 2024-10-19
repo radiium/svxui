@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
     import { Box, defaultBoxProps, Card } from 'svxui';
     import { template, boxSchema } from './schema.js';
@@ -15,7 +15,7 @@
     ];
 </script>
 
-<Playground>
+<PlaygroundWrapper>
     <Card slot="component" size="1" style="width: 100%; height: 100%;">
         <Box {...props} style="width: 100%; height: 100%;">
             {#each [1, 2, 3] as n}
@@ -30,4 +30,4 @@
     </Card>
     <PlaygroundForm bind:props bind:propsString schema={boxSchema} slot="form" />
     <PlaygroundCode slot="code" {template} {templateProps} />
-</Playground>
+</PlaygroundWrapper>

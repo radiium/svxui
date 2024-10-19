@@ -10,30 +10,13 @@ category: doc
     import {portalSchema} from '$lib/content/components/portal/schema.js';
 </script>
 
-## API Reference
-
-<ApiReferenceComponent schema={portalSchema}/>
-
-<!-- <Flexbox gap="3" >
-    <Flexbox gap="3" direction="column" class="flex-grow-1">
-        <h4>Portal source</h4>
-        <Card class="flex-grow-1">
-            <Portal target="#portal-targete">
-                Portal content
-            </Portal>
-        </Card>
-    </Flexbox>
-    <Flexbox gap="3" direction="column" class="flex-grow-1">
-        <h4>Portal target</h4>
-        <Card id="portal-targete"></Card>
-    </Flexbox>
-</Flexbox> -->
-
 ## Example
 
 <SamplePortal/>
 
-```svelte title="lala"
+## Usage
+
+```svelte
 <script>
     import { Portal, Card, Text } from 'svxui';
 </script>
@@ -42,15 +25,11 @@ category: doc
     <Text color="primary">Portal content</Text>
 </Portal>
 
-<Card id="portal-target">Portal target</Card>
+...
+<!-- elsewhere in your application -->
+<div id="portal-target">Portal target</div>
 ```
 
-<!-- #### Portal source
-<Card class="mb-5">
-    <Portal target="#portal-target">
-        Portal content
-    </Portal>
-</Card>
+## API Reference
 
-#### Portal target
-<Card id="portal-target"></Card> -->
+<ApiReferenceComponent schema={portalSchema}/>

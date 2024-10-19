@@ -1,11 +1,11 @@
 <script lang="ts">
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
-    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
-    import { Separator, defaultSeparatorProps } from 'svxui';
-    import { separatorSchema, template } from './schema.js';
+    import { defaultThemeSelectProps, ThemeSelect } from 'svxui';
+    import { template, themeSelectSchema } from './schema.js';
 
-    let props = { ...defaultSeparatorProps };
+    let props = defaultThemeSelectProps;
     let propsString = '';
     $: templateProps = [
         {
@@ -16,7 +16,7 @@
 </script>
 
 <PlaygroundWrapper>
-    <Separator slot="component" {...props} />
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={separatorSchema} />
+    <ThemeSelect slot="component" {...props} />
+    <PlaygroundForm slot="form" bind:props bind:propsString schema={themeSelectSchema} />
     <PlaygroundCode slot="code" {template} {templateProps} />
 </PlaygroundWrapper>

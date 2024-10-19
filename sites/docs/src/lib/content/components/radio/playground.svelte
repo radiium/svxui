@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
-    import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
-    import { Radio, defaultRadioProps } from 'svxui';
-    import { template, radioSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
+    import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
+    import { Radio, defaultRadioProps } from 'svxui';
+    import { radioSchema, template } from './schema.js';
 
     let props = { ...defaultRadioProps };
     let group: string | number | undefined = undefined;
@@ -16,8 +16,8 @@
     ];
 </script>
 
-<Playground>
+<PlaygroundWrapper>
     <Radio slot="component" {...props} bind:group />
     <PlaygroundForm slot="form" bind:props bind:propsString schema={radioSchema} />
     <PlaygroundCode slot="code" {template} {templateProps} />
-</Playground>
+</PlaygroundWrapper>

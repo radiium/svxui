@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
     import { Link, defaultLinkProps } from 'svxui';
     import { template, linkSchema } from './schema.js';
@@ -15,8 +15,8 @@
     ];
 </script>
 
-<Playground mask={false}>
+<PlaygroundWrapper mask={false}>
     <Link slot="component" {...props} style="width: 100%" href="#" target="_self">Link sample</Link>
     <PlaygroundForm slot="form" bind:props bind:propsString schema={linkSchema} />
     <PlaygroundCode slot="code" {template} {templateProps} />
-</Playground>
+</PlaygroundWrapper>

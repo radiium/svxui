@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
-    import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
-    import { Button, Dialog, defaultDialogProps } from 'svxui';
-    import { template, dialogSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
+    import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
+    import { Button, Dialog, defaultDialogProps } from 'svxui';
+    import { dialogSchema, template } from './schema.js';
 
     let props = { ...defaultDialogProps, isOpen: false };
     let propsString = '';
@@ -15,7 +15,7 @@
     ];
 </script>
 
-<Playground>
+<PlaygroundWrapper>
     <div slot="component">
         <Button variant="soft" on:click={() => (props.isOpen = true)}>open</Button>
         <Dialog {...props} bind:isOpen={props.isOpen}>
@@ -32,4 +32,4 @@
     </div>
     <PlaygroundForm slot="form" bind:props bind:propsString schema={dialogSchema} />
     <PlaygroundCode slot="code" {template} {templateProps} />
-</Playground>
+</PlaygroundWrapper>

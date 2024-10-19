@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
     import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
     import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
     import { Button, defaultButtonProps } from 'svxui';
@@ -20,7 +20,7 @@
     ];
 </script>
 
-<Playground>
+<PlaygroundWrapper>
     <Button slot="component" {...props}>
         {#if props.iconOnly}
             <MagnifyingGlass />
@@ -30,4 +30,4 @@
     </Button>
     <PlaygroundForm slot="form" bind:props bind:propsString schema={buttonSchema} />
     <PlaygroundCode slot="code" {template} {templateProps} />
-</Playground>
+</PlaygroundWrapper>

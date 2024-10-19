@@ -15,7 +15,7 @@ let selectedTab = 'npm'
 Install `svxui` with the package manager of your choice
 
 <TabGroup>
-    <Flexbox gap="1" class="p-1 mb-3">
+    <Flexbox gap="1" class="p-1 mb-1">
     <TabTrigger value="pnpm" let:isActive let:select>
         <Button variant={isActive ? 'soft' : 'clear'} size="2" on:click={select}>pnpm</Button>
     </TabTrigger>
@@ -26,7 +26,6 @@ Install `svxui` with the package manager of your choice
         <Button variant={isActive ? 'soft' : 'clear'} size="2" on:click={select}>yarn</Button>
     </TabTrigger>
     </Flexbox>
-
 <TabPanel value="pnpm">
 
 ```bash
@@ -68,7 +67,7 @@ Wrap your application with the `<ThemeProvider/>{:svelte}` component in the root
 
 Your app is ready for use **svxui**!
 
-```svelte
+```svelte title="+page.svelte"
 <script>
     import { Button } from 'svxui';
 </script>

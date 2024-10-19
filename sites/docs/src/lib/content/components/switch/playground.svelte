@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Playground from '$lib/components/playground/Playground.svelte';
-    import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
-    import { Switch, defaultSwitchProps } from 'svxui';
-    import { template, switchSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
+    import PlaygroundForm from '$lib/components/playground/PlaygroundForm.svelte';
+    import PlaygroundWrapper from '$lib/components/playground/PlaygroundWrapper.svelte';
+    import { Switch, defaultSwitchProps } from 'svxui';
+    import { switchSchema, template } from './schema.js';
 
     let props = { ...defaultSwitchProps };
     let propsString = '';
@@ -15,8 +15,8 @@
     ];
 </script>
 
-<Playground>
+<PlaygroundWrapper>
     <Switch slot="component" {...props} />
     <PlaygroundForm slot="form" bind:props bind:propsString schema={switchSchema} />
     <PlaygroundCode slot="code" {template} {templateProps} />
-</Playground>
+</PlaygroundWrapper>

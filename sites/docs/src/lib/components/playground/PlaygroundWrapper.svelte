@@ -57,6 +57,8 @@
                 }
                 .controls {
                     padding: var(--space-3);
+                    min-width: 0;
+                    width: 100%;
                 }
             }
         }
@@ -123,6 +125,7 @@
 
             .controls {
                 min-width: 300px;
+                max-width: 100%;
                 flex-shrink: 0;
                 flex: 1;
                 background-color: transparent;

@@ -1,46 +1,19 @@
 <script lang="ts">
     import { SchemaPropType, type SchemaComponent, type SchemaProp } from '$lib/doc.types';
-    import { isMobile } from '$lib/utils/reponsive';
     import { onMount } from 'svelte';
-    import { Button, Colors, Flexbox, Input, InputNumber, Select, Switch, Text } from 'svxui';
+    import { Button, Colors, Flexbox, Input, Switch, Text } from 'svxui';
+    import { buildProps, buildPropsString, type AnyPropsType } from './playground-utils';
 
-    type PropsType = { [key: SchemaProp['name']]: any };
+    export let props: AnyPropsType = {};
+    export let propsString: string = '';
     export let schema: SchemaComponent = {
         props: [],
         slots: [],
         events: []
     };
-    export let propsString = '';
-    export let props: PropsType = {};
 
-    onMount(() => {
-        if (schema) {
-            props = schema?.props?.reduce<PropsType>((acc, next) => {
-                if (next.default !== undefined) {
-                    acc[next.name] = next.default;
-                }
-                return acc;
-            }, {});
-        }
-    });
-
-    $: propsString = schema.props
-        .filter((prop) => prop.name !== 'elementRef')
-        .map((prop) => {
-            if (prop.type === SchemaPropType.boolean) {
-                if (props[prop.name] === true) {
-                    return prop.name;
-                } else if (!props[prop.name] && prop.default === true) {
-                    return `${prop.name}={false}`;
-                }
-            } else if (props[prop.name] !== undefined && props[prop.name] !== prop.default) {
-                return `${prop.name}="${props[prop.name]}"`;
-            } else {
-                return '';
-            }
-        })
-        .filter(Boolean)
-        .join(' ');
+    onMount(() => (props = buildProps(schema)));
+    $: propsString = buildPropsString(schema, props);
 
     function updateEnumProp(
         prop: SchemaProp,
@@ -52,19 +25,13 @@
             props[prop.name] = value;
         }
     }
-
-    const castColor = (color: (typeof Colors)[number]): (typeof Colors)[number] => color;
 </script>
 
 {#if schema && props}
     {#each schema.props as prop}
-        <!-- Prop enum -->
         {#if prop.type === SchemaPropType.enum && prop.values}
             <Flexbox direction="column" gap="1" align="start">
-                <Text size="2" weight="bold">
-                    {prop.name}
-                    <!-- : <Text size="3" transform="lowercase">{props[prop.name]}</Text> -->
-                </Text>
+                <Text size="2" weight="bold">{prop.name}</Text>
                 <!-- Prop color only -->
                 {#if prop.name === 'color'}
                     <Flexbox wrap="wrap" gap="1">
