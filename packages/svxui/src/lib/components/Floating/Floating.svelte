@@ -19,6 +19,9 @@
     export let closeOnResize: $$Props['closeOnResize'] = defaultFloatingProps.closeOnResize;
     export let closeOnScroll: $$Props['closeOnScroll'] = defaultFloatingProps.closeOnScroll;
     export let arrow: $$Props['arrow'] = defaultFloatingProps.arrow;
+    export let flip: $$Props['flip'] = defaultFloatingProps.flip;
+    export let shift: $$Props['arrow'] = defaultFloatingProps.shift;
+    export let hide: $$Props['hide'] = defaultFloatingProps.hide;
     export let placement: $$Props['placement'] = defaultFloatingProps.placement;
     export let offset: $$Props['offset'] = defaultFloatingProps.offset;
     export let outline: $$Props['outline'] = defaultFloatingProps.outline;
@@ -36,6 +39,9 @@
         autoUpdate,
         placement,
         arrow,
+        flip,
+        shift,
+        hide,
         offset: 0
     });
 
@@ -117,6 +123,7 @@
             data-align={$state?.align}
             data-size={size}
             data-radius={radius}
+            style={$$restProps.style}
             bind:this={elementRef}
         >
             {#if arrow}

@@ -15,6 +15,9 @@ export const defaultFloatingProps: FloatingProps = {
     placement: 'top',
     offset: 0,
     arrow: false,
+    flip: false,
+    shift: false,
+    hide: false,
     portal: false,
     transitionDelay: 0,
     transitionDuration: 150

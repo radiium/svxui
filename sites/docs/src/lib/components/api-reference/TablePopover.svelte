@@ -5,7 +5,18 @@
     let isOpen = false;
 </script>
 
-<Floating bind:isOpen size="0" offset={7} arrow outline autoUpdate closeOnClickOutside portal>
+<Floating
+    bind:isOpen
+    size="0"
+    offset={7}
+    arrow
+    shift
+    outline
+    autoUpdate
+    closeOnClickOutside
+    portal
+    style="max-width: 100%;"
+>
     <Button size="1" iconOnly color="gray" variant="clear" slot="trigger" on:click={() => (isOpen = !isOpen)}>
         <Info size="32" />
     </Button>
