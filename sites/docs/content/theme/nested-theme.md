@@ -38,11 +38,11 @@ The `<ThemeProvider/>{:svelte}` component can be nested.
 
 ## Example
 
-<ThemeProvider defaultStrategy="dark">
+<ThemeProvider defaultStrategy="dark" class="width-100">
     <SampleFormCard title="Forced dark theme">
-        <ThemeProvider defaultStrategy="light" hasBackground={false}>
+        <ThemeProvider defaultStrategy="light" hasBackground={false} class="width-100">
             <SampleFormCard title="Forced light theme">
-                <ThemeProvider defaultStrategy="system" hasBackground={false}>
+                <ThemeProvider defaultStrategy="system" hasBackground={false} class="width-100">
                     <SampleFormCard  title="Forced sytem theme"/>
                 </ThemeProvider>
             </SampleFormCard>

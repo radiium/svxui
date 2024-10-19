@@ -1,22 +1,29 @@
 <script lang="ts">
+    import { isMobile } from '$lib/utils/reponsive';
     import { Button, Card, Flexbox, Input, Text } from 'svxui';
 
     export let title: string = '';
 </script>
 
-<Card variant="solid">
-    <Flexbox direction="column" gap="6" align="start">
-        <Card style="max-width: 300px">
-            <Flexbox direction="column" gap="3" align="start">
+<Card variant="solid" size={$isMobile ? '1' : '5'} class="width-100">
+    <Flexbox direction="column" gap="6" align="start" class="width-100">
+        <Card class="width-100">
+            <Flexbox direction="column" gap="3" align="start" class="width-100">
                 <Text size="5" weight="bold">{title}</Text>
                 <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed eros ut turpis finibus
                     mattis.
                 </Text>
 
-                <Flexbox gap="3" justify="center" align="center" class="mt-4">
-                    <Input placeholder="Email" />
-                    <Button variant="soft">Submit</Button>
+                <Flexbox
+                    gap="3"
+                    justify="center"
+                    wrap={$isMobile ? 'wrap' : 'nowrap'}
+                    align="center"
+                    class="mt-4 width-100"
+                >
+                    <Input placeholder="Email" fullWidth={$isMobile} />
+                    <Button variant="soft" fullWidth={$isMobile}>Submit</Button>
                 </Flexbox>
             </Flexbox>
         </Card>
