@@ -3,35 +3,45 @@ title: Introduction
 description:
 category: index
 ---
+<script lang="ts>
+    import { Text, Separator } from 'svxui';
+</script>
 
-## Svuix
+## Svxui
 
-Svuix is free and open-source UI component library for svelte app.
-Most components are directly based on their [Radix UI Themes](https://www.radix-ui.com/themes/docs/overview/getting-started) equivalent (without any affiliation).
+<Text size="5">
+    Svxui is free and open-source UI component library for svelte app.
+</Text>
+
+<Separator size="4" class="mt-9 mb-5"/>
 
 ## Features
 
--   [x] 23 strictly typed components (some from [Radix UI Themes](https://www.radix-ui.com/themes/docs/overview/getting-started) others not)
--   [x] Color based on [Radix Colors](https://www.radix-ui.com/colors)
--   [x] Support system/Light/dark Themes
--   [x] No flash of unstyled content
--   [x] Configurable radius, global or by component
--   [x] Theme persisted in localstorage
--   [ ] Customizable colors palette (gray/primary/green/blue/yellow/orange/red) **_soon_**
--   [ ] Compatible SvelteKit ssr/ssg **_soon_**
+### 23 customizable components:
+- Type-safe with TypeScript.
+- Most components are based on [Radix UI Themes](https://www.radix-ui.com/themes/docs/overview/getting-started).
+
+### Accessible colors:
+- Based on [Radix Colors](https://www.radix-ui.com/colors).
+- Intuitive aliases `gray`/`primary`/`blue`/`green`/`yellow`/`orange`/`red`.
+  
+### Light & Dark themes:
+- Prevent FLOUC (Flash Of Unstyled Content).
+- Real time system theme tracking.
+- ssr/ssg compatible
 
 <style lang="scss">
-    :global(ul.contains-task-list li a),
+    :global(ul li a),
     :global(p.markdown a) {
         color: var(--teal-a11);
     }
 
-    :global(ul.contains-task-list li a:hover),
+    :global(ul li a:hover),
     :global(p.markdown a:hover) {
         text-decoration: underline;
     }
 
-    :global(ul.contains-task-list li strong em ) {
+    :global(ul li strong em ) {
         color: var(--teal-a11);
         padding: calc(var(--space-1)* 0.5) calc(var(--space-1)* 1.5);
         box-shadow: inset 0px 0px 0px 1px var(--teal-a8);

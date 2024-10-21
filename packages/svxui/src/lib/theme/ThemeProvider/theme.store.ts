@@ -72,6 +72,9 @@ export function createThemeProvider({
     defaultRadius: RadiusType | undefined;
     systemeTheme: Readable<ThemeType>;
 }) {
+    /**
+     * Theme Strategy
+     */
     let initialStrategy: StrategyType;
     if (isRoot) {
         initialStrategy = getStorageStrategy() ?? defaultStrategy;
@@ -89,6 +92,9 @@ export function createThemeProvider({
         });
     });
 
+    /**
+     * Theme
+     */
     const theme = derived([strategy, systemeTheme], ([$strategy, $systemeTheme]) => {
         const derivedMode = $strategy === ThemeSystem ? $systemeTheme : $strategy;
 
@@ -112,6 +118,9 @@ export function createThemeProvider({
         return derivedMode;
     });
 
+    /**
+     * Radius
+     */
     let initialRadius: RadiusType;
     if (isRoot) {
         initialRadius = getStorageRadius() ?? defaultRadius;

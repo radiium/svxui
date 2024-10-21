@@ -1,18 +1,25 @@
 # svxui
 
-Svuix is free and open-source UI component library for svelte app.
-Most components are directly based on their [Radix UI Themes](https://www.radix-ui.com/themes/docs/overview/getting-started) equivalent (without any affiliation).
+Svxui is free and open-source UI component library for svelte app.
 
-Features:
+--- 
 
--   [x] 23 components (some from Radix UI Themes others not)
--   [x] Color based on [Radix Colors](https://www.radix-ui.com/colors)
--   [x] Support system/Light/dark Themes
--   [x] No flash of unstyled content
--   [x] Configurable radius, global or by component
--   [x] Theme persisted in localstorage
--   [ ] Customizable colors palette (gray/primary/green/blue/yellow/orange/red) **_soon_**
--   [ ] Compatible ssr/ssg **_soon_**
+## Interactive [Documentation](https://svxui.vercel.app/)
+
+## Features
+
+### 23 customizable components:
+- Type-safe with TypeScript.
+- Most components are based on [Radix UI Themes](https://www.radix-ui.com/themes/docs/overview/getting-started).
+
+### Accessible colors:
+- Based on [Radix Colors](https://www.radix-ui.com/colors).
+- Intuitive aliases `gray`/`primary`/`blue`/`green`/`yellow`/`orange`/`red`.
+  
+### Light & Dark themes:
+- Prevent FLOUC (Flash Of Unstyled Content).
+- Real time system theme tracking.
+- ssr/ssg compatible
 
 ## Installation
 
@@ -22,13 +29,9 @@ pnpm install svxui
 yarn add svxui
 ```
 
-## Documentation
-
-**_soon_**
-
 ## Development
 
-### Install
+### Install 
 
 ```bash
 pnpm install

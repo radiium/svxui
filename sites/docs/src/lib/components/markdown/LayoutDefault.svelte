@@ -21,10 +21,11 @@
         category: string;
     };
 
+    $: id = metadata.title.replace(/ /g, '-').toLowerCase() ?? '';
     $: padding = $isMobile ? 'p-3' : $isTablet ? 'p-5' : 'p-9';
 </script>
 
-<Flexbox direction="column" class="{metadata.category} {padding}">
+<Flexbox direction="column" {id} class="{metadata.category} {padding}">
     <!-- Headers -->
     <Flexbox as="header" direction="column">
         {#if metadata.title}
