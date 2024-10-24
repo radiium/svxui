@@ -8,5 +8,5 @@
 </svelte:head> -->
 
 <style global>
-    @import '$lib/style.scss';
+    @import '$lib/styles/index.scss';
 </style>

@@ -18,7 +18,7 @@ const config = {
     preprocess: [
         sveltePreprocess({
             scss: {
-                prependData: `@use "${resolve(import.meta.dirname, './src/lib/scss/mixins.scss')}" as *;`
+                prependData: `@use "${resolve(import.meta.dirname, './src/lib/styles/mixins.scss')}" as *;`
             }
         })
     ],
