@@ -1,6 +1,5 @@
 <script lang="ts">
-    import '../../style.scss';
-    import { storageKeyStrategy, storageKeyTheme } from '../theme.constant.js';
+    import { storageKeyStrategy } from '../theme.constant.js';
     import {
         ThemeColorDark,
         ThemeColorLight,

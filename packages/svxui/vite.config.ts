@@ -1,5 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
+import { join } from 'node:path';
 
 export default defineConfig({
     plugins: [sveltekit()],
@@ -12,6 +13,14 @@ export default defineConfig({
                 api: 'modern-compiler'
             }
         }
+    },
+    resolve: {
+        alias: [
+            {
+                find: /~(.+)/,
+                replacement: join(process.cwd(), 'node_modules/$1')
+            }
+        ]
     },
     optimizeDeps: {
         include: ['@floating-ui/dom', '@radix-ui/colors', 'nanoid']

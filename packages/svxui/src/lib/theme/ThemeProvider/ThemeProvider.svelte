@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { readonly } from 'svelte/store';
-    import { defaultThemeProviderProps } from './ThemeProvider.props.js';
-
+    import { clsx } from '$lib/utils/clsx.js';
     import { onMount } from 'svelte';
+    import { readonly } from 'svelte/store';
     import { hasThemeContext, setThemeContext } from '../theme.context.js';
+    import { createThemeProvider, systemeThemeStore } from './theme.store.js';
+    import { defaultThemeProviderProps } from './ThemeProvider.props.js';
     import type { ThemeProviderProps } from './ThemeProvider.types.js';
     import ThemeScript from './ThemeScript.svelte';
-    import { createThemeProvider, systemeThemeStore } from './theme.store.js';
-    import { clsx } from '$lib/utils/clsx.js';
+    import ThemeStyle from './ThemeStyle.svelte';
 
     type $$Props = ThemeProviderProps;
     export let defaultStrategy: $$Props['defaultStrategy'] = defaultThemeProviderProps.defaultStrategy;
@@ -43,6 +43,7 @@
 
 {#if isRoot}
     <ThemeScript strategy={$strategy} theme={$theme} />
+    <ThemeStyle />
 {/if}
 
 <div

@@ -1,19 +1,20 @@
+@use 'sass:meta';
 ///
 /// COLOR TOKENS
 ///
 ///
 
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/white-alpha.css';
+@import '~@radix-ui/colors/black-alpha.css';
+@import '~@radix-ui/colors/white-alpha.css';
 
-@import './colors/gray.scss';
-@import './colors/slate.scss';
-@import './colors/teal.scss';
-@import './colors/blue.scss';
-@import './colors/grass.scss';
-@import './colors/orange.scss';
-@import './colors/amber.scss';
-@import './colors/tomato.scss';
+@include meta.load-css('colors/gray.scss');
+@include meta.load-css('colors/slate.scss');
+@include meta.load-css('colors/teal.scss');
+@include meta.load-css('colors/blue.scss');
+@include meta.load-css('colors/grass.scss');
+@include meta.load-css('colors/orange.scss');
+@include meta.load-css('colors/amber.scss');
+@include meta.load-css('colors/tomato.scss');
 
 :root {
     [data-has-background='true'] {

@@ -18,6 +18,16 @@
             <Checkbox />
             <Text>checkbox label</Text>
         </Flexbox>
+
+        <Flexbox as="label" align="center" gap="3">
+            <Checkbox checked />
+            <Text>checkbox label</Text>
+        </Flexbox>
+
+        <Flexbox as="label" align="center" gap="3">
+            <Checkbox checked indeterminate />
+            <Text>checkbox label</Text>
+        </Flexbox>
     </Section>
 
     <Section>
