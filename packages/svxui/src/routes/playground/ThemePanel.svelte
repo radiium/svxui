@@ -25,7 +25,7 @@
     <aside>
         <Card radius="medium" variant="outline" translucent size="3">
             <Flexbox direction="column" gap="3">
-                <Flexbox direction="column" gap="3">
+                <Flexbox gap="3">
                     <div class="label">Theme:</div>
                     <div class="value">
                         {#each Strategies as item}
@@ -41,7 +41,7 @@
                     </div>
                 </Flexbox>
 
-                <Flexbox direction="column" gap="3">
+                <Flexbox gap="3">
                     <div class="label">Radius:</div>
                     <div class="value">
                         {#each Radius as item}
@@ -70,7 +70,7 @@
         max-width: calc(100vw - 20px);
 
         .label {
-            width: 80px;
+            min-width: 60px;
         }
 
         .value {
