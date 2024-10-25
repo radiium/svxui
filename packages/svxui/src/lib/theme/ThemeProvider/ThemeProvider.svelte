@@ -6,8 +6,7 @@
     import { createThemeProvider, systemeThemeStore } from './theme.store.js';
     import { defaultThemeProviderProps } from './ThemeProvider.props.js';
     import type { ThemeProviderProps } from './ThemeProvider.types.js';
-    import ThemeScript from './ThemeScript.svelte';
-    import ThemeStyle from './ThemeStyle.svelte';
+    import ThemeRoot from './ThemeRoot.svelte';
 
     type $$Props = ThemeProviderProps;
     export let defaultStrategy: $$Props['defaultStrategy'] = defaultThemeProviderProps.defaultStrategy;
@@ -42,8 +41,7 @@
 </script>
 
 {#if isRoot}
-    <ThemeScript strategy={$strategy} theme={$theme} />
-    <ThemeStyle />
+    <ThemeRoot strategy={$strategy} theme={$theme} />
 {/if}
 
 <div

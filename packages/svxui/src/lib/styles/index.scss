@@ -2,28 +2,28 @@
 /// GLOBALS
 ///
 
-@use 'scss/reset.scss';
-@use 'scss/global.scss';
-@use 'scss/mixins.scss';
+@use 'reset.scss';
+@use 'global.scss';
+@use 'mixins.scss';
 
 ///
 /// TOKENS
 ///
 
-@use 'scss/tokens/color.scss';
-@use 'scss/tokens/theme.scss';
-@use 'scss/tokens/component.scss';
-@use 'scss/tokens/radius.scss';
-@use 'scss/tokens/space.scss' as *;
-@use 'scss/tokens/typography.scss';
+@use 'tokens/color.scss';
+@use 'tokens/theme.scss';
+@use 'tokens/component.scss';
+@use 'tokens/radius.scss';
+@use 'tokens/space.scss' as *;
+@use 'tokens/typography.scss';
 
 ///
 /// UTILITIES
 ///
 
-@use 'scss/utilities/display.scss';
-@use 'scss/utilities/flex.scss';
-@use 'scss/utilities/gap.scss';
-@use 'scss/utilities/position.scss';
-@use 'scss/utilities/size.scss';
-@use 'scss/utilities/space.scss';
+@use 'utilities/display.scss';
+@use 'utilities/flex.scss';
+@use 'utilities/gap.scss';
+@use 'utilities/position.scss';
+@use 'utilities/size.scss';
+@use 'utilities/space.scss';

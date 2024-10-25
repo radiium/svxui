@@ -1,4 +1,6 @@
 <script lang="ts">
+    import '$lib/styles/index.scss';
+
     import { storageKeyStrategy } from '../theme.constant.js';
     import {
         ThemeColorDark,
@@ -22,7 +24,7 @@
     export let theme: ThemeType;
 
     $: themeColor = theme === ThemeLight ? ThemeColorLight : ThemeColorDark;
-    $: themeConfig = {
+    $: initThemeConfig = {
         defaultStrategy: strategy,
         storageKeyStrategy: storageKeyStrategy,
         darkName: ThemeDark,
@@ -61,11 +63,12 @@
             htmlEl.setAttribute('data-theme', darkName);
             themeColorEl?.setAttribute('content', darkColor);
         }
+        htmlEl.classList.add('svxui');
     };
 </script>
 
 <svelte:head>
     <meta name="theme-color" content={themeColor} />
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html `<script>(` + initSvxui.toString() + `)(` + JSON.stringify(themeConfig) + `);</script>`}
+    {@html `<script>(` + initSvxui.toString() + `)(` + JSON.stringify(initThemeConfig) + `);</script>`}
 </svelte:head>
