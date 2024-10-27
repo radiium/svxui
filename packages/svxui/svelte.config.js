@@ -3,6 +3,8 @@ import { sveltePreprocess } from 'svelte-preprocess';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import { sxuiThemePreprocess } from './plugins/svxui-preprocess.js';
+import autoprefixer from 'autoprefixer';
 
 process.env.PUBLIC_PKG_VERSION = process.env.npm_package_version;
 process.env.PUBLIC_PKG_NAME = process.env.npm_package_name;
@@ -17,8 +19,11 @@ const config = {
     // for more information about preprocessors
     preprocess: [
         sveltePreprocess({
+            postcss: {
+                plugins: [autoprefixer]
+            },
             scss: {
-                prependData: `@use "${resolve(import.meta.dirname, './src/lib/styles/mixins.scss')}" as *;`
+                prependData: `@use "${resolve(import.meta.dirname, './src/styles/scss/mixins.scss')}" as *;`
             }
         })
     ],

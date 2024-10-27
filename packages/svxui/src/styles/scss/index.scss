@@ -1,0 +1,28 @@
+///
+/// GLOBALS
+///
+
+@use 'globals/reset.scss';
+@use 'globals/app.scss';
+
+///
+/// TOKENS
+///
+
+// @use 'tokens/color.scss';
+@use 'tokens/theme.scss';
+@use 'tokens/component.scss';
+@use 'tokens/radius.scss';
+@use 'tokens/space.scss' as *;
+@use 'tokens/typography.scss';
+
+///
+/// UTILITIES
+///
+
+@use 'utilities/display.scss';
+@use 'utilities/flex.scss';
+@use 'utilities/gap.scss';
+@use 'utilities/position.scss';
+@use 'utilities/size.scss';
+@use 'utilities/space.scss';

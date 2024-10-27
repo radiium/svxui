@@ -1,5 +1,7 @@
 <script lang="ts">
-    import '$lib/styles/index.scss';
+    import '../../styles/index.css';
+    import '../../styles/colors.css';
+
 
     import { storageKeyStrategy } from '../theme.constant.js';
     import {
