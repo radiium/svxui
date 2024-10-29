@@ -1,10 +1,9 @@
 import adapter from '@sveltejs/adapter-vercel';
-import { sveltePreprocess } from 'svelte-preprocess';
-import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { resolve } from 'node:path';
-import { sxuiThemePreprocess } from './plugins/svxui-preprocess.js';
 import autoprefixer from 'autoprefixer';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { sveltePreprocess } from 'svelte-preprocess';
 
 process.env.PUBLIC_PKG_VERSION = process.env.npm_package_version;
 process.env.PUBLIC_PKG_NAME = process.env.npm_package_name;
