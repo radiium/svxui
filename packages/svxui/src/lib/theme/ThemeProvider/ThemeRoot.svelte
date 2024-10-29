@@ -1,7 +1,6 @@
 <script lang="ts">
-    import '../../styles/index.css';
     import '../../styles/colors.css';
-
+    import '../../styles/index.css';
 
     import { storageKeyStrategy } from '../theme.constant.js';
     import {
@@ -12,15 +11,7 @@
         type StrategyType,
         type ThemeType
     } from '../theme.types.js';
-
-    type InitThemeConfig = {
-        defaultStrategy: StrategyType;
-        storageKeyStrategy: string;
-        darkName: string;
-        darkColor: string;
-        lightName: string;
-        lightColor: string;
-    };
+    import type { InitThemeConfig } from './ThemeProvider.types.js';
 
     export let strategy: StrategyType;
     export let theme: ThemeType;
