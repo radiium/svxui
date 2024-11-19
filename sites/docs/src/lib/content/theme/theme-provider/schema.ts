@@ -21,7 +21,7 @@ export const themeProviderSchema: SchemaComponent = {
             default: defaultThemeProviderProps.defaultRadius
         }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }

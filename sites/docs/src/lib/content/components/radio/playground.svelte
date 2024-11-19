@@ -5,19 +5,25 @@
     import { Radio, defaultRadioProps } from 'svxui';
     import { radioSchema, template } from './schema.js';
 
-    let props = { ...defaultRadioProps };
-    let group: string | number | undefined = undefined;
-    let propsString = '';
-    $: templateProps = [
+    let props = $state({ ...defaultRadioProps });
+    let group: string | number | undefined = $state(undefined);
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <Radio slot="component" {...props} bind:group />
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={radioSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Radio  {...props} bind:group />
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm  bind:props bind:propsString schema={radioSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

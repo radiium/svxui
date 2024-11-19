@@ -2,10 +2,14 @@
     import type { SchemaAction } from '$lib/doc.types';
     import { Text } from 'svxui';
 
-    export let schema: SchemaAction;
+    interface Props {
+        schema: SchemaAction;
+    }
 
-    $: hasParamsBloc = schema.params && schema.params.length > 0;
-    $: hasAttributesBloc = schema.attributes && schema.attributes.length > 0;
+    let { schema }: Props = $props();
+
+    let hasParamsBloc = $derived(schema.params && schema.params.length > 0);
+    let hasAttributesBloc = $derived(schema.attributes && schema.attributes.length > 0);
 </script>
 
 {#if schema}

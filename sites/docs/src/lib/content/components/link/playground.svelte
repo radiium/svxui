@@ -5,18 +5,24 @@
     import { template, linkSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
 
-    let props = { ...defaultLinkProps };
-    let propsString = '';
-    $: templateProps = [
+    let props = $state({ ...defaultLinkProps });
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper mask={false}>
-    <Link slot="component" {...props} style="width: 100%" href="#" target="_self">Link sample</Link>
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={linkSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Link {...props} style="width: 100%" href="#" target="_self">Link sample</Link>
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm bind:props bind:propsString schema={linkSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

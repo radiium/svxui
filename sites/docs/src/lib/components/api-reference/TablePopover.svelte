@@ -1,8 +1,15 @@
 <script lang="ts">
     import Info from 'phosphor-svelte/lib/Info';
+    import type { Snippet } from 'svelte';
     import { Button, Floating } from 'svxui';
 
-    let isOpen = false;
+    interface Props {
+        children?: Snippet;
+    }
+
+    let { children }: Props = $props();
+
+    let isOpen = $state(false);
 </script>
 
 <Floating
@@ -17,8 +24,12 @@
     portal
     style="max-width: 100%;"
 >
-    <Button size="1" iconOnly color="gray" variant="clear" slot="trigger" on:click={() => (isOpen = !isOpen)}>
-        <Info size="32" />
-    </Button>
-    <slot slot="content" />
+    {#snippet trigger()}
+        <Button size="1" iconOnly color="gray" variant="clear" onclick={() => (isOpen = !isOpen)}>
+            <Info size="32" />
+        </Button>
+    {/snippet}
+    {#snippet content()}
+        {@render children?.()}
+    {/snippet}
 </Floating>

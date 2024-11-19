@@ -3,10 +3,15 @@
     import Minus from 'phosphor-svelte/lib/Minus';
     import { Card } from 'svxui';
 
-    export let slots: SchemaEvent[] = [];
+    interface Props {
+        slots?: SchemaEvent[];
+        [key: string]: any;
+    }
+
+    let { events = [], ...rest }: Props = $props();
 </script>
 
-<Card size="0" variant="surface" class={$$restProps.class}>
+<Card size="0" variant="surface" class={rest.class}>
     <table class="api-reference-table">
         <thead class="rt-TableHeader">
             <tr class="rt-TableRow">
@@ -14,11 +19,11 @@
             </tr>
         </thead>
         <tbody>
-            {#each slots as slot}
+            {#each events as event}
                 <tr>
                     <td data-color="primary">
-                        {#if slot.name}
-                            <code class="name">{slot.name}</code>
+                        {#if event.name}
+                            <code class="name">{event.name}</code>
                         {:else}
                             <Minus color="var(--accent-a11)" size="15" />
                         {/if}

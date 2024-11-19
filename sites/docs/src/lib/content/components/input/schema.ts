@@ -82,7 +82,7 @@ export const inputSchema: SchemaComponent = {
             default: defaultInputProps.readonly
         }
     ],
-    slots: [],
+    snippets: [],
     events: [
         {
             name: 'on:input'

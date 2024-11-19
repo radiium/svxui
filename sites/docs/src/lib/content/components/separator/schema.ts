@@ -45,6 +45,6 @@ export const separatorSchema: SchemaComponent = {
             default: defaultSeparatorProps.orientation
         }
     ],
-    slots: [],
+    snippets: [],
     events: []
 };

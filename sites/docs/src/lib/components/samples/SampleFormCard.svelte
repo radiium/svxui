@@ -2,7 +2,12 @@
     import { isMobile } from '$lib/utils/reponsive';
     import { Button, Card, Flexbox, Input, Text } from 'svxui';
 
-    export let title: string = '';
+    interface Props {
+        title?: string;
+        children?: import('svelte').Snippet;
+    }
+
+    let { title = '', children }: Props = $props();
 </script>
 
 <Card variant="solid" size={$isMobile ? '1' : '5'} class="width-100">
@@ -28,6 +33,6 @@
             </Flexbox>
         </Card>
 
-        <slot />
+        {@render children?.()}
     </Flexbox>
 </Card>

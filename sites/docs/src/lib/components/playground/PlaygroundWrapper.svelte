@@ -2,13 +2,21 @@
     import { createPlaygroundMask } from './playground-mask';
     import { isMobile, isTablet } from '$lib/utils/reponsive';
 
-    export let forceColumn = false;
-    export let mask = true;
+    interface Props {
+        forceColumn?: boolean;
+        mask?: boolean;
+        component?: import('svelte').Snippet;
+        form?: import('svelte').Snippet;
+        code?: import('svelte').Snippet;
+        [key: string]: any;
+    }
+
+    let { forceColumn = false, mask = true, component, form, code, ...rest }: Props = $props();
 
     const { maskStyles, getComponentSize } = createPlaygroundMask();
 </script>
 
-<div class="playground-wrapper {$$restProps.class}" class:mobile={$isMobile}>
+<div class="playground-wrapper {rest.class}" class:mobile={$isMobile}>
     <div class="preview-contols" class:layout-column={forceColumn || $isTablet || $isMobile}>
         <div class="preview">
             <div class="preview-background">
@@ -23,18 +31,18 @@
                 {/if}
             </div>
             <div class="preview-content" use:getComponentSize>
-                <slot name="component" />
+                {@render component?.()}
             </div>
         </div>
-        {#if $$slots.form}
+        {#if form}
             <div class="controls">
-                <slot name="form" />
+                {@render form?.()}
             </div>
         {/if}
     </div>
-    {#if $$slots.code}
+    {#if code}
         <div class="result">
-            <slot name="code" />
+            {@render code?.()}
         </div>
     {/if}
 </div>

@@ -1,11 +1,9 @@
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    fill="#000000"
-    viewBox="0 0 256 256"
-    {...$$restProps}
->
+<script>
+    /** @type {{ [key: string]: any }} */
+    let { ...rest } = $props();
+</script>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 256 256" {...rest}>
     <rect width="256" height="256" fill="none" /><circle
         cx="128"
         cy="128"

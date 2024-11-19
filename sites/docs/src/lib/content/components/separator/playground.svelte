@@ -5,18 +5,24 @@
     import { Separator, defaultSeparatorProps } from 'svxui';
     import { separatorSchema, template } from './schema.js';
 
-    let props = { ...defaultSeparatorProps };
-    let propsString = '';
-    $: templateProps = [
+    let props = $state({ ...defaultSeparatorProps });
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <Separator slot="component" {...props} />
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={separatorSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Separator  {...props} />
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm  bind:props bind:propsString schema={separatorSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

@@ -1,14 +1,19 @@
 <script lang="ts">
-    import type { SchemaSlot } from '$lib/doc.types';
+    import type { SchemaSnippet } from '$lib/doc.types';
     import Minus from 'phosphor-svelte/lib/Minus';
     import { Card } from 'svxui';
     import TablePopover from './TablePopover.svelte';
     import TableProps from './TableProps.svelte';
 
-    export let slots: SchemaSlot[] = [];
+    interface Props {
+        snippets?: SchemaSnippet[];
+        [key: string]: any;
+    }
+
+    let { snippets = [], ...rest }: Props = $props();
 </script>
 
-<Card size="0" variant="surface" class={$$restProps.class}>
+<Card size="0" variant="surface" class={rest.class}>
     <div class="table-wrapper">
         <table class="api-reference-table">
             <thead class="rt-TableHeader">
@@ -19,28 +24,28 @@
                 </tr>
             </thead>
             <tbody>
-                {#each slots as slot}
+                {#each snippets as snippet}
                     <tr>
                         <td data-color="primary">
-                            {#if slot.name}
-                                <code class="name">{slot.name}</code>
+                            {#if snippet.name}
+                                <code class="name">{snippet.name}</code>
                             {:else}
                                 <Minus color="var(--accent-a11)" size="15" />
                             {/if}
                         </td>
                         <td data-color="gray">
-                            {#if Array.isArray(slot.props) && slot.props?.length > 0}
+                            {#if Array.isArray(snippet.props) && snippet.props?.length > 0}
                                 <TablePopover>
-                                    <TableProps props={slot.props} />
+                                    <TableProps props={snippet.props} />
                                 </TablePopover>
                             {:else}
                                 <Minus color="var(--accent-a11)" size="15" />
                             {/if}
                         </td>
                         <td data-color="gray">
-                            {#if slot.description}
+                            {#if snippet.description}
                                 <code class="default">
-                                    {slot.description}
+                                    {snippet.description}
                                 </code>
                             {:else}
                                 <Minus color="var(--accent-a11)" size="15" />

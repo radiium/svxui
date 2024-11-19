@@ -15,7 +15,7 @@ export const portalSchema: SchemaComponent = {
             default: defaultPortalProps.disabled
         }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }

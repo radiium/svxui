@@ -9,19 +9,21 @@
 </script>
 
 <PlaygroundWrapper class="mb-5">
-    <Flexbox slot="component" direction="column" gap="3">
-        {#each sizes as size}
-            <InputGroup>
-                <ButtonIcon variant="clear" {size} active>
-                    <AlignLeftIcon />
-                </ButtonIcon>
-                <ButtonIcon variant="clear" {size}>
-                    <AlignCenterIcon />
-                </ButtonIcon>
-                <ButtonIcon variant="clear" {size}>
-                    <AlignRightIcon />
-                </ButtonIcon>
-            </InputGroup>
-        {/each}
-    </Flexbox>
+    {#snippet component()}
+        <Flexbox  direction="column" gap="3">
+            {#each sizes as size}
+                <InputGroup>
+                    <ButtonIcon variant="clear" {size} active>
+                        <AlignLeftIcon />
+                    </ButtonIcon>
+                    <ButtonIcon variant="clear" {size}>
+                        <AlignCenterIcon />
+                    </ButtonIcon>
+                    <ButtonIcon variant="clear" {size}>
+                        <AlignRightIcon />
+                    </ButtonIcon>
+                </InputGroup>
+            {/each}
+        </Flexbox>
+    {/snippet}
 </PlaygroundWrapper>

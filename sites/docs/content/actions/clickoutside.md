@@ -7,7 +7,7 @@ category: doc
 <script lang="ts">
     import { Card, Text, clickoutsideAction } from 'svxui';
 
-    let isClickedOutside = undefined
+    let isClickedOutside = $state(undefined);
     function onClickoutside(event: CustomEvent<MouseEvent>): void {
         isClickedOutside = true
     }
@@ -16,20 +16,20 @@ category: doc
 ## Example
 
 <Card>
-<Card variant="outline" class="p-7">
-<div  use:clickoutsideAction on:clickoutside={onClickoutside} on:click={() => isClickedOutside = false}>
-<Text>
-Clicked:
-{#if isClickedOutside === true} 
-<Text color="green">outside</Text>
-{:else if isClickedOutside === false} 
-<Text color="red">inside</Text>
-{:else}
-<Text disabled>idle</Text>
-{/if}
-</Text>
+<div  use:clickoutsideAction onclickoutside={onClickoutside} onclick={() => isClickedOutside = false}>
+    <Card variant="outline" class="p-7">
+        <Text>
+            Clicked:
+            {#if isClickedOutside === true} 
+            <Text color="green">outside</Text>
+            {:else if isClickedOutside === false} 
+            <Text color="red">inside</Text>
+            {:else}
+            <Text disabled>idle</Text>
+            {/if}
+        </Text>
+    </Card>
 </div>
-</Card>
 </Card>
 
 ## Usage
@@ -43,5 +43,5 @@ Clicked:
     }
 </script>
 
-<div use:clickoutsideAction on:clickoutside={onClickoutside}>Content</div>
+<div use:clickoutsideAction onclickoutside={onClickoutside}>Content</div>
 ```

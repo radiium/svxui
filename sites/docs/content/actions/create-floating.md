@@ -8,11 +8,11 @@ category: doc
     import { Card, Flexbox, Button, createFloating } from 'svxui';
     import { fade } from 'svelte/transition';
 
-    let isOpen = false;
+    let isOpen = $state(false);;
 
     const {
         actions: { referenceAction, floatingAction, arrowAction },
-        states: { updateProps, props, state }
+        states: { updateProps, props, floatingState }
     } = createFloating({
         strategy: 'absolute',
         transform: true,
@@ -28,7 +28,7 @@ category: doc
 <Card style="overflow: visible;">
 <Flexbox direction="column" align="start" justify="start">
 <div use:referenceAction>
-<Button variant="surface" on:click={() => (isOpen = !isOpen)}>Open</Button>
+<Button variant="surface" onclick={() => (isOpen = !isOpen)}>Open</Button>
 </div>
 
 {#if isOpen}
@@ -54,7 +54,7 @@ category: doc
 
     const {
         actions: { referenceAction, floatingAction, arrowAction },
-        states: { updateProps, props, state }
+        states: { updateProps, props, floatingState }
     } = createFloating({
         strategy: 'absolute',
         transform: true,
@@ -65,7 +65,7 @@ category: doc
     });
 </script>
 
-<button use:referenceAction on:click={() => (isOpen = !isOpen)}>Open</button>
+<button use:referenceAction onclick={() => (isOpen = !isOpen)}>Open</button>
 
 {#if isOpen}
     <div use:floatingAction transition:fade class="floating">Content</div>
@@ -80,3 +80,23 @@ category: doc
         left: 0;
     }
 </style>
+
+## Type
+
+```ts
+export type CreateFloatingProps = {
+    // Floating options
+    strategy?: Strategy;
+    placement?: Placement;
+    transform?: boolean;
+    autoUpdate?: boolean | Partial<AutoUpdateOptions>;
+    // Middlewares
+    offset?: boolean | OffsetOptions;
+    flip?: boolean | FlipOptions;
+    shift?: boolean | ShiftOptions;
+    size?: boolean | SizeOptions;
+    hide?: boolean | HideOptions;
+    arrow?: boolean | ArrowOptions;
+    customMiddleware?: Middleware[];
+};
+```

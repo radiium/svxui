@@ -13,8 +13,13 @@ export const template = `
 </script>
 
 <Floating:props bind:isOpen>
-    <Button slot="trigger" variant="soft" on:click={() => (isOpen = false)}>Open</Button>
-    <div slot="content">Floating content</div>
+    {#snippet trigger()}
+        <Button variant="soft" onclick={() => (isOpen = false)}>Open</Button>
+    {/snippet}
+
+    {#snippet content()}
+        <div>Floating content</div>
+    {/snippet}
 </Floating>    
 `;
 
@@ -119,9 +124,9 @@ export const floatingSchema: SchemaComponent = {
             default: defaultFloatingProps.portal
         }
     ],
-    slots: [
+    snippets: [
         {
-            name: 'Reference',
+            name: 'reference',
             description: 'Reference of floating element',
             props: []
         },

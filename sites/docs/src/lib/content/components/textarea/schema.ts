@@ -59,7 +59,7 @@ export const textareaSchema: SchemaComponent = {
             default: defaultTextareaProps.disabled
         }
     ],
-    slots: [],
+    snippets: [],
     events: [
         {
             name: 'on:input'

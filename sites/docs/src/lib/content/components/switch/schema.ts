@@ -49,7 +49,7 @@ export const switchSchema: SchemaComponent = {
             default: defaultSwitchProps.disabled
         }
     ],
-    slots: [],
+    snippets: [],
     events: [
         {
             name: 'on:input'

@@ -7,7 +7,7 @@ category: doc
 <script lang="ts">
     import { Card, Flexbox, Button, Text, longpressAction } from 'svxui';
 
-    let isLongPressed = false;
+    let isLongPressed = $state(false);
 
     function onStartLongPress(event: CustomEvent<void>): void {
         isLongPressed = true;
@@ -22,7 +22,7 @@ category: doc
 
 <Card>
 <Flexbox gap="3" align="center">
-<div use:longpressAction={800} on:startlongpress={onStartLongPress} on:endlongpress={onEndlongpress}>
+<div use:longpressAction={800} onstartlongpress={onStartLongPress} onendlongpress={onEndlongpress}>
     <Button variant="surface">longpress me</Button>
 </div>
 <Text color={isLongPressed ? 'green' : undefined}>
@@ -48,7 +48,7 @@ category: doc
     }
 </script>
 
-<button use:longpressAction={800} on:startlongpress={onStartLongPress} on:endlongpress={onEndlongpress}>
+<button use:longpressAction={800} onstartlongpress={onStartLongPress} onendlongpress={onEndlongpress}>
     longpress {isLongPressed}
 </button>
 ```

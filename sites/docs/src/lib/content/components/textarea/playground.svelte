@@ -5,18 +5,24 @@
     import { Textarea, defaultTextareaProps } from 'svxui';
     import { template, textareaSchema } from './schema.js';
 
-    let props = { ...defaultTextareaProps, value: '' };
-    let propsString = '';
-    $: templateProps = [
+    let props = $state({ ...defaultTextareaProps, value: '' });
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <Textarea slot="component" {...props} bind:value={props.value} />
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={textareaSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Textarea  {...props} bind:value={props.value} />
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm  bind:props bind:propsString schema={textareaSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

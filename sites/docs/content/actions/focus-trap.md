@@ -7,7 +7,7 @@ category: doc
 <script lang="ts">
     import { Card, Flexbox, Text, Button, Input, focusTrapAction } from 'svxui';
 
-    let isEnabled = false;
+    let isEnabled = $state(false);
 </script>
 
 ## Example
@@ -16,7 +16,7 @@ category: doc
 <Flexbox gap="3" align="center" class="mb-5">
     <Button
         variant="surface"
-        on:click={() => (isEnabled = !isEnabled)}
+        onclick={() => (isEnabled = !isEnabled)}
     >
         toggle
     </Button>
@@ -46,7 +46,7 @@ category: doc
     let enabled = false;
 </script>
 
-<button on:click={() => (enabled = !enabled)}>toggle</button>
+<button onclick={() => (enabled = !enabled)}>toggle</button>
 
 <div use:focusTrapAction={enabled}>
     <input />

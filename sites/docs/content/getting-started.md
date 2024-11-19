@@ -7,23 +7,29 @@ category: guide
 <script>
     import { Badge, TabGroup, TabTrigger, TabPanel, Card, Flexbox, Button } from 'svxui';
 
-let selectedTab = 'npm'
+    let selectedTab = $state('pnpm')
 </script>
 
 ### 1. Install svxui
 
 Install `svxui` with the package manager of your choice
 
-<TabGroup>
+<TabGroup bind:selected={selectedTab}>
     <Flexbox gap="1" class="p-1 mb-1">
-    <TabTrigger value="pnpm" let:isActive let:select>
-        <Button variant={isActive ? 'soft' : 'clear'} size="2" on:click={select}>pnpm</Button>
+    <TabTrigger value="pnpm">
+        {#snippet children({ isActive, select})}
+        <Button variant={isActive ? 'soft' : 'clear'} size="2" onclick={select}>pnpm</Button>
+        {/snippet}
     </TabTrigger>
-    <TabTrigger value="npm" let:isActive let:select>
-        <Button variant={isActive ? 'soft' : 'clear'} size="2" on:click={select}>npm</Button>
+    <TabTrigger value="npm">
+        {#snippet children({ isActive, select})}
+        <Button variant={isActive ? 'soft' : 'clear'} size="2" onclick={select}>npm</Button>
+        {/snippet}
     </TabTrigger>
-    <TabTrigger value="yarn" let:isActive let:select>
-        <Button variant={isActive ? 'soft' : 'clear'} size="2" on:click={select}>yarn</Button>
+    <TabTrigger value="yarn">
+        {#snippet children({ isActive, select})}
+        <Button variant={isActive ? 'soft' : 'clear'} size="2" onclick={select}>yarn</Button>
+        {/snippet}
     </TabTrigger>
     </Flexbox>
 <TabPanel value="pnpm">

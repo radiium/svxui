@@ -1,11 +1,11 @@
 import { error } from '@sveltejs/kit';
-import type { ComponentType } from 'svelte';
 import type { DocumentTypes } from '../../../.contentlayer/generated';
+import type { Component } from 'svelte';
 
 export type FrontMatter = Pick<DocumentTypes, 'title' | 'description' | 'category'>;
 
 export type DocFile = {
-    default: ComponentType;
+    default: Component;
     metadata: FrontMatter;
 };
 

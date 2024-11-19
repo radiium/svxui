@@ -47,6 +47,6 @@ export const themeSelectSchema: SchemaComponent = {
             default: defaultThemeSelectProps.iconOnly
         }
     ],
-    slots: [],
+    snippets: [],
     events: []
 };

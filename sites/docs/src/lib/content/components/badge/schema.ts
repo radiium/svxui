@@ -53,7 +53,7 @@ export const badgeSchema: SchemaComponent = {
             default: defaultBadgeProps.disabled
         }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }

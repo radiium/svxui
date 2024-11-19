@@ -26,16 +26,16 @@ export const selectSchema: SchemaComponent = {
             typeHtmlElement: 'HTMLSelectElement'
         },
         {
-            name: 'size',
-            type: SchemaPropType.enum,
-            values: Sizes1To3,
-            default: defaultSelectProps.size
-        },
-        {
             name: 'color',
             type: SchemaPropType.enum,
             values: Colors,
             default: defaultSelectProps.color
+        },
+        {
+            name: 'size',
+            type: SchemaPropType.enum,
+            values: Sizes1To3,
+            default: defaultSelectProps.size
         },
         {
             name: 'radius',
@@ -82,7 +82,7 @@ export const selectSchema: SchemaComponent = {
             default: defaultSelectProps.disabled
         }
     ],
-    slots: [],
+    snippets: [],
     events: [
         {
             name: 'on:input'

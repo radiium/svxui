@@ -5,18 +5,24 @@
     import { Switch, defaultSwitchProps } from 'svxui';
     import { switchSchema, template } from './schema.js';
 
-    let props = { ...defaultSwitchProps };
-    let propsString = '';
-    $: templateProps = [
+    let props = $state({ ...defaultSwitchProps });
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <Switch slot="component" {...props} />
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={switchSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Switch  {...props} />
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm  bind:props bind:propsString schema={switchSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

@@ -9,7 +9,7 @@ export const inputGroupSchema: SchemaComponent = {
             typeHtmlElement: 'HTMLDivElement'
         }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }

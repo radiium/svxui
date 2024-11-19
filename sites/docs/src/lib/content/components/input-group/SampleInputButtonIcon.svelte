@@ -5,42 +5,44 @@
 </script>
 
 <PlaygroundWrapper class="mb-5">
-    <Flexbox slot="component" direction="column" gap="3">
-        <InputGroup>
-            <ButtonIcon variant="soft">
-                <PlusIcon />
-            </ButtonIcon>
-            <Input />
-        </InputGroup>
+    {#snippet component()}
+        <Flexbox  direction="column" gap="3">
+            <InputGroup>
+                <ButtonIcon variant="soft">
+                    <PlusIcon />
+                </ButtonIcon>
+                <Input />
+            </InputGroup>
 
-        <InputGroup>
-            <Input />
-            <ButtonIcon variant="soft">
-                <PlusIcon />
-            </ButtonIcon>
-        </InputGroup>
+            <InputGroup>
+                <Input />
+                <ButtonIcon variant="soft">
+                    <PlusIcon />
+                </ButtonIcon>
+            </InputGroup>
 
-        <InputGroup>
-            <Input />
-            <ButtonIcon variant="soft">@</ButtonIcon>
-            <Input />
-        </InputGroup>
+            <InputGroup>
+                <Input />
+                <ButtonIcon variant="soft">@</ButtonIcon>
+                <Input />
+            </InputGroup>
 
-        <InputGroup>
-            <ButtonIcon variant="soft">$</ButtonIcon>
-            <Input />
-            <ButtonIcon variant="soft">
-                <PlusIcon />
-            </ButtonIcon>
-        </InputGroup>
+            <InputGroup>
+                <ButtonIcon variant="soft">$</ButtonIcon>
+                <Input />
+                <ButtonIcon variant="soft">
+                    <PlusIcon />
+                </ButtonIcon>
+            </InputGroup>
 
-        <InputGroup>
-            <ButtonIcon variant="soft">$</ButtonIcon>
-            <ButtonIcon variant="clear">%</ButtonIcon>
-            <ButtonIcon variant="clear">
-                <PlusIcon />
-            </ButtonIcon>
-            <Input />
-        </InputGroup>
-    </Flexbox>
+            <InputGroup>
+                <ButtonIcon variant="soft">$</ButtonIcon>
+                <ButtonIcon variant="clear">%</ButtonIcon>
+                <ButtonIcon variant="clear">
+                    <PlusIcon />
+                </ButtonIcon>
+                <Input />
+            </InputGroup>
+        </Flexbox>
+    {/snippet}
 </PlaygroundWrapper>

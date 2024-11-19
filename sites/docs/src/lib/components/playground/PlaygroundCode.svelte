@@ -1,29 +1,37 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import { createCopy } from '../code/copy';
     import CopyCodeButton from '../code/CopyCodeButton.svelte';
     import { shiki } from '../code/shiki';
 
-    export let template = '';
-    export let templateProps: { key: string; value: string }[] = [];
+    interface Props {
+        template?: string;
+        templateProps?: { key: string; value: string }[];
+    }
+
+    let { template = '', templateProps = [] }: Props = $props();
 
     const { copyCode, copied } = createCopy();
-    let code = '';
-    let highlighted = '';
-    $: {
-        code = templateProps.reduce((acc, next) => {
+
+    let code = $derived.by(() => {
+        return templateProps.reduce((acc, next) => {
             return acc.replace(next.key, next.value ? ` ${next.value}` : '').trim();
         }, template);
+    });
 
+    let highlighted = $derived.by(() => {
         if ($shiki!.codeToHtml) {
-            highlighted = $shiki.codeToHtml(code, { lang: 'svelte' });
+            return $shiki.codeToHtml(code, { lang: 'svelte' });
         }
-    }
+        return '';
+    });
 </script>
 
 {#if highlighted}
     <figure data-rehype-pretty-code-figure data-code-playground>
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html highlighted}
-        <CopyCodeButton copied={$copied} on:click={() => copyCode(code)} />
+        <CopyCodeButton copied={$copied} onclick={() => copyCode(code)} />
     </figure>
 {/if}

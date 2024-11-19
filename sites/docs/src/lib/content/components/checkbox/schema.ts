@@ -65,7 +65,7 @@ export const checkboxSchema: SchemaComponent = {
             default: defaultCheckboxProps.indeterminate
         }
     ],
-    slots: [],
+    snippets: [],
     events: [
         {
             name: 'on:input'

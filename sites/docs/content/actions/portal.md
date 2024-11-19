@@ -8,7 +8,7 @@ category: doc
     import { isMobile } from '$lib/utils/reponsive.js';
     import { Card, Flexbox, Text, portalAction } from 'svxui';
 
-    let isEnabled = false;
+    let isEnabled = $state(false);
 </script>
 
 ## Example

@@ -4,7 +4,12 @@
     import { Card, Flexbox, Text } from 'svxui';
     import TablePopover from './TablePopover.svelte';
 
-    export let props: SchemaProp[] = [];
+    interface Props {
+        props?: SchemaProp[];
+        [key: string]: any;
+    }
+
+    let { props = [], ...rest }: Props = $props();
 
     function resolveTypeValue(prop: SchemaProp): string | undefined {
         switch (prop.type) {
@@ -21,7 +26,7 @@
 </script>
 
 {#if Array.isArray(props) && props}
-    <Card size="0" variant="surface" class={$$restProps.class}>
+    <Card size="0" variant="surface" class={rest.class}>
         <div class="table-wrapper">
             <table class="api-reference-table">
                 <thead class="rt-TableHeader">

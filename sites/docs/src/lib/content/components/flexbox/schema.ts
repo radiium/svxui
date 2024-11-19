@@ -80,7 +80,7 @@ export const flexboxSchema: SchemaComponent = {
         //     default: defaultFlexboxProps.shrink
         // }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }

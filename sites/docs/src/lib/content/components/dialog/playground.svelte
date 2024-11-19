@@ -5,31 +5,37 @@
     import { Button, Dialog, defaultDialogProps } from 'svxui';
     import { dialogSchema, template } from './schema.js';
 
-    let props = { ...defaultDialogProps, isOpen: false };
-    let propsString = '';
-    $: templateProps = [
+    let props = $state({ ...defaultDialogProps, isOpen: false });
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <div slot="component">
-        <Button variant="soft" on:click={() => (props.isOpen = true)}>open</Button>
-        <Dialog {...props} bind:isOpen={props.isOpen}>
-            <header>
-                <h1>Title</h1>
-            </header>
-            <p class="my-3">Content</p>
-            <footer>
-                <Button color="primary" variant="soft" on:click={() => (props.isOpen = false)} fullWidth>
-                    close
-                </Button>
-            </footer>
-        </Dialog>
-    </div>
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={dialogSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <div>
+            <Button variant="soft" onclick={() => (props.isOpen = true)}>open</Button>
+            <Dialog {...props} bind:isOpen={props.isOpen}>
+                <header>
+                    <h1>Title</h1>
+                </header>
+                <p class="my-3">Content</p>
+                <footer>
+                    <Button color="primary" variant="soft" onclick={() => (props.isOpen = false)} fullWidth>
+                        close
+                    </Button>
+                </footer>
+            </Dialog>
+        </div>
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm bind:props bind:propsString schema={dialogSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

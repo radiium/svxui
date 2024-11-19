@@ -6,9 +6,9 @@
     import { template, buttonSchema } from './schema.js';
     import PlaygroundCode from '$lib/components/playground/PlaygroundCode.svelte';
 
-    let props = defaultButtonProps;
-    let propsString = '';
-    $: templateProps = [
+    let props = $state(defaultButtonProps);
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
@@ -17,17 +17,23 @@
             key: ':slot',
             value: props.iconOnly ? `\n  <MagnifyingGlass />\n` : 'Button'
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <Button slot="component" {...props}>
-        {#if props.iconOnly}
-            <MagnifyingGlass />
-        {:else}
-            Button
-        {/if}
-    </Button>
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={buttonSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Button  {...props}>
+            {#if props.iconOnly}
+                <MagnifyingGlass />
+            {:else}
+                Button
+            {/if}
+        </Button>
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm  bind:props bind:propsString schema={buttonSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

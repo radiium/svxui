@@ -5,18 +5,24 @@
     import { Card, defaultCardProps } from 'svxui';
     import { cardSchema, template } from './schema.js';
 
-    let props = defaultCardProps;
-    let propsString = '';
-    $: templateProps = [
+    let props = $state(defaultCardProps);
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <Card {...props} slot="component">Card content</Card>
-    <PlaygroundForm bind:props bind:propsString schema={cardSchema} slot="form" />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Card {...props} >Card content</Card>
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm bind:props bind:propsString schema={cardSchema}  />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

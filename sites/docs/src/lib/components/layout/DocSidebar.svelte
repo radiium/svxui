@@ -3,22 +3,26 @@
     import type { NavSection } from '$lib/utils/nav';
     import { CaretRight } from 'phosphor-svelte';
     import { slide } from 'svelte/transition';
-    import { AccordionGroup, AccordionItem, ButtonUnstyled, Flexbox, Text } from 'svxui';
+    import { AccordionGroup, Accordion, ButtonUnstyled, Flexbox, Text } from 'svxui';
     import { closeMenu } from './menu';
 
-    export let nav: NavSection[] = [];
+    interface Props {
+        nav?: NavSection[];
+    }
 
-    $: currentSlug = '/' + ($page.params.slug ?? '');
+    let { nav = [] }: Props = $props();
+
+    let currentSlug = $derived('/' + ($page.params.slug ?? ''));
 </script>
 
 <nav class="p-4">
     {#each nav as section, i}
         <AccordionGroup multi>
             <section class="p-0 mb-5">
-                <AccordionItem expanded>
-                    <svelte:fragment slot="header" let:toggle let:expanded let:disabled>
+                <Accordion value={`menu-section-${i}`} expanded>
+                    {#snippet trigger({ toggle, expanded, attrs })}
                         {#if section.title}
-                            <ButtonUnstyled on:click={toggle} class="width-100">
+                            <ButtonUnstyled onclick={toggle} class="width-100" {...attrs}>
                                 <Flexbox justify="between">
                                     <Text as="div" disabled weight="bold" size="2" class="pb-2">
                                         {section.title}
@@ -31,24 +35,25 @@
                                 </Flexbox>
                             </ButtonUnstyled>
                         {/if}
-                    </svelte:fragment>
-
-                    <ul transition:slide class="m-0 p-0">
-                        {#each section.pages as { slugFull, href, title }}
-                            <li class="m-0 p-0">
-                                <a
-                                    class:active={slugFull === currentSlug}
-                                    {href}
-                                    on:click={closeMenu}
-                                    data-sveltekit-preload-data="tap"
-                                    data-color="gray"
-                                >
-                                    {title}
-                                </a>
-                            </li>
-                        {/each}
-                    </ul>
-                </AccordionItem>
+                    {/snippet}
+                    {#snippet children({ toggle, expanded, attrs })}
+                        <ul transition:slide class="m-0 p-0" {...attrs}>
+                            {#each section.pages as { slugFull, href, title }}
+                                <li class="m-0 p-0">
+                                    <a
+                                        class:active={slugFull === currentSlug}
+                                        {href}
+                                        onclick={closeMenu}
+                                        data-sveltekit-preload-data="tap"
+                                        data-color="gray"
+                                    >
+                                        {title}
+                                    </a>
+                                </li>
+                            {/each}
+                        </ul>
+                    {/snippet}
+                </Accordion>
             </section>
         </AccordionGroup>
     {/each}

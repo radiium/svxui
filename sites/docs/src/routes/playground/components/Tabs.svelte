@@ -1,16 +1,20 @@
-<script lang="ts" context="module">
-    import type { ComponentType } from 'svelte';
+<script lang="ts" module>
+    import type { Component } from 'svelte';
 
     export type Tab = {
         label: string;
         value: number;
-        component: ComponentType;
+        component: Component;
     };
 </script>
 
 <script lang="ts">
-    export let items: Tab[] = [];
-    export let activeTabValue: number = 1;
+    interface Props {
+        items?: Tab[];
+        activeTabValue?: number;
+    }
+
+    let { items = [], activeTabValue = $bindable(1) }: Props = $props();
 
     const handleClick = (tabValue: number) => () => (activeTabValue = tabValue);
 </script>
@@ -18,9 +22,9 @@
 <ul>
     {#each items as item}
         <li class={activeTabValue === item.value ? 'active' : ''}>
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <span on:click={handleClick(item.value)}>{item.label}</span>
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
+            <!-- svelte-ignore a11y_no_static_element_interactions -->
+            <span onclick={handleClick(item.value)}>{item.label}</span>
         </li>
     {/each}
 </ul>
@@ -28,7 +32,7 @@
 {#each items as item}
     {#if activeTabValue == item.value}
         <div class="box">
-            <svelte:component this={item.component} />
+            <item.component />
         </div>
     {/if}
 {/each}

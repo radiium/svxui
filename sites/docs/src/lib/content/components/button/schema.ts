@@ -83,7 +83,7 @@ export const buttonSchema: SchemaComponent = {
             default: defaultButtonProps.disabled
         }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }

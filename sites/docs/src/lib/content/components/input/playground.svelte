@@ -5,18 +5,24 @@
     import { Input, defaultInputProps } from 'svxui';
     import { inputSchema, template } from './schema.js';
 
-    let props = { ...defaultInputProps, value: '' };
-    let propsString = '';
-    $: templateProps = [
+    let props = $state({ ...defaultInputProps, value: '' });
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <Input slot="component" {...props} bind:value={props.value} />
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={inputSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Input  {...props} bind:value={props.value} />
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm  bind:props bind:propsString schema={inputSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

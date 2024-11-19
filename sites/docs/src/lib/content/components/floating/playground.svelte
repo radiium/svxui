@@ -5,14 +5,14 @@
     import { Button, Floating, defaultFloatingProps } from 'svxui';
     import { floatingSchema, template } from './schema.js';
 
-    let props = { ...defaultFloatingProps, isOpen: false };
-    let propsString = '';
-    $: templateProps = [
+    let props = $state({ ...defaultFloatingProps, isOpen: false });
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 
     function toggle() {
         props.isOpen = !props.isOpen;
@@ -20,10 +20,20 @@
 </script>
 
 <PlaygroundWrapper>
-    <Floating slot="component" {...props} bind:isOpen={props.isOpen}>
-        <Button slot="trigger" variant="soft" on:click={toggle}>Open</Button>
-        <div slot="content">Floating content</div>
-    </Floating>
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={floatingSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Floating {...props} bind:isOpen={props.isOpen}>
+            {#snippet trigger()}
+                <Button variant="soft" onclick={toggle}>Open</Button>
+            {/snippet}
+            {#snippet content()}
+                <div>Floating content</div>
+            {/snippet}
+        </Floating>
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm bind:props bind:propsString schema={floatingSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

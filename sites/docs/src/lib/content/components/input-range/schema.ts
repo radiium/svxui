@@ -69,7 +69,7 @@ export const inputRangeSchema: SchemaComponent = {
             default: defaultInputRangeProps.fullWidth
         }
     ],
-    slots: [],
+    snippets: [],
     events: [
         {
             name: 'on:input'

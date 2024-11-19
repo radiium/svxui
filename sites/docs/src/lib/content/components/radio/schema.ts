@@ -54,7 +54,7 @@ export const radioSchema: SchemaComponent = {
             default: defaultRadioProps.disabled
         }
     ],
-    slots: [],
+    snippets: [],
     events: [
         {
             name: 'on:input'

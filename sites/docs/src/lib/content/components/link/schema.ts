@@ -29,7 +29,7 @@ export const linkSchema: SchemaComponent = {
             default: defaultLinkProps.underline
         }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }

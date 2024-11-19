@@ -5,18 +5,24 @@
     import { Checkbox, defaultCheckboxProps } from 'svxui';
     import { checkboxSchema, template } from './schema.js';
 
-    let props = { ...defaultCheckboxProps, checked: false };
-    let propsString = '';
-    $: templateProps = [
+    let props = $state({ ...defaultCheckboxProps, checked: false });
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <Checkbox slot="component" {...props} bind:checked={props.checked} />
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={checkboxSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Checkbox  {...props} bind:checked={props.checked} />
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm  bind:props bind:propsString schema={checkboxSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

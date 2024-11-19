@@ -5,18 +5,24 @@
     import { Badge, defaultBadgeProps } from 'svxui';
     import { badgeSchema, template } from './schema.js';
 
-    let props = defaultBadgeProps;
-    let propsString = '';
-    $: templateProps = [
+    let props = $state(defaultBadgeProps);
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <Badge {...props} slot="component">Badge</Badge>
-    <PlaygroundForm bind:props bind:propsString schema={badgeSchema} slot="form" />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Badge {...props} >Badge</Badge>
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm bind:props bind:propsString schema={badgeSchema}  />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

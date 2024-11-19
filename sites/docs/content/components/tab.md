@@ -22,27 +22,34 @@ category: doc
     import { Button, Card, Flexbox, TabGroup, TabPanel, TabTrigger } from 'svxui';
 
     const tabs = ['Tab1', 'Tab2', 'Tab3'];
+    let current = $state(tabs[0]);
 </script>
 
-<TabGroup>
-    <Flexbox direction="column" gap="1">
+<TabGroup bind:value={current}>
+    <Flexbox direction="column" gap="1" class="mb-5">
         <Card variant="soft" size="0">
             <Flexbox gap="1" class="p-1">
                 {#each tabs as tabId}
-                    <TabTrigger value={tabId} let:isActive let:select>
-                        <Button variant={isActive ? 'soft' : 'clear'} on:click={select}>
-                            {tabId}
-                        </Button>
+                    <TabTrigger value={tabId}>
+                        {#snippet children({ active, select, attrs })}
+                            <Button variant={active ? 'soft' : 'clear'} onclick={select} {...attrs}>
+                                {tabId}
+                            </Button>
+                        {/snippet}
                     </TabTrigger>
                 {/each}
             </Flexbox>
         </Card>
 
-        <Card variant="outline" size="1">
-            {#each tabs as tabId}
-                <TabPanel value={tabId}>{tabId} content</TabPanel>
-            {/each}
-        </Card>
+        {#each tabs as tab}
+            <TabPanel value={tab}>
+                {#snippet children({ attrs })}
+                    <Card variant="outline" size="1" {...attrs}>
+                        {tab} content
+                    </Card>
+                {/snippet}
+            </TabPanel>
+        {/each}
     </Flexbox>
 </TabGroup>
 ```
@@ -56,27 +63,34 @@ category: doc
     import { Button, Card, Flexbox, TabGroup, TabPanel, TabTrigger } from 'svxui';
 
     const tabs = ['Tab1', 'Tab2', 'Tab3'];
+    let current = $state(tabs[0]);
 </script>
 
-<TabGroup>
-    <Flexbox gap="1">
+<TabGroup bind:value={current}>
+    <Flexbox gap="1" class="mb-5">
         <Card variant="soft" size="0">
             <Flexbox direction="column" gap="1" class="p-1">
                 {#each tabs as tabId}
-                    <TabTrigger value={tabId} let:isActive let:select>
-                        <Button variant={isActive ? 'soft' : 'clear'} on:click={select}>
-                            {tabId}
-                        </Button>
+                    <TabTrigger value={tabId}>
+                        {#snippet children({ active, select, attrs })}
+                            <Button variant={active ? 'soft' : 'clear'} onclick={select} {...attrs}>
+                                {tabId}
+                            </Button>
+                        {/snippet}
                     </TabTrigger>
                 {/each}
             </Flexbox>
         </Card>
 
-        <Card variant="outline" size="1">
-            {#each tabs as tabId}
-                <TabPanel value={tabId}>{tabId} content</TabPanel>
-            {/each}
-        </Card>
+        {#each tabs as tab}
+            <TabPanel value={tab}>
+                {#snippet children({ attrs })}
+                    <Card variant="outline" size="1" {...attrs}>
+                        {tab} content
+                    </Card>
+                {/snippet}
+            </TabPanel>
+        {/each}
     </Flexbox>
 </TabGroup>
 ```

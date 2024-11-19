@@ -96,7 +96,7 @@ export const inputNumberSchema: SchemaComponent = {
             default: defaultInputNumberProps.readonly
         }
     ],
-    slots: [],
+    snippets: [],
     events: [
         {
             name: 'on:input'

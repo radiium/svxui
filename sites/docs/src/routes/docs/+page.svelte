@@ -1,8 +1,14 @@
 <script lang="ts">
     import type { PageData } from './$types.js';
 
-    export let data: PageData;
-    $: component = data.component;
+    interface Props {
+        data: PageData;
+    }
+
+    let { data }: Props = $props();
+    let component = $derived(data.component);
+
+    const SvelteComponent = $derived(component);
 </script>
 
-<svelte:component this={component} />
+<SvelteComponent />

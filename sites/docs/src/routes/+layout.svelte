@@ -8,8 +8,13 @@
     import IconContext from 'phosphor-svelte/lib/IconContext';
     import { onMount } from 'svelte';
     import { ThemeProvider } from 'svxui';
+    interface Props {
+        children?: import('svelte').Snippet;
+    }
 
-    let mainRef: HTMLDivElement | null;
+    let { children }: Props = $props();
+
+    let mainRef: HTMLDivElement | undefined = $state();
 
     onMount(() => {
         const unsubscribe = navigating.subscribe((v) => {
@@ -23,11 +28,17 @@
 <IconContext values={{ color: 'var(--color)', size: 24 }}>
     <ThemeProvider>
         <DocLayout>
-            <DocHeader slot="header" />
-            <DocSidebar slot="aside" {nav} />
-            <div bind:this={mainRef} slot="main" class="content">
-                <slot />
-            </div>
+            {#snippet header()}
+                <DocHeader />
+            {/snippet}
+            {#snippet aside()}
+                <DocSidebar {nav} />
+            {/snippet}
+            {#snippet main()}
+                <div bind:this={mainRef} class="content">
+                    {@render children?.()}
+                </div>
+            {/snippet}
         </DocLayout>
     </ThemeProvider>
 </IconContext>

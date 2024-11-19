@@ -5,6 +5,15 @@
     import { fade } from 'svelte/transition';
     import { Button } from 'svxui';
     import { closeMenu, handleEscape, isMobileMenuOpen, toggleMenu } from './menu';
+    import type { Snippet } from 'svelte';
+
+    interface Props {
+        header?: Snippet;
+        aside?: Snippet;
+        main?: Snippet;
+    }
+
+    let { header, aside, main }: Props = $props();
 </script>
 
 <div class="wrapper" class:tablet={$isTablet || $isMobile}>
@@ -14,15 +23,15 @@
                 class="backdrop"
                 role="button"
                 tabindex="-1"
-                on:click={closeMenu}
-                on:keydown={handleEscape}
+                onclick={closeMenu}
+                onkeydown={handleEscape}
                 transition:fade={{
                     duration: 250
                 }}
             ></div>
         {/if}
         <div id="mobile-menu-btn">
-            <Button variant="clear" iconOnly on:click={toggleMenu}>
+            <Button variant="clear" iconOnly onclick={toggleMenu}>
                 {#if $isMobileMenuOpen}
                     <X />
                 {:else}
@@ -33,14 +42,14 @@
     {/if}
 
     <header>
-        <slot name="header" />
+        {@render header?.()}
     </header>
     <aside class:is-open={$isMobileMenuOpen && $isTablet}>
-        <slot name="aside" />
+        {@render aside?.()}
     </aside>
     <main>
         <div class="content">
-            <slot name="main" />
+            {@render main?.()}
         </div>
     </main>
 </div>

@@ -50,7 +50,7 @@ export const cardSchema: SchemaComponent = {
             default: defaultCardProps.translucent
         }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }

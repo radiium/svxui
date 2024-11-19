@@ -1,5 +1,5 @@
-import { defaultAccordionGroupProps, defaultAccordionItemProps } from 'svxui';
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
+import { defaultAccordionGroupProps, defaultAccordionProps } from 'svxui';
 
 /**
  * Playground template
@@ -9,66 +9,57 @@ export const template = `
 <script lang="ts">
     import { AccordionGroup, AccordionItem, Card, Flexbox, Text, Button } from 'svxui';
     import { slide } from 'svelte/transition';
-
-    let state = [false, false, false];
 </script>
 
 <AccordionGroup:props>
     <Card size="1" class="mb-3">
-        <AccordionItem:props1>
-            <Flexbox
-                slot="header"
-                let:toggle
-                let:expanded
-                let:disabled
-                justify="between"
-                align="center"
-            >
-                <Text {disabled}>Accordion 1</Text>
-                <Button size="1" variant="soft" on:click={toggle} {disabled}>
-                    {expanded ? 'close' : 'open'}
-                </Button>
-            </Flexbox>
-            <div transition:slide class="pt-3">Content 1</div>
-        </AccordionItem>
+        <Accordion value="tab1":props1>
+            {#snippet trigger({ toggle, expanded, attrs })}
+                <Flexbox justify="between" align="center">
+                    <Text>Accordion {i}</Text>
+                    <Button size="1" variant="soft" onclick={toggle} {...attrs}>
+                        {expanded ? 'close' : 'open'}
+                    </Button>
+                </Flexbox>
+            {/snippet}
+            {#snippet children({ toggle, expanded, attrs })}
+                <div transition:slide class="pt-3" {...attrs}>Content {i}</div>
+            {/snippet}
+        </Accordion>
     </Card>
+
     <Card size="1" class="mb-3">
-        <AccordionItem:props2>
-            <Flexbox
-                slot="header"
-                let:toggle
-                let:expanded
-                let:disabled
-                justify="between"
-                align="center"
-            >
-                <Text {disabled}>Accordion 2</Text>
-                <Button size="1" variant="soft" on:click={toggle} {disabled}>
-                    {expanded ? 'close' : 'open'}
-                </Button>
-            </Flexbox>
-            <div transition:slide class="pt-3">Content 2</div>
-        </AccordionItem>
+        <Accordion  value="tab2":props2>
+            {#snippet trigger({ toggle, expanded, attrs })}
+                <Flexbox justify="between" align="center">
+                    <Text>Accordion {i}</Text>
+                    <Button size="1" variant="soft" onclick={toggle} {...attrs}>
+                        {expanded ? 'close' : 'open'}
+                    </Button>
+                </Flexbox>
+            {/snippet}
+            {#snippet children({ toggle, expanded, attrs })}
+                <div transition:slide class="pt-3" {...attrs}>Content {i}</div>
+            {/snippet}
+        </Accordion>
     </Card>
+
     <Card size="1" class="mb-3">
-        <AccordionItem:props3>
-            <Flexbox
-                slot="header"
-                let:toggle
-                let:expanded
-                let:disabled
-                justify="between"
-                align="center"
-            >
-                <Text {disabled}>Accordion 3</Text>
-                <Button size="1" variant="soft" on:click={toggle} {disabled}>
-                    {expanded ? 'close' : 'open'}
-                </Button>
-            </Flexbox>
-            <div transition:slide class="pt-3">Content 3</div>
-        </AccordionItem>
+        <Accordion value="tab3":props3>
+            {#snippet trigger({ toggle, expanded, attrs })}
+                <Flexbox justify="between" align="center">
+                    <Text>Accordion {i}</Text>
+                    <Button size="1" variant="soft" onclick={toggle} {...attrs}>
+                        {expanded ? 'close' : 'open'}
+                    </Button>
+                </Flexbox>
+            {/snippet}
+            {#snippet children({ toggle, expanded, attrs })}
+                <div transition:slide class="pt-3" {...attrs}>Content {i}</div>
+            {/snippet}
+        </Accordion>
     </Card>
-</AccordionGroup>     
+</AccordionGroup>
 `;
 
 /**
@@ -80,12 +71,30 @@ export const accordionGroupSchema: SchemaComponent = {
     name: 'Accordion Group',
     props: [
         {
+            name: 'value',
+            type: SchemaPropType.custom,
+            typeCustom: 'string | string[] | undefined',
+            default: defaultAccordionGroupProps.value,
+            bindable: true
+        },
+        {
+            name: 'onValueChange',
+            type: SchemaPropType.custom,
+            typeCustom: '(value: string | string[] | undefined) => void',
+            default: defaultAccordionGroupProps.onValueChange?.toString()
+        },
+        {
             name: 'multi',
             type: SchemaPropType.boolean,
             default: defaultAccordionGroupProps.multi
+        },
+        {
+            name: 'disabled',
+            type: SchemaPropType.boolean,
+            default: defaultAccordionGroupProps.disabled
         }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }
@@ -94,31 +103,31 @@ export const accordionGroupSchema: SchemaComponent = {
 };
 
 /**
- * PropsAccordionItem
+ * PropsAccordion
  */
 
-export const accordionItemSchema: SchemaComponent = {
+export const accordionSchema: SchemaComponent = {
     name: 'Accordion Item',
     props: [
         {
-            name: 'id',
+            name: 'value',
             type: SchemaPropType.string,
-            default: defaultAccordionItemProps.id
+            default: defaultAccordionProps.value
         },
         {
             name: 'expanded',
             type: SchemaPropType.boolean,
-            default: defaultAccordionItemProps.expanded
+            default: defaultAccordionProps.expanded
         },
         {
             name: 'disabled',
             type: SchemaPropType.boolean,
-            default: defaultAccordionItemProps.disabled
+            default: defaultAccordionProps.disabled
         }
     ],
-    slots: [
+    snippets: [
         {
-            name: 'header',
+            name: 'trigger',
             description: 'Header of accordion',
             props: [
                 {
@@ -126,29 +135,33 @@ export const accordionItemSchema: SchemaComponent = {
                     type: SchemaPropType.boolean
                 },
                 {
-                    name: 'disabled',
-                    type: SchemaPropType.boolean
+                    name: 'attrs',
+                    type: SchemaPropType.custom,
+                    typeCustom: 'Record<string, any>'
                 },
                 {
                     name: 'toggle',
-                    type: 'function'
+                    type: SchemaPropType.custom,
+                    typeCustom: '() => void'
                 }
             ]
         },
         {
-            name: 'default',
+            name: 'children',
             props: [
                 {
                     name: 'expanded',
                     type: SchemaPropType.boolean
                 },
                 {
-                    name: 'disabled',
-                    type: SchemaPropType.boolean
+                    name: 'attrs',
+                    type: SchemaPropType.custom,
+                    typeCustom: 'Record<string, any>'
                 },
                 {
                     name: 'toggle',
-                    type: 'function'
+                    type: SchemaPropType.custom,
+                    typeCustom: '() => void'
                 }
             ]
         }

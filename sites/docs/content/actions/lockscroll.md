@@ -7,7 +7,7 @@ category: doc
 <script lang="ts">
     import { Card, Flexbox, Button, Text, lockscrollAction } from 'svxui';
 
-    let isEnabled = false;
+    let isEnabled = $state(false);
 </script>
 
 ## Example
@@ -16,7 +16,7 @@ category: doc
 <Flexbox gap="3" align="center" class="mb-5">
     <Button
         variant="surface"
-        on:click={() => (isEnabled = !isEnabled)}
+        onclick={() => (isEnabled = !isEnabled)}
     >
         toggle
     </Button>
@@ -49,7 +49,7 @@ category: doc
     }
 </script>
 
-<button on:click={() => (enabled = !enabled)}>{enabled ? : 'disable' : 'enable'}</button>
+<button onclick={() => (enabled = !enabled)}>{enabled ? : 'disable' : 'enable'}</button>
 
-<div use:lockscrollAction={enabled} on:lockscrollchange={onLockScrollChange}>Content</div>
+<div use:lockscrollAction={enabled} onlockscrollchange={onLockScrollChange}>Content</div>
 ```

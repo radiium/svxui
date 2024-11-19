@@ -6,13 +6,15 @@
 </script>
 
 <PlaygroundWrapper class="mb-5">
-    <Flexbox slot="component" direction="column" gap="3">
-        {#each sizes as size}
-            <InputGroup>
-                <Button variant="soft" color="primary" {size} active>one</Button>
-                <Button variant="soft" color="primary" {size}>two</Button>
-                <Button variant="soft" color="primary" {size}>three</Button>
-            </InputGroup>
-        {/each}
-    </Flexbox>
+    {#snippet component()}
+        <Flexbox  direction="column" gap="3">
+            {#each sizes as size}
+                <InputGroup>
+                    <Button variant="soft" color="primary" {size} active>one</Button>
+                    <Button variant="soft" color="primary" {size}>two</Button>
+                    <Button variant="soft" color="primary" {size}>three</Button>
+                </InputGroup>
+            {/each}
+        </Flexbox>
+    {/snippet}
 </PlaygroundWrapper>

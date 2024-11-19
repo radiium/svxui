@@ -7,7 +7,7 @@ category: doc
 <script lang="ts">
     import ApiReferenceComponent from '$lib/components/api-reference/ApiReferenceComponent.svelte';
     import Playground from '$lib/content/components/accordion/playground.svelte';
-    import { accordionGroupSchema, accordionItemSchema } from '$lib/content/components/accordion/schema.js';
+    import { accordionGroupSchema, accordionSchema } from '$lib/content/components/accordion/schema.js';
 </script>
 
 ## Playground
@@ -20,6 +20,6 @@ category: doc
 
 <ApiReferenceComponent schema={accordionGroupSchema}/>
 
-### AccordionItem
+### Accordion
 
-<ApiReferenceComponent schema={accordionItemSchema}/>
+<ApiReferenceComponent schema={accordionSchema}/>

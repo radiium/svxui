@@ -3,11 +3,16 @@
     import Clipboard from 'phosphor-svelte/lib/Clipboard';
     import { Button } from 'svxui';
 
-    export let copied = false;
+    interface Props {
+        copied?: boolean;
+        onclick?: () => void;
+    }
+
+    let { copied = false, onclick = () => {} }: Props = $props();
 </script>
 
 <div class="copy-btn">
-    <Button size="1" variant="soft" iconOnly on:click>
+    <Button size="1" variant="soft" iconOnly {onclick}>
         {#if copied}
             <Check size="20" weight="bold" data-color="green" style="fill: var(--accent-9)" />
         {:else}

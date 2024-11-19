@@ -1,11 +1,11 @@
-import type { ComponentType } from 'svelte';
-import type { SelectOption } from '../../../../packages/svxui/dist/components/Select/Select.types';
-
 /**
  *
  * Schema Component
  *
  */
+
+import type { Component } from 'svelte';
+import type { SelectOption } from 'svxui';
 
 /**
  * Props
@@ -25,6 +25,9 @@ export enum SchemaPropType {
 export type SchemaProp = {
     name: string;
     type: SchemaPropType | string;
+    description?: string;
+    bindable?: boolean;
+    //
     typeHtmlElement?: string;
     typeAsElement?: string;
     typeCustom?: string;
@@ -39,7 +42,6 @@ export type SchemaProp = {
         | HTMLElement
         | undefined
         | null;
-    description?: string;
 };
 
 export type SchemaPropHtmlElement = {
@@ -72,10 +74,10 @@ export type SchemaPropEnum = {
 };
 
 /**
- * Slots
+ * Snippet
  */
 
-export type SchemaSlot = {
+export type SchemaSnippet = {
     name?: string;
     description?: string;
     props?: SchemaProp[];
@@ -98,7 +100,7 @@ export type SchemaComponent = {
     name?: string;
     extend?: string;
     props: SchemaProp[];
-    slots: SchemaSlot[];
+    snippets: SchemaSnippet[];
     events: SchemaEvent[];
 };
 
@@ -134,14 +136,14 @@ export type SchemaAction = {
 
 export type Sample = {
     title?: string;
-    component?: ComponentType;
+    component?: Component;
     componentCode?: string;
 };
 
 export type DocPageProps = {
     title: string;
     description?: string;
-    playground?: ComponentType;
+    playground?: Component;
     schemas?: SchemaComponent[] | SchemaAction[];
     samples?: Sample[];
 };

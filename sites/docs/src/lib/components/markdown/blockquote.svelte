@@ -1,5 +1,15 @@
-<blockquote class="markdown pl-5 py-3 my-3" data-color="blue" {...$$restProps}>
-    <slot />
+<script>
+    /**
+     * @typedef {Object} Props
+     * @property {import('svelte').Snippet} [children]
+     */
+
+    /** @type {Props & { [key: string]: any }} */
+    let { children, ...rest } = $props();
+</script>
+
+<blockquote class="markdown pl-5 py-3 my-3" data-color="blue" {...rest}>
+    {@render children?.()}
 </blockquote>
 
 <style lang="scss">

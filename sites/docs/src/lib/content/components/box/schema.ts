@@ -38,7 +38,7 @@ export const boxSchema: SchemaComponent = {
             default: defaultBoxProps.display
         }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }

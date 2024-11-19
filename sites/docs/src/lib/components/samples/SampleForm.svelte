@@ -29,10 +29,10 @@
         };
     };
 
-    let groupOptions = ['opt1', 'opt2', 'opt3'];
-    let selectOptions = ['opt1', 'opt2', 'opt3'];
+    let groupOptions = $state(['opt1', 'opt2', 'opt3']);
+    let selectOptions = $state(['opt1', 'opt2', 'opt3']);
 
-    let formData = {
+    let formData = $state({
         text: undefined,
         textarea: undefined,
         inputNumber: undefined,
@@ -43,9 +43,9 @@
         checkboxGroup: [],
         switch: true,
         checkbox: true
-    };
+    });
 
-    const propsConfig: SchemaComponent = {
+    const propsConfig: SchemaComponent = $state({
         props: [
             {
                 name: 'size',
@@ -66,11 +66,11 @@
                 default: ColorPrimary
             }
         ],
-        slots: [],
+        snippets: [],
         events: []
-    };
+    });
 
-    const sizesConfig: SizesConfig = {
+    const sizesConfig: SizesConfig = $state({
         s: {
             card: '2',
             label: '2',
@@ -86,16 +86,16 @@
             label: '4',
             input: '3'
         }
-    };
+    });
 
-    let props = {
+    let props = $state({
         size: propsConfig.props[0].default as keyof typeof sizesConfig,
         radius: propsConfig.props[1].default as (typeof Radius)[number],
         color: propsConfig.props[2].default as (typeof Colors)[number]
-    };
+    });
 
-    $: size = sizesConfig[props.size];
-    $: formDataJson = JSON.stringify(formData, null, 2);
+    let size = $derived(sizesConfig[props.size]);
+    let formDataJson = $derived(JSON.stringify(formData, null, 2));
 </script>
 
 <Text as="h2" size="6" weight="bold" class="mt-7 mb-3">Form config</Text>

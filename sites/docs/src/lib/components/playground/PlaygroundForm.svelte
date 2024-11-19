@@ -1,19 +1,31 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import { SchemaPropType, type SchemaComponent, type SchemaProp } from '$lib/doc.types';
     import { onMount } from 'svelte';
     import { Button, Colors, Flexbox, Input, Switch, Text } from 'svxui';
     import { buildProps, buildPropsString, type AnyPropsType } from './playground-utils';
 
-    export let props: AnyPropsType = {};
-    export let propsString: string = '';
-    export let schema: SchemaComponent = {
-        props: [],
-        slots: [],
-        events: []
-    };
+    interface Props {
+        props?: AnyPropsType;
+        propsString?: string;
+        schema?: SchemaComponent;
+    }
+
+    let {
+        props = $bindable({}),
+        propsString = $bindable(''),
+        schema = {
+            props: [],
+            snippets: [],
+            events: []
+        }
+    }: Props = $props();
 
     onMount(() => (props = buildProps(schema)));
-    $: propsString = buildPropsString(schema, props);
+    $effect(() => {
+        propsString = buildPropsString(schema, props);
+    });
 
     function updateEnumProp(
         prop: SchemaProp,
@@ -42,7 +54,7 @@
                                 size="1"
                                 class="color-btn"
                                 active={color === props[prop.name]}
-                                on:click={() => updateEnumProp(prop, color)}
+                                onclick={() => updateEnumProp(prop, color)}
                             ></Button>
                         {/each}
                     </Flexbox>
@@ -55,7 +67,7 @@
                                 size="1"
                                 iconOnly={prop.name === 'size' || prop.name === 'gap'}
                                 variant={value === props[prop.name] ? 'solid' : 'outline'}
-                                on:click={() => updateEnumProp(prop, value)}
+                                onclick={() => updateEnumProp(prop, value)}
                             >
                                 {value}
                             </Button>

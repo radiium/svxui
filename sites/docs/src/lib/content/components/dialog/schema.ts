@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { defaultDialogProps, Radius, Sizes0To4 } from 'svxui';
+import { defaultDialogProps, Radius, Sizes1To4 } from 'svxui';
 
 /**
  * Playground template
@@ -12,12 +12,12 @@ export const template = `
     let isOpen = false;
 </script>
 
-<Button variant="soft" on:click={() => (isOpen = true)}>open</Button>
+<Button variant="soft" onclick={() => (isOpen = true)}>open</Button>
 
 <Dialog:props bind:isOpen>
     <h1>Title</h1>
     <p class="my-3">Content</p>
-    <Button color="primary" variant="soft" fullWidth on:click={() => (isOpen = false)}>
+    <Button color="primary" variant="soft" fullWidth onclick={() => (isOpen = false)}>
         close
     </Button>
 </Dialog>    
@@ -43,7 +43,7 @@ export const dialogSchema: SchemaComponent = {
         {
             name: 'size',
             type: SchemaPropType.enum,
-            values: Sizes0To4,
+            values: Sizes1To4,
             default: defaultDialogProps.size
         },
         {
@@ -108,7 +108,7 @@ export const dialogSchema: SchemaComponent = {
             default: defaultDialogProps.lockScroll
         }
     ],
-    slots: [
+    snippets: [
         {
             name: 'default'
         }

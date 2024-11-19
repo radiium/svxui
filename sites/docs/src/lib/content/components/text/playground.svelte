@@ -5,18 +5,24 @@
     import { Text, defaultTextProps } from 'svxui';
     import { template, textSchema } from './schema.js';
 
-    let props = { ...defaultTextProps };
-    let propsString = '';
-    $: templateProps = [
+    let props = $state({ ...defaultTextProps });
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper mask={false}>
-    <Text slot="component" style="width: 100%" {...props}>Super sample text !</Text>
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={textSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <Text  style="width: 100%" {...props}>Super sample text !</Text>
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm  bind:props bind:propsString schema={textSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>

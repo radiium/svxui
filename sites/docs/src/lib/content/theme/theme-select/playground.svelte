@@ -5,18 +5,24 @@
     import { defaultThemeSelectProps, ThemeSelect } from 'svxui';
     import { template, themeSelectSchema } from './schema.js';
 
-    let props = defaultThemeSelectProps;
-    let propsString = '';
-    $: templateProps = [
+    let props = $state(defaultThemeSelectProps);
+    let propsString = $state('');
+    let templateProps = $derived([
         {
             key: ':props',
             value: propsString
         }
-    ];
+    ]);
 </script>
 
 <PlaygroundWrapper>
-    <ThemeSelect slot="component" {...props} />
-    <PlaygroundForm slot="form" bind:props bind:propsString schema={themeSelectSchema} />
-    <PlaygroundCode slot="code" {template} {templateProps} />
+    {#snippet component()}
+        <ThemeSelect  {...props} />
+    {/snippet}
+    {#snippet form()}
+        <PlaygroundForm  bind:props bind:propsString schema={themeSelectSchema} />
+    {/snippet}
+    {#snippet code()}
+        <PlaygroundCode  {template} {templateProps} />
+    {/snippet}
 </PlaygroundWrapper>
