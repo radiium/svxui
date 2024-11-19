@@ -1,39 +1,39 @@
-import jsesLint from '@eslint/js';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import eslintPluginSvelte from 'eslint-plugin-svelte';
+import js from '@eslint/js';
+import prettierRecommended from 'eslint-plugin-prettier/recommended';
+import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
-import svelteEslintParser from 'svelte-eslint-parser';
-import tseslint from 'typescript-eslint';
+import svelteParser from "svelte-eslint-parser";
+import ts from 'typescript-eslint';
 
 export default [
-    jsesLint.configs.recommended,
-    ...tseslint.configs.recommended,
-    ...eslintPluginSvelte.configs['flat/recommended'],
-    ...eslintPluginSvelte.configs['flat/prettier'],
-    eslintPluginPrettierRecommended,
+    js.configs.recommended,
+    ...ts.configs.recommended,
+    ...svelte.configs['flat/recommended'],
+    prettierRecommended,
+    ...svelte.configs['flat/prettier'],
+     // Langage options
+    // https://eslint.org/docs/latest/use/configure/language-options
+    {
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node
+            }
+        }
+    },
     // Svelte
     {
         files: ['**/*.svelte', '*.svelte'],
         languageOptions: {
-            parser: svelteEslintParser,
+            parser: svelteParser,
             parserOptions: {
-                parser: tseslint.parser
+                parser: ts.parser
             }
         },
         rules: {
             // TODO: In progress for Svelte 5
             // https://github.com/sveltejs/eslint-plugin-svelte/issues/652
             'svelte/valid-compile': 'off'
-        }
-    },
-    // Langage options
-    // https://eslint.org/docs/latest/use/configure/language-options
-    {
-        languageOptions: {
-            globals: {
-                ...globals.node,
-                ...globals.browser
-            }
         }
     },
     // Ignores files
@@ -46,16 +46,15 @@ export default [
             '**/build',
             '**/dist',
             '**/.svelte-kit',
+            '**/.vercel',
+            '**/.contentlayer',
             '**/$generated/',
             '**/package',
             '**/.',
-            '**/.vercel',
-            '**/dist',
             '.env',
             '.env.*',
             '!.env.example',
-            'pnpm-lock.yaml',
-            '.contentlayer'
+            'pnpm-lock.yaml'
         ]
     },
     // Custom rules
