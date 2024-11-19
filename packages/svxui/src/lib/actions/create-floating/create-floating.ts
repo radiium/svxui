@@ -37,7 +37,7 @@ export function createFloating(initialProps: Partial<CreateFloatingProps> = {}) 
     let arrowEl: HTMLElement | SVGSVGElement | undefined = undefined;
 
     const props = createFloatingPropsStore(defaultCreateFloatingProps, initialProps);
-    const state = writable<CreateFloatingState>();
+    const floatingState = writable<CreateFloatingState>();
 
     // Update position
 
@@ -52,7 +52,7 @@ export function createFloating(initialProps: Partial<CreateFloatingProps> = {}) 
             const response = await computePosition(referenceEl, floatingEl, options);
             const [side, align] = getSideAndAlignFromPlacement(response.placement);
 
-            state.set({
+            floatingState.set({
                 ...response,
                 side,
                 align
@@ -143,7 +143,7 @@ export function createFloating(initialProps: Partial<CreateFloatingProps> = {}) 
         states: {
             updateProps: props.update,
             props: readonly(props),
-            state: readonly(state)
+            floatingState: readonly(floatingState)
         }
     };
 }

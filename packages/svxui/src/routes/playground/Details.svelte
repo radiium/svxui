@@ -1,10 +1,22 @@
-<details>
+<script lang="ts">
+    import type { Snippet } from 'svelte';
+
+    interface Props {
+        id?: string;
+        title?: Snippet;
+        children?: Snippet;
+    }
+
+    let { id, title, children }: Props = $props();
+</script>
+
+<details {id}>
     <summary>
-        <slot name="title" />
+        {@render title?.()}
     </summary>
 
     <div class="details-content">
-        <slot />
+        {@render children?.()}
     </div>
 </details>
 

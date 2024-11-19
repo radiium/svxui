@@ -1,6 +1,5 @@
 <script lang="ts">
-    import Text from '$lib/components/Text/Text.svelte';
-    import { Colors, Flexbox, Sizes1To3, Switch } from '$lib/index.js';
+    import { Colors, Flexbox, Sizes1To3, Switch, Text } from '$lib/index.js';
     import Details from './Details.svelte';
     import Section from './Section.svelte';
     import Table from './Table.svelte';
@@ -10,10 +9,14 @@
 </script>
 
 <Details>
-    <h2 slot="title">Switch</h2>
+    {#snippet title()}
+        <h2>Switch</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">With label</h3>
+        {#snippet title()}
+            <h3>With label</h3>
+        {/snippet}
 
         <Flexbox as="label" align="center" gap="3">
             <Switch />
@@ -22,14 +25,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
 
             {#each sizes as size}
                 <tr>
@@ -52,14 +57,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Colors</h3>
+        {#snippet title()}
+            <h3>Colors</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
 
             {#each colors as color}
                 <tr>

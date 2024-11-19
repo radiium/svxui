@@ -10,18 +10,22 @@
 </script>
 
 <Details>
-    <h2 slot="title">Card</h2>
+    {#snippet title()}
+        <h2>Card</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Color</h3>
+        {#snippet title()}
+            <h3>Color</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
 
             {#each colors as color}
                 <tr>
@@ -29,7 +33,7 @@
                     {#each variants as variant}
                         <td>
                             <Flexbox>
-                                <Card {color} {variant}>Card content</Card>
+                                <Card {color} {variant}>Card la content</Card>
                             </Flexbox>
                         </td>
                     {/each}
@@ -39,15 +43,17 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Color + translucent</h3>
+        {#snippet title()}
+            <h3>Color + translucent</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
 
             {#each colors as color}
                 <tr>
@@ -65,15 +71,17 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
             {#each sizes as size}
                 <tr>
                     <td>size {size}</td>
@@ -84,6 +92,25 @@
                             </Flexbox>
                         </td>
                     {/each}
+                </tr>
+            {/each}
+        </Table>
+    </Section>
+
+    <Section>
+        {#snippet title()}
+            <h3>Full width</h3>
+        {/snippet}
+
+        <Table>
+            {#each sizes as size}
+                <tr>
+                    <td>size {size}</td>
+                    <td class="width-100">
+                        <Flexbox class="width-100">
+                            <Card {size} fullWidth>Card content</Card>
+                        </Flexbox>
+                    </td>
                 </tr>
             {/each}
         </Table>

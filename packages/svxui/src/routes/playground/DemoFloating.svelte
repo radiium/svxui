@@ -7,19 +7,36 @@
     const sizes = Sizes0To5;
     const placements = Placements;
 
-    let isOpenPlacement = placements.map(() => false);
-    let isOpenSize = sizes.map(() => false);
-    let isOpenArrow = false;
-    let isOpenOutline = false;
-    let isOpenArrowOutline = false;
-    let isOpenBackdrop = false;
+    let isOpenPlacement = $state(placements.map(() => false));
+    let isOpenSize = $state(sizes.map(() => false));
+    let isOpenArrow = $state(false);
+    let isOpenOutline = $state(false);
+    let isOpenArrowOutline = $state(false);
+    let isOpenBackdrop = $state(false);
+    let isOpenHover = $state(false);
+
+    let hoverTimeout: ReturnType<typeof setTimeout>;
+    function handleHoverOpen() {
+        clearTimeout(hoverTimeout);
+        hoverTimeout = setTimeout(() => (isOpenHover = true), 800);
+    }
+    function handleHoverClose() {
+        clearTimeout(hoverTimeout);
+        isOpenHover = false;
+    }
 </script>
 
 <Details>
-    <h2 slot="title">Floating</h2>
+    {#snippet title()}
+        <h2>Floating</h2>
+    {/snippet}
+
+    <div id="portal-container"></div>
 
     <Section>
-        <h3 slot="title">Placement</h3>
+        {#snippet title()}
+            <h3>Placement</h3>
+        {/snippet}
 
         <Table>
             {#each placements as placement, i}
@@ -36,13 +53,21 @@
                                 closeOnResize
                                 closeOnScroll
                                 portal
+                                portalTarget="#portal-container"
                             >
-                                <Button
-                                    slot="trigger"
-                                    variant="soft"
-                                    on:click={() => (isOpenPlacement[i] = true)}>Open {placement}</Button
-                                >
-                                <div slot="content">Floating content</div>
+                                {#snippet trigger()}
+                                    <Button
+                                        variant="soft"
+                                        onclick={() => {
+                                            isOpenPlacement[i] = true;
+                                        }}
+                                    >
+                                        Open {placement}
+                                    </Button>
+                                {/snippet}
+                                {#snippet content()}
+                                    <div>Floating content</div>
+                                {/snippet}
                             </Floating>
                         </Flexbox>
                     </td>
@@ -52,7 +77,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
             {#each sizes as size, i}
@@ -69,11 +96,16 @@
                                 closeOnResize
                                 closeOnScroll
                                 portal
+                                portalTarget="#portal-container"
                             >
-                                <Button slot="trigger" variant="soft" on:click={() => (isOpenSize[i] = true)}
-                                    >Open size {size}</Button
-                                >
-                                <div slot="content">Floating content</div>
+                                {#snippet trigger()}
+                                    <Button variant="soft" onclick={() => (isOpenSize[i] = true)}>
+                                        Open size {size}
+                                    </Button>
+                                {/snippet}
+                                {#snippet content()}
+                                    <div>Floating content</div>
+                                {/snippet}
                             </Floating>
                         </Flexbox>
                     </td>
@@ -83,7 +115,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Arrow</h3>
+        {#snippet title()}
+            <h3>Arrow</h3>
+        {/snippet}
 
         <Floating
             bind:isOpen={isOpenArrow}
@@ -95,16 +129,21 @@
             closeOnResize
             closeOnScroll
             portal
+            portalTarget="#portal-container"
         >
-            <Button slot="trigger" variant="soft" on:click={() => (isOpenArrow = true)}
-                >Open with arrow</Button
-            >
-            <div slot="content">Floating content</div>
+            {#snippet trigger()}
+                <Button variant="soft" onclick={() => (isOpenArrow = true)}>Open with arrow</Button>
+            {/snippet}
+            {#snippet content()}
+                <div>Floating content</div>
+            {/snippet}
         </Floating>
     </Section>
 
     <Section>
-        <h3 slot="title">Outline</h3>
+        {#snippet title()}
+            <h3>Outline</h3>
+        {/snippet}
 
         <Floating
             bind:isOpen={isOpenOutline}
@@ -115,16 +154,21 @@
             closeOnResize
             closeOnScroll
             portal
+            portalTarget="#portal-container"
         >
-            <Button slot="trigger" variant="soft" on:click={() => (isOpenOutline = true)}
-                >Open with outline</Button
-            >
-            <div slot="content">Floating content</div>
+            {#snippet trigger()}
+                <Button variant="soft" onclick={() => (isOpenOutline = true)}>Open with outline</Button>
+            {/snippet}
+            {#snippet content()}
+                <div>Floating content</div>
+            {/snippet}
         </Floating>
     </Section>
 
     <Section>
-        <h3 slot="title">Arrow + Outline</h3>
+        {#snippet title()}
+            <h3>Arrow + Outline</h3>
+        {/snippet}
 
         <Floating
             bind:isOpen={isOpenArrowOutline}
@@ -137,16 +181,21 @@
             closeOnResize
             closeOnScroll
             portal
+            portalTarget="#portal-container"
         >
-            <Button slot="trigger" variant="soft" on:click={() => (isOpenArrowOutline = true)}
-                >Open with outline</Button
-            >
-            <div slot="content">Floating content</div>
+            {#snippet trigger()}
+                <Button variant="soft" onclick={() => (isOpenArrowOutline = true)}>Open with outline</Button>
+            {/snippet}
+            {#snippet content()}
+                <div>Floating content</div>
+            {/snippet}
         </Floating>
     </Section>
 
     <Section>
-        <h3 slot="title">Backdrop</h3>
+        {#snippet title()}
+            <h3>Backdrop</h3>
+        {/snippet}
 
         <Floating
             bind:isOpen={isOpenBackdrop}
@@ -157,11 +206,44 @@
             closeOnResize
             closeOnScroll
             portal
+            portalTarget="#portal-container"
         >
-            <Button slot="trigger" variant="soft" on:click={() => (isOpenBackdrop = true)}
-                >Open with backdrop</Button
-            >
-            <div slot="content">Floating content</div>
+            {#snippet trigger()}
+                <Button variant="soft" onclick={() => (isOpenBackdrop = true)}>Open with backdrop</Button>
+            {/snippet}
+            {#snippet content()}
+                <div>Floating content</div>
+            {/snippet}
+        </Floating>
+    </Section>
+
+    <Section>
+        {#snippet title()}
+            <h3>Hover</h3>
+        {/snippet}
+
+        <Floating
+            bind:isOpen={isOpenHover}
+            closeOnEscape
+            closeOnResize
+            closeOnScroll
+            portal
+            portalTarget="#portal-container"
+        >
+            {#snippet trigger()}
+                <Button
+                    variant="soft"
+                    onfocus={handleHoverOpen}
+                    onpointerenter={handleHoverOpen}
+                    onblur={handleHoverClose}
+                    onpointerleave={handleHoverClose}
+                >
+                    Open on hover with 800ms delay
+                </Button>
+            {/snippet}
+            {#snippet content()}
+                <div>Floating content</div>
+            {/snippet}
         </Floating>
     </Section>
 </Details>

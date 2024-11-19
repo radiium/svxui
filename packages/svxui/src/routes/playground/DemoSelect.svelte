@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Colors, Flexbox, Select, Sizes1To3 } from '$lib/index.js';
-    import Section from './Section.svelte';
     import Details from './Details.svelte';
+    import Section from './Section.svelte';
     import Table from './Table.svelte';
 
     const sizes = Sizes1To3;
@@ -10,17 +10,21 @@
 </script>
 
 <Details>
-    <h2 slot="title">Select</h2>
+    {#snippet title()}
+        <h2>Select</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Size (single)</h3>
+        {#snippet title()}
+            <h3>Size (single)</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
             {#each sizes as size}
                 <tr>
                     <td>size {size}</td>
@@ -41,14 +45,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Size (multiple)</h3>
+        {#snippet title()}
+            <h3>Size (multiple)</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
             {#each sizes as size}
                 <tr>
                     <td>size {size}</td>
@@ -68,7 +74,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Color</h3>
+        {#snippet title()}
+            <h3>Color</h3>
+        {/snippet}
 
         <Table>
             {#each colors as color}
@@ -85,14 +93,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Color + multiple</h3>
+        {#snippet title()}
+            <h3>Color + multiple</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
 
             {#each colors as color}
                 <tr>
@@ -114,7 +124,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Full Width</h3>
+        {#snippet title()}
+            <h3>Full Width</h3>
+        {/snippet}
 
         <Flexbox class="width-100" direction="column" gap="3">
             <Select {options} fullWidth />

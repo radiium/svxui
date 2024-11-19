@@ -9,10 +9,14 @@
 </script>
 
 <Details>
-    <h2 slot="title">Checkbox</h2>
+    {#snippet title()}
+        <h2>Checkbox</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">With label</h3>
+        {#snippet title()}
+            <h3>With label</h3>
+        {/snippet}
 
         <Flexbox as="label" align="center" gap="3">
             <Checkbox />
@@ -31,14 +35,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
             {#each sizes as size}
                 <tr>
                     <td>size {size}</td>
@@ -60,14 +66,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Colors</h3>
+        {#snippet title()}
+            <h3>Colors</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
 
             {#each colors as color}
                 <tr>

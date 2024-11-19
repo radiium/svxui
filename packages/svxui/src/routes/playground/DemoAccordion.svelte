@@ -1,92 +1,231 @@
 <script lang="ts">
-    import { AccordionGroup, AccordionItem, Button, Card, Flexbox, Text } from '$lib/index.js';
+    import { AccordionGroup, Accordion, Button, Card, Flexbox, Text, Separator } from '$lib/index.js';
     import { slide } from 'svelte/transition';
     import Details from './Details.svelte';
     import Section from './Section.svelte';
 
-    const accordionsH = [
+    type Item = {
+        value: string;
+        label: string;
+        content: string;
+        disabled: boolean;
+        expanded?: boolean;
+    };
+
+    const items = $state<Item[]>([
         {
-            value: 'tab1',
+            value: 'accordion1',
             label: 'Accordion 1',
             content: 'Accordion 1 content',
             disabled: false,
-            expanded: false
+            expanded: true
         },
         {
-            value: 'tab2',
+            value: 'accordion2',
             label: 'Accordion 2',
             content: 'Accordion 2 content',
-            disabled: false,
-            expanded: false
+            disabled: false
         },
         {
-            value: 'tab3',
+            value: 'accordion3',
             label: 'Accordion 3',
             content: 'Accordion 3 content',
-            disabled: true,
-            expanded: false
+            disabled: true
         }
-    ];
+    ]);
 
-    const accordionsV = structuredClone(accordionsH);
+    let valueH = $state<string | string[] | undefined>();
+    let multiH = $state(true);
+    const itemsH = $state(structuredClone($state.snapshot(items)));
+
+    let valueV = $state(undefined);
+    let multiV = $state(false);
+    const itemsV = $state(structuredClone($state.snapshot(items)));
 </script>
 
+{#snippet itemControl(
+    index: number,
+    multi: boolean,
+    items: Item[],
+    value: any,
+    setValue: (value: any) => void
+)}
+    {@const item = items[index]!}
+    {@const opened = multi ? (value ?? []).includes(item.value) : value === item.value}
+
+    <Flexbox gap="3" align="center" class="mb-3">
+        <Text>{item.value}</Text>
+        <Button
+            variant="soft"
+            disabled={item.disabled}
+            onclick={() => {
+                if (!item.disabled) {
+                    if (opened) {
+                        setValue(
+                            multi ? (value ?? []).filter((value: string) => value !== item.value) : undefined
+                        );
+                    } else {
+                        setValue(multi ? [...(value ?? []), item.value] : item.value);
+                    }
+                }
+            }}
+        >
+            {#if opened}
+                Close
+            {:else}
+                Open
+            {/if}
+        </Button>
+
+        <Button
+            variant="soft"
+            onclick={() => {
+                item.disabled = !item.disabled;
+            }}
+        >
+            {#if item.disabled}
+                Enable
+            {:else}
+                Disable
+            {/if}
+        </Button>
+    </Flexbox>
+{/snippet}
+
+{#snippet groupControl(
+    multi: boolean,
+    items: Item[],
+    setMulti: (multi: boolean) => void,
+    setValue: (value: any) => void
+)}
+    <Flexbox gap="3" class="mb-5">
+        {#if multi}
+            <Button
+                variant="soft"
+                onclick={() =>
+                    setValue(
+                        items.reduce<string[]>(
+                            (value, item) => (item.disabled ? value : [...value, item.value]),
+                            []
+                        )
+                    )}>Open all</Button
+            >
+            <Button variant="soft" onclick={() => (valueH = [])}>Close all</Button>
+        {/if}
+        <Button variant="soft" onclick={() => setMulti(!multi)}>Toggle multi: {multi}</Button>
+    </Flexbox>
+{/snippet}
+
 <Details>
-    <h2 slot="title">Accordion</h2>
+    {#snippet title()}
+        <h2>Accordion</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Horizontal</h3>
+        {#snippet title()}
+            <h3>Vertical</h3>
+        {/snippet}
 
-        <AccordionGroup>
-            <Flexbox gap="2" direction="column">
-                {#each accordionsH as { expanded, label, content, disabled }}
-                    <Card size="1" class="width-400px max-width-300px">
-                        <AccordionItem bind:expanded bind:disabled>
-                            <Flexbox
-                                slot="header"
-                                let:toggle
-                                let:expanded
-                                let:disabled
-                                justify="between"
-                                align="center"
-                            >
-                                <Text {disabled}>{label}</Text>
-                                <Button size="1" variant="soft" on:click={toggle} {disabled}>
-                                    {expanded ? 'close' : 'open'}
-                                </Button>
-                            </Flexbox>
-                            <div transition:slide class="pt-3">{content}</div>
-                        </AccordionItem>
-                    </Card>
-                {/each}
-            </Flexbox>
+        <Flexbox gap="3" class="mb-5">
+            <Text>Value:</Text>
+            <Text color="green">{JSON.stringify(valueH)}</Text>
+        </Flexbox>
+        {@render itemControl(0, multiH, itemsH, valueH, (val) => (valueH = val))}
+        {@render itemControl(1, multiH, itemsH, valueH, (val) => (valueH = val))}
+        {@render itemControl(2, multiH, itemsH, valueH, (val) => (valueH = val))}
+        {@render groupControl(
+            multiH,
+            itemsH,
+            (multi) => (multiH = multi),
+            (val) => (valueH = val)
+        )}
+
+        <Separator size="4" class="mb-5" />
+
+        <AccordionGroup multi={multiH} bind:value={valueH}>
+            <!-- onValueChange={(val) => console.log('new value', val)} -->
+            <Card size="0" variant="outline">
+                <Flexbox direction="column">
+                    {#each itemsH as { value, label, content, disabled, expanded }, i}
+                        <!-- <Card size="1" class="width-400px max-width-300px"> -->
+                        <div>
+                            <Accordion {value} {disabled} {expanded}>
+                                {#snippet trigger({ expanded, attrs, toggle })}
+                                    <Flexbox justify="between" align="center" class="p-4">
+                                        <Text {disabled}>{label}</Text>
+                                        <Button
+                                            size="1"
+                                            variant="soft"
+                                            {disabled}
+                                            {...attrs}
+                                            onclick={toggle}
+                                        >
+                                            {expanded ? 'close' : 'open'}
+                                        </Button>
+                                    </Flexbox>
+                                {/snippet}
+                                {#snippet children({ attrs })}
+                                    <div transition:slide={{ duration: 150 }} class="p-4" {...attrs}>
+                                        {content}
+                                    </div>
+                                {/snippet}
+                            </Accordion>
+                        </div>
+                        {#if i < itemsH.length - 1}
+                            <Separator size="4" />
+                        {/if}
+                        <!-- </Card> -->
+                    {/each}
+                </Flexbox>
+            </Card>
         </AccordionGroup>
     </Section>
 
     <Section>
-        <h3 slot="title">Vertical</h3>
+        {#snippet title()}
+            <h3>Horizontal</h3>
+        {/snippet}
 
-        <AccordionGroup>
+        <Flexbox gap="3" class="mb-5">
+            <Text>Value:</Text>
+            <Text color="green">{JSON.stringify(valueV)}</Text>
+        </Flexbox>
+        {@render itemControl(0, multiV, itemsV, valueV, (val) => (valueV = val))}
+        {@render itemControl(1, multiV, itemsV, valueV, (val) => (valueV = val))}
+        {@render itemControl(2, multiV, itemsV, valueV, (val) => (valueV = val))}
+        {@render groupControl(
+            multiV,
+            itemsV,
+            (multi) => (multiV = multi),
+            (val) => (valueV = val)
+        )}
+        <Separator size="4" class="mb-5" />
+
+        <AccordionGroup multi={multiV} bind:value={valueV}>
             <Flexbox gap="2" class="width-max">
-                {#each accordionsV as { expanded, label, content, disabled }}
+                {#each itemsV as { value, label, content, disabled }, i}
                     <Card size="1" class=" height-200px flex-shrink-0">
                         <Flexbox gap="2" class="height-100">
-                            <AccordionItem bind:expanded bind:disabled>
-                                <Flexbox
-                                    slot="header"
-                                    let:toggle
-                                    let:expanded
-                                    let:disabled
-                                    justify="between"
-                                    align="center"
-                                    direction="column"
-                                    class="height-100"
-                                >
-                                    <Text {disabled}>{label}</Text>
-                                    <Button size="1" variant="soft" on:click={toggle} {disabled}>
-                                        {expanded ? 'close' : 'open'}
-                                    </Button>
-                                </Flexbox>
+                            <Accordion {value} {disabled}>
+                                {#snippet trigger({ expanded, attrs, toggle })}
+                                    <Flexbox
+                                        justify="between"
+                                        align="center"
+                                        direction="column"
+                                        class="height-100"
+                                    >
+                                        <Text {disabled}>{label}</Text>
+                                        <Button
+                                            size="1"
+                                            variant="soft"
+                                            {disabled}
+                                            {...attrs}
+                                            onclick={toggle}
+                                        >
+                                            {expanded ? 'close' : 'open'}
+                                        </Button>
+                                    </Flexbox>
+                                {/snippet}
                                 <div transition:slide={{ axis: 'x' }} class="pl-3">
                                     <Card variant="outline" class="width-200px height-100 height-9">
                                         <Flexbox align="center" justify="center" class="height-100">
@@ -94,7 +233,7 @@
                                         </Flexbox>
                                     </Card>
                                 </div>
-                            </AccordionItem>
+                            </Accordion>
                         </Flexbox>
                     </Card>
                 {/each}

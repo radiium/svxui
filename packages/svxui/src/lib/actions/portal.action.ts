@@ -2,7 +2,7 @@ import { tick } from 'svelte';
 import type { ActionReturn } from 'svelte/action';
 import type { HTMLAttributes } from 'svelte/elements';
 
-export type PortalParameters = HTMLElement | string;
+export type PortalParameters = HTMLElement | string | undefined;
 export type PortalAttributes = HTMLAttributes<HTMLElement>;
 
 /**
@@ -18,7 +18,7 @@ export function portalAction(
 ): ActionReturn<PortalParameters, PortalAttributes> {
     let targetEl: HTMLElement | null;
 
-    async function update(newTarget: HTMLElement | string): Promise<void> {
+    async function update(newTarget: PortalParameters): Promise<void> {
         target = newTarget;
         if (typeof target === 'string') {
             targetEl = document.querySelector(target);

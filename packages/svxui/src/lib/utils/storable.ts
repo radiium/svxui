@@ -1,5 +1,6 @@
 import { writable, type StartStopNotifier, type Updater, type Writable } from 'svelte/store';
 import { isBrowser } from './is-browser.js';
+import { on } from 'svelte/events';
 
 export enum StorableStorageType {
     local = 'local',
@@ -83,15 +84,11 @@ export function storable<T>(params: StorableParams<T>): Storable<T> {
             }
         }
 
-        if (isBrowser()) {
-            window.addEventListener('storage', onStorageChange);
-        }
+        const off = on(window, 'storage', onStorageChange);
         const stop = start?.(set, update);
 
         return () => {
-            if (isBrowser()) {
-                window?.removeEventListener('storage', onStorageChange);
-            }
+            off();
             stop?.();
         };
     });

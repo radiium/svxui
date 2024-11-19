@@ -1,6 +1,6 @@
 <script>
     import { page } from '$app/stores';
-    import Flexbox from '$lib/components/Flexbox/Flexbox.svelte';
+    import Flexbox from '$lib/components/flexbox/components/flexbox.svelte';
 </script>
 
 <Flexbox direction="column" gap="3" class="p-9">

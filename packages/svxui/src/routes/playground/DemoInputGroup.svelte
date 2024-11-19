@@ -1,39 +1,86 @@
 <script lang="ts">
-    import Flexbox from '$lib/components/Flexbox/Flexbox.svelte';
-    import Text from '$lib/components/Text/Text.svelte';
+    import InputRange from '$lib/components/input-range/components/input-range.svelte';
+    import Text from '$lib/components/text/components/text.svelte';
     import AlignCenterIcon from '$lib/icons/AlignCenter.svelte';
     import AlignLeftIcon from '$lib/icons/AlignLeft.svelte';
     import AlignRightIcon from '$lib/icons/AlignRight.svelte';
     import PlusIcon from '$lib/icons/Plus.svelte';
-    import { Button, Input, InputGroup, Select, Sizes1To3 } from '$lib/index.js';
+    import {
+        Button,
+        Checkbox,
+        Colors,
+        Flexbox,
+        Input,
+        InputGroup,
+        InputGroupItem,
+        Radio,
+        Select,
+        Sizes1To3,
+        Switch
+    } from '$lib/index.js';
     import Details from './Details.svelte';
     import Section from './Section.svelte';
+
     const sizes = Sizes1To3;
+    const colors = Colors;
     const options = ['option 1', 'option 2', 'option 3', 'option 4', 'option 5'];
 </script>
 
 <Details>
-    <h2 slot="title">InputGroup</h2>
+    {#snippet title()}
+        <h2>InputGroup</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Button + Text</h3>
+        {#snippet title()}
+            <h3>Text + Input</h3>
+        {/snippet}
 
         <Flexbox direction="column" align="start" gap="3">
-            {#each sizes as size}
+            {#each colors as color}
                 <InputGroup>
-                    <Flexbox align="center" justify="center" class="px-3">
-                        <Text {size}>Label</Text>
-                    </Flexbox>
-                    <Button variant="soft" color="primary" {size} active>one</Button>
-                    <Button variant="soft" color="primary" {size}>two</Button>
-                    <Button variant="soft" color="primary" {size}>three</Button>
+                    <InputGroupItem {color} class="px-3">
+                        <Text {color}>Label</Text>
+                    </InputGroupItem>
+                    <Input {color} />
                 </InputGroup>
             {/each}
         </Flexbox>
     </Section>
 
     <Section>
-        <h3 slot="title">Button icon only</h3>
+        {#snippet title()}
+            <h3>All controls</h3>
+        {/snippet}
+
+        <Flexbox direction="column" align="start" gap="3">
+            {#each sizes as size}
+                <InputGroup>
+                    <InputGroupItem color="primary" class="px-3">
+                        <Text {size}>Label</Text>
+                    </InputGroupItem>
+                    <Button variant="soft" color="primary" {size}>button</Button>
+                    <Input color="primary" {size} />
+                    <Select color="primary" {size} {options} />
+                    <InputRange color="primary" {size} />
+                    <InputGroupItem color="primary" class="px-3">
+                        <Radio color="primary" {size} />
+                    </InputGroupItem>
+                    <InputGroupItem color="primary" class="px-3">
+                        <Checkbox color="primary" {size} />
+                    </InputGroupItem>
+                    <InputGroupItem color="primary" class="px-3">
+                        <Switch color="primary" {size} />
+                    </InputGroupItem>
+                </InputGroup>
+            {/each}
+        </Flexbox>
+    </Section>
+
+    <Section>
+        {#snippet title()}
+            <h3>Button icon only</h3>
+        {/snippet}
 
         <Flexbox direction="column" align="start" gap="3">
             {#each sizes as size}
@@ -53,7 +100,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Input + Select</h3>
+        {#snippet title()}
+            <h3>Input + Select</h3>
+        {/snippet}
 
         <Flexbox direction="column" align="start" gap="3">
             <InputGroup>
@@ -76,7 +125,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Button + Input</h3>
+        {#snippet title()}
+            <h3>Button + Input</h3>
+        {/snippet}
 
         <Flexbox direction="column" align="start" gap="3">
             <InputGroup>
@@ -110,7 +161,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Button icon + Input</h3>
+        {#snippet title()}
+            <h3>Button icon + Input</h3>
+        {/snippet}
 
         <Flexbox direction="column" align="start" gap="3">
             <InputGroup>

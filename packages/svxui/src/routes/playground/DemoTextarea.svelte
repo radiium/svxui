@@ -9,10 +9,14 @@
 </script>
 
 <Details>
-    <h2 slot="title">Textarea</h2>
+    {#snippet title()}
+        <h2>Textarea</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
             {#each sizes as size}
@@ -29,14 +33,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Color</h3>
+        {#snippet title()}
+            <h3>Color</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
             {#each colors as color}
                 <tr>
                     <td>{color}</td>
@@ -57,7 +63,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Full Width</h3>
+        {#snippet title()}
+            <h3>Full Width</h3>
+        {/snippet}
 
         <Textarea rows={6} placeholder="placeholder..." fullWidth />
     </Section>

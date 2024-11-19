@@ -1,6 +1,5 @@
 <script lang="ts">
-    import Text from '$lib/components/Text/Text.svelte';
-    import { Colors, Flexbox, Separator, Sizes1To4 } from '$lib/index.js';
+    import { Colors, Flexbox, Separator, Sizes1To4, Text } from '$lib/index.js';
     import Details from './Details.svelte';
     import Section from './Section.svelte';
     import Table from './Table.svelte';
@@ -10,16 +9,20 @@
 </script>
 
 <Details>
-    <h2 slot="title">Separator</h2>
+    {#snippet title()}
+        <h2>Separator</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Example</h3>
+        {#snippet title()}
+            <h3>Example</h3>
+        {/snippet}
 
         <Text>
             <Flexbox direction="column" gap="3" class="width-max">
                 The quick brown fox jumps
                 <Separator size="4" />
-                <Flexbox gap="3">
+                <Flexbox gap="3" align="center">
                     over
                     <Separator size="2" orientation="vertical" />
                     the
@@ -33,14 +36,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>horizontal</th>
                 <th>vertical</th>
-            </svelte:fragment>
+            {/snippet}
 
             {#each sizes as size}
                 <tr>
@@ -62,14 +67,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Color</h3>
+        {#snippet title()}
+            <h3>Color</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>horizontal</th>
                 <th>vertical</th>
-            </svelte:fragment>
+            {/snippet}
 
             {#each colors as color}
                 <tr>

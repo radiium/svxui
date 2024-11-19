@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Colors, Flexbox, InputRange, Sizes1To3 } from '$lib/index.js';
-    import Section from './Section.svelte';
     import Details from './Details.svelte';
+    import Section from './Section.svelte';
     import Table from './Table.svelte';
 
     const sizes = Sizes1To3;
@@ -9,10 +9,14 @@
 </script>
 
 <Details>
-    <h2 slot="title">InputRange</h2>
+    {#snippet title()}
+        <h2>InputRange</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
             {#each sizes as size}
@@ -29,14 +33,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Colors</h3>
+        {#snippet title()}
+            <h3>Colors</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
             {#each colors as color}
                 <tr>
                     <td>{color}</td>
@@ -57,7 +63,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Full Width</h3>
+        {#snippet title()}
+            <h3>Full Width</h3>
+        {/snippet}
 
         <Table>
             <tr>

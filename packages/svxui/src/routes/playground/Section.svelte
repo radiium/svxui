@@ -1,14 +1,22 @@
 <script lang="ts">
     import { Card } from '$lib/index.js';
+    import type { Snippet } from 'svelte';
+
+    interface Props {
+        title?: Snippet;
+        children?: Snippet;
+    }
+
+    let { title, children }: Props = $props();
 </script>
 
 <section>
-    <slot name="title" />
+    {@render title?.()}
 
     <div class="section-content">
         <Card size="0" variant="outline" class="min-width-100 flex-shrink-0" translucent>
             <div class="section-content-inner p-5">
-                <slot />
+                {@render children?.()}
             </div>
         </Card>
     </div>

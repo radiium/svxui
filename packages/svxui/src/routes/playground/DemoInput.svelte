@@ -10,17 +10,21 @@
 </script>
 
 <Details>
-    <h2 slot="title">Input</h2>
+    {#snippet title()}
+        <h2>Input</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
             {#each sizes as size}
                 <tr>
                     <td>size {size}</td>
                     <td>
-                        <Flexbox>
+                        <Flexbox as="form">
                             <Input {size} placeholder="placeholder..." />
                         </Flexbox>
                     </td>
@@ -30,14 +34,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Color</h3>
+        {#snippet title()}
+            <h3>Color</h3>
+        {/snippet}
 
         <Table>
             {#each colors as color}
                 <tr>
                     <td>{color}</td>
                     <td>
-                        <Flexbox>
+                        <Flexbox as="form">
                             <Input {color} placeholder="placeholder..." />
                         </Flexbox>
                     </td>
@@ -47,25 +53,27 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Type</h3>
+        {#snippet title()}
+            <h3>Type</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
 
             {#each types as type}
                 <tr>
                     <td>{type}</td>
                     <td>
-                        <Flexbox>
+                        <Flexbox as="form">
                             <Input {type} placeholder="placeholder..." />
                         </Flexbox>
                     </td>
                     <td>
-                        <Flexbox>
+                        <Flexbox as="form">
                             <Input disabled {type} placeholder="placeholder..." />
                         </Flexbox>
                     </td>
@@ -75,34 +83,38 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Full Width</h3>
+        {#snippet title()}
+            <h3>Full Width</h3>
+        {/snippet}
 
         <Input fullWidth placeholder="placeholder..." />
     </Section>
 
     <Section>
-        <h3 slot="title">Alignement</h3>
+        {#snippet title()}
+            <h3>Alignement</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th>start</th>
                 <th>center</th>
                 <th>end</th>
-            </svelte:fragment>
+            {/snippet}
 
             <tr>
                 <td>
-                    <Flexbox>
+                    <Flexbox as="form">
                         <Input align="start" value="hello world" placeholder="placeholder..." />
                     </Flexbox>
                 </td>
                 <td>
-                    <Flexbox>
+                    <Flexbox as="form">
                         <Input align="center" value="hello world" placeholder="placeholder..." />
                     </Flexbox>
                 </td>
                 <td>
-                    <Flexbox>
+                    <Flexbox as="form">
                         <Input align="end" value="hello world" placeholder="placeholder..." />
                     </Flexbox>
                 </td>

@@ -1,19 +1,14 @@
 <script lang="ts">
-    import Button from '$lib/components/Button/Button.svelte';
-    import ButtonIcon from '$lib/components/Button/ButtonIcon.svelte';
-    import Flexbox from '$lib/components/Flexbox/Flexbox.svelte';
-    import Floating from '$lib/components/Floating/Floating.svelte';
-    import { Card, getThemeContext, Radius } from '$lib/index.js';
-    import { Strategies } from '$lib/theme/theme.types.js';
+    import { Button, ButtonIcon, Card, Flexbox, getThemeContext, Radius, Strategies } from '$lib/index.js';
     import ThemePanelCloseIcon from './ThemePanelCloseIcon.svelte';
     import ThemePanelOpenIcon from './ThemePanelOpenIcon.svelte';
 
     const { strategy, setStrategy, radius, setRadius } = getThemeContext();
 
-    let isOpen = true;
+    let isOpen = $state(true);
 </script>
 
-<ButtonIcon size="2" radius="medium" variant="outline" on:click={() => (isOpen = !isOpen)}>
+<ButtonIcon size="2" radius="medium" variant="outline" onclick={() => (isOpen = !isOpen)}>
     {#if isOpen}
         <ThemePanelCloseIcon />
     {:else}
@@ -33,7 +28,7 @@
                                 radius="small"
                                 variant={$strategy === item ? 'soft' : 'outline'}
                                 size="1"
-                                on:click={() => setStrategy(item)}
+                                onclick={() => setStrategy(item)}
                             >
                                 {item}
                             </Button>
@@ -49,7 +44,7 @@
                                 radius="small"
                                 variant={$radius === item ? 'soft' : 'outline'}
                                 size="1"
-                                on:click={() => setRadius(item)}
+                                onclick={() => setRadius(item)}
                             >
                                 {item}
                             </Button>

@@ -1,5 +1,5 @@
-import { listen } from '$lib/utils/listen.js';
 import type { ActionReturn } from 'svelte/action';
+import { on } from 'svelte/events';
 
 export type LongpressParameters = number;
 export type LongpressAttributes = {
@@ -31,10 +31,12 @@ export function longpressAction(
         node.dispatchEvent(new CustomEvent('endlongpress'));
     }
 
-    const mousedownListener = listen(node, 'mousedown', handlePress);
-    const mouseupListener = listen(node, 'mouseup', handleRelease);
-    const touchstartListener = listen(node, 'touchstart', handlePress);
-    const touchendListener = listen(node, 'touchend', handleRelease);
+    const subscriptions = [
+        on(node, 'mousedown', handlePress),
+        on(node, 'touchstart', handlePress),
+        on(node, 'mouseup', handleRelease),
+        on(node, 'touchend', handleRelease)
+    ];
 
     return {
         update(newDuration: LongpressParameters): void {
@@ -43,10 +45,7 @@ export function longpressAction(
         },
         destroy(): void {
             handleRelease();
-            mousedownListener();
-            mouseupListener();
-            touchstartListener();
-            touchendListener();
+            subscriptions.filter(Boolean).forEach((cb) => cb?.());
         }
     };
 }

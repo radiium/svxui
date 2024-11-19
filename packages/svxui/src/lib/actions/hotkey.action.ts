@@ -1,6 +1,4 @@
-import { listen } from '$lib/utils/listen.js';
 import type { ActionReturn } from 'svelte/action';
-import type { HTMLAttributes } from 'svelte/elements';
 
 /**
  * Internal types

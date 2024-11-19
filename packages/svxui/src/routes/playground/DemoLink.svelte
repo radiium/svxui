@@ -10,17 +10,21 @@
 </script>
 
 <Details>
-    <h2 slot="title">Link</h2>
+    {#snippet title()}
+        <h2>Link</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
 
             {#each sizes as size}
                 <tr>
@@ -41,14 +45,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Weight</h3>
+        {#snippet title()}
+            <h3>Weight</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
             {#each weights as weight}
                 <tr>
                     <td>{weight}</td>
@@ -69,14 +75,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Colors</h3>
+        {#snippet title()}
+            <h3>Colors</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
 
             {#each colors as color}
                 <tr>

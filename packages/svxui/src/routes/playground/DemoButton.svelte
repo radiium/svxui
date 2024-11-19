@@ -1,8 +1,8 @@
 <script lang="ts">
     import MagnifyingGlass from '$lib/icons/MagnifyingGlass.svelte';
     import { Aligns, Button, Colors, Flexbox, Sizes1To4, Transforms, Variants } from '$lib/index.js';
-    import Section from './Section.svelte';
     import Details from './Details.svelte';
+    import Section from './Section.svelte';
     import Table from './Table.svelte';
 
     const sizes = Sizes1To4;
@@ -13,18 +13,22 @@
 </script>
 
 <Details>
-    <h2 slot="title">Button</h2>
+    {#snippet title()}
+        <h2>Button</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Color</h3>
+        {#snippet title()}
+            <h3>Color</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
 
             {#each colors as color}
                 <tr>
@@ -42,15 +46,17 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Color + Icon</h3>
+        {#snippet title()}
+            <h3>Color + Icon</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
 
             {#each colors as color}
                 <tr>
@@ -70,15 +76,17 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
 
             {#each sizes as size}
                 <tr>
@@ -96,15 +104,17 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Size + icon</h3>
+        {#snippet title()}
+            <h3>Size + icon</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
 
             {#each sizes as size}
                 <tr>
@@ -124,15 +134,17 @@
     </Section>
 
     <Section>
-        <h3 slot="title">State</h3>
+        {#snippet title()}
+            <h3>State</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
 
             <tr>
                 <td>normal</td>
@@ -184,7 +196,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Full width</h3>
+        {#snippet title()}
+            <h3>Full width</h3>
+        {/snippet}
 
         <Table>
             {#each variants as variant}
@@ -201,7 +215,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Alignment</h3>
+        {#snippet title()}
+            <h3>Alignment</h3>
+        {/snippet}
 
         <Table>
             {#each aligns as align}
@@ -221,7 +237,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Transform</h3>
+        {#snippet title()}
+            <h3>Transform</h3>
+        {/snippet}
 
         <Table>
             <tr>

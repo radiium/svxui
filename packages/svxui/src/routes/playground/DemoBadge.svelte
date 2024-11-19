@@ -10,18 +10,22 @@
 </script>
 
 <Details>
-    <h2 slot="title">Badge</h2>
+    {#snippet title()}
+        <h2>Badge</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Color</h3>
+        {#snippet title()}
+            <h3>Color</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
 
             {#each colors as color}
                 <tr>
@@ -39,15 +43,17 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
             {#each sizes as size}
                 <tr>
                     <td>size {size}</td>
@@ -64,15 +70,17 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Disabled</h3>
+        {#snippet title()}
+            <h3>Disabled</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
             <tr>
                 <td>normal</td>
                 {#each variants as variant}

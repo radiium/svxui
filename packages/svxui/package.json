@@ -66,36 +66,35 @@
         "test:ui": "vitest --ui"
     },
     "peerDependencies": {
-        "svelte": "^4.2.19"
+        "svelte": "^5.2.3"
     },
     "dependencies": {
-        "@floating-ui/dom": "^1.6.11",
-        "nanoid": "^5.0.8"
+        "@floating-ui/dom": "^1.6.12"
     },
     "devDependencies": {
         "@configs/eslint-config": "workspace:*",
         "@configs/prettier-config": "workspace:*",
-        "@playwright/test": "^1.48.1",
+        "@playwright/test": "^1.49.0",
         "@radix-ui/colors": "^3.0.0",
         "@sveltejs/adapter-auto": "^3.3.1",
-        "@sveltejs/adapter-vercel": "^5.4.6",
-        "@sveltejs/kit": "^2.7.3",
+        "@sveltejs/adapter-vercel": "^5.4.7",
+        "@sveltejs/kit": "^2.8.1",
         "@sveltejs/package": "^2.3.7",
-        "@sveltejs/vite-plugin-svelte": "^3.1.2",
+        "@sveltejs/vite-plugin-svelte": "^4.0.1",
         "autoprefixer": "^10.4.20",
-        "eslint": "^9.13.0",
+        "eslint": "^9.15.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.2.1",
-        "postcss": "^8.4.47",
+        "postcss": "^8.4.49",
         "postcss-load-config": "^6.0.1",
         "prettier": "^3.3.3",
         "publint": "^0.2.12",
-        "sass": "1.80.4",
-        "svelte": "^4.2.19",
-        "svelte-check": "^4.0.5",
+        "sass": "1.81.0",
+        "svelte": "^5.2.3",
+        "svelte-check": "^4.0.9",
         "svelte-preprocess": "6.0.3",
         "typescript": "^5.6.3",
-        "vite": "^5.4.10",
-        "vitest": "^2.1.4"
+        "vite": "^5.4.11",
+        "vitest": "^2.1.5"
     }
 }

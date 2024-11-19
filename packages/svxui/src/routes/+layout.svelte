@@ -1,16 +1,30 @@
 <script lang="ts">
     import { navigating } from '$app/stores';
-    import ThemeProvider from '$lib/theme/ThemeProvider/ThemeProvider.svelte';
+    import { ThemeProvider } from '$lib/index.js';
     import Background from './Background.svelte';
     import ThemePanel from './playground/ThemePanel.svelte';
     import './playground/styles.scss';
+    import { onMount } from 'svelte';
 
-    let mainRef: HTMLElement | null;
-    $: {
-        if ($navigating) {
-            mainRef?.scrollTo({ top: 0, behavior: 'instant' });
-        }
+    interface Props {
+        children?: import('svelte').Snippet;
     }
+
+    let { children }: Props = $props();
+
+    let mainRef: HTMLElement | undefined = $state();
+
+    onMount(() => {
+        const navigatingUnsubscribe = navigating.subscribe((navigation) => {
+            if (navigation) {
+                mainRef?.scrollTo({ top: 0, behavior: 'instant' });
+            }
+        });
+
+        return () => {
+            navigatingUnsubscribe();
+        };
+    });
 </script>
 
 <ThemeProvider hasBackground={false}>
@@ -24,7 +38,7 @@
     </header>
 
     <main bind:this={mainRef}>
-        <slot />
+        {@render children?.()}
     </main>
 </ThemeProvider>
 

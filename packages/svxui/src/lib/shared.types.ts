@@ -1,4 +1,28 @@
 /**
+ * Themes
+ */
+
+export const ThemeSystem = 'system' as const;
+export const ThemeDark = 'dark' as const;
+export const ThemeLight = 'light' as const;
+
+export const Strategies = [ThemeSystem, ThemeDark, ThemeLight] as const;
+export const Themes = [ThemeDark, ThemeLight] as const;
+
+export const ThemeColorLight = '#fcfcfc' as const;
+export const ThemeColorDark = '#111111' as const;
+
+/**
+ * Radius
+ */
+export const RadiusNone = 'none' as const;
+export const RadiusSmall = 'small' as const;
+export const RadiusMedium = 'medium' as const;
+export const RadiusLarge = 'large' as const;
+export const RadiusFull = 'full' as const;
+export const Radius = [RadiusNone, RadiusSmall, RadiusMedium, RadiusLarge, RadiusFull] as const;
+
+/**
  * Sizes
  */
 export const Size0 = '0' as const;
@@ -42,16 +66,6 @@ export const Colors = [
     ColorOrange,
     ColorRed
 ] as const;
-
-/**
- * Radius
- */
-export const RadiusNone = 'none' as const;
-export const RadiusSmall = 'small' as const;
-export const RadiusMedium = 'medium' as const;
-export const RadiusLarge = 'large' as const;
-export const RadiusFull = 'full' as const;
-export const Radius = [RadiusNone, RadiusSmall, RadiusMedium, RadiusLarge, RadiusFull] as const;
 
 /**
  * Variants

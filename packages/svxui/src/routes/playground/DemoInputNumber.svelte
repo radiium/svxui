@@ -18,18 +18,22 @@
 </script>
 
 <Details>
-    <h2 slot="title">InputNumber</h2>
+    {#snippet title()}
+        <h2>InputNumber</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">Colors</h3>
+        {#snippet title()}
+            <h3>Colors</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
             {#each colors as color}
                 <tr>
                     <td>{color}</td>
@@ -46,15 +50,17 @@
     </Section>
 
     <Section>
-        <h3 slot="title">sizes</h3>
+        {#snippet title()}
+            <h3>sizes</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 {#each variants as variant}
                     <th>{variant}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
             {#each sizes as size}
                 <tr>
                     <td>size {size}</td>
@@ -71,14 +77,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Alignement</h3>
+        {#snippet title()}
+            <h3>Alignement</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th>start</th>
                 <th>center</th>
                 <th>end</th>
-            </svelte:fragment>
+            {/snippet}
 
             <tr>
                 <td>
@@ -101,7 +109,9 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Full Width</h3>
+        {#snippet title()}
+            <h3>Full Width</h3>
+        {/snippet}
 
         <InputNumber value={0} fullWidth />
     </Section>

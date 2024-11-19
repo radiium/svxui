@@ -7,18 +7,22 @@
     const sizes = Sizes1To3;
     const colors = Colors;
 
-    let group = 'val1';
-    const groupSize = ['val2', 'val2', 'val2'];
-    const groupSizeDisabled = ['val2', 'val2', 'val2'];
-    const groupColor = ['val2', 'val2', 'val2', 'val2', 'val2', 'val2', 'val2'];
-    const groupColorDisabled = ['val2', 'val2', 'val2', 'val2', 'val2', 'val2', 'val2'];
+    let group = $state('val1');
+    const groupSize = $state(['val2', 'val2', 'val2']);
+    const groupSizeDisabled = $state(['val2', 'val2', 'val2']);
+    const groupColor = $state(['val2', 'val2', 'val2', 'val2', 'val2', 'val2', 'val2']);
+    const groupColorDisabled = $state(['val2', 'val2', 'val2', 'val2', 'val2', 'val2', 'val2']);
 </script>
 
 <Details>
-    <h2 slot="title">Radio</h2>
+    {#snippet title()}
+        <h2>Radio</h2>
+    {/snippet}
 
     <Section>
-        <h3 slot="title">With label</h3>
+        {#snippet title()}
+            <h3>With label</h3>
+        {/snippet}
 
         <Flexbox direction="column" gap="2">
             <Flexbox as="label" align="center" gap="3">
@@ -34,14 +38,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
 
             {#each sizes as size, i}
                 <tr>
@@ -67,14 +73,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">Colors</h3>
+        {#snippet title()}
+            <h3>Colors</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 <th></th>
                 <th>default</th>
                 <th>disabled</th>
-            </svelte:fragment>
+            {/snippet}
             {#each colors as color, i}
                 <tr>
                     <td>{color}</td>

@@ -1,3 +1,4 @@
+import { on } from 'svelte/events';
 import { readable, type Readable } from 'svelte/store';
 
 /**
@@ -12,10 +13,10 @@ export const useMediaQuery = (query: string): Readable<boolean | undefined> => {
         set(mql.matches);
 
         const mediaQueryChange = (mqlEvent: MediaQueryListEvent) => set(mqlEvent.matches);
-        mql.addEventListener('change', mediaQueryChange);
+        const off = on(mql, 'change', mediaQueryChange);
 
         return () => {
-            mql.removeEventListener('change', mediaQueryChange);
+            off();
         };
     });
 

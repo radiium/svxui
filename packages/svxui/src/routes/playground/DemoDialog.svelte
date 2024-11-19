@@ -22,7 +22,7 @@
         size: '3'
     };
 
-    let state: State = { ...defaultState };
+    let state: State = $state({ ...defaultState });
 
     function open(newState = {}) {
         state = {
@@ -57,7 +57,9 @@
 </script>
 
 <Details>
-    <h2 slot="title">Dialog</h2>
+    {#snippet title()}
+        <h2>Dialog</h2>
+    {/snippet}
 
     <Dialog
         bind:isOpen={state.isOpen}
@@ -104,25 +106,27 @@
             {:else}
                 <Text>Dialog content</Text>
             {/if}
-            <Button variant="soft" color="primary" on:click={close}>close</Button>
+            <Button variant="soft" color="primary" onclick={close}>close</Button>
         </Flexbox>
     </Dialog>
 
     <Section>
-        <h3 slot="title">Size</h3>
+        {#snippet title()}
+            <h3>Size</h3>
+        {/snippet}
 
         <Table>
-            <svelte:fragment slot="head">
+            {#snippet head()}
                 {#each sizes as size}
                     <th>size {size}</th>
                 {/each}
-            </svelte:fragment>
+            {/snippet}
 
             <tr>
                 {#each sizes as size, i}
                     <td>
                         <Flexbox>
-                            <Button variant="soft" color="primary" on:click={() => openSize(size)}>
+                            <Button variant="soft" color="primary" onclick={() => openSize(size)}>
                                 open size {size}
                             </Button>
                         </Flexbox>
@@ -133,12 +137,16 @@
     </Section>
 
     <Section>
-        <h3 slot="title">fullScreen</h3>
-        <Button variant="soft" color="primary" on:click={openFullScreen}>open fullScreen</Button>
+        {#snippet title()}
+            <h3>fullScreen</h3>
+        {/snippet}
+        <Button variant="soft" color="primary" onclick={openFullScreen}>open fullScreen</Button>
     </Section>
 
     <Section>
-        <h3 slot="title">Long content</h3>
-        <Button variant="soft" color="primary" on:click={openLongContent}>open long content</Button>
+        {#snippet title()}
+            <h3>Long content</h3>
+        {/snippet}
+        <Button variant="soft" color="primary" onclick={openLongContent}>open long content</Button>
     </Section>
 </Details>

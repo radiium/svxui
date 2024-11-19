@@ -1,6 +1,6 @@
-import { listen } from '$lib/utils/listen.js';
 import type { ActionReturn } from 'svelte/action';
 import type { HTMLAttributes } from 'svelte/elements';
+import { on } from 'svelte/events';
 
 export type FocusTrapParameters = boolean;
 export type FocusTrapAttributes = HTMLAttributes<HTMLElement>;
@@ -54,7 +54,7 @@ export function focusTrapAction(
     }
 
     /** moves focus back to wrap if something outside the wrap is focused */
-    const focusListener = listen(document, 'focusin', (e: FocusEvent) => {
+    const focusListener = on<'focusin'>(document, 'focusin', (e: FocusEvent) => {
         // return if ths trap is not active
         // return if focus is inside the trap
         if (!inCurrentTrap(node) || inCurrentTrap(e.target as HTMLElement)) {
