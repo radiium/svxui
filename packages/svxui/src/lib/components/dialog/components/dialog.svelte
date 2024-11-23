@@ -19,13 +19,13 @@
 </script>
 
 <script lang="ts">
-    import { lockscrollAction } from '$lib/actions/lockscroll.action.js';
     import { untrack } from 'svelte';
     import { fade, scale } from 'svelte/transition';
-    import { focusTrapAction } from '../../../actions/focus-trap.action.js';
     import { clsx } from '../../../utils/clsx.js';
     import { defaultDialogProps } from '../props.js';
     import type { DialogProps } from '../types.js';
+    import { focusTrapAction } from '$lib/actions/focustrap/index.js';
+    import { lockScrollAction } from '$lib/actions/lockscroll/action.svelte.js';
 
     let {
         elementRef = $bindable(),
@@ -82,10 +82,13 @@
             [`Dialog-fullscreen`]: fullScreen
         })
     );
+
+    let locScrollEnabled = $derived(lockScroll === true && isOpen === true);
+    let focusTrapEnabled = $derived(isOpen === true);
 </script>
 
 <svelte:window onkeydown={handlekeydown} />
-<svelte:body use:lockscrollAction={lockScroll === true && isOpen === true} />
+<svelte:body use:lockScrollAction={{ enabled: locScrollEnabled }} />
 
 {#if isOpen}
     <div class={cssClass} data-radius={radius} bind:this={elementRef}>
@@ -111,7 +114,7 @@
             class="Dialog-content"
             data-size={size}
             data-radius={radius}
-            use:focusTrapAction={isOpen}
+            use:focusTrapAction={{ enabled: focusTrapEnabled }}
             transition:scale={{
                 duration: transitionDuration,
                 start: 0.9,
