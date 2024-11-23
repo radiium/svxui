@@ -1,9 +1,8 @@
 <script lang="ts">
-    import { createFloating } from '$lib/actions/create-floating/create-floating.js';
+    import { createFloating } from '$lib/actions/floating/create-floating.js';
     import { clsx } from '$lib/utils/clsx.js';
-    import { run, self } from 'svelte/legacy';
     import { fade } from 'svelte/transition';
-    import { clickoutsideAction } from '../../../actions/clickoutside.action.js';
+    import { clickOutsideAction } from '../../../actions/clickoutside/index.js';
     import { Portal } from '../../portal/index.js';
     import { defaultFloatingProps } from '../props.js';
     import type { FloatingProps } from '../types.js';
@@ -119,12 +118,11 @@
         <!-- Content -->
         <div
             use:floatingAction
-            use:clickoutsideAction
+            use:clickOutsideAction
             onclickoutside={handleClickOutside}
             transition:fade={{ duration: transitionDuration, delay: transitionDelay }}
             class={cssClassFloating}
             role="dialog"
-            active={isOpen}
             data-floating
             data-state={isOpen ? 'open' : 'close'}
             data-side={$floatingState?.side}
