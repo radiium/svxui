@@ -55,15 +55,7 @@
     autoUpdate
 >
     {#snippet trigger()}
-        <Button
-            onclick={() => toggle()}
-            active={isOpen}
-            {color}
-            {size}
-            {variant}
-            {iconOnly}
-            title="Change theme"
-        >
+        <Button onclick={toggle} active={isOpen} {color} {size} {variant} {iconOnly} title="Change theme">
             {#if currentTheme}
                 <currentTheme.icon />
                 {#if !iconOnly}

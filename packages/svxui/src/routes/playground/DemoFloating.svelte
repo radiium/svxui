@@ -14,6 +14,7 @@
     let isOpenArrowOutline = $state(false);
     let isOpenBackdrop = $state(false);
     let isOpenHover = $state(false);
+    let isOpenOutside = $state(false);
 
     let hoverTimeout: ReturnType<typeof setTimeout>;
     function handleHoverOpen() {
@@ -237,6 +238,29 @@
                     onpointerenter={handleHoverOpen}
                     onblur={handleHoverClose}
                     onpointerleave={handleHoverClose}
+                >
+                    Open on hover with 800ms delay
+                </Button>
+            {/snippet}
+            {#snippet content()}
+                <div>Floating content</div>
+            {/snippet}
+        </Floating>
+    </Section>
+
+    <Section>
+        {#snippet title()}
+            <h3>Close click outside</h3>
+        {/snippet}
+
+        <Floating bind:isOpen={isOpenOutside} closeOnClickOutside portal portalTarget="#portal-container">
+            {#snippet trigger()}
+                <Button
+                    variant="soft"
+                    onclick={(event) => {
+                        event.preventDefault();
+                        isOpenOutside = !isOpenOutside;
+                    }}
                 >
                     Open on hover with 800ms delay
                 </Button>

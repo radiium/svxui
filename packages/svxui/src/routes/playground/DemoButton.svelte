@@ -1,6 +1,15 @@
 <script lang="ts">
     import MagnifyingGlass from '$lib/icons/MagnifyingGlass.svelte';
-    import { Aligns, Button, Colors, Flexbox, Sizes1To4, Transforms, Variants } from '$lib/index.js';
+    import {
+        Aligns,
+        Button,
+        clickOutsideAction,
+        Colors,
+        Flexbox,
+        Sizes1To4,
+        Transforms,
+        Variants
+    } from '$lib/index.js';
     import Details from './Details.svelte';
     import Section from './Section.svelte';
     import Table from './Table.svelte';
