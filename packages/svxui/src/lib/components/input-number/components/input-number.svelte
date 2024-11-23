@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { longpressAction } from '$lib/actions/longpress.action.js';
+    import { longpressAction } from '$lib/actions/longpress/index.js';
     import { clsx } from '$lib/utils/clsx.js';
     import { onMount } from 'svelte';
     import { Button } from '../../button/index.js';
