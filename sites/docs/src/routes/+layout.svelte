@@ -6,11 +6,12 @@
     import '$lib/styles/styles.scss';
     import { nav } from '$lib/utils/nav';
     import IconContext from 'phosphor-svelte/lib/IconContext';
-    import { onMount } from 'svelte';
+    import { onMount, type Snippet } from 'svelte';
     import { ThemeProvider } from 'svxui';
-    interface Props {
-        children?: import('svelte').Snippet;
-    }
+
+    type Props = {
+        children?: Snippet;
+    };
 
     let { children }: Props = $props();
 

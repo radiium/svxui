@@ -6,9 +6,9 @@
     import { AccordionGroup, Accordion, ButtonUnstyled, Flexbox, Text } from 'svxui';
     import { closeMenu } from './menu';
 
-    interface Props {
+    type Props = {
         nav?: NavSection[];
-    }
+    };
 
     let { nav = [] }: Props = $props();
 

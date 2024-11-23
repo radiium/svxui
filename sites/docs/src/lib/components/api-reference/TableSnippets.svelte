@@ -4,11 +4,11 @@
     import { Card } from 'svxui';
     import TablePopover from './TablePopover.svelte';
     import TableProps from './TableProps.svelte';
+    import type { HTMLAttributes } from 'svelte/elements';
 
-    interface Props {
+    type Props = HTMLAttributes<HTMLDivElement> & {
         snippets?: SchemaSnippet[];
-        [key: string]: any;
-    }
+    };
 
     let { snippets = [], ...rest }: Props = $props();
 </script>

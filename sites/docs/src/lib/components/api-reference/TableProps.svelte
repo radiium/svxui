@@ -3,11 +3,11 @@
     import Minus from 'phosphor-svelte/lib/Minus';
     import { Card, Flexbox, Text } from 'svxui';
     import TablePopover from './TablePopover.svelte';
+    import type { HTMLAttributes } from 'svelte/elements';
 
-    interface Props {
+    type Props = HTMLAttributes<HTMLDivElement> & {
         props?: SchemaProp[];
-        [key: string]: any;
-    }
+    };
 
     let { props = [], ...rest }: Props = $props();
 

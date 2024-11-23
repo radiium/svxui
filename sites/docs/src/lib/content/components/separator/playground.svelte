@@ -17,12 +17,12 @@
 
 <PlaygroundWrapper>
     {#snippet component()}
-        <Separator  {...props} />
+        <Separator {...props} />
     {/snippet}
     {#snippet form()}
-        <PlaygroundForm  bind:props bind:propsString schema={separatorSchema} />
+        <PlaygroundForm bind:props bind:propsString schema={separatorSchema} />
     {/snippet}
     {#snippet code()}
-        <PlaygroundCode  {template} {templateProps} />
+        <PlaygroundCode {template} {templateProps} />
     {/snippet}
 </PlaygroundWrapper>

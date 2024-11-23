@@ -7,7 +7,7 @@
 
 <PlaygroundWrapper class="mb-5">
     {#snippet component()}
-        <Flexbox  direction="column" gap="3">
+        <Flexbox direction="column" gap="3">
             {#each sizes as size}
                 <InputGroup>
                     <Button variant="soft" color="primary" {size} active>one</Button>

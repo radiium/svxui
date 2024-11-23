@@ -1,7 +1,71 @@
 import { SchemaPropType, type SchemaComponent, type SchemaProp } from '$lib/doc.types';
-import type { Colors } from 'svxui';
+import type {
+    AccordionGroupProps,
+    AccordionProps,
+    BadgeProps,
+    BoxProps,
+    ButtonIconProps,
+    ButtonProps,
+    ButtonUnstyledProps,
+    CardProps,
+    CheckboxProps,
+    Colors,
+    DialogProps,
+    FlexboxProps,
+    FloatingProps,
+    InputGroupItemProps,
+    InputGroupProps,
+    InputNumberProps,
+    InputProps,
+    InputRangeProps,
+    LinkProps,
+    PanelProps,
+    PortalProps,
+    RadioProps,
+    SelectProps,
+    SeparatorProps,
+    SwitchProps,
+    TabGroupProps,
+    TabPanelProps,
+    TabTriggerProps,
+    TextareaProps,
+    TextProps
+} from 'svxui';
 
-export type AnyPropsType = { [key: SchemaProp['name']]: any };
+export type AnyPropsType = {
+    [key: SchemaProp['name']]: any;
+};
+
+type AllPropsTypeTest =
+    | AccordionGroupProps
+    | AccordionProps
+    | BadgeProps
+    | BoxProps
+    | ButtonProps
+    | ButtonIconProps
+    | ButtonUnstyledProps
+    | CardProps
+    | CheckboxProps
+    | DialogProps
+    | FlexboxProps
+    | FloatingProps
+    | InputProps
+    | InputGroupProps
+    | InputGroupItemProps
+    | InputNumberProps
+    | InputRangeProps
+    | LinkProps
+    | PanelProps
+    | PortalProps
+    | RadioProps
+    | SelectProps
+    | SeparatorProps
+    | SwitchProps
+    | TabGroupProps
+    | TabTriggerProps
+    | TabPanelProps
+    | TextProps
+    | TextareaProps;
 
 /**
  * build component props with default value

@@ -17,12 +17,12 @@
 
 <PlaygroundWrapper>
     {#snippet component()}
-        <Checkbox  {...props} bind:checked={props.checked} />
+        <Checkbox {...props} bind:checked={props.checked} />
     {/snippet}
     {#snippet form()}
-        <PlaygroundForm  bind:props bind:propsString schema={checkboxSchema} />
+        <PlaygroundForm bind:props bind:propsString schema={checkboxSchema} />
     {/snippet}
     {#snippet code()}
-        <PlaygroundCode  {template} {templateProps} />
+        <PlaygroundCode {template} {templateProps} />
     {/snippet}
 </PlaygroundWrapper>

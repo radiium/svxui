@@ -3,10 +3,10 @@
     import Clipboard from 'phosphor-svelte/lib/Clipboard';
     import { Button } from 'svxui';
 
-    interface Props {
+    type Props = {
         copied?: boolean;
         onclick?: () => void;
-    }
+    };
 
     let { copied = false, onclick = () => {} }: Props = $props();
 </script>

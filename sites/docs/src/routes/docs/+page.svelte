@@ -1,9 +1,9 @@
 <script lang="ts">
     import type { PageData } from './$types.js';
 
-    interface Props {
+    type Props = {
         data: PageData;
-    }
+    };
 
     let { data }: Props = $props();
     let component = $derived(data.component);

@@ -1,12 +1,12 @@
 <script lang="ts">
     import type { SchemaEvent } from '$lib/doc.types';
     import Minus from 'phosphor-svelte/lib/Minus';
+    import type { HTMLAttributes } from 'svelte/elements';
     import { Card } from 'svxui';
 
-    interface Props {
-        slots?: SchemaEvent[];
-        [key: string]: any;
-    }
+    type Props = HTMLAttributes<HTMLDivElement> & {
+        events?: SchemaEvent[];
+    };
 
     let { events = [], ...rest }: Props = $props();
 </script>

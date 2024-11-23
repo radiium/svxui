@@ -1,15 +1,16 @@
 <script lang="ts">
     import { createPlaygroundMask } from './playground-mask';
     import { isMobile, isTablet } from '$lib/utils/reponsive';
+    import type { Snippet } from 'svelte';
+    import type { HTMLAttributes } from 'svelte/elements';
 
-    interface Props {
+    type Props = HTMLAttributes<HTMLDivElement> & {
         forceColumn?: boolean;
         mask?: boolean;
-        component?: import('svelte').Snippet;
-        form?: import('svelte').Snippet;
-        code?: import('svelte').Snippet;
-        [key: string]: any;
-    }
+        component?: Snippet;
+        form?: Snippet;
+        code?: Snippet;
+    };
 
     let { forceColumn = false, mask = true, component, form, code, ...rest }: Props = $props();
 

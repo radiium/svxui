@@ -3,9 +3,9 @@
     import type { Snippet } from 'svelte';
     import { Button, Floating } from 'svxui';
 
-    interface Props {
+    type Props = {
         children?: Snippet;
-    }
+    };
 
     let { children }: Props = $props();
 

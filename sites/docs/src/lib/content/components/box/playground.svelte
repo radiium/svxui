@@ -17,7 +17,7 @@
 
 <PlaygroundWrapper>
     {#snippet component()}
-        <Card  size="1" style="width: 100%; height: 100%;">
+        <Card size="1" style="width: 100%; height: 100%;">
             <Box {...props} style="width: 100%; height: 100%;">
                 {#each [1, 2, 3] as n}
                     <div
@@ -31,9 +31,9 @@
         </Card>
     {/snippet}
     {#snippet form()}
-        <PlaygroundForm bind:props bind:propsString schema={boxSchema}  />
+        <PlaygroundForm bind:props bind:propsString schema={boxSchema} />
     {/snippet}
     {#snippet code()}
-        <PlaygroundCode  {template} {templateProps} />
+        <PlaygroundCode {template} {templateProps} />
     {/snippet}
 </PlaygroundWrapper>

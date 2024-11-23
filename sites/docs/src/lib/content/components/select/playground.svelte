@@ -19,12 +19,12 @@
 
 <PlaygroundWrapper>
     {#snippet component()}
-        <Select  {...props} bind:value={props.value} {options} placeholder="Select an option" />
+        <Select {...props} bind:value={props.value} {options} placeholder="Select an option" />
     {/snippet}
     {#snippet form()}
-        <PlaygroundForm  bind:props bind:propsString schema={selectSchema} />
+        <PlaygroundForm bind:props bind:propsString schema={selectSchema} />
     {/snippet}
     {#snippet code()}
-        <PlaygroundCode  {template} {templateProps} />
+        <PlaygroundCode {template} {templateProps} />
     {/snippet}
 </PlaygroundWrapper>

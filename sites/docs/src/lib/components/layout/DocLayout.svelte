@@ -7,11 +7,11 @@
     import { closeMenu, handleEscape, isMobileMenuOpen, toggleMenu } from './menu';
     import type { Snippet } from 'svelte';
 
-    interface Props {
+    type Props = {
         header?: Snippet;
         aside?: Snippet;
         main?: Snippet;
-    }
+    };
 
     let { header, aside, main }: Props = $props();
 </script>

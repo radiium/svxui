@@ -9,10 +9,10 @@
 </script>
 
 <script lang="ts">
-    interface Props {
+    type Props = {
         items?: Tab[];
         activeTabValue?: number;
-    }
+    };
 
     let { items = [], activeTabValue = $bindable(1) }: Props = $props();
 

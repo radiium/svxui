@@ -17,12 +17,12 @@
 
 <PlaygroundWrapper>
     {#snippet component()}
-        <Switch  {...props} />
+        <Switch {...props} />
     {/snippet}
     {#snippet form()}
-        <PlaygroundForm  bind:props bind:propsString schema={switchSchema} />
+        <PlaygroundForm bind:props bind:propsString schema={switchSchema} />
     {/snippet}
     {#snippet code()}
-        <PlaygroundCode  {template} {templateProps} />
+        <PlaygroundCode {template} {templateProps} />
     {/snippet}
 </PlaygroundWrapper>

@@ -1,10 +1,12 @@
 <script lang="ts">
+    import type { HTMLAttributes } from 'svelte/elements';
     import { createCopy } from '../code/copy';
     import CopyCodeButton from '../code/CopyCodeButton.svelte';
-    interface Props {
-        children?: import('svelte').Snippet;
-        [key: string]: any;
-    }
+    import type { Snippet } from 'svelte';
+
+    type Props = HTMLAttributes<HTMLPreElement> & {
+        children?: Snippet;
+    };
 
     let { children, ...rest }: Props = $props();
 

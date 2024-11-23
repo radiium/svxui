@@ -1,16 +1,14 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
-
     import { SchemaPropType, type SchemaComponent, type SchemaProp } from '$lib/doc.types';
     import { onMount } from 'svelte';
     import { Button, Colors, Flexbox, Input, Switch, Text } from 'svxui';
     import { buildProps, buildPropsString, type AnyPropsType } from './playground-utils';
 
-    interface Props {
+    type Props = {
         props?: AnyPropsType;
         propsString?: string;
         schema?: SchemaComponent;
-    }
+    };
 
     let {
         props = $bindable({}),

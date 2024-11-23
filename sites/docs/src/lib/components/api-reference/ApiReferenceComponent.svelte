@@ -6,9 +6,9 @@
     import TableProps from './TableProps.svelte';
     import TableSnippets from './TableSnippets.svelte';
 
-    interface Props {
+    type Props = {
         schema: SchemaComponent;
-    }
+    };
 
     let { schema }: Props = $props();
 

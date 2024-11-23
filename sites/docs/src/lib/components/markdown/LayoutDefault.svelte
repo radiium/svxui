@@ -15,15 +15,16 @@
 <script lang="ts">
     import { isMobile, isTablet } from '$lib/utils/reponsive';
     import { Flexbox } from 'svxui';
+    import type { Snippet } from 'svelte';
 
-    interface Props {
+    type Props = {
         metadata: {
             title: string;
             description: string;
             category: string;
         };
-        children?: import('svelte').Snippet;
-    }
+        children?: Snippet;
+    };
 
     let { metadata, children }: Props = $props();
 

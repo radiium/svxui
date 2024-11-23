@@ -5,7 +5,7 @@
 
 <PlaygroundWrapper class="mb-5">
     {#snippet component()}
-        <Flexbox  direction="column" gap="3">
+        <Flexbox direction="column" gap="3">
             <InputGroup>
                 <Button variant="soft">button</Button>
                 <Input />

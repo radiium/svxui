@@ -1,11 +1,12 @@
 <script lang="ts">
     import { isMobile } from '$lib/utils/reponsive';
+    import type { Snippet } from 'svelte';
     import { Button, Card, Flexbox, Input, Text } from 'svxui';
 
-    interface Props {
+    type Props = {
         title?: string;
-        children?: import('svelte').Snippet;
-    }
+        children?: Snippet;
+    };
 
     let { title = '', children }: Props = $props();
 </script>

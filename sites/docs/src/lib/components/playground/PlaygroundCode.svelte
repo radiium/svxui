@@ -5,10 +5,10 @@
     import CopyCodeButton from '../code/CopyCodeButton.svelte';
     import { shiki } from '../code/shiki';
 
-    interface Props {
+    type Props = {
         template?: string;
         templateProps?: { key: string; value: string }[];
-    }
+    };
 
     let { template = '', templateProps = [] }: Props = $props();
 

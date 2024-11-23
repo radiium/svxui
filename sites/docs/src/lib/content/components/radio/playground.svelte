@@ -18,12 +18,12 @@
 
 <PlaygroundWrapper>
     {#snippet component()}
-        <Radio  {...props} bind:group />
+        <Radio {...props} bind:group />
     {/snippet}
     {#snippet form()}
-        <PlaygroundForm  bind:props bind:propsString schema={radioSchema} />
+        <PlaygroundForm bind:props bind:propsString schema={radioSchema} />
     {/snippet}
     {#snippet code()}
-        <PlaygroundCode  {template} {templateProps} />
+        <PlaygroundCode {template} {templateProps} />
     {/snippet}
 </PlaygroundWrapper>

@@ -17,12 +17,12 @@
 
 <PlaygroundWrapper>
     {#snippet component()}
-        <InputNumber  {...props} bind:value={props.value} />
+        <InputNumber {...props} bind:value={props.value} />
     {/snippet}
     {#snippet form()}
-        <PlaygroundForm  bind:props bind:propsString schema={inputNumberSchema} />
+        <PlaygroundForm bind:props bind:propsString schema={inputNumberSchema} />
     {/snippet}
     {#snippet code()}
-        <PlaygroundCode  {template} {templateProps} />
+        <PlaygroundCode {template} {templateProps} />
     {/snippet}
 </PlaygroundWrapper>

@@ -22,7 +22,7 @@
 
 <PlaygroundWrapper>
     {#snippet component()}
-        <Button  {...props}>
+        <Button {...props}>
             {#if props.iconOnly}
                 <MagnifyingGlass />
             {:else}
@@ -31,9 +31,9 @@
         </Button>
     {/snippet}
     {#snippet form()}
-        <PlaygroundForm  bind:props bind:propsString schema={buttonSchema} />
+        <PlaygroundForm bind:props bind:propsString schema={buttonSchema} />
     {/snippet}
     {#snippet code()}
-        <PlaygroundCode  {template} {templateProps} />
+        <PlaygroundCode {template} {templateProps} />
     {/snippet}
 </PlaygroundWrapper>

@@ -17,12 +17,12 @@
 
 <PlaygroundWrapper mask={false}>
     {#snippet component()}
-        <Text  style="width: 100%" {...props}>Super sample text !</Text>
+        <Text style="width: 100%" {...props}>Super sample text !</Text>
     {/snippet}
     {#snippet form()}
-        <PlaygroundForm  bind:props bind:propsString schema={textSchema} />
+        <PlaygroundForm bind:props bind:propsString schema={textSchema} />
     {/snippet}
     {#snippet code()}
-        <PlaygroundCode  {template} {templateProps} />
+        <PlaygroundCode {template} {templateProps} />
     {/snippet}
 </PlaygroundWrapper>

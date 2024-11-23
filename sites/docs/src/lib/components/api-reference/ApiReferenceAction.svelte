@@ -2,9 +2,9 @@
     import type { SchemaAction } from '$lib/doc.types';
     import { Text } from 'svxui';
 
-    interface Props {
+    type Props = {
         schema: SchemaAction;
-    }
+    };
 
     let { schema }: Props = $props();
 
