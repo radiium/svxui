@@ -28,13 +28,13 @@ export * from './components/text/index.js';
 export * from './components/textarea/index.js';
 
 // Actions
-export * from './actions/create-floating/create-floating.js';
-export * from './actions/clickoutside.action.js';
-export * from './actions/focus-trap.action.js';
-export * from './actions/hotkey.action.js';
-export * from './actions/lockscroll.action.js';
-export * from './actions/longpress.action.js';
-export * from './actions/portal.action.js';
+export * from './actions/floating/index.js';
+export * from './actions/clickoutside/index.js';
+export * from './actions/focustrap/index.js';
+export * from './actions/hotkey/index.js';
+export * from './actions/lockscroll/index.js';
+export * from './actions/longpress/index.js';
+export * from './actions/portal/index.js';
 
 // Utils
 export * from './utils/clsx.js';

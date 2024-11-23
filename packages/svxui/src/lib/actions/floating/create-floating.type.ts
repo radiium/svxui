@@ -14,19 +14,13 @@ import type {
 import type { ActionReturn } from 'svelte/action';
 
 // Reference action types
-export type ReferenceParameters = void;
-export type ReferenceAttributes = Record<string, unknown>;
-export type ReferenceActionReturn = ActionReturn<ReferenceParameters, ReferenceAttributes>;
+export type ReferenceActionReturn = ActionReturn<void>;
 
 // Floating action types
-export type FloatingParameters = void;
-export type FloatingAttributes = Record<string, unknown>;
-export type FloatingActionReturn = ActionReturn<FloatingParameters, FloatingAttributes>;
+export type FloatingActionReturn = ActionReturn<void>;
 
 // Arrow action types
-export type ArrowParameters = void;
-export type ArrowAttributes = Record<string, unknown>;
-export type ArrowActionReturn = ActionReturn<ArrowParameters, ArrowAttributes>;
+export type ArrowActionReturn = ActionReturn<void>;
 
 // Builder types
 export type CreateFloatingProps = {
