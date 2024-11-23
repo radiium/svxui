@@ -1,5 +1,5 @@
 ---
-title: Focus Trap
+title: focusTrap
 description: Traps focus inide given HTMLElement
 category: doc
 ---
@@ -7,7 +7,7 @@ category: doc
 <script lang="ts">
     import { Card, Flexbox, Text, Button, Input, focusTrapAction } from 'svxui';
 
-    let isEnabled = $state(false);
+    let enabled = $state(false);
 </script>
 
 ## Example
@@ -16,22 +16,22 @@ category: doc
 <Flexbox gap="3" align="center" class="mb-5">
     <Button
         variant="surface"
-        onclick={() => (isEnabled = !isEnabled)}
+        onclick={() => (enabled = !enabled)}
     >
         toggle
     </Button>
     <Text>
         focusTrap is 
-        <Text color={isEnabled ? 'green' : 'red'}>
-            {#if isEnabled} enabled {:else} disabled {/if}
+        <Text color={enabled ? 'green' : 'red'}>
+            {#if enabled} enabled {:else} disabled {/if}
         </Text>
     </Text>
 </Flexbox>
 
 <Card variant="outline" style="display: block; max-width: 200px;">
-<div use:focusTrapAction={isEnabled} style="display: flex; flex-direction: column; gap: 10px;">
+<div use:focusTrapAction={{enabled}} style="display: flex; flex-direction: column; gap: 10px;">
     <Input placeholder="login"/>
-    <Input placeholder="password"/>
+    <Input placeholder="password" disabled/>
     <Button>sign in</Button>
 </div>
 </Card>
@@ -43,12 +43,26 @@ category: doc
 <script lang="ts">
     import { focusTrapAction } from 'svxui';
 
-    let enabled = false;
+    let enabled = $state(false);
 </script>
 
 <button onclick={() => (enabled = !enabled)}>toggle</button>
 
-<div use:focusTrapAction={enabled}>
+<div use:focusTrapAction={{enabled}}>
     <input />
 </div>
+```
+
+## Type
+
+### Parameters
+
+```ts
+export type FocusTrapParameters = {
+    /**
+     * Enable/disable focus trap
+     * @default true
+     */
+    enabled?: boolean;
+};
 ```

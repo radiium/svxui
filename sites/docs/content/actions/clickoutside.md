@@ -1,31 +1,45 @@
 ---
-title: ClickOutside
+title: clickOutside
 description: Listen click outside given HTMLElement
 category: doc
 ---
 
 <script lang="ts">
-    import { Card, Text, clickoutsideAction } from 'svxui';
+    import { Card, Text, clickOutsideAction } from 'svxui';
 
     let isClickedOutside = $state(undefined);
-    function onClickoutside(event: CustomEvent<MouseEvent>): void {
-        isClickedOutside = true
+    function onClickInside(event: CustomEvent<MouseEvent>): void {
+        console.log('click inside', event.detail);
+        isClickedOutside = false;
+    }
+
+    function onClickOutside(event: CustomEvent<MouseEvent>): void {
+        console.log('click outside', event.detail.pointerType, event.detail);
+        isClickedOutside = true;
     }
 </script>
 
 ## Example
 
 <Card>
-<div  use:clickoutsideAction onclickoutside={onClickoutside} onclick={() => isClickedOutside = false}>
+<div
+    use:clickOutsideAction={{
+        enabled: true,
+        event: 'pointerdown',
+        options: true
+    }}
+    onclickinside={onClickInside}
+    onclickoutside={onClickOutside}
+>
     <Card variant="outline" class="p-7">
         <Text>
             Clicked:
-            {#if isClickedOutside === true} 
-            <Text color="green">outside</Text>
-            {:else if isClickedOutside === false} 
-            <Text color="red">inside</Text>
+            {#if isClickedOutside === true}
+                <Text color="green">outside</Text>
+            {:else if isClickedOutside === false}
+                <Text color="red">inside</Text>
             {:else}
-            <Text disabled>idle</Text>
+                <Text disabled>idle</Text>
             {/if}
         </Text>
     </Card>
@@ -36,12 +50,57 @@ category: doc
 
 ```svelte
 <script lang="ts">
-    import { clickoutsideAction } from 'svxui';
+    import { clickOutsideAction } from 'svxui';
 
-    function onClickoutside(event: CustomEvent<MouseEvent>): void {
-        console.log(event.detail);
+    function onclickinside(event: CustomEvent<MouseEvent>): void {
+        console.log('click inside', event.detail);
+    }
+
+    function onclickoutside(event: CustomEvent<MouseEvent>): void {
+        console.log('click outside', event.detail);
     }
 </script>
 
-<div use:clickoutsideAction onclickoutside={onClickoutside}>Content</div>
+<div use:clickOutsideAction {onclickinside} {onclickoutside}>
+    Content
+</div>
+```
+
+## Type
+
+### Parameters
+
+```ts
+export type ClickOutsideParameters = {
+    /**
+     * Enable/disable click event
+     * @default true
+     */
+    enabled?: boolean;
+    /**
+     * Type of event
+     * @default 'click'
+     */
+    event?: 'click' | 'mousedown' | 'pointerdown';
+    /**
+     * Options of event listener or boolean for capture
+     * @default true
+     */
+    options?: AddEventListenerOptions | boolean;
+};
+```
+
+### Attributes
+
+```ts
+export type ClickOutsideAttributes = {
+    /**
+     * Event fired when click inside
+     */
+    onclickinside: (e: CustomEvent<MouseEvent>) => void;
+    /**
+     * Event fired when click outside
+     */
+    onclickoutside: (e: CustomEvent<MouseEvent>) => void;
+};
 ```

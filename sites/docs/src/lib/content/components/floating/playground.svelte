@@ -14,7 +14,7 @@
         }
     ]);
 
-    function toggle() {
+    function toggle(): void {
         props.isOpen = !props.isOpen;
     }
 </script>

@@ -17,12 +17,12 @@
 
 <PlaygroundWrapper>
     {#snippet component()}
-        <Badge {...props} >Badge</Badge>
+        <Badge {...props}>Badge</Badge>
     {/snippet}
     {#snippet form()}
-        <PlaygroundForm bind:props bind:propsString schema={badgeSchema}  />
+        <PlaygroundForm bind:props bind:propsString schema={badgeSchema} />
     {/snippet}
     {#snippet code()}
-        <PlaygroundCode  {template} {templateProps} />
+        <PlaygroundCode {template} {templateProps} />
     {/snippet}
 </PlaygroundWrapper>

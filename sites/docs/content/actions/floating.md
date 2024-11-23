@@ -1,5 +1,5 @@
 ---
-title: Create Floating
+title: createFloating
 description: Create floating action
 category: doc
 ---
@@ -53,8 +53,16 @@ category: doc
     let isOpen = false;
 
     const {
-        actions: { referenceAction, floatingAction, arrowAction },
-        states: { updateProps, props, floatingState }
+        actions: { 
+            referenceAction, 
+            floatingAction, 
+            arrowAction 
+        },
+        states: { 
+            updateProps, 
+            props, 
+            floatingState
+        }
     } = createFloating({
         strategy: 'absolute',
         transform: true,
