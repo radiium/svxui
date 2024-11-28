@@ -1,5 +1,5 @@
-import { Size3 } from '$lib/shared.types.js';
-import { type FloatingProps } from './types.js';
+import { ColorGray, Size3, VariantSoft } from '$lib/shared.types.js';
+import { type FloatingArrowProps, type FloatingProps } from './types.js';
 
 export const defaultFloatingProps: FloatingProps = {
     isOpen: false,
@@ -11,7 +11,6 @@ export const defaultFloatingProps: FloatingProps = {
     flip: false,
     shift: false,
     hide: false,
-    outline: false,
     backdrop: false,
     autoUpdate: false,
     closeOnClickBackdrop: false,
@@ -22,5 +21,14 @@ export const defaultFloatingProps: FloatingProps = {
     portal: false,
     portalTarget: ".svxui[data-theme-root='true']",
     transitionDelay: 0,
-    transitionDuration: 150
+    transitionDuration: 150,
+    color: ColorGray,
+    variant: VariantSoft
+};
+
+export const defaultFloatingArrowProps: Partial<FloatingArrowProps> = {
+    elementRef: undefined,
+    outline: false,
+    color: ColorGray,
+    variant: VariantSoft
 };
