@@ -1,8 +1,8 @@
-import type { WrapValue } from '../wrap.svelte.js';
-
 /**
  * Shared
  */
+
+import type { WrapValue } from '$lib/utils/wrap.svelte.js';
 
 export type GroupValue = string | string[] | undefined;
 export type ItemAttrs = Record<string, string | boolean | number | undefined>;
@@ -17,7 +17,7 @@ export type ItemAttrsBuilder = (params: {
  * Items
  */
 
-export type GroupItemStateProps = {
+export type GroupItemProps = {
     value: WrapValue<string>;
     disabled: WrapValue<boolean | undefined>;
     attributsBuilder?: ItemAttrsBuilder;
@@ -27,7 +27,7 @@ export type GroupItemStateProps = {
  * Group
  */
 
-export type GroupStateProps = {
+export type GroupProps = {
     value: WrapValue<GroupValue>;
     multi: WrapValue<boolean | undefined>;
     disabled: WrapValue<boolean | undefined>;

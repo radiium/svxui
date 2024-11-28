@@ -28,7 +28,6 @@ export * from './components/text/index.js';
 export * from './components/textarea/index.js';
 
 // Actions
-export * from './actions/floating/index.js';
 export * from './actions/clickoutside/index.js';
 export * from './actions/focustrap/index.js';
 export * from './actions/hotkey/index.js';
@@ -36,13 +35,17 @@ export * from './actions/lockscroll/index.js';
 export * from './actions/longpress/index.js';
 export * from './actions/portal/index.js';
 
+// Hooks
+export * from './hooks/floating/index.js';
+export * from './hooks/group/index.js';
+export * from './hooks/mediaquery/index.js';
+
 // Utils
 export * from './utils/clsx.js';
 export * from './utils/event.js';
 export * from './utils/id.js';
 export * from './utils/is-browser.js';
 export * from './utils/storable.js';
-export * from './utils/use-media-query.js';
 export * from './utils/wrap.svelte.js';
 
 // Shared

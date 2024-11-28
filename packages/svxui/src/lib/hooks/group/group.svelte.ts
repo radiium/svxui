@@ -1,18 +1,18 @@
 import { onDestroy } from 'svelte';
 import { SvelteMap } from 'svelte/reactivity';
-import type { GroupItemStateHelper } from './group-item-state.svelte.js';
-import type { GroupStateProps } from './types.js';
+import type { GroupItem } from './group-item.svelte.js';
+import type { GroupProps } from './types.js';
 
 /**
  * Manage group (accordions, tabs, etc...)
  */
-export class GroupStateHelper {
-    #items = new SvelteMap<string, GroupItemStateHelper>();
-    #value: GroupStateProps['value'];
-    #disabled: GroupStateProps['disabled'];
-    #multi: GroupStateProps['multi'];
+export class Group {
+    #items = new SvelteMap<string, GroupItem>();
+    #value: GroupProps['value'];
+    #disabled: GroupProps['disabled'];
+    #multi: GroupProps['multi'];
 
-    constructor({ value, disabled, multi }: GroupStateProps) {
+    constructor({ value, disabled, multi }: GroupProps) {
         this.#value = value;
         this.#disabled = disabled;
         this.#multi = multi;
@@ -74,7 +74,7 @@ export class GroupStateHelper {
      *
      * @param item
      */
-    registerItem(item: GroupItemStateHelper): void {
+    registerItem(item: GroupItem): void {
         if (!this.#items.has(item.value)) {
             this.#items.set(item.value, item);
         }
@@ -85,7 +85,7 @@ export class GroupStateHelper {
      *
      * @param item
      */
-    unregisterItem(item: GroupItemStateHelper): void {
+    unregisterItem(item: GroupItem): void {
         if (this.#items.has(item.value)) {
             this.#items.delete(item.value);
         }
@@ -96,7 +96,7 @@ export class GroupStateHelper {
      *
      * @param tabValue
      */
-    selectItem(currentItem: GroupItemStateHelper): void {
+    selectItem(currentItem: GroupItem): void {
         if (this.#disabled.current || currentItem.disabled || !this.#items.has(currentItem.value)) {
             return;
         }
@@ -118,7 +118,7 @@ export class GroupStateHelper {
      * @param itemToggle
      * @returns
      */
-    toggleItem(currentItem: GroupItemStateHelper): void {
+    toggleItem(currentItem: GroupItem): void {
         if (this.#disabled.current || currentItem.disabled || !this.#items.has(currentItem.value)) {
             return;
         }
@@ -140,7 +140,7 @@ export class GroupStateHelper {
      * @param value
      * @returns
      */
-    getItem(value: string): GroupItemStateHelper | undefined {
+    getItem(value: string): GroupItem | undefined {
         return this.#items.get(value);
     }
 }

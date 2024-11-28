@@ -1,18 +1,18 @@
 import { generateId } from '$lib/utils/id.js';
 import { onDestroy } from 'svelte';
-import type { GroupItemStateProps, ItemAttrs } from './types.js';
+import type { GroupItemProps, ItemAttrs } from './types.js';
 
 /**
  * Manage group item (accordions, tabs, etc...)
  */
-export class GroupItemStateHelper {
+export class GroupItem {
     #id = generateId();
     #active = $state(false);
-    #value: GroupItemStateProps['value'];
-    #disabled: GroupItemStateProps['disabled'];
+    #value: GroupItemProps['value'];
+    #disabled: GroupItemProps['disabled'];
     #attributs = $state<Record<string, ItemAttrs>>({});
 
-    constructor({ value, disabled, attributsBuilder }: GroupItemStateProps) {
+    constructor({ value, disabled, attributsBuilder }: GroupItemProps) {
         this.#value = value;
         this.#disabled = disabled;
 
