@@ -14,21 +14,21 @@ category: guide
 
 Install `svxui` with the package manager of your choice
 
-<TabGroup bind:selected={selectedTab}>
+<TabGroup bind:value={selectedTab}>
     <Flexbox gap="1" class="p-1 mb-1">
     <TabTrigger value="pnpm">
-        {#snippet children({ isActive, select})}
-        <Button variant={isActive ? 'soft' : 'clear'} size="2" onclick={select}>pnpm</Button>
+        {#snippet children({ active, select})}
+        <Button variant={active ? 'soft' : 'clear'} size="2" onclick={select}>pnpm</Button>
         {/snippet}
     </TabTrigger>
     <TabTrigger value="npm">
-        {#snippet children({ isActive, select})}
-        <Button variant={isActive ? 'soft' : 'clear'} size="2" onclick={select}>npm</Button>
+        {#snippet children({ active, select})}
+        <Button variant={active ? 'soft' : 'clear'} size="2" onclick={select}>npm</Button>
         {/snippet}
     </TabTrigger>
     <TabTrigger value="yarn">
-        {#snippet children({ isActive, select})}
-        <Button variant={isActive ? 'soft' : 'clear'} size="2" onclick={select}>yarn</Button>
+        {#snippet children({ active, select})}
+        <Button variant={active ? 'soft' : 'clear'} size="2" onclick={select}>yarn</Button>
         {/snippet}
     </TabTrigger>
     </Flexbox>
@@ -65,7 +65,7 @@ Wrap your application with the `<ThemeProvider/>{:svelte}` component in the root
 </script>
 
 <ThemeProvider>
-    <slot />
+    {@render children?.()}
 </ThemeProvider>
 ```
 
