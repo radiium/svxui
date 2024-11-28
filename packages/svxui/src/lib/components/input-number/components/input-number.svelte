@@ -79,6 +79,7 @@
     }
 
     function incrementMouseDown() {
+        console.log();
         clearIntervalId();
         intervalId = setInterval(() => {
             increment();
@@ -125,7 +126,16 @@
 </script>
 
 <InputGroup {...rest} class={cssClass} bind:elementRef>
-    <Button onclick={decrement} {variant} {size} {radius} {color} {disabled} iconOnly>-</Button>
+    <Button
+        bind:elementRef={decrementRef}
+        onclick={decrement}
+        {variant}
+        {size}
+        {radius}
+        {color}
+        {disabled}
+        iconOnly>-</Button
+    >
     <Input
         type="number"
         inputmode="numeric"
@@ -143,7 +153,16 @@
         {max}
         bind:value
     />
-    <Button onclick={increment} {variant} {size} {radius} {color} {disabled} iconOnly>+</Button>
+    <Button
+        bind:elementRef={incrementRef}
+        onclick={increment}
+        {variant}
+        {size}
+        {radius}
+        {color}
+        {disabled}
+        iconOnly>+</Button
+    >
 </InputGroup>
 
 <style lang="scss" global>

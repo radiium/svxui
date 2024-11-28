@@ -44,15 +44,18 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: var(--radio-size);
-        height: var(--radio-size);
-        // background: var(--color-surface);
-        background-color: var(--radio-background);
-
-        box-shadow: inset 0px 0px 0px 1px var(--input-box-shadow);
         transition:
             background-color ease 0.2s,
             box-shadow ease 0.2s;
+
+        width: var(--radio-size);
+        height: var(--radio-size);
+        background-color: var(--radio-background);
+        box-shadow: inset 0px 0px 0px 1px var(--input-box-shadow);
+
+        --radio-background: var(--input-background);
+        --radio-background-checked: var(--accent-9);
+        --check-color: white;
 
         &:after {
             width: var(--radio-size);
@@ -77,37 +80,30 @@
             }
         }
 
-        &[disabled] {
-            @include disabled;
-        }
-
         &:focus-visible {
             outline: 2px solid var(--accent-8);
             outline-offset: 1px;
         }
 
-        // Colors
-        & {
-            --radio-background: var(--input-background);
-            --radio-background-checked: var(--accent-9);
-            --check-color: white;
+        &[disabled] {
+            @include disabled;
         }
 
         // Sizes
         &.Radio-size-1 {
             --radio-size: calc(var(--space-4) * 0.875);
-            --check-width: calc(var(--radio-size) / 3.5);
-            --check-height: calc(var(--radio-size) / 2.5);
+            --radio-check-width: calc(var(--radio-size) / 3.5);
+            --radio-check-height: calc(var(--radio-size) / 2.5);
         }
         &.Radio-size-2 {
             --radio-size: var(--space-4);
-            --check-width: calc(var(--radio-size) / 3.5);
-            --check-height: calc(var(--radio-size) / 2.5);
+            --radio-check-width: calc(var(--radio-size) / 3.5);
+            --radio-check-height: calc(var(--radio-size) / 2.5);
         }
         &.Radio-size-3 {
             --radio-size: calc(var(--space-4) * 1.25);
-            --check-width: calc(var(--radio-size) / 3.5);
-            --check-height: calc(var(--radio-size) / 2.5);
+            --radio-check-width: calc(var(--radio-size) / 3.5);
+            --radio-check-height: calc(var(--radio-size) / 2.5);
         }
     }
 </style>

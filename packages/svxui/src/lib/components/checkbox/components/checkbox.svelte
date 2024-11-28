@@ -58,8 +58,8 @@
 <input
     autocomplete="off"
     {...rest}
-    class={cssClass}
     type="checkbox"
+    class={cssClass}
     data-color={color}
     data-size={size}
     data-radius={radius}
@@ -78,13 +78,19 @@
         appearance: none;
         -moz-appearance: none;
         -webkit-appearance: none;
+        flex-shrink: 0;
         outline: none;
         border: none;
+
         height: var(--checkbox-size);
         width: var(--checkbox-size);
         border-radius: calc(var(--radius-3) / 1.5);
         background-color: var(--checkbox-background);
         box-shadow: inset 0px 0px 0px 1px var(--input-box-shadow);
+
+        --checkbox-background: var(--input-background);
+        --checkbox-background-checked: var(--accent-9);
+        --check-color: white;
 
         &:after {
             display: none;
@@ -99,8 +105,12 @@
             border-width: 0 2px 2px 0;
         }
 
+        &:focus-visible {
+            outline: 2px solid var(--accent-8);
+            outline-offset: 1px;
+        }
+
         // States
-        &:checked,
         &[data-checked='true'] {
             background-color: var(--checkbox-background-checked);
             box-shadow: none;
@@ -120,18 +130,6 @@
 
         &[disabled] {
             @include disabled;
-        }
-
-        &:focus-visible {
-            outline: 2px solid var(--accent-8);
-            outline-offset: 1px;
-        }
-
-        // Color
-        & {
-            --checkbox-background: var(--input-background);
-            --checkbox-background-checked: var(--accent-9);
-            --check-color: white;
         }
 
         // Sizes

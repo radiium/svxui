@@ -41,18 +41,24 @@
         appearance: none;
         -moz-appearance: none;
         -webkit-appearance: none;
+        flex-shrink: 0;
         outline: none;
         border: none;
         position: relative;
+        transition:
+            background-color ease 0.2s,
+            box-shadow ease 0.2s;
+
+        box-shadow: inset 0px 0px 0px 1px var(--input-box-shadow);
         width: var(--switch-width);
         height: var(--switch-height);
         border-radius: var(--radius-2);
         background: var(--switch-background);
         padding: var(--switch-padding);
-        box-shadow: inset 0px 0px 0px 1px var(--input-box-shadow);
-        transition:
-            background-color ease 0.2s,
-            box-shadow ease 0.2s;
+
+        --switch-background: var(--input-background);
+        --switch-background-checked: var(--accent-9);
+        --switch-check-color: white;
 
         &:after {
             content: '';
@@ -77,20 +83,13 @@
             }
         }
 
-        &[disabled] {
-            @include disabled;
-        }
-
         &:focus-visible {
             outline: 2px solid var(--accent-8);
             outline-offset: 1px;
         }
 
-        // Colors
-        & {
-            --switch-background: var(--input-background);
-            --switch-background-checked: var(--accent-9);
-            --switch-check-color: white;
+        &[disabled] {
+            @include disabled;
         }
 
         // Sizes

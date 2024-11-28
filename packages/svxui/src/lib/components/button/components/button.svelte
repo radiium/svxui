@@ -45,25 +45,20 @@
 </button>
 
 <style lang="scss">
-    button.Button {
-        // CSS Vars
-        --button-min-width: calc(var(--space-5) * 2);
-        --button-width: unset;
-        --button-height: var(--space-5);
-        --button-padding: 0 var(--space-2);
-        --button-border: none;
-        --button-border-radius: var(--radius-3);
-        --button-background: transparent;
-        --button-background-hover: var(--accent-6);
-        --button-background-active: var(--accent-7);
-        --button-color: var(--accent-12);
-        --button-font-size: var(--font-size-1);
-        --button-line-height: var(--line-height-1);
-        --button-letter-spacing: var(--letter-spacing-1);
-        --button-gap: var(--space-1);
-        --button-icon-height: 60%;
+    .Button {
+        position: relative;
+        box-sizing: border-box;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        flex-shrink: 0;
+        text-decoration: none;
+        white-space: nowrap;
+        border: none;
+        user-select: none;
+        font-weight: 500;
+        transition: background-color linear 80ms;
 
-        // Customizable
         min-width: var(--button-min-width);
         width: var(--button-width);
         height: var(--button-height);
@@ -80,24 +75,31 @@
         text-align: var(--button-text-align);
         text-transform: var(--button-text-transform);
 
-        // Common
-        position: relative;
-        box-sizing: border-box;
-        display: inline-flex;
-        flex-direction: row;
-        align-items: center;
-        flex-shrink: 0;
-        text-decoration: none;
-        white-space: nowrap;
-        border: none;
-        user-select: none;
-        font-weight: 500;
-        transition: background-color linear 80ms;
+        --button-icon-height: 60%;
+        --button-text-transform: none;
 
         :global(svg) {
             width: auto;
             height: var(--button-icon-height);
             fill: var(--button-color);
+        }
+
+        // States
+
+        &:hover {
+            background: var(--button-background-hover);
+        }
+        &:active,
+        &.Button-active {
+            background: var(--button-background-active);
+            filter: var(--button-active-filter);
+        }
+        &:focus-visible {
+            outline: 2px solid var(--accent-8);
+            outline-offset: 0px;
+        }
+        &:disabled {
+            @include disabled;
         }
 
         // Sizes
@@ -214,9 +216,6 @@
         }
 
         // Transform
-        & {
-            --button-text-transform: none;
-        }
         &.Button-transform-lowercase {
             --button-text-transform: lowercase;
         }
@@ -250,23 +249,6 @@
             &.Button-full-width {
                 --button-width: 100%;
             }
-        }
-
-        // States
-        &:hover {
-            background: var(--button-background-hover);
-        }
-        &:active,
-        &.Button-active {
-            background: var(--button-background-active);
-            filter: var(--button-active-filter);
-        }
-        &:focus-visible {
-            outline: 2px solid var(--accent-8);
-            outline-offset: 0px;
-        }
-        &:disabled {
-            @include disabled;
         }
     }
 </style>

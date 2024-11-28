@@ -24,10 +24,10 @@
 <textarea
     rows={3}
     spellcheck={false}
+    {...rest}
     data-size={size}
     data-color={color}
     data-radius={radius}
-    {...rest}
     class={cssClass}
     bind:this={elementRef}
     bind:value
@@ -47,18 +47,40 @@
         cursor: text;
         font-family: inherit;
         text-overflow: ellipsis;
-        font-size: var(--font-size-3);
         letter-spacing: normal;
         resize: vertical;
+
+        font-size: var(--font-size-3);
         border-radius: var(--radius-3);
         color: var(--color);
         background: var(--color-surface);
         box-shadow: inset 0px 0px 0px 1px var(--input-box-shadow);
+
         min-width: var(--textarea-min-width);
         padding: var(--textarea-padding);
         border-radius: var(--textarea-border-radius);
         font-size: var(--textarea-font-size);
         letter-spacing: var(--textarea-letter-spacing);
+
+        // States
+        &::selection {
+            background-color: var(--accent-5);
+        }
+
+        &:active,
+        &:focus,
+        &:focus-visible {
+            outline: 2px solid var(--accent-8);
+            outline-offset: -1px;
+        }
+
+        &:disabled {
+            @include disabled;
+        }
+
+        &.Textarea-full-width {
+            width: 100%;
+        }
 
         // Sizes
         &.Textarea-size-1 {
@@ -81,27 +103,6 @@
             --textarea-border-radius: var(--radius-3);
             --textarea-font-size: var(--font-size-3);
             --textarea-letter-spacing: var(--letter-spacing-3);
-        }
-
-        // fullWidth
-        &.Textarea-full-width {
-            width: 100%;
-        }
-
-        // States
-        &::selection {
-            background-color: var(--accent-5);
-        }
-
-        &:active,
-        &:focus,
-        &:focus-visible {
-            outline: 2px solid var(--accent-8);
-            outline-offset: -1px;
-        }
-
-        &:disabled {
-            @include disabled;
         }
     }
 </style>

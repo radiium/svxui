@@ -32,11 +32,13 @@
 <style lang="scss">
     .Card {
         position: relative;
-        // overflow: hidden;
+
         padding: var(--card-padding);
         border-radius: var(--card-border-radius);
         background-color: var(--card-background);
         backdrop-filter: var(--card-backdrop-filter);
+
+        --card-backdrop-filter: none;
 
         &::after {
             content: '';
@@ -45,6 +47,10 @@
             inset: 0;
             border-radius: var(--card-border-radius);
             box-shadow: var(--card-box-shadow);
+        }
+
+        &.Card-full-width {
+            width: 100%;
         }
 
         // Sizes
@@ -73,15 +79,8 @@
             --card-border-radius: var(--radius-6);
         }
 
-        & {
-            --card-backdrop-filter: none;
-        }
         &.Card-translucent {
             --card-backdrop-filter: blur(64px);
-        }
-
-        &.Card-full-width {
-            width: 100%;
         }
 
         // Variants

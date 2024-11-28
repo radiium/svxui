@@ -42,13 +42,15 @@
         display: inline-flex;
         align-items: center;
         white-space: nowrap;
-        font-family: var(--default-font-family);
-        font-weight: var(--font-weight-medium);
         flex-shrink: 0;
         line-height: 1;
         user-select: none;
         height: fit-content;
         cursor: default;
+
+        font-family: var(--default-font-family);
+        font-weight: var(--font-weight-medium);
+
         box-shadow: var(--badge-box-shadow);
         color: var(--badge-color);
         background-color: var(--badge-background);
@@ -58,6 +60,10 @@
         font-size: var(--badge-font-size);
         line-height: var(--badge-line-height);
         letter-spacing: var(--badge-letter-spacing);
+
+        &.Badge-disabled {
+            @include disabled;
+        }
 
         // Sizes
         &.Badge-size-1 {
@@ -106,10 +112,6 @@
             --badge-box-shadow: inset 0px 0px 0px 1px var(--accent-8);
             --badge-background: transparent;
             --badge-color: var(--accent-11);
-        }
-
-        &.Badge-disabled {
-            @include disabled;
         }
     }
 </style>

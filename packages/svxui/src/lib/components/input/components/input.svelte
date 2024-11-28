@@ -26,7 +26,7 @@
         })
     );
 
-    const setType = (node: HTMLInputElement, value: InputProps['type']) => {
+    const setInputType = (node: HTMLInputElement, value: InputProps['type']) => {
         if (value) {
             node.type = value;
         }
@@ -53,7 +53,7 @@
     data-radius={radius}
     bind:this={elementRef}
     bind:value
-    use:setType={type}
+    use:setInputType={type}
 />
 
 <style lang="scss">
@@ -70,6 +70,7 @@
         text-overflow: ellipsis;
         display: block;
         font-style: normal;
+
         color: var(--color);
         font-size: var(--input-font-size);
         font-weight: var(--font-weight-regular);
@@ -82,6 +83,27 @@
         background: var(--color-surface);
         box-shadow: inset 0px 0px 0px 1px var(--input-box-shadow);
         border-radius: var(--input-border-radius);
+
+        // States
+        &:active,
+        &:focus,
+        &:focus-visible {
+            outline: 2px solid var(--accent-8);
+            outline-offset: -1px;
+        }
+        &:disabled {
+            @include disabled;
+        }
+        &:readonly,
+        &:read-only {
+            cursor: default;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        &::selection {
+            background-color: var(--accent-5);
+        }
 
         // Sizes
         &.Input-size-1 {
@@ -164,28 +186,6 @@
                 outline-offset: -1px;
                 border-radius: var(--radius-2);
             }
-        }
-
-        // States
-
-        &::selection {
-            background-color: var(--accent-5);
-        }
-
-        &:active,
-        &:focus,
-        &:focus-visible {
-            outline: 2px solid var(--accent-8);
-            outline-offset: -1px;
-        }
-        &:disabled {
-            @include disabled;
-        }
-        &:readonly,
-        &:read-only {
-            cursor: default;
-            outline: none !important;
-            box-shadow: none !important;
         }
     }
 

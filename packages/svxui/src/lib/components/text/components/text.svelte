@@ -52,11 +52,9 @@
         font-weight: var(--text-font-weight);
         text-transform: var(--text-text-transform);
         text-align: var(--text-text-align);
+        color: var(--color);
 
         // Colors
-        & {
-            color: var(--color);
-        }
         &[data-color] {
             color: var(--accent-11);
         }
@@ -180,7 +178,8 @@
             text-underline-offset: calc(0.025em + 2px);
             text-decoration-color: var(--accent-11);
         }
-        &:not(.Text-mutted) {
+
+        &:not(.Text-disabled) {
             &.Text-Link-underline-auto:hover,
             &.Text-Link-underline-hover:hover,
             &.Text-Link-underline-always {
