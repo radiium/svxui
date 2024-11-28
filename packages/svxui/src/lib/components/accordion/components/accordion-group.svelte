@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { GroupStateHelper } from '$lib/utils/group/group-state.svelte.js';
+    import { useGroup } from '$lib/hooks/group/index.js';
     import { wrap } from '../../../utils/wrap.svelte.js';
     import { setAccordionContext } from '../context.svelte.js';
     import { defaultAccordionGroupProps } from '../props.js';
@@ -13,7 +13,7 @@
         children
     }: AccordionGroupProps = $props();
 
-    const group = new GroupStateHelper({
+    const group = useGroup({
         value: wrap(
             () => value,
             (newValue) => {

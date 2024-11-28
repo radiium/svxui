@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { GroupStateHelper } from '$lib/utils/group/group-state.svelte.js';
+    import { useGroup } from '$lib/hooks/group/index.js';
     import { wrap } from '$lib/utils/wrap.svelte.js';
     import { setTabContext } from '../context.svelte.js';
     import { defaultTabGroupProps } from '../props.js';
@@ -12,7 +12,7 @@
         children
     }: TabGroupProps = $props();
 
-    const group = new GroupStateHelper({
+    const group = useGroup({
         value: wrap(
             () => value,
             (newValue) => {

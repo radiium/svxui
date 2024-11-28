@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { GroupItemStateHelper } from '$lib/utils/group/group-item-state.svelte.js';
+    import { useGroupItem } from '$lib/hooks/group/index.js';
     import { wrap } from '$lib/utils/wrap.svelte.js';
     import { onDestroy, onMount } from 'svelte';
     import { getTabContext } from '../context.svelte.js';
@@ -9,7 +9,7 @@
     let { value, disabled = defaultTabTriggerProps.disabled, children }: TabTriggerProps = $props();
 
     const group = getTabContext();
-    const item = new GroupItemStateHelper({
+    const item = useGroupItem({
         value: wrap(() => value),
         disabled: wrap(() => disabled),
         attributsBuilder: ({ id, value, disabled, active }) => {
