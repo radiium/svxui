@@ -1,5 +1,5 @@
 ---
-title: focusTrap
+title: focusTrapAction
 description: Traps focus inide given HTMLElement
 category: actions
 ---
@@ -53,7 +53,7 @@ category: actions
 </div>
 ```
 
-## Type
+## Types
 
 ### Parameters
 

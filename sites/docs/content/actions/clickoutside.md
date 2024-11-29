@@ -1,5 +1,5 @@
 ---
-title: clickOutside
+title: clickOutsideAction
 description: Listen click outside given HTMLElement
 category: actions
 ---
@@ -66,7 +66,7 @@ category: actions
 </div>
 ```
 
-## Type
+## Types
 
 ### Parameters
 

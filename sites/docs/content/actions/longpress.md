@@ -1,11 +1,11 @@
 ---
-title: longPress
+title: longPressAction
 description: Listen Long Press on interactable HTMLElement
 category: actions
 ---
 
 <script lang="ts">
-    import { Card, Flexbox, Button, Text, longpressAction } from 'svxui';
+    import { Card, Flexbox, Button, Text, longPressAction } from 'svxui';
 
     let isLongPressed = $state(false);
 
@@ -22,7 +22,7 @@ category: actions
 
 <Card>
 <Flexbox gap="3" align="center">
-<div use:longpressAction={800} {onstartlongpress} {onendlongpress}>
+<div use:longPressAction={800} {onstartlongpress} {onendlongpress}>
     <Button variant="surface">longpress me</Button>
 </div>
 <Text color={isLongPressed ? 'green' : undefined}>
@@ -35,7 +35,7 @@ category: actions
 
 ```svelte
 <script lang="ts">
-    import { longpressAction } from 'svxui';
+    import { longPressAction } from 'svxui';
 
     let isLongPressed = false;
 
@@ -48,12 +48,12 @@ category: actions
     }
 </script>
 
-<button use:longpressAction={800} onstartlongpress={onStartLongPress} onendlongpress={onEndlongpress}>
+<button use:longPressAction={800} onstartlongpress={onStartLongPress} onendlongpress={onEndlongpress}>
     longpress {isLongPressed}
 </button>
 ```
 
-## Type
+## Types
 
 ### Parameters
 

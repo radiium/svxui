@@ -1,6 +1,6 @@
 import type { ActionReturn } from 'svelte/action';
 
-export type LongpressParameters = {
+export type LongPressParameters = {
     /**
      * Enable/disable lock scroll
      * @default true
@@ -13,7 +13,7 @@ export type LongpressParameters = {
     duration?: number;
 };
 
-export type LongpressAttributes = {
+export type LongPressAttributes = {
     /**
      * Event fired when longpress start
      */
@@ -24,4 +24,4 @@ export type LongpressAttributes = {
     onendlongpress?: (e: CustomEvent<void>) => void;
 };
 
-export type LongpressActionReturn = ActionReturn<LongpressParameters, LongpressAttributes>;
+export type LongPressActionReturn = ActionReturn<LongPressParameters, LongPressAttributes>;

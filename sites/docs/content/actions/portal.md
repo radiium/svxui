@@ -1,5 +1,5 @@
 ---
-title: Portal
+title: portalAction
 description: Transfert HTMLElement to another container
 category: actions
 ---
@@ -66,7 +66,7 @@ category: actions
 </div>
 ```
 
-## Type
+## Types
 
 ### Parameters
 

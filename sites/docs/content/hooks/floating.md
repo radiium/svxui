@@ -1,6 +1,6 @@
 ---
 title: useFloating
-description: Create floating action
+description: 
 category: hook
 ---
 

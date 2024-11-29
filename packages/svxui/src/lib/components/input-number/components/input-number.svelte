@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { longpressAction } from '$lib/actions/longpress/index.js';
+    import { longPressAction } from '$lib/actions/longpress/index.js';
     import { clsx } from '$lib/utils/clsx.js';
     import { onMount } from 'svelte';
     import { Button } from '../../button/index.js';
@@ -109,10 +109,10 @@
     onMount(() => {
         if (decrementRef && incrementRef) {
             const subscriptions = [
-                longpressAction(decrementRef).destroy,
+                longPressAction(decrementRef).destroy,
                 on(decrementRef, 'startlongpress', decrementMouseDown),
                 on(decrementRef, 'endlongpress', mouseUp),
-                longpressAction(incrementRef).destroy,
+                longPressAction(incrementRef).destroy,
                 on(incrementRef, 'startlongpress', incrementMouseDown),
                 on(incrementRef, 'endlongpress', mouseUp)
             ];

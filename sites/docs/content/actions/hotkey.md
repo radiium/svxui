@@ -1,5 +1,5 @@
 ---
-title: hotkey
+title: hotkeyAction
 description: Listen hot key shortcut
 category: actions
 ---
@@ -100,7 +100,7 @@ category: actions
 />
 ```
 
-## Type
+## Types
 
 ### Parameters
 
@@ -135,7 +135,7 @@ export type HotkeyAttributes = {
 };
 ```
 
-### Others
+### Events
 
 ```ts
 export interface ShortcutEventDetail {
@@ -144,11 +144,4 @@ export interface ShortcutEventDetail {
     trigger: ShortcutTrigger;
     originalEvent: KeyboardEvent;
 }
-
-export type HotkeyAttributes = {
-    /**
-     * Event fired when hotkey pressed
-     */
-    onhotkey?: (event: CustomEvent<ShortcutEventDetail>) => void;
-};
 ```

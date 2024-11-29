@@ -1,5 +1,5 @@
 ---
-title: lockScroll
+title: lockScrollAction
 description: Block Scroll of given HTMLElement
 category: actions
 ---
@@ -57,7 +57,7 @@ category: actions
 <div use:lockScrollAction={{enabled}} {onlockscrollchange}>Content</div>
 ```
 
-## Type
+## Types
 
 ### Parameters
 

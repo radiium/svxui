@@ -1,3 +1,3 @@
-export { longpressAction } from './action.svelte.js';
+export { longPressAction } from './action.svelte.js';
 
-export type { LongpressActionReturn, LongpressAttributes, LongpressParameters } from './types.js';
+export type { LongPressActionReturn, LongPressAttributes, LongPressParameters } from './types.js';

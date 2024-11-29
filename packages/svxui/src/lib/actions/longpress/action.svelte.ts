@@ -1,13 +1,13 @@
 import { on } from 'svelte/events';
-import type { LongpressActionReturn, LongpressParameters } from './types.js';
+import type { LongPressActionReturn, LongPressParameters } from './types.js';
 
 /**
  * Listen long press on node
  */
-export function longpressAction(
+export function longPressAction(
     node: HTMLElement,
-    initialParams: LongpressParameters = { enabled: true, duration: 800 }
-): LongpressActionReturn {
+    initialParams: LongPressParameters = { enabled: true, duration: 800 }
+): LongPressActionReturn {
     let enabled = initialParams.enabled ?? true;
     let duration = initialParams.duration ?? 800;
     let timer: ReturnType<typeof setTimeout>;
@@ -38,7 +38,7 @@ export function longpressAction(
         };
     }
 
-    function update(params: LongpressParameters = { enabled: true, duration: 800 }): void {
+    function update(params: LongPressParameters = { enabled: true, duration: 800 }): void {
         enabled = params.enabled ?? true;
         duration = params.duration ?? 800;
 
