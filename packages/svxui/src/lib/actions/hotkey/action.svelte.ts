@@ -9,7 +9,6 @@ export function hotkeyAction(node: HTMLElement, params: HotkeyParameters): Hotke
     let { enabled = true, trigger, type = 'keydown' } = params;
 
     function handler(event: KeyboardEvent) {
-        console.log(event.key, event.keyCode);
         const normalizedTriggers = Array.isArray(trigger) ? trigger : [trigger];
         const modifiedMap: Record<ShortcutModifier, boolean> = {
             alt: event.altKey,

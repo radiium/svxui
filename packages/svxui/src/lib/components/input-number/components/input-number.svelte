@@ -79,7 +79,6 @@
     }
 
     function incrementMouseDown() {
-        console.log();
         clearIntervalId();
         intervalId = setInterval(() => {
             increment();
