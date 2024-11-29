@@ -14,21 +14,43 @@ import type {
 } from '@floating-ui/dom';
 
 export type UseFloatingMiddlewareProps = {
+    /**
+     * Enable/disable/configure built in floating-ui middleware
+     */
     offset?: boolean | OffsetOptions;
     flip?: boolean | FlipOptions;
     shift?: boolean | ShiftOptions;
     size?: boolean | SizeOptions;
     hide?: boolean | HideOptions;
     arrow?: boolean | ArrowOptions;
+    arrowEl?: HTMLElement | SVGSVGElement | undefined;
+    /**
+     * Extra middleware(s) added at end
+     */
     middleware?: Array<Middleware | undefined | null | false>;
-    arrowEl: HTMLElement | SVGSVGElement | undefined;
 };
 
 export type UseFloatingProps = {
+    /**
+     * Use css transform instead top/left positionning
+     */
     transform?: boolean;
+    /**
+     * floating-ui strategy
+     */
     strategy?: Strategy;
+    /**
+     * floating-ui placement
+     */
     placement?: Placement;
+    /**
+     * Array of floating-ui middlewares (offset, arrow, etc..)
+     */
     middleware?: Array<Middleware | undefined | null | false>;
+    /**
+     * Callback called for trigger update
+     * useFloating does not trigger the update if function is provided
+     */
     whileElementsMounted?: (
         reference: ReferenceElement,
         floating: FloatingElement,

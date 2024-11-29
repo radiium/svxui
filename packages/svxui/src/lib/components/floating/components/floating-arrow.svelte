@@ -18,21 +18,11 @@
         ...rest
     }: FloatingArrowProps = $props();
 
-    let { alignment, side, staticSide, arrow } = $derived.by(() => {
-        const alignment = floatingState?.alignment ?? 'center';
+    let { side, arrow } = $derived.by(() => {
         const side = floatingState?.side ?? 'bottom';
-        const staticSide = side
-            ? {
-                  top: 'bottom',
-                  right: 'left',
-                  bottom: 'top',
-                  left: 'right'
-              }[side]
-            : '';
         const x = floatingState?.middlewareData?.arrow?.x ?? null;
         const y = floatingState?.middlewareData?.arrow?.y ?? null;
-
-        return { alignment, side, staticSide, arrow: { x, y } };
+        return { side, arrow: { x, y } };
     });
 
     const clipPathId = generateId();
@@ -49,14 +39,6 @@
 
     const svgX = $derived((width / 2) * (tipRadius / -8 + 1));
     const svgY = $derived(((height / 2) * tipRadius) / 4);
-
-    const yOffsetProp = $derived(alignment === 'end' ? 'bottom' : 'top');
-    const xOffsetProp = $derived.by(() => {
-        if (isRTL) {
-            return alignment === 'end' ? 'right' : 'left';
-        }
-        return alignment === 'end' ? 'right' : 'left';
-    });
 
     const arrowX = $derived(arrow?.x != null ? `${arrow.x}px` : '');
     const arrowY = $derived(arrow?.y != null ? `${arrow.y}px` : '');
@@ -77,8 +59,8 @@
 
     let style = $derived.by(() => {
         return styleObjectToString({
-            [xOffsetProp]: `${arrowX}`,
-            [yOffsetProp]: `${arrowY}`,
+            left: `${arrowX}`,
+            top: `${arrowY}`,
             [side]: isVerticalSide ? '100%' : `calc(100% - ${computedStrokeWidth / 2}px)`,
             transform: `${rotateTransform} translateY(-1px)`
         });

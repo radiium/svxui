@@ -1,3 +1,5 @@
+export * from '@floating-ui/dom';
+
 export { useFloating } from './hooks/use-floating.svelte.js';
 export { useFloatingMiddleware } from './hooks/use-floating-middleware.svelte.js';
 
