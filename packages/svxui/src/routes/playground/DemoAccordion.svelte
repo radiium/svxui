@@ -38,7 +38,7 @@
     let multiH = $state(true);
     const itemsH = $state(structuredClone($state.snapshot(items)));
 
-    let valueV = $state(undefined);
+    let valueV = $state<string | string[] | undefined>();
     let multiV = $state(false);
     const itemsV = $state(structuredClone($state.snapshot(items)));
 </script>
@@ -47,8 +47,8 @@
     index: number,
     multi: boolean,
     items: Item[],
-    value: any,
-    setValue: (value: any) => void
+    value: string | string[] | undefined,
+    setValue: (value: string | string[] | undefined) => void
 )}
     {@const item = items[index]!}
     {@const opened = multi ? (value ?? []).includes(item.value) : value === item.value}
@@ -62,7 +62,9 @@
                 if (!item.disabled) {
                     if (opened) {
                         setValue(
-                            multi ? (value ?? []).filter((value: string) => value !== item.value) : undefined
+                            multi && (value === undefined || Array.isArray(value))
+                                ? (value ?? []).filter((value: string) => value !== item.value)
+                                : undefined
                         );
                     } else {
                         setValue(multi ? [...(value ?? []), item.value] : item.value);
@@ -96,7 +98,7 @@
     multi: boolean,
     items: Item[],
     setMulti: (multi: boolean) => void,
-    setValue: (value: any) => void
+    setValue: (value: string | string[] | undefined) => void
 )}
     <Flexbox gap="3" class="mb-5">
         {#if multi}

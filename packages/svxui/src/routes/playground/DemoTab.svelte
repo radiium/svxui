@@ -45,7 +45,12 @@
     const itemsV = $state(structuredClone($state.snapshot(tabs)));
 </script>
 
-{#snippet itemControl(index: number, items: Item[], value: any, setValue: (value: any) => void)}
+{#snippet itemControl(
+    index: number,
+    items: Item[],
+    value: string | undefined,
+    setValue: (value: string | undefined) => void
+)}
     {@const item = items[index]!}
 
     <Flexbox gap="3" align="center" class="mb-3">

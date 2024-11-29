@@ -1,12 +1,6 @@
 <script lang="ts">
-    interface Props {
-        size?: string;
-        color?: string;
-        mirrored?: boolean;
-        [key: string]: any;
-    }
-
-    let { size = '1rem', color = 'currentColor', mirrored = false, ...rest }: Props = $props();
+    import type { IconProps } from './types.js';
+    let { size = '1rem', color = 'currentColor', mirrored = false, ...rest }: IconProps = $props();
 </script>
 
 <svg
