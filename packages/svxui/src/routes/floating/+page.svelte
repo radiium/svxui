@@ -26,22 +26,30 @@
 
 <Flexbox direction="column" gap="3" class="p-9">
     <Panel>
-        <Flexbox direction="column" gap="2">
-            <ControlSelect label="color" bind:value={color} options={[...Colors]} />
-            <ControlSelect label="color" bind:value={variant} options={[...VariantsCard]} />
-            <ControlSelect label="placement" bind:value={placement} options={[...Placements]} />
-            <ControlNumber label="offset" bind:value={offset} />
-            <ControlBoolean label="autoUpdate" bind:value={autoUpdate} />
-            <ControlBoolean label="arrow" bind:value={arrow} />
-            <ControlBoolean label="backdrop" bind:value={backdrop} />
-            <ControlBoolean label="closeOnClickBackdrop" bind:value={closeOnClickBackdrop} />
-            <ControlBoolean label="closeOnClickOutside" bind:value={closeOnClickOutside} />
-            <ControlBoolean label="closeOnEscape" bind:value={closeOnEscape} />
-            <ControlBoolean label="closeOnResize" bind:value={closeOnResize} />
-            <ControlBoolean label="closeOnScroll" bind:value={closeOnScroll} />
-            <ControlBoolean label="flip" bind:value={flip} />
-            <ControlBoolean label="shift" bind:value={shift} />
-            <ControlBoolean label="hide" bind:value={hide} />
+        <Flexbox direction="row" wrap="wrap" align="center" justify="center" gap="7" class="width-100">
+            <Flexbox direction="column" gap="2">
+                <ControlSelect label="color" bind:value={color} options={[...Colors]} />
+                <ControlSelect label="color" bind:value={variant} options={[...VariantsCard]} />
+                <ControlSelect label="placement" bind:value={placement} options={[...Placements]} />
+                <ControlNumber label="offset" bind:value={offset} />
+            </Flexbox>
+
+            <Flexbox direction="column" gap="2">
+                <ControlBoolean label="autoUpdate" bind:value={autoUpdate} />
+                <ControlBoolean label="arrow" bind:value={arrow} />
+                <ControlBoolean label="backdrop" bind:value={backdrop} />
+                <ControlBoolean label="flip" bind:value={flip} />
+                <ControlBoolean label="shift" bind:value={shift} />
+                <ControlBoolean label="hide" bind:value={hide} />
+            </Flexbox>
+
+            <Flexbox direction="column" gap="2">
+                <ControlBoolean label="closeOnClickBackdrop" bind:value={closeOnClickBackdrop} />
+                <ControlBoolean label="closeOnClickOutside" bind:value={closeOnClickOutside} />
+                <ControlBoolean label="closeOnEscape" bind:value={closeOnEscape} />
+                <ControlBoolean label="closeOnResize" bind:value={closeOnResize} />
+                <ControlBoolean label="closeOnScroll" bind:value={closeOnScroll} />
+            </Flexbox>
         </Flexbox>
     </Panel>
 

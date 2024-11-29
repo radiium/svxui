@@ -145,11 +145,9 @@
         <Separator size="4" class="mb-5" />
 
         <AccordionGroup multi={multiH} bind:value={valueH}>
-            <!-- onValueChange={(val) => console.log('new value', val)} -->
             <Card size="0" variant="outline">
                 <Flexbox direction="column">
                     {#each itemsH as { value, label, content, disabled, expanded }, i}
-                        <!-- <Card size="1" class="width-400px max-width-300px"> -->
                         <div>
                             <Accordion {value} {disabled} {expanded}>
                                 {#snippet trigger({ expanded, attrs, toggle })}
@@ -176,7 +174,6 @@
                         {#if i < itemsH.length - 1}
                             <Separator size="4" />
                         {/if}
-                        <!-- </Card> -->
                     {/each}
                 </Flexbox>
             </Card>
