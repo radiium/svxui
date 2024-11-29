@@ -33,6 +33,7 @@ import type {
 } from 'svxui';
 
 export type AnyPropsType = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: SchemaProp['name']]: any;
 };
 
