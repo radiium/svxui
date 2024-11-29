@@ -45,6 +45,7 @@
     bind:isOpen
     {color}
     {placement}
+    arrow
     size="0"
     variant="surface"
     offset={10}
@@ -67,7 +68,7 @@
     {/snippet}
 
     {#snippet content()}
-        <Flexbox direction="column" class="p-2 m-0" style="position: relative;">
+        <Flexbox direction="column" class="m-0" style="position: relative;">
             {#each themeOptions as option}
                 <Button
                     {size}
