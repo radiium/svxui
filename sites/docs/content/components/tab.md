@@ -1,7 +1,7 @@
 ---
 title: Tab
 description: Headless tabs component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

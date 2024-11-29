@@ -1,7 +1,7 @@
 ---
 title: Button
 description: Simple buton with multiple variants.
-category: doc
+category: components
 ---
 
 <script lang="ts">

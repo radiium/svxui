@@ -1,7 +1,7 @@
 ---
 title: longPress
 description: Listen Long Press on interactable HTMLElement
-category: doc
+category: actions
 ---
 
 <script lang="ts">

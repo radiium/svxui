@@ -1,7 +1,7 @@
 ---
 title: Floating
 description: Customisable component for creating popover or dropdown content.
-category: doc
+category: components
 ---
 
 <script lang="ts">

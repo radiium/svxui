@@ -56,7 +56,7 @@
 
 <style lang="scss">
     .wrapper {
-        --header-height: 56px;
+        --header-height: 60px;
         --header-width: 100%;
 
         --aside-height: 100%;

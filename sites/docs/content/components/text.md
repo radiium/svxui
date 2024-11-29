@@ -1,7 +1,7 @@
 ---
 title: Text
 description: Customisable common text component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

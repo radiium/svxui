@@ -1,7 +1,7 @@
 ---
 title: lockScroll
 description: Block Scroll of given HTMLElement
-category: doc
+category: actions
 ---
 
 <script lang="ts">

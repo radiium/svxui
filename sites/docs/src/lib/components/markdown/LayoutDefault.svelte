@@ -36,12 +36,12 @@
     <!-- Headers -->
     <Flexbox as="header" direction="column">
         {#if metadata.title}
-            {@const SvelteComponent = h1}
-            <SvelteComponent>{metadata.title}</SvelteComponent>
+            {@const H1Component = h1}
+            <H1Component>{metadata.title}</H1Component>
         {/if}
         {#if metadata.description}
-            {@const SvelteComponent_1 = p}
-            <SvelteComponent_1>{metadata.description}</SvelteComponent_1>
+            {@const PComponent = p}
+            <PComponent>{metadata.description}</PComponent>
         {/if}
     </Flexbox>
 

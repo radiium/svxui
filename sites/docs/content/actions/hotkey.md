@@ -1,7 +1,7 @@
 ---
 title: hotkey
 description: Listen hot key shortcut
-category: doc
+category: actions
 ---
 
 <script lang="ts">

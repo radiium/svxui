@@ -1,7 +1,7 @@
 ---
 title: InputRange
 description: Input range form control component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

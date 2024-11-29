@@ -1,7 +1,7 @@
 ---
 title: Link
 description: Customisable anchor component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

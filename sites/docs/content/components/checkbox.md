@@ -1,7 +1,7 @@
 ---
 title: Checkbox
 description: Checkbox form control component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 ---
 title: Flexbox
 description: Container component for quickly manage flex layoutcontent.
-category: doc
+category: components
 ---
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 ---
 title: InputNumber
 description: Opinionated input number component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 ---
 title: clickOutside
 description: Listen click outside given HTMLElement
-category: doc
+category: actions
 ---
 
 <script lang="ts">

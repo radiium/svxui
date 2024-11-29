@@ -1,7 +1,7 @@
 ---
 title: focusTrap
 description: Traps focus inide given HTMLElement
-category: doc
+category: actions
 ---
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 ---
 title: Input
 description: Input form control component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

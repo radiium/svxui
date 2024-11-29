@@ -1,7 +1,7 @@
 ---
 title: Switch
 description: Switch form control component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

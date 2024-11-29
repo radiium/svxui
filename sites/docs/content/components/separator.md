@@ -1,7 +1,7 @@
 ---
 title: Separator
 description: Simple visual separator.
-category: doc
+category: components
 ---
 
 <script lang="ts">

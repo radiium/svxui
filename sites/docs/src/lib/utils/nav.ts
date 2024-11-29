@@ -1,5 +1,6 @@
 import {
     allActions,
+    allHooks,
     allComponents,
     allExamples,
     allStarts,
@@ -50,6 +51,10 @@ export const nav = [
     {
         title: 'Actions',
         pages: buildNavItems(allActions)
+    },
+    {
+        title: 'Hooks',
+        pages: buildNavItems(allHooks)
     },
     {
         title: 'Examples',

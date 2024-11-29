@@ -81,7 +81,7 @@ export const accordionGroupSchema: SchemaComponent = {
             name: 'onValueChange',
             type: SchemaPropType.custom,
             typeCustom: '(value: string | string[] | undefined) => void',
-            default: defaultAccordionGroupProps.onValueChange?.toString()
+            default: defaultAccordionGroupProps.onValueChange
         },
         {
             name: 'multi',

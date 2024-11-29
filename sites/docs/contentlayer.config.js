@@ -65,6 +65,13 @@ export const Action = defineDocumentType(() => ({
     computedFields
 }));
 
+export const Hook = defineDocumentType(() => ({
+    name: 'Hook',
+    filePathPattern: `hooks/**/*.md`,
+    fields,
+    computedFields
+}));
+
 export const Example = defineDocumentType(() => ({
     name: 'Example',
     filePathPattern: `examples/**/*.md`,
@@ -74,6 +81,6 @@ export const Example = defineDocumentType(() => ({
 
 export default makeSource({
     contentDirPath: './content',
-    documentTypes: [Start, Theme, Component, Action, Example],
+    documentTypes: [Start, Theme, Component, Action, Hook, Example],
     disableImportAliasWarning: true
 });

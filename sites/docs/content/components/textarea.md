@@ -1,7 +1,7 @@
 ---
 title: Textarea
 description: Textarea form control component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

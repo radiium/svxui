@@ -1,7 +1,7 @@
 ---
 title: Portal
 description: Simple portal component
-category: doc
+category: components
 ---
 
 <script lang="ts">

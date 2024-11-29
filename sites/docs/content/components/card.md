@@ -1,7 +1,7 @@
 ---
 title: Card
 description: Simple content container with multiple variants.
-category: doc
+category: components
 ---
 
 <script lang="ts">

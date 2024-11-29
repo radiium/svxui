@@ -1,7 +1,7 @@
 ---
 title: Radio
 description: Input radio form control component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 ---
 title: Accordion
 description: Headless collapsible component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

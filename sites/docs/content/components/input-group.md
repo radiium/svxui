@@ -1,7 +1,7 @@
 ---
 title: InputGroup
 description: Container for grouping interacting component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

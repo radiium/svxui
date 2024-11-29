@@ -1,7 +1,7 @@
 ---
 title: Box
 description: Box component
-category: doc
+category: components
 ---
 
 <script lang="ts">

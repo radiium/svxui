@@ -1,7 +1,7 @@
 ---
 title: Portal
 description: Transfert HTMLElement to another container
-category: doc
+category: actions
 ---
 
 <script lang="ts">

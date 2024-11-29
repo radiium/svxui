@@ -1,7 +1,7 @@
 ---
 title: Dialog
 description: Customisable dialog component.
-category: doc
+category: components
 ---
 
 <script lang="ts">

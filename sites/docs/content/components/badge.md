@@ -1,7 +1,7 @@
 ---
 title: Badge
 description: Small count and labeling component.
-category: doc
+category: components
 ---
 
 <script lang="ts">
