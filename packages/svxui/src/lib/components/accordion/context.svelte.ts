@@ -1,14 +1,14 @@
-import type { GroupStateHelper } from '$lib/utils/group/group-state.svelte.js';
+import type { Group } from '$lib/hooks/group/group.svelte.js';
 import { getContext, setContext } from 'svelte';
 
 const contextKeyAccordion = Symbol('svxui-context-accordion');
 
-export function setAccordionContext(ctx: GroupStateHelper): void {
+export function setAccordionContext(ctx: Group): void {
     setContext(contextKeyAccordion, ctx);
 }
 
-export function getAccordionContext(): GroupStateHelper {
-    const ctx = getContext<GroupStateHelper | undefined>(contextKeyAccordion);
+export function getAccordionContext(): Group {
+    const ctx = getContext<Group | undefined>(contextKeyAccordion);
     if (!ctx) {
         throw new Error('`getAccordionContext` must be used within a `<AccordionGroup/>` component.');
     }

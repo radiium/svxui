@@ -43,9 +43,10 @@
 <Floating
     id={generateId()}
     bind:isOpen
-    size="0"
-    outline
+    {color}
     {placement}
+    size="0"
+    variant="surface"
     offset={10}
     closeOnClickOutside
     closeOnEscape

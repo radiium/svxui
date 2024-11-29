@@ -15,7 +15,6 @@
     let offset = $state(7);
     let autoUpdate = $state(true);
     let arrow = $state(false);
-    let outline = $state(false);
     let backdrop = $state(false);
     let closeOnClickBackdrop = $state(false);
     let closeOnClickOutside = $state(true);
@@ -60,7 +59,6 @@
             <ControlNumber label="offset" bind:value={offset} />
             <ControlBoolean label="autoUpdate" bind:value={autoUpdate} />
             <ControlBoolean label="arrow" bind:value={arrow} />
-            <ControlBoolean label="outline" bind:value={outline} />
             <ControlBoolean label="backdrop" bind:value={backdrop} />
             <ControlBoolean label="closeOnClickBackdrop" bind:value={closeOnClickBackdrop} />
             <ControlBoolean label="closeOnClickOutside" bind:value={closeOnClickOutside} />
@@ -83,7 +81,6 @@
                                 {variant}
                                 {offset}
                                 {autoUpdate}
-                                {outline}
                                 {arrow}
                                 {backdrop}
                                 {closeOnClickBackdrop}
@@ -165,7 +162,6 @@
 
         <Floating
             bind:isOpen={isOpenHover}
-            outline
             arrow
             offset={10}
             closeOnEscape
