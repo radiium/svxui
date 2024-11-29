@@ -4,7 +4,7 @@ import { mdsx } from 'mdsx';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { phosphorSvelteOptimize } from 'phosphor-svelte/preprocessor';
+import { sveltePhosphorOptimize } from 'phosphor-svelte/vite';
 import { mdsxConfig } from './mdsx.config.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
@@ -20,7 +20,7 @@ process.env.PUBLIC_PKG_HOMEPAGE = libPackageJson.homepage;
 const config = {
     extensions: ['.svelte', '.md'],
     preprocess: [
-        phosphorSvelteOptimize(), //
+        sveltePhosphorOptimize(), //
         mdsx(mdsxConfig),
         vitePreprocess()
     ],

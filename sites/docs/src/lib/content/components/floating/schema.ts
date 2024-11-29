@@ -1,5 +1,5 @@
 import { SchemaPropType, type SchemaComponent } from '$lib/doc.types.js';
-import { defaultFloatingProps, Placements, Radius, Sizes0To5 } from 'svxui';
+import { Colors, defaultFloatingProps, Placements, Radius, Sizes0To5, VariantsCard } from 'svxui';
 
 /**
  * Playground template
@@ -47,6 +47,18 @@ export const floatingSchema: SchemaComponent = {
             default: defaultFloatingProps.size
         },
         {
+            name: 'color',
+            type: SchemaPropType.enum,
+            values: Colors,
+            default: defaultFloatingProps.color
+        },
+        {
+            name: 'variant',
+            type: SchemaPropType.enum,
+            values: VariantsCard,
+            default: defaultFloatingProps.variant
+        },
+        {
             name: 'radius',
             type: SchemaPropType.enum,
             values: Radius,
@@ -59,14 +71,9 @@ export const floatingSchema: SchemaComponent = {
             default: defaultFloatingProps.placement
         },
         {
-            name: 'transitionDelay',
-            type: SchemaPropType.number,
-            default: defaultFloatingProps.transitionDelay
-        },
-        {
-            name: 'transitionDuration',
-            type: SchemaPropType.number,
-            default: defaultFloatingProps.transitionDuration
+            name: 'autoUpdate',
+            type: SchemaPropType.boolean,
+            default: defaultFloatingProps.autoUpdate
         },
         {
             name: 'offset',
@@ -79,9 +86,19 @@ export const floatingSchema: SchemaComponent = {
             default: defaultFloatingProps.arrow
         },
         {
-            name: 'outline',
+            name: 'flip',
             type: SchemaPropType.boolean,
-            default: defaultFloatingProps.outline
+            default: defaultFloatingProps.flip
+        },
+        {
+            name: 'shift',
+            type: SchemaPropType.boolean,
+            default: defaultFloatingProps.shift
+        },
+        {
+            name: 'hide',
+            type: SchemaPropType.boolean,
+            default: defaultFloatingProps.hide
         },
         {
             name: 'backdrop',
@@ -89,9 +106,14 @@ export const floatingSchema: SchemaComponent = {
             default: defaultFloatingProps.backdrop
         },
         {
-            name: 'autoUpdate',
+            name: 'portal',
             type: SchemaPropType.boolean,
-            default: defaultFloatingProps.autoUpdate
+            default: defaultFloatingProps.portal
+        },
+        {
+            name: 'portalTarget',
+            type: SchemaPropType.string,
+            default: defaultFloatingProps.portalTarget
         },
         {
             name: 'closeOnClickBackdrop',
@@ -119,15 +141,20 @@ export const floatingSchema: SchemaComponent = {
             default: defaultFloatingProps.closeOnScroll
         },
         {
-            name: 'portal',
-            type: SchemaPropType.boolean,
-            default: defaultFloatingProps.portal
+            name: 'transitionDelay',
+            type: SchemaPropType.number,
+            default: defaultFloatingProps.transitionDelay
+        },
+        {
+            name: 'transitionDuration',
+            type: SchemaPropType.number,
+            default: defaultFloatingProps.transitionDuration
         }
     ],
     snippets: [
         {
-            name: 'reference',
-            description: 'Reference of floating element',
+            name: 'trigger',
+            description: 'Reference of trigger element',
             props: []
         },
         {

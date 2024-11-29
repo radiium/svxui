@@ -18,7 +18,6 @@
     offset={7}
     arrow
     shift
-    outline
     autoUpdate
     closeOnClickOutside
     portal
