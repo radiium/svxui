@@ -110,11 +110,11 @@
         if (decrementRef && incrementRef) {
             const subscriptions = [
                 longPressAction(decrementRef).destroy,
-                on(decrementRef, 'startlongpress', decrementMouseDown),
-                on(decrementRef, 'endlongpress', mouseUp),
+                on(decrementRef, 'startlongpress', decrementMouseDown, { passive: true }),
+                on(decrementRef, 'endlongpress', mouseUp, { passive: true }),
                 longPressAction(incrementRef).destroy,
-                on(incrementRef, 'startlongpress', incrementMouseDown),
-                on(incrementRef, 'endlongpress', mouseUp)
+                on(incrementRef, 'startlongpress', incrementMouseDown, { passive: true }),
+                on(incrementRef, 'endlongpress', mouseUp, { passive: true })
             ];
 
             return () => {

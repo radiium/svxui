@@ -26,10 +26,10 @@ export function longPressAction(
     let unsubscribe = () => {};
     function subscribe(): () => void {
         const subscriptions = [
-            on(node, 'mousedown', handlePress),
-            on(node, 'mouseup', handleRelease),
-            on(node, 'touchstart', handlePress),
-            on(node, 'touchend', handleRelease)
+            on(node, 'mousedown', handlePress, { passive: true }),
+            on(node, 'mouseup', handleRelease, { passive: true }),
+            on(node, 'touchstart', handlePress, { passive: true }),
+            on(node, 'touchend', handleRelease, { passive: true })
         ];
 
         return () => {
