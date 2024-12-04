@@ -3,7 +3,7 @@ title: Introduction
 description:
 category: index
 ---
-<script lang="ts>
+<script lang="ts">
     import { Text, Separator } from 'svxui';
 </script>
 
