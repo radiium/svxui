@@ -1,4 +1,4 @@
-import { defineConfig } from 'mdsx';
+import { defineConfig } from '@packages/mdsx';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -9,12 +9,6 @@ import { getSingletonHighlighter } from 'shiki';
 import { visit } from 'unist-util-visit';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
-/**
- * @typedef {import('mdast').Root} MdastRoot
- * @typedef {import('hast').Root} HastRoot
- * @typedef {import('unified').Transformer<HastRoot, HastRoot>} HastTransformer
- * @typedef {import('unified').Transformer<MdastRoot, MdastRoot>} MdastTransformer
- */
 
 /**
  * @type {import('rehype-pretty-code').Options}
@@ -141,154 +135,10 @@ function remarkTabsToSpaces() {
     };
 }
 
-/**
- *
- *
- *
- *
- *
- */
-/*
-const component_api_by_name = component_api.components.reduce((a, c) => {
-    return {
-        ...a,
-        [c.moduleName]: true
-    };
-}, {});
-*/
-
-// function createImports(source) {
-//     const inlineComponents = new Set();
-//     const icons = new Set();
-//     const actions = new Set();
-
-//     // heuristic to guess if the inline component or expression name is a Carbon icon
-//     const isIcon = () => false; // (text) => /[A-Z][a-z]*/.test(text) && !(text in component_api_by_name);
-
-//     walk(parse(source), {
-//         enter(node) {
-//             if (node.type === 'InlineComponent') {
-//                 if (isIcon(node.name)) {
-//                     icons.add(node.name);
-//                 } else {
-//                     inlineComponents.add(node.name);
-//                 }
-//             } else if (node.type === 'MustacheTag') {
-//                 if (node.expression.type === 'Identifier' && isIcon(node.expression.name)) {
-//                     icons.add(node.expression.name);
-//                 }
-//             } else if (node.type === 'Action') {
-//                 actions.add(node.name);
-//             }
-//         }
-//     });
-
-//     const action_imports = Array.from(actions.keys());
-//     const ccs_imports = [...Array.from(inlineComponents.keys()), ...action_imports];
-//     const icon_imports = Array.from(icons.keys());
-
-//     if (ccs_imports.length === 0) return '';
-
-//     return `
-// <script>
-//     import {${ccs_imports.join(',')}} from "svxui";
-// </script>
-
-// `;
-// }
-
-// async function remarkPlugin(params) {
-//     const { codeToHtml } = await getSingletonHighlighter({
-//         langs: [
-//             'plaintext',
-//             // import('shiki/langs/javascript.mjs'),
-//             // import('shiki/langs/typescript.mjs'),
-//             // import('shiki/langs/css.mjs'),
-//             import('shiki/langs/svelte.mjs'),
-//             import('shiki/langs/shellscript.mjs')
-//             // import('shiki/langs/markdown.mjs')
-//         ]
-//     });
-//     return () => {
-//         return (tree) => {
-//             writeFileSync('tree.json', JSON.stringify(tree));
-//             visit(tree, 'html', (node) => {
-//                 if (node.lang === 'svelte') {
-//                     console.log('========plugin svelte', JSON.stringify(node, null, 2));
-//                 }
-//                 if (
-//                     node.lang !== 'svelte' &&
-//                     node.value.match(/ data-livepreview/g) &&
-//                     Array.isArray(node.children) &&
-//                     !node.value.startsWith('<FileSource') &&
-//                     !node.value.startsWith('<script>') &&
-//                     !node.value.match(/svx-ignore/g)
-//                 ) {
-//                     const value = node.value.replace(/ data-livepreview/g, '');
-//                     const scriptBlock = createImports(value);
-//                     // const formattedCode = format(scriptBlock + node.value, {
-//                     //     ...prettierConfig
-//                     // });
-//                     // console.log(formattedCode);
-//                     const highlightedCode = codeToHtml(scriptBlock + value, {
-//                         transformers: [],
-//                         lang: 'svelte',
-//                         themes: {
-//                             dark: JSON.parse(
-//                                 String(
-//                                     readFileSync(
-//                                         resolve(__dirname, './src/lib/styles/themes/tokyo-night-storm.json')
-//                                     )
-//                                 )
-//                             ),
-//                             light: JSON.parse(
-//                                 String(
-//                                     readFileSync(
-//                                         resolve(__dirname, './src/lib/styles/themes/tokyo-night-light.json')
-//                                     )
-//                                 )
-//                             )
-//                         }
-//                     });
-
-//                     node.value = `<Preview codeRaw="{\`${highlightedCode}\`}" code="{\`${highlightedCode}\`}">${value}</Preview>`;
-//                 }
-
-//                 /*
-//                 if (node.value.startsWith('<FileSource')) {
-//                     let src = '';
-
-//                     walk(parse(node.value), {
-//                         enter(node) {
-//                             if (node.name === 'FileSource') {
-//                                 node.attributes.forEach((attribute) => {
-//                                     if (attribute.name === 'src') {
-//                                         src += attribute.value[0].raw;
-//                                     }
-//                                 });
-//                             }
-//                         }
-//                     });
-
-//                     const sourceCode = fs.readFileSync(join('src/pages', `${src}.svelte`), 'utf-8');
-//                     const formattedCode = format(sourceCode, {
-//                         parser: 'svelte'
-//                     });
-//                     const highlightedCode = Prism.highlight(formattedCode, Prism.languages.svelte, 'svelte');
-
-//                     node.value = `<Preview framed src="${src}" codeRaw="{\`${formattedCode}\`}" code="{\`${highlightedCode}\`}" />`;
-//                 }
-//                 */
-//             });
-//         };
-//     };
-// }
-
 export const mdsxConfig = defineConfig({
     extensions: ['.md'],
     remarkPlugins: [
-        // await remarkPlugin(), //
-        remarkGfm,
+        remarkGfm, //
         remarkRemovePrettierIgnore,
         remarkTabsToSpaces
     ],
