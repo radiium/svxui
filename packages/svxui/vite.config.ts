@@ -14,7 +14,7 @@ export default defineConfig({
         }
     },
     optimizeDeps: {
-        include: ['@floating-ui/dom', '@radix-ui/colors', 'nanoid']
+        include: ['@floating-ui/dom']
     },
     test: {
         include: ['src/**/*.{test,spec}.{js,ts}']
