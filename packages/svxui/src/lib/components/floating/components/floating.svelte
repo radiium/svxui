@@ -131,7 +131,7 @@
             data-side={floating.state?.side}
             data-align={floating.state?.alignment}
         >
-            <Panel {color} {variant} {radius}>
+            <Panel {size} {color} {variant} {radius}>
                 {#if arrow}
                     <FloatingArrow
                         bind:elementRef={arrowEl}
