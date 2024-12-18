@@ -43,10 +43,10 @@
 <Floating
     id={generateId()}
     bind:isOpen
+    {size}
     {color}
     {placement}
     arrow
-    size="0"
     variant="surface"
     offset={10}
     closeOnClickOutside
