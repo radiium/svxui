@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Dialog, Flexbox, Sizes1To4, Text } from '$lib/index.js';
+    import { Button, Dialog, Flexbox, Sizes1To4, Sizes1To9, Text } from '$lib/index.js';
     import Details from './Details.svelte';
     import Section from './Section.svelte';
     import Table from './Table.svelte';
@@ -23,6 +23,7 @@
     };
 
     let state: State = $state({ ...defaultState });
+    let textSize = $derived(`${parseInt(state.size) + 3}` as (typeof Sizes1To9)[number]);
 
     function open(newState = {}) {
         state = {
@@ -104,9 +105,9 @@
                     primis egestas vitae euismod mattis imperdiet.
                 </Text>
             {:else}
-                <Text>Dialog content</Text>
+                <Text size={textSize}>Dialog content</Text>
             {/if}
-            <Button variant="soft" color="primary" onclick={close}>close</Button>
+            <Button variant="soft" size={state.size} color="primary" onclick={close}>close</Button>
         </Flexbox>
     </Dialog>
 

@@ -1,10 +1,10 @@
 <script lang="ts">
     import Select from '$lib/components/select/components/Select.svelte';
-    import { Flexbox, InputNumber, Text } from '$lib/index.js';
+    import { Flexbox, Text } from '$lib/index.js';
 
     type Props = {
         options: string[];
-        value: string;
+        value?: string;
         label: string;
     };
     let { value = $bindable(), options, label }: Props = $props();
