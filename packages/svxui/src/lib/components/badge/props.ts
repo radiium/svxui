@@ -1,10 +1,17 @@
-import { ColorGray, Size1, VariantSoft } from '$lib/shared.types.js';
-import type { BadgeProps } from './types.js';
+import { booleanOptions, colorOptions, radiusOptions, type PropsOptions } from '$lib/shared.options.js';
+import type { BadgeProps, BadgeSize, BadgeVariant } from './types.js';
 
 export const defaultBadgeProps: BadgeProps = {
-    color: ColorGray,
-    size: Size1,
+    color: 'neutral',
+    size: '1',
     radius: undefined,
-    variant: VariantSoft,
+    variant: 'solid',
     disabled: false
 };
+export const badgeOptions = {
+    color: colorOptions,
+    size: ['1', '2', '3'] satisfies BadgeSize[],
+    radius: radiusOptions,
+    variant: ['solid', 'soft', 'outline'] satisfies BadgeVariant[],
+    disabled: booleanOptions
+} as const satisfies PropsOptions<BadgeProps>;

@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { clsx } from '../../../utils/clsx.js';
     import { defaultButtonProps } from '../props.js';
     import type { ButtonProps } from '../types.js';
 
@@ -18,23 +17,27 @@
         ...rest
     }: ButtonProps = $props();
 
-    let cssClass = $derived(
-        clsx(rest.class, 'Button', {
-            [`Button-${variant}`]: variant,
-            [`Button-size-${size}`]: size,
-            [`Button-${color}`]: color,
-            [`Button-align-${align}`]: align,
-            [`Button-transform-${transform}`]: transform,
-            'Button-full-width': fullWidth,
-            'Button-active': active,
-            'Button-icon-only': iconOnly
-        })
-    );
+    let cssClass = $derived([
+        rest.class,
+        'button',
+        {
+            [`button-variant-${variant}`]: variant,
+            [`button-size-${size}`]: size,
+            [`button-color-${color}`]: color,
+            [`button-align-${align}`]: align,
+            [`button-transform-${transform}`]: transform,
+            'button-full-width': fullWidth,
+            'button-active': active,
+            'button-icon-only': iconOnly
+        }
+    ]);
 </script>
 
 <button
     tabindex="0"
     {...rest}
+    aria-pressed={active}
+    aria-disabled={rest.disabled}
     data-color={color}
     data-size={size}
     data-radius={radius}
@@ -44,8 +47,8 @@
     {@render children?.()}
 </button>
 
-<style lang="scss">
-    .Button {
+<style>
+    .button {
         position: relative;
         box-sizing: border-box;
         display: inline-flex;
@@ -56,7 +59,10 @@
         white-space: nowrap;
         border: none;
         user-select: none;
-        font-weight: 500;
+        font-size: var(--font-size-2);
+        line-height: var(--line-height-2);
+        letter-spacing: var(--letter-spacing-2);
+        font-weight: var(--font-weight-medium);
         transition: background-color linear 80ms;
 
         min-width: var(--button-min-width);
@@ -78,19 +84,12 @@
         --button-icon-height: 60%;
         --button-text-transform: none;
 
-        :global(svg) {
-            width: auto;
-            height: var(--button-icon-height);
-            fill: var(--button-color);
-        }
-
-        // States
-
+        /* States */
         &:hover {
             background: var(--button-background-hover);
         }
         &:active,
-        &.Button-active {
+        &.button-active {
             background: var(--button-background-active);
             filter: var(--button-active-filter);
         }
@@ -99,11 +98,21 @@
             outline-offset: 0px;
         }
         &:disabled {
-            @include disabled;
+            cursor: default !important;
+            opacity: 0.5 !important;
+            outline: none !important;
+            pointer-events: none;
+
+            &:focus,
+            &:focus-within,
+            &:focus-visible {
+                box-shadow: none !important;
+                outline: none !important;
+            }
         }
 
-        // Sizes
-        &.Button-size-1 {
+        /* Sizes */
+        &.button-size-1 {
             --button-height: var(--space-5);
             --button-min-width: calc(var(--space-5) * 2);
             --button-padding: 0 var(--space-2);
@@ -114,14 +123,14 @@
             --button-line-height: var(--line-height-1);
             --button-letter-spacing: var(--letter-spacing-1);
 
-            &.Button-icon-only {
+            &.button-icon-only {
                 --button-min-width: var(--space-5);
                 --button-width: var(--space-5);
                 --button-padding: calc(var(--space-1) / 2);
                 --button-icon-height: 80%;
             }
         }
-        &.Button-size-2 {
+        &.button-size-2 {
             --button-height: var(--space-6);
             --button-min-width: calc(var(--space-6) * 2);
             --button-padding: 0 var(--space-2);
@@ -132,13 +141,13 @@
             --button-line-height: var(--line-height-2);
             --button-letter-spacing: var(--letter-spacing-2);
 
-            &.Button-icon-only {
+            &.button-icon-only {
                 --button-min-width: var(--space-6);
                 --button-width: var(--space-6);
                 --button-padding: calc(var(--space-1) / 2);
             }
         }
-        &.Button-size-3 {
+        &.button-size-3 {
             --button-height: var(--space-7);
             --button-min-width: calc(var(--space-7) * 2);
             --button-padding: 0 var(--space-3);
@@ -149,13 +158,13 @@
             --button-line-height: var(--line-height-3);
             --button-letter-spacing: var(--letter-spacing-3);
 
-            &.Button-icon-only {
+            &.button-icon-only {
                 --button-min-width: var(--space-7);
                 --button-width: var(--space-7);
                 --button-padding: var(--space-1);
             }
         }
-        &.Button-size-4 {
+        &.button-size-4 {
             --button-height: var(--space-8);
             --button-min-width: calc(var(--space-8) * 2);
             --button-padding: 0 var(--space-4);
@@ -166,15 +175,15 @@
             --button-line-height: var(--line-height-4);
             --button-letter-spacing: var(--letter-spacing-4);
 
-            &.Button-icon-only {
+            &.button-icon-only {
                 --button-min-width: var(--space-8);
                 --button-width: var(--space-8);
                 --button-padding: var(--space-1);
             }
         }
 
-        // Variants
-        &.Button-solid {
+        /* Variants */
+        &.button-variant-solid {
             --button-box-shadow: none;
             --button-color: var(--accent-contrast);
             --button-background: var(--accent-9);
@@ -182,7 +191,7 @@
             --button-background-active: var(--accent-10);
             --button-active-filter: brightness(0.92) saturate(1.1);
         }
-        &.Button-soft {
+        &.button-variant-soft {
             --button-box-shadow: none;
             --button-color: var(--accent-12);
             --button-background: var(--accent-4);
@@ -190,63 +199,55 @@
             --button-background-active: var(--accent-6);
             --button-active-filter: none;
         }
-        &.Button-surface {
-            --button-box-shadow: inset 0 0 0 1px var(--accent-9);
-            --button-color: var(--accent-11);
-            --button-background: var(--accent-3);
-            --button-background-hover: var(--accent-4);
-            --button-background-active: var(--accent-5);
-            --button-active-filter: none;
-        }
-        &.Button-outline {
-            --button-box-shadow: inset 0 0 0 1px var(--accent-9);
+        &.button-variant-outline {
+            --button-box-shadow: inset 0 0 0 1px var(--accent-8);
             --button-color: var(--accent-11);
             --button-background: transparent;
             --button-background-hover: var(--accent-3);
             --button-background-active: var(--accent-4);
             --button-active-filter: none;
         }
-        &.Button-clear {
+        &.button-variant-clear {
             --button-box-shadow: none;
-            --button-color: var(--accent-11);
+            --button-color: var(--accent-12);
             --button-background: transparent;
             --button-background-hover: var(--accent-3);
             --button-background-active: var(--accent-4);
             --button-active-filter: none;
         }
 
-        // Transform
-        &.Button-transform-lowercase {
-            --button-text-transform: lowercase;
-        }
-        &.Button-transform-uppercase {
-            --button-text-transform: uppercase;
-        }
-        &.Button-transform-capitalize {
-            --button-text-transform: capitalize;
-        }
-
-        // Icon only
-        &.Button-icon-only {
+        /* Icon only */
+        &.button-icon-only {
             --button-justify-content: center;
             --button-text-align: center;
         }
 
-        // Alignment
-        &:not(.Button-icon-only) {
-            &.Button-align-start {
+        /* Transform */
+        &.button-transform-lowercase {
+            --button-text-transform: lowercase;
+        }
+        &.button-transform-uppercase {
+            --button-text-transform: uppercase;
+        }
+        &.button-transform-capitalize {
+            --button-text-transform: capitalize;
+        }
+
+        /* Alignment */
+        &:not(.button-icon-only) {
+            &.button-align-start {
                 --button-justify-content: flex-start;
                 --button-text-align: start;
             }
-            &.Button-align-center {
+            &.button-align-center {
                 --button-justify-content: center;
                 --button-text-align: center;
             }
-            &.Button-align-end {
+            &.button-align-end {
                 --button-justify-content: flex-end;
                 --button-text-align: end;
             }
-            &.Button-full-width {
+            &.button-full-width {
                 --button-width: 100%;
             }
         }

@@ -1,0 +1,124 @@
+// Fonts
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('/fonts/Inter-Light.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url('/fonts/Inter-LightItalic.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/Inter-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/Inter-Italic.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/Inter-Medium.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/Inter-MediumItalic.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/Inter-Bold.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/Inter-BoldItalic.woff2') format('woff2');
+}
+
+// Globals
+body {
+    overflow: auto;
+
+    .svxui {
+        font-family: Inter, var(--default-font-family);
+        font-size: var(--font-size-5);
+        line-height: var(--line-height-5);
+
+        .demo-card {
+            margin-top: var(--space-4);
+        }
+    }
+}
+
+h1,
+h2,
+h3,
+h4 {
+    scroll-margin-top: var(--header-height);
+}
+
+// Shiki code highlighting
+pre.shiki {
+    margin: 0;
+    margin: 0;
+    padding: var(--space-3) 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+
+    .line {
+        padding: 0 var(--space-3);
+    }
+
+    &.has-highlighted {
+        .line.highlighted {
+            width: 100%;
+            display: inline-block;
+            background-color: var(--color-background-2);
+        }
+    }
+}
+
+.dark {
+    pre.shiki {
+        background-color: transparent !important;
+        // background-color: var(--shiki-dark-bg) !important;
+        color: var(--shiki-dark) !important;
+
+        .line {
+            span {
+                color: var(--shiki-dark) !important;
+            }
+        }
+
+        &.has-highlighted {
+            .line.highlighted {
+                background-color: var(--color-background-2);
+            }
+        }
+    }
+}

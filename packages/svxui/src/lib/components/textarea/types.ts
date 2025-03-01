@@ -1,12 +1,31 @@
-import type { Colors, Radius, Sizes1To3 } from '$lib/shared.types.js';
+import type { Color, Radius } from '$lib/shared.types.js';
 import type { HTMLTextareaAttributes } from 'svelte/elements';
 
+export type TextareaSize = '1' | '2' | '3';
+
 export type TextareaProps = Omit<HTMLTextareaAttributes, 'color'> & {
+    /**
+     * Rendered DOM element
+     */
     elementRef?: HTMLTextAreaElement;
-    color?: (typeof Colors)[number];
-    size?: (typeof Sizes1To3)[number];
-    radius?: (typeof Radius)[number];
-    value?: string;
+    /**
+     * Textarea color
+     */
+    color?: Color;
+    /**
+     * Textarea size
+     */
+    size?: TextareaSize;
+    /**
+     * Textarea radius
+     */
+    radius?: Radius;
+    /**
+     * Textarea full width
+     */
     fullWidth?: boolean;
-    disabled?: boolean;
+    /**
+     * Textarea resizable
+     */
+    resizable?: boolean;
 };

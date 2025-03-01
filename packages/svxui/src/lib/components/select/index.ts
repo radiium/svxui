@@ -1,5 +1,5 @@
-export { default as Select } from './components/Select.svelte';
+export { default as Select } from './components/select.svelte';
 
 export { defaultSelectProps } from './props.js';
 
-export type { SelectProps, SelectOption } from './types.js';
+export type { SelectOption, SelectProps, SelectSize } from './types.js';

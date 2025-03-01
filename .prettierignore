@@ -21,3 +21,4 @@ pnpm-workspace.yaml
 **/vite.config.ts.timestamp-*
 
 **/*.md
+**/*.svx

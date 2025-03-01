@@ -1,0 +1,95 @@
+---
+title: Checkbox
+description: A customizable checkbox input component. Allows toggling a boolean value with two-way binding.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { Checkbox } from 'svxui';
+</script>
+
+<Checkbox checked/>
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Label
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Checkbox } from 'svxui';
+</script>
+
+<label>
+    <Checkbox/>
+    label
+</label>
+
+<style>
+    label {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+    }
+</style>
+```
+
+### Colors
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Checkbox } from 'svxui';
+</script>
+
+<Checkbox checked color="neutral" />
+<Checkbox checked color="blue" />
+<Checkbox checked color="green" />
+<Checkbox checked color="yellow" />
+<Checkbox checked color="orange" />
+<Checkbox checked color="red" />
+```
+
+### Sizes
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Checkbox } from 'svxui';
+</script>
+
+<Checkbox checked size="1" />
+<Checkbox checked size="2" />
+<Checkbox checked size="3" />
+```
+
+### States
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Checkbox } from 'svxui';
+</script>
+
+<Checkbox />
+<Checkbox checked/>
+<Checkbox checked indeterminate/>
+```
+
+### Disabled
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Checkbox } from 'svxui';
+</script>
+
+<Checkbox disabled/>
+<Checkbox disabled checked/>
+<Checkbox disabled checked indeterminate/>
+```

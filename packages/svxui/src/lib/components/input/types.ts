@@ -1,14 +1,52 @@
-import type { Aligns, Colors, InputTypes, Radius, Sizes1To3 } from '$lib/shared.types.js';
+import type { Align, Color, Radius } from '$lib/shared.types.js';
 import type { HTMLInputAttributes } from 'svelte/elements';
 
-export type InputProps = Omit<HTMLInputAttributes, 'size'> & {
+export type InputSize = '1' | '2' | '3';
+export type InputType =
+    | 'text'
+    | 'number'
+    | 'search'
+    | 'password'
+    | 'email'
+    | 'tel'
+    | 'url'
+    | 'date'
+    | 'time'
+    | 'datetime-local'
+    | 'month'
+    | 'week';
+
+export type InputProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'> & {
+    /**
+     * Rendered DOM element
+     */
     elementRef?: HTMLInputElement;
-    color?: (typeof Colors)[number];
-    size?: (typeof Sizes1To3)[number];
-    radius?: (typeof Radius)[number];
-    value?: string | number;
-    type?: (typeof InputTypes)[number];
-    align?: (typeof Aligns)[number];
+    /**
+     * Input color
+     */
+    color?: Color;
+    /**
+     * Input color
+     */
+    size?: InputSize;
+    /**
+     * Input color
+     */
+    radius?: Radius;
+    /**
+     * Allowed input type
+     */
+    type?: InputType;
+    /**
+     * Text align
+     */
+    align?: Align;
+    /**
+     * Input full width
+     */
     fullWidth?: boolean;
+    /**
+     * Native html input size
+     */
     inputSize?: number;
 };

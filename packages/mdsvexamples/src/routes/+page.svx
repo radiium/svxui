@@ -1,0 +1,11 @@
+# Button
+
+An example of how to use our Button component
+
+```svelte example
+<script>
+    import Button from './Button.svelte'
+</script>
+
+<Button>Button</Button>
+```

@@ -1,0 +1,125 @@
+---
+title: Text
+description: A customizable text component.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Text } from 'svxui';
+</script>
+
+<Text>The quick brown fox jumps over the lazy dog.</Text>
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Colors
+```svelte example toggleableCode
+<script lang="ts">
+    import { Text, Flexbox } from 'svxui';
+</script>
+
+<Flexbox direction="column">
+    <Text color="neutral">neutral</Text>
+    <Text color="blue">blue</Text>
+    <Text color="green">green</Text>
+    <Text color="yellow">yellow</Text>
+    <Text color="orange">orange</Text>
+    <Text color="red">red</Text>
+</Flexbox>
+```
+
+### Sizes
+```svelte example toggleableCode
+<script lang="ts">
+    import { Text, Flexbox } from 'svxui';
+</script>
+
+<Flexbox direction="column">
+    <Text size="1">Sample size 1</Text>
+    <Text size="2">Sample size 2</Text>
+    <Text size="3">Sample size 3</Text>
+    <Text size="4">Sample size 4</Text>
+    <Text size="5">Sample size 5</Text>
+    <Text size="6">Sample size 6</Text>
+    <Text size="7">Sample size 7</Text>
+    <Text size="8">Sample size 8</Text>
+    <Text size="9">Sample size 9</Text>
+</Flexbox>
+```
+
+### Weights
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Text, Flexbox } from 'svxui';
+</script>
+
+<Flexbox direction="column">
+    <Text weight="light">Sample light</Text>
+    <Text weight="regular">Sample regular</Text>
+    <Text weight="medium">Sample medium</Text>
+    <Text weight="bold">Sample bold</Text>
+</Flexbox>
+```
+
+### Text transformation
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Text, Flexbox } from 'svxui';
+</script>
+
+<Flexbox direction="column">
+    <Text transform="lowercase">Sample lowercase</Text>
+    <Text transform="uppercase">Sample uppercase</Text>
+    <Text transform="capitalize">Sample capitalize</Text>
+</Flexbox>
+```
+
+### Text alignment
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Text, Flexbox } from 'svxui';
+</script>
+
+<Flexbox direction="column" style="width: 200px;">
+    <Text align="start">Sample start</Text>
+    <Text align="center">Sample center</Text>
+    <Text align="end">Sample end</Text>
+</Flexbox>
+```
+
+### Truncate
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Text, Flexbox } from 'svxui';
+</script>
+
+<Text truncate style="width: 200px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt elit mattis sem mollis, sit amet dapibus arcu commodo. Morbi non aliquam sapien. Quisque pretium.</Text>
+```
+
+### States
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Text, Flexbox } from 'svxui';
+</script>
+
+<Flexbox direction="column">
+    <Text>Sample default</Text>
+    <Text muted>Sample muted</Text>
+    <Text disabled>Sample disabled</Text>
+</Flexbox>
+```

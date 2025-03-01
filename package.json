@@ -28,19 +28,23 @@
     },
     "main": "index.js",
     "engines": {
-        "node": ">=18",
-        "pnpm": ">=9"
+        "node": ">=22",
+        "pnpm": ">=10"
     },
     "scripts": {
+        "-- PROD": "",
+        "install:prod": "pnpm install -r && pnpm run build:mdsvexamples && pnpm run build:lib && pnpm install -r",
+        "build:prod": "pnpm run build:sites",
         "-- DEV": "",
         "dev": "concurrently \"pnpm:dev:lib:watch\" \"pnpm:dev:docs\"",
         "dev:lib": "pnpm --filter=svxui -r dev",
         "dev:lib:watch": "pnpm --filter=svxui -r package:watch",
-        "dev:docs": "pnpm --filter=docs -r dev",
+        "dev:docs": "pnpm --filter=svxui-docs -r dev",
         "-- BUILD": "",
         "build": "pnpm --filter=!@configs/** -r build",
-        "build:packages": "pnpm --filter=svxui package",
-        "build:sites": "pnpm --filter=docs build",
+        "build:mdsvexamples": "pnpm --filter=mdsvexamples build",
+        "build:lib": "pnpm --filter=svxui package",
+        "build:sites": "pnpm --filter=svxui-docs build",
         "-- UTILS": "",
         "check": "pnpm --filter=!@configs/** -r check",
         "lint": "pnpm --filter=!@configs/** -r lint",
@@ -50,7 +54,18 @@
         "ci:publish": " pnpm build:packages && changeset publish"
     },
     "devDependencies": {
-        "@changesets/cli": "^2.27.11",
-        "concurrently": "^9.1.0"
+        "@changesets/cli": "^2.29.4",
+        "concurrently": "^9.1.2"
+    },
+    "packageManager": "pnpm@10.11.0",
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "@parcel/watcher",
+            "contentlayer2",
+            "esbuild",
+            "protobufjs",
+            "sharp",
+            "svelte-preprocess"
+        ]
     }
 }

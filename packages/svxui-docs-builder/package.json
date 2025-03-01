@@ -1,0 +1,26 @@
+{
+    "name": "svxui-docs-builder",
+    "version": "1.0.0",
+    "description": "",
+    "license": "ISC",
+    "author": "",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "build": "node --loader ts-node/esm src/index.ts"
+    },
+    "devDependencies": {
+        "@configs/prettier-config": "workspace:*",
+        "@types/glob": "^8.1.0",
+        "@types/node": "^22.15.18",
+        "glob": "^11.0.2",
+        "import-sync": "^2.2.3",
+        "prettier": "^3.5.3",
+        "prettier-plugin-svelte": "^3.4.0",
+        "shiki": "^3.4.2",
+        "svelte": "^5.30.0",
+        "ts-morph": "^26.0.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3"
+    }
+}

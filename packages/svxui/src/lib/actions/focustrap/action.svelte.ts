@@ -97,7 +97,11 @@ export function focusTrapAction(
     return {
         update(updateParams: FocusTrapParameters) {
             enabled = updateParams.enabled;
-            updateParams ? onScanElements(false) : onCleanUp();
+            if (updateParams) {
+                onScanElements(false);
+            } else {
+                onCleanUp();
+            }
         },
         destroy() {
             onCleanUp();

@@ -1,8 +1,7 @@
 <script lang="ts">
     import Panel from '$lib/components/panel/components/panel.svelte';
-    import { useFloatingMiddleware } from '$lib/hooks/floating/hooks/use-floating-middleware.svelte.js';
-    import { useFloating } from '$lib/hooks/floating/index.js';
-    import { clsx } from '$lib/utils/clsx.js';
+    import { FloatingStateManager } from '$lib/index.js';
+    import { buildFloatingMiddlewares } from '$lib/utils/floating/utils/build-floating-middlewares.js';
     import { autoUpdate as floatingAutoUpdate } from '@floating-ui/dom';
     import { fade } from 'svelte/transition';
     import { clickOutsideAction } from '../../../actions/clickoutside/index.js';
@@ -14,6 +13,7 @@
     let {
         elementRef = $bindable(),
         isOpen = $bindable(),
+        onClose = defaultFloatingProps.onClose,
         size = defaultFloatingProps.size,
         color = defaultFloatingProps.color,
         variant = defaultFloatingProps.variant,
@@ -47,7 +47,7 @@
 
     let arrowEl: HTMLElement | undefined = $state(undefined);
 
-    const floating = useFloating({
+    const floating = new FloatingStateManager({
         strategy: 'fixed',
         transform: true,
         get whileElementsMounted() {
@@ -57,48 +57,68 @@
             return placement;
         },
         get middleware() {
-            return useFloatingMiddleware({ offset, flip, shift, hide, arrow, arrowEl });
+            return buildFloatingMiddlewares({ offset, flip, shift, hide, arrow, arrowEl });
         }
     });
 
+    function close(): void {
+        isOpen = false;
+        onClose?.();
+    }
+
     function handleClickBackdrop(): void {
         if (closeOnClickBackdrop) {
-            isOpen = false;
+            close();
         }
     }
 
-    function handleClickOutside(): void {
-        if (closeOnClickOutside) {
-            isOpen = false;
+    function handleClickOutside(evt: CustomEvent<MouseEvent>): void {
+        if (closeOnClickOutside && !isEventInElement(evt.detail)) {
+            close();
         }
     }
     function handleKeydown(evt: KeyboardEvent): void {
         if (closeOnEscape && evt.key === 'Escape') {
-            isOpen = false;
+            close();
         }
     }
 
     function handleResize(): void {
         if (closeOnResize) {
-            isOpen = false;
+            close();
         }
     }
 
     function handleScroll(): void {
         if (closeOnScroll) {
-            isOpen = false;
+            close();
         }
     }
 
-    let cssClass = $derived(clsx(rest.class, 'Floating-content'));
+    function isEventInElement(event: MouseEvent) {
+        const rect = floating.reference?.getBoundingClientRect();
+        if (rect) {
+            const x = event.clientX;
+            if (x < rect.left || x >= rect.right) {
+                return false;
+            }
+            const y = event.clientY;
+            if (y < rect.top || y >= rect.bottom) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    let cssClass = $derived([rest.class, 'floating-content']);
 </script>
 
 <!-- Handle globals events -->
-<svelte:window onkeydown={handleKeydown} onresize={handleResize} />
-<svelte:body onscrollcapture={handleScroll} />
+<svelte:window onkeydown={handleKeydown} onresize={handleResize} onscrollcapture={handleScroll} />
 
 <!-- Reference button -->
-<div bind:this={floating.reference} class="Floating-reference">
+<div bind:this={floating.reference} class="floating-reference">
     {@render trigger?.()}
 </div>
 
@@ -110,7 +130,7 @@
                 transition:fade={{ duration: transitionDuration, delay: transitionDelay }}
                 onclick={handleClickBackdrop}
                 onkeydown={handleKeydown}
-                class="Floating-backdrop"
+                class="floating-backdrop"
                 role="button"
                 tabindex="-1"
             ></div>
@@ -146,8 +166,8 @@
     {/if}
 </Portal>
 
-<style lang="scss">
-    .Floating-backdrop {
+<style>
+    .floating-backdrop {
         position: fixed;
         z-index: 10000;
         inset: 0 0 0 0;
@@ -157,14 +177,14 @@
         cursor: pointer;
     }
 
-    .Floating-reference {
+    .floating-reference {
         position: relative;
         display: flex;
         width: max-content;
         height: max-content;
     }
 
-    .Floating-content {
+    .floating-content {
         position: fixed;
         width: max-content;
         top: 0;

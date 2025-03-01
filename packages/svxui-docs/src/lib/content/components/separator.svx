@@ -1,0 +1,84 @@
+---
+title: Separator
+description: Visually separates content.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { Separator } from 'svxui';
+</script>
+
+<Separator />
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Colors
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Separator } from 'svxui';
+</script>
+
+<Separator color="neutral" />
+<Separator color="blue" />
+<Separator color="green" />
+<Separator color="yellow" />
+<Separator color="orange" />
+<Separator color="red" />
+```
+
+### Sizes
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Separator } from 'svxui';
+</script>
+
+<Separator size="1" />
+<Separator size="2" />
+<Separator size="3" />
+<Separator size="4" />
+```
+
+### Orientation
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Separator } from 'svxui';
+</script>
+
+<Separator orientation="horizontal" />
+<Separator orientation="vertical" />
+```
+
+### Sample
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Separator, Flexbox, Text } from 'svxui';
+</script>
+
+<Flexbox direction="column" gap="3" >
+    <Text>Lorem ipsum dolor sit amet, consectetur</Text>
+
+    <Separator size="4" />
+
+    <Flexbox justify="between" gap="2" >
+        <Text>adipiscing</Text>
+        <Separator orientation="vertical" size="1" />
+        <Text>elit</Text>
+        <Separator orientation="vertical" size="1"  />
+        <Text>aliquam</Text>
+    </Flexbox>
+</Flexbox>
+```

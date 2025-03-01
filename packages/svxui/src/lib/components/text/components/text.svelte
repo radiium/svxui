@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { clsx } from '../../../utils/clsx.js';
     import { defaultTextProps } from '../props.js';
     import type { TextProps } from '../types.js';
 
@@ -13,23 +12,28 @@
         align = defaultTextProps.align,
         wrap = defaultTextProps.wrap,
         truncate = defaultTextProps.truncate,
+        muted = defaultTextProps.muted,
         disabled = defaultTextProps.disabled,
         children,
         ...rest
     }: TextProps = $props();
 
-    let cssClass = $derived(
-        clsx(rest.class, 'Text', {
-            [`Text-size-${size}`]: size,
-            [`Text-color-${color}`]: color,
-            [`Text-weight-${weight}`]: weight,
-            [`Text-align-${align}`]: align,
-            [`Text-transform-${transform}`]: transform,
-            [`Text-wrap-${wrap}`]: wrap,
-            'Text-truncate': truncate,
-            'Text-disabled': disabled
-        })
-    );
+    let cssClass = $derived([
+        rest.class,
+        'text',
+        {
+            [`text-size-${size}`]: size,
+            [`text-color-${color}`]: color,
+            [`text-weight-${weight}`]: weight,
+            [`text-align-${align}`]: align,
+            [`text-transform-${transform}`]: transform,
+            [`text-wrap-${wrap}`]: wrap,
+            'text-truncate': truncate,
+            'text-muted': muted,
+            'text-disabled': disabled,
+            'text-heading': ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(as as string)
+        }
+    ]);
 </script>
 
 <svelte:element
@@ -44,8 +48,8 @@
     {@render children?.()}
 </svelte:element>
 
-<style lang="scss">
-    .Text {
+<style>
+    .text {
         font-size: var(--text-font-size);
         line-height: var(--text-line-height);
         letter-spacing: var(--text-letter-spacing);
@@ -53,144 +57,152 @@
         text-transform: var(--text-text-transform);
         text-align: var(--text-text-align);
         color: var(--color);
+        --underline-color: var(--color);
 
-        // Colors
+        /* Colors */
         &[data-color] {
             color: var(--accent-11);
+            --underline-color: var(--accent-11);
         }
 
-        // Sizes
-        &.Text-size-1 {
+        /* Sizes */
+        &.text-size-1 {
             --text-font-size: var(--font-size-1);
             --text-line-height: var(--line-height-1);
             --text-letter-spacing: var(--letter-spacing-1);
         }
-        &.Text-size-2 {
+        &.text-size-2 {
             --text-font-size: var(--font-size-2);
             --text-line-height: var(--line-height-2);
             --text-letter-spacing: var(--letter-spacing-2);
         }
-        &.Text-size-3 {
+        &.text-size-3 {
             --text-font-size: var(--font-size-3);
             --text-line-height: var(--line-height-3);
             --text-letter-spacing: var(--letter-spacing-3);
         }
-        &.Text-size-4 {
+        &.text-size-4 {
             --text-font-size: var(--font-size-4);
             --text-line-height: var(--line-height-4);
             --text-letter-spacing: var(--letter-spacing-4);
         }
-        &.Text-size-5 {
+        &.text-size-5 {
             --text-font-size: var(--font-size-5);
             --text-line-height: var(--line-height-5);
             --text-letter-spacing: var(--letter-spacing-5);
         }
-        &.Text-size-6 {
+        &.text-size-6 {
             --text-font-size: var(--font-size-6);
             --text-line-height: var(--line-height-6);
             --text-letter-spacing: var(--letter-spacing-6);
         }
-        &.Text-size-7 {
+        &.text-size-7 {
             --text-font-size: var(--font-size-7);
             --text-line-height: var(--line-height-7);
             --text-letter-spacing: var(--letter-spacing-7);
         }
-        &.Text-size-8 {
+        &.text-size-8 {
             --text-font-size: var(--font-size-8);
             --text-line-height: var(--line-height-8);
             --text-letter-spacing: var(--letter-spacing-8);
         }
-        &.Text-size-9 {
+        &.text-size-9 {
             --text-font-size: var(--font-size-9);
             --text-line-height: var(--line-height-9);
             --text-letter-spacing: var(--letter-spacing-9);
         }
 
-        // Weight
-        &.Text-weight-light {
+        /* Weight */
+        &.text-weight-light {
             --text-font-weight: var(--font-weight-light);
         }
-        &.Text-weight-regular {
+        &.text-weight-regular {
             --text-font-weight: var(--font-weight-regular);
         }
-        &.Text-weight-medium {
+        &.text-weight-medium {
             --text-font-weight: var(--font-weight-medium);
         }
-        &.Text-weight-bold {
+        &.text-weight-bold {
             --text-font-weight: var(--font-weight-bold);
         }
 
-        // Transform
-        &.Text-transform-lowercase {
+        /* Transform */
+        &.text-transform-lowercase {
             --text-text-transform: lowercase;
         }
-        &.Text-transform-uppercase {
+        &.text-transform-uppercase {
             --text-text-transform: uppercase;
         }
-        &.Text-transform-capitalize {
+        &.text-transform-capitalize {
             --text-text-transform: capitalize;
         }
 
-        // Alignement
-        &.Text-align-start {
+        /* Alignement */
+        &.text-align-start {
             --text-text-align: start;
         }
-        &.Text-align-center {
+        &.text-align-center {
             --text-text-align: center;
         }
-        &.Text-align-end {
+        &.text-align-end {
             --text-text-align: end;
         }
 
-        // Wrap
-        &.Text-wrap-wrap {
+        /* Wrap */
+        &.text-wrap-wrap {
             white-space: normal;
         }
-        &.Text-wrap-nowrap {
+        &.text-wrap-nowrap {
             white-space: nowrap;
         }
-        &.Text-wrap-pretty {
+        &.text-wrap-pretty {
             white-space: normal;
             text-wrap: pretty;
         }
-        &.Text-wrap-balance {
+        &.text-wrap-balance {
             white-space: normal;
             text-wrap: balance;
         }
 
-        &.Text-truncate {
+        /* Truncate */
+        &.text-truncate {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
 
-        &.Text-disabled {
+        /* Muted */
+        &.text-muted {
+            opacity: 0.6 !important;
+        }
+
+        /* Disabled */
+        &.text-disabled {
             opacity: 0.5 !important;
             pointer-events: none;
         }
 
-        // Link Underline
-        &.Text-Link {
-            margin: 0;
+        /* Link Underline */
+        &.text-link {
             --link-text-decoration-line: none;
             text-decoration-line: var(--link-text-decoration-line);
             text-decoration-thickness: min(2px, max(1px, 0.05em));
             text-underline-offset: calc(0.025em + 2px);
-            text-decoration-color: var(--accent-11);
+            text-decoration-color: var(--underline-color);
+
+            &:not(.text-disabled) {
+                cursor: pointer;
+            }
         }
 
-        &:not(.Text-disabled) {
-            &.Text-Link-underline-auto:hover,
-            &.Text-Link-underline-hover:hover,
-            &.Text-Link-underline-always {
+        &:not(.text-disabled) {
+            &.text-link-underline-auto:hover,
+            &.text-link-underline-hover:hover,
+            &.text-link-underline-always {
                 & {
                     --link-text-decoration-line: underline;
                 }
             }
-        }
-
-        &.Text-Heading {
-            margin: 0;
         }
     }
 </style>

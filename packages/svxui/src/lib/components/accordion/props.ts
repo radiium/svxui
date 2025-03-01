@@ -1,20 +1,33 @@
-import type { AccordionGroupProps, AccordionProps } from './types.js';
+import { booleanOptions, orientationOptions, type PropsOptions } from '$lib/shared.options.js';
+import type { AccordionHeadingLevel, AccordionItemProps, AccordionRootProps } from './types.js';
 
 /**
- * AccordionGroup
+ * Accordion root
  */
 
-export const defaultAccordionGroupProps: AccordionGroupProps = {
-    multi: false,
+export const defaultAccordionRootProps: AccordionRootProps = {
+    onValueChange: () => {},
+    multiple: false,
     disabled: false,
-    onValueChange: () => {}
+    loop: false,
+    orientation: 'vertical'
 };
+export const accordionRootOptions = {
+    multiple: booleanOptions,
+    disabled: booleanOptions,
+    loop: booleanOptions,
+    orientation: orientationOptions
+} as const satisfies PropsOptions<AccordionRootProps>;
 
 /**
- * PropsAccordionItem
+ * PropsAccordion item
  */
 
-export const defaultAccordionProps: Partial<AccordionProps> = {
-    expanded: undefined,
-    disabled: false
+export const defaultAccordionItemProps: Partial<AccordionItemProps> = {
+    disabled: false,
+    headingLevel: 2
 };
+export const accordionItemOptions = {
+    disabled: booleanOptions,
+    headingLevel: [1, 2, 3, 4, 5, 6] satisfies AccordionHeadingLevel[]
+} as const satisfies PropsOptions<AccordionItemProps>;

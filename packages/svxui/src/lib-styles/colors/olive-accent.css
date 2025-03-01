@@ -1,0 +1,38 @@
+/* Accent color: olive */
+
+[data-color='olive'] {
+    --accent-1: var(--olive-1);
+    --accent-2: var(--olive-2);
+    --accent-3: var(--olive-3);
+    --accent-4: var(--olive-4);
+    --accent-5: var(--olive-5);
+    --accent-6: var(--olive-6);
+    --accent-7: var(--olive-7);
+    --accent-8: var(--olive-8);
+    --accent-9: var(--olive-9);
+    --accent-10: var(--olive-10);
+    --accent-11: var(--olive-11);
+    --accent-12: var(--olive-12);
+
+    --accent-a1: var(--olive-a1);
+    --accent-a2: var(--olive-a2);
+    --accent-a3: var(--olive-a3);
+    --accent-a4: var(--olive-a4);
+    --accent-a5: var(--olive-a5);
+    --accent-a6: var(--olive-a6);
+    --accent-a7: var(--olive-a7);
+    --accent-a8: var(--olive-a8);
+    --accent-a9: var(--olive-a9);
+    --accent-a10: var(--olive-a10);
+    --accent-a11: var(--olive-a11);
+    --accent-a12: var(--olive-a12);
+
+    --accent-contrast: var(--olive-contrast);
+    --accent-surface: var(--olive-surface);
+    --accent-indicator: var(--olive-indicator);
+    --accent-track: var(--olive-track);
+
+    --accent-box-shadow: 0px 0px 0px 1px var(--accent-5);
+    --accent-box-shadow-hover: 0px 0px 0px 1px var(--accent-8);
+    --accent-box-shadow-focus: 0px 0px 0px 1px var(--accent-8);
+}

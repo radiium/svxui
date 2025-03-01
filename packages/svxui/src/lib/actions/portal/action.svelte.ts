@@ -1,6 +1,5 @@
-import { on } from 'svelte/events';
-import type { PortalActionReturn, PortalParameters } from './types.js';
 import { tick } from 'svelte';
+import type { PortalActionReturn, PortalParameters } from './types.js';
 
 async function getTargetEl(target?: PortalParameters['target']): Promise<HTMLElement> {
     let targetEl: HTMLElement | null;

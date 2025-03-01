@@ -1,0 +1,34 @@
+---
+title: Flexbox
+description: A flexbox component arranges child elements in rows or columns with flexible alignment, spacing, and wrapping, making responsive layout design easier and more efficient.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example hideStyle
+<script lang="ts">
+    import { Flexbox, Panel } from 'svxui';
+</script>
+
+<Flexbox>
+    <Panel variant="outline">1</Panel>
+    <Panel variant="outline">2</Panel>
+    <Panel variant="outline">3</Panel>
+</Flexbox>
+
+<style>
+    div {
+        background: gray;
+        color: white;
+        padding: 30px;
+        border: 1px solid red;
+    }
+</style>
+```
+
+<DocApiReference {metadata} />

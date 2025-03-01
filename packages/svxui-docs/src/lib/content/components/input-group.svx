@@ -1,0 +1,135 @@
+---
+title: InputGroup
+description: A component for combines multiple inputs like input, select or buttons into a single, cohesive input area for better layout and user interaction.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+## Examples
+
+```svelte example
+<script lang="ts">
+    import { InputGroup, InputGroupItem, Input } from 'svxui';
+</script>
+
+<InputGroup>
+    <InputGroupItem class="px-3">Text</InputGroupItem>
+    <Input />
+</InputGroup>
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Input sizes
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputGroup, InputGroupItem, Input } from 'svxui';
+    const sizes = ["1", "2", "3"]
+</script>
+
+{#each sizes as size (size)}
+    <InputGroup>
+        <InputGroupItem class="px-3">Size {size}</InputGroupItem>
+        <Input {size} />
+    </InputGroup>
+{/each}
+```
+
+### Input + Text
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputGroup, InputGroupItem, Input } from 'svxui';
+</script>
+
+<InputGroup>
+    <InputGroupItem class="px-3">www</InputGroupItem>
+    <Input placeholder="Website" />
+</InputGroup>
+```
+
+### Input + Button
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputGroup, Button, Input } from 'svxui';
+</script>
+
+<InputGroup>
+    <Input />
+    <Button variant="soft">Search</Button>
+</InputGroup>
+```
+
+### Input + Select
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputGroup, Input, Select } from 'svxui';
+    
+    const options = ['option 1', 'option 2']
+</script>
+
+<InputGroup>
+    <Input />
+    <Select {options} />
+</InputGroup>
+```
+
+### Input + InputRange
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputGroup, Input, InputRange } from 'svxui';
+    
+    let value = $state();
+</script>
+
+<InputGroup>
+    <InputRange bind:value step={1} min={0} max={100} />
+    <Input bind:value step={1} min={0} max={100} type="number" />
+</InputGroup>
+```
+
+### Checkbox + Input
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputGroup, InputGroupItem, Checkbox, Input } from 'svxui';
+</script>
+
+<InputGroup>
+    <InputGroupItem class="px-3">
+        <Checkbox />
+    </InputGroupItem>
+    <Input />
+</InputGroup>
+```
+
+### Toggle
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputGroup, Button } from 'svxui';
+
+    const options = ['one', 'two', 'three'];
+    let selection = $state(options[0])
+</script>
+
+<InputGroup>
+    {#each options as item (item)}
+        <Button 
+            variant={ selection === item ? 'solid' : 'soft'}
+            onclick={() => (selection = item)}>
+            {item}
+        </Button>
+    {/each}
+</InputGroup>
+```

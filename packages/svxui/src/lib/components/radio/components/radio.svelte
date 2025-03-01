@@ -1,23 +1,23 @@
 <script lang="ts">
-    import { clsx } from '../../../utils/clsx.js';
     import { defaultRadioProps } from '../props.js';
     import type { RadioProps } from '../types.js';
 
     let {
         elementRef = $bindable(),
         group = $bindable(),
-        value = defaultRadioProps.value,
         size = defaultRadioProps.size,
         color = defaultRadioProps.color,
         ...rest
     }: RadioProps = $props();
 
-    let cssClass = $derived(
-        clsx(rest.class, 'Radio', {
-            [`Radio-size-${size}`]: size,
-            [`Radio-color-${color}`]: color
-        })
-    );
+    let cssClass = $derived([
+        rest.class,
+        'radio',
+        {
+            [`radio-size-${size}`]: size,
+            [`radio-color-${color}`]: color
+        }
+    ]);
 </script>
 
 <input
@@ -26,13 +26,12 @@
     data-size={size}
     class={cssClass}
     type="radio"
-    {value}
     bind:group
     bind:this={elementRef}
 />
 
-<style lang="scss">
-    .Radio {
+<style>
+    .radio {
         appearance: none;
         -moz-appearance: none;
         -webkit-appearance: none;
@@ -40,7 +39,6 @@
         border: none;
         position: relative;
         border-radius: 100%;
-        pointer-events: none;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -51,11 +49,11 @@
         width: var(--radio-size);
         height: var(--radio-size);
         background-color: var(--radio-background);
-        box-shadow: inset 0px 0px 0px 1px var(--input-box-shadow);
+        box-shadow: inset 0px 0px 0px 1px var(--color-box-shadow);
 
-        --radio-background: var(--input-background);
-        --radio-background-checked: var(--accent-9);
-        --check-color: white;
+        --radio-background: var(--accent-surface);
+        --radio-background-checked: var(--accent-track);
+        --check-color: var(--accent-contrast);
 
         &:after {
             width: var(--radio-size);
@@ -66,10 +64,9 @@
             border-radius: 100%;
             background-color: transparent;
             transition: background-color ease 0.2s;
-            /* border: solid var(--check-color); */
         }
 
-        // States
+        /* States */
         &:checked {
             background-color: var(--radio-background-checked);
             box-shadow: none;
@@ -86,21 +83,30 @@
         }
 
         &[disabled] {
-            @include disabled;
+            cursor: default !important;
+            opacity: 0.5 !important;
+            outline: none !important;
+            pointer-events: none;
+
+            &:focus,
+            &:focus-visible {
+                box-shadow: none !important;
+                outline: none !important;
+            }
         }
 
-        // Sizes
-        &.Radio-size-1 {
+        /* Sizes */
+        &.radio-size-1 {
             --radio-size: calc(var(--space-4) * 0.875);
             --radio-check-width: calc(var(--radio-size) / 3.5);
             --radio-check-height: calc(var(--radio-size) / 2.5);
         }
-        &.Radio-size-2 {
+        &.radio-size-2 {
             --radio-size: var(--space-4);
             --radio-check-width: calc(var(--radio-size) / 3.5);
             --radio-check-height: calc(var(--radio-size) / 2.5);
         }
-        &.Radio-size-3 {
+        &.radio-size-3 {
             --radio-size: calc(var(--space-4) * 1.25);
             --radio-check-width: calc(var(--radio-size) / 3.5);
             --radio-check-height: calc(var(--radio-size) / 2.5);

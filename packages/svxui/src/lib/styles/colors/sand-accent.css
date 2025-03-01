@@ -1,0 +1,38 @@
+/* Accent color: sand */
+
+[data-color='sand'] {
+    --accent-1: var(--sand-1);
+    --accent-2: var(--sand-2);
+    --accent-3: var(--sand-3);
+    --accent-4: var(--sand-4);
+    --accent-5: var(--sand-5);
+    --accent-6: var(--sand-6);
+    --accent-7: var(--sand-7);
+    --accent-8: var(--sand-8);
+    --accent-9: var(--sand-9);
+    --accent-10: var(--sand-10);
+    --accent-11: var(--sand-11);
+    --accent-12: var(--sand-12);
+
+    --accent-a1: var(--sand-a1);
+    --accent-a2: var(--sand-a2);
+    --accent-a3: var(--sand-a3);
+    --accent-a4: var(--sand-a4);
+    --accent-a5: var(--sand-a5);
+    --accent-a6: var(--sand-a6);
+    --accent-a7: var(--sand-a7);
+    --accent-a8: var(--sand-a8);
+    --accent-a9: var(--sand-a9);
+    --accent-a10: var(--sand-a10);
+    --accent-a11: var(--sand-a11);
+    --accent-a12: var(--sand-a12);
+
+    --accent-contrast: var(--sand-contrast);
+    --accent-surface: var(--sand-surface);
+    --accent-indicator: var(--sand-indicator);
+    --accent-track: var(--sand-track);
+
+    --accent-box-shadow: 0px 0px 0px 1px var(--accent-5);
+    --accent-box-shadow-hover: 0px 0px 0px 1px var(--accent-8);
+    --accent-box-shadow-focus: 0px 0px 0px 1px var(--accent-8);
+}

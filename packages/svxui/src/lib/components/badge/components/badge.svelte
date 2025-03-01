@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { clsx } from '../../../utils/clsx.js';
     import { defaultBadgeProps } from '../props.js';
     import type { BadgeProps } from '../types.js';
 
@@ -14,14 +13,16 @@
         ...rest
     }: BadgeProps = $props();
 
-    let cssClass = $derived(
-        clsx(rest.class, 'Badge', {
-            [`Badge-size-${size}`]: size,
-            [`Badge-color-${color}`]: color,
-            [`Badge-${variant}`]: variant,
-            'Badge-disabled': disabled
-        })
-    );
+    let cssClass = $derived([
+        rest.class,
+        'badge',
+        {
+            [`badge-size-${size}`]: size,
+            [`badge-color-${color}`]: color,
+            [`badge-variant-${variant}`]: variant,
+            'badge-disabled': disabled
+        }
+    ]);
 </script>
 
 <span
@@ -36,8 +37,8 @@
     {@render children?.()}
 </span>
 
-<style lang="scss">
-    .Badge {
+<style>
+    .badge {
         box-sizing: border-box;
         display: inline-flex;
         align-items: center;
@@ -49,24 +50,33 @@
         cursor: default;
 
         font-family: var(--default-font-family);
-        font-weight: var(--font-weight-medium);
-
-        box-shadow: var(--badge-box-shadow);
-        color: var(--badge-color);
-        background-color: var(--badge-background);
-        padding: var(--badge-padding);
-        border-radius: var(--badge-border-radius);
-        gap: var(--badge-gap);
         font-size: var(--badge-font-size);
+        font-weight: var(--font-weight-medium);
         line-height: var(--badge-line-height);
         letter-spacing: var(--badge-letter-spacing);
+        color: var(--badge-color);
+        background-color: var(--badge-background);
+        box-shadow: var(--badge-box-shadow);
+        border-radius: var(--badge-border-radius);
+        padding: var(--badge-padding);
+        gap: var(--badge-gap);
 
-        &.Badge-disabled {
-            @include disabled;
+        &.badge-disabled {
+            cursor: default !important;
+            opacity: 0.5 !important;
+            outline: none !important;
+            pointer-events: none;
+
+            &:focus,
+            &:focus-within,
+            &:focus-visible {
+                box-shadow: none !important;
+                outline: none !important;
+            }
         }
 
-        // Sizes
-        &.Badge-size-1 {
+        /* Sizes */
+        &.badge-size-1 {
             --badge-padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 1.5);
             --badge-border-radius: max(var(--radius-1), var(--radius-full));
             --badge-gap: calc(var(--space-1) * 1.5);
@@ -74,7 +84,7 @@
             --badge-line-height: var(--line-height-1);
             --badge-letter-spacing: var(--letter-spacing-1);
         }
-        &.Badge-size-2 {
+        &.badge-size-2 {
             --badge-padding: var(--space-1) var(--space-2);
             --badge-border-radius: max(var(--radius-2), var(--radius-full));
             --badge-gap: calc(var(--space-1) * 1.5);
@@ -82,7 +92,7 @@
             --badge-line-height: var(--line-height-1);
             --badge-letter-spacing: var(--letter-spacing-1);
         }
-        &.Badge-size-3 {
+        &.badge-size-3 {
             --badge-padding: var(--space-1) calc(var(--space-2) * 1.25);
             --badge-border-radius: max(var(--radius-3), var(--radius-full));
             --badge-gap: var(--space-2);
@@ -91,24 +101,18 @@
             --badge-letter-spacing: var(--letter-spacing-2);
         }
 
-        // Variants
-
-        &.Badge-solid {
+        /* Variants */
+        &.badge-variant-solid {
             --badge-box-shadow: none;
             --badge-background: var(--accent-9);
             --badge-color: var(--accent-contrast);
         }
-        &.Badge-soft {
+        &.badge-variant-soft {
             --badge-box-shadow: none;
             --badge-background: var(--accent-3);
             --badge-color: var(--accent-11);
         }
-        &.Badge-surface {
-            --badge-box-shadow: inset 0px 0px 0px 1px var(--accent-6);
-            --badge-background: var(--accent-surface);
-            --badge-color: var(--accent-11);
-        }
-        &.Badge-outline {
+        &.badge-variant-outline {
             --badge-box-shadow: inset 0px 0px 0px 1px var(--accent-8);
             --badge-background: transparent;
             --badge-color: var(--accent-11);

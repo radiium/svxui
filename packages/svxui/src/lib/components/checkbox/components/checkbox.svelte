@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { ChangeEventHandler } from 'svelte/elements';
-    import { clsx } from '../../../utils/clsx.js';
     import { defaultCheckboxProps } from '../props.js';
     import type { CheckboxProps } from '../types.js';
 
@@ -35,18 +34,20 @@
                 group = [...group, value];
             } else {
                 // Remove from group
-                group = group.filter((v) => v != value);
+                group = group.filter((v: string | number) => v != value);
             }
         }
 
         rest.onchange?.(event);
     }
-    let cssClass = $derived(
-        clsx(rest.class, 'Checkbox', {
-            [`Checkbox-size-${size}`]: size,
-            [`Checkbox-color-${color}`]: color
-        })
-    );
+    let cssClass = $derived([
+        rest.class,
+        'checkbox',
+        {
+            [`checkbox-size-${size}`]: size,
+            [`checkbox-color-${color}`]: color
+        }
+    ]);
 
     $effect(() => {
         if (isValid(group)) {
@@ -60,11 +61,12 @@
     {...rest}
     type="checkbox"
     class={cssClass}
+    aria-checked={checked && indeterminate ? 'mixed' : checked}
+    data-checked={checked || undefined}
+    data-indeterminate={indeterminate || undefined}
     data-color={color}
     data-size={size}
     data-radius={radius}
-    data-checked={checked || undefined}
-    data-indeterminate={indeterminate || undefined}
     {value}
     onchange={onChange}
     bind:checked
@@ -72,8 +74,8 @@
     bind:this={elementRef}
 />
 
-<style lang="scss">
-    .Checkbox {
+<style>
+    .checkbox {
         position: relative;
         appearance: none;
         -moz-appearance: none;
@@ -86,11 +88,11 @@
         width: var(--checkbox-size);
         border-radius: calc(var(--radius-3) / 1.5);
         background-color: var(--checkbox-background);
-        box-shadow: inset 0px 0px 0px 1px var(--input-box-shadow);
+        box-shadow: inset 0px 0px 0px 1px var(--color-box-shadow);
 
-        --checkbox-background: var(--input-background);
-        --checkbox-background-checked: var(--accent-9);
-        --check-color: white;
+        --checkbox-background: var(--accent-surface);
+        --checkbox-background-checked: var(--accent-track);
+        --check-color: var(--accent-contrast);
 
         &:after {
             display: none;
@@ -110,7 +112,7 @@
             outline-offset: 1px;
         }
 
-        // States
+        /* States */
         &[data-checked='true'] {
             background-color: var(--checkbox-background-checked);
             box-shadow: none;
@@ -129,22 +131,31 @@
         }
 
         &[disabled] {
-            @include disabled;
+            cursor: default !important;
+            opacity: 0.5 !important;
+            outline: none !important;
+            pointer-events: none;
+
+            &:focus,
+            &:focus-visible {
+                box-shadow: none !important;
+                outline: none !important;
+            }
         }
 
-        // Sizes
-        &.Checkbox-size-1 {
-            --checkbox-size: calc(var(--space-4) * 0.875); // var(--space-4);
+        /* Sizes */
+        &.checkbox-size-1 {
+            --checkbox-size: calc(var(--space-4) * 0.875);
             --check-width: calc(var(--checkbox-size) / 3.5);
             --check-height: calc(var(--checkbox-size) / 2.5);
         }
-        &.Checkbox-size-2 {
-            --checkbox-size: var(--space-4); // var(--space-5);
+        &.checkbox-size-2 {
+            --checkbox-size: var(--space-4);
             --check-width: calc(var(--checkbox-size) / 3.5);
             --check-height: calc(var(--checkbox-size) / 2.5);
         }
-        &.Checkbox-size-3 {
-            --checkbox-size: calc(var(--space-4) * 1.25); // var(--space-6);
+        &.checkbox-size-3 {
+            --checkbox-size: calc(var(--space-4) * 1.25);
             --check-width: calc(var(--checkbox-size) / 3.5);
             --check-height: calc(var(--checkbox-size) / 2.5);
         }

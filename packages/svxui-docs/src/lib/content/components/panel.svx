@@ -1,0 +1,126 @@
+---
+title: Panel
+description: A container used to display grouped content like text, images, and actions. Can serve as a basis for a card component
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { Panel } from 'svxui';
+</script>
+
+<Panel>Panel content</Panel>
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+
+### Colors
+```svelte example toggleableCode
+<script lang="ts">
+    import { Panel } from 'svxui';
+</script>
+
+<Panel color="neutral">Panel content</Panel>
+<Panel color="blue">Panel content</Panel>
+<Panel color="green">Panel content</Panel>
+<Panel color="yellow">Panel content</Panel>
+<Panel color="orange">Panel content</Panel>
+<Panel color="red">Panel content</Panel>
+```
+### Sizes
+```svelte example toggleableCode
+<script lang="ts">
+    import { Panel, Flexbox } from 'svxui';
+</script>
+
+<Flexbox direction="column" align="start" gap="3">
+    <Panel size="0">Panel size 0</Panel>
+    <Panel size="1">Panel size 1</Panel>
+    <Panel size="2">Panel size 2</Panel>
+    <Panel size="3">Panel size 3</Panel>
+    <Panel size="4">Panel size 4</Panel>
+    <Panel size="5">Panel size 5</Panel>
+    <Panel size="6">Panel size 6</Panel>
+    <Panel size="7">Panel size 7</Panel>
+    <Panel size="8">Panel size 8</Panel>
+    <Panel size="9">Panel size 9</Panel>
+</Flexbox>
+```
+
+### Variants
+```svelte example toggleableCode
+<script lang="ts">
+    import { Panel } from 'svxui';
+</script>
+
+<Panel variant="solid">Panel solid</Panel>
+<Panel variant="soft">Panel soft</Panel>
+<Panel variant="outline">Panel outline</Panel>
+```
+
+### FullWidth
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Panel } from 'svxui';
+</script>
+
+<Panel fullWidth>Panel content</Panel>
+```
+
+### Card
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Panel, Flexbox, Text, Button } from 'svxui';
+</script>
+
+<Panel size="5">
+    <Flexbox direction="column" gap="3" style="width: 300px;">
+        <Flexbox as="header" direction="column">
+            <Text size="8" weight="bold" as="h2" class="m-0">Card title</Text>
+            <Text size="5"weight="medium" as="p" muted class="m-0">Card subtitle</Text>
+        </Flexbox>
+        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt elit mattis sem mollis, sit amet dapibus arcu commodo. Morbi non aliquam sapien. Quisque pretium.</div>
+        <Flexbox as="footer" justify="end">
+            <Button variant="outline">Details</Button>
+        </Flexbox>
+    </Flexbox>
+</Panel>
+```
+
+### List
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Panel, Flexbox, Text, Checkbox, Separator } from 'svxui';
+
+    let items = ['item 1', 'item 2', 'item 3', 'item 4', 'item 5']
+</script>
+
+<Panel size="0" variant="outline">
+    <Flexbox direction="column" gap="0" style="width: 300px;">
+        {#each items as item, i (item)}
+            <Flexbox as="label" align="center" gap="3" class="w-100 py-2 px-3">
+                <Checkbox />
+                <Text>{item}</Text>
+            </Flexbox>
+
+            {#if i < items.length - 1}
+                <Separator size="4" />
+            {/if}
+        {/each}
+    </Flexbox>
+</Panel>
+```
+
+

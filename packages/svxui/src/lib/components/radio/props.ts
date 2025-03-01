@@ -1,11 +1,15 @@
-import { ColorGray, Size2 } from '$lib/shared.types.js';
-import type { RadioProps } from './types.js';
+import { booleanOptions, colorOptions, type PropsOptions } from '$lib/shared.options.js';
+import type { RadioProps, RadioSize } from './types.js';
 
 export const defaultRadioProps: RadioProps = {
     elementRef: undefined,
-    color: ColorGray,
-    size: Size2,
+    color: 'neutral',
+    size: '2',
     group: undefined,
-    value: undefined,
     disabled: false
 };
+export const radioOptions = {
+    color: colorOptions,
+    size: ['1', '2', '3'] satisfies RadioSize[],
+    disabled: booleanOptions
+} as const satisfies PropsOptions<RadioProps>;

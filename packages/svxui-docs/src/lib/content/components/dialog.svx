@@ -1,0 +1,54 @@
+---
+title: Dialog
+description: A generic customizable dialog component for displays modal content on a page, typically used for alerts, confirmations, or custom forms.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { Dialog, Button } from 'svxui';
+
+    let isOpen = $state(false)
+</script>
+
+<Button onclick={() => (isOpen = true)}>
+    Open dialog
+</Button>
+
+<Dialog bind:isOpen>Dialog content</Dialog>
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Advanced layout
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Flexbox, Button, Dialog } from 'svxui';
+
+    let isOpen = $state(false)
+</script>
+
+<Button onclick={() => (isOpen = true)}>
+    Open dialog
+</Button>
+
+<Dialog bind:isOpen maxWidth="300px">
+    <Flexbox direction="column" gap="3">
+        <h2 class="my-0">Dialog title</h2>
+        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt elit mattis sem mollis, sit amet dapibus arcu commodo. Morbi non aliquam sapien. Quisque pretium.</div>
+        <Flexbox gap="3" justify="end">
+            <Button variant="outline" onclick={() => (isOpen = false)}>Cancel</Button>
+            <Button onclick={() => (isOpen = false)}>Confirm</Button>
+        </Flexbox>
+    </Flexbox>
+</Dialog>
+```

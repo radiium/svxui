@@ -1,13 +1,23 @@
-import { Colors, Radius, Sizes1To3 } from '$lib/shared.types.js';
+import type { Color, Radius } from '$lib/shared.types.js';
 import type { HTMLInputAttributes } from 'svelte/elements';
 
-export type CheckboxProps = Omit<HTMLInputAttributes, 'size'> & {
+export type CheckboxSize = '1' | '2' | '3';
+
+export type CheckboxProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'> & {
+    /**
+     * Rendered DOM element
+     */
     elementRef?: HTMLInputElement;
-    color?: (typeof Colors)[number];
-    size?: (typeof Sizes1To3)[number];
-    radius?: (typeof Radius)[number];
-    group?: (string | number)[];
-    value?: string | number;
-    checked?: boolean;
-    indeterminate?: boolean;
+    /**
+     * Checkbox color
+     */
+    color?: Color;
+    /**
+     * Checkbox size
+     */
+    size?: CheckboxSize;
+    /**
+     * Checkbox radius
+     */
+    radius?: Radius;
 };

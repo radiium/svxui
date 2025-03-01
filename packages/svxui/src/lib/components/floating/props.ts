@@ -1,9 +1,22 @@
-import { ColorGray, Size3, VariantSoft } from '$lib/shared.types.js';
-import { type FloatingArrowProps, type FloatingProps } from './types.js';
+import {
+    booleanOptions,
+    colorOptions,
+    placementOptions,
+    radiusOptions,
+    type PropsOptions
+} from '$lib/shared.options.js';
+import {
+    type FloatingArrowProps,
+    type FloatingProps,
+    type FloatingSize,
+    type FloatingVariant
+} from './types.js';
 
 export const defaultFloatingProps: FloatingProps = {
     isOpen: false,
-    size: Size3,
+    size: '3',
+    color: 'neutral',
+    variant: 'solid',
     radius: undefined,
     placement: 'top',
     offset: 0,
@@ -19,16 +32,36 @@ export const defaultFloatingProps: FloatingProps = {
     closeOnResize: false,
     closeOnScroll: false,
     portal: false,
-    portalTarget: ".svxui[data-theme-root='true']",
+    portalTarget: '.svxui[data-theme-root]',
     transitionDelay: 0,
-    transitionDuration: 150,
-    color: ColorGray,
-    variant: VariantSoft
+    transitionDuration: 150
 };
+export const floatingOptions = {
+    color: colorOptions,
+    size: ['0', '1', '2', '3', '4', '5'] satisfies FloatingSize[],
+    variant: ['solid', 'soft', 'outline'] satisfies FloatingVariant[],
+    radius: radiusOptions,
+    placement: placementOptions,
+    arrow: booleanOptions,
+    flip: booleanOptions,
+    shift: booleanOptions,
+    hide: booleanOptions,
+    backdrop: booleanOptions,
+    autoUpdate: booleanOptions,
+    closeOnClickBackdrop: booleanOptions,
+    closeOnClickOutside: booleanOptions,
+    closeOnEscape: booleanOptions,
+    closeOnResize: booleanOptions,
+    closeOnScroll: booleanOptions,
+    portal: booleanOptions
+} as const satisfies PropsOptions<FloatingProps>;
 
 export const defaultFloatingArrowProps: Partial<FloatingArrowProps> = {
     elementRef: undefined,
-    outline: false,
-    color: ColorGray,
-    variant: VariantSoft
+    color: 'neutral',
+    variant: 'soft'
 };
+export const floatingArrowOptions = {
+    color: colorOptions,
+    variant: ['solid', 'soft', 'outline'] satisfies FloatingVariant[]
+} as const satisfies PropsOptions<FloatingArrowProps>;

@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { clsx } from '../../../utils/clsx.js';
     import { defaultInputGroupItemProps } from '../props.js';
     import type { InputGroupItemProps } from '../types.js';
 
@@ -10,15 +9,15 @@
         ...rest
     }: InputGroupItemProps = $props();
 
-    let cssClass = $derived(clsx(rest.class, 'InputGroup-item'));
+    let cssClass = $derived([rest.class, 'input-group-item']);
 </script>
 
 <div {...rest} data-color={color} class={cssClass} bind:this={elementRef}>
     {@render children?.()}
 </div>
 
-<style lang="scss">
-    .InputGroup-item {
+<style>
+    .input-group-item {
         position: relative;
         display: flex;
         align-items: center;

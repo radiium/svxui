@@ -1,7 +1,6 @@
 import adapter from '@sveltejs/adapter-vercel';
 import autoprefixer from 'autoprefixer';
 import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sveltePreprocess } from 'svelte-preprocess';
 
@@ -21,9 +20,6 @@ const config = {
             postcss: {
                 plugins: [autoprefixer]
             },
-            scss: {
-                prependData: `@use "${resolve(import.meta.dirname, './src/styles/scss/mixins.scss')}" as *;`
-            }
         })
     ],
     kit: {

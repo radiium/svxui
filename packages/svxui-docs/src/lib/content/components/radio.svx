@@ -1,0 +1,90 @@
+---
+title: Radio
+description: A customizable input radio component. Lets users pick only one option from a group.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { Radio } from 'svxui';
+
+    let group = $state('1');
+</script>
+
+<Radio name="default" value="1" bind:group/>
+<Radio name="default" value="2" bind:group />
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Label
+
+```svelte example toggleableCode hideStyle
+<script lang="ts">
+    import { Radio } from 'svxui';
+
+    let items = ['1', '2'] 
+    let group = $state('1');
+</script>
+
+{#each items as item (item)}
+    <label>
+        <Radio name="label" value={item} bind:group />
+        label {item}
+    </label>
+{/each}
+
+<style>
+    label {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+    }
+</style>
+```
+
+### Colors
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Radio } from 'svxui';
+</script>
+
+<Radio color="neutral" />
+<Radio color="blue" />
+<Radio color="green" />
+<Radio color="yellow" />
+<Radio color="orange" />
+<Radio color="red" />
+```
+
+### Sizes
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Radio } from 'svxui';
+</script>
+
+<Radio size="1" />
+<Radio size="2" />
+<Radio size="3" />
+```
+
+### States
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Radio } from 'svxui';
+</script>
+
+<Radio />
+<Radio disabled/>
+```

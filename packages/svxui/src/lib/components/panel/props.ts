@@ -1,12 +1,18 @@
-import { ColorGray, Size3, VariantSoft } from '$lib/shared.types.js';
-import type { PanelProps } from './types.js';
+import { booleanOptions, colorOptions, radiusOptions, type PropsOptions } from '$lib/shared.options.js';
+import type { PanelProps, PanelSize, PanelVariant } from './types.js';
 
 export const defaultPanelProps: PanelProps = {
     elementRef: undefined,
-    color: ColorGray,
-    size: Size3,
+    color: 'neutral',
+    size: '3',
     radius: undefined,
-    variant: VariantSoft,
-    translucent: false,
+    variant: 'solid',
     fullWidth: false
 };
+export const panelOptions = {
+    color: colorOptions,
+    size: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] satisfies PanelSize[],
+    variant: ['solid', 'soft', 'outline'] satisfies PanelVariant[],
+    radius: radiusOptions,
+    fullWidth: booleanOptions
+} as const satisfies PropsOptions<PanelProps>;

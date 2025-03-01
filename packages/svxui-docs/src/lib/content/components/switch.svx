@@ -1,0 +1,93 @@
+---
+title: Switch
+description: Toggle switch alternative to the checkbox.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { Switch } from 'svxui';
+</script>
+
+<Switch />
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Label
+
+```svelte example toggleableCode hideStyle
+<script lang="ts">
+    import { Switch } from 'svxui';
+</script>
+
+<label>
+    <Switch/>
+    label
+</label>
+
+<style>
+    label {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+    }
+</style>
+```
+
+### Colors
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Switch } from 'svxui';
+</script>
+
+<Switch checked color="neutral" />
+<Switch checked color="blue" />
+<Switch checked color="green" />
+<Switch checked color="yellow" />
+<Switch checked color="orange" />
+<Switch checked color="red" />
+```
+
+### Sizes
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Switch } from 'svxui';
+</script>
+
+<Switch checked size="1" />
+<Switch checked size="2" />
+<Switch checked size="3" />
+```
+
+### States
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Switch } from 'svxui';
+</script>
+
+<Switch />
+<Switch checked/>
+```
+
+### Disabled
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Switch } from 'svxui';
+</script>
+
+<Switch disabled/>
+<Switch disabled checked/>
+```

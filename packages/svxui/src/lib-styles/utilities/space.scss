@@ -1,0 +1,77 @@
+/*
+ * Utilities: margin/padding       
+ */
+
+$spaceProps: (
+    't': '-top',
+    'b': '-bottom',
+    'r': '-right',
+    'l': '-left',
+    'x': (
+        '-right',
+        '-left'
+    ),
+    'y': (
+        '-top',
+        '-bottom'
+    ),
+    '': ''
+) !default;
+
+$spaceValues: (
+    'auto': 'auto',
+    '0': 0px,
+    '1': var(--space-1),
+    '2': var(--space-2),
+    '3': var(--space-3),
+    '4': var(--space-4),
+    '5': var(--space-5),
+    '6': var(--space-6),
+    '7': var(--space-7),
+    '8': var(--space-8),
+    '9': var(--space-9)
+) !default;
+
+$spaceNegativeValues: (
+    '1': var(--space-1),
+    '2': var(--space-2),
+    '3': var(--space-3),
+    '4': var(--space-4),
+    '5': var(--space-5),
+    '6': var(--space-6),
+    '7': var(--space-7),
+    '8': var(--space-8),
+    '9': var(--space-9)
+) !default;
+
+/* Margin */
+
+@each $propKey, $propValue in $spaceProps {
+    @each $spaceKey, $spaceValue in $spaceValues {
+        .m#{$propKey}-#{$spaceKey} {
+            @each $propName in $propValue {
+                margin#{$propName}: $spaceValue;
+            }
+        }
+    }
+
+    @each $spaceKey, $spaceValue in $spaceNegativeValues {
+        .-m#{$propKey}-#{$spaceKey} {
+            @each $propName in $propValue {
+                margin#{$propName}: calc(-1 * #{$spaceValue});
+            }
+        }
+    }
+}
+
+/* Padding */
+
+@each $propKey, $propValue in $spaceProps {
+    @each $spaceKey, $spaceValue in $spaceValues {
+        .p#{$propKey}-#{$spaceKey} {
+            @each $propName in $propValue {
+                padding#{$propName}: $spaceValue;
+            }
+        }
+    }
+}

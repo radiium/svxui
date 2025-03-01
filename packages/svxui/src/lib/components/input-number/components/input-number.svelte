@@ -1,13 +1,12 @@
 <script lang="ts">
     import { longPressAction } from '$lib/actions/longpress/index.js';
-    import { clsx } from '$lib/utils/clsx.js';
     import { onMount } from 'svelte';
+    import { on } from 'svelte/events';
     import { Button } from '../../button/index.js';
     import InputGroup from '../../input-group/components/input-group.svelte';
     import Input from '../../input/components/input.svelte';
     import { defaultInputNumberProps } from '../props.js';
     import type { InputNumberProps } from '../types.js';
-    import { on } from 'svelte/events';
 
     let {
         elementRef = $bindable(),
@@ -31,17 +30,19 @@
 
     // Input css classes
 
-    let cssClass = $derived(
-        clsx(rest.class, 'InputNumber', {
-            [`InputNumber-color-${color}`]: color,
-            [`InputNumber-size-${size}`]: size,
+    let cssClass = $derived([
+        rest.class,
+        'input-number',
+        {
+            [`input-number-size-${size}`]: size,
+            [`input-number-color-${color}`]: color,
             'input-disabled': disabled,
             'input-required': required,
             'input-readonly': readonly
-        })
-    );
+        }
+    ]);
 
-    function parseValue(val: string | number | undefined): number {
+    function parseValue(val: string | number | undefined | null): number {
         if (!val) {
             val = 0;
         }
@@ -138,7 +139,7 @@
     <Input
         type="number"
         inputmode="numeric"
-        class="InputNumber-input"
+        class="input-number-input"
         {color}
         {size}
         {radius}
@@ -164,14 +165,15 @@
     >
 </InputGroup>
 
-<style lang="scss" global>
-    .InputNumber-input {
-        width: 6em; // TODO make it overridable
+<style>
+    :global(.input-number-input) {
+        /* TODO make it overridable */
+        width: 6em;
         background: transparent !important;
     }
 
-    .InputNumber-input::-webkit-inner-spin-button,
-    .InputNumber-input::-webkit-outer-spin-button {
+    :global(.input-number-input::-webkit-inner-spin-button),
+    :global(.input-number-input::-webkit-outer-spin-button) {
         appearance: none !important;
         -webkit-appearance: none !important;
         -moz-appearance: textfield !important;

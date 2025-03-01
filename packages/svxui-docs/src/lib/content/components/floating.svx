@@ -1,0 +1,34 @@
+---
+title: Floating
+description: A Floating UI wrapper component for positions elements like tooltips, popovers, or dropdowns dynamically, ensuring they stay visible and aligned relative to a reference element.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+## Examples
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Floating, Button } from 'svxui';
+
+    let isOpen = $state(false)
+</script>
+
+<Floating bind:isOpen>
+    {#snippet trigger()}
+        <Button onclick={() => (isOpen = true)}>
+            Open
+        </Button>
+    {/snippet}
+    {#snippet content()}
+        <div>Floating content</div>
+    {/snippet}
+</Floating>
+```
+
+<DocApiReference {metadata} />

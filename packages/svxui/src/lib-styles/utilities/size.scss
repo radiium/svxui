@@ -1,0 +1,81 @@
+/*
+ * Utilities: width/height/size      
+ */
+
+@use 'sass:map';
+
+$sizeProps: (
+    'width': (
+        'prefix': 'w',
+        'viewport': 'vw'
+    ),
+    'min-width': (
+        'prefix': 'min-w',
+        'viewport': 'vw'
+    ),
+    'max-width': (
+        'prefix': 'max-w',
+        'viewport': 'vw'
+    ),
+    'height': (
+        'prefix': 'h',
+        'viewport': 'vh'
+    ),
+    'min-height': (
+        'prefix': 'min-h',
+        'viewport': 'vh'
+    ),
+    'max-height': (
+        'prefix': 'max-h',
+        'viewport': 'vh'
+    )
+);
+
+$sizeValues: (
+    '0': 0px,
+    '1': var(--space-1),
+    '2': var(--space-2),
+    '3': var(--space-3),
+    '4': var(--space-4),
+    '5': var(--space-5),
+    '6': var(--space-6),
+    '7': var(--space-7),
+    '8': var(--space-8),
+    '9': var(--space-9),
+    '50': 50%,
+    '100': 100%,
+    'min': min-content,
+    'max': max-content,
+    'fit': fit-content,
+    'auto': auto
+) !default;
+
+@each $propKey, $propConfig in $sizeProps {
+    $prefix: map.get($propConfig, 'prefix');
+    $viewportUnit: map.get($propConfig, 'viewport');
+
+    /* #{$propKey} */
+
+    @each $key, $value in $sizeValues {
+        .#{$prefix}-#{$key} {
+            #{$propKey}: $value;
+        }
+    }
+
+    .#{$prefix}-screen {
+        #{$propKey}: #{100 + $viewportUnit};
+    }
+}
+
+/* Size (square) */
+
+@each $key, $value in $sizeValues {
+    .size-#{$key} {
+        width: $value;
+        height: $value;
+    }
+}
+.size-screen {
+    width: 100vw;
+    height: 100vh;
+}

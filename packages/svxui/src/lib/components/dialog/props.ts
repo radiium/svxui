@@ -1,9 +1,9 @@
-import { Size3 } from '$lib/shared.types.js';
-import type { DialogProps } from './types.js';
+import { booleanOptions, radiusOptions, type PropsOptions } from '$lib/shared.options.js';
+import type { DialogProps, DialogSize } from './types.js';
 
 export const defaultDialogProps: DialogProps = {
     isOpen: false,
-    size: Size3,
+    size: '3',
     radius: undefined,
     width: undefined,
     minWidth: '30rem',
@@ -16,5 +16,15 @@ export const defaultDialogProps: DialogProps = {
     closeOnBackdropClick: true,
     closeOnEscape: true,
     lockScroll: false,
+    transitionDelay: 0,
     transitionDuration: 150
 };
+export const dialogOptions = {
+    size: ['1', '2', '3', '4'] satisfies DialogSize[],
+    radius: radiusOptions,
+    noPadding: booleanOptions,
+    fullScreen: booleanOptions,
+    closeOnBackdropClick: booleanOptions,
+    closeOnEscape: booleanOptions,
+    lockScroll: booleanOptions
+} as const satisfies PropsOptions<DialogProps>;

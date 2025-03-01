@@ -1,0 +1,35 @@
+---
+title: Theme Provider
+description: Configure entry point of the application.
+category: base
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+    import DocLink from '$lib/markdown/components/DocLink.svelte';
+</script>
+
+## Overview
+
+The `<ThemeRootProvider />` component is the entry point to the library.
+It allow you to configure theme.
+All components must be used inside to function properly.
+It is possible to override the theme anywhere in child components using the `<ThemeChildProvider />` component.
+
+## ThemeRootProvider
+The `<ThemeRootProvider />` component allows you to globally configure:
+- define the default theme strategy (system/light/dark)
+- define the default accent color
+- define the default border radius
+- define the default light/dark colors of the theme meta tag
+- enable or disable the default background color
+- enable or disable the injection of the theme loading script for the SSR
+- enable or disable system theme change detection
+- enable or disable CSS transitions during theme changes
+- and define custom color palettes
+
+## ThemeChildProvider
+The `<ThemeChildProvider />` component allows you to override:
+- global theme strategy (system/light/dark)
+- global accent color
+- global border radius

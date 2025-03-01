@@ -12,24 +12,20 @@
             allDialog = allDialog.filter((m: HTMLDivElement) => m !== dialog);
         }
     };
-
-    const lastDialog = () => {
-        return allDialog && allDialog.length > 0 ? allDialog[allDialog.length - 1] : undefined;
-    };
 </script>
 
 <script lang="ts">
-    import { untrack } from 'svelte';
-    import { fade, scale } from 'svelte/transition';
-    import { clsx } from '../../../utils/clsx.js';
-    import { defaultDialogProps } from '../props.js';
-    import type { DialogProps } from '../types.js';
     import { focusTrapAction } from '$lib/actions/focustrap/index.js';
     import { lockScrollAction } from '$lib/actions/lockscroll/action.svelte.js';
+    import { untrack } from 'svelte';
+    import { fade, scale } from 'svelte/transition';
+    import { defaultDialogProps } from '../props.js';
+    import type { DialogProps } from '../types.js';
 
     let {
         elementRef = $bindable(),
         isOpen = $bindable(),
+        onClose = defaultDialogProps.onClose,
         size = defaultDialogProps.size,
         radius = defaultDialogProps.radius,
         noPadding = defaultDialogProps.noPadding,
@@ -37,6 +33,7 @@
         closeOnBackdropClick = defaultDialogProps.closeOnBackdropClick,
         closeOnEscape = defaultDialogProps.closeOnEscape,
         lockScroll = defaultDialogProps.lockScroll,
+        transitionDelay = defaultDialogProps.transitionDelay,
         transitionDuration = defaultDialogProps.transitionDuration,
         width = defaultDialogProps.width,
         minWidth = defaultDialogProps.minWidth,
@@ -48,16 +45,16 @@
         ...rest
     }: DialogProps = $props();
 
+    function close(): void {
+        isOpen = false;
+        onClose?.();
+    }
     function handlekeydown(event: KeyboardEvent): void {
         if (closeOnEscape) {
             if (event.key === 'Escape') {
                 close();
             }
         }
-    }
-
-    function close(): void {
-        isOpen = false;
     }
 
     function onBackdropClick(): void {
@@ -69,37 +66,39 @@
     $effect(() => {
         if (isOpen) {
             addDialog(untrack(() => elementRef));
-            // getComputedStyle(elementRef)
         } else {
             removeDialog(untrack(() => elementRef));
         }
     });
 
-    let cssClass = $derived(
-        clsx(rest.class, `Dialog`, {
-            [`Dialog-size-${size}`]: size,
-            [`Dialog-no-padding`]: noPadding,
-            [`Dialog-fullscreen`]: fullScreen
-        })
-    );
+    let cssClass = $derived([
+        rest.class,
+        `dialog`,
+        {
+            [`dialog-size-${size}`]: size,
+            [`dialog-no-padding`]: noPadding,
+            [`dialog-fullscreen`]: fullScreen
+        }
+    ]);
 
-    let locScrollEnabled = $derived(lockScroll === true && isOpen === true);
+    let lockScrollEnabled = $derived(lockScroll === true && isOpen === true);
     let focusTrapEnabled = $derived(isOpen === true);
 </script>
 
 <svelte:window onkeydown={handlekeydown} />
-<svelte:body use:lockScrollAction={{ enabled: locScrollEnabled }} />
+<svelte:body use:lockScrollAction={{ enabled: lockScrollEnabled }} />
 
 {#if isOpen}
-    <div class={cssClass} data-radius={radius} bind:this={elementRef}>
+    <div class={cssClass} data-size={size} data-radius={radius} bind:this={elementRef}>
         <div
             role="button"
-            class="Dialog-backdrop"
+            class="dialog-backdrop"
             tabindex="-1"
             onclick={onBackdropClick}
             onkeydown={handlekeydown}
             transition:fade={{
-                duration: transitionDuration
+                duration: transitionDuration,
+                delay: transitionDelay
             }}
         ></div>
 
@@ -111,12 +110,13 @@
             style:min-height={fullScreen ? undefined : minHeight}
             style:max-height={fullScreen ? undefined : maxHeight}
             role="dialog"
-            class="Dialog-content"
+            class="dialog-content"
             data-size={size}
             data-radius={radius}
             use:focusTrapAction={{ enabled: focusTrapEnabled }}
             transition:scale={{
                 duration: transitionDuration,
+                delay: transitionDelay,
                 start: 0.9,
                 opacity: 0
             }}
@@ -126,8 +126,8 @@
     </div>
 {/if}
 
-<style lang="scss">
-    .Dialog {
+<style>
+    .dialog {
         z-index: 100000;
         position: fixed;
         overflow: auto;
@@ -139,7 +139,7 @@
         align-items: center;
         justify-content: center;
 
-        .Dialog-backdrop {
+        .dialog-backdrop {
             z-index: 10001;
             position: fixed;
             overflow: hidden;
@@ -152,7 +152,7 @@
             background: var(--color-overlay);
         }
 
-        .Dialog-content {
+        .dialog-content {
             z-index: 10002;
             position: relative;
             color: var(--color);
@@ -169,35 +169,36 @@
             overflow: auto;
         }
 
-        &.Dialog-size-1 {
+        /* Sizes */
+        &.dialog-size-1 {
             --dialog-padding: var(--space-3);
             --dialog-border-radius: var(--radius-4);
         }
-        &.Dialog-size-2 {
+        &.dialog-size-2 {
             --dialog-padding: var(--space-4);
             --dialog-border-radius: var(--radius-4);
         }
-        &.Dialog-size-3 {
+        &.dialog-size-3 {
             --dialog-padding: var(--space-5);
             --dialog-border-radius: var(--radius-5);
         }
-        &.Dialog-size-4 {
+        &.dialog-size-4 {
             --dialog-padding: var(--space-6);
             --dialog-border-radius: var(--radius-5);
         }
 
-        // No Padding
-        &.Dialog-no-padding {
+        /* No Padding */
+        &.dialog-no-padding {
             --dialog-padding: var(--space-0);
         }
 
-        // Full Screen
-        &.Dialog-fullscreen {
+        /* Full Screen */
+        &.dialog-fullscreen {
             --dialog-border-radius: var(--radius-0) !important;
             width: 100vw;
             height: 100vh;
 
-            .Dialog-content {
+            .dialog-content {
                 width: 100vw;
                 height: 100vh;
                 min-width: unset;

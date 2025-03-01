@@ -1,13 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "prettier.requireConfig": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.quickSuggestions": {
-        "strings": true
-    },
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-    },
     "eslint.workingDirectories": [
         {
             "mode": "auto"
@@ -18,7 +10,6 @@
         "javascript",
         "svelte"
     ],
-    "svelte.enable-ts-plugin": true,
     "eslint.debug": true,
     "eslint.probe": [
         "astro",
@@ -27,6 +18,7 @@
         "typescript",
         "typescriptreact",
         "html",
+        "svx",
         "mdx",
         "vue",
         "markdown",
@@ -34,13 +26,10 @@
         "jsonc",
         "svelte"
     ],
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "files.associations": {
+        "*.svx": "svx"
     },
     "[svelte]": {
-        "editor.defaultFormatter": "svelte.svelte-vscode"
-    },
-    "files.associations": {
-        "*.md": "svx"
+        "editor.wordWrap": "off"
     }
 }

@@ -1,18 +1,17 @@
 <script lang="ts">
-    import { clsx } from '../../../utils/clsx.js';
     import type { ButtonUnstyledProps } from '../types.js';
 
     let { elementRef = $bindable(), children, ...rest }: ButtonUnstyledProps = $props();
 
-    let cssClass = $derived(clsx(rest.class, 'ButtonUnstyled'));
+    let cssClass = $derived([rest.class, 'button-unstyled']);
 </script>
 
 <button {...rest} class={cssClass} bind:this={elementRef}>
     {@render children?.()}
 </button>
 
-<style lang="scss">
-    .ButtonUnstyled {
+<style>
+    .button-unstyled {
         cursor: pointer;
         background-color: transparent;
         color: inherit;

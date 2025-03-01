@@ -1,0 +1,122 @@
+---
+title: Button
+description: A customizable component with configurable styles, variants, sizes, and accessibility features for interactive UI elements.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { Button } from 'svxui';
+</script>
+
+<Button>button</Button>
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Colors
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Button } from 'svxui';
+</script>
+
+<Button color="neutral">neutral</Button>
+<Button color="blue">blue</Button>
+<Button color="green">green</Button>
+<Button color="yellow">yellow</Button>
+<Button color="orange">orange</Button>
+<Button color="red">red</Button>
+```
+
+### Variants
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Button } from 'svxui';
+</script>
+
+<Button variant="solid">solid</Button>
+<Button variant="soft">soft</Button>
+<Button variant="outline">outline</Button>
+<Button variant="clear">clear</Button>
+```
+
+### Sizes
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Button } from 'svxui';
+</script>
+
+<Button size="1">size 1</Button>
+<Button size="2">size 2</Button>
+<Button size="3">size 3</Button>
+<Button size="4">size 4</Button>
+```
+
+### Icons
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Button } from 'svxui';
+</script>
+
+<Button iconOnly variant="solid">{@render Icon()}</Button>
+<Button iconOnly variant="soft">{@render Icon()}</Button>
+<Button iconOnly variant="outline">{@render Icon()}</Button>
+<Button iconOnly variant="clear">{@render Icon()}</Button>
+
+{#snippet Icon()}
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 256 256">
+        <rect width="256" height="256" fill="none"/>
+        <circle cx="112" cy="112" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+        <line x1="168.57" y1="168.57" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+    </svg>
+{/snippet}
+
+```
+
+### States
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Button } from 'svxui';
+</script>
+
+<Button>default</Button>
+<Button active>active</Button>
+<Button disabled>disabled</Button>
+```
+
+### Text transform
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Button } from 'svxui';
+</script>
+
+<Button transform="lowercase">lowercase</Button>
+<Button transform="uppercase">uppercase</Button>
+<Button transform="capitalize">capitalize</Button>
+```
+
+### FullWidth + Alignments
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Button } from 'svxui';
+</script>
+
+<Button fullWidth align="start">start</Button>
+<Button fullWidth>center</Button>
+<Button fullWidth align="end">end</Button>
+```

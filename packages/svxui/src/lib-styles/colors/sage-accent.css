@@ -1,0 +1,38 @@
+/* Accent color: sage */
+
+[data-color='sage'] {
+    --accent-1: var(--sage-1);
+    --accent-2: var(--sage-2);
+    --accent-3: var(--sage-3);
+    --accent-4: var(--sage-4);
+    --accent-5: var(--sage-5);
+    --accent-6: var(--sage-6);
+    --accent-7: var(--sage-7);
+    --accent-8: var(--sage-8);
+    --accent-9: var(--sage-9);
+    --accent-10: var(--sage-10);
+    --accent-11: var(--sage-11);
+    --accent-12: var(--sage-12);
+
+    --accent-a1: var(--sage-a1);
+    --accent-a2: var(--sage-a2);
+    --accent-a3: var(--sage-a3);
+    --accent-a4: var(--sage-a4);
+    --accent-a5: var(--sage-a5);
+    --accent-a6: var(--sage-a6);
+    --accent-a7: var(--sage-a7);
+    --accent-a8: var(--sage-a8);
+    --accent-a9: var(--sage-a9);
+    --accent-a10: var(--sage-a10);
+    --accent-a11: var(--sage-a11);
+    --accent-a12: var(--sage-a12);
+
+    --accent-contrast: var(--sage-contrast);
+    --accent-surface: var(--sage-surface);
+    --accent-indicator: var(--sage-indicator);
+    --accent-track: var(--sage-track);
+
+    --accent-box-shadow: 0px 0px 0px 1px var(--accent-5);
+    --accent-box-shadow-hover: 0px 0px 0px 1px var(--accent-8);
+    --accent-box-shadow-focus: 0px 0px 0px 1px var(--accent-8);
+}

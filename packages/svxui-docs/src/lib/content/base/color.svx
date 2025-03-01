@@ -1,0 +1,114 @@
+---
+title: Color
+description: Understanding the color system.
+category: base
+---
+
+<script lang="ts">
+    import Code from '$lib/markdown/components/Code.svelte';
+    import DocLink from '$lib/markdown/components/DocLink.svelte';
+</script>
+
+## Overview
+
+The library's components use the [radix colors](https://www.radix-ui.com/colors) hunder the hood.
+A default color palettes is used without configuration but you can use any standard pre-built radix colors or create your own custom color via the [radix color generator](https://www.radix-ui.com/colors/custom).
+You can also create color aliases to meet different needs (ex: semantic color system).  
+
+## Color system
+  
+Like the [@radix-ui/themes](https://www.radix-ui.com/themes) library, the components internally use a set of CSS variables prefixed with `--accent-*`.
+These CSS variables are overridden in components by using the `data-color="..."` attribute.
+If no color is defined on a component, the color defined on the parent wrapper component will be applied.
+
+<!-- ## Color palettes -->
+## Default color palettes
+
+By default, the library includes the following color palettes:
+- <Code color="neutral">Neutral</Code> (custom radix color, default)
+- <Code color="blue">Blue</Code> (radix blue)
+- <Code color="green">Green</Code> (radix grass)
+- <Code color="yellow">Yellow</Code> (radix amber)
+- <Code color="orange">Orange</Code> (radix orange)
+- <Code color="red">Red</Code> (radix tomato)
+  
+<DocLink href="/styles/default-colors.css">See theme.default.css</DocLink>
+
+### Usage
+Nothing to do. 
+The default color palettes are imported internally by the `<ThemeRootProvider />`. 
+
+
+## Custom color palettes
+
+### Pre-built radix color palettes
+
+To facilitate integration, all standard [radix color](https://www.radix-ui.com/colors) are pre-built and exported as CSS file by the library. 
+Each pre-built CSS files contains definition for the light and dark themes.
+  
+<DocLink href="/styles/colors">
+    See all available pre-built radix color palettes
+</DocLink>
+
+### Custom radix color palettes
+
+You can create custom color palette from the Radix color generator.
+And add the generated CSS into your application following the pre-built color CSS file structure.  
+  
+<DocLink href="https://www.radix-ui.com/colors/custom">Generate custom radix color palette</DocLink>
+
+### Usage
+
+#### 1. Import CSS files
+
+Import pre-built or custom color palettes you want to use.
+
+```svelte title="src/routes/+layout.svelte"
+<script lang="ts">
+    import 'svxui/styles/colors/crimson.css';
+    import 'svxui/styles/colors/cyan.css';
+    import '$lib/custom-color.css';
+</script>
+```
+
+#### 2. Configure color aliases
+
+Declare color aliases on the ThemeRootProvider (for auto generate `--accent-*` CSS variables).
+
+```svelte title="src/routes/+layout.svelte"
+<ThemeRootProvider customColorsAlias={{ 
+    primary: 'crimson', 
+    info: 'cyan', 
+    danger: 'custom-color' 
+}}>
+    {@render children?.()}
+<ThemeRootProvider>
+```
+
+#### 3. Configure typescript
+
+Override `ColorMap` type for typescript code completion.
+
+```typescript title="src/app.d.ts"
+declare global {
+    namespace Svxui {
+        export interface ColorMap {
+            primary: 'crimson';
+            info: 'cyan';
+            danger: 'custom-color';
+        }
+    }
+}
+```
+
+#### 4. Then use it like this
+
+```svelte
+<script lang="ts">
+    import { Input, Text, Button } from 'svxui'
+</script>
+
+<Input color="info" />
+<Text color="danger">Error message</Text>
+<Button color="primary">submit</Button>
+```

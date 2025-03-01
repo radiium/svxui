@@ -1,0 +1,121 @@
+---
+title: Getting Started
+description: Intall SVXUI and start building.
+category: base
+---
+
+<script lang="ts">
+    import { Tabs, Flexbox, Button } from 'svxui';
+    import Code from '$lib/markdown/components/Code.svelte';
+</script>
+
+## Installation
+
+### 1. Install svxui
+
+Install <Code color="current">svxui</Code> with the package manager of your choice.
+
+<Tabs.Root value="pnpm" selectWhenFocused>
+<Tabs.List>
+{#snippet children(list)}
+
+<Flexbox gap="1" class="py-1 mt-4 -mb-3" {...list.attrs}>
+<Tabs.Trigger value="pnpm">
+    {#snippet children(trigger)}
+    <Button variant={trigger.active ? 'soft' : 'clear'} size="3" {...trigger.attrs}>pnpm</Button>
+    {/snippet}
+</Tabs.Trigger>
+<Tabs.Trigger value="npm">
+    {#snippet children(trigger)}
+    <Button variant={trigger.active ? 'soft' : 'clear'} size="3" {...trigger.attrs}>npm</Button>
+    {/snippet}
+</Tabs.Trigger>
+<Tabs.Trigger value="yarn">
+    {#snippet children(trigger)}
+    <Button variant={trigger.active ? 'soft' : 'clear'} size="3" {...trigger.attrs}>yarn</Button>
+    {/snippet}
+</Tabs.Trigger>
+</Flexbox>
+
+{/snippet}
+</Tabs.List>
+<Tabs.Content value="pnpm">
+{#snippet children(content)}
+{#if content.active}
+
+```bash
+pnpm install svxui
+```
+
+{/if}
+{/snippet}
+</Tabs.Content>
+<Tabs.Content value="npm">
+{#snippet children(content)}
+{#if content.active}
+
+```bash
+npm install svxui
+```
+
+{/if}
+{/snippet}
+</Tabs.Content>
+<Tabs.Content value="yarn">
+{#snippet children(content)}
+{#if content.active}
+
+```bash
+yarn add svxui
+```
+
+{/if}
+{/snippet}
+</Tabs.Content>
+</Tabs.Root>
+
+### 2. Import the CSS files
+Import the base style and utilities into the root of your application.
+
+```svelte title="routes/+layout.svelte"
+<script>
+    import 'svxui/tokens.css'; // Required // [!code highlight]
+    import 'svxui/normalize.css'; // Optional // [!code highlight]
+    import 'svxui/utilities.css'; // Optional // [!code highlight]
+</script>
+```
+
+### 3. Add the ThemeRootProvider component
+
+Wrap your application with the `<ThemeRootProvider/>` component.
+
+```svelte title="routes/+layout.svelte"
+<script>
+    import 'svxui/styles.css';
+    import { ThemeRootProvider } from 'svxui'; // [!code highlight]
+
+    let { children } = $props();
+</script>
+
+<ThemeRootProvider> // [!code highlight]
+    {@render children?.()}
+</ThemeRootProvider> // [!code highlight]
+```
+
+### 4. Start building
+
+Your app is ready for use **svxui**!
+
+```svelte title="routes/+page.svelte"
+<script>
+    import { Button } from 'svxui';
+</script>
+
+<Button>Button</Button>
+```
+
+<style>
+    figure {
+        margin-bottom: var(--space-3);
+    }
+</style>

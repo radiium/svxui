@@ -1,0 +1,69 @@
+---
+title: InputRange
+description: A customizable range input wrapper component that enhances the standard HTML range slider with configurable style.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { InputRange } from 'svxui';
+</script>
+
+<InputRange />
+```
+
+<DocApiReference {metadata} />
+
+### Colors
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputRange } from 'svxui';
+</script>
+
+<InputRange color="neutral" />
+<InputRange color="blue" />
+<InputRange color="green" />
+<InputRange color="yellow" />
+<InputRange color="orange" />
+<InputRange color="red" />
+```
+
+### Sizes
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputRange } from 'svxui';
+</script>
+
+<InputRange size="1" />
+<InputRange size="2" />
+<InputRange size="3" />
+```
+
+### FullWidth
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputRange } from 'svxui';
+</script>
+
+<InputRange fullWidth />
+```
+
+### Orientation
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputRange } from 'svxui';
+</script>
+
+<InputRange orientation="vertical"/>
+```
+

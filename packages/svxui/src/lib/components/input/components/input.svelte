@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { clsx } from '../../../utils/clsx.js';
     import { defaultInputProps } from '../props.js';
     import type { InputProps } from '../types.js';
 
@@ -17,14 +16,16 @@
         ...rest
     }: InputProps = $props();
 
-    let cssClass = $derived(
-        clsx(rest.class, 'Input', {
-            [`Input-size-${size}`]: size,
-            [`Input-type-${type}`]: type,
-            [`Input-align-${align}`]: align,
-            'Input-full-width': fullWidth
-        })
-    );
+    let cssClass = $derived([
+        rest.class,
+        'input',
+        {
+            [`input-size-${size}`]: size,
+            [`input-type-${type}`]: type,
+            [`input-align-${align}`]: align,
+            'input-full-width': fullWidth
+        }
+    ]);
 
     const setInputType = (node: HTMLInputElement, value: InputProps['type']) => {
         if (value) {
@@ -56,20 +57,22 @@
     use:setInputType={type}
 />
 
-<style lang="scss">
-    .Input {
-        z-index: 1;
+<style>
+    .input {
         position: relative;
-        appearance: none;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        -webkit-tap-highlight-color: transparent;
         box-sizing: border-box;
         min-width: 0;
         border-width: 0;
         text-overflow: ellipsis;
-        display: block;
+        display: inline-flex;
         font-style: normal;
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        -webkit-tap-highlight-color: transparent;
+        &[type='number'] {
+            -moz-appearance: textfield;
+        }
 
         color: var(--color);
         font-size: var(--input-font-size);
@@ -78,21 +81,31 @@
         letter-spacing: var(--input-letter-spacing);
         text-align: var(--input-text-align);
         line-height: var(--input-font-size);
-        height: var(--input-height);
+        min-height: var(--input-height);
         padding: var(--input-padding);
         background: var(--color-surface);
-        box-shadow: inset 0px 0px 0px 1px var(--input-box-shadow);
+        box-shadow: inset 0px 0px 0px 1px var(--color-box-shadow);
         border-radius: var(--input-border-radius);
 
-        // States
+        /* States */
         &:active,
         &:focus,
-        &:focus-visible {
+        &:focus-visible,
+        &:focus-within {
             outline: 2px solid var(--accent-8);
             outline-offset: -1px;
         }
         &:disabled {
-            @include disabled;
+            cursor: default !important;
+            opacity: 0.5 !important;
+            outline: none !important;
+            pointer-events: none;
+
+            &:focus,
+            &:focus-visible {
+                box-shadow: none !important;
+                outline: none !important;
+            }
         }
         &:readonly,
         &:read-only {
@@ -105,22 +118,22 @@
             background-color: var(--accent-5);
         }
 
-        // Sizes
-        &.Input-size-1 {
+        /* Sizes */
+        &.input-size-1 {
             --input-height: var(--space-5);
             --input-padding: 0 var(--space-3);
             --input-border-radius: max(var(--radius-2), var(--radius-full));
             --input-font-size: var(--font-size-1);
             --input-letter-spacing: var(--letter-spacing-1);
         }
-        &.Input-size-2 {
+        &.input-size-2 {
             --input-height: var(--space-6);
             --input-padding: 0 var(--space-3);
             --input-border-radius: max(var(--radius-3), var(--radius-full));
             --input-font-size: var(--font-size-2);
             --input-letter-spacing: var(--letter-spacing-2);
         }
-        &.Input-size-3 {
+        &.input-size-3 {
             --input-height: var(--space-7);
             --input-padding: 0 var(--space-4);
             --input-border-radius: max(var(--radius-3), var(--radius-full));
@@ -128,23 +141,23 @@
             --input-letter-spacing: var(--letter-spacing-3);
         }
 
-        // Align
-        &.Input-align-start {
+        /* Align */
+        &.input-align-start {
             --input-text-align: start;
         }
-        &.Input-align-center {
+        &.input-align-center {
             --input-text-align: center;
         }
-        &.Input-align-end {
+        &.input-align-end {
             --input-text-align: end;
         }
 
-        // FullWidth
-        &.Input-full-width {
+        /* FullWidth */
+        &.input-full-width {
             width: 100%;
         }
 
-        // Input type search
+        /* Input type search */
         &::-webkit-search-cancel-button {
             --search-cancel-button-size: calc(var(--input-font-size) * 0.7);
             cursor: pointer;
@@ -160,7 +173,7 @@
             margin-left: 4px;
         }
 
-        // Input type date/datetime-local/month/time/week
+        /* Input type date/datetime-local/month/time/week */
         &::-webkit-datetime-edit-ampm-field,
         &::-webkit-datetime-edit-day-field,
         &::-webkit-datetime-edit-hour-field,
@@ -171,7 +184,7 @@
         &::-webkit-datetime-edit-week-field,
         &::-webkit-datetime-edit-year-field,
         &::-webkit-calendar-picker-indicator {
-            &:where(:focus) {
+            &:focus {
                 background-color: var(--accent-5);
                 color: inherit;
                 outline: none;
@@ -181,7 +194,7 @@
         &::-webkit-calendar-picker-indicator {
             cursor: pointer;
 
-            &:where(:focus) {
+            &:focus {
                 outline: 2px solid var(--accent-8);
                 outline-offset: -1px;
                 border-radius: var(--radius-2);
@@ -189,11 +202,11 @@
         }
     }
 
-    :global([data-theme='dark'] .Input::-webkit-search-cancel-button) {
+    :global([data-theme='dark'] .input::-webkit-search-cancel-button) {
         filter: invert(1);
     }
 
-    :global([data-theme='light'] .Input::-webkit-search-cancel-button) {
+    :global([data-theme='light'] .input::-webkit-search-cancel-button) {
         filter: unset;
     }
 </style>

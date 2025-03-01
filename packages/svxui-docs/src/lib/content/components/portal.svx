@@ -1,0 +1,52 @@
+---
+title: Portal
+description: A component for renders content outside the main DOM hierarchy, useful for modals, tooltips, or overlays that need to escape parent styling or positioning constraints.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { Portal } from 'svxui';
+</script>
+
+
+<Portal target="#target-id">
+    Portal content
+</Portal>
+
+<div id="target-id"></div>
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Toggle portal
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Portal, Panel, Button } from 'svxui';
+
+    let disabled
+</script>
+
+<Button onclick={() => (disabled = !disabled)}>Toggle portal</Button>
+
+<Panel variant="outline">
+    Portal source
+
+    <Portal target="#portal-target-id" {disabled}>
+        <Panel>Portal content</Panel>
+    </Portal>
+</Panel>
+
+<Panel variant="outline" id="portal-target-id" >
+    Portal destination
+</Panel>
+```

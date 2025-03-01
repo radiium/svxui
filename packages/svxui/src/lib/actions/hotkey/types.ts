@@ -5,7 +5,7 @@ import type { ActionReturn } from 'svelte/action';
  */
 export type ShortcutModifier = 'alt' | 'ctrl' | 'meta' | 'shift';
 
-export interface ShortcutTrigger {
+export type ShortcutTrigger = {
     /**
      * Enable/disable hot key
      * @default true
@@ -32,9 +32,9 @@ export interface ShortcutTrigger {
      * @default false
      */
     preventDefault?: boolean;
-}
+};
 
-export interface ShortcutEventDetail {
+export type ShortcutEventDetail = {
     /**
      * Current node of svelte action
      */
@@ -47,7 +47,7 @@ export interface ShortcutEventDetail {
      * Original KeyboardEvent
      */
     originalEvent: KeyboardEvent;
-}
+};
 
 export type HotkeyParameters = {
     /**

@@ -1,0 +1,51 @@
+---
+title: Global Style
+description: How to use library style sheets.
+category: base
+---
+
+<script lang="ts">
+    import DocLink from '$lib/markdown/components/DocLink.svelte';
+</script>
+
+## Overview
+
+The library provides 3 CSS files containing the foundations and a set of utility classes.
+
+## 1. Tokens (required)
+
+The required CSS foundations of the library.
+It includes a set of CSS variables to configure:
+- spaces scales
+- border radius
+- typography
+- global colors (background, overlay, etc...)
+
+<DocLink href="/styles/tokens.css">See tokens.css on GitHub</DocLink>
+
+## 2. Normalize (optional)
+
+Contains the [modern-normalize.css](https://github.com/sindresorhus/modern-normalize) library. 
+A set of CSS rules for normalize browsers default styles.  
+
+<DocLink href="/styles/normalize.css">See normalize.css on GitHub</DocLink>
+
+## 3. Utilities (optional)
+
+A set of utility CSS classes (margin, padding, size, gap, etc...).
+
+<DocLink href="/styles/utilities.css">See utilities.css on GitHub</DocLink>
+
+## Usage
+
+Import the css files to the root of your application.
+
+```svelte
+<script>
+    import 'svxui/tokens.css'; // Required
+    import 'svxui/normalize.css'; // Optional
+    import 'svxui/utilities.css'; // Optional
+</script>
+``` 
+
+

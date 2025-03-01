@@ -1,7 +1,10 @@
-import type { TextUnderlines } from '$lib/shared.types.js';
-import type { TextAnchorProps, TextBaseProps } from '../text/types.js';
+import type { TextProps } from '../text/types.js';
 
-export type LinkProps = Omit<TextAnchorProps, 'as'> &
-    TextBaseProps & {
-        underline?: (typeof TextUnderlines)[number];
-    };
+export type TextUnderline = 'auto' | 'always' | 'hover' | 'none';
+
+export type LinkProps = TextProps & {
+    /**
+     * Text decoration underline
+     */
+    underline?: TextUnderline;
+};

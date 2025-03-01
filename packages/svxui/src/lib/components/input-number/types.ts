@@ -1,19 +1,64 @@
-import type { Aligns, Colors, Radius, Sizes1To3, Variants } from '$lib/shared.types.js';
+import type { Align, Color, Radius } from '$lib/shared.types.js';
 import type { InputGroupProps } from '../input-group/types.js';
 
-export type InputNumberProps = InputGroupProps & {
+export type InputNumberVariant = 'solid' | 'soft' | 'outline' | 'clear';
+export type InputNumberSize = '1' | '2' | '3';
+
+export type InputNumberProps = Omit<InputGroupProps, 'elementRef' | 'color' | 'children'> & {
+    /**
+     * Rendered DOM element
+     */
     elementRef?: HTMLInputElement;
-    color?: (typeof Colors)[number];
-    size?: (typeof Sizes1To3)[number];
-    radius?: (typeof Radius)[number];
-    variant?: (typeof Variants)[number];
-    align?: (typeof Aligns)[number];
-    value?: number;
-    step?: number;
-    min?: number;
-    max?: number;
+    /**
+     * InputNumber color
+     */
+    color?: Color;
+    /**
+     * InputNumbersize
+     */
+    size?: InputNumberSize;
+    /**
+     * InputNumberradius
+     */
+    radius?: Radius;
+    /**
+     * InputNumber variant
+     */
+    variant?: InputNumberVariant;
+    /**
+     * Text align
+     */
+    align?: Align;
+    /**
+     * Input value
+     */
+    value?: number | undefined | null;
+    /**
+     * Increment step
+     */
+    step?: number | undefined | null;
+    /**
+     * Min value
+     */
+    min?: number | undefined | null;
+    /**
+     * Max value
+     */
+    max?: number | undefined | null;
+    /**
+     * InputNumber full width
+     */
     fullWidth?: boolean;
+    /**
+     * Disabled state
+     */
     disabled?: boolean;
+    /**
+     * Required state
+     */
     required?: boolean;
+    /**
+     * readonly
+     */
     readonly?: boolean;
 };

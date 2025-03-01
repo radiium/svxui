@@ -1,65 +1,82 @@
-import type { WrapValue } from '$lib/utils/wrap.svelte.js';
+import type { Orientation } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 
 /**
- * State/Context
+ * Common
  */
 
-export type AccordionValue = string | string[] | undefined;
-export type AccordionAttrs = Record<string, string | boolean | number | undefined>;
+export type AccordionValue = string | number | null | undefined;
+export type AccordionSelectionValue = string[] | number[] | string | number | null | undefined;
+export type AccordionSelectionValueChange = (newValue: AccordionSelectionValue) => void;
+export type AccordionHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
-export type AccordionStateProps = {
-    value: WrapValue<string>;
-    disabled: WrapValue<boolean | undefined>;
+/**
+ * Props AccordionRoot
+ */
+
+export type AccordionRootSnippetProps = {
+    readonly attrs: Record<string, unknown>;
 };
 
-export type AccordionState = {
-    value: Readonly<string>;
-    disabled: Readonly<boolean | undefined>;
-    active: Readonly<boolean>;
-    attrsTrigger: Readonly<AccordionAttrs>;
-    attrsContent: Readonly<AccordionAttrs>;
-    setActive: (active: boolean) => void;
-};
-
-export type AccordionGroupStateProps = {
-    value: WrapValue<AccordionValue>;
-    multi: WrapValue<boolean | undefined>;
-    disabled: WrapValue<boolean | undefined>;
-};
-
-export type AccordionGroupState = {
-    registerItem: (item: AccordionState) => void;
-    unregisterItem: (item: AccordionState) => void;
-    toggleItem: (item: AccordionState) => void;
+export type AccordionRootProps = {
+    /**
+     * Current accordion selection. Single value when multiple is false and Array is multiple is true,
+     */
+    value?: AccordionSelectionValue;
+    /**
+     * Callback when value change
+     */
+    onValueChange?: AccordionSelectionValueChange;
+    /**
+     * Can toggle single or multiple Accordion Item
+     */
+    multiple?: boolean;
+    /**
+     * Disable all Accordion Item
+     */
+    disabled?: boolean;
+    /**
+     * Loop when navigating with the keyboard
+     */
+    loop?: boolean;
+    /**
+     * Accordion orientation
+     */
+    orientation?: Orientation;
+    /**
+     * Accordion Root content to render
+     */
+    children?: Snippet<[AccordionRootSnippetProps]>;
 };
 
 /**
- * AccordionGroup
+ * Props AccordionItem
  */
 
-export type AccordionGroupProps = {
-    value?: string | string[] | undefined;
-    onValueChange?: (value: string | string[] | undefined) => void;
-    multi?: boolean;
-    disabled?: boolean;
-    children?: Snippet;
+export type AccordionItemSnippetProps = {
+    readonly expanded: boolean;
+    readonly disabled: boolean;
+    readonly itemAttrs: Record<string, unknown>;
+    readonly headingAttrs: Record<string, unknown>;
+    readonly triggerAttrs: Record<string, unknown>;
+    readonly contentAttrs: Record<string, unknown>;
 };
 
-/**
- * Accordion
- */
-
-export type AccordionSnippetProps = {
-    expanded: boolean;
-    attrs: Record<string, Readonly<string | boolean | number | undefined>>;
-    toggle: () => void;
-};
-
-export type AccordionProps = {
-    value: string;
-    expanded?: boolean;
+export type AccordionItemProps = {
+    /**
+     * Unique Accordion Item identifier
+     */
+    value: AccordionValue;
+    /**
+     * Disable Accordion Item
+     */
     disabled?: boolean;
-    trigger?: Snippet<[AccordionSnippetProps]>;
-    children?: Snippet<[AccordionSnippetProps]>;
+    /**
+     * Heading level for aria-level attribut
+     */
+    headingLevel?: AccordionHeadingLevel;
+    /**
+     * Accordion Item content to render
+     */
+    children?: Snippet<[AccordionItemSnippetProps]>;
 };

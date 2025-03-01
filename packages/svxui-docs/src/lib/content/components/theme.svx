@@ -1,0 +1,51 @@
+---
+title: Theme
+description: Theme provider component. The entry point of svxui.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+## Examples
+
+
+### ThemeChildProvider
+
+Theme childProvider allow to override root theme
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { ThemeChildProvider, Panel, Flexbox, Text, InputGroup, Input, Button } from 'svxui';
+</script>
+
+{#snippet sample(strategy: string)}
+    <Flexbox gap="3" direction="column">
+        <Text>{strategy} theme</Text>
+        <InputGroup>
+            <Input placeholder="" />
+            <Button variant="soft">button</Button>
+        </InputGroup>
+    </Flexbox>
+{/snippet}
+
+<ThemeChildProvider class="p-9" strategy="dark" radius="full" color="green" hasBackground="false">
+    <Panel variant="soft" size="9">
+        <Flexbox gap="9" direction="column">
+            {@render sample?.('Dark')}
+
+            <ThemeChildProvider strategy="light" radius="none" color="red" hasBackground="false">
+                <Panel variant="soft" size="9">
+                    {@render sample?.('Light')}
+                </Panel>
+            </ThemeChildProvider>
+        </Flexbox>
+    </Panel>
+
+</ThemeChildProvider>
+```
+
+<DocApiReference {metadata} />

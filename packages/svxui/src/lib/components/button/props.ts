@@ -1,17 +1,35 @@
-import { AlignCenter, ColorGray, Size2, VariantSolid } from '$lib/shared.types.js';
-import type { ButtonProps, ButtonUnstyledProps } from './types.js';
+import {
+    alignOptions,
+    booleanOptions,
+    colorOptions,
+    radiusOptions,
+    textTransformOptions,
+    type PropsOptions
+} from '$lib/shared.options.js';
+import type { ButtonProps, ButtonSize, ButtonUnstyledProps, ButtonVariant } from './types.js';
 
 export const defaultButtonProps: ButtonProps = {
-    color: ColorGray,
-    size: Size2,
+    color: 'neutral',
+    size: '2',
     radius: undefined,
-    variant: VariantSolid,
+    variant: 'solid',
     transform: undefined,
-    align: AlignCenter,
-    active: false,
-    iconOnly: false,
-    fullWidth: false,
-    disabled: false
+    align: 'center',
+    active: undefined,
+    iconOnly: undefined,
+    fullWidth: undefined
 };
+export const buttonOptions = {
+    color: colorOptions,
+    size: ['1', '2', '3', '4'] satisfies ButtonSize[],
+    radius: radiusOptions,
+    variant: ['solid', 'soft', 'outline'] satisfies ButtonVariant[],
+    transform: textTransformOptions,
+    align: alignOptions,
+    disabled: booleanOptions,
+    active: booleanOptions,
+    iconOnly: booleanOptions,
+    fullWidth: booleanOptions
+} as const satisfies PropsOptions<ButtonProps>;
 
 export const defaultButtonUnstyledProps: ButtonUnstyledProps = {};

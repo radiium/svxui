@@ -1,0 +1,70 @@
+---
+title: Textarea
+description: A wrapper component arround native HTML textarea. Captures multi-line user input.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Textarea } from 'svxui';
+</script>
+
+<Textarea />
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Colors
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Textarea } from 'svxui';
+</script>
+
+<Textarea color="neutral" value="neutral" />
+<Textarea color="blue" value="blue" />
+<Textarea color="green" value="green" />
+<Textarea color="yellow"  value="yellow" />
+<Textarea color="orange" value="orange" />
+<Textarea color="red" value="red" />
+```
+
+### Sizes
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Textarea } from 'svxui';
+</script>
+
+<Textarea size="1" value="size 1" />
+<Textarea size="2" value="size 2" />
+<Textarea size="3" value="size 3" />
+```
+
+### FullWidth
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Textarea } from 'svxui';
+</script>
+
+<Textarea fullWidth />
+```
+
+### Resizable
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Textarea } from 'svxui';
+</script>
+
+<Textarea resizable />
+```

@@ -1,0 +1,118 @@
+---
+title: Tabs
+description: A rendeless component for organize content into sections. Switch between views by clicking tab trigger. Supports active state, dynamic content, and keyboard navigation and more.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Tabs } from 'svxui';
+</script>
+
+<Tabs.Root>
+    {#snippet children(root)}
+        <div {...root.attrs}>
+            <!-- Tabs list -->
+            <Tabs.List>
+                {#snippet children(list)}
+                    <div {...list.attrs}>
+                        <!-- Tabs trigger -->
+                        <Tabs.Trigger value="tab-1">
+                            {#snippet children(trigger)}
+                                <button {...trigger.attrs}>tab-1</button>
+                            {/snippet}
+                        </Tabs.Trigger>
+
+                        <!-- Tabs trigger -->
+                        <Tabs.Trigger value="tab-2">
+                            {#snippet children(trigger)}
+                                <button {...trigger.attrs}>tab-2</button>
+                            {/snippet}
+                        </Tabs.Trigger>
+                    </div>
+                {/snippet}
+            </Tabs.List>
+
+            <!-- Tabs content -->
+            <Tabs.Content value="tab-1">
+                {#snippet children(content)}
+                    {#if content.active}
+                        <div {...content.attrs}>tab-1 content</div>
+                    {/if}
+                {/snippet}
+            </Tabs.Content>
+
+            <!-- Tabs content -->
+            <Tabs.Content value="tab-2">
+                {#snippet children(content)}
+                    {#if content.active}
+                        <div {...content.attrs}>tab-2 content</div>
+                    {/if}
+                {/snippet}
+            </Tabs.Content>
+        </div>
+    {/snippet}
+</Tabs.Root>
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Advanced layout
+```svelte example toggleableCode
+<script lang="ts">
+    import { Tabs } from 'svxui';
+</script>
+
+<Tabs.Root>
+    {#snippet children(root)}
+        <div {...root.attrs}>
+            <!-- Tabs list -->
+            <Tabs.List>
+                {#snippet children(list)}
+                    <div {...list.attrs}>
+                        <!-- Tabs trigger -->
+                        <Tabs.Trigger value="tab-1">
+                            {#snippet children(trigger)}
+                                <button {...trigger.attrs}>tab-1</button>
+                            {/snippet}
+                        </Tabs.Trigger>
+
+                        <!-- Tabs trigger -->
+                        <Tabs.Trigger value="tab-2">
+                            {#snippet children(trigger)}
+                                <button {...trigger.attrs}>tab-2</button>
+                            {/snippet}
+                        </Tabs.Trigger>
+                    </div>
+                {/snippet}
+            </Tabs.List>
+
+            <!-- Tabs content -->
+            <Tabs.Content value="tab-1">
+                {#snippet children(content)}
+                    {#if content.active}
+                        <div {...content.attrs}>tab-1 content</div>
+                    {/if}
+                {/snippet}
+            </Tabs.Content>
+
+            <!-- Tabs content -->
+            <Tabs.Content value="tab-2">
+                {#snippet children(content)}
+                    {#if content.active}
+                        <div {...content.attrs}>tab-2 content</div>
+                    {/if}
+                {/snippet}
+            </Tabs.Content>
+        </div>
+    {/snippet}
+</Tabs.Root>
+```

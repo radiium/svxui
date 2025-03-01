@@ -1,22 +1,64 @@
-import type { Aligns, Colors, Radius, Sizes1To4, Transforms, Variants } from '$lib/shared.types.js';
+import type { Align, Color, Radius, TextTransform } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 import type { HTMLButtonAttributes } from 'svelte/elements';
 
+export type ButtonSize = '1' | '2' | '3' | '4';
+export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'clear';
+
 export type ButtonProps = HTMLButtonAttributes & {
+    /**
+     * Rendered DOM element
+     */
     elementRef?: HTMLButtonElement;
-    color?: (typeof Colors)[number];
-    size?: (typeof Sizes1To4)[number];
-    variant?: (typeof Variants)[number];
-    radius?: (typeof Radius)[number];
-    transform?: (typeof Transforms)[number];
-    align?: (typeof Aligns)[number];
+    /**
+     * Button color
+     */
+    color?: Color;
+    /**
+     * Button size
+     */
+    size?: ButtonSize;
+    /**
+     * Button variant
+     */
+    variant?: ButtonVariant;
+    /**
+     * Button radius
+     */
+    radius?: Radius;
+    /**
+     * Text transform
+     */
+    transform?: TextTransform;
+    /**
+     * Text Align
+     */
+    align?: Align;
+    /**
+     * Button active state
+     */
     active?: boolean;
+    /**
+     * Button icon only
+     */
     iconOnly?: boolean;
+    /**
+     * Button full width
+     */
     fullWidth?: boolean;
-    disabled?: boolean;
-    children?: Snippet;
+    /**
+     * Button content to render
+     */
+    children?: Snippet<[void]>;
 };
 
-export type ButtonIconProps = Omit<ButtonProps, 'iconOnly'>;
-
-export type ButtonUnstyledProps = HTMLButtonAttributes & Pick<ButtonProps, 'elementRef'>;
+export type ButtonUnstyledProps = HTMLButtonAttributes & {
+    /**
+     * Rendered DOM element
+     */
+    elementRef?: HTMLButtonElement;
+    /**
+     * Button content to render
+     */
+    children?: Snippet<[void]>;
+};

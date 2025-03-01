@@ -1,0 +1,74 @@
+---
+title: Badge
+description: A component displays small labels, counters, or status indicators in a compact, visually distinct format.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+
+```svelte example
+<script lang="ts">
+    import { Badge } from 'svxui';
+</script>
+
+<Badge>badge</Badge>
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Colors
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Badge } from 'svxui';
+</script>
+
+<Badge color="neutral">neutral</Badge>
+<Badge color="blue">blue</Badge>
+<Badge color="green">green</Badge>
+<Badge color="yellow">yellow</Badge>
+<Badge color="orange">orange</Badge>
+<Badge color="red">red</Badge>
+```
+
+### Variants
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Badge } from 'svxui';
+</script>
+
+<Badge variant="solid">solid</Badge>
+<Badge variant="soft">soft</Badge>
+<Badge variant="outline">outline</Badge>
+```
+
+### Sizes
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Badge } from 'svxui';
+</script>
+
+<Badge size="1">size 1</Badge>
+<Badge size="2">size 2</Badge>
+<Badge size="3">size 3</Badge>
+```
+
+### States
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Badge } from 'svxui';
+</script>
+
+<Badge>default</Badge>
+<Badge disabled>disabled</Badge>
+```

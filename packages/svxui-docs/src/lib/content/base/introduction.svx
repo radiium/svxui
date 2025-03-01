@@ -1,0 +1,55 @@
+---
+title: Introduction
+description: An alternative Svelte 5 component library
+category: base
+---
+
+<script lang="ts">
+    import { Text, Separator } from 'svxui';
+    import Code from '$lib/markdown/components/Code.svelte';
+</script>
+
+## Overview
+
+This Svelte 5 component library provides a collection of over 20 UI components built with TypeScript.
+Designed as an alternative to tailwindcss-based solutions, the library offers developers a different approach to building modern interfaces.
+The collection includes UI components inspired by [@radix-ui/themes](https://www.radix-ui.com), alongside specialized Svelte actions and practical utility functions/classes.
+By focusing on creating a cohesive system with strong TypeScript support, the library aims to give developers essential building blocks for efficient interface development while maintaining design consistency and flexibility.
+
+## Color System
+
+The library implements a thoughtfully designed color system leveraging [@radix-ui/colors](https://www.radix-ui.com/colors) palettes. 
+
+Default color aliases include:
+
+- <Code color="neutral">Neutral</Code>: For text, backgrounds, and subtle UI elements
+- <Code color="blue">Blue</Code>: For primary actions and interactive elements
+- <Code color="green">Green</Code>: For success states and confirmations
+- <Code color="yellow">Yellow</Code>: For warnings and attention indicators
+- <Code color="orange">Orange</Code>: For secondary cautions and notifications
+- <Code color="red">Red</Code>: For errors and destructive actions
+
+The system offers extensive flexibility, allowing developers to incorporate additional color aliases from the full range of Radix palettes to match specific design requirements.
+
+## Theming System
+
+The library include theming system with support for light, dark, and system preference modes. 
+This implementation draws inspiration from Svelte 5 [mode-watcher](https://mode-watcher.sveco.dev/) library.
+
+Key features of the theming system include:
+
+- Full compatibility with server-side rendering (SSR) and static site generation (SSG)
+- Prevention of Flash Of Unstyled Content (FOUC) during theme transitions
+- Active monitoring of system preference changes to maintain synchronization
+- Smooth visual transitions when switching between themes
+
+## Developer Experience
+
+Built specifically for Svelte 5, the library offers a straightforward development experience with TypeScript support. 
+Developers will find helpful autocompletion, type checking, and inline documentation to make implementation easier.
+
+## Extensibility
+
+While providing a comprehensive set of pre-designed components, the library remains highly extensible. 
+Developers can customize existing components or build upon them to create specialized variants that match specific design requirements.
+

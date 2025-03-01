@@ -1,13 +1,14 @@
-import { AlignEnd, ColorGray, Size2, VariantClear } from '$lib/shared.types.js';
-import type { InputNumberProps } from './types.js';
+import { type PropsOptions, booleanOptions, colorOptions, radiusOptions } from '$lib/shared.options.js';
+import type { Align } from '$lib/shared.types.js';
+import type { InputNumberProps, InputNumberSize, InputNumberVariant } from './types.js';
 
 export const defaultInputNumberProps: InputNumberProps = {
     elementRef: undefined,
-    color: ColorGray,
-    size: Size2,
+    color: 'neutral',
+    size: '2',
     radius: undefined,
-    variant: VariantClear,
-    align: AlignEnd,
+    variant: 'clear',
+    align: 'end',
     value: undefined,
     step: 1,
     min: undefined,
@@ -17,3 +18,14 @@ export const defaultInputNumberProps: InputNumberProps = {
     required: false,
     readonly: undefined
 };
+export const inputNumberOptions = {
+    color: colorOptions,
+    size: ['1', '2', '3'] satisfies InputNumberSize[],
+    variant: ['clear', 'solid', 'soft', 'outline'] satisfies InputNumberVariant[],
+    align: ['start', 'center', 'end'] satisfies Align[],
+    radius: radiusOptions,
+    fullWidth: booleanOptions,
+    disabled: booleanOptions,
+    required: booleanOptions,
+    readonly: booleanOptions
+} as const satisfies PropsOptions<InputNumberProps>;

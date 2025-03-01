@@ -1,0 +1,38 @@
+/* Accent color: mauve */
+
+[data-color='mauve'] {
+    --accent-1: var(--mauve-1);
+    --accent-2: var(--mauve-2);
+    --accent-3: var(--mauve-3);
+    --accent-4: var(--mauve-4);
+    --accent-5: var(--mauve-5);
+    --accent-6: var(--mauve-6);
+    --accent-7: var(--mauve-7);
+    --accent-8: var(--mauve-8);
+    --accent-9: var(--mauve-9);
+    --accent-10: var(--mauve-10);
+    --accent-11: var(--mauve-11);
+    --accent-12: var(--mauve-12);
+
+    --accent-a1: var(--mauve-a1);
+    --accent-a2: var(--mauve-a2);
+    --accent-a3: var(--mauve-a3);
+    --accent-a4: var(--mauve-a4);
+    --accent-a5: var(--mauve-a5);
+    --accent-a6: var(--mauve-a6);
+    --accent-a7: var(--mauve-a7);
+    --accent-a8: var(--mauve-a8);
+    --accent-a9: var(--mauve-a9);
+    --accent-a10: var(--mauve-a10);
+    --accent-a11: var(--mauve-a11);
+    --accent-a12: var(--mauve-a12);
+
+    --accent-contrast: var(--mauve-contrast);
+    --accent-surface: var(--mauve-surface);
+    --accent-indicator: var(--mauve-indicator);
+    --accent-track: var(--mauve-track);
+
+    --accent-box-shadow: 0px 0px 0px 1px var(--accent-5);
+    --accent-box-shadow-hover: 0px 0px 0px 1px var(--accent-8);
+    --accent-box-shadow-focus: 0px 0px 0px 1px var(--accent-8);
+}

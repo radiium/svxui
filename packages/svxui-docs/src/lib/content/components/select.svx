@@ -1,0 +1,128 @@
+---
+title: Select
+description: A wrapper component arround native HTML select.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { Select } from 'svxui';
+
+    const options = ['option1', 'option2', 'option3', 'option4', 'option5']
+</script>
+
+<Select {options} />
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Colors
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Select } from 'svxui';
+
+    const options = ['option1', 'option2', 'option3', 'option4', 'option5']
+</script>
+
+<Select {options} color="neutral" />
+<Select {options} color="blue" />
+<Select {options} color="green" />
+<Select {options} color="yellow" />
+<Select {options} color="orange" />
+<Select {options} color="red" />
+```
+
+### Sizes
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Select } from 'svxui';
+
+    const options = ['option1', 'option2', 'option3', 'option4', 'option5']
+</script>
+
+<Select {options} size="1" /> 
+<Select {options} size="2" /> 
+<Select {options} size="3" /> 
+```
+
+### Sizes + multiple
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Select } from 'svxui';
+
+    const options = ['option1', 'option2', 'option3', 'option4', 'option5']
+</script>
+
+<Select {options} size="1" multiple /> 
+<Select {options} size="2" multiple /> 
+<Select {options} size="3" multiple /> 
+```
+
+### FullWidth
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Select } from 'svxui';
+
+    const options = ['option1', 'option2', 'option3', 'option4', 'option5']
+</script>
+
+<Select {options} fullWidth/> 
+```
+
+### FullWidth + multiple
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Select } from 'svxui';
+
+    const options = ['option1', 'option2', 'option3', 'option4', 'option5']
+</script>
+
+<Select {options} fullWidth multiple/> 
+```
+
+
+
+### Custom options
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Select } from 'svxui';
+
+    const options = [
+        {
+            id: 1,
+            data: 'item 1',
+            disabled: false
+        },
+        {
+            id: 2,
+            data: 'item 2',
+            disabled: false
+        },
+        {
+            id: 3,
+            data: 'item 3',
+            disabled: true
+        }
+    ];
+</script>
+
+<Select 
+    {options}
+    resolveLabel={(option) => (option.data)}
+    resolveValue={(option) => (option.id)}
+/> 
+```

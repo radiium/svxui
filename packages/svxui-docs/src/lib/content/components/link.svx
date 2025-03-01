@@ -1,0 +1,26 @@
+---
+title: Link
+description: A simple customizable link component.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+## Examples
+
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Link } from 'svxui';
+</script>
+
+<Link href="#">
+    Link content
+</Link>
+```
+
+<DocApiReference {metadata} />

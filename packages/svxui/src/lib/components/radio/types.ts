@@ -1,11 +1,19 @@
-import type { Colors, Sizes1To3 } from '$lib/shared.types.js';
+import type { Color } from '$lib/shared.types.js';
 import type { HTMLInputAttributes } from 'svelte/elements';
 
-export type RadioProps = Omit<HTMLInputAttributes, 'size'> & {
+export type RadioSize = '1' | '2' | '3';
+
+export type RadioProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'> & {
+    /**
+     * Rendered DOM element
+     */
     elementRef?: HTMLInputElement;
-    color?: (typeof Colors)[number];
-    size?: (typeof Sizes1To3)[number];
-    group?: string | number;
-    value?: string | number;
-    disabled?: boolean;
+    /**
+     * Radio color
+     */
+    color?: Color;
+    /**
+     * Radio size
+     */
+    size?: RadioSize;
 };

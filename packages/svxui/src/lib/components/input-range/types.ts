@@ -1,11 +1,31 @@
-import type { Colors, Radius, Sizes1To3 } from '$lib/shared.types.js';
+import type { Color, Orientation, Radius } from '$lib/shared.types.js';
 import type { HTMLInputAttributes } from 'svelte/elements';
 
-export type InputRangeProps = Omit<HTMLInputAttributes, 'size'> & {
+export type InputRangeSize = '1' | '2' | '3';
+
+export type InputRangeProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'> & {
+    /**
+     * Rendered DOM element
+     */
     elementRef?: HTMLInputElement;
-    color?: (typeof Colors)[number];
-    size?: (typeof Sizes1To3)[number];
-    radius?: (typeof Radius)[number];
-    value?: string | number;
+    /**
+     * InputRange color
+     */
+    color?: Color;
+    /**
+     * InputRange size
+     */
+    size?: InputRangeSize;
+    /**
+     * InputRange radius
+     */
+    radius?: Radius;
+    /**
+     * InputRange full width
+     */
     fullWidth?: boolean;
+    /**
+     * InputRange orientation
+     */
+    orientation?: Orientation;
 };

@@ -1,0 +1,24 @@
+---
+title: InputNumber
+description: A customizable Svelte number input component with integrated increment/decrement buttons. Supports step/min/max configuration, and styling options.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+## Examples
+
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { InputNumber } from 'svxui';
+</script>
+
+<InputNumber />
+```
+
+<DocApiReference {metadata} />

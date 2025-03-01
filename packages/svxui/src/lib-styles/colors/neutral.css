@@ -1,0 +1,81 @@
+/*****************************************************************************/
+/*                                                                           */
+/* Color: neutral                                               */
+/*                                                                           */
+/* Credits: Radix colors                                                     */
+/* https://www.radix-ui.com/                                                 */
+/*                                                                           */
+/*****************************************************************************/
+
+/* neutral light */
+
+:root,
+.light,
+.light-theme {
+    --neutral-1: #f9f9f9;
+    --neutral-2: #f5f5f5;
+    --neutral-3: #ececec;
+    --neutral-4: #e4e4e4;
+    --neutral-5: #ddd;
+    --neutral-6: #d5d5d5;
+    --neutral-7: #c9c9c9;
+    --neutral-8: #b7b7b7;
+    --neutral-9: #121212;
+    --neutral-10: #2b2b2b;
+    --neutral-11: #5f5f5f;
+    --neutral-12: #1f1f1f;
+
+    --neutral-a1: #00000003;
+    --neutral-a2: #00000007;
+    --neutral-a3: #00000010;
+    --neutral-a4: #00000018;
+    --neutral-a5: #0000001f;
+    --neutral-a6: #00000027;
+    --neutral-a7: #00000034;
+    --neutral-a8: #00000046;
+    --neutral-a9: #000000ed;
+    --neutral-a10: #000000d3;
+    --neutral-a11: #0000009f;
+    --neutral-a12: #000000e0;
+
+    --neutral-contrast: #fff;
+    --neutral-surface: #f4f4f4cc;
+    --neutral-indicator: var(--neutral-9);
+    --neutral-track: var(--neutral-9);
+}
+
+/* neutral light */
+
+.dark,
+.dark-theme {
+    --neutral-1: #111;
+    --neutral-2: #191919;
+    --neutral-3: #222;
+    --neutral-4: #292929;
+    --neutral-5: #313131;
+    --neutral-6: #3b3b3b;
+    --neutral-7: #494949;
+    --neutral-8: #616161;
+    --neutral-9: #e6e6e6;
+    --neutral-10: #dcdcdc;
+    --neutral-11: #b5b5b5;
+    --neutral-12: #ebebeb;
+
+    --neutral-a1: #00000000;
+    --neutral-a2: #ffffff09;
+    --neutral-a3: #ffffff12;
+    --neutral-a4: #ffffff1a;
+    --neutral-a5: #ffffff22;
+    --neutral-a6: #ffffff2d;
+    --neutral-a7: #ffffff3c;
+    --neutral-a8: #ffffff56;
+    --neutral-a9: #ffffffe4;
+    --neutral-a10: #ffffffda;
+    --neutral-a11: #ffffffb0;
+    --neutral-a12: #ffffffea;
+
+    --neutral-contrast: #311921;
+    --neutral-surface: #21212180;
+    --neutral-indicator: var(--neutral-9);
+    --neutral-track: var(--neutral-9);
+}

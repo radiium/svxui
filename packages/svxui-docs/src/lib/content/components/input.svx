@@ -1,0 +1,94 @@
+---
+title: Input
+description: An input component with configurable style.
+category: components
+---
+
+<script lang="ts">
+    import DocApiReference from '$lib/markdown/components/DocApiReference.svelte';
+
+    export let metadata;
+</script>
+
+```svelte example
+<script lang="ts">
+    import { Input } from 'svxui';
+</script>
+
+<Input />
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Colors
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Input } from 'svxui';
+</script>
+
+<Input color="neutral" value="neutral" />
+<Input color="blue" value="blue" />
+<Input color="green" value="green" />
+<Input color="yellow"  value="yellow" />
+<Input color="orange" value="orange" />
+<Input color="red" value="red" />
+```
+
+### Sizes
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Input } from 'svxui';
+</script>
+
+<Input size="1" value="size 1" />
+<Input size="2" value="size 2" />
+<Input size="3" value="size 3" />
+```
+
+### Alignments
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Input } from 'svxui';
+</script>
+
+<Input align="start" value="start" />
+<Input align="center" value="center" />
+<Input align="end" value="end" />
+```
+
+### FullWidth
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Input } from 'svxui';
+</script>
+
+<Input fullWidth />
+```
+
+### Types
+
+```svelte example toggleableCode
+<script lang="ts">
+    import { Input } from 'svxui';
+</script>
+
+<Input type="text" value="type text"/>
+<Input type="number" value={0}/>
+<Input type="search" value="type search"/>
+<Input type="password" value="type password"/>
+<Input type="email" value="type email"/>
+<Input type="tel" value="type tel"/>
+<Input type="url" value="type url"/>
+<Input type="date" value="type date"/>
+<Input type="time" value="type time" />
+<Input type="datetime-local" value="type datetime-local" />
+<Input type="month" value="type month" />
+<Input type="week" value="type week" />
+```
+

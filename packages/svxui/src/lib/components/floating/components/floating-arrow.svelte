@@ -1,9 +1,6 @@
 <script lang="ts">
-    import { styleObjectToString } from '$lib/hooks/floating/index.js';
-    import { VariantOutline, VariantSurface } from '$lib/shared.types.js';
-    import { clsx } from '$lib/utils/clsx.js';
-    import { generateId } from '$lib/utils/id.js';
-    import { platform } from '@floating-ui/dom';
+    import { styleObjectToString } from '$lib/utils/floating/index.js';
+    import { useId } from '$lib/utils/use-id.js';
     import { defaultFloatingArrowProps } from '../props.js';
     import type { FloatingArrowProps } from '../types.js';
 
@@ -25,16 +22,15 @@
         return { side, arrow: { x, y } };
     });
 
-    const clipPathId = generateId();
+    const clipPathId = useId();
 
-    let isRTL = $derived(elementRef && platform.isRTL(elementRef));
+    // let isRTL = $derived(elementRef && platform.isRTL(elementRef));
     let isVerticalSide = $derived(side === 'top' || side === 'bottom');
-    let isSurface = $derived(variant === VariantSurface);
-    let isOutline = $derived(variant === VariantOutline);
+    let isOutline = $derived(variant === 'outline');
 
     // Strokes must be double the border width, this ensures the stroke's width
     // works as you'd expect.
-    const computedStrokeWidth = $derived(isOutline || isSurface ? 2 : 0);
+    const computedStrokeWidth = $derived(isOutline ? 2 : 0);
     const halfStrokeWidth = $derived(computedStrokeWidth / 2);
 
     const svgX = $derived((width / 2) * (tipRadius / -8 + 1));
@@ -51,18 +47,21 @@
             ' Z'
     );
 
-    let cssClass = $derived(
-        clsx(rest.class, 'Floating-arrow', floatingState?.side, {
-            [`Floating-arrow-${variant}`]: variant
-        })
-    );
+    let cssClass = $derived([
+        rest.class,
+        'floating-arrow',
+        floatingState?.side,
+        {
+            [`floating-arrow-${variant}`]: variant
+        }
+    ]);
 
     let style = $derived.by(() => {
         return styleObjectToString({
             left: `${arrowX}`,
             top: `${arrowY}`,
             [side]: isVerticalSide ? '100%' : `calc(100% - ${computedStrokeWidth / 2}px)`,
-            transform: `${rotateTransform} translateY(-1px)`
+            transform: `${rotateTransform} translateY(${isOutline ? '-1px' : '0'})`
         });
     });
 
@@ -92,53 +91,44 @@
     {...rest}
 >
     {#if computedStrokeWidth > 0}
-        <!-- Account for the stroke on the fill path rendered below. -->
         <path
-            class="Floating-arrow-border"
+            class="floating-arrow-border"
             fill="none"
             clip-path={`url(#${clipPathId})`}
             stroke-width={computedStrokeWidth}
             d={dValue}
         />
     {/if}
-    <!--
-        In Firefox, for left/right placements there's a ~0.5px gap where the
-        border can show through. Adding a stroke on the fill removes it.
-    -->
+
     <path d={dValue} />
-    <!-- Assumes the border-width of the floating element matches the stroke. -->
     <clipPath id={clipPathId}>
         <rect x={-halfStrokeWidth} y={halfStrokeWidth} width={width + computedStrokeWidth} height={width} />
     </clipPath>
 </svg>
 
-<style lang="scss">
-    .Floating-arrow {
+<style>
+    .floating-arrow {
         z-index: 10;
         position: absolute;
         pointer-events: none;
         fill: var(--floating-background);
 
         path {
-            &.Floating-arrow-border {
+            &.floating-arrow-border {
                 stroke: var(--floating-border-color);
             }
         }
 
-        // Variants
-        &.Floating-arrow-solid {
+        /* Variants */
+        &.floating-arrow-solid {
             --floating-border-color: transparent;
             --floating-background: var(--accent-5);
         }
-        &.Floating-arrow-soft {
+        &.floating-arrow-soft {
             --floating-border-color: transparent;
             --floating-background: var(--accent-3);
         }
-        &.Floating-arrow-surface {
-            --floating-border-color: var(--accent-6);
-            --floating-background: var(--accent-2);
-        }
-        &.Floating-arrow-outline {
+        &.floating-arrow-outline {
             --floating-border-color: var(--accent-7);
             --floating-background: var(--accent-7);
         }
