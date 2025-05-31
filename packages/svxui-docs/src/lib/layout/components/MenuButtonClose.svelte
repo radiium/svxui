@@ -5,5 +5,5 @@
 </script>
 
 <Button class="p-2" size="2" variant="solid" iconOnly onclick={layout.close}>
-    <XIcon size="1.2rem" />
+    <XIcon />
 </Button>

@@ -32,7 +32,9 @@ By default, the library includes the following color palettes:
 - <Code color="orange">Orange</Code> (radix orange)
 - <Code color="red">Red</Code> (radix tomato)
   
-<DocLink href="/styles/default-colors.css">See theme.default.css</DocLink>
+<DocLink href="/styles/default-colors.css" libFolder>
+    View theme.default.css
+</DocLink>
 
 ### Usage
 Nothing to do. 
@@ -46,8 +48,8 @@ The default color palettes are imported internally by the `<ThemeRootProvider />
 To facilitate integration, all standard [radix color](https://www.radix-ui.com/colors) are pre-built and exported as CSS file by the library. 
 Each pre-built CSS files contains definition for the light and dark themes.
   
-<DocLink href="/styles/colors">
-    See all available pre-built radix color palettes
+<DocLink href="/styles/colors" libFolder>
+    View all available pre-built radix color palettes
 </DocLink>
 
 ### Custom radix color palettes
@@ -55,7 +57,9 @@ Each pre-built CSS files contains definition for the light and dark themes.
 You can create custom color palette from the Radix color generator.
 And add the generated CSS into your application following the pre-built color CSS file structure.  
   
-<DocLink href="https://www.radix-ui.com/colors/custom">Generate custom radix color palette</DocLink>
+<DocLink href="https://www.radix-ui.com/colors/custom">
+    Generate custom radix color palette
+</DocLink>
 
 ### Usage
 

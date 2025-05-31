@@ -24,7 +24,7 @@ category: components
 
 ### Colors
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Separator } from 'svxui';
 </script>
@@ -39,7 +39,7 @@ category: components
 
 ### Sizes
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Separator } from 'svxui';
 </script>
@@ -52,7 +52,7 @@ category: components
 
 ### Orientation
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Separator } from 'svxui';
 </script>
@@ -61,9 +61,9 @@ category: components
 <Separator orientation="vertical" />
 ```
 
-### Sample
+### Separate text
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Separator, Flexbox, Text } from 'svxui';
 </script>
@@ -81,4 +81,26 @@ category: components
         <Text>aliquam</Text>
     </Flexbox>
 </Flexbox>
+```
+
+### Separate panel
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Separator, Panel, Flexbox, Text } from 'svxui';
+</script>
+
+<Panel size="0" variant="outline">
+    <Flexbox direction="column" gap="3">
+        <Flexbox fullWidth class="p-4">
+            <Text align="center">Lorem ipsum dolor sit amet, consectetur</Text>
+        </Flexbox>
+
+        <Separator size="4" />
+
+        <Flexbox fullWidth class="p-4">
+            <Text align="center">Lorem ipsum dolor sit amet, consectetur</Text>
+        </Flexbox>
+    </Flexbox>
+</Panel>
 ```

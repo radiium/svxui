@@ -50,7 +50,8 @@
 {#if frontmatter?.category === 'components'}
     <Link color={themeColor} href={link} target="_blank" class="mt-3 inline-block">
         <Flexbox align="center" gap="1">
-            View source <ArrowSquareOut style="color: var(--neutral-11)" data-color="" />
+            View source
+            <ArrowSquareOut style="color: var(--neutral-11)" data-color="" />
         </Flexbox>
     </Link>
 {/if}

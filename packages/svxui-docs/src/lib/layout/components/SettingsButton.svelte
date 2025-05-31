@@ -35,7 +35,7 @@
 >
     {#snippet trigger()}
         <Button size="2" variant="clear" iconOnly onclick={() => (isOpen = !isOpen)}>
-            <FadersIcon size="1.2rem" />
+            <FadersIcon />
         </Button>
     {/snippet}
 

@@ -39,9 +39,11 @@
     class:is-menu-open={layout.isMenuOpen}
 >
     <!-- Background -->
-    <div class="background">
-        <BackgroundDots />
-    </div>
+    {#if layout.isHomePage}
+        <div class="background">
+            <BackgroundDots />
+        </div>
+    {/if}
 
     <!-- Main content -->
     <main bind:this={mainRef}>

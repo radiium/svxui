@@ -5,5 +5,5 @@
 </script>
 
 <Button class="p-2" size="2" variant="clear" iconOnly onclick={layout.toggle}>
-    <SidebarSimpleIcon size="1.2rem" />
+    <SidebarSimpleIcon />
 </Button>

@@ -28,9 +28,49 @@ category: components
 
 ## Examples
 
+### Sizes
+
+```svelte example
+<script lang="ts">
+    import { Dialog, Button } from 'svxui';
+
+    const isOpenList = $state([false, false, false, false])
+    const sizes = ["1", "2", "3", "4"]
+</script>
+
+{#each sizes as size, i (i)}
+    <Button onclick={() => (isOpenList[i] = true)}>
+        Open size {size}
+    </Button>
+
+    <Dialog bind:isOpen={isOpenList[i]} {size}>Dialog content size {size}</Dialog>
+{/each}
+```
+
+### Fullscreen 
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Flexbox, Button, Dialog } from 'svxui';
+
+    let isOpen = $state(false)
+</script>
+
+<Button onclick={() => (isOpen = true)} >
+    Open dialog full screen
+</Button>
+
+<Dialog bind:isOpen fullScreen>
+    <Flexbox justify="between" align="center" class="w-100">
+        Dialog content full screen
+        <Button onclick={() => (isOpen = false)}>Close</Button>
+    </Flexbox>
+</Dialog>
+```
+
 ### Advanced layout
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Flexbox, Button, Dialog } from 'svxui';
 
@@ -41,7 +81,7 @@ category: components
     Open dialog
 </Button>
 
-<Dialog bind:isOpen maxWidth="300px">
+<Dialog bind:isOpen width="500px" maxWidth="90vw">
     <Flexbox direction="column" gap="3">
         <h2 class="my-0">Dialog title</h2>
         <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt elit mattis sem mollis, sit amet dapibus arcu commodo. Morbi non aliquam sapien. Quisque pretium.</div>

@@ -2,7 +2,6 @@ import { Node, SyntaxKind, ts, Type, TypeFormatFlags } from 'ts-morph';
 import { ComponentTypeArguments, ExtendedMetadata, PropMetadata } from '../../types';
 import { extractJsDocMetadata } from '../../utils/extract-js-doc-metadata';
 import { logger } from '../../utils/logger';
-import { matchesGlob } from 'node:path/posix';
 
 export class ComponentPropsParser {
     public extendeds: ExtendedMetadata[] = [];
@@ -155,18 +154,6 @@ export class ComponentPropsParser {
                 const aliasTypeText = this.#extractAliasTypeText(propTypeNode);
                 const jsDoc = extractJsDocMetadata(valueDeclaration);
 
-                if (this.#getTypeInfos(propTypeNode).isSnippet) {
-                    const customTypeName = propTypeNode
-                        ?.getUnionTypes()
-                        ?.filter((unionType) => !unionType.isUndefined())?.[0]
-                        ?.getTypeArguments()?.[0]
-                        ?.getTypeArguments()?.[0]
-                        ?.getAliasSymbol()
-                        ?.getName();
-
-                    logger.blue('customTypeName', customTypeName);
-                }
-
                 props.push({
                     name: propName,
                     isOptional: prop.isOptional(),
@@ -189,7 +176,10 @@ export class ComponentPropsParser {
         let values: string[] | undefined;
 
         // Check if type is an enum or union
-        if (propTypeNode.isUnion() || typeName.includes('|')) {
+        if (
+            (propTypeNode.isUnion() || typeName.includes('|')) &&
+            !this.#getTypeInfos(propTypeNode).isSvelteElement
+        ) {
             const enumValues = this.#resolveEnumValues(propTypeNode);
             if (enumValues.length > 0) {
                 type = 'union';
@@ -305,8 +295,6 @@ export class ComponentPropsParser {
                 ?.getAliasSymbol()
                 ?.getName();
 
-            logger.grayAlt(`aliasTypeText (Snippet) =>`, customTypeName);
-
             return customTypeName;
         }
 
@@ -318,7 +306,7 @@ export class ComponentPropsParser {
             .filter((value) => value !== undefined);
 
         if (aliasTypeTexts?.length) {
-            logger.grayAlt(`aliasTypeText =>`, aliasTypeTexts);
+            logger.grayAlt(`aliasTypeText found =>`, aliasTypeTexts);
         }
 
         return aliasTypeTexts?.length ? aliasTypeTexts[0] : undefined;

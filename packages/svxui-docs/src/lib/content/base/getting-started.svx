@@ -13,7 +13,7 @@ category: base
 
 ### 1. Install svxui
 
-Install <Code color="current">svxui</Code> with the package manager of your choice.
+Install svxui with the package manager of your choice.
 
 <Tabs.Root value="pnpm" selectWhenFocused>
 <Tabs.List>
@@ -113,9 +113,3 @@ Your app is ready for use **svxui**!
 
 <Button>Button</Button>
 ```
-
-<style>
-    figure {
-        margin-bottom: var(--space-3);
-    }
-</style>

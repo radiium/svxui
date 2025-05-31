@@ -1,18 +1,23 @@
 <script lang="ts">
     import { PUBLIC_LIB_FOLDER } from '$env/static/public';
     import ArrowSquareOut from '$lib/icons/ArrowSquareOut.svelte';
-    import { Button, Link, type LinkProps } from 'svxui';
+    import { Button, Link, useThemeRootContext, type Color, type LinkProps } from 'svxui';
 
     type Props = LinkProps & {
         text?: string;
         href?: string;
+        libFolder?: boolean;
+        themeColor?: boolean;
     };
-    let { children, href, ...restProps }: Props = $props();
+    let { children, href, libFolder, themeColor, ...restProps }: Props = $props();
+
+    const themeRoot = useThemeRootContext();
+    const color = $derived(themeColor ? (themeRoot.color as Color) : 'neutral');
 
     let hrefFull = $derived.by(() => {
-        return href?.startsWith('https://')
-            ? href //
-            : PUBLIC_LIB_FOLDER + href;
+        return libFolder
+            ? PUBLIC_LIB_FOLDER + href //
+            : href; //
     });
 </script>
 
@@ -24,9 +29,10 @@
     tabindex={-1}
     title={hrefFull}
     href={hrefFull}
+    {color}
     {...restProps}
 >
-    <Button variant="outline" size="3">
+    <Button variant="outline" size="3" {color}>
         {@render children?.()}
         <ArrowSquareOut style="color: var(--neutral-11)" data-color="" />
     </Button>

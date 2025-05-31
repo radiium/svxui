@@ -21,20 +21,20 @@ It includes a set of CSS variables to configure:
 - typography
 - global colors (background, overlay, etc...)
 
-<DocLink href="/styles/tokens.css">See tokens.css on GitHub</DocLink>
+<DocLink href="/styles/tokens.css" libFolder>View tokens.css on GitHub</DocLink>
 
 ## 2. Normalize (optional)
 
 Contains the [modern-normalize.css](https://github.com/sindresorhus/modern-normalize) library. 
 A set of CSS rules for normalize browsers default styles.  
 
-<DocLink href="/styles/normalize.css">See normalize.css on GitHub</DocLink>
+<DocLink href="/styles/normalize.css" libFolder>View normalize.css on GitHub</DocLink>
 
 ## 3. Utilities (optional)
 
 A set of utility CSS classes (margin, padding, size, gap, etc...).
 
-<DocLink href="/styles/utilities.css">See utilities.css on GitHub</DocLink>
+<DocLink href="/styles/utilities.css" libFolder>View utilities.css on GitHub</DocLink>
 
 ## Usage
 

@@ -169,7 +169,7 @@
 <style>
     .floating-backdrop {
         position: fixed;
-        z-index: 10000;
+        z-index: 0;
         inset: 0 0 0 0;
         width: 100vw;
         height: 100vh;
@@ -189,7 +189,7 @@
         width: max-content;
         top: 0;
         left: 0;
-        z-index: 10002;
+        z-index: 1;
 
         &[data-state='open'] {
             display: block;

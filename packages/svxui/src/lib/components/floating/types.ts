@@ -72,12 +72,12 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
      */
     portal?: boolean;
     /**
-     * Portal target identifier
+     * Portal target identifier. Only if portal is true
      */
     portalTarget?: string;
     // portal?: Pick<PortalProps, 'target' | 'disabled'>;
     /**
-     * Close floating on backdrop click
+     * Close floating on backdrop click. Only if backdrop is true
      */
     closeOnClickBackdrop?: boolean;
     /**

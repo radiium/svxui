@@ -57,6 +57,7 @@ export class StorableState<T> {
 
     get current(): T {
         this.#subscribe?.();
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         this.#version;
         const root = this.#deserialize(this.#storage?.getItem(this.#key) as string) ?? this.#current;
         const proxies = new WeakMap();

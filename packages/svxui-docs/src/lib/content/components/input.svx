@@ -24,7 +24,7 @@ category: components
 
 ### Colors
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Input } from 'svxui';
 </script>
@@ -39,7 +39,7 @@ category: components
 
 ### Sizes
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Input } from 'svxui';
 </script>
@@ -51,7 +51,7 @@ category: components
 
 ### Alignments
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Input } from 'svxui';
 </script>
@@ -63,7 +63,7 @@ category: components
 
 ### FullWidth
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Input } from 'svxui';
 </script>
@@ -73,7 +73,7 @@ category: components
 
 ### Types
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Input } from 'svxui';
 </script>

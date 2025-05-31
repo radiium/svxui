@@ -10,7 +10,7 @@ category: components
     export let metadata;
 </script>
 
-```svelte example toggleableCode
+```svelte example
 <script lang="ts">
     import { Textarea } from 'svxui';
 </script>
@@ -24,7 +24,7 @@ category: components
 
 ### Colors
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Textarea } from 'svxui';
 </script>
@@ -39,7 +39,7 @@ category: components
 
 ### Sizes
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Textarea } from 'svxui';
 </script>
@@ -51,7 +51,7 @@ category: components
 
 ### FullWidth
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Textarea } from 'svxui';
 </script>
@@ -61,7 +61,7 @@ category: components
 
 ### Resizable
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Textarea } from 'svxui';
 </script>

@@ -13,7 +13,7 @@ category: components
 ## Examples
 
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Link } from 'svxui';
 </script>

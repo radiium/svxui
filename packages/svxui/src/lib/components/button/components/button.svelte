@@ -36,7 +36,7 @@
 <button
     tabindex="0"
     {...rest}
-    aria-pressed={active}
+    aria-pressed={active === undefined ? undefined : active}
     aria-disabled={rest.disabled}
     data-color={color}
     data-size={size}

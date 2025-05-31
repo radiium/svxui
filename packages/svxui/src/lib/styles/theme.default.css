@@ -36,7 +36,7 @@
   --blue-track: var(--blue-9);
 }
 
-/* blue light */
+/* blue dark */
 .dark,
 .dark-theme {
   --blue-1: #0d1520;
@@ -141,7 +141,7 @@
   --grass-track: var(--grass-9);
 }
 
-/* grass light */
+/* grass dark */
 .dark,
 .dark-theme {
   --grass-1: #0e1511;
@@ -253,7 +253,7 @@
   --neutral-track: var(--neutral-9);
 }
 
-/* neutral light */
+/* neutral dark */
 .dark,
 .dark-theme {
   --neutral-1: #111;
@@ -358,7 +358,7 @@
   --orange-track: var(--orange-9);
 }
 
-/* orange light */
+/* orange dark */
 .dark,
 .dark-theme {
   --orange-1: #17120e;
@@ -463,7 +463,7 @@
   --tomato-track: var(--tomato-9);
 }
 
-/* tomato light */
+/* tomato dark */
 .dark,
 .dark-theme {
   --tomato-1: #181111;
@@ -568,7 +568,7 @@
   --amber-track: var(--amber-9);
 }
 
-/* amber light */
+/* amber dark */
 .dark,
 .dark-theme {
   --amber-1: #16120c;

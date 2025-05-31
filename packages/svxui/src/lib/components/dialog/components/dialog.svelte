@@ -159,12 +159,6 @@
             background: var(--color-background-0);
             border-radius: var(--dialog-border-radius);
             padding: var(--dialog-padding);
-            /* margin: var(--space-8) auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; */
-            gap: var(--space-3);
             box-shadow: inset var(--accent-box-shadow);
             overflow: auto;
         }

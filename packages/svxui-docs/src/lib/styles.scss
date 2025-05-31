@@ -62,8 +62,8 @@ body {
 
     .svxui {
         font-family: Inter, var(--default-font-family);
-        font-size: var(--font-size-5);
-        line-height: var(--line-height-5);
+        --default-font-size: var(--font-size-5);
+        --default-line-height: var(--line-height-5);
 
         .demo-card {
             margin-top: var(--space-4);

@@ -15,7 +15,7 @@ export type AccordionHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
  */
 
 export type AccordionRootSnippetProps = {
-    readonly attrs: Record<string, unknown>;
+    readonly rootAttrs: Record<string, unknown>;
 };
 
 export type AccordionRootProps = {

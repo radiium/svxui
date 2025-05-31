@@ -6,6 +6,6 @@
 
 <a href={PUBLIC_PKG_HOMEPAGE} target="_blank" rel="noreferrer" title="Github page" tabindex="-1">
     <Button variant="clear" size="2" iconOnly class="p-0">
-        <GithubIcon size="1.2rem" />
+        <GithubIcon />
     </Button>
 </a>

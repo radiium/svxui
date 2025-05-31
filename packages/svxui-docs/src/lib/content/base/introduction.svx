@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: An alternative Svelte 5 component library
+description: An alternative Svelte 5 component library.
 category: base
 ---
 
@@ -11,30 +11,19 @@ category: base
 
 ## Overview
 
-This Svelte 5 component library provides a collection of over 20 UI components built with TypeScript.
-Designed as an alternative to tailwindcss-based solutions, the library offers developers a different approach to building modern interfaces.
-The collection includes UI components inspired by [@radix-ui/themes](https://www.radix-ui.com), alongside specialized Svelte actions and practical utility functions/classes.
-By focusing on creating a cohesive system with strong TypeScript support, the library aims to give developers essential building blocks for efficient interface development while maintaining design consistency and flexibility.
+Svxui is a component library for Svelte 5 inspired by [@radix-ui/themes](https://www.radix-ui.com). Proposed as an alternative to Tailwincss-based solutions, the library offers developers a different approach to creating modern interfaces.
+
+## Components
+
+The library includes a collection of +20 UI components and an assortment of handy utility functions/classes.
 
 ## Color System
 
-The library implements a thoughtfully designed color system leveraging [@radix-ui/colors](https://www.radix-ui.com/colors) palettes. 
-
-Default color aliases include:
-
-- <Code color="neutral">Neutral</Code>: For text, backgrounds, and subtle UI elements
-- <Code color="blue">Blue</Code>: For primary actions and interactive elements
-- <Code color="green">Green</Code>: For success states and confirmations
-- <Code color="yellow">Yellow</Code>: For warnings and attention indicators
-- <Code color="orange">Orange</Code>: For secondary cautions and notifications
-- <Code color="red">Red</Code>: For errors and destructive actions
-
-The system offers extensive flexibility, allowing developers to incorporate additional color aliases from the full range of Radix palettes to match specific design requirements.
+The library implements a color system based on [@radix-ui/colors](https://www.radix-ui.com/colors). Comes with default color palettes, the system offers developers the ability to incorporate additional color aliases from the full range of Radix palettes to meet specific design requirements.
 
 ## Theming System
 
-The library include theming system with support for light, dark, and system preference modes. 
-This implementation draws inspiration from Svelte 5 [mode-watcher](https://mode-watcher.sveco.dev/) library.
+The library include theming system with support for light, dark, and system preference modes. This implementation draws inspiration from Svelte 5 [mode-watcher](https://mode-watcher.sveco.dev/) library.
 
 Key features of the theming system include:
 
@@ -45,11 +34,20 @@ Key features of the theming system include:
 
 ## Developer Experience
 
-Built specifically for Svelte 5, the library offers a straightforward development experience with TypeScript support. 
-Developers will find helpful autocompletion, type checking, and inline documentation to make implementation easier.
+Built specifically for Svelte 5, the library offers a straightforward development experience with TypeScript support. Developers will find helpful autocompletion, type checking, and inline documentation to make implementation easier.
 
 ## Extensibility
 
-While providing a comprehensive set of pre-designed components, the library remains highly extensible. 
-Developers can customize existing components or build upon them to create specialized variants that match specific design requirements.
+While providing a comprehensive set of pre-designed components, the library remains highly extensible. Developers can customize existing components or build upon them to create specialized variants that match specific design requirements.
 
+## Credits
+
+Some parts of this library are inspired or derived from:
+- [@radix-ui/themes](https://www.radix-ui.com/themes/)
+- [@radix-ui/colors](https://www.radix-ui.com/colors/)
+- [bits-ui](https://www.bits-ui.com/)
+- [melt](https://www.melt-ui.com/)
+- [mode-watcher](https://mode-watcher.sveco.dev/)
+- [runed](https://runed.dev/)
+- [svelte-portal](https://github.com/romkor/svelte-portal)
+- [trap-focus-svelte](https://github.com/henrygd/trap-focus-svelte)

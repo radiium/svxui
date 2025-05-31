@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-auto';
 import autoprefixer from 'autoprefixer';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';

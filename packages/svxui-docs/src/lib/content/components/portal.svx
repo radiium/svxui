@@ -15,7 +15,6 @@ category: components
     import { Portal } from 'svxui';
 </script>
 
-
 <Portal target="#target-id">
     Portal content
 </Portal>
@@ -29,24 +28,26 @@ category: components
 
 ### Toggle portal
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
-    import { Portal, Panel, Button } from 'svxui';
+    import { Portal, Panel, Button, Flexbox } from 'svxui';
 
     let disabled
 </script>
 
-<Button onclick={() => (disabled = !disabled)}>Toggle portal</Button>
+<Flexbox direction="column" gap="5">
+    <Button onclick={() => (disabled = !disabled)}>Toggle portal</Button>
 
-<Panel variant="outline">
-    Portal source
+    <Panel variant="outline">
+        Portal source
 
-    <Portal target="#portal-target-id" {disabled}>
-        <Panel>Portal content</Panel>
-    </Portal>
-</Panel>
+        <Portal target="#portal-target-id" {disabled}>
+            <Panel>Portal content</Panel>
+        </Portal>
+    </Panel>
 
-<Panel variant="outline" id="portal-target-id" >
-    Portal destination
-</Panel>
+    <Panel variant="outline" id="portal-target-id" >
+        Portal destination
+    </Panel>
+</Flexbox>
 ```

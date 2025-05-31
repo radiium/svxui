@@ -1,6 +1,6 @@
 ---
 title: Accordion
-description: A renderless component for manage content sections, with accessibility and keyboard navigation.
+description: A renderless interactive component for expand/collapse content sections, with accessibility and keyboard navigation.
 category: components
 ---
 
@@ -10,106 +10,12 @@ category: components
     export let metadata;
 </script>
 
-
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { slide } from 'svelte/transition';
     import { AccordionRoot, AccordionItem, Panel, Flexbox, Button, Text, Separator } from 'svxui';
 
-    let items = ['item-0', 'item-1', 'item-2', 'item-3'];
-</script>
-
-<Panel variant="outline" size="0" style="width: 300px;">
-    <AccordionRoot orientation="vertical">
-        {#snippet children(root)}
-            <Flexbox direction="column" {...root.attrs}>
-                {#each items as value, i (value)}
-                    <AccordionItem {value} >
-                        {#snippet children(item)}
-                            <!-- Item -->
-                            <Flexbox direction="column" {...item.itemAttrs}>
-                                <!-- Heading -->
-                                <Flexbox
-                                    justify="between"
-                                    align="center"
-                                    class="p-4"
-                                    {...item.headingAttrs}
-                                >
-                                    <Text disabled={item.disabled}>{value}</Text>
-                                    <!-- Trigger -->
-                                    <Button size="1" variant="soft" {...item.triggerAttrs}>
-                                        {item.expanded ? 'close' : 'open'}
-                                    </Button>
-                                </Flexbox>
-
-                                <!-- Content -->
-                                {#if item.expanded}
-                                    <div
-                                        transition:slide={{ duration: 150 }}
-                                        class="p-4"
-                                        {...item.contentAttrs}
-                                    >
-                                        Content {value}
-                                    </div>
-                                {/if}
-                            </Flexbox>
-                        {/snippet}
-                    </AccordionItem>
-
-                    {#if i < items.length - 1}
-                        <Separator size="4" />
-                    {/if}
-                {/each}
-            </Flexbox>
-        {/snippet}
-    </AccordionRoot>
-</Panel>
-```
-
-<DocApiReference {metadata} />
-
-## Structure
-
-### AccordionRoot
-```svelte
-<AccordionRoot>
-    {#snippet children(root)}
-        <div {...root.rootAttrs}>
-            <AccordionItem />
-            <AccordionItem />
-            ...
-        </div>
-    {/snippet}
-</AccordionRoot>
-```
-
-### AccordionItem
-```svelte
-<AccordionItem>
-    {#snippet children(item)}
-        <!-- Heading -->
-        <div {...item.headingAttrs}>
-            ...
-            <!-- Trigger -->
-            <button {...item.triggerAttrs}>...<button>
-        <div>
-
-        <!-- Content -->
-        {#if item.expanded}
-            <div {...item.contentAttrs}>...<div>
-        {/if}
-    {/snippet}
-</AccordionItem>
-```
-
-## Examples
-
-```svelte example toggleableCode
-<script lang="ts">
-    import { slide } from 'svelte/transition';
-    import { AccordionRoot, AccordionItem, Panel, Flexbox, Button, Text, Separator } from 'svxui';
-
-    let items = ['item-0', 'item-1', 'item-2', 'item-3'];
+    let items = ['1', '2', '3', '4'];
 </script>
 
 <Panel variant="outline" size="0" style="width: 300px;">
@@ -117,7 +23,7 @@ category: components
         {#snippet children(root)}
             <Flexbox direction="column" {...root.rootAttrs}>
                 {#each items as value, i (value)}
-                    <AccordionItem {value} >
+                    <AccordionItem {value}>
                         {#snippet children(item)}
                             <!-- Item -->
                             <Flexbox direction="column" {...item.itemAttrs}>
@@ -128,7 +34,7 @@ category: components
                                     class="p-4"
                                     {...item.headingAttrs}
                                 >
-                                    <Text disabled={item.disabled}>{value}</Text>
+                                    <Text disabled={item.disabled}>Title {value}</Text>
                                     <!-- Trigger -->
                                     <Button size="1" variant="soft" {...item.triggerAttrs}>
                                         {item.expanded ? 'close' : 'open'}
@@ -157,4 +63,168 @@ category: components
         {/snippet}
     </AccordionRoot>
 </Panel>
+```
+
+## Features
+
+- Renderless. Customize the structure and apply the style you want.
+- Can open single or multiple accordion item.
+- Controllable from the outside.
+- Keyboard navigation.
+
+
+## Structure
+
+Minimal structure to use the component without any styling.
+
+```svelte
+<!-- Accordion root wrapper -->
+<AccordionRoot>
+    {#snippet children(root)}
+        <div {...root.rootAttrs}>
+            
+            <!-- Accordion items wrappers -->
+            {#each items as value, i (value)}
+                <AccordionItem {value}>
+                    {#snippet children(item)}
+                        <!-- Item -->
+                        <div {...item.itemAttrs}>
+                            <!-- Heading -->
+                            <div {...item.headingAttrs}>
+                                <span>Title {value}</span>
+                                <!-- Trigger -->
+                                <button {...item.triggerAttrs}>toggle</button>
+                            </div>
+
+                            <!-- Content -->
+                            {#if item.expanded}
+                                <div {...item.contentAttrs}>Content {value}</div>
+                            {/if}
+                        </div>
+                    {/snippet}
+                </AccordionItem>
+            {/each}
+
+        </div>
+    {/snippet}
+</AccordionRoot>
+```
+
+<DocApiReference {metadata} />
+
+## Examples
+
+### Full featured
+
+Example using other components from the library.
+In controlled mode and with multiple/loop enabled.
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { slide } from 'svelte/transition';
+    import { AccordionRoot, AccordionItem, Panel, Flexbox, Button, Text, Separator } from 'svxui';
+
+    let selection = $state([]);
+    const accordions = [
+        {
+            id: '1',
+            title: 'Title 1',
+            content: 'Content 1'
+        },
+        {
+            id: '2',
+            title: 'Title 2',
+            content: 'Content 2'
+        },
+        {
+            id: '3',
+            title: 'Title 3',
+            content: 'Content 3'
+        },
+        {
+            id: '4',
+            title: 'Title 4',
+            content: 'Content 4'
+        },
+    ];
+    const ids = accordions.map(({id}) => id);
+
+    function toggleFirst(): void {
+        if (selection.includes('1')) {
+            selection = selection.filter(id => id !== '1');
+        } else {
+            selection = [...selection, '1'];
+        }
+    }
+
+    function openAll(): void {
+        selection = [...ids];
+    }
+
+     function closeAll(): void {
+        selection = [];
+    }
+</script>
+
+<Flexbox direction="column" gap="3">
+    <Flexbox justify="center" gap="3">
+        <Button onclick={toggleFirst}>Toggle first</Button>
+        <Button onclick={openAll}>Open all</Button>
+        <Button onclick={closeAll}>Close all</Button>
+    </Flexbox>
+
+    <AccordionRoot bind:value={selection} multiple loop orientation="vertical" >
+        {#snippet children(root)}
+            <Flexbox direction="column" gap="3" {...root.rootAttrs} style="width: 300px;">
+
+                {#each accordions as data (data.id)}
+                    <AccordionItem value={data.id}>
+                        {#snippet children(item)}
+                            <!-- Item -->
+                            <Panel variant="soft" size="0">
+                                <Flexbox direction="column" {...item.itemAttrs}>
+                                    <!-- Heading -->
+                                    <Flexbox
+                                        justify="between"
+                                        align="center"
+                                        class="px-4 py-3"
+                                        {...item.headingAttrs}
+                                    >
+                                        <Text disabled={item.disabled}>{data.title}</Text>
+                                        <!-- Trigger -->
+                                        <Button size="2" radius="full" iconOnly variant="outline" {...item.triggerAttrs}>
+                                            {#if item.expanded}
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20">
+                                                    <rect width="256" height="256" fill="none"/>
+                                                    <polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                                </svg>
+                                            {:else}
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20">
+                                                    <rect width="256" height="256" fill="none"/>
+                                                    <polyline points="96 48 176 128 96 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                                </svg>
+                                            {/if}
+                                        </Button>
+                                    </Flexbox>
+
+                                    <!-- Content -->
+                                    {#if item.expanded}
+                                        <div
+                                            transition:slide={{ duration: 150 }}
+                                            class="p-4"
+                                            {...item.contentAttrs}
+                                        >
+                                            {data.content}
+                                        </div>
+                                    {/if}
+                                </Flexbox>
+                            </Panel>
+                        {/snippet}
+                    </AccordionItem>
+                {/each}
+
+            </Flexbox>
+        {/snippet}
+    </AccordionRoot>
+</Flexbox>
 ```

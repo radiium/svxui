@@ -15,31 +15,27 @@
         ...rest
     }: CheckboxProps = $props();
 
-    function isValid<T>(val: T): val is NonNullable<T> {
-        return value !== null && value !== undefined;
-    }
-
-    function groupCheck() {
-        if (value !== null && value !== undefined) {
-            checked = group?.includes(value);
-        }
+    function isNil<T>(val: T | null | undefined): val is null | undefined {
+        return val === null || val === undefined;
     }
 
     // Update group when checkbox changes
     function onChange(event: Parameters<ChangeEventHandler<HTMLInputElement>>[0]) {
-        if (isValid(group) && isValid(value)) {
-            let inGroup = group.includes(value);
-            if (!inGroup) {
-                // Add to group
-                group = [...group, value];
-            } else {
-                // Remove from group
-                group = group.filter((v: string | number) => v != value);
-            }
+        if (!isNil(group) && !isNil(value)) {
+            group = group.includes(value)
+                ? group.filter((v: string | number) => v != value) // Remove
+                : [...group, value]; // Add
         }
 
         rest.onchange?.(event);
     }
+
+    $effect(() => {
+        if (!isNil(group)) {
+            checked = group?.includes(value);
+        }
+    });
+
     let cssClass = $derived([
         rest.class,
         'checkbox',
@@ -48,12 +44,6 @@
             [`checkbox-color-${color}`]: color
         }
     ]);
-
-    $effect(() => {
-        if (isValid(group)) {
-            groupCheck();
-        }
-    });
 </script>
 
 <input
@@ -61,7 +51,6 @@
     {...rest}
     type="checkbox"
     class={cssClass}
-    aria-checked={checked && indeterminate ? 'mixed' : checked}
     data-checked={checked || undefined}
     data-indeterminate={indeterminate || undefined}
     data-color={color}

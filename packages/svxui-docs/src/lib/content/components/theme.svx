@@ -17,7 +17,7 @@ category: components
 
 Theme childProvider allow to override root theme
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { ThemeChildProvider, Panel, Flexbox, Text, InputGroup, Input, Button } from 'svxui';
 </script>

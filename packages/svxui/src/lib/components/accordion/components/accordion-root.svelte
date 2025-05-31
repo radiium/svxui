@@ -36,7 +36,7 @@
     });
 
     const snippetProps = $derived({
-        get attrs() {
+        get rootAttrs() {
             return root.rootAttrs;
         }
     });

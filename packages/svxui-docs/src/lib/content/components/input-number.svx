@@ -13,7 +13,7 @@ category: components
 ## Examples
 
 
-```svelte example toggleableCode
+```svelte example
 <script lang="ts">
     import { InputNumber } from 'svxui';
 </script>

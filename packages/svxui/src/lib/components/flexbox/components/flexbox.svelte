@@ -11,6 +11,7 @@
         align = defaultFlexboxProps.align,
         wrap = defaultFlexboxProps.wrap,
         gap = defaultFlexboxProps.gap,
+        fullWidth = defaultFlexboxProps.fullWidth,
         children,
         ...rest
     }: FlexboxProps = $props();
@@ -23,7 +24,8 @@
             [`flexbox-justify-${justify}`]: justify,
             [`flexbox-items-${align}`]: align,
             [`flexbox-${wrap}`]: wrap,
-            [`flexbox-gap-${gap}`]: gap
+            [`flexbox-gap-${gap}`]: gap,
+            'flexbox-full-width': fullWidth
         }
     ]);
 </script>
@@ -166,5 +168,10 @@
     }
     .flexbox-gap-9 {
         gap: var(--space-9);
+    }
+
+    /* Others */
+    .flexbox-full-width {
+        width: 100%;
     }
 </style>

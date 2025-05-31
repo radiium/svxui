@@ -1,10 +1,10 @@
+import { transformerNotationHighlight } from '@shikijs/transformers';
 import { defineMDSveXConfig, escapeSvelte } from 'mdsvex';
 import examples from 'mdsvexamples';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import rehypeSlug from 'rehype-slug';
 import { createHighlighter } from 'shiki';
-import rehypeSlug from 'rehype-slug'
-import { transformerNotationHighlight } from '@shikijs/transformers'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 

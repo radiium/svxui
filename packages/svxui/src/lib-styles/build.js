@@ -68,6 +68,10 @@ console.log('[STYLES] build scss files');
         dest: 'utilities.gap.css',
     },
     {
+        src: 'utilities/overflow.scss',
+        dest: 'utilities.overflow.css',
+    },
+    {
         src: 'utilities/position.scss',
         dest: 'utilities.position.css',
     },
@@ -78,6 +82,10 @@ console.log('[STYLES] build scss files');
     {
         src: 'utilities/space.scss',
         dest: 'utilities.space.css',
+    },
+    {
+        src: 'utilities/visibility.scss',
+        dest: 'utilities.visibility.css',
     },
 
 ].forEach(({ src, dest }) => {

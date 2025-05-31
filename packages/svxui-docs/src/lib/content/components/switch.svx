@@ -24,7 +24,7 @@ category: components
 
 ### Label
 
-```svelte example toggleableCode hideStyle
+```svelte example enableOpenCode hideStyle
 <script lang="ts">
     import { Switch } from 'svxui';
 </script>
@@ -45,7 +45,7 @@ category: components
 
 ### Colors
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Switch } from 'svxui';
 </script>
@@ -60,7 +60,7 @@ category: components
 
 ### Sizes
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Switch } from 'svxui';
 </script>
@@ -72,7 +72,7 @@ category: components
 
 ### States
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Switch } from 'svxui';
 </script>
@@ -83,7 +83,7 @@ category: components
 
 ### Disabled
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Switch } from 'svxui';
 </script>

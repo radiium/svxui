@@ -24,7 +24,7 @@ category: components
 
 ### Colors
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Button } from 'svxui';
 </script>
@@ -39,7 +39,7 @@ category: components
 
 ### Variants
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Button } from 'svxui';
 </script>
@@ -52,7 +52,7 @@ category: components
 
 ### Sizes
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Button } from 'svxui';
 </script>
@@ -65,7 +65,7 @@ category: components
 
 ### Icons
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Button } from 'svxui';
 </script>
@@ -87,7 +87,7 @@ category: components
 
 ### States
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Button } from 'svxui';
 </script>
@@ -99,7 +99,7 @@ category: components
 
 ### Text transform
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Button } from 'svxui';
 </script>
@@ -111,7 +111,7 @@ category: components
 
 ### FullWidth + Alignments
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Button } from 'svxui';
 </script>

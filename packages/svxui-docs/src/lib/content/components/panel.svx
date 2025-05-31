@@ -10,6 +10,7 @@ category: components
     export let metadata;
 </script>
 
+
 ```svelte example
 <script lang="ts">
     import { Panel } from 'svxui';
@@ -22,9 +23,8 @@ category: components
 
 ## Examples
 
-
 ### Colors
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Panel } from 'svxui';
 </script>
@@ -37,7 +37,7 @@ category: components
 <Panel color="red">Panel content</Panel>
 ```
 ### Sizes
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Panel, Flexbox } from 'svxui';
 </script>
@@ -57,7 +57,7 @@ category: components
 ```
 
 ### Variants
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Panel } from 'svxui';
 </script>
@@ -69,7 +69,7 @@ category: components
 
 ### FullWidth
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Panel } from 'svxui';
 </script>
@@ -77,14 +77,78 @@ category: components
 <Panel fullWidth>Panel content</Panel>
 ```
 
+
+### Interactive 
+
+The panel is hoverable and focusable if it is rendered as:
+- `button`
+- `a`
+- `label` containing a radio/checkbox input
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Panel, Flexbox, Checkbox, Radio } from 'svxui';
+
+    let group = $state('1');
+</script>
+
+<Flexbox gap="3" fullWidth>
+    <Panel as="button">Panel button</Panel>
+    <Panel as="a" id="l1" href="#l1">Panel link</Panel>
+</Flexbox>
+
+<Flexbox gap="3" fullWidth>
+    <Panel as="label" variant="outline">
+        <Flexbox gap="3" align="center">
+            </Flexbox>
+        <Checkbox />
+        option 1
+    </Panel>
+    <Panel as="label" variant="outline">
+        <Flexbox gap="3" align="center">
+            <Checkbox />
+            option 1
+        </Flexbox>
+    </Panel>
+    <Panel as="label" variant="outline">
+        <Flexbox gap="3" align="center">
+            <Checkbox />
+            option 1
+        </Flexbox>
+    </Panel>
+</Flexbox>
+
+<Flexbox gap="3" fullWidth>
+    <Panel as="label" variant="soft" color="blue">
+        <Flexbox gap="3" align="center">
+            <Radio name="radio" value="1" bind:group color="blue"/>
+            option 1
+        </Flexbox>
+    </Panel>
+    <Panel as="label" variant="soft" color="blue">
+        <Flexbox gap="3" align="center">
+            <Radio name="radio" value="2" bind:group color="blue"/>
+            option 2
+        </Flexbox>
+    </Panel>
+    <Panel as="label" variant="soft" color="blue">
+        <Flexbox gap="3" align="center">
+            <Radio name="radio" value="3" bind:group color="blue"/>
+            option 3
+        </Flexbox>
+    </Panel>
+</Flexbox>
+```
+
+
 ### Card
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Panel, Flexbox, Text, Button } from 'svxui';
 </script>
 
-<Panel size="5">
+<Panel size="5" variant="solid">
     <Flexbox direction="column" gap="3" style="width: 300px;">
         <Flexbox as="header" direction="column">
             <Text size="8" weight="bold" as="h2" class="m-0">Card title</Text>
@@ -98,9 +162,9 @@ category: components
 </Panel>
 ```
 
-### List
+### Checkbox list
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { Panel, Flexbox, Text, Checkbox, Separator } from 'svxui';
 
@@ -124,3 +188,77 @@ category: components
 ```
 
 
+
+
+
+
+
+##### Tests
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Panel, Flexbox, Checkbox, Radio, activeElement } from 'svxui';
+
+    let group = $state('1');
+</script>
+
+{activeElement.current?.localName ?? "No active element found"}
+<Flexbox gap="3" fullWidth>
+normal
+    <Panel variant="solid">Panel solid</Panel>
+    <Panel variant="soft">Panel soft</Panel>
+    <Panel variant="outline">Panel outline</Panel>
+</Flexbox>
+
+<Flexbox gap="3" fullWidth>
+button
+    <Panel as="button" color="blue" variant="solid"   >Panel solid</Panel>
+    <Panel as="button" color="blue" variant="soft"    >Panel soft</Panel>
+    <Panel as="button" color="blue" variant="outline" >Panel outline</Panel>
+</Flexbox>
+
+<Flexbox gap="3" fullWidth>
+link
+    <Panel as="a" id="l1" href="#l1" variant="solid"   >Panel solid</Panel>
+    <Panel as="a" id="l2" href="#l2" variant="soft"    >Panel soft</Panel>
+    <Panel as="a" id="l3" href="#l3" variant="outline" >Panel outline</Panel>
+</Flexbox>
+
+<Flexbox gap="3" fullWidth>
+checkbox
+    <Panel as="label" variant="solid">
+        <Flexbox gap="2" align="center">
+            </Flexbox>
+        <Checkbox /> label
+    </Panel>
+    <Panel as="label" variant="soft">
+        <Flexbox gap="2" align="center">
+            <Checkbox /> label
+        </Flexbox>
+    </Panel>
+    <Panel as="label" variant="outline">
+        <Flexbox gap="2" align="center">
+            <Checkbox /> label
+        </Flexbox>
+    </Panel>
+</Flexbox>
+
+<Flexbox gap="3" fullWidth>
+radio
+    <Panel as="label" variant="solid" size="5">
+        <Flexbox gap="2" align="center">
+            <Radio name="radio" value="1" bind:group /> label 1
+        </Flexbox>
+    </Panel>
+    <Panel as="label" variant="soft" size="5">
+        <Flexbox gap="2" align="center">
+            <Radio name="radio" value="2" bind:group /> label 2
+        </Flexbox>
+    </Panel>
+    <Panel as="label" variant="outline" size="5">
+        <Flexbox gap="2" align="center">
+            <Radio name="radio" value="3" bind:group /> label 3
+        </Flexbox>
+    </Panel>
+</Flexbox>
+```

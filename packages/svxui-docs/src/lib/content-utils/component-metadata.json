@@ -205,7 +205,7 @@
             },
             {
                 "name": "AccordionRootSnippetProps",
-                "text": "export type AccordionRootSnippetProps = {\n    readonly attrs: Record<string, unknown>;\n};",
+                "text": "export type AccordionRootSnippetProps = {\n    readonly rootAttrs: Record<string, unknown>;\n};",
                 "kind": "TypeLiteral"
             },
             {
@@ -214,7 +214,7 @@
                 "kind": "FunctionType"
             }
         ],
-        "sharedTypesText": "<pre class=\"shiki shiki-themes light-plus dark-plus\" style=\"background-color:#FFFFFF;--shiki-dark-bg:#1E1E1E;color:#000000;--shiki-dark:#D4D4D4\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#AF00DB;--shiki-dark:#C586C0\">export</span><span style=\"color:#0000FF;--shiki-dark:#569CD6\"> type</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\"> AccordionSelectionValueChange</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\"> = (</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\">newValue</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">AccordionSelectionValue</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">) </span><span style=\"color:#0000FF;--shiki-dark:#569CD6\">=></span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\"> void</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">;</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#AF00DB;--shiki-dark:#C586C0\">export</span><span style=\"color:#0000FF;--shiki-dark:#569CD6\"> type</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\"> AccordionRootSnippetProps</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\"> = {</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> attrs</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">Record</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">&#x3C;</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">string</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">, </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">unknown</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">>;</span></span>\n<span class=\"line\"><span style=\"color:#000000;--shiki-dark:#D4D4D4\">};</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#AF00DB;--shiki-dark:#C586C0\">export</span><span style=\"color:#0000FF;--shiki-dark:#569CD6\"> type</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\"> AccordionItemSnippetProps</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\"> = {</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> expanded</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">boolean</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">;</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> disabled</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">boolean</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">;</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> itemAttrs</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">Record</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">&#x3C;</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">string</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">, </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">unknown</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">>;</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> headingAttrs</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">Record</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">&#x3C;</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">string</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">, </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">unknown</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">>;</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> triggerAttrs</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">Record</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">&#x3C;</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">string</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">, </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">unknown</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">>;</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> contentAttrs</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">Record</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">&#x3C;</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">string</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">, </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">unknown</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">>;</span></span>\n<span class=\"line\"><span style=\"color:#000000;--shiki-dark:#D4D4D4\">};</span></span></code></pre>"
+        "sharedTypesText": "<pre class=\"shiki shiki-themes light-plus dark-plus\" style=\"background-color:#FFFFFF;--shiki-dark-bg:#1E1E1E;color:#000000;--shiki-dark:#D4D4D4\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#AF00DB;--shiki-dark:#C586C0\">export</span><span style=\"color:#0000FF;--shiki-dark:#569CD6\"> type</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\"> AccordionSelectionValueChange</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\"> = (</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\">newValue</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">AccordionSelectionValue</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">) </span><span style=\"color:#0000FF;--shiki-dark:#569CD6\">=></span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\"> void</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">;</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#AF00DB;--shiki-dark:#C586C0\">export</span><span style=\"color:#0000FF;--shiki-dark:#569CD6\"> type</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\"> AccordionRootSnippetProps</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\"> = {</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> rootAttrs</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">Record</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">&#x3C;</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">string</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">, </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">unknown</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">>;</span></span>\n<span class=\"line\"><span style=\"color:#000000;--shiki-dark:#D4D4D4\">};</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#AF00DB;--shiki-dark:#C586C0\">export</span><span style=\"color:#0000FF;--shiki-dark:#569CD6\"> type</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\"> AccordionItemSnippetProps</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\"> = {</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> expanded</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">boolean</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">;</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> disabled</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">boolean</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">;</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> itemAttrs</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">Record</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">&#x3C;</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">string</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">, </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">unknown</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">>;</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> headingAttrs</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">Record</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">&#x3C;</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">string</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">, </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">unknown</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">>;</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> triggerAttrs</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">Record</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">&#x3C;</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">string</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">, </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">unknown</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">>;</span></span>\n<span class=\"line\"><span style=\"color:#0000FF;--shiki-dark:#569CD6\">    readonly</span><span style=\"color:#001080;--shiki-dark:#9CDCFE\"> contentAttrs</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">: </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">Record</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">&#x3C;</span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">string</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">, </span><span style=\"color:#267F99;--shiki-dark:#4EC9B0\">unknown</span><span style=\"color:#000000;--shiki-dark:#D4D4D4\">>;</span></span>\n<span class=\"line\"><span style=\"color:#000000;--shiki-dark:#D4D4D4\">};</span></span></code></pre>"
     },
     {
         "name": "badge",
@@ -559,48 +559,6 @@
                 ],
                 "exports": [],
                 "jsDoc": []
-            },
-            {
-                "name": "ButtonUnstyled",
-                "path": "/Users/amigamac/workspace/testapp/svelte/svxui/packages/svxui/dist/components/button/components/button-unstyled.svelte",
-                "extendeds": [
-                    {
-                        "type": "HTMLButtonAttributes",
-                        "isSvelteElement": true
-                    }
-                ],
-                "props": [
-                    {
-                        "name": "children",
-                        "isOptional": true,
-                        "isBindable": false,
-                        "isSnippet": true,
-                        "jsDoc": [
-                            {
-                                "text": "/**\n     * Button content to render\n     */",
-                                "commentText": "Button content to render",
-                                "tags": []
-                            }
-                        ],
-                        "type": "Snippet<[void]>"
-                    },
-                    {
-                        "name": "elementRef",
-                        "isOptional": true,
-                        "isBindable": true,
-                        "isSnippet": false,
-                        "jsDoc": [
-                            {
-                                "text": "/**\n     * Rendered DOM element\n     */",
-                                "commentText": "Rendered DOM element",
-                                "tags": []
-                            }
-                        ],
-                        "type": "HTMLButtonElement"
-                    }
-                ],
-                "exports": [],
-                "jsDoc": []
             }
         ],
         "sharedTypes": [],
@@ -853,8 +811,7 @@
                                 "tags": []
                             }
                         ],
-                        "type": "string",
-                        "defaultValue": "60rem"
+                        "type": "string"
                     },
                     {
                         "name": "minHeight",
@@ -882,8 +839,7 @@
                                 "tags": []
                             }
                         ],
-                        "type": "string",
-                        "defaultValue": "30rem"
+                        "type": "string"
                     },
                     {
                         "name": "noPadding",
@@ -1127,6 +1083,20 @@
                         "type": "HTMLElement"
                     },
                     {
+                        "name": "fullWidth",
+                        "isOptional": true,
+                        "isBindable": false,
+                        "isSnippet": false,
+                        "jsDoc": [
+                            {
+                                "text": "/**\n     * Flexbox full width\n     */",
+                                "commentText": "Flexbox full width",
+                                "tags": []
+                            }
+                        ],
+                        "type": "boolean"
+                    },
+                    {
                         "name": "gap",
                         "isOptional": true,
                         "isBindable": false,
@@ -1269,8 +1239,8 @@
                         "isSnippet": false,
                         "jsDoc": [
                             {
-                                "text": "/**\n     * Close floating on backdrop click\n     */",
-                                "commentText": "Close floating on backdrop click",
+                                "text": "/**\n     * Close floating on backdrop click. Only if backdrop is true\n     */",
+                                "commentText": "Close floating on backdrop click. Only if backdrop is true",
                                 "tags": []
                             }
                         ],
@@ -1505,8 +1475,8 @@
                         "isSnippet": false,
                         "jsDoc": [
                             {
-                                "text": "/**\n     * Portal target identifier\n     */",
-                                "commentText": "Portal target identifier",
+                                "text": "/**\n     * Portal target identifier. Only if portal is true\n     */",
+                                "commentText": "Portal target identifier. Only if portal is true",
                                 "tags": []
                             }
                         ],
@@ -2673,11 +2643,26 @@
                 "path": "/Users/amigamac/workspace/testapp/svelte/svxui/packages/svxui/dist/components/panel/components/panel.svelte",
                 "extendeds": [
                     {
-                        "type": "Omit<HTMLAttributes<HTMLDivElement>, \"color\">",
+                        "type": "Omit<HTMLAttributes<HTMLElement>, \"color\">",
                         "isSvelteElement": true
                     }
                 ],
                 "props": [
+                    {
+                        "name": "as",
+                        "isOptional": true,
+                        "isBindable": false,
+                        "isSnippet": false,
+                        "jsDoc": [
+                            {
+                                "text": "/**\n     * Render element as\n     */",
+                                "commentText": "Render element as",
+                                "tags": []
+                            }
+                        ],
+                        "type": "keyof SvelteHTMLElements",
+                        "defaultValue": "div"
+                    },
                     {
                         "name": "children",
                         "isOptional": true,
@@ -2719,7 +2704,7 @@
                                 "tags": []
                             }
                         ],
-                        "type": "HTMLDivElement"
+                        "type": "HTMLElement"
                     },
                     {
                         "name": "fullWidth",
@@ -2750,8 +2735,8 @@
                         ],
                         "type": "union",
                         "values": [
-                            "none",
                             "small",
+                            "none",
                             "medium",
                             "large",
                             "full"

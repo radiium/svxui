@@ -10,16 +10,14 @@ category: components
     export let metadata;
 </script>
 
-## Examples
-
-```svelte example toggleableCode
+```svelte example
 <script lang="ts">
     import { Floating, Button } from 'svxui';
 
     let isOpen = $state(false)
 </script>
 
-<Floating bind:isOpen>
+<Floating bind:isOpen closeOnClickOutside>
     {#snippet trigger()}
         <Button onclick={() => (isOpen = true)}>
             Open
@@ -32,3 +30,129 @@ category: components
 ```
 
 <DocApiReference {metadata} />
+
+
+## Examples
+
+### Arrow
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Floating, Button } from 'svxui';
+
+    let isOpen = $state(false)
+</script>
+
+<Floating bind:isOpen closeOnClickOutside arrow offset={10}>
+    {#snippet trigger()}
+        <Button onclick={() => (isOpen = true)}>
+            Open
+        </Button>
+    {/snippet}
+    {#snippet content()}
+        <div>Floating content</div>
+    {/snippet}
+</Floating>
+```
+
+### Variants
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Floating, Button, Select } from 'svxui';
+
+    let isOpen = $state(false)
+
+    const options = ['solid', 'soft', 'outline'];
+    let variant = $state(options[0])
+</script>
+
+<Select {options} bind:value={variant} />
+
+<Floating bind:isOpen closeOnClickOutside {variant} >
+    {#snippet trigger()}
+        <Button onclick={() => (isOpen = true)}>
+            Open
+        </Button>
+    {/snippet}
+    {#snippet content()}
+        <div>Floating content</div>
+    {/snippet}
+</Floating>
+```
+
+### Floating ui middlewares
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Floating, Button } from 'svxui';
+
+    let isOpen = $state(false)
+</script>
+
+<Floating bind:isOpen autoUpdate shift flip closeOnClickOutside>
+    {#snippet trigger()}
+        <Button onclick={() => (isOpen = true)}>
+            Open
+        </Button>
+    {/snippet}
+    {#snippet content()}
+        <div>Floating content</div>
+    {/snippet}
+</Floating>
+```
+
+### Open on hover
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Floating, Button } from 'svxui';
+
+    let isOpen = $state(false)
+</script>
+
+<Floating bind:isOpen>
+    {#snippet trigger()}
+        <Button 
+            onmouseenter={() => (isOpen = true)} 
+            onmouseleave={() => (isOpen = false)}
+        >
+            Hover
+        </Button>
+    {/snippet}
+    {#snippet content()}
+        <div>Floating content</div>
+    {/snippet}
+</Floating>
+```
+
+### Close from inside
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Floating, Button, Flexbox } from 'svxui';
+
+    let isOpen = $state(false)
+</script>
+
+<Floating bind:isOpen>
+    {#snippet trigger()}
+        <Button onclick={() => (isOpen = true)}>
+            Open
+        </Button>
+    {/snippet}
+    {#snippet content()}
+        <Flexbox align="center" gap="3">
+            <div>Floating content</div>
+             <Button 
+                size="1" 
+                radius="full" 
+                variant="outline" 
+                iconOnly 
+                onclick={() => (isOpen = false)}>
+                x
+            </Button>
+        </Flexbox>
+    {/snippet}
+</Floating>
+```

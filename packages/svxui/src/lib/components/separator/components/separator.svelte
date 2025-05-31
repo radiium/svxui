@@ -34,10 +34,10 @@
 <style>
     .separator {
         display: block;
-        background-color: var(--accent-8);
-        flex-shrink: 0;
+        background-color: var(--accent-7);
         min-width: var(--separator-width);
         min-height: var(--separator-height);
+        flex-shrink: 0;
 
         /* Sizes */
         &.separator-size-1 {

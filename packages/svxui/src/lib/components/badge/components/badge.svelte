@@ -44,7 +44,6 @@
         align-items: center;
         white-space: nowrap;
         flex-shrink: 0;
-        line-height: 1;
         user-select: none;
         height: fit-content;
         cursor: default;

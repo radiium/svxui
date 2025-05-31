@@ -46,6 +46,7 @@ export type AccordionHeadingAttributs = {
     readonly 'data-value': AccordionValue;
     readonly 'data-heading-level'?: AccordionHeadingLevel;
     readonly 'aria-level'?: AccordionHeadingLevel;
+    readonly role: string;
 };
 
 export type AccordionTriggerAttributs = {

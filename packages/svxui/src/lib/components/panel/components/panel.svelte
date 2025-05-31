@@ -4,6 +4,7 @@
 
     let {
         elementRef = $bindable(),
+        as = defaultPanelProps.as,
         color = defaultPanelProps.color,
         size = defaultPanelProps.size,
         radius = defaultPanelProps.radius,
@@ -20,14 +21,25 @@
             [`panel-size-${size}`]: size,
             [`panel-color-${color}`]: color,
             [`panel-variant-${variant}`]: variant,
-            'panel-full-width': fullWidth
+            'panel-full-width': fullWidth,
+            'panel-button': as === 'button',
+            'panel-link': as === 'a',
+            'panel-label': as === 'label'
         }
     ]);
 </script>
 
-<div {...rest} data-color={color} data-size={size} data-radius={radius} class={cssClass}>
+<svelte:element
+    this={as}
+    {...rest}
+    data-color={color}
+    data-size={size}
+    data-radius={radius}
+    class={cssClass}
+    bind:this={elementRef}
+>
     {@render children?.()}
-</div>
+</svelte:element>
 
 <style>
     .panel {
@@ -39,6 +51,7 @@
         padding: var(--panel-padding);
         border-radius: var(--panel-border-radius);
         background-color: var(--panel-background);
+        border: none;
 
         &::after {
             content: '';
@@ -98,15 +111,67 @@
         /* Variants */
         &.panel-variant-solid {
             --panel-box-shadow: none;
+            --panel-box-shadow-hover: none;
             --panel-background: var(--accent-5);
+            --panel-background-hover: var(--accent-6);
         }
         &.panel-variant-soft {
             --panel-box-shadow: none;
-            --panel-background: var(--accent-1);
+            --panel-box-shadow-hover: none;
+            --panel-background: var(--accent-3);
+            --panel-background-hover: var(--accent-4);
         }
         &.panel-variant-outline {
             --panel-box-shadow: inset 0 0 0 1px var(--accent-7);
+            --panel-box-shadow-hover: inset 0 0 0 1px var(--accent-8);
             --panel-background: var(--color-background-0);
+            --panel-background-hover: var(--color-background-0);
+        }
+
+        /* Renderd as button, link or label */
+        &.panel-button,
+        &.panel-link {
+            color: var(--color);
+            text-decoration: none;
+
+            &:focus-visible {
+                outline: 2px solid var(--accent-7);
+                outline-offset: -1px;
+            }
+
+            &:hover {
+                background-color: var(--panel-background-hover);
+
+                &::after {
+                    box-shadow: var(--panel-box-shadow-hover);
+                }
+            }
+        }
+
+        &.panel-label {
+            &:global(:has(input[type='radio'])),
+            &:global(:has(input[type='checkbox'])) {
+                &:hover {
+                    background-color: var(--panel-background-hover);
+
+                    &::after {
+                        box-shadow: var(--panel-box-shadow-hover);
+                    }
+                }
+            }
+
+            &:global(:has(input[type='radio']:checked)),
+            &:global(:focus-within:has(input[type='radio']:focus-visible)),
+            &:global(:focus-within:has(input[type='checkbox']:focus-visible)) {
+                &::after {
+                    outline: 2px solid var(--accent-8);
+                    outline-offset: -1px;
+                }
+            }
+
+            :global(input:focus-visible) {
+                outline: none !important;
+            }
         }
     }
 </style>

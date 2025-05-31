@@ -1,5 +1,6 @@
 import { page } from '$app/state';
 import { MediaQuery } from 'svelte/reactivity';
+import { isBrowser } from 'svxui';
 
 class LayoutState {
     /*
@@ -34,7 +35,7 @@ class LayoutState {
     #isHomePage = $derived(page.url.pathname === '/');
     #hasMenu = $derived(!this.isHomePage);
     #hasMenuMobile = $derived((this.#isMobile.current || this.#isTablet.current) && !this.isHomePage);
-    #hasTOC = $derived(this.#isDesktop.current && !this.isHomePage);
+    #hasTOC = $derived(this.#isDesktop.current && !this.isHomePage && isBrowser());
 
     get isMenuOpen() {
         return this.#isMenuOpen;

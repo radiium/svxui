@@ -2,6 +2,7 @@ import { booleanOptions, colorOptions, radiusOptions, type PropsOptions } from '
 import type { PanelProps, PanelSize, PanelVariant } from './types.js';
 
 export const defaultPanelProps: PanelProps = {
+    as: 'div',
     elementRef: undefined,
     color: 'neutral',
     size: '3',

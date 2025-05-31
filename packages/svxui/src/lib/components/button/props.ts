@@ -6,7 +6,7 @@ import {
     textTransformOptions,
     type PropsOptions
 } from '$lib/shared.options.js';
-import type { ButtonProps, ButtonSize, ButtonUnstyledProps, ButtonVariant } from './types.js';
+import type { ButtonProps, ButtonSize, ButtonVariant } from './types.js';
 
 export const defaultButtonProps: ButtonProps = {
     color: 'neutral',
@@ -31,5 +31,3 @@ export const buttonOptions = {
     iconOnly: booleanOptions,
     fullWidth: booleanOptions
 } as const satisfies PropsOptions<ButtonProps>;
-
-export const defaultButtonUnstyledProps: ButtonUnstyledProps = {};

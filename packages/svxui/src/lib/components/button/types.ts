@@ -51,14 +51,3 @@ export type ButtonProps = HTMLButtonAttributes & {
      */
     children?: Snippet<[void]>;
 };
-
-export type ButtonUnstyledProps = HTMLButtonAttributes & {
-    /**
-     * Rendered DOM element
-     */
-    elementRef?: HTMLButtonElement;
-    /**
-     * Button content to render
-     */
-    children?: Snippet<[void]>;
-};

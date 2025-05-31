@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ComponentMetadata } from '$lib/types';
-    import { Badge, ButtonUnstyled, Flexbox, Floating, Panel } from 'svxui';
+    import { Badge, Button, Flexbox, Floating, Panel } from 'svxui';
     import HyphenIcon from '../../icons/HyphenIcon.svelte';
     import InfoIcon from '../../icons/InfoIcon.svelte';
     import Code from './Code.svelte';
@@ -14,99 +14,105 @@
 </script>
 
 {#if componentMetadata}
-    <Panel size="0" variant="outline" class="mt-4">
-        <table>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Type</th>
-                    <th>Default</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {#each componentMetadata.props as prop (prop.name)}
+    <Panel size="0" variant="outline" class="mt-4 overflow-hidden">
+        <div class="overflow-auto">
+            <table>
+                <thead>
                     <tr>
-                        <td>
-                            <Flexbox align="center" gap="2" wrap="nowrap">
-                                <Code color="blue">{prop.name}</Code>
-
-                                {#if prop.isBindable}
-                                    <Badge variant="outline" color="orange">$bindable</Badge>
-                                {/if}
-
-                                {#if prop.isSnippet}
-                                    <Badge variant="outline" color="yellow">Snippet</Badge>
-                                {/if}
-
-                                {#if !prop.isOptional}
-                                    <Badge variant="outline" color="red">required</Badge>
-                                {/if}
-                            </Flexbox>
-                        </td>
-                        <td>
-                            <Flexbox align="center" gap="2" wrap="nowrap">
-                                <div>
-                                    {#if prop.isSnippet && prop.aliasType}
-                                        <Code>Snippet</Code>
-                                    {:else}
-                                        <Code>{prop.type}</Code>
-                                    {/if}
-                                </div>
-                                {#if prop.type === 'union' || prop.aliasType}
-                                    <Floating
-                                        bind:isOpen={isOpenList[prop.name]}
-                                        closeOnScroll
-                                        closeOnClickOutside
-                                        closeOnEscape
-                                    >
-                                        {#snippet trigger()}
-                                            <ButtonUnstyled
-                                                onclick={() => {
-                                                    isOpenList[prop.name] = !isOpenList[prop.name];
-                                                }}
-                                            >
-                                                <InfoIcon />
-                                            </ButtonUnstyled>
-                                        {/snippet}
-                                        {#snippet content()}
-                                            <div style="max-width: 70vw;">
-                                                {#if prop.aliasType}
-                                                    {prop.aliasType}
-                                                {:else}
-                                                    "{prop.values?.join('" | "')}"
-                                                {/if}
-                                            </div>
-                                        {/snippet}
-                                    </Floating>
-                                {/if}
-                            </Flexbox>
-                        </td>
-                        <td>
-                            {#if prop.defaultValue !== undefined && prop.defaultValue !== ''}
-                                <Code>
-                                    {#if Array.isArray(prop.defaultValue) && prop.defaultValue.length === 0}
-                                        []
-                                    {:else if prop.type === 'boolean' || prop.type === 'number'}
-                                        {prop.defaultValue}
-                                    {:else}
-                                        "{prop.defaultValue}"
-                                    {/if}
-                                </Code>
-                            {:else}
-                                <HyphenIcon />
-                            {/if}
-                        </td>
-                        <td>
-                            {#each prop.jsDoc ?? [] as doc (doc)}
-                                {doc.commentText}
-                            {/each}
-                        </td>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
                     </tr>
-                {/each}
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                    {#each componentMetadata.props as prop (prop.name)}
+                        <tr>
+                            <td>
+                                <Flexbox align="center" gap="2" wrap="nowrap">
+                                    <Code color="blue">{prop.name}</Code>
+
+                                    {#if prop.isBindable}
+                                        <Badge variant="outline" color="orange">$bindable</Badge>
+                                    {/if}
+
+                                    {#if prop.isSnippet}
+                                        <Badge variant="outline" color="yellow">Snippet</Badge>
+                                    {/if}
+
+                                    {#if !prop.isOptional}
+                                        <Badge variant="outline" color="red">required</Badge>
+                                    {/if}
+                                </Flexbox>
+                            </td>
+                            <td>
+                                <Flexbox align="center" gap="1" wrap="nowrap">
+                                    <div>
+                                        {#if prop.isSnippet && prop.aliasType}
+                                            <Code>Snippet</Code>
+                                        {:else}
+                                            <Code>{prop.type}</Code>
+                                        {/if}
+                                    </div>
+                                    {#if prop.type === 'union' || prop.aliasType}
+                                        <Floating
+                                            bind:isOpen={isOpenList[prop.name]}
+                                            closeOnScroll
+                                            closeOnClickOutside
+                                            closeOnEscape
+                                            shift
+                                        >
+                                            {#snippet trigger()}
+                                                <Button
+                                                    size="1"
+                                                    variant="clear"
+                                                    iconOnly
+                                                    onclick={() => {
+                                                        isOpenList[prop.name] = !isOpenList[prop.name];
+                                                    }}
+                                                >
+                                                    <InfoIcon size="18px" color="var(--neutral-8)" />
+                                                </Button>
+                                            {/snippet}
+                                            {#snippet content()}
+                                                <div style="max-width: 70vw;">
+                                                    {#if prop.aliasType}
+                                                        {prop.aliasType}
+                                                    {:else}
+                                                        "{prop.values?.join('" | "')}"
+                                                    {/if}
+                                                </div>
+                                            {/snippet}
+                                        </Floating>
+                                    {/if}
+                                </Flexbox>
+                            </td>
+                            <td>
+                                {#if prop.defaultValue !== undefined && prop.defaultValue !== ''}
+                                    <Code>
+                                        {#if Array.isArray(prop.defaultValue) && prop.defaultValue.length === 0}
+                                            []
+                                        {:else if prop.type === 'boolean' || prop.type === 'number'}
+                                            {prop.defaultValue}
+                                        {:else}
+                                            "{prop.defaultValue}"
+                                        {/if}
+                                    </Code>
+                                {:else}
+                                    <HyphenIcon />
+                                {/if}
+                            </td>
+                            <td>
+                                {#each prop.jsDoc ?? [] as doc (doc)}
+                                    {doc.commentText}
+                                {/each}
+                            </td>
+                        </tr>
+                    {/each}
+                </tbody>
+            </table>
+        </div>
     </Panel>
 {/if}
 

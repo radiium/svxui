@@ -1,6 +1,6 @@
 ---
 title: Flexbox
-description: A flexbox component arranges child elements in rows or columns with flexible alignment, spacing, and wrapping, making responsive layout design easier and more efficient.
+description: A simple flexbox component for arranging child elements in rows or columns with flexible alignment, spacing, and wrapping.
 category: components
 ---
 
@@ -10,7 +10,7 @@ category: components
     export let metadata;
 </script>
 
-```svelte example hideStyle
+```svelte example
 <script lang="ts">
     import { Flexbox, Panel } from 'svxui';
 </script>
@@ -20,15 +20,89 @@ category: components
     <Panel variant="outline">2</Panel>
     <Panel variant="outline">3</Panel>
 </Flexbox>
-
-<style>
-    div {
-        background: gray;
-        color: white;
-        padding: 30px;
-        border: 1px solid red;
-    }
-</style>
 ```
 
 <DocApiReference {metadata} />
+
+## Examples
+
+### Wrap rows
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Flexbox, Panel } from 'svxui';
+
+    const items = ["1", "2", "3"];
+</script>
+
+<Flexbox justify="center" wrap="wrap" gap="4" fullWidth>
+    {#each items as item (item)}
+        <Panel variant="outline" size="5" style="flex: 1 1 200px">
+            {item}
+        </Panel>
+    {/each}
+</Flexbox>
+```
+
+### List cards
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Flexbox, Panel, Text, Button } from 'svxui';
+
+    const items = ["1", "2", "3"];
+</script>
+
+<Flexbox direction="column" gap="3" style="width: 350px">
+    {#each items as item (item)}
+        <Panel variant="outline" size="3" radius="large" fullWidth>
+            <Flexbox align="center" gap="4" fullWidth>
+                <img src="https://picsum.photos/60/60" alt="Card image" style="border-radius: 50%;" />
+                <Flexbox direction="column" gap="1" class="flex-auto min-w-0">
+                    <Text size="5">Title {item}</Text>
+                    <Text size="3" muted truncate>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+                </Flexbox>
+                <Button variant="outline" size="3">Action</Button>
+            </Flexbox>
+        </Panel>
+    {/each}
+</Flexbox>
+```
+
+### Form field
+
+```svelte example enableOpenCode
+<script lang="ts">
+    import { Panel, Flexbox, Text, Input, Checkbox, Button, Link } from 'svxui';
+
+    const items = ["1", "2", "3"];
+</script>
+
+<Panel variant="outline" size="5">
+    <Flexbox  direction="column" gap="6" style="width: 300px;">
+        <Text size="7">Login</Text>
+
+        <Flexbox direction="column" gap="2">
+            <Flexbox as="label" direction="column" gap="1">
+                <Text>Email</Text>
+                <Input type="email" />
+            </Flexbox>
+
+            <Flexbox as="label" direction="column" gap="1">
+                <Text>Password</Text>
+                <Input type="password" />
+            </Flexbox>
+
+            <Flexbox as="label" align="center" gap="2">
+                <Checkbox size="3" />
+                <Text>Stay connected</Text>
+            </Flexbox>
+        </Flexbox>
+
+        <Flexbox direction="column" gap="3">
+            <Button fullWidth>Login</Button>
+            <Button fullWidth variant="outline">Forgot password ?</Button>
+        </Flexbox>
+    </Flexbox>
+</Panel>
+```

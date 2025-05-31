@@ -25,6 +25,7 @@
     data-color={color}
     data-size={size}
     class={cssClass}
+    data-checked={group === rest.value ? 'true' : undefined}
     type="radio"
     bind:group
     bind:this={elementRef}

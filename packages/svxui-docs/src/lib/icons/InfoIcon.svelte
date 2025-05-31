@@ -1,4 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" style="color: var(--neutral-8); height: 15px;">
+<script lang="ts">
+    import type { IconProps } from './types.js';
+    let { size = '20px', color = 'currentColor', mirrored = false, ...rest }: IconProps = $props();
+</script>
+
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    style:color
+    transform={mirrored ? 'scale(-1, 1)' : undefined}
+    viewBox="0 0 256 256"
+    {...rest}
+>
     <rect width="256" height="256" fill="none" />
     <circle
         cx="128"

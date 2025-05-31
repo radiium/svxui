@@ -43,6 +43,10 @@ export type FlexboxProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
      */
     gap?: Gap;
     /**
+     * Flexbox full width
+     */
+    fullWidth?: boolean;
+    /**
      * Flexbox content to render
      */
     children?: Snippet<[void]>;

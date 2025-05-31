@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { IconProps } from './types.js';
-    let { size = '1rem', color = 'currentColor', mirrored = false, ...rest }: IconProps = $props();
+    let { size = '20px', color = 'currentColor', mirrored = false, ...rest }: IconProps = $props();
 </script>
 
 <svg

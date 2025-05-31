@@ -94,6 +94,7 @@ export class AccordionItemState {
             'data-heading-level': this.#props.headingLevel?.(),
             // ARIA attributs
             'aria-level': this.#props.headingLevel?.(),
+            role: 'heading',
             // Common attributs
             ...this.#commonAttrs
         } as const;

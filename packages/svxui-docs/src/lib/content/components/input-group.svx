@@ -28,7 +28,7 @@ category: components
 ## Examples
 
 ### Input sizes
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { InputGroup, InputGroupItem, Input } from 'svxui';
     const sizes = ["1", "2", "3"]
@@ -44,7 +44,7 @@ category: components
 
 ### Input + Text
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { InputGroup, InputGroupItem, Input } from 'svxui';
 </script>
@@ -57,7 +57,7 @@ category: components
 
 ### Input + Button
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { InputGroup, Button, Input } from 'svxui';
 </script>
@@ -70,7 +70,7 @@ category: components
 
 ### Input + Select
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { InputGroup, Input, Select } from 'svxui';
     
@@ -85,7 +85,7 @@ category: components
 
 ### Input + InputRange
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { InputGroup, Input, InputRange } from 'svxui';
     
@@ -100,7 +100,7 @@ category: components
 
 ### Checkbox + Input
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { InputGroup, InputGroupItem, Checkbox, Input } from 'svxui';
 </script>
@@ -115,7 +115,7 @@ category: components
 
 ### Toggle
 
-```svelte example toggleableCode
+```svelte example enableOpenCode
 <script lang="ts">
     import { InputGroup, Button } from 'svxui';
 
