@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { replaceState } from '$app/navigation';
+    import { page } from '$app/state';
     import { onMount } from 'svelte';
     import { on } from 'svelte/events';
     import { isBrowser, Text } from 'svxui';
@@ -24,7 +26,9 @@
         if (isBrowser()) {
             const root = document.querySelector('main');
             if (root) {
-                items = Array.from(root.querySelectorAll('h2, h3, h4, h5, h6'));
+                items = Array.from<HTMLHeadingElement>(root.querySelectorAll('h2, h3, h4, h5, h6')).filter(
+                    (h) => !h.closest('.example')
+                );
             }
         }
     }
@@ -62,7 +66,7 @@
             node.scrollIntoView?.({ behavior: 'smooth', block: `start` });
 
             if (node.id) {
-                history.replaceState({}, ``, `#${node.id}`);
+                replaceState(`${page.url.pathname}${page.url.search}#${node.id}`, page.state);
             }
         };
     }

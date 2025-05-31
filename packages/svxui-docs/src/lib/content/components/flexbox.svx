@@ -57,7 +57,7 @@ category: components
     {#each items as item (item)}
         <Panel variant="outline" size="3" radius="large" fullWidth>
             <Flexbox align="center" gap="4" fullWidth>
-                <img src="https://picsum.photos/60/60" alt="Card image" style="border-radius: 50%;" />
+                <img src="https://picsum.photos/60/60" alt="Card image item {item}" style="border-radius: 50%;" />
                 <Flexbox direction="column" gap="1" class="flex-auto min-w-0">
                     <Text size="5">Title {item}</Text>
                     <Text size="3" muted truncate>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
@@ -79,7 +79,7 @@ category: components
 </script>
 
 <Panel variant="outline" size="5">
-    <Flexbox  direction="column" gap="6" style="width: 300px;">
+    <Flexbox  direction="column" gap="6" style="width: 300px;" as="form">
         <Text size="7">Login</Text>
 
         <Flexbox direction="column" gap="2">
