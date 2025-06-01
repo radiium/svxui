@@ -139,7 +139,7 @@
     <Input
         type="number"
         inputmode="numeric"
-        class="input-number-input"
+        class="input-number-in-group"
         {color}
         {size}
         {radius}
@@ -164,19 +164,3 @@
         iconOnly>+</Button
     >
 </InputGroup>
-
-<style>
-    :global(.input-number-input) {
-        /* TODO make it overridable */
-        width: 6em;
-        background: transparent !important;
-    }
-
-    :global(.input-number-input::-webkit-inner-spin-button),
-    :global(.input-number-input::-webkit-outer-spin-button) {
-        appearance: none !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: textfield !important;
-        margin: 0;
-    }
-</style>

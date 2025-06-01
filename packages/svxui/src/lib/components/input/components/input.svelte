@@ -71,6 +71,7 @@
         -webkit-appearance: none;
         -webkit-tap-highlight-color: transparent;
         &[type='number'] {
+            appearance: textfield;
             -moz-appearance: textfield;
         }
 
@@ -198,6 +199,19 @@
                 outline: 2px solid var(--accent-8);
                 outline-offset: -1px;
                 border-radius: var(--radius-2);
+            }
+        }
+
+        &.input-number-in-group {
+            width: 6em;
+            background: transparent !important;
+
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                appearance: none !important;
+                -webkit-appearance: none !important;
+                -moz-appearance: textfield !important;
+                margin: 0;
             }
         }
     }
