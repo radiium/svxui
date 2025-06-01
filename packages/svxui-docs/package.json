@@ -37,7 +37,7 @@
         "prettier": "^3.5.3",
         "prettier-plugin-svelte": "^3.4.0",
         "shiki": "^3.4.2",
-        "svelte": "^5.33.10",
+        "svelte": "^5.33.11",
         "svelte-check": "^4.2.1",
         "svelte-preprocess": "^6.0.3",
         "typescript": "^5.8.3",
