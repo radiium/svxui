@@ -116,7 +116,8 @@ Minimal structure to use the component without any styling.
 
 ### Full featured
 
-Example using other components from the library.
+Example using other components from the library.  
+  
 In controlled mode and with multiple/loop enabled.
 
 ```svelte example enableOpenCode
@@ -144,7 +145,8 @@ In controlled mode and with multiple/loop enabled.
         {
             id: '4',
             title: 'Title 4',
-            content: 'Content 4'
+            content: 'Content 4',
+            disabled: true
         },
     ];
     const ids = accordions.map(({id}) => id);
@@ -166,7 +168,7 @@ In controlled mode and with multiple/loop enabled.
     }
 </script>
 
-<Flexbox direction="column" gap="3">
+<Flexbox direction="column" gap="6">
     <Flexbox justify="center" gap="3">
         <Button onclick={toggleFirst}>Toggle first</Button>
         <Button onclick={openAll}>Open all</Button>
@@ -178,7 +180,7 @@ In controlled mode and with multiple/loop enabled.
             <Flexbox direction="column" gap="3" {...root.rootAttrs} style="width: 300px;">
 
                 {#each accordions as data (data.id)}
-                    <AccordionItem value={data.id}>
+                    <AccordionItem value={data.id} disabled={data.disabled}>
                         {#snippet children(item)}
                             <!-- Item -->
                             <Panel variant="soft" size="0">

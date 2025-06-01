@@ -29,6 +29,7 @@ category: components
 </script>
 
 <Flexbox direction="column">
+    <Text>default</Text>
     <Text color="neutral">neutral</Text>
     <Text color="blue">blue</Text>
     <Text color="green">green</Text>

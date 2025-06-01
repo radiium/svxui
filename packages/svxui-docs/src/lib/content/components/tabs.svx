@@ -12,107 +12,136 @@ category: components
 
 ```svelte example enableOpenCode
 <script lang="ts">
-    import { Tabs } from 'svxui';
+    import { TabRoot, TabList, TabTrigger, TabContent, Panel, Flexbox, Button } from 'svxui';
+
+    const tabs = ['1', '2', '3', '4'];
 </script>
 
-<Tabs.Root>
+<TabRoot value="1">
     {#snippet children(root)}
-        <div {...root.attrs}>
+        <Flexbox direction="column" gap="3" {...root.attrs}>
             <!-- Tabs list -->
-            <Tabs.List>
+            <TabList>
                 {#snippet children(list)}
-                    <div {...list.attrs}>
-                        <!-- Tabs trigger -->
-                        <Tabs.Trigger value="tab-1">
-                            {#snippet children(trigger)}
-                                <button {...trigger.attrs}>tab-1</button>
-                            {/snippet}
-                        </Tabs.Trigger>
-
-                        <!-- Tabs trigger -->
-                        <Tabs.Trigger value="tab-2">
-                            {#snippet children(trigger)}
-                                <button {...trigger.attrs}>tab-2</button>
-                            {/snippet}
-                        </Tabs.Trigger>
-                    </div>
+                    <Flexbox gap="3" {...list.attrs}>
+                        {#each tabs as id (id)}
+                            <!-- Tabs trigger -->
+                            <TabTrigger value={id}>
+                                {#snippet children(trigger)}
+                                    <Button variant={trigger.active ? 'soft' : 'clear'} {...trigger.attrs}>Tab {id}</Button>
+                                {/snippet}
+                            </TabTrigger>
+                        {/each}
+                    </Flexbox>
                 {/snippet}
-            </Tabs.List>
+            </TabList>
 
-            <!-- Tabs content -->
-            <Tabs.Content value="tab-1">
-                {#snippet children(content)}
-                    {#if content.active}
-                        <div {...content.attrs}>tab-1 content</div>
-                    {/if}
-                {/snippet}
-            </Tabs.Content>
-
-            <!-- Tabs content -->
-            <Tabs.Content value="tab-2">
-                {#snippet children(content)}
-                    {#if content.active}
-                        <div {...content.attrs}>tab-2 content</div>
-                    {/if}
-                {/snippet}
-            </Tabs.Content>
-        </div>
+            {#each tabs as id (id)}
+                <!-- Tabs content -->
+                <TabContent value={id}>
+                    {#snippet children(content)}
+                        {#if content.active}
+                            <Panel variant="outline" {...content.attrs}>
+                                Tab content {id}
+                            </Panel>
+                        {/if}
+                    {/snippet}
+                </TabContent>
+            {/each}
+        </Flexbox>
     {/snippet}
-</Tabs.Root>
+</TabRoot>
 ```
 
 <DocApiReference {metadata} />
 
 ## Examples
 
-### Advanced layout
+### Vertical
+
+Example using other components from the library.  
+  
+In controlled mode and with multiple/loop enabled.
+
 ```svelte example enableOpenCode
 <script lang="ts">
-    import { Tabs } from 'svxui';
+    import { TabRoot, TabList, TabTrigger, TabContent, Panel, Flexbox, Button } from 'svxui';
+
+    let selection = $state('1');
+    const tabs = [
+        {
+            id: '1',
+            title: 'Title 1',
+            content: 'Content 1'
+        },
+        {
+            id: '2',
+            title: 'Title 2',
+            content: 'Content 2'
+        },
+        {
+            id: '3',
+            title: 'Title 3',
+            content: 'Content 3'
+        },
+        {
+            id: '4',
+            title: 'Title 4',
+            content: 'Content 4',
+            disabled: true
+        },
+    ];
+
+    function selectFirst() {
+        selection = tabs.at(0).id;
+    }
+
+    function selectLast() {
+        selection = tabs.at(-1).id;
+    }
 </script>
 
-<Tabs.Root>
-    {#snippet children(root)}
-        <div {...root.attrs}>
-            <!-- Tabs list -->
-            <Tabs.List>
-                {#snippet children(list)}
-                    <div {...list.attrs}>
-                        <!-- Tabs trigger -->
-                        <Tabs.Trigger value="tab-1">
-                            {#snippet children(trigger)}
-                                <button {...trigger.attrs}>tab-1</button>
-                            {/snippet}
-                        </Tabs.Trigger>
+<Flexbox direction="column" gap="6">
+    <Flexbox justify="center" gap="3">
+        <Button onclick={selectFirst}>Select first</Button>
+        <Button onclick={selectLast}>Select last</Button>
+    </Flexbox>
 
-                        <!-- Tabs trigger -->
-                        <Tabs.Trigger value="tab-2">
-                            {#snippet children(trigger)}
-                                <button {...trigger.attrs}>tab-2</button>
-                            {/snippet}
-                        </Tabs.Trigger>
-                    </div>
-                {/snippet}
-            </Tabs.List>
+    <TabRoot bind:value={selection} orientation="vertical">
+        {#snippet children(root)}
+            <Flexbox gap="3" {...root.attrs}>
+                <!-- Tabs list -->
+                <TabList>
+                    {#snippet children(list)}
+                        <Flexbox direction="column" gap="3" {...list.attrs}>
+                            {#each tabs as tab (tab.id)}
+                                <!-- Tabs trigger -->
+                                <TabTrigger value={tab.id} disabled={tab.disabled}>
+                                    {#snippet children(trigger)}
+                                        <Button variant={trigger.active ? 'soft' : 'outline'} {...trigger.attrs}>
+                                            {tab.title}
+                                        </Button>
+                                    {/snippet}
+                                </TabTrigger>
+                            {/each}
+                        </Flexbox>
+                    {/snippet}
+                </TabList>
 
-            <!-- Tabs content -->
-            <Tabs.Content value="tab-1">
-                {#snippet children(content)}
-                    {#if content.active}
-                        <div {...content.attrs}>tab-1 content</div>
-                    {/if}
-                {/snippet}
-            </Tabs.Content>
-
-            <!-- Tabs content -->
-            <Tabs.Content value="tab-2">
-                {#snippet children(content)}
-                    {#if content.active}
-                        <div {...content.attrs}>tab-2 content</div>
-                    {/if}
-                {/snippet}
-            </Tabs.Content>
-        </div>
-    {/snippet}
-</Tabs.Root>
+                {#each tabs as tab (tab.id)}
+                    <!-- Tabs content -->
+                    <TabContent value={tab.id}>
+                        {#snippet children(content)}
+                            {#if content.active}
+                                <Panel variant="outline" {...content.attrs} style="width: 250px;">
+                                    {tab.content}
+                                </Panel>
+                            {/if}
+                        {/snippet}
+                    </TabContent>
+                {/each}
+            </Flexbox>
+        {/snippet}
+    </TabRoot>
+</Flexbox>
 ```

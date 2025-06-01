@@ -5,7 +5,7 @@ category: base
 ---
 
 <script lang="ts">
-    import { Tabs, Flexbox, Button } from 'svxui';
+    import { TabRoot, TabList, TabTrigger, TabContent, Flexbox, Button } from 'svxui';
     import Code from '$lib/markdown/components/Code.svelte';
 </script>
 
@@ -15,31 +15,32 @@ category: base
 
 Install svxui with the package manager of your choice.
 
-<Tabs.Root value="pnpm" selectWhenFocused>
-<Tabs.List>
+<TabRoot value="pnpm" selectWhenFocused>
+<TabList>
 {#snippet children(list)}
 
-<Flexbox gap="1" class="py-1 mt-4 -mb-3" {...list.attrs}>
-<Tabs.Trigger value="pnpm">
+<Flexbox gap="1" class="py-1 mt-4 -mb-5" {...list.attrs}>
+<TabTrigger value="pnpm">
     {#snippet children(trigger)}
     <Button variant={trigger.active ? 'soft' : 'clear'} size="3" {...trigger.attrs}>pnpm</Button>
     {/snippet}
-</Tabs.Trigger>
-<Tabs.Trigger value="npm">
+</TabTrigger>
+<TabTrigger value="npm">
     {#snippet children(trigger)}
     <Button variant={trigger.active ? 'soft' : 'clear'} size="3" {...trigger.attrs}>npm</Button>
     {/snippet}
-</Tabs.Trigger>
-<Tabs.Trigger value="yarn">
+</TabTrigger>
+<TabTrigger value="yarn">
     {#snippet children(trigger)}
     <Button variant={trigger.active ? 'soft' : 'clear'} size="3" {...trigger.attrs}>yarn</Button>
     {/snippet}
-</Tabs.Trigger>
+</TabTrigger>
 </Flexbox>
 
 {/snippet}
-</Tabs.List>
-<Tabs.Content value="pnpm">
+</TabList>
+
+<TabContent value="pnpm">
 {#snippet children(content)}
 {#if content.active}
 
@@ -49,8 +50,8 @@ pnpm install svxui
 
 {/if}
 {/snippet}
-</Tabs.Content>
-<Tabs.Content value="npm">
+</TabContent>
+<TabContent value="npm">
 {#snippet children(content)}
 {#if content.active}
 
@@ -60,8 +61,8 @@ npm install svxui
 
 {/if}
 {/snippet}
-</Tabs.Content>
-<Tabs.Content value="yarn">
+</TabContent>
+<TabContent value="yarn">
 {#snippet children(content)}
 {#if content.active}
 
@@ -71,8 +72,8 @@ yarn add svxui
 
 {/if}
 {/snippet}
-</Tabs.Content>
-</Tabs.Root>
+</TabContent>
+</TabRoot>
 
 ### 2. Import the CSS files
 Import the base style and utilities into the root of your application.
