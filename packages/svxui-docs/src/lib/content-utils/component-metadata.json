@@ -94,10 +94,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "horizontal",
-                            "vertical"
-                        ],
+                        "values": ["horizontal", "vertical"],
                         "defaultValue": "vertical"
                     },
                     {
@@ -167,14 +164,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3",
-                            "4",
-                            "5",
-                            "6"
-                        ],
+                        "values": ["1", "2", "3", "4", "5", "6"],
                         "defaultValue": 2
                     },
                     {
@@ -300,13 +290,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "size",
@@ -321,11 +305,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3"
-                        ],
+                        "values": ["1", "2", "3"],
                         "defaultValue": "1"
                     },
                     {
@@ -341,11 +321,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "solid",
-                            "soft",
-                            "outline"
-                        ],
+                        "values": ["solid", "soft", "outline"],
                         "defaultValue": "solid"
                     }
                 ],
@@ -396,11 +372,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "start",
-                            "center",
-                            "end"
-                        ],
+                        "values": ["start", "center", "end"],
                         "defaultValue": "center"
                     },
                     {
@@ -487,13 +459,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "size",
@@ -508,12 +474,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3",
-                            "4"
-                        ],
+                        "values": ["1", "2", "3", "4"],
                         "defaultValue": "2"
                     },
                     {
@@ -529,11 +490,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "lowercase",
-                            "uppercase",
-                            "capitalize"
-                        ]
+                        "values": ["lowercase", "uppercase", "capitalize"]
                     },
                     {
                         "name": "variant",
@@ -548,12 +505,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "solid",
-                            "soft",
-                            "outline",
-                            "clear"
-                        ],
+                        "values": ["solid", "soft", "outline", "clear"],
                         "defaultValue": "solid"
                     }
                 ],
@@ -619,13 +571,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "size",
@@ -640,11 +586,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3"
-                        ],
+                        "values": ["1", "2", "3"],
                         "defaultValue": "2"
                     }
                 ],
@@ -883,13 +825,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "size",
@@ -904,12 +840,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3",
-                            "4"
-                        ],
+                        "values": ["1", "2", "3", "4"],
                         "defaultValue": "3"
                     },
                     {
@@ -990,14 +921,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "start",
-                            "center",
-                            "end",
-                            "baseline",
-                            "stretch",
-                            "normal"
-                        ]
+                        "values": ["start", "center", "end", "baseline", "stretch", "normal"]
                     },
                     {
                         "name": "as",
@@ -1041,12 +965,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "row",
-                            "column",
-                            "row-reverse",
-                            "column-reverse"
-                        ]
+                        "values": ["row", "column", "row-reverse", "column-reverse"]
                     },
                     {
                         "name": "display",
@@ -1061,11 +980,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "inline-flex",
-                            "flex"
-                        ],
+                        "values": ["none", "inline-flex", "flex"],
                         "defaultValue": "flex"
                     },
                     {
@@ -1109,17 +1024,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3",
-                            "4",
-                            "5",
-                            "6",
-                            "7",
-                            "8",
-                            "9"
-                        ]
+                        "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
                     },
                     {
                         "name": "justify",
@@ -1160,11 +1065,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "nowrap",
-                            "wrap",
-                            "wrap-reverse"
-                        ]
+                        "values": ["nowrap", "wrap", "wrap-reverse"]
                     }
                 ],
                 "exports": [],
@@ -1496,13 +1397,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "shift",
@@ -1532,14 +1427,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "0",
-                            "1",
-                            "2",
-                            "3",
-                            "4",
-                            "5"
-                        ],
+                        "values": ["0", "1", "2", "3", "4", "5"],
                         "defaultValue": "3"
                     },
                     {
@@ -1599,11 +1487,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "solid",
-                            "soft",
-                            "outline"
-                        ],
+                        "values": ["solid", "soft", "outline"],
                         "defaultValue": "solid"
                     }
                 ],
@@ -1704,11 +1588,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "solid",
-                            "soft",
-                            "outline"
-                        ],
+                        "values": ["solid", "soft", "outline"],
                         "defaultValue": "soft"
                     },
                     {
@@ -1759,11 +1639,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "start",
-                            "center",
-                            "end"
-                        ],
+                        "values": ["start", "center", "end"],
                         "defaultValue": "start"
                     },
                     {
@@ -1837,13 +1713,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "size",
@@ -1858,11 +1728,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3"
-                        ],
+                        "values": ["1", "2", "3"],
                         "defaultValue": "2"
                     },
                     {
@@ -2034,11 +1900,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "start",
-                            "center",
-                            "end"
-                        ],
+                        "values": ["start", "center", "end"],
                         "defaultValue": "end"
                     },
                     {
@@ -2141,13 +2003,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "readonly",
@@ -2191,11 +2047,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3"
-                        ],
+                        "values": ["1", "2", "3"],
                         "defaultValue": "2"
                     },
                     {
@@ -2240,12 +2092,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "solid",
-                            "soft",
-                            "outline",
-                            "clear"
-                        ],
+                        "values": ["solid", "soft", "outline", "clear"],
                         "defaultValue": "clear"
                     }
                 ],
@@ -2326,10 +2173,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "horizontal",
-                            "vertical"
-                        ],
+                        "values": ["horizontal", "vertical"],
                         "defaultValue": "horizontal"
                     },
                     {
@@ -2345,13 +2189,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "size",
@@ -2366,11 +2204,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3"
-                        ],
+                        "values": ["1", "2", "3"],
                         "defaultValue": "2"
                     }
                 ],
@@ -2411,11 +2245,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "start",
-                            "center",
-                            "end"
-                        ],
+                        "values": ["start", "center", "end"],
                         "defaultValue": "start"
                     },
                     {
@@ -2518,17 +2348,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3",
-                            "4",
-                            "5",
-                            "6",
-                            "7",
-                            "8",
-                            "9"
-                        ],
+                        "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
                         "defaultValue": "3"
                     },
                     {
@@ -2544,11 +2364,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "lowercase",
-                            "uppercase",
-                            "capitalize"
-                        ]
+                        "values": ["lowercase", "uppercase", "capitalize"]
                     },
                     {
                         "name": "truncate",
@@ -2578,12 +2394,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "auto",
-                            "always",
-                            "hover",
-                            "none"
-                        ],
+                        "values": ["auto", "always", "hover", "none"],
                         "defaultValue": "auto"
                     },
                     {
@@ -2599,12 +2410,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "light",
-                            "regular",
-                            "medium",
-                            "bold"
-                        ],
+                        "values": ["light", "regular", "medium", "bold"],
                         "defaultValue": "regular"
                     },
                     {
@@ -2620,12 +2426,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "wrap",
-                            "nowrap",
-                            "pretty",
-                            "balance"
-                        ]
+                        "values": ["wrap", "nowrap", "pretty", "balance"]
                     }
                 ],
                 "exports": [],
@@ -2734,13 +2535,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "small",
-                            "none",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["small", "none", "medium", "large", "full"]
                     },
                     {
                         "name": "size",
@@ -2755,18 +2550,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "0",
-                            "1",
-                            "2",
-                            "3",
-                            "4",
-                            "5",
-                            "6",
-                            "7",
-                            "8",
-                            "9"
-                        ],
+                        "values": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
                         "defaultValue": "3"
                     },
                     {
@@ -2782,11 +2566,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "solid",
-                            "soft",
-                            "outline"
-                        ],
+                        "values": ["solid", "soft", "outline"],
                         "defaultValue": "solid"
                     }
                 ],
@@ -2912,11 +2692,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3"
-                        ],
+                        "values": ["1", "2", "3"],
                         "defaultValue": "2"
                     }
                 ],
@@ -3012,13 +2788,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "resolveLabel",
@@ -3076,11 +2846,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3"
-                        ],
+                        "values": ["1", "2", "3"],
                         "defaultValue": "2"
                     }
                 ],
@@ -3157,10 +2923,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "horizontal",
-                            "vertical"
-                        ],
+                        "values": ["horizontal", "vertical"],
                         "defaultValue": "horizontal"
                     },
                     {
@@ -3176,12 +2939,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3",
-                            "4"
-                        ],
+                        "values": ["1", "2", "3", "4"],
                         "defaultValue": "2"
                     }
                 ],
@@ -3247,13 +3005,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "size",
@@ -3268,11 +3020,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3"
-                        ],
+                        "values": ["1", "2", "3"],
                         "defaultValue": "2"
                     }
                 ],
@@ -3363,10 +3111,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "horizontal",
-                            "vertical"
-                        ],
+                        "values": ["horizontal", "vertical"],
                         "defaultValue": "horizontal"
                     },
                     {
@@ -3580,11 +3325,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "start",
-                            "center",
-                            "end"
-                        ],
+                        "values": ["start", "center", "end"],
                         "defaultValue": "start"
                     },
                     {
@@ -3687,17 +3428,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3",
-                            "4",
-                            "5",
-                            "6",
-                            "7",
-                            "8",
-                            "9"
-                        ],
+                        "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
                         "defaultValue": "3"
                     },
                     {
@@ -3713,11 +3444,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "lowercase",
-                            "uppercase",
-                            "capitalize"
-                        ]
+                        "values": ["lowercase", "uppercase", "capitalize"]
                     },
                     {
                         "name": "truncate",
@@ -3747,12 +3474,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "light",
-                            "regular",
-                            "medium",
-                            "bold"
-                        ],
+                        "values": ["light", "regular", "medium", "bold"],
                         "defaultValue": "regular"
                     },
                     {
@@ -3768,12 +3490,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "wrap",
-                            "nowrap",
-                            "pretty",
-                            "balance"
-                        ]
+                        "values": ["wrap", "nowrap", "pretty", "balance"]
                     }
                 ],
                 "exports": [],
@@ -3853,13 +3570,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "resizable",
@@ -3889,11 +3600,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "1",
-                            "2",
-                            "3"
-                        ],
+                        "values": ["1", "2", "3"],
                         "defaultValue": "2"
                     }
                 ],
@@ -3987,13 +3694,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ],
+                        "values": ["none", "small", "medium", "large", "full"],
                         "defaultValue": "medium"
                     },
                     {
@@ -4009,11 +3710,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "system",
-                            "dark",
-                            "light"
-                        ],
+                        "values": ["system", "dark", "light"],
                         "defaultValue": "system"
                     },
                     {
@@ -4188,13 +3885,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "none",
-                            "small",
-                            "medium",
-                            "large",
-                            "full"
-                        ]
+                        "values": ["none", "small", "medium", "large", "full"]
                     },
                     {
                         "name": "strategy",
@@ -4209,11 +3900,7 @@
                             }
                         ],
                         "type": "union",
-                        "values": [
-                            "system",
-                            "dark",
-                            "light"
-                        ]
+                        "values": ["system", "dark", "light"]
                     }
                 ],
                 "exports": [],

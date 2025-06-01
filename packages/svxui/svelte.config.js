@@ -19,7 +19,7 @@ const config = {
         sveltePreprocess({
             postcss: {
                 plugins: [autoprefixer]
-            },
+            }
         })
     ],
     kit: {

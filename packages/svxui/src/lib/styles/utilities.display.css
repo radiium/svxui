@@ -2,29 +2,29 @@
  * Utilities: display
  */
 .none {
-  display: none;
+    display: none;
 }
 
 .inline {
-  display: inline;
+    display: inline;
 }
 
 .inline-flex {
-  display: inline-flex;
+    display: inline-flex;
 }
 
 .flex {
-  display: flex;
+    display: flex;
 }
 
 .inline-block {
-  display: inline-block;
+    display: inline-block;
 }
 
 .block {
-  display: block;
+    display: block;
 }
 
 .grid {
-  display: grid;
+    display: grid;
 }

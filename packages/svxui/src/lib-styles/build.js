@@ -15,14 +15,13 @@ console.log('[STYLES] copy folders');
 [
     {
         src: 'colors',
-        dest: 'colors',
-    },
+        dest: 'colors'
+    }
 ].forEach(({ src, dest }) => {
     const input = resolve(baseInputDir, src);
     const output = resolve(baseOutputDir, dest);
     cpSync(input, output, { recursive: true });
 });
-
 
 console.log('[STYLES] build scss files');
 [
@@ -31,21 +30,21 @@ console.log('[STYLES] build scss files');
      */
     {
         src: 'theme/index.scss',
-        dest: 'theme.default.css',
+        dest: 'theme.default.css'
     },
     /**
      * Tokens
      */
     {
         src: 'tokens/index.scss',
-        dest: 'tokens.css',
+        dest: 'tokens.css'
     },
     /**
      * Normalize
      */
     {
         src: 'normalize.scss',
-        dest: 'normalize.css',
+        dest: 'normalize.css'
     },
 
     /**
@@ -53,44 +52,43 @@ console.log('[STYLES] build scss files');
      */
     {
         src: 'utilities/index.scss',
-        dest: 'utilities.css',
+        dest: 'utilities.css'
     },
     {
         src: 'utilities/display.scss',
-        dest: 'utilities.display.css',
+        dest: 'utilities.display.css'
     },
     {
         src: 'utilities/flex.scss',
-        dest: 'utilities.flex.css',
+        dest: 'utilities.flex.css'
     },
     {
         src: 'utilities/gap.scss',
-        dest: 'utilities.gap.css',
+        dest: 'utilities.gap.css'
     },
     {
         src: 'utilities/overflow.scss',
-        dest: 'utilities.overflow.css',
+        dest: 'utilities.overflow.css'
     },
     {
         src: 'utilities/position.scss',
-        dest: 'utilities.position.css',
+        dest: 'utilities.position.css'
     },
     {
         src: 'utilities/size.scss',
-        dest: 'utilities.size.css',
+        dest: 'utilities.size.css'
     },
     {
         src: 'utilities/space.scss',
-        dest: 'utilities.space.css',
+        dest: 'utilities.space.css'
     },
     {
         src: 'utilities/visibility.scss',
-        dest: 'utilities.visibility.css',
-    },
-
+        dest: 'utilities.visibility.css'
+    }
 ].forEach(({ src, dest }) => {
-    const input = resolve(baseInputDir, src)
-    const output = resolve(baseOutputDir, dest)
+    const input = resolve(baseInputDir, src);
+    const output = resolve(baseOutputDir, dest);
 
     const result = compile(input, { sourceMap: true, verbose: true });
     writeFileSync(output, result.css);

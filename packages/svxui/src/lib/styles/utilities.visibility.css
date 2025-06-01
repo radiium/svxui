@@ -2,13 +2,13 @@
  * Utilities: visibility
  */
 .visible {
-  visibility: visible;
+    visibility: visible;
 }
 
 .invisible {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 .collapse {
-  visibility: collapse;
+    visibility: collapse;
 }

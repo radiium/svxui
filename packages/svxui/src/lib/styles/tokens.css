@@ -2,182 +2,183 @@
  * Tokens: colors    
  */
 :root {
-  --black-a1: rgba(0, 0, 0, 0.05);
-  --black-a2: rgba(0, 0, 0, 0.1);
-  --black-a3: rgba(0, 0, 0, 0.15);
-  --black-a4: rgba(0, 0, 0, 0.2);
-  --black-a5: rgba(0, 0, 0, 0.3);
-  --black-a6: rgba(0, 0, 0, 0.4);
-  --black-a7: rgba(0, 0, 0, 0.5);
-  --black-a8: rgba(0, 0, 0, 0.6);
-  --black-a9: rgba(0, 0, 0, 0.7);
-  --black-a10: rgba(0, 0, 0, 0.8);
-  --black-a11: rgba(0, 0, 0, 0.9);
-  --black-a12: rgba(0, 0, 0, 0.95);
-  --white-a1: rgba(255, 255, 255, 0.05);
-  --white-a2: rgba(255, 255, 255, 0.1);
-  --white-a3: rgba(255, 255, 255, 0.15);
-  --white-a4: rgba(255, 255, 255, 0.2);
-  --white-a5: rgba(255, 255, 255, 0.3);
-  --white-a6: rgba(255, 255, 255, 0.4);
-  --white-a7: rgba(255, 255, 255, 0.5);
-  --white-a8: rgba(255, 255, 255, 0.6);
-  --white-a9: rgba(255, 255, 255, 0.7);
-  --white-a10: rgba(255, 255, 255, 0.8);
-  --white-a11: rgba(255, 255, 255, 0.9);
-  --white-a12: rgba(255, 255, 255, 0.95);
+    --black-a1: rgba(0, 0, 0, 0.05);
+    --black-a2: rgba(0, 0, 0, 0.1);
+    --black-a3: rgba(0, 0, 0, 0.15);
+    --black-a4: rgba(0, 0, 0, 0.2);
+    --black-a5: rgba(0, 0, 0, 0.3);
+    --black-a6: rgba(0, 0, 0, 0.4);
+    --black-a7: rgba(0, 0, 0, 0.5);
+    --black-a8: rgba(0, 0, 0, 0.6);
+    --black-a9: rgba(0, 0, 0, 0.7);
+    --black-a10: rgba(0, 0, 0, 0.8);
+    --black-a11: rgba(0, 0, 0, 0.9);
+    --black-a12: rgba(0, 0, 0, 0.95);
+    --white-a1: rgba(255, 255, 255, 0.05);
+    --white-a2: rgba(255, 255, 255, 0.1);
+    --white-a3: rgba(255, 255, 255, 0.15);
+    --white-a4: rgba(255, 255, 255, 0.2);
+    --white-a5: rgba(255, 255, 255, 0.3);
+    --white-a6: rgba(255, 255, 255, 0.4);
+    --white-a7: rgba(255, 255, 255, 0.5);
+    --white-a8: rgba(255, 255, 255, 0.6);
+    --white-a9: rgba(255, 255, 255, 0.7);
+    --white-a10: rgba(255, 255, 255, 0.8);
+    --white-a11: rgba(255, 255, 255, 0.9);
+    --white-a12: rgba(255, 255, 255, 0.95);
 }
 
 /* Theme light (default) */
 :root,
 .light,
-[data-theme=light] {
-  --color: #1f1f1f;
-  --color-background-0: #fcfcfc;
-  --color-background-1: #f9f9f9;
-  --color-background-2: #f0f0f0;
-  --color-overlay: var(--black-a6);
-  --color-surface: rgba(255, 255, 255, 0.85);
-  --color-box-shadow: #0000001f;
+[data-theme='light'] {
+    --color: #1f1f1f;
+    --color-background-0: #fcfcfc;
+    --color-background-1: #f9f9f9;
+    --color-background-2: #f0f0f0;
+    --color-overlay: var(--black-a6);
+    --color-surface: rgba(255, 255, 255, 0.85);
+    --color-box-shadow: #0000001f;
 }
 
 /* Theme dark */
 .dark,
-[data-theme=dark] {
-  --color: #ebebeb;
-  --color-background-0: #111111;
-  --color-background-1: #191919;
-  --color-background-2: #222222;
-  --color-overlay: var(--black-a8);
-  --color-surface: rgba(0, 0, 0, 0.25);
-  --color-box-shadow: #ffffff22;
+[data-theme='dark'] {
+    --color: #ebebeb;
+    --color-background-0: #111111;
+    --color-background-1: #191919;
+    --color-background-2: #222222;
+    --color-overlay: var(--black-a8);
+    --color-surface: rgba(0, 0, 0, 0.25);
+    --color-box-shadow: #ffffff22;
 }
 
-[data-has-background=true] {
-  background-color: var(--color-background-0);
+[data-has-background='true'] {
+    background-color: var(--color-background-0);
 }
 
 .svxui {
-  color: var(--color);
+    color: var(--color);
 }
 
 /*
  * Tokens: radius    
  */
 [data-radius] {
-  --radius-0: 0;
-  --radius-1: calc(3px * var(--radius-factor, 1));
-  --radius-2: calc(4px * var(--radius-factor, 1));
-  --radius-3: calc(6px * var(--radius-factor, 1));
-  --radius-4: calc(8px * var(--radius-factor, 1));
-  --radius-5: calc(12px * var(--radius-factor, 1));
-  --radius-6: calc(16px * var(--radius-factor, 1));
+    --radius-0: 0;
+    --radius-1: calc(3px * var(--radius-factor, 1));
+    --radius-2: calc(4px * var(--radius-factor, 1));
+    --radius-3: calc(6px * var(--radius-factor, 1));
+    --radius-4: calc(8px * var(--radius-factor, 1));
+    --radius-5: calc(12px * var(--radius-factor, 1));
+    --radius-6: calc(16px * var(--radius-factor, 1));
 }
 
-[data-radius=none] {
-  --radius-factor: 0;
-  --radius-full: 0px;
-  --radius-thumb: 0.5px;
+[data-radius='none'] {
+    --radius-factor: 0;
+    --radius-full: 0px;
+    --radius-thumb: 0.5px;
 }
 
-[data-radius=small] {
-  --radius-factor: 0.75;
-  --radius-full: 0px;
-  --radius-thumb: 0.5px;
+[data-radius='small'] {
+    --radius-factor: 0.75;
+    --radius-full: 0px;
+    --radius-thumb: 0.5px;
 }
 
-[data-radius=medium] {
-  --radius-factor: 1;
-  --radius-full: 0px;
-  --radius-thumb: 9999px;
+[data-radius='medium'] {
+    --radius-factor: 1;
+    --radius-full: 0px;
+    --radius-thumb: 9999px;
 }
 
-[data-radius=large] {
-  --radius-factor: 1.5;
-  --radius-full: 0px;
-  --radius-thumb: 9999px;
+[data-radius='large'] {
+    --radius-factor: 1.5;
+    --radius-full: 0px;
+    --radius-thumb: 9999px;
 }
 
-[data-radius=full] {
-  --radius-factor: 1.5;
-  --radius-full: 9999px;
-  --radius-thumb: 9999px;
+[data-radius='full'] {
+    --radius-factor: 1.5;
+    --radius-full: 9999px;
+    --radius-thumb: 9999px;
 }
 
 /*
  * Tokens: space    
  */
 .svxui {
-  --space-0: 0px;
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 40px;
-  --space-8: 48px;
-  --space-9: 64px;
+    --space-0: 0px;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 40px;
+    --space-8: 48px;
+    --space-9: 64px;
 }
 
 /*
  * Tokens: typography    
  */
 .svxui {
-  --font-size-1: 12px;
-  --font-size-2: 14px;
-  --font-size-3: 16px;
-  --font-size-4: 18px;
-  --font-size-5: 20px;
-  --font-size-6: 24px;
-  --font-size-7: 28px;
-  --font-size-8: 35px;
-  --font-size-9: 60px;
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
-  --line-height-1: 16px;
-  --line-height-2: 20px;
-  --line-height-3: 24px;
-  --line-height-4: 26px;
-  --line-height-5: 28px;
-  --line-height-6: 30px;
-  --line-height-7: 36px;
-  --line-height-8: 40px;
-  --line-height-9: 60px;
-  --letter-spacing-1: 0.0025em;
-  --letter-spacing-2: 0em;
-  --letter-spacing-3: 0em;
-  --letter-spacing-4: -0.0025em;
-  --letter-spacing-5: -0.005em;
-  --letter-spacing-6: -0.00625em;
-  --letter-spacing-7: -0.0075em;
-  --letter-spacing-8: -0.01em;
-  --letter-spacing-9: -0.025em;
-  /* --default-font-family: sans-serif; */
-  /* FIXME vertical alignment with macos system font */
-  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI (Custom)", Roboto, "Helvetica Neue",
-      "Open Sans (Custom)", system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --default-font-size: var(--font-size-3); /* Same size used for `<Text size="3">` */
-  --default-font-style: normal;
-  --default-font-weight: var(--font-weight-regular);
-  --default-line-height: 1.5; /* Equivalent to the line-height used for `<Text size="3">` 16px * 1.5 = 24px */
-  --default-letter-spacing: 0em;
-  --default-leading-trim-start: 0.42em;
-  --default-leading-trim-end: 0.36em;
+    --font-size-1: 12px;
+    --font-size-2: 14px;
+    --font-size-3: 16px;
+    --font-size-4: 18px;
+    --font-size-5: 20px;
+    --font-size-6: 24px;
+    --font-size-7: 28px;
+    --font-size-8: 35px;
+    --font-size-9: 60px;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --line-height-1: 16px;
+    --line-height-2: 20px;
+    --line-height-3: 24px;
+    --line-height-4: 26px;
+    --line-height-5: 28px;
+    --line-height-6: 30px;
+    --line-height-7: 36px;
+    --line-height-8: 40px;
+    --line-height-9: 60px;
+    --letter-spacing-1: 0.0025em;
+    --letter-spacing-2: 0em;
+    --letter-spacing-3: 0em;
+    --letter-spacing-4: -0.0025em;
+    --letter-spacing-5: -0.005em;
+    --letter-spacing-6: -0.00625em;
+    --letter-spacing-7: -0.0075em;
+    --letter-spacing-8: -0.01em;
+    --letter-spacing-9: -0.025em;
+    /* --default-font-family: sans-serif; */
+    /* FIXME vertical alignment with macos system font */
+    --default-font-family:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)', Roboto, 'Helvetica Neue',
+        'Open Sans (Custom)', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    --default-font-size: var(--font-size-3); /* Same size used for `<Text size="3">` */
+    --default-font-style: normal;
+    --default-font-weight: var(--font-weight-regular);
+    --default-line-height: 1.5; /* Equivalent to the line-height used for `<Text size="3">` 16px * 1.5 = 24px */
+    --default-letter-spacing: 0em;
+    --default-leading-trim-start: 0.42em;
+    --default-leading-trim-end: 0.36em;
 }
 
 .svxui {
-  font-family: var(--default-font-family);
-  font-size: var(--default-font-size);
-  font-weight: var(--default-font-weight);
-  font-style: var(--default-font-style);
-  line-height: var(--default-line-height);
-  letter-spacing: var(--default-letter-spacing);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  text-size-adjust: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: var(--default-font-family);
+    font-size: var(--default-font-size);
+    font-weight: var(--default-font-weight);
+    font-style: var(--default-font-style);
+    line-height: var(--default-line-height);
+    letter-spacing: var(--default-letter-spacing);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
