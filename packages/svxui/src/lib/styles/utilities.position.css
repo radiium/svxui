@@ -2,21 +2,21 @@
  * Utilities: position
  */
 .static {
-    position: static;
+  position: static;
 }
 
 .absolute {
-    position: absolute;
+  position: absolute;
 }
 
 .relative {
-    position: relative;
+  position: relative;
 }
 
 .fixed {
-    position: fixed;
+  position: fixed;
 }
 
 .sticky {
-    position: sticky;
+  position: sticky;
 }
