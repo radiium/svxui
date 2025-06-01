@@ -3,7 +3,7 @@ import type { TextareaProps, TextareaSize } from './types.js';
 
 export const defaultTextareaProps: TextareaProps = {
     elementRef: undefined,
-    color: 'neutral',
+    color: undefined,
     size: '2',
     radius: undefined,
     value: undefined,

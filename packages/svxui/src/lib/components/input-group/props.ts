@@ -2,7 +2,7 @@ import { colorOptions, type PropsOptions } from '$lib/shared.options.js';
 import type { InputGroupItemProps, InputGroupProps } from './types.js';
 
 export const defaultInputGroupItemProps: InputGroupItemProps = {
-    color: 'neutral'
+    color: undefined
 };
 export const inputGroupItemOptions = {
     color: colorOptions

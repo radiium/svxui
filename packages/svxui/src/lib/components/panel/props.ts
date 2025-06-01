@@ -4,7 +4,7 @@ import type { PanelProps, PanelSize, PanelVariant } from './types.js';
 export const defaultPanelProps: PanelProps = {
     as: 'div',
     elementRef: undefined,
-    color: 'neutral',
+    color: undefined,
     size: '3',
     radius: undefined,
     variant: 'solid',

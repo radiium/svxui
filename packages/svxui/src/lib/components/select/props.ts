@@ -4,7 +4,7 @@ import type { SelectProps, SelectSize } from './types.js';
 export const defaultSelectProps: SelectProps = {
     elementRef: undefined,
     size: '2',
-    color: 'neutral',
+    color: undefined,
     radius: undefined,
     value: undefined,
     options: [],

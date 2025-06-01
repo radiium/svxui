@@ -3,7 +3,7 @@ import type { SeparatorProps, SeparatorSize } from './types.js';
 
 export const defaultSeparatorProps: SeparatorProps = {
     elementRef: undefined,
-    color: 'neutral',
+    color: undefined,
     size: '2',
     orientation: 'horizontal'
 };

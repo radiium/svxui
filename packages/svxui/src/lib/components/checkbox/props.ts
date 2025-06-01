@@ -3,7 +3,7 @@ import type { CheckboxProps, CheckboxSize } from './types.js';
 
 export const defaultCheckboxProps: CheckboxProps = {
     elementRef: undefined,
-    color: 'neutral',
+    color: undefined,
     size: '2',
     radius: undefined,
     group: undefined,

@@ -4,7 +4,7 @@ import type { InputNumberProps, InputNumberSize, InputNumberVariant } from './ty
 
 export const defaultInputNumberProps: InputNumberProps = {
     elementRef: undefined,
-    color: 'neutral',
+    color: undefined,
     size: '2',
     radius: undefined,
     variant: 'clear',

@@ -15,7 +15,7 @@ import {
 export const defaultFloatingProps: FloatingProps = {
     isOpen: false,
     size: '3',
-    color: 'neutral',
+    color: undefined,
     variant: 'solid',
     radius: undefined,
     placement: 'top',
@@ -58,7 +58,7 @@ export const floatingOptions = {
 
 export const defaultFloatingArrowProps: Partial<FloatingArrowProps> = {
     elementRef: undefined,
-    color: 'neutral',
+    color: undefined,
     variant: 'soft'
 };
 export const floatingArrowOptions = {

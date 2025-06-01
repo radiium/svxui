@@ -9,7 +9,7 @@ import {
 import type { ButtonProps, ButtonSize, ButtonVariant } from './types.js';
 
 export const defaultButtonProps: ButtonProps = {
-    color: 'neutral',
+    color: undefined,
     size: '2',
     radius: undefined,
     variant: 'solid',

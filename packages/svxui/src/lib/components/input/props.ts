@@ -4,7 +4,7 @@ import type { InputProps, InputSize, InputType } from './types.js';
 
 export const defaultInputProps: InputProps = {
     elementRef: undefined,
-    color: 'neutral',
+    color: undefined,
     size: '2',
     radius: undefined,
     value: '',

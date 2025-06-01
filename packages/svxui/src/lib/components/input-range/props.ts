@@ -10,7 +10,7 @@ import type { InputRangeProps, InputRangeSize } from './types.js';
 export const defaultInputRangeProps: InputRangeProps = {
     elementRef: undefined,
     size: '2',
-    color: 'neutral',
+    color: undefined,
     radius: undefined,
     value: undefined,
     fullWidth: false,

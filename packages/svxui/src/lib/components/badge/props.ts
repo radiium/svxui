@@ -2,7 +2,7 @@ import { booleanOptions, colorOptions, radiusOptions, type PropsOptions } from '
 import type { BadgeProps, BadgeSize, BadgeVariant } from './types.js';
 
 export const defaultBadgeProps: BadgeProps = {
-    color: 'neutral',
+    color: undefined,
     size: '1',
     radius: undefined,
     variant: 'solid',

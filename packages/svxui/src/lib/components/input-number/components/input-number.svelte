@@ -119,7 +119,7 @@
             ];
 
             return () => {
-                subscriptions.filter(Boolean).forEach((cb) => cb?.());
+                subscriptions.forEach((cb) => cb?.());
             };
         }
     });

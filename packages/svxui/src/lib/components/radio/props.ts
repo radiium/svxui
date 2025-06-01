@@ -3,7 +3,7 @@ import type { RadioProps, RadioSize } from './types.js';
 
 export const defaultRadioProps: RadioProps = {
     elementRef: undefined,
-    color: 'neutral',
+    color: undefined,
     size: '2',
     group: undefined,
     disabled: false
