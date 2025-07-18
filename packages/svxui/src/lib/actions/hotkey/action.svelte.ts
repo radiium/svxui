@@ -28,9 +28,12 @@ export function hotkeyAction(node: HTMLElement, params: HotkeyParameters): Hotke
             const { modifier, key, callback, preventDefault, enabled: triggerEnabled } = mergedTrigger;
             if (triggerEnabled) {
                 if (modifier.length) {
-                    const modifierDefs = (Array.isArray(modifier) ? modifier : [modifier]).map((def) =>
-                        typeof def === 'string' ? [def] : def
-                    );
+                    const modifierDefs = (
+                        Array.isArray(modifier) //
+                            ? modifier
+                            : [modifier]
+                    ).map((def) => (typeof def === 'string' ? [def] : def));
+
                     const modified = modifierDefs.some((def) =>
                         def.every((modifier) => modifiedMap[modifier])
                     );

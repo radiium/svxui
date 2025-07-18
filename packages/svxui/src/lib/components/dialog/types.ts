@@ -16,7 +16,7 @@ export type DialogProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
      * Callback when dialog is closed
      */
-    onClose?: () => void;
+    onClose?: (reason: 'escape' | 'backdrop') => void;
     /**
      * Dialog size
      */

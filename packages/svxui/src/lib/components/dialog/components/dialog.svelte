@@ -1,23 +1,6 @@
-<script module lang="ts">
-    let allDialog: HTMLDivElement[] = [];
-
-    const addDialog = (dialog?: HTMLDivElement) => {
-        if (dialog && !allDialog.includes(dialog)) {
-            allDialog.push(dialog);
-        }
-    };
-
-    const removeDialog = (dialog?: HTMLDivElement) => {
-        if (dialog && allDialog.includes(dialog)) {
-            allDialog = allDialog.filter((m: HTMLDivElement) => m !== dialog);
-        }
-    };
-</script>
-
 <script lang="ts">
     import { focusTrapAction } from '$lib/actions/focustrap/index.js';
     import { lockScrollAction } from '$lib/actions/lockscroll/action.svelte.js';
-    import { untrack } from 'svelte';
     import { fade, scale } from 'svelte/transition';
     import { defaultDialogProps } from '../props.js';
     import type { DialogProps } from '../types.js';
@@ -45,31 +28,21 @@
         ...rest
     }: DialogProps = $props();
 
-    function close(): void {
-        isOpen = false;
-        onClose?.();
-    }
     function handlekeydown(event: KeyboardEvent): void {
         if (closeOnEscape) {
             if (event.key === 'Escape') {
-                close();
+                isOpen = false;
+                onClose?.('escape');
             }
         }
     }
 
     function onBackdropClick(): void {
         if (closeOnBackdropClick) {
-            close();
+            isOpen = false;
+            onClose?.('backdrop');
         }
     }
-
-    $effect(() => {
-        if (isOpen) {
-            addDialog(untrack(() => elementRef));
-        } else {
-            removeDialog(untrack(() => elementRef));
-        }
-    });
 
     let cssClass = $derived([
         rest.class,
