@@ -25,7 +25,7 @@ function highlight(code: string): string {
 }
 
 /**
- * Try all type il source file
+ * Try all types in source file
  * @param valueDeclaration
  * @returns
  */
