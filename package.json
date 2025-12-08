@@ -54,8 +54,8 @@
         "ci:publish": " pnpm build:packages && changeset publish"
     },
     "devDependencies": {
-        "@changesets/cli": "^2.29.4",
-        "concurrently": "^9.1.2"
+        "@changesets/cli": "^2.29.8",
+        "concurrently": "^9.2.1"
     },
-    "packageManager": "pnpm@10.11.0"
+    "packageManager": "pnpm@10.25.0"
 }
