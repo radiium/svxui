@@ -41,7 +41,13 @@ While providing a comprehensive set of pre-designed components, the library rema
 
 ```bash
 npm install svxui
+```
+
+```bash
 pnpm install svxui
+```
+
+```bash
 yarn add svxui
 ```
 

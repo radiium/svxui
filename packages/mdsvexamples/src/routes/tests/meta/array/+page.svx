@@ -1,3 +1,0 @@
-```svelte example space=["hello", "world"] nospace=["hello","world"] Wrapper="../MetaWrapper.svelte"
-
-```

@@ -6,13 +6,6 @@ export default defineConfig({
     server: {
         port: 5174
     },
-    css: {
-        preprocessorOptions: {
-            scss: {
-                api: 'modern-compiler'
-            }
-        }
-    },
     optimizeDeps: {
         include: ['@floating-ui/dom']
     },

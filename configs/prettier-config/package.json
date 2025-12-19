@@ -18,6 +18,6 @@
         "prettier": "3.7.4"
     },
     "dependencies": {
-        "prettier-plugin-svelte": "^3.4.0"
+        "prettier-plugin-svelte": "^3.4.1"
     }
 }

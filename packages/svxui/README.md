@@ -25,7 +25,13 @@ Svxui is free and open-source UI component library for svelte app.
 
 ```bash
 npm install svxui
+```
+
+```bash
 pnpm install svxui
+```
+
+```bash
 yarn add svxui
 ```
 

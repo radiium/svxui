@@ -1,35 +1,32 @@
 {
-    "editor.formatOnSave": true,
-    "eslint.workingDirectories": [
-        {
-            "mode": "auto"
-        }
-    ],
-    "eslint.useFlatConfig": true,
-    "eslint.validate": [
-        "javascript",
-        "svelte"
-    ],
-    "eslint.debug": true,
-    "eslint.probe": [
-        "astro",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "html",
-        "svx",
-        "mdx",
-        "vue",
-        "markdown",
-        "json",
-        "jsonc",
-        "svelte"
-    ],
-    "files.associations": {
-        "*.svx": "svx"
-    },
-    "[svelte]": {
-        "editor.wordWrap": "off"
+  "editor.formatOnSave": true,
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
     }
+  ],
+  "eslint.useFlatConfig": true,
+  "eslint.validate": ["javascript", "svelte"],
+  "eslint.debug": true,
+  "eslint.probe": [
+    "astro",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "svx",
+    "mdx",
+    "vue",
+    "markdown",
+    "json",
+    "jsonc",
+    "svelte"
+  ],
+  "files.associations": {
+    "*.svx": "svx"
+  },
+  "[svelte]": {
+    "editor.wordWrap": "off"
+  }
 }

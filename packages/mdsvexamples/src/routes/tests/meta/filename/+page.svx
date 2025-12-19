@@ -1,3 +1,0 @@
-```svelte example Wrapper="../MetaWrapper.svelte"
-<div>hello</div>
-```

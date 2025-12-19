@@ -39,11 +39,11 @@
         "dev:docs": "pnpm --filter=svxui-docs -r dev",
         "-- BUILD": "",
         "build": "pnpm --filter=!@configs/** --filter=!svxui-docs-builder -r build",
-        "build:mdsvexamples": "pnpm --filter=mdsvexamples build",
         "build:lib": "pnpm --filter=svxui build",
+        "build:docs": "pnpm --filter=svxui-docs-builder build",
         "build:sites": "pnpm --filter=svxui-docs build",
         "-- VERCEL": "",
-        "vercel:prepare": "concurrently \"pnpm:build:mdsvexamples\" \"pnpm:build:lib\"",
+        "vercel:prepare": "pnpm run build:lib && pnpm run build:docs",
         "vercel:build": "pnpm run build:sites",
         "-- UTILS": "",
         "check": "pnpm --filter=!@configs/** -r check",
@@ -57,5 +57,5 @@
         "@changesets/cli": "^2.29.8",
         "concurrently": "^9.2.1"
     },
-    "packageManager": "pnpm@10.25.0"
+    "packageManager": "pnpm@10.26.1"
 }
