@@ -15,11 +15,11 @@ export class SelectionState<T, Multiple extends boolean = false> {
     constructor(props: SelectionStateProps<T, Multiple>) {
         this.#props = props;
 
-        let prevMultiple = this.#props.multiple?.();
+        const destroy = $effect.root(() => {
+            let prevMultiple = this.#props.multiple?.();
 
-        const destroyEffectRoot = $effect.root(() => {
             $effect(() => {
-                const newValue = props.value?.();
+                const newValue = this.#props.value?.();
                 return untrack(() => {
                     this.current = newValue as SelectionStateValue<T, Multiple>;
                 });
@@ -47,7 +47,8 @@ export class SelectionState<T, Multiple extends boolean = false> {
                 });
             });
         });
-        onDestroy(destroyEffectRoot);
+
+        onDestroy(destroy);
     }
 
     get current(): SelectionStateValue<T, Multiple> {
@@ -84,6 +85,7 @@ export class SelectionState<T, Multiple extends boolean = false> {
         }
         this.#onChange();
     }
+
     remove(id: T): void {
         if (this.#multiple) {
             this.#selectionMultiple.delete(id);
@@ -92,6 +94,7 @@ export class SelectionState<T, Multiple extends boolean = false> {
         }
         this.#onChange();
     }
+
     toggle(id: T): void {
         if (this.#multiple) {
             if (this.#selectionMultiple.has(id)) {
