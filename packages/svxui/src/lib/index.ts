@@ -25,6 +25,9 @@ export * from './components/theme/index.js';
 // Actions
 export * from './actions/index.js';
 
+// Attachments
+export * from './attachments/index.js';
+
 // Utils
 export * from './utils/index.js';
 
