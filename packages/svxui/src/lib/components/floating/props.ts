@@ -17,6 +17,7 @@ export const defaultFloatingProps: FloatingProps = {
     size: '3',
     color: undefined,
     variant: 'solid',
+    outline: false,
     radius: undefined,
     placement: 'top',
     offset: 0,
@@ -39,7 +40,8 @@ export const defaultFloatingProps: FloatingProps = {
 export const floatingOptions = {
     color: colorOptions,
     size: ['0', '1', '2', '3', '4', '5'] satisfies FloatingSize[],
-    variant: ['solid', 'soft', 'outline'] satisfies FloatingVariant[],
+    variant: ['solid', 'soft', 'clear'] satisfies FloatingVariant[],
+    outline: booleanOptions,
     radius: radiusOptions,
     placement: placementOptions,
     arrow: booleanOptions,
@@ -57,11 +59,12 @@ export const floatingOptions = {
 } as const satisfies PropsOptions<FloatingProps>;
 
 export const defaultFloatingArrowProps: Partial<FloatingArrowProps> = {
-    elementRef: undefined,
+    ref: undefined,
     color: undefined,
     variant: 'soft'
 };
 export const floatingArrowOptions = {
     color: colorOptions,
-    variant: ['solid', 'soft', 'outline'] satisfies FloatingVariant[]
+    variant: ['solid', 'soft', 'clear'] satisfies FloatingVariant[],
+    outline: booleanOptions
 } as const satisfies PropsOptions<FloatingArrowProps>;

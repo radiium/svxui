@@ -9,7 +9,7 @@ export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLSpanElement;
+    ref?: HTMLSpanElement;
     /**
      * Color of badge
      */

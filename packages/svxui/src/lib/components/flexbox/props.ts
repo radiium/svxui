@@ -2,7 +2,7 @@ import { booleanOptions, type PropsOptions } from '$lib/shared.options.js';
 import type { AlignItem, Direction, Display, FlexboxProps, Gap, Justify, Wrap } from './types.js';
 
 export const defaultFlexboxProps: FlexboxProps = {
-    elementRef: undefined,
+    ref: undefined,
     as: 'div',
     display: 'flex',
     justify: 'start',

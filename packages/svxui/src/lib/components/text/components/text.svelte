@@ -3,7 +3,7 @@
     import type { TextProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         as = defaultTextProps.as,
         color = defaultTextProps.color,
         size = defaultTextProps.size,
@@ -43,7 +43,7 @@
     data-size={size}
     class={cssClass}
     aria-disabled={disabled ?? undefined}
-    bind:this={elementRef}
+    bind:this={ref}
 >
     {@render children?.()}
 </svelte:element>

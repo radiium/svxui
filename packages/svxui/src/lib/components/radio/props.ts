@@ -2,7 +2,7 @@ import { booleanOptions, colorOptions, type PropsOptions } from '$lib/shared.opt
 import type { RadioProps, RadioSize } from './types.js';
 
 export const defaultRadioProps: RadioProps = {
-    elementRef: undefined,
+    ref: undefined,
     color: undefined,
     size: '2',
     group: undefined,

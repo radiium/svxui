@@ -5,10 +5,11 @@
     import type { FloatingArrowProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         floatingState,
         color = defaultFloatingArrowProps.color,
         variant = defaultFloatingArrowProps.variant,
+        outline = defaultFloatingArrowProps.outline,
         width = 14,
         height = 8,
         tipRadius = 3,
@@ -24,13 +25,12 @@
 
     const clipPathId = useId();
 
-    // let isRTL = $derived(elementRef && platform.isRTL(elementRef));
+    // let isRTL = $derived(ref && platform.isRTL(ref));
     let isVerticalSide = $derived(side === 'top' || side === 'bottom');
-    let isOutline = $derived(variant === 'outline');
 
     // Strokes must be double the border width, this ensures the stroke's width
     // works as you'd expect.
-    const computedStrokeWidth = $derived(isOutline ? 2 : 0);
+    const computedStrokeWidth = $derived(outline ? 2 : 0);
     const halfStrokeWidth = $derived(computedStrokeWidth / 2);
 
     const svgX = $derived((width / 2) * (tipRadius / -8 + 1));
@@ -61,7 +61,7 @@
             left: `${arrowX}`,
             top: `${arrowY}`,
             [side]: isVerticalSide ? '100%' : `calc(100% - ${computedStrokeWidth / 2}px)`,
-            transform: `${rotateTransform} translateY(${isOutline ? '-1px' : '0'})`
+            transform: `${rotateTransform} translateY(${outline ? '-1px' : '0'})`
         });
     });
 
@@ -80,7 +80,7 @@
 </script>
 
 <svg
-    bind:this={elementRef}
+    bind:this={ref}
     width={width + computedStrokeWidth}
     height={width}
     viewBox={`0 0 ${width} ${height > width ? height : width}`}

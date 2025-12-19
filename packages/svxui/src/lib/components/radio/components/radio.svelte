@@ -3,7 +3,7 @@
     import type { RadioProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         group = $bindable(),
         size = defaultRadioProps.size,
         color = defaultRadioProps.color,
@@ -24,11 +24,11 @@
     {...rest}
     data-color={color}
     data-size={size}
-    class={cssClass}
     data-checked={group === rest.value ? 'true' : undefined}
     type="radio"
+    class={cssClass}
     bind:group
-    bind:this={elementRef}
+    bind:this={ref}
 />
 
 <style>

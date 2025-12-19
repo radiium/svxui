@@ -9,7 +9,7 @@ export type ButtonProps = HTMLButtonAttributes & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLButtonElement;
+    ref?: HTMLButtonElement | Element;
     /**
      * Button color
      */

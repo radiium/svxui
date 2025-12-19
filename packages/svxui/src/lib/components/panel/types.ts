@@ -3,13 +3,13 @@ import type { Snippet } from 'svelte';
 import type { HTMLAttributes, SvelteHTMLElements } from 'svelte/elements';
 
 export type PanelSize = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
-export type PanelVariant = 'solid' | 'soft' | 'outline';
+export type PanelVariant = 'solid' | 'soft' | 'clear';
 
 export type PanelProps = Omit<HTMLAttributes<HTMLElement>, 'color'> & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLElement;
+    ref?: HTMLElement;
     /**
      * Render element as
      */
@@ -30,6 +30,10 @@ export type PanelProps = Omit<HTMLAttributes<HTMLElement>, 'color'> & {
      * Panel variant
      */
     variant?: PanelVariant;
+    /**
+     * Panel outline
+     */
+    outline?: boolean;
     /**
      * Panel full with
      */

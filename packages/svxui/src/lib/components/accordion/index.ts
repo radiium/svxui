@@ -11,7 +11,10 @@ export { defaultAccordionItemProps, defaultAccordionRootProps } from './props.js
 export type {
     AccordionHeadingLevel,
     AccordionItemProps,
+    AccordionItemSnippetProps,
     AccordionRootProps,
+    AccordionRootSnippetProps,
     AccordionSelectionValue,
+    AccordionSelectionValueChange,
     AccordionValue
 } from './types.js';

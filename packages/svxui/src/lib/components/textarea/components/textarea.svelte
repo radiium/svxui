@@ -3,7 +3,7 @@
     import type { TextareaProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         value = $bindable(),
         color = defaultTextareaProps.color,
         size = defaultTextareaProps.size,
@@ -33,7 +33,7 @@
     data-color={color}
     data-radius={radius}
     class={cssClass}
-    bind:this={elementRef}
+    bind:this={ref}
     bind:value
 ></textarea>
 

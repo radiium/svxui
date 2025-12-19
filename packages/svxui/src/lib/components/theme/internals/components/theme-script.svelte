@@ -18,7 +18,7 @@
         lightColor: MetaThemeColors.light
     });
 
-    let initSvxui = $derived(
+    let initTheme = $derived(
         ({
             strategyKey,
             defaultStrategy,
@@ -58,14 +58,12 @@
                 rootEl.setAttribute('data-theme', darkClass);
                 themeMetaEl?.setAttribute('content', darkColor);
             }
-            // htmlEl.classLit.add('svxui');
         }
     );
 </script>
 
 <svelte:head>
     <meta name="theme-color" content={themeColor} />
-    <!-- eslint-disable-next-line svelte/no-unused-svelte-ignore -->
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html `<script>(` + initSvxui.toString() + `)(` + JSON.stringify(initThemeConfig) + `);</script>`}
+    <!-- eslint-disable-next-line svelte/no-at-html-tags, prefer-template --><!-- svelte-ignore hydration_html_changed -->
+    {@html `<script>(` + initTheme.toString() + `)(` + JSON.stringify(initThemeConfig) + `);</script>`}
 </svelte:head>

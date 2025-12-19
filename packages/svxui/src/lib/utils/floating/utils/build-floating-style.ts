@@ -1,5 +1,5 @@
 import type { ComputePositionReturn } from '@floating-ui/dom';
-import type { UseFloatingProps } from '../types.js';
+import type { FloatingStateManagerProps } from '../types.js';
 import { roundByDPR } from './round-by-dpr.js';
 
 /**
@@ -10,7 +10,7 @@ import { roundByDPR } from './round-by-dpr.js';
  */
 export function buildFloatingStyle(
     data: ComputePositionReturn,
-    props: UseFloatingProps
+    props: FloatingStateManagerProps
 ): Partial<CSSStyleDeclaration> {
     const x = roundByDPR(data.x);
     const y = roundByDPR(data.y);

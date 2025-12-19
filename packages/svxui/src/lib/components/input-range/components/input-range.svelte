@@ -3,7 +3,7 @@
     import type { InputRangeProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         value = $bindable(),
         size = defaultInputRangeProps.size,
         radius = defaultInputRangeProps.radius,
@@ -27,12 +27,12 @@
 
 <input
     {...rest}
-    class={cssClass}
     type="range"
     data-color={color}
     data-size={size}
     data-radius={radius}
-    bind:this={elementRef}
+    class={cssClass}
+    bind:this={ref}
     bind:value
 />
 

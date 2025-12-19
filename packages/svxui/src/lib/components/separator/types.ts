@@ -7,7 +7,7 @@ export type SeparatorProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLDivElement;
+    ref?: HTMLDivElement;
     /**
      * Separator color
      */

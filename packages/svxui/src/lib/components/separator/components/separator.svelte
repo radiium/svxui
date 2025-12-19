@@ -3,7 +3,7 @@
     import type { SeparatorProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         color = defaultSeparatorProps.color,
         size = defaultSeparatorProps.size,
         orientation = defaultSeparatorProps.orientation,
@@ -28,7 +28,7 @@
     aria-orientation={orientation}
     data-color={color}
     data-size={size}
-    bind:this={elementRef}
+    bind:this={ref}
 ></div>
 
 <style>

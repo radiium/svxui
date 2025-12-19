@@ -7,7 +7,7 @@ export type CheckboxProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'>
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLInputElement;
+    ref?: HTMLInputElement;
     /**
      * Checkbox color
      */

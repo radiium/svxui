@@ -10,6 +10,7 @@ export type ThemeScriptProps = {
     color: string;
     theme: ThemeType;
 };
+
 export type InitThemeConfig = {
     strategyKey: string;
     defaultStrategy: StrategyType;

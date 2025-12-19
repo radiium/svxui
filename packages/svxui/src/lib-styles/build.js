@@ -11,6 +11,7 @@ if (existsSync(baseOutputDir)) {
 }
 mkdirSync(baseOutputDir);
 
+// Copy Radix color
 console.log('[STYLES] copy folders');
 [
     {
@@ -23,6 +24,7 @@ console.log('[STYLES] copy folders');
     cpSync(input, output, { recursive: true });
 });
 
+// Build CSS files
 console.log('[STYLES] build scss files');
 [
     /**

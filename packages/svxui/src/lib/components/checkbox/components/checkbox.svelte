@@ -4,7 +4,7 @@
     import type { CheckboxProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         group = $bindable(),
         value = defaultCheckboxProps.value,
         checked = $bindable(),
@@ -49,18 +49,18 @@
 <input
     autocomplete="off"
     {...rest}
-    type="checkbox"
-    class={cssClass}
     data-checked={checked || undefined}
     data-indeterminate={indeterminate || undefined}
     data-color={color}
     data-size={size}
     data-radius={radius}
-    {value}
+    class={cssClass}
+    type="checkbox"
     onchange={onChange}
+    {value}
     bind:checked
     bind:indeterminate
-    bind:this={elementRef}
+    bind:this={ref}
 />
 
 <style>

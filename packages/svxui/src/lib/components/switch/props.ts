@@ -2,7 +2,7 @@ import { booleanOptions, colorOptions, radiusOptions, type PropsOptions } from '
 import type { SwitchProps, SwitchSize } from './types.js';
 
 export const defaultSwitchProps: SwitchProps = {
-    elementRef: undefined,
+    ref: undefined,
     size: '2',
     color: undefined,
     radius: undefined,

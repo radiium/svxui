@@ -3,12 +3,13 @@
     import type { PanelProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         as = defaultPanelProps.as,
         color = defaultPanelProps.color,
         size = defaultPanelProps.size,
         radius = defaultPanelProps.radius,
         variant = defaultPanelProps.variant,
+        outline = defaultPanelProps.outline,
         fullWidth = defaultPanelProps.fullWidth,
         children,
         ...rest
@@ -21,6 +22,7 @@
             [`panel-size-${size}`]: size,
             [`panel-color-${color}`]: color,
             [`panel-variant-${variant}`]: variant,
+            'panel-outline': outline,
             'panel-full-width': fullWidth,
             'panel-button': as === 'button',
             'panel-link': as === 'a',
@@ -36,7 +38,7 @@
     data-size={size}
     data-radius={radius}
     class={cssClass}
-    bind:this={elementRef}
+    bind:this={ref}
 >
     {@render children?.()}
 </svelte:element>
@@ -46,20 +48,23 @@
         display: block;
         position: relative;
         box-sizing: border-box;
-        /* overflow: hidden; */
-        /* contain: paint; */
         padding: var(--panel-padding);
         border-radius: var(--panel-border-radius);
         background-color: var(--panel-background);
         border: none;
 
-        &::after {
+        & > ::after {
             content: '';
             position: absolute;
             pointer-events: none;
             inset: 0;
             border-radius: var(--panel-border-radius);
             box-shadow: var(--panel-box-shadow);
+        }
+
+        &.panel-outline {
+            --panel-box-shadow: inset 0 0 0 1px var(--accent-7);
+            --panel-box-shadow-hover: inset 0 0 0 1px var(--accent-8);
         }
 
         &.panel-full-width {
@@ -110,20 +115,14 @@
 
         /* Variants */
         &.panel-variant-solid {
-            --panel-box-shadow: none;
-            --panel-box-shadow-hover: none;
             --panel-background: var(--accent-5);
             --panel-background-hover: var(--accent-6);
         }
         &.panel-variant-soft {
-            --panel-box-shadow: none;
-            --panel-box-shadow-hover: none;
-            --panel-background: var(--accent-3);
-            --panel-background-hover: var(--accent-4);
+            --panel-background: var(--accent-2);
+            --panel-background-hover: var(--accent-3);
         }
-        &.panel-variant-outline {
-            --panel-box-shadow: inset 0 0 0 1px var(--accent-7);
-            --panel-box-shadow-hover: inset 0 0 0 1px var(--accent-8);
+        &.panel-variant-clear {
             --panel-background: var(--color-background-0);
             --panel-background-hover: var(--color-background-0);
         }

@@ -7,7 +7,7 @@ export type InputRangeProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLInputElement;
+    ref?: HTMLInputElement;
     /**
      * InputRange color
      */

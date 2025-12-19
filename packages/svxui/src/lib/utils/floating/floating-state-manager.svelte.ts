@@ -1,11 +1,6 @@
-import {
-    computePosition,
-    type ComputePositionConfig,
-    type FloatingElement,
-    type ReferenceElement
-} from '@floating-ui/dom';
+import { computePosition, type FloatingElement, type ReferenceElement } from '@floating-ui/dom';
 import { onDestroy } from 'svelte';
-import type { FloatingStateManagerProps, FloatingState } from './types.js';
+import type { FloatingState, FloatingStateManagerProps } from './types.js';
 import { parsePlacement } from './utils/parse-placement.js';
 import { roundByDPR } from './utils/round-by-dpr.js';
 import { styleObjectToString } from './utils/style-object-to-string.js';
@@ -31,13 +26,11 @@ export class FloatingStateManager {
             return;
         }
 
-        const config: ComputePositionConfig = {
-            strategy: this.#props.strategy,
-            placement: this.#props.placement,
-            middleware: this.#props.middleware
-        };
-
-        const response = await computePosition(this.reference, this.floating, config);
+        const response = await computePosition(this.reference, this.floating, {
+            strategy: this.#props?.strategy,
+            placement: this.#props?.placement,
+            middleware: this.#props?.middleware
+        });
         const [side, alignment] = parsePlacement(response.placement);
 
         this.#state = {
@@ -92,15 +85,19 @@ export class FloatingStateManager {
                 return;
             }
 
-            return this.#props.whileElementsMounted(this.reference, this.floating, this.update.bind(this));
+            return this.#props.whileElementsMounted(
+                this.reference, //
+                this.floating,
+                this.update.bind(this)
+            );
         });
     });
 
-    get state() {
+    get state(): FloatingState | undefined {
         return this.#state;
     }
 
-    get style() {
+    get style(): string {
         return this.#style;
     }
 }

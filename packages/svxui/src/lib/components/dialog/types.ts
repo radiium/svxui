@@ -8,7 +8,7 @@ export type DialogProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLDivElement;
+    ref?: HTMLDivElement;
     /**
      * Manage/listen open state
      */

@@ -1,12 +1,12 @@
 <script lang="ts">
     import type { InputGroupProps } from '../types.js';
 
-    let { elementRef = $bindable(), children, ...rest }: InputGroupProps = $props();
+    let { ref = $bindable(), children, ...rest }: InputGroupProps = $props();
 
     let cssClass = $derived([rest.class, `input-group`]);
 </script>
 
-<div {...rest} role="group" class={cssClass} bind:this={elementRef}>
+<div {...rest} role="group" class={cssClass} bind:this={ref}>
     {@render children?.()}
 </div>
 

@@ -2,7 +2,7 @@ import { booleanOptions, colorOptions, radiusOptions, type PropsOptions } from '
 import type { CheckboxProps, CheckboxSize } from './types.js';
 
 export const defaultCheckboxProps: CheckboxProps = {
-    elementRef: undefined,
+    ref: undefined,
     color: undefined,
     size: '2',
     radius: undefined,

@@ -6,7 +6,7 @@
     import type { DialogProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         isOpen = $bindable(),
         onClose = defaultDialogProps.onClose,
         size = defaultDialogProps.size,
@@ -62,7 +62,7 @@
 <svelte:body use:lockScrollAction={{ enabled: lockScrollEnabled }} />
 
 {#if isOpen}
-    <div class={cssClass} data-size={size} data-radius={radius} bind:this={elementRef}>
+    <div class={cssClass} data-size={size} data-radius={radius} bind:this={ref}>
         <div
             role="button"
             class="dialog-backdrop"

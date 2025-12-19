@@ -59,7 +59,7 @@ export type TextElementFromTagType<TextTag extends TextAsTagType> =
       /**
      * Rendered DOM element
      *
-    elementRef?:HTMLElement; // TextElementFromTagType<TextTag>;
+      ref?:HTMLElement; // TextElementFromTagType<TextTag>;
       as?: TextTag;
       color?: Color;
       size?: TextSize;
@@ -79,7 +79,7 @@ export type TextProps = TextExtend & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLElement;
+    ref?: HTMLElement;
     /**
      * Render element as
      */

@@ -8,7 +8,7 @@ import {
 import type { TextProps, TextSize, TextWeight, TextWrap } from './types.js';
 
 export const defaultTextProps: TextProps = {
-    elementRef: undefined,
+    ref: undefined,
     as: 'div',
     color: undefined,
     size: '3',

@@ -9,14 +9,16 @@
     import { defaultFloatingProps } from '../props.js';
     import type { FloatingProps } from '../types.js';
     import FloatingArrow from './floating-arrow.svelte';
+    import { isEventInElement } from '$lib/utils/is-event-in-element.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         isOpen = $bindable(),
         onClose = defaultFloatingProps.onClose,
         size = defaultFloatingProps.size,
         color = defaultFloatingProps.color,
         variant = defaultFloatingProps.variant,
+        outline = defaultFloatingProps.outline,
         radius = defaultFloatingProps.radius,
 
         autoUpdate = defaultFloatingProps.autoUpdate,
@@ -73,7 +75,10 @@
     }
 
     function handleClickOutside(evt: CustomEvent<MouseEvent>): void {
-        if (closeOnClickOutside && !isEventInElement(evt.detail)) {
+        if (
+            closeOnClickOutside &&
+            !isEventInElement(evt.detail, floating.reference?.getBoundingClientRect())
+        ) {
             close();
         }
     }
@@ -93,22 +98,6 @@
         if (closeOnScroll) {
             close();
         }
-    }
-
-    function isEventInElement(event: MouseEvent) {
-        const rect = floating.reference?.getBoundingClientRect();
-        if (rect) {
-            const x = event.clientX;
-            if (x < rect.left || x >= rect.right) {
-                return false;
-            }
-            const y = event.clientY;
-            if (y < rect.top || y >= rect.bottom) {
-                return false;
-            }
-            return true;
-        }
-        return false;
     }
 
     let cssClass = $derived([rest.class, 'floating-content']);
@@ -140,7 +129,7 @@
         <div
             transition:fade={{ duration: transitionDuration, delay: transitionDelay }}
             bind:this={floating.floating}
-            bind:this={elementRef}
+            bind:this={ref}
             use:clickOutsideAction
             onclickoutside={handleClickOutside}
             style={floating.style}
@@ -151,14 +140,9 @@
             data-side={floating.state?.side}
             data-align={floating.state?.alignment}
         >
-            <Panel {size} {color} {variant} {radius}>
+            <Panel {size} {color} {variant} {outline} {radius}>
                 {#if arrow}
-                    <FloatingArrow
-                        bind:elementRef={arrowEl}
-                        floatingState={floating.state}
-                        {color}
-                        {variant}
-                    />
+                    <FloatingArrow bind:ref={arrowEl} floatingState={floating.state} {color} {variant} />
                 {/if}
                 {@render content?.()}
             </Panel>

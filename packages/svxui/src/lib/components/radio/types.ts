@@ -7,7 +7,7 @@ export type RadioProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'> & 
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLInputElement;
+    ref?: HTMLInputElement;
     /**
      * Radio color
      */

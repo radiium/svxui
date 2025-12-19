@@ -3,7 +3,7 @@ import type { Align } from '$lib/shared.types.js';
 import type { InputNumberProps, InputNumberSize, InputNumberVariant } from './types.js';
 
 export const defaultInputNumberProps: InputNumberProps = {
-    elementRef: undefined,
+    ref: undefined,
     color: undefined,
     size: '2',
     radius: undefined,

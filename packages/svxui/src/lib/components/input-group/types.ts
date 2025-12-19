@@ -6,7 +6,7 @@ export type InputGroupItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> 
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLDivElement;
+    ref?: HTMLDivElement;
     /**
      * InputGroupItem color
      */
@@ -21,7 +21,7 @@ export type InputGroupProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLDivElement;
+    ref?: HTMLDivElement;
     /**
      * InputGroup content to render
      */

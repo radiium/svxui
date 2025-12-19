@@ -7,7 +7,7 @@ export type TextareaProps = Omit<HTMLTextareaAttributes, 'color'> & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLTextAreaElement;
+    ref?: HTMLTextAreaElement;
     /**
      * Textarea color
      */

@@ -3,17 +3,19 @@ import type { PanelProps, PanelSize, PanelVariant } from './types.js';
 
 export const defaultPanelProps: PanelProps = {
     as: 'div',
-    elementRef: undefined,
+    ref: undefined,
     color: undefined,
     size: '3',
     radius: undefined,
     variant: 'solid',
+    outline: false,
     fullWidth: false
 };
 export const panelOptions = {
     color: colorOptions,
     size: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] satisfies PanelSize[],
-    variant: ['solid', 'soft', 'outline'] satisfies PanelVariant[],
+    variant: ['solid', 'soft', 'clear'] satisfies PanelVariant[],
     radius: radiusOptions,
+    outline: booleanOptions,
     fullWidth: booleanOptions
 } as const satisfies PropsOptions<PanelProps>;

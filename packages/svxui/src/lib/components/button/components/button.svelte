@@ -3,7 +3,7 @@
     import type { ButtonProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         size = defaultButtonProps.size,
         variant = defaultButtonProps.variant,
         color = defaultButtonProps.color,
@@ -42,7 +42,7 @@
     data-size={size}
     data-radius={radius}
     class={cssClass}
-    bind:this={elementRef}
+    bind:this={ref}
 >
     {@render children?.()}
 </button>

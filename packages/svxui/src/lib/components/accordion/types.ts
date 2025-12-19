@@ -20,7 +20,7 @@ export type AccordionRootSnippetProps = {
 
 export type AccordionRootProps = {
     /**
-     * Current accordion selection. Single value when multiple is false and Array is multiple is true,
+     * Current accordion selection. Single value when multiple is false and Array when multiple is true,
      */
     value?: AccordionSelectionValue;
     /**

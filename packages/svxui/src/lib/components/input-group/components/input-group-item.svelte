@@ -3,7 +3,7 @@
     import type { InputGroupItemProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         color = defaultInputGroupItemProps.color,
         children,
         ...rest
@@ -12,7 +12,7 @@
     let cssClass = $derived([rest.class, 'input-group-item']);
 </script>
 
-<div {...rest} data-color={color} class={cssClass} bind:this={elementRef}>
+<div {...rest} data-color={color} class={cssClass} bind:this={ref}>
     {@render children?.()}
 </div>
 

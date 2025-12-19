@@ -13,7 +13,7 @@ export type FlexboxProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLElement;
+    ref?: HTMLElement;
     /**
      * Render element as
      */

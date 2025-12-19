@@ -3,7 +3,7 @@
     import type { BadgeProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         size = defaultBadgeProps.size,
         variant = defaultBadgeProps.variant,
         color = defaultBadgeProps.color,
@@ -27,12 +27,12 @@
 
 <span
     {...rest}
-    bind:this={elementRef}
     data-color={color}
     data-size={size}
     data-radius={radius}
     aria-disabled={disabled}
     class={cssClass}
+    bind:this={ref}
 >
     {@render children?.()}
 </span>

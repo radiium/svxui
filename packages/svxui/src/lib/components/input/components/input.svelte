@@ -3,7 +3,7 @@
     import type { InputProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         value = $bindable(),
         type = defaultInputProps.type,
         color = defaultInputProps.color,
@@ -27,19 +27,11 @@
         }
     ]);
 
-    const setInputType = (node: HTMLInputElement, value: InputProps['type']) => {
-        if (value) {
-            node.type = value;
-        }
-
-        return {
-            update: (newValue: InputProps['type']) => {
-                if (newValue) {
-                    node.type = newValue;
-                }
-            }
-        };
-    };
+    function setInputType(el: HTMLInputElement) {
+        $effect(() => {
+            el.type = type ?? 'text';
+        });
+    }
 </script>
 
 <input
@@ -52,9 +44,9 @@
     data-color={color}
     data-size={size}
     data-radius={radius}
-    bind:this={elementRef}
+    bind:this={ref}
     bind:value
-    use:setInputType={type}
+    {@attach setInputType}
 />
 
 <style>

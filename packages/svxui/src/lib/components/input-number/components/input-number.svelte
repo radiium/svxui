@@ -9,7 +9,7 @@
     import type { InputNumberProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         value = $bindable(),
         step = defaultInputNumberProps.step,
         min = defaultInputNumberProps.min,
@@ -125,16 +125,9 @@
     });
 </script>
 
-<InputGroup {...rest} class={cssClass} bind:elementRef>
-    <Button
-        bind:elementRef={decrementRef}
-        onclick={decrement}
-        {variant}
-        {size}
-        {radius}
-        {color}
-        {disabled}
-        iconOnly>-</Button
+<InputGroup {...rest} class={cssClass} bind:ref>
+    <Button bind:ref={decrementRef} onclick={decrement} {variant} {size} {radius} {color} {disabled} iconOnly
+        >-</Button
     >
     <Input
         type="number"
@@ -153,14 +146,7 @@
         {max}
         bind:value
     />
-    <Button
-        bind:elementRef={incrementRef}
-        onclick={increment}
-        {variant}
-        {size}
-        {radius}
-        {color}
-        {disabled}
-        iconOnly>+</Button
+    <Button bind:ref={incrementRef} onclick={increment} {variant} {size} {radius} {color} {disabled} iconOnly
+        >+</Button
     >
 </InputGroup>

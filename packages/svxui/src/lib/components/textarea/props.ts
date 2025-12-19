@@ -2,7 +2,7 @@ import { booleanOptions, colorOptions, radiusOptions, type PropsOptions } from '
 import type { TextareaProps, TextareaSize } from './types.js';
 
 export const defaultTextareaProps: TextareaProps = {
-    elementRef: undefined,
+    ref: undefined,
     color: undefined,
     size: '2',
     radius: undefined,

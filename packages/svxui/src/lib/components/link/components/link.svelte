@@ -4,7 +4,7 @@
     import type { LinkProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         underline = defaultLinkProps.underline,
         children,
         ...rest
@@ -19,6 +19,6 @@
     ]);
 </script>
 
-<Text {...rest} as="a" class={cssClass} bind:elementRef>
+<Text {...rest} as="a" class={cssClass} bind:ref>
     {@render children?.()}
 </Text>

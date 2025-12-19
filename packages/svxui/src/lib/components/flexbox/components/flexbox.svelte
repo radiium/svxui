@@ -3,7 +3,7 @@
     import type { FlexboxProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         as = defaultFlexboxProps.as,
         display = defaultFlexboxProps.display,
         direction = defaultFlexboxProps.direction,
@@ -30,7 +30,7 @@
     ]);
 </script>
 
-<svelte:element this={as} {...rest} class={cssClass} bind:this={elementRef}>
+<svelte:element this={as} {...rest} class={cssClass} bind:this={ref}>
     {@render children?.()}
 </svelte:element>
 

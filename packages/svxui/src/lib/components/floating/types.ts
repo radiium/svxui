@@ -4,13 +4,13 @@ import type { Snippet } from 'svelte';
 import type { HTMLAttributes, SVGAttributes } from 'svelte/elements';
 
 export type FloatingSize = '0' | '1' | '2' | '3' | '4' | '5';
-export type FloatingVariant = 'solid' | 'soft' | 'outline';
+export type FloatingVariant = 'solid' | 'soft' | 'clear';
 
 export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLDivElement;
+    ref?: HTMLDivElement;
     /**
      * Manage/listen open state
      */
@@ -31,6 +31,10 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
      * Floating variant
      */
     variant?: FloatingVariant;
+    /**
+     * Floating outline
+     */
+    outline?: boolean;
     /**
      * Floating radius
      */
@@ -118,7 +122,7 @@ export type FloatingArrowProps = Omit<SVGAttributes<SVGElement>, 'color' | 'widt
     /**
      * Rendered DOM element
      */
-    elementRef?: SVGElement | HTMLElement;
+    ref?: SVGElement | HTMLElement;
     /**
      * FloatingArrow color
      */
@@ -127,6 +131,10 @@ export type FloatingArrowProps = Omit<SVGAttributes<SVGElement>, 'color' | 'widt
      * FloatingArrow variant
      */
     variant?: FloatingVariant;
+    /**
+     * FloatingArrow outline
+     */
+    outline?: boolean;
     /**
      * Floating positioning state
      */

@@ -3,7 +3,7 @@
     import type { SwitchProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
+        ref = $bindable(),
         checked = $bindable(),
         group = $bindable(),
         value = defaultSwitchProps.value,
@@ -36,7 +36,7 @@
         data-state={checked ? 'checked' : 'unchecked'}
         {value}
         bind:group
-        bind:this={elementRef}
+        bind:this={ref}
     />
 {:else}
     <input
@@ -51,7 +51,7 @@
         data-state={checked ? 'checked' : 'unchecked'}
         {value}
         bind:checked
-        bind:this={elementRef}
+        bind:this={ref}
     />
 {/if}
 
