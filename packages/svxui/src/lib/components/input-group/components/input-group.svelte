@@ -6,7 +6,7 @@
     let cssClass = $derived([rest.class, `input-group`]);
 </script>
 
-<div {...rest} role="group" class={cssClass} bind:this={ref}>
+<div {...rest} class={cssClass} bind:this={ref}>
     {@render children?.()}
 </div>
 

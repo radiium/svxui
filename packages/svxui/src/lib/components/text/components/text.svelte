@@ -1,22 +1,24 @@
-<script lang="ts">
+<script lang="ts" generics="E extends keyof SvelteHTMLElements = 'div'">
+    import type { SvelteHTMLElements } from 'svelte/elements';
     import { defaultTextProps } from '../props.js';
     import type { TextProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        as = defaultTextProps.as,
+        as = defaultTextProps.as as E,
         color = defaultTextProps.color,
         size = defaultTextProps.size,
         weight = defaultTextProps.weight,
         transform = defaultTextProps.transform,
         align = defaultTextProps.align,
         wrap = defaultTextProps.wrap,
+        underline = defaultTextProps.underline,
         truncate = defaultTextProps.truncate,
         muted = defaultTextProps.muted,
         disabled = defaultTextProps.disabled,
         children,
         ...rest
-    }: TextProps = $props();
+    }: TextProps<E> = $props();
 
     let cssClass = $derived([
         rest.class,
@@ -28,6 +30,8 @@
             [`text-align-${align}`]: align,
             [`text-transform-${transform}`]: transform,
             [`text-wrap-${wrap}`]: wrap,
+            [`text-underline-${underline}`]: underline,
+            'text-link': as === 'a',
             'text-truncate': truncate,
             'text-muted': muted,
             'text-disabled': disabled,
@@ -196,12 +200,10 @@
         }
 
         &:not(.text-disabled) {
-            &.text-link-underline-auto:hover,
-            &.text-link-underline-hover:hover,
-            &.text-link-underline-always {
-                & {
-                    --link-text-decoration-line: underline;
-                }
+            &.text-underline-auto:hover,
+            &.text-underline-hover:hover,
+            &.text-underline-always {
+                --link-text-decoration-line: underline;
             }
         }
     }

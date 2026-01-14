@@ -1,6 +1,13 @@
 <script lang="ts">
-    import Select from '$lib/components/select/components/select.svelte';
-    import { rovingFocus, Text, ThemeRootProvider, useThemeRootContext } from '$lib/index.js';
+    import {
+        rovingFocus,
+        Select,
+        Text,
+        ThemeRootProvider,
+        useThemeRootContext,
+        type Radius,
+        type StrategyType
+    } from '$lib/index.js';
     import '$lib/styles/normalize.css';
     import '$lib/styles/tokens.css';
     import '$lib/styles/utilities.css';
@@ -69,7 +76,7 @@
                 <Select
                     options={['dark', 'light', 'system']}
                     value={themeRoot.strategy}
-                    onValueChange={(value) => themeRoot.setStrategy(value)}
+                    onValueChange={themeRoot.setStrategy}
                 />
             </label>
 
@@ -78,7 +85,7 @@
                 <Select
                     options={['neutral', 'blue', 'green', 'yellow', 'orange', 'red']}
                     value={themeRoot.color}
-                    onValueChange={(value) => themeRoot.setColor(value)}
+                    onValueChange={themeRoot.setColor}
                 />
             </label>
 
@@ -87,7 +94,7 @@
                 <Select
                     options={['none', 'small', 'medium', 'large', 'full']}
                     value={themeRoot.radius}
-                    onValueChange={(value) => themeRoot.setRadius(value)}
+                    onValueChange={themeRoot.setRadius}
                 />
             </label>
         </header>

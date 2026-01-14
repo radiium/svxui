@@ -1,19 +1,15 @@
+import type { PolymorphicProps } from '$lib/internals/polymorphic.types.js';
 import type { Color, Radius } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
-import type { HTMLAttributes, SvelteHTMLElements } from 'svelte/elements';
+import type { SvelteHTMLElements } from 'svelte/elements';
 
 export type PanelSize = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
 export type PanelVariant = 'solid' | 'soft' | 'clear';
 
-export type PanelProps = Omit<HTMLAttributes<HTMLElement>, 'color'> & {
-    /**
-     * Rendered DOM element
-     */
-    ref?: HTMLElement;
-    /**
-     * Render element as
-     */
-    as?: keyof SvelteHTMLElements;
+/**
+ * Panel-specific props (design-system props)
+ */
+export type PanelOwnProps = {
     /**
      * Panel color
      */
@@ -35,7 +31,7 @@ export type PanelProps = Omit<HTMLAttributes<HTMLElement>, 'color'> & {
      */
     outline?: boolean;
     /**
-     * Panel full with
+     * Panel full width
      */
     fullWidth?: boolean;
     /**
@@ -43,3 +39,8 @@ export type PanelProps = Omit<HTMLAttributes<HTMLElement>, 'color'> & {
      */
     children?: Snippet<[void]>;
 };
+
+/**
+ * Polymorphic Panel props
+ */
+export type PanelProps<E extends keyof SvelteHTMLElements = 'div'> = PolymorphicProps<E, PanelOwnProps>;

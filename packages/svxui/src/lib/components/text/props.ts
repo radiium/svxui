@@ -16,6 +16,7 @@ export const defaultTextProps: TextProps = {
     transform: undefined,
     align: 'start',
     wrap: undefined,
+    underline: 'none',
     truncate: false,
     muted: false,
     disabled: false
@@ -31,4 +32,4 @@ export const textOptions = {
     color: colorOptions,
     muted: booleanOptions,
     disabled: booleanOptions
-} as const satisfies PropsOptions<TextProps>;
+} as const satisfies PropsOptions<TextProps<any>>;
