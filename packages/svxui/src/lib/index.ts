@@ -1,3 +1,11 @@
+// Attachments
+export * from './attachments/clickoutside/index.js';
+export * from './attachments/focustrap/index.js';
+export * from './attachments/longpress/index.js';
+export * from './attachments/portal/index.js';
+export * from './attachments/roving-focus/index.js';
+export * from './attachments/scrolllock/index.js';
+
 // Components
 export * from './components/accordion/index.js';
 export * from './components/badge/index.js';
@@ -22,16 +30,38 @@ export * from './components/text/index.js';
 export * from './components/textarea/index.js';
 export * from './components/theme/index.js';
 
-// Actions
-export * from './actions/index.js';
-
-// Attachments
-export * from './attachments/index.js';
-
-// Utils
-export * from './utils/index.js';
+// Utilities
+export * from './utilities/accordion-state/index.js';
+export * from './utilities/context.svelte.js';
+export * from './utilities/floating-engine/index.js';
+export * from './utilities/floating-state/index.js';
+export * from './utilities/hotkeys-state/index.js';
+export * from './utilities/is.js';
+export * from './utilities/listbox-state/index.js';
+export * from './utilities/persisted-state/index.js';
+export * from './utilities/selection-state/index.js';
+export * from './utilities/tabs-state/index.js';
+export * from './utilities/use-id.js';
 
 // Shared
+export * from './extensible.types.d.js';
 export * from './shared.options.js';
 export * from './shared.types.js';
-export * from './extensible.types.d.js';
+
+// Re-export
+export {
+    arrow,
+    autoPlacement,
+    autoUpdate,
+    computePosition,
+    detectOverflow,
+    flip,
+    getOverflowAncestors,
+    hide,
+    inline,
+    limitShift,
+    offset,
+    platform,
+    shift,
+    size
+} from '@floating-ui/dom';
