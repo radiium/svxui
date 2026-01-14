@@ -12,13 +12,13 @@
     "devDependencies": {
         "@configs/prettier-config": "workspace:*",
         "@types/glob": "^9.0.0",
-        "@types/node": "^22.19.3",
+        "@types/node": "^22.19.6",
         "glob": "^13.0.0",
         "import-sync": "^2.2.3",
         "prettier": "^3.7.4",
         "prettier-plugin-svelte": "^3.4.1",
-        "shiki": "^3.20.0",
-        "svelte": "^5.46.0",
+        "shiki": "^3.21.0",
+        "svelte": "^5.46.3",
         "ts-morph": "^27.0.2",
         "ts-node": "^10.9.2",
         "typescript": "^5.9.3"

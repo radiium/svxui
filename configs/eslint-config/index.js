@@ -10,7 +10,7 @@ const prettierignorePath = fileURLToPath(
   new URL("../../.prettierignore", import.meta.url)
 );
 
-export function buildEsLintConfig(svelteConfig) {
+export function buildEsLintConfig({ svelteConfig }) {
   return [
     includeIgnoreFile(prettierignorePath),
     js.configs.recommended,

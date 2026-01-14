@@ -1,6 +1,5 @@
 import { transformerNotationHighlight } from '@shikijs/transformers';
 import { defineMDSveXConfig, escapeSvelte } from 'mdsvex';
-import examples from 'mdsvexamples';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import rehypeSlug from 'rehype-slug';
@@ -13,12 +12,21 @@ const highlighter = await createHighlighter({
     langs: ['svelte', 'javascript', 'typescript', 'bash']
 });
 
+/**
+ * @param {string} src
+ * @returns
+ */
 export function escape(src) {
     const res = src.replace(/`/g, '\\`').replace(/\$\{/g, '\\$\\{');
     return res;
 }
 
+/**
+ * @param {string} meta
+ * @returns
+ */
 function parseMeta(meta = '') {
+    /** @type {Record<string, any>} */
     const result = {};
     const metaParts = meta.match(/(\w+=\d+|\w+="[^"]*"|\w+=\[[^\]]*\]|\w+)/g) ?? [];
 
@@ -27,7 +35,7 @@ function parseMeta(meta = '') {
 
         try {
             result[key] = JSON.parse(value);
-        } catch (e) {
+        } catch (/** @type {any} */ e) {
             const error = new Error(`Unable to parse meta \`${key}=${value}\` - ${e.message}`);
             error.stack = e.stack;
             throw error;
@@ -42,6 +50,13 @@ export const mdsvexOptions = defineMDSveXConfig({
     extensions: ['.svx'],
     layout: resolve(__dirname, './src/lib/markdown/MdsvexLayout.svelte'),
     highlight: {
+        /**
+         *
+         * @param {string} code
+         * @param {any} lang
+         * @param {string | undefined | null} metastring
+         * @returns {Promise<string>}
+         */
         highlighter: async (code, lang = 'text', metastring) => {
             const meta = escape(JSON.stringify(parseMeta(metastring ?? '')));
             const html = escapeSvelte(
@@ -65,29 +80,6 @@ export const mdsvexOptions = defineMDSveXConfig({
     smartypants: {
         dashes: 'oldschool'
     },
-    remarkPlugins: [
-        [
-            examples,
-            {
-                defaults: {
-                    Wrapper: '/src/lib/markdown/DemoContainer.svelte',
-                    highlighter(code) {
-                        return highlighter.codeToHtml(code, {
-                            lang: 'svelte',
-                            themes: {
-                                dark: 'dark-plus',
-                                light: 'light-plus'
-                            },
-                            transformers: [
-                                transformerNotationHighlight({
-                                    matchAlgorithm: 'v1'
-                                })
-                            ]
-                        });
-                    }
-                }
-            }
-        ]
-    ],
+    remarkPlugins: [],
     rehypePlugins: [rehypeSlug]
 });

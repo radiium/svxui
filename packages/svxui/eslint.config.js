@@ -1,10 +1,17 @@
 import { buildEsLintConfig } from '@configs/eslint-config';
+import { defineConfig } from 'eslint/config';
 import svelteConfig from './svelte.config.js';
 
-const conf = buildEsLintConfig(svelteConfig);
-export default [
-    ...conf,
+export default defineConfig([
+    {
+        languageOptions: {
+            parserOptions: {
+                tsconfigRootDir: process.cwd()
+            }
+        }
+    },
     {
         ignores: ['src/styles/**']
-    }
-];
+    },
+    ...buildEsLintConfig({ svelteConfig })
+]);

@@ -8,13 +8,6 @@ declare global {
         // interface PageState {}
         // interface Platform {}
     }
-
-    // namespace Svxui {
-    //     export interface ColorMap {
-    //         primary: 'crimson';
-    //         secondary: 'grass';
-    //     }
-    // }
 }
 
 export {};
