@@ -2,18 +2,21 @@ import type { Color, Radius } from '$lib/shared.types.js';
 import type { HTMLSelectAttributes } from 'svelte/elements';
 
 export type SelectSize = '1' | '2' | '3';
-export type SelectOption = {
-    label: string | number;
-    value: string | number;
-    disabled?: boolean | undefined;
-};
-export type SelectOptionResolver = <T>(item: T) => string | number;
+export type SelectOptionType = string | number | Record<string, any> | undefined;
+export type SelectValueChange<T> = (newValue: T) => void;
 
-export type SelectProps = Omit<HTMLSelectAttributes, 'size' | 'color'> & {
+export type SelectProps<T extends SelectOptionType = SelectOptionType> = Omit<
+    HTMLSelectAttributes,
+    'size' | 'color'
+> & {
     /**
      * Rendered DOM element
      */
-    elementRef?: HTMLSelectElement;
+    ref?: HTMLSelectElement;
+    /**
+     * Callback when value change
+     */
+    onValueChange?: SelectValueChange<T>;
     /**
      * Select size
      */
@@ -29,15 +32,15 @@ export type SelectProps = Omit<HTMLSelectAttributes, 'size' | 'color'> & {
     /**
      * Select options
      */
-    options: SelectOption[] | string[] | number[];
+    options: T[];
     /**
      * Resolve value of option
      */
-    resolveValue?: SelectOptionResolver;
+    optionLabel?: string | ((item: T) => string | number);
     /**
      * Resolve label fron SelectOption object
      */
-    resolveLabel?: SelectOptionResolver;
+    optionValue?: string | ((item: T) => string | number);
     /**
      * Select full size
      */

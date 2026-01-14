@@ -1,77 +1,98 @@
-<script lang="ts">
+<script lang="ts" generics="T extends SelectOptionType">
+    import { isObject } from '$lib/utilities/is.js';
     import { defaultSelectProps } from '../props.js';
-    import type { SelectOption, SelectProps } from '../types.js';
+    import type { SelectOptionType, SelectProps } from '../types.js';
 
     let {
-        elementRef = $bindable(),
-        options = defaultSelectProps.options,
+        ref = $bindable(),
+        options = defaultSelectProps.options as T[],
         value = $bindable(),
+        onValueChange,
         size = defaultSelectProps.size,
         color = defaultSelectProps.color,
         radius = defaultSelectProps.radius,
         fullWidth = defaultSelectProps.fullWidth,
+        multiple = defaultSelectProps.multiple,
         selectSize,
-        resolveValue = defaultSelectProps.resolveValue,
-        resolveLabel = defaultSelectProps.resolveLabel,
+        optionLabel = defaultSelectProps.optionLabel,
+        optionValue = defaultSelectProps.optionValue,
         ...rest
-    }: SelectProps = $props();
+    }: SelectProps<T> = $props();
 
-    function onMultipleChange(isMultiple: boolean | undefined | null): void {
-        if (isMultiple) {
+    /**
+     * Option label/value resolution
+     * @param opt
+     * @param resolver
+     */
+    function resolveOptionProperty(
+        opt: T,
+        resolver?: string | SelectProps<T>['optionLabel'] | SelectProps<T>['optionValue']
+    ): string | number {
+        if (isObject(opt)) {
+            switch (typeof resolver) {
+                case 'function':
+                    return resolver(opt);
+                case 'string':
+                    return opt[resolver as keyof T] as string;
+                default:
+                    return JSON.stringify(opt);
+            }
+        }
+
+        return String(opt);
+    }
+
+    /**
+     * Check if the item is an object and if it has a disabled property.
+     * @param opt
+     */
+    function isDisabled(opt: T): boolean | undefined {
+        return isObject(opt) && 'disabled' in opt //
+            ? opt.disabled === true
+            : undefined;
+    }
+
+    /**
+     * Update the 'multiple' property of the select element via an attachment
+     * to avoid the attribute_invalid_multiple error (https://svelte.dev/e/attribute_invalid_multiple)
+     * @param el
+     */
+    function updateMultiple(el: HTMLSelectElement) {
+        $effect(() => {
+            if (multiple && !el.hasAttribute('multiple')) {
+                el.setAttribute('multiple', '');
+            } else if (el.hasAttribute('multiple')) {
+                el.removeAttribute('multiple');
+            }
+        });
+    }
+
+    /**
+     * Emit onValueChange when select change
+     */
+    function onchange(): void {
+        onValueChange?.(value);
+    }
+
+    // Update value type when multiple change
+    $effect.pre(() => {
+        if (multiple) {
+            // => When multiple is true => value must be an array
             if (!Array.isArray(value)) {
-                if (value === undefined && value === null) {
+                if (value === undefined || value === null) {
                     value = [];
                 } else {
                     value = [value];
                 }
             }
         } else {
+            // => When multiple is false => value must not be an array
             if (Array.isArray(value)) {
                 value = value.length > 0 ? value[0] : undefined;
             }
         }
-    }
-
-    function resolveOptions({
-        options,
-        resolveLabel,
-        resolveValue
-    }: {
-        options: SelectProps['options'];
-        resolveLabel: SelectProps['resolveLabel'];
-        resolveValue: SelectProps['resolveValue'];
-    }): SelectOption[] {
-        if (!options || !Array.isArray(options)) {
-            return [];
-        }
-
-        const isArray = Array.isArray(options);
-        const isArrayStringLike =
-            isArray && options.every((opt) => typeof opt === 'string' || typeof opt === 'number');
-        const isArrayObject = isArray && options.every((opt) => typeof opt === 'object');
-
-        if (isArrayStringLike) {
-            return options.map((opt) => ({
-                label: opt,
-                value: opt,
-                disabled: false
-            }));
-        } else if (isArrayObject) {
-            return options.map((opt) => ({
-                label: resolveLabel!(opt),
-                value: resolveValue!(opt),
-                disabled: opt.disabled ?? false
-            }));
-        }
-
-        return [];
-    }
-
-    $effect.pre(() => {
-        onMultipleChange(rest.multiple);
     });
 
-    let resolvedOptions = $derived(resolveOptions({ options, resolveValue, resolveLabel }));
     let cssClass = $derived([
         rest.class,
         `select`,
@@ -81,46 +102,39 @@
             'select-full-width': fullWidth
         }
     ]);
+
+    let resolvedOptions = $derived(
+        options.map((opt) => ({
+            value: resolveOptionProperty(opt, optionValue),
+            label: resolveOptionProperty(opt, optionLabel),
+            disabled: isDisabled(opt),
+            original: opt
+        }))
+    );
 </script>
 
-{#if rest.multiple}
-    <!-- Select Multiple -->
-    <select
-        {...rest}
-        class={cssClass}
-        size={selectSize}
-        multiple
-        data-size={size}
-        data-color={color}
-        data-radius={radius}
-        bind:this={elementRef}
-        bind:value
-    >
-        {#each resolvedOptions as option (option.value)}
-            <option value={option.value} disabled={option.disabled}>{option.label}</option>
-        {/each}
-    </select>
-{:else}
-    <select
-        {...rest}
-        class={cssClass}
-        data-size={size}
-        data-color={color}
-        data-radius={radius}
-        bind:this={elementRef}
-        bind:value
-    >
-        {#if !value && rest.placeholder}
-            <option value="" selected disabled>-- {rest.placeholder} --</option>
-        {/if}
-        {#each resolvedOptions as option (option.value)}
-            <option value={option.value} selected={option.value === value} disabled={option.disabled}>
-                <!-- <meter value="69"></meter> -->
-                {option.label}
-            </option>
-        {/each}
-    </select>
-{/if}
+<select
+    {...rest}
+    size={selectSize}
+    class={cssClass}
+    data-size={size}
+    data-color={color}
+    data-radius={radius}
+    bind:this={ref}
+    bind:value
+    {onchange}
+    {@attach updateMultiple}
+>
+    {#if !value && !multiple && rest.placeholder}
+        <option value="" selected disabled>-- {rest.placeholder} --</option>
+    {/if}
+
+    {#each resolvedOptions as opt, i (i)}
+        <option value={opt.value} disabled={opt.disabled}>
+            {opt.label}
+        </option>
+    {/each}
+</select>
 
 <style>
     .select {
