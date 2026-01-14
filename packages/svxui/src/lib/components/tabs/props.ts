@@ -1,36 +1,19 @@
 import { booleanOptions, orientationOptions, type PropsOptions } from '$lib/shared.options.js';
-import type { TabContentProps, TabRootProps, TabTriggerProps } from './types.js';
+import type { TabsProps } from './types.js';
 
 /**
  * Tab root
  */
-export const defaultTabRootProps: TabRootProps = {
-    value: undefined,
+export const defaultTabsProps: TabsProps<any> = {
     onValueChange: () => {},
     disabled: false,
     orientation: 'horizontal',
-    selectWhenFocused: true,
+    activateOnFocus: true,
     loop: false
 };
-export const tabRootOptions = {
+export const tabsOptions = {
     orientation: orientationOptions,
     disabled: booleanOptions,
-    selectWhenFocused: booleanOptions,
+    activateOnFocus: booleanOptions,
     loop: booleanOptions
-} as const satisfies PropsOptions<TabRootProps>;
-
-/**
- * Tab trigger
- */
-export const defaultTabTriggerProps: Partial<TabTriggerProps> = {
-    disabled: false
-};
-export const tabTriggerOptions = {
-    disabled: booleanOptions
-} as const satisfies PropsOptions<TabTriggerProps>;
-
-/**
- * Tab contentroup
- */
-export const defaultTabContentProps: Partial<TabContentProps> = {};
-export const tabContentOptions = {} as const satisfies PropsOptions<TabContentProps>;
+} as const satisfies PropsOptions<TabsProps<any>>;

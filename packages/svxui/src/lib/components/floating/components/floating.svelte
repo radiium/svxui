@@ -1,166 +1,188 @@
+<script lang="ts" module>
+    let items: string[] = $state([]);
+</script>
+
 <script lang="ts">
     import Panel from '$lib/components/panel/components/panel.svelte';
-    import { FloatingStateManager } from '$lib/index.js';
-    import { buildFloatingMiddlewares } from '$lib/utils/floating/utils/build-floating-middlewares.js';
+    import { buildFloatingMiddlewares } from '$lib/utilities/floating-engine/internals/build-floating-middlewares.js';
+    import { FloatingState } from '$lib/utilities/index.js';
     import { autoUpdate as floatingAutoUpdate } from '@floating-ui/dom';
+    import { untrack } from 'svelte';
     import { fade } from 'svelte/transition';
-    import { clickOutsideAction } from '../../../actions/clickoutside/index.js';
     import { Portal } from '../../portal/index.js';
     import { defaultFloatingProps } from '../props.js';
     import type { FloatingProps } from '../types.js';
     import FloatingArrow from './floating-arrow.svelte';
-    import { isEventInElement } from '$lib/utils/is-event-in-element.js';
 
     let {
         ref = $bindable(),
         isOpen = $bindable(),
         onClose = defaultFloatingProps.onClose,
+        // Theme config
         size = defaultFloatingProps.size,
         color = defaultFloatingProps.color,
         variant = defaultFloatingProps.variant,
         outline = defaultFloatingProps.outline,
         radius = defaultFloatingProps.radius,
-
+        backdrop = defaultFloatingProps.backdrop,
+        // Floating config
         autoUpdate = defaultFloatingProps.autoUpdate,
         placement = defaultFloatingProps.placement,
         offset = defaultFloatingProps.offset,
-        arrow = defaultFloatingProps.arrow,
         flip = defaultFloatingProps.flip,
         shift = defaultFloatingProps.shift,
         hide = defaultFloatingProps.hide,
-
-        backdrop = defaultFloatingProps.backdrop,
+        // Floating arrow config
+        arrow = defaultFloatingProps.arrow,
+        arrowWidth = defaultFloatingProps.arrowWidth,
+        arrowHeight = defaultFloatingProps.arrowHeight,
+        arrowTipRadius = defaultFloatingProps.arrowTipRadius,
+        // Portal config
         portal = defaultFloatingProps.portal,
         portalTarget = defaultFloatingProps.portalTarget,
-
+        // Focus config
+        focusOnOpen = defaultFloatingProps.focusOnOpen,
+        focusOnClose = defaultFloatingProps.focusOnClose,
+        focusTrap = defaultFloatingProps.focusTrap,
+        // Close config
         closeOnClickBackdrop = defaultFloatingProps.closeOnEscape,
         closeOnClickOutside = defaultFloatingProps.closeOnClickOutside,
         closeOnEscape = defaultFloatingProps.closeOnEscape,
         closeOnResize = defaultFloatingProps.closeOnResize,
         closeOnScroll = defaultFloatingProps.closeOnScroll,
-
+        // Transition config
         transitionDelay = defaultFloatingProps.transitionDelay,
         transitionDuration = defaultFloatingProps.transitionDuration,
-
+        // Snippets
         trigger,
         content,
         ...rest
     }: FloatingProps = $props();
 
     let arrowEl: HTMLElement | undefined = $state(undefined);
-
-    const floating = new FloatingStateManager({
-        strategy: 'fixed',
-        transform: true,
-        get whileElementsMounted() {
-            return autoUpdate ? floatingAutoUpdate : undefined;
+    const floating = new FloatingState({
+        // pattern: 'popover',
+        get isOpen() {
+            return isOpen === true;
         },
-        get placement() {
-            return placement;
+        set isOpen(newIsOpen: boolean) {
+            isOpen = newIsOpen;
+            if (!isOpen) onClose?.();
         },
-        get middleware() {
-            return buildFloatingMiddlewares({ offset, flip, shift, hide, arrow, arrowEl });
+        engineOptions: {
+            strategy: 'fixed',
+            transform: true,
+            get placement() {
+                return placement;
+            },
+            get whileElementsMounted() {
+                return autoUpdate ? floatingAutoUpdate : undefined;
+            },
+            get middleware() {
+                return buildFloatingMiddlewares({
+                    offset, //
+                    flip,
+                    shift,
+                    hide,
+                    arrow,
+                    arrowEl
+                });
+            }
+        },
+        focus: {
+            get onOpen() {
+                return focusOnOpen;
+            },
+            get onClose() {
+                return focusOnClose;
+            },
+            get trap() {
+                return focusTrap;
+            }
+        },
+        closeOn: {
+            get clickBackdrop() {
+                return closeOnClickBackdrop;
+            },
+            get clickOutside() {
+                return closeOnClickOutside;
+            },
+            get escape() {
+                return closeOnEscape;
+            },
+            get resize() {
+                return closeOnResize;
+            },
+            get scroll() {
+                return closeOnScroll;
+            }
         }
     });
 
-    function close(): void {
-        isOpen = false;
-        onClose?.();
-    }
-
-    function handleClickBackdrop(): void {
-        if (closeOnClickBackdrop) {
-            close();
+    // Manage current active floating
+    let id = $props.id();
+    let active = $derived(items.length > 0 && items.at(-1) === id);
+    let index = $derived(items.findIndex((o) => o === id));
+    $effect(() => {
+        if (isOpen) {
+            untrack(() => items.push(id));
+        } else {
+            untrack(() => (items = items.filter((o) => o !== id)));
         }
-    }
-
-    function handleClickOutside(evt: CustomEvent<MouseEvent>): void {
-        if (
-            closeOnClickOutside &&
-            !isEventInElement(evt.detail, floating.reference?.getBoundingClientRect())
-        ) {
-            close();
-        }
-    }
-    function handleKeydown(evt: KeyboardEvent): void {
-        if (closeOnEscape && evt.key === 'Escape') {
-            close();
-        }
-    }
-
-    function handleResize(): void {
-        if (closeOnResize) {
-            close();
-        }
-    }
-
-    function handleScroll(): void {
-        if (closeOnScroll) {
-            close();
-        }
-    }
+    });
 
     let cssClass = $derived([rest.class, 'floating-content']);
 </script>
 
-<!-- Handle globals events -->
-<svelte:window onkeydown={handleKeydown} onresize={handleResize} onscrollcapture={handleScroll} />
-
-<!-- Reference button -->
-<div bind:this={floating.reference} class="floating-reference">
+<!-- Reference -->
+<div {...floating.triggerAttrs} class="floating-reference">
     {@render trigger?.()}
 </div>
 
-<Portal target={portalTarget as string} disabled={!portal}>
+<!-- Floating -->
+<Portal target={portalTarget} disabled={!portal}>
     {#if isOpen}
         <!-- Backdrop -->
         {#if backdrop}
             <div
                 transition:fade={{ duration: transitionDuration, delay: transitionDelay }}
-                onclick={handleClickBackdrop}
-                onkeydown={handleKeydown}
+                {...floating.backdropAttrs}
                 class="floating-backdrop"
-                role="button"
-                tabindex="-1"
+                style:z-index={index}
             ></div>
         {/if}
 
         <!-- Content -->
         <div
             transition:fade={{ duration: transitionDuration, delay: transitionDelay }}
-            bind:this={floating.floating}
+            {...floating.contentAttrs}
             bind:this={ref}
-            use:clickOutsideAction
-            onclickoutside={handleClickOutside}
-            style={floating.style}
             class={cssClass}
-            role="dialog"
-            data-floating
-            data-state={isOpen ? 'open' : 'close'}
-            data-side={floating.state?.side}
-            data-align={floating.state?.alignment}
+            style:z-index={index}
+            data-active={active}
         >
             <Panel {size} {color} {variant} {outline} {radius}>
-                {#if arrow}
-                    <FloatingArrow bind:ref={arrowEl} floatingState={floating.state} {color} {variant} />
-                {/if}
                 {@render content?.()}
             </Panel>
+
+            {#if arrow}
+                <FloatingArrow
+                    bind:ref={arrowEl}
+                    zIndex={index}
+                    floatingState={floating.state}
+                    {color}
+                    {variant}
+                    {outline}
+                    width={arrowWidth}
+                    height={arrowHeight}
+                    tipRadius={arrowTipRadius}
+                />
+            {/if}
         </div>
     {/if}
 </Portal>
 
 <style>
-    .floating-backdrop {
-        position: fixed;
-        z-index: 0;
-        inset: 0 0 0 0;
-        width: 100vw;
-        height: 100vh;
-        background: var(--color-overlay);
-        cursor: pointer;
-    }
-
     .floating-reference {
         position: relative;
         display: flex;
@@ -168,12 +190,21 @@
         height: max-content;
     }
 
+    .floating-backdrop {
+        position: fixed;
+        z-index: 0;
+        inset: 0 0 0 0;
+        width: 100vw;
+        height: 100vh;
+        cursor: pointer;
+        background: var(--color-overlay);
+    }
+
     .floating-content {
         position: fixed;
         width: max-content;
         top: 0;
         left: 0;
-        z-index: 1;
 
         &[data-state='open'] {
             display: block;

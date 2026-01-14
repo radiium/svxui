@@ -1,6 +1,9 @@
 <script lang="ts">
-    import { styleObjectToString } from '$lib/utils/floating/index.js';
-    import { useId } from '$lib/utils/use-id.js';
+    /**
+     * Credit: {@link https://github.com/skeletonlabs/floating-ui-svelte/blob/main/packages/floating-ui-svelte/src/components/floating-arrow.svelte}
+     */
+
+    import { styleObjectToString } from '$lib/utilities/floating-engine/internals/style-object-to-string.js';
     import { defaultFloatingArrowProps } from '../props.js';
     import type { FloatingArrowProps } from '../types.js';
 
@@ -10,9 +13,10 @@
         color = defaultFloatingArrowProps.color,
         variant = defaultFloatingArrowProps.variant,
         outline = defaultFloatingArrowProps.outline,
-        width = 14,
-        height = 8,
-        tipRadius = 3,
+        zIndex,
+        width = defaultFloatingArrowProps.width!,
+        height = defaultFloatingArrowProps.height!,
+        tipRadius = defaultFloatingArrowProps.tipRadius!,
         ...rest
     }: FloatingArrowProps = $props();
 
@@ -23,13 +27,12 @@
         return { side, arrow: { x, y } };
     });
 
-    const clipPathId = useId();
+    const clipPathId = $props.id();
 
     // let isRTL = $derived(ref && platform.isRTL(ref));
     let isVerticalSide = $derived(side === 'top' || side === 'bottom');
 
-    // Strokes must be double the border width, this ensures the stroke's width
-    // works as you'd expect.
+    // Strokes must be double the border width, this ensures the stroke's width works as you'd expect.
     const computedStrokeWidth = $derived(outline ? 2 : 0);
     const halfStrokeWidth = $derived(computedStrokeWidth / 2);
 
@@ -47,24 +50,6 @@
             ' Z'
     );
 
-    let cssClass = $derived([
-        rest.class,
-        'floating-arrow',
-        floatingState?.side,
-        {
-            [`floating-arrow-${variant}`]: variant
-        }
-    ]);
-
-    let style = $derived.by(() => {
-        return styleObjectToString({
-            left: `${arrowX}`,
-            top: `${arrowY}`,
-            [side]: isVerticalSide ? '100%' : `calc(100% - ${computedStrokeWidth / 2}px)`,
-            transform: `${rotateTransform} translateY(${outline ? '-1px' : '0'})`
-        });
-    });
-
     const rotateTransform = $derived.by(() => {
         switch (side) {
             case 'top':
@@ -77,6 +62,25 @@
                 return 'rotate(90deg)';
         }
     });
+
+    let cssClass = $derived([
+        rest.class,
+        'floating-arrow',
+        {
+            [`floating-arrow-${floatingState?.side}`]: floatingState?.side,
+            [`floating-arrow-${variant}`]: variant
+        }
+    ]);
+
+    let cssStyle = $derived.by(() => {
+        return styleObjectToString({
+            'z-index': zIndex,
+            left: `${arrowX}`,
+            top: `${arrowY}`,
+            [side]: isVerticalSide ? '100%' : `calc(100% - ${halfStrokeWidth}px)`,
+            transform: `${rotateTransform} translateY(${outline ? '-1px' : '0'})`
+        });
+    });
 </script>
 
 <svg
@@ -85,8 +89,8 @@
     height={width}
     viewBox={`0 0 ${width} ${height > width ? height : width}`}
     aria-hidden="true"
-    {style}
     class={cssClass}
+    style={cssStyle}
     data-color={color}
     {...rest}
 >
@@ -108,29 +112,25 @@
 
 <style>
     .floating-arrow {
-        z-index: 10;
         position: absolute;
         pointer-events: none;
         fill: var(--floating-background);
 
         path {
             &.floating-arrow-border {
-                stroke: var(--floating-border-color);
+                stroke: var(--accent-7);
             }
         }
 
         /* Variants */
         &.floating-arrow-solid {
-            --floating-border-color: transparent;
             --floating-background: var(--accent-5);
         }
         &.floating-arrow-soft {
-            --floating-border-color: transparent;
             --floating-background: var(--accent-3);
         }
-        &.floating-arrow-outline {
-            --floating-border-color: var(--accent-7);
-            --floating-background: var(--accent-7);
+        &.floating-arrow-clear {
+            --floating-background: var(--color-background-0);
         }
     }
 </style>

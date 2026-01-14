@@ -22,11 +22,17 @@ export const defaultFloatingProps: FloatingProps = {
     placement: 'top',
     offset: 0,
     arrow: false,
+    arrowWidth: undefined,
+    arrowHeight: undefined,
+    arrowTipRadius: undefined,
     flip: false,
     shift: false,
     hide: false,
     backdrop: false,
     autoUpdate: false,
+    focusOnOpen: undefined,
+    focusOnClose: undefined,
+    focusTrap: false,
     closeOnClickBackdrop: false,
     closeOnClickOutside: false,
     closeOnEscape: false,
@@ -61,7 +67,10 @@ export const floatingOptions = {
 export const defaultFloatingArrowProps: Partial<FloatingArrowProps> = {
     ref: undefined,
     color: undefined,
-    variant: 'soft'
+    variant: 'solid',
+    width: 14,
+    height: 8,
+    tipRadius: 3
 };
 export const floatingArrowOptions = {
     color: colorOptions,

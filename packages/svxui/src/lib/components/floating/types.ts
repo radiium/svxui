@@ -1,7 +1,17 @@
 import type { Color, FloatingPlacement, Radius } from '$lib/shared.types.js';
-import type { FloatingState } from '$lib/utils/floating/types.js';
+import type { FloatingEngineState } from '$lib/utilities/floating-engine/types.js';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes, SVGAttributes } from 'svelte/elements';
+import type { PanelProps } from '../panel/types.js';
+import type {
+    ArrowOptions,
+    AutoPlacementOptions,
+    FlipOptions,
+    HideOptions,
+    OffsetOptions,
+    ShiftOptions,
+    SizeOptions
+} from '@floating-ui/dom';
 
 export type FloatingSize = '0' | '1' | '2' | '3' | '4' | '5';
 export type FloatingVariant = 'solid' | 'soft' | 'clear';
@@ -56,6 +66,18 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
      */
     arrow?: boolean;
     /**
+     * Arrow width (only if arrow is true)
+     */
+    arrowWidth?: number;
+    /**
+     * Arrow height (only if arrow is true)
+     */
+    arrowHeight?: number;
+    /**
+     * FloatingArrow tip radius
+     */
+    arrowTipRadius?: number;
+    /**
      * Use flip floating middleware
      */
     flip?: boolean;
@@ -80,6 +102,18 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
      */
     portalTarget?: string;
     // portal?: Pick<PortalProps, 'target' | 'disabled'>;
+    /**
+     * Focus element on open flaoting
+     */
+    focusOnOpen?: string | HTMLElement | undefined;
+    /**
+     * Focus element on close flaoting
+     */
+    focusOnClose?: string | HTMLElement | undefined;
+    /**
+     * Trap focus inside floating content
+     */
+    focusTrap?: boolean;
     /**
      * Close floating on backdrop click. Only if backdrop is true
      */
@@ -116,6 +150,10 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
      * Floating content to render
      */
     content?: Snippet<[void]>;
+    /**
+     * Floating content to render
+     */
+    backdropChild?: Snippet<[void]>;
 };
 
 export type FloatingArrowProps = Omit<SVGAttributes<SVGElement>, 'color' | 'width' | 'height'> & {
@@ -138,7 +176,11 @@ export type FloatingArrowProps = Omit<SVGAttributes<SVGElement>, 'color' | 'widt
     /**
      * Floating positioning state
      */
-    floatingState?: FloatingState;
+    floatingState?: FloatingEngineState;
+    /**
+     * Z-index of arrow
+     */
+    zIndex?: number;
     /**
      * FloatingArrow width
      */

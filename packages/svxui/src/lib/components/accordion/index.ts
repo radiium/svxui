@@ -1,20 +1,3 @@
-export { default as AccordionItem } from './components/accordion-item.svelte';
-export { default as AccordionRoot } from './components/accordion-root.svelte';
-
-export { AccordionItemState } from './states/accordion-item-state.svelte.js';
-export { AccordionRootState } from './states/accordion-root-state.svelte.js';
-
-export { useAccordionItem, useAccordionRoot } from './context.svelte.js';
-
-export { defaultAccordionItemProps, defaultAccordionRootProps } from './props.js';
-
-export type {
-    AccordionHeadingLevel,
-    AccordionItemProps,
-    AccordionItemSnippetProps,
-    AccordionRootProps,
-    AccordionRootSnippetProps,
-    AccordionSelectionValue,
-    AccordionSelectionValueChange,
-    AccordionValue
-} from './types.js';
+export { default as Accordion } from './components/accordion.svelte';
+export { defaultAccordionProps } from './props.js';
+export type { AccordionProps } from './types.js';
