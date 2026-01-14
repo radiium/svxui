@@ -1,224 +1,145 @@
-import { kbd } from '$lib/index.js';
-import { on } from 'svelte/events';
-import type { RovingFocusConfigInternal, RovingFocusProps } from './types.js';
+import { kbd } from '$lib/internals/kbd.js';
+import { flushSync } from 'svelte';
+import type { Attachment } from 'svelte/attachments';
+import { buildConfig } from './internals/build-config.js';
+import type { RovingFocusOptions } from './types.js';
 
 /**
- *
- * @param props
- * @returns
+ * @description Manages keyboard focus within a group, allowing focus to move between items using arrow keys for accessible navigation.
  */
-export function rovingFocus(props?: RovingFocusProps) {
-    let config: RovingFocusConfigInternal = $derived.by(() => {
-        const target = props?.target ?? '[data-roving-item]';
-        const loop = props?.loop ?? false;
-        const orientation = props?.orientation ?? 'vertical';
-        const initialIndex = props?.initialIndex ?? 'first';
-
-        const activateOnFocus = props?.activateOnFocus ?? true;
-        const prevKey = orientation === 'vertical' ? kbd.ARROW_UP : kbd.ARROW_LEFT;
-        const nextKey = orientation === 'vertical' ? kbd.ARROW_DOWN : kbd.ARROW_RIGHT;
-        const allowedKeys =
-            orientation === 'vertical'
-                ? [kbd.ARROW_DOWN, kbd.ARROW_UP, kbd.HOME, kbd.END, kbd.ENTER, kbd.SPACE]
-                : [kbd.ARROW_LEFT, kbd.ARROW_RIGHT, kbd.HOME, kbd.END, kbd.ENTER, kbd.SPACE];
-
-        return {
-            target,
-            loop,
-            orientation,
-            initialIndex,
-            activateOnFocus,
-            prevKey,
-            nextKey,
-            allowedKeys
-        };
-    });
-
+export function rovingFocus(options?: RovingFocusOptions): Attachment<HTMLElement> {
     return (node: HTMLElement) => {
-        let currentIndex = $state(0);
-        let elements: HTMLElement[] = $state([]);
-        let initialized = $state(false);
+        let config = buildConfig(options);
+        let currentIndex = -1;
+        let items: HTMLElement[] = [];
 
-        // Get all focusable elements
-        function getElements(): HTMLElement[] {
-            const items = Array.from(node.querySelectorAll<HTMLElement>(config.target)).filter((el) => {
-                // Filter disabled or hidden elements
-                const isDisabled =
-                    el.hasAttribute('disabled') ||
-                    ('disabled' in el && (el as HTMLButtonElement | HTMLInputElement).disabled);
-                const isHidden = el.offsetParent === null;
-
-                return !isDisabled && !isHidden;
+        function getItems(): HTMLElement[] {
+            return Array.from(node.querySelectorAll<HTMLElement>(config.target)).filter((el) => {
+                return (
+                    !el.hasAttribute('disabled') && //
+                    el.getAttribute('aria-disabled') !== 'true' &&
+                    el.getAttribute('aria-disabled') !== '' &&
+                    el.getAttribute('aria-hidden') !== 'true' &&
+                    el.getAttribute('aria-hidden') !== '' &&
+                    // Check that the item is visible
+                    el.offsetParent !== null
+                );
             });
-            return items;
         }
 
-        // Calculate initial index based on config
-        function calculateInitialIndex(): number {
-            if (elements.length === 0) return 0;
+        function setTabIndexes(): void {
+            items.forEach((item, i) => {
+                item.tabIndex = i === currentIndex ? 0 : -1;
+            });
+        }
 
+        function getInitialIndex(): number {
+            if (items.length === 0) return -1;
             if (typeof config.initialIndex === 'number') {
-                return Math.max(0, Math.min(config.initialIndex, elements.length - 1));
+                return Math.min(Math.max(0, config.initialIndex), items.length - 1);
             } else if (config.initialIndex === 'last') {
-                return elements.length - 1;
+                return items.length - 1;
             }
             return 0; // 'first' or default
         }
 
-        // Update elements list
-        function updateElements() {
-            elements = getElements();
-
-            // Initialize tabindex on all elements
-            elements.forEach((el, index) => {
-                el.setAttribute('tabindex', index === currentIndex ? '0' : '-1');
-            });
-
-            // Set initial focus if not yet initialized
-            if (!initialized && elements.length > 0) {
-                currentIndex = calculateInitialIndex();
-                if (elements[currentIndex]) {
-                    elements[currentIndex].setAttribute('tabindex', '0');
-                }
-                initialized = true;
-            }
-        }
-
-        // Focus on a specific element
-        function focusElement(index: number) {
-            if (elements.length === 0) return;
-
-            // Remove tabindex from current element
-            if (elements[currentIndex]) {
-                elements[currentIndex].setAttribute('tabindex', '-1');
-            }
+        function focusItem(index: number): void {
+            if (index < 0 || index >= items.length) return;
+            if (currentIndex === index) return;
 
             currentIndex = index;
+            setTabIndexes();
+            items[index].focus();
 
-            // Add tabindex and focus the new element
-            if (elements[currentIndex]) {
-                elements[currentIndex].setAttribute('tabindex', '0');
-                elements[currentIndex].focus();
-
-                // Call onFocus callback if defined
-                props?.onFocus?.(elements[currentIndex], currentIndex);
-
-                // Auto-activate if enabled
-                if (config.activateOnFocus) {
-                    activateElement(currentIndex);
-                }
+            if (config.activateOnFocus) {
+                items[index].click();
             }
         }
 
-        // Activate an element (click or Enter/Space)
-        function activateElement(index: number) {
-            if (elements[index]) {
-                props?.onActivate?.(elements[index], index);
-
-                // Trigger click if it's a button or link
-                const el = elements[index];
-                if (el.tagName === 'BUTTON' || el.tagName === 'A') {
-                    // Don't trigger click in activateOnFocus mode as it would double-trigger
-                    if (!config.activateOnFocus) {
-                        el.click();
-                    }
-                }
-            }
-        }
-
-        // Handle navigation
-        function navigate(direction: 'next' | 'prev' | 'first' | 'last') {
-            if (elements.length === 0) return;
+        function onKeydown(event: KeyboardEvent): void {
+            if (items.length === 0) return;
+            if (!config.allowedKeys.includes(event.key)) return;
 
             let newIndex = currentIndex;
 
-            switch (direction) {
-                case 'next':
+            switch (event.key) {
+                case config.nextKey:
+                    event.preventDefault();
                     newIndex = currentIndex + 1;
-                    if (newIndex >= elements.length) {
-                        newIndex = config.loop ? 0 : elements.length - 1;
+                    if (newIndex >= items.length) {
+                        newIndex = config.loop ? 0 : items.length - 1;
                     }
                     break;
-                case 'prev':
+
+                case config.prevKey:
+                    event.preventDefault();
                     newIndex = currentIndex - 1;
                     if (newIndex < 0) {
-                        newIndex = config.loop ? elements.length - 1 : 0;
+                        newIndex = config.loop ? items.length - 1 : 0;
                     }
                     break;
-                case 'first':
+
+                case kbd.HOME:
+                    event.preventDefault();
                     newIndex = 0;
                     break;
-                case 'last':
-                    newIndex = elements.length - 1;
+
+                case kbd.END:
+                    event.preventDefault();
+                    newIndex = items.length - 1;
                     break;
             }
 
-            if (newIndex !== currentIndex) {
-                focusElement(newIndex);
+            focusItem(newIndex);
+        }
+
+        function onClick(event: MouseEvent): void {
+            const target = (event.target as HTMLElement).closest(config.target) as HTMLElement;
+
+            if (target && items.includes(target)) {
+                const index = items.indexOf(target);
+                currentIndex = index;
+                setTabIndexes();
             }
         }
 
-        // Handler for keydown
-        function handleKeydown(e: KeyboardEvent) {
-            // Check if key is allowed
-            if (!config.allowedKeys.includes(e.key)) return;
+        function onMutate() {
+            const oldLength = items.length;
+            items = getItems();
 
-            // Check if event comes from a managed child element
-            const target = e.target as HTMLElement;
-            if (!elements.includes(target)) return;
+            // Ajuster l'index si nécessaire
+            if (currentIndex >= items.length) {
+                currentIndex = Math.max(0, items.length - 1);
+            }
 
-            e.preventDefault();
-            e.stopPropagation();
-
-            // Navigate based on key
-            if (e.key === config.nextKey) {
-                navigate('next');
-            } else if (e.key === config.prevKey) {
-                navigate('prev');
-            } else if (e.key === kbd.HOME) {
-                navigate('first');
-            } else if (e.key === kbd.END) {
-                navigate('last');
-            } else if ((e.key === kbd.ENTER || e.key === kbd.SPACE) && !config.activateOnFocus) {
-                // Manual activation mode: Enter/Space to activate
-                activateElement(currentIndex);
+            // Si les items ont changé, mettre à jour les tabindex
+            if (oldLength !== items.length) {
+                setTabIndexes();
             }
         }
 
-        // Handler for focus
-        function handleFocus(e: FocusEvent) {
-            const target = e.target as HTMLElement;
-            const index = elements.indexOf(target);
+        // Initialisation
+        flushSync();
+        items = getItems();
+        currentIndex = getInitialIndex();
+        setTabIndexes();
 
-            if (index !== -1 && index !== currentIndex) {
-                focusElement(index);
-            }
-        }
+        node.addEventListener('keydown', onKeydown);
+        node.addEventListener('click', onClick);
 
-        // Initialization
-        updateElements();
-
-        // Observe DOM changes to update elements
-        const observer = new MutationObserver(() => {
-            updateElements();
-        });
-
-        observer.observe(node, {
+        // Listen DOM changes
+        const mutationObserver = new MutationObserver(onMutate);
+        mutationObserver.observe(node, {
             childList: true,
             subtree: true,
             attributes: true,
-            attributeFilter: ['disabled', 'hidden']
+            attributeFilter: ['disabled', 'aria-disabled']
         });
 
-        // Attach event listeners with svelte/events
-        const cleanupKeydown = on(node, 'keydown', handleKeydown);
-        const cleanupFocus = on(node, 'focusin', handleFocus, { capture: true });
-
-        // Cleanup
         return () => {
-            observer.disconnect();
-            cleanupKeydown();
-            cleanupFocus();
+            node.removeEventListener('keydown', onKeydown);
+            node.removeEventListener('click', onClick);
+            mutationObserver.disconnect();
         };
     };
 }

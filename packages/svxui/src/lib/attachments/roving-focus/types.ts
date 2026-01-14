@@ -1,13 +1,26 @@
 import type { Orientation } from '$lib/shared.types.js';
 
-export type RovingFocusProps = {
+export type RovingFocusOptions = {
+    /**
+     * Item selector
+     */
     target?: string;
+    /**
+     * Loop roving focus
+     */
     loop?: boolean;
+    /**
+     * Orientation ("horizontal" | "vertical")
+     */
     orientation?: Orientation;
+    /**
+     * Initial item focus when wrapper is focused
+     */
     initialIndex?: number | 'first' | 'last';
+    /**
+     * Activate item when focused
+     */
     activateOnFocus?: boolean;
-    onFocus?: (node: HTMLElement, index: number) => void;
-    onActivate?: (node: HTMLElement, index: number) => void;
 };
 
 export type RovingFocusConfigInternal = {
