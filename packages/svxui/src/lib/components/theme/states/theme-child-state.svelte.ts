@@ -9,6 +9,12 @@ import {
 import type { ThemeRootState } from './theme-root-state.svelte.js';
 import { ThemeSystemState } from './theme-system-state.svelte.js';
 
+/**
+ * ThemeChildState
+ *
+ * @description Manage nested child theme state
+ * Credit: {@link https://github.com/svecosystem/mode-watcher}
+ */
 export class ThemeChildState {
     #props: ThemeChildStateProps | undefined = $state();
     #themeRoot!: ThemeRootState;

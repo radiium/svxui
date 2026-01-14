@@ -1,10 +1,12 @@
-import { isBrowser } from '$lib/utils/is-browser.js';
+import { isBrowser } from '$lib/utilities/is.js';
 import { onDestroy } from 'svelte';
 import { MediaQuery } from 'svelte/reactivity';
 
 /**
- * Get prefers-color-scheme
- * Credit: https://github.com/svecosystem/mode-watcher
+ * ThemeSystemState
+ *
+ * @description Manage prefers-color-scheme state
+ * Credit: {@link https://github.com/svecosystem/mode-watcher}
  */
 export class ThemeSystemState {
     #defaultValue = undefined;

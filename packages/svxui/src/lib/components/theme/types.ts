@@ -1,7 +1,10 @@
 import type { Radius } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
+import type { ThemeChildState } from './states/theme-child-state.svelte.js';
+import type { ThemeRootState } from './states/theme-root-state.svelte.js';
 
+// Theme keys
 export const ThemeSystem = 'system' as const;
 export const ThemeDark = 'dark' as const;
 export const ThemeLight = 'light' as const;
@@ -12,7 +15,7 @@ export type StrategyType = (typeof Strategies)[number];
 export const Themes = [ThemeDark, ThemeLight] as const;
 export type ThemeType = (typeof Themes)[number];
 
-export const MetaThemeColors = { light: '#fcfcfc', dark: '#111111' };
+export const MetaThemeColors = { light: '#fcfcfc', dark: '#111111' } as const;
 export type MetaThemeColorsType = { light: string; dark: string };
 
 export type ThemeColorsType = Record<string, string>;
@@ -69,11 +72,11 @@ export type ThemeRootStateProps = {
 };
 
 export type ThemeRootProviderProps = ThemeRootStateProps &
-    HTMLAttributes<HTMLDivElement> & {
+    Omit<HTMLAttributes<HTMLDivElement>, 'children'> & {
         /**
          * ThemeRootProvider content to render
          */
-        children?: Snippet<[void]>;
+        children?: Snippet<[ThemeRootState]>;
     };
 
 export type ThemeChildStateProps = {
@@ -100,5 +103,5 @@ export type ThemeChildProviderProps = ThemeChildStateProps &
         /**
          * ThemeChildProvider content to render
          */
-        children?: Snippet<[void]>;
+        children?: Snippet<[ThemeChildState]>;
     };

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { useThemeChildContext } from '../context.svelte.js';
     import { defaultThemeChildProviderProps } from '../props.js';
+    import { useThemeChildContext } from '../states/context.svelte.js';
     import { type ThemeChildProviderProps } from '../types.js';
 
     let {

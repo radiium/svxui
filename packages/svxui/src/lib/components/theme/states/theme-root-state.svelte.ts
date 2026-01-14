@@ -1,6 +1,7 @@
 import type { Radius } from '$lib/shared.types.js';
+import { PersistedState } from '$lib/utilities/persisted-state/persisted-state.svelte.js';
 import { onDestroy } from 'svelte';
-import { ThemeSystemState } from './theme-system-state.svelte.js';
+import { withoutTransition } from '../internals/without-transition.js';
 import {
     MetaThemeColors,
     ThemeDark,
@@ -11,9 +12,14 @@ import {
     type ThemeRootStateProps,
     type ThemeType
 } from '../types.js';
-import { withoutTransition } from '../utils/without-transition.js';
-import { StorableState } from '$lib/utils/index.js';
+import { ThemeSystemState } from './theme-system-state.svelte.js';
 
+/**
+ * ThemeRootState
+ *
+ * @description Manage root theme state
+ * Credit: {@link https://github.com/svecosystem/mode-watcher}
+ */
 export class ThemeRootState {
     #props: ThemeRootStateProps | undefined = $state();
 
@@ -32,9 +38,10 @@ export class ThemeRootState {
     #track: boolean = $derived(this.#props?.track ?? true);
 
     #system: ThemeSystemState;
-    #strategy: { current: StrategyType };
-    #color: { current: string };
-    #radius: { current: Radius };
+    #strategy: PersistedState<StrategyType>;
+    #radius: PersistedState<Radius>;
+    #color: PersistedState<string>;
+
     #theme = $derived.by(() => {
         return this.#strategy.current === ThemeSystem
             ? this.#system.current //
@@ -45,9 +52,9 @@ export class ThemeRootState {
         this.#props = props;
 
         this.#system = new ThemeSystemState();
-        this.#strategy = new StorableState<StrategyType>(this.#strategyKey, this.#defaultStrategy);
-        this.#radius = new StorableState<Radius>(this.#radiusKey, this.#defaultRadius);
-        this.#color = new StorableState<string>(this.#colorKey, this.#defaultColor);
+        this.#strategy = new PersistedState<StrategyType>(this.#strategyKey, this.#defaultStrategy);
+        this.#radius = new PersistedState<Radius>(this.#radiusKey, this.#defaultRadius);
+        this.#color = new PersistedState<string>(this.#colorKey, this.#defaultColor);
 
         this.#system.query();
 

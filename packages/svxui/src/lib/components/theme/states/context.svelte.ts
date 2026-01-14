@@ -1,7 +1,7 @@
-import { Context } from '$lib/utils/context.svelte.js';
-import { ThemeChildState } from './states/theme-child-state.svelte.js';
-import { ThemeRootState } from './states/theme-root-state.svelte.js';
-import type { ThemeChildStateProps, ThemeRootStateProps } from './types.js';
+import { Context } from '$lib/utilities/context.svelte.js';
+import type { ThemeChildStateProps, ThemeRootStateProps } from '../types.js';
+import { ThemeChildState } from './theme-child-state.svelte.js';
+import { ThemeRootState } from './theme-root-state.svelte.js';
 
 const ThemeRootContext = new Context<ThemeRootState>('ThemeRoot');
 const ThemeChildContext = new Context<ThemeChildState>('ThemeChild');

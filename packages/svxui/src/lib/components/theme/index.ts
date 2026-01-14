@@ -1,10 +1,7 @@
 export { default as ThemeChildProvider } from './components/theme-child-provider.svelte';
 export { default as ThemeRootProvider } from './components/theme-root-provider.svelte';
-
-export { useThemeChildContext, useThemeRootContext } from './context.svelte.js';
-
 export { defaultThemeChildProviderProps, defaultThemeRootProviderProps } from './props.js';
-
+export { useThemeChildContext, useThemeRootContext } from './states/context.svelte.js';
 export type {
     MetaThemeColors,
     MetaThemeColorsType,

@@ -64,6 +64,7 @@
 
 <svelte:head>
     <meta name="theme-color" content={themeColor} />
+    <!-- eslint-disable-next-line svelte/no-unused-svelte-ignore -->
     <!-- eslint-disable-next-line svelte/no-at-html-tags, prefer-template --><!-- svelte-ignore hydration_html_changed -->
     {@html `<script>(` + initTheme.toString() + `)(` + JSON.stringify(initThemeConfig) + `);</script>`}
 </svelte:head>

@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { createThemeRootContext } from '../context.svelte.js';
     import ThemeColorsDefault from '../internals/components/theme-colors-default.svelte';
     import ThemeColors from '../internals/components/theme-colors.svelte';
     import ThemeScript from '../internals/components/theme-script.svelte';
     import { defaultThemeRootProviderProps } from '../props.js';
+    import { createThemeRootContext } from '../states/context.svelte.js';
     import { type ThemeRootProviderProps } from '../types.js';
 
     let {
@@ -66,7 +66,7 @@
 {/if}
 
 <div {...rest} {...themeRootState.attrs} class={cssClass}>
-    {@render children?.()}
+    {@render children?.(themeRootState)}
 </div>
 
 <style>
