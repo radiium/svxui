@@ -1,10 +1,11 @@
-<script lang="ts">
+<script lang="ts" generics="E extends keyof SvelteHTMLElements = 'div'">
+    import type { SvelteHTMLElements } from 'svelte/elements';
     import { defaultPanelProps } from '../props.js';
     import type { PanelProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        as = defaultPanelProps.as,
+        as = defaultPanelProps.as as E,
         color = defaultPanelProps.color,
         size = defaultPanelProps.size,
         radius = defaultPanelProps.radius,
@@ -13,7 +14,7 @@
         fullWidth = defaultPanelProps.fullWidth,
         children,
         ...rest
-    }: PanelProps = $props();
+    }: PanelProps<E> = $props();
 
     let cssClass = $derived([
         rest.class,
@@ -53,18 +54,21 @@
         background-color: var(--panel-background);
         border: none;
 
-        & > ::after {
+        --panel-box-shadow: inset 0 0 0 1px var(--accent-7);
+        --panel-box-shadow-hover: inset 0 0 0 1px var(--accent-8);
+
+        &::after {
             content: '';
             position: absolute;
             pointer-events: none;
             inset: 0;
             border-radius: var(--panel-border-radius);
-            box-shadow: var(--panel-box-shadow);
         }
 
         &.panel-outline {
-            --panel-box-shadow: inset 0 0 0 1px var(--accent-7);
-            --panel-box-shadow-hover: inset 0 0 0 1px var(--accent-8);
+            &::after {
+                box-shadow: var(--panel-box-shadow);
+            }
         }
 
         &.panel-full-width {
@@ -124,14 +128,21 @@
         }
         &.panel-variant-clear {
             --panel-background: var(--color-background-0);
-            --panel-background-hover: var(--color-background-0);
+            --panel-background-hover: var(--accent-2);
         }
 
         /* Renderd as button, link or label */
-        &.panel-button,
+        &.panel-button {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        &.panel-button:not(:disabled),
         &.panel-link {
             color: var(--color);
             text-decoration: none;
+            cursor: default;
 
             &:focus-visible {
                 outline: 2px solid var(--accent-7);
@@ -141,33 +152,35 @@
             &:hover {
                 background-color: var(--panel-background-hover);
 
-                &::after {
-                    box-shadow: var(--panel-box-shadow-hover);
+                &.panel-outline {
+                    &::after {
+                        box-shadow: var(--panel-box-shadow-hover);
+                    }
                 }
             }
         }
 
         &.panel-label {
-            &:global(:has(input[type='radio'])),
-            &:global(:has(input[type='checkbox'])) {
-                &:hover {
-                    background-color: var(--panel-background-hover);
+            /* Hover only if input is present */
+            &:global(:has(input[type='radio'], input[type='checkbox'])):hover {
+                background-color: var(--panel-background-hover);
 
+                &.panel-outline {
                     &::after {
                         box-shadow: var(--panel-box-shadow-hover);
                     }
                 }
             }
 
-            &:global(:has(input[type='radio']:checked)),
-            &:global(:focus-within:has(input[type='radio']:focus-visible)),
-            &:global(:focus-within:has(input[type='checkbox']:focus-visible)) {
+            /* The label focuses when an internal input is focus-visible */
+            &:focus-within {
                 &::after {
                     outline: 2px solid var(--accent-8);
                     outline-offset: -1px;
                 }
             }
 
+            /* Remove the native outline from the input */
             :global(input:focus-visible) {
                 outline: none !important;
             }
