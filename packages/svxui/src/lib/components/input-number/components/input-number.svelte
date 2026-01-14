@@ -1,7 +1,5 @@
 <script lang="ts">
-    import { longPressAction } from '$lib/actions/longpress/index.js';
-    import { onMount } from 'svelte';
-    import { on } from 'svelte/events';
+    import { longpress } from '$lib/attachments/longpress/attachment.svelte.js';
     import { Button } from '../../button/index.js';
     import InputGroup from '../../input-group/components/input-group.svelte';
     import Input from '../../input/components/input.svelte';
@@ -29,7 +27,6 @@
     let intervalId: ReturnType<typeof setInterval> | undefined = undefined;
 
     // Input css classes
-
     let cssClass = $derived([
         rest.class,
         'input-number',
@@ -103,32 +100,21 @@
             intervalId = undefined;
         }
     }
-
-    let decrementRef: HTMLButtonElement | undefined = $state();
-    let incrementRef: HTMLButtonElement | undefined = $state();
-
-    onMount(() => {
-        if (decrementRef && incrementRef) {
-            const subscriptions = [
-                longPressAction(decrementRef).destroy,
-                on(decrementRef, 'startlongpress', decrementMouseDown, { passive: true }),
-                on(decrementRef, 'endlongpress', mouseUp, { passive: true }),
-                longPressAction(incrementRef).destroy,
-                on(incrementRef, 'startlongpress', incrementMouseDown, { passive: true }),
-                on(incrementRef, 'endlongpress', mouseUp, { passive: true })
-            ];
-
-            return () => {
-                subscriptions.forEach((cb) => cb?.());
-            };
-        }
-    });
 </script>
 
-<InputGroup {...rest} class={cssClass} bind:ref>
-    <Button bind:ref={decrementRef} onclick={decrement} {variant} {size} {radius} {color} {disabled} iconOnly
-        >-</Button
+<InputGroup {...rest} class={cssClass} aria-disabled={disabled ? 'true' : undefined} bind:ref>
+    <Button
+        onclick={decrement}
+        {@attach longpress({ onLongpressStart: decrementMouseDown, onLongpressEnd: mouseUp })}
+        {variant}
+        {size}
+        {radius}
+        {color}
+        {disabled}
+        iconOnly
     >
+        -
+    </Button>
     <Input
         type="number"
         inputmode="numeric"
@@ -146,7 +132,16 @@
         {max}
         bind:value
     />
-    <Button bind:ref={incrementRef} onclick={increment} {variant} {size} {radius} {color} {disabled} iconOnly
-        >+</Button
+    <Button
+        onclick={increment}
+        {@attach longpress({ onLongpressStart: incrementMouseDown, onLongpressEnd: mouseUp })}
+        {variant}
+        {size}
+        {radius}
+        {color}
+        {disabled}
+        iconOnly
     >
+        +
+    </Button>
 </InputGroup>

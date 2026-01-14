@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { focusTrapAction } from '$lib/actions/focustrap/index.js';
-    import { lockScrollAction } from '$lib/actions/lockscroll/action.svelte.js';
     import { fade, scale } from 'svelte/transition';
     import { defaultDialogProps } from '../props.js';
     import type { DialogProps } from '../types.js';
+    import { scrolllock } from '$lib/attachments/scrolllock/attachment.svelte.js';
+    import { focustrap } from '$lib/attachments/focustrap/attachment.svelte.js';
 
     let {
         ref = $bindable(),
@@ -59,7 +59,7 @@
 </script>
 
 <svelte:window onkeydown={handlekeydown} />
-<svelte:body use:lockScrollAction={{ enabled: lockScrollEnabled }} />
+<svelte:body {@attach scrolllock({ enabled: lockScrollEnabled })} />
 
 {#if isOpen}
     <div class={cssClass} data-size={size} data-radius={radius} bind:this={ref}>
@@ -86,7 +86,7 @@
             class="dialog-content"
             data-size={size}
             data-radius={radius}
-            use:focusTrapAction={{ enabled: focusTrapEnabled }}
+            {@attach focustrap({ enabled: focusTrapEnabled })}
             transition:scale={{
                 duration: transitionDuration,
                 delay: transitionDelay,

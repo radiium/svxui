@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { portalAction } from '$lib/actions/portal/index.js';
+    import { portal } from '$lib/attachments/portal/attachment.svelte.js';
     import { defaultPortalProps } from '../props.js';
     import type { PortalProps } from '../types.js';
 
@@ -13,7 +13,7 @@
 {#if disabled}
     {@render children?.()}
 {:else}
-    <div use:portalAction={{ target }}>
+    <div {@attach portal({ target })}>
         {@render children?.()}
     </div>
 {/if}
