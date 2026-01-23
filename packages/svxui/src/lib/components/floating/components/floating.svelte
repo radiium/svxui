@@ -3,56 +3,55 @@
 </script>
 
 <script lang="ts">
+    import { FloatingBuilder } from '$lib/builders/floating/index.js';
     import Panel from '$lib/components/panel/components/panel.svelte';
     import { buildFloatingMiddlewares } from '$lib/utilities/floating-engine/internals/build-floating-middlewares.js';
-    import { FloatingState } from '$lib/utilities/index.js';
     import { autoUpdate as floatingAutoUpdate } from '@floating-ui/dom';
     import { untrack } from 'svelte';
     import { fade } from 'svelte/transition';
     import { Portal } from '../../portal/index.js';
-    import { defaultFloatingProps } from '../props.js';
     import type { FloatingProps } from '../types.js';
     import FloatingArrow from './floating-arrow.svelte';
 
     let {
         ref = $bindable(),
         isOpen = $bindable(),
-        onClose = defaultFloatingProps.onClose,
+        onClose = undefined,
         // Theme config
-        size = defaultFloatingProps.size,
-        color = defaultFloatingProps.color,
-        variant = defaultFloatingProps.variant,
-        outline = defaultFloatingProps.outline,
-        radius = defaultFloatingProps.radius,
-        backdrop = defaultFloatingProps.backdrop,
+        size = '3',
+        color = undefined,
+        variant = 'solid',
+        outline = false,
+        radius = undefined,
+        backdrop = false,
         // Floating config
-        autoUpdate = defaultFloatingProps.autoUpdate,
-        placement = defaultFloatingProps.placement,
-        offset = defaultFloatingProps.offset,
-        flip = defaultFloatingProps.flip,
-        shift = defaultFloatingProps.shift,
-        hide = defaultFloatingProps.hide,
+        placement = 'top',
+        offset = 0,
+        flip = false,
+        shift = false,
+        hide = false,
+        autoUpdate = false,
         // Floating arrow config
-        arrow = defaultFloatingProps.arrow,
-        arrowWidth = defaultFloatingProps.arrowWidth,
-        arrowHeight = defaultFloatingProps.arrowHeight,
-        arrowTipRadius = defaultFloatingProps.arrowTipRadius,
+        arrow = false,
+        arrowWidth = undefined,
+        arrowHeight = undefined,
+        arrowTipRadius = undefined,
         // Portal config
-        portal = defaultFloatingProps.portal,
-        portalTarget = defaultFloatingProps.portalTarget,
+        portal = false,
+        portalTarget = '.svxui[data-theme-root]',
         // Focus config
-        focusOnOpen = defaultFloatingProps.focusOnOpen,
-        focusOnClose = defaultFloatingProps.focusOnClose,
-        focusTrap = defaultFloatingProps.focusTrap,
+        focusOnOpen = undefined,
+        focusOnClose = undefined,
+        focusTrap = false,
         // Close config
-        closeOnClickBackdrop = defaultFloatingProps.closeOnEscape,
-        closeOnClickOutside = defaultFloatingProps.closeOnClickOutside,
-        closeOnEscape = defaultFloatingProps.closeOnEscape,
-        closeOnResize = defaultFloatingProps.closeOnResize,
-        closeOnScroll = defaultFloatingProps.closeOnScroll,
+        closeOnClickBackdrop = false,
+        closeOnClickOutside = false,
+        closeOnEscape = false,
+        closeOnResize = false,
+        closeOnScroll = false,
         // Transition config
-        transitionDelay = defaultFloatingProps.transitionDelay,
-        transitionDuration = defaultFloatingProps.transitionDuration,
+        transitionDelay = 0,
+        transitionDuration = 150,
         // Snippets
         trigger,
         content,
@@ -60,7 +59,7 @@
     }: FloatingProps = $props();
 
     let arrowEl: HTMLElement | undefined = $state(undefined);
-    const floating = new FloatingState({
+    const floating = new FloatingBuilder({
         // pattern: 'popover',
         get isOpen() {
             return isOpen === true;

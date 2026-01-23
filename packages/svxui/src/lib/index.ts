@@ -3,8 +3,14 @@ export * from './attachments/clickoutside/index.js';
 export * from './attachments/focustrap/index.js';
 export * from './attachments/longpress/index.js';
 export * from './attachments/portal/index.js';
-export * from './attachments/roving-focus/index.js';
+export * from './attachments/rovingfocus/index.js';
 export * from './attachments/scrolllock/index.js';
+
+// Builders
+export * from './builders/accordion/index.js';
+export * from './builders/floating/index.js';
+export * from './builders/listbox/index.js';
+export * from './builders/tabs/types.js';
 
 // Components
 export * from './components/accordion/index.js';
@@ -31,24 +37,18 @@ export * from './components/textarea/index.js';
 export * from './components/theme/index.js';
 
 // Utilities
-export * from './utilities/accordion-state/index.js';
-export * from './utilities/context.svelte.js';
+export * from './utilities/context/index.js';
 export * from './utilities/floating-engine/index.js';
-export * from './utilities/floating-state/index.js';
-export * from './utilities/hotkeys-state/index.js';
-export * from './utilities/is.js';
-export * from './utilities/listbox-state/index.js';
-export * from './utilities/persisted-state/index.js';
-export * from './utilities/selection-state/index.js';
-export * from './utilities/tabs-state/index.js';
-export * from './utilities/use-id.js';
+export * from './utilities/hotkeys/index.js';
+export * from './utilities/persisted/index.js';
+export * from './utilities/selection/index.js';
+export * from './utilities/use-id/index.js';
 
 // Shared
 export * from './extensible.types.d.js';
-export * from './shared.options.js';
 export * from './shared.types.js';
 
-// Re-export
+// Re-export from '@floating-ui/dom'
 export {
     arrow,
     autoPlacement,

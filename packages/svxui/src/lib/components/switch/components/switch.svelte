@@ -1,15 +1,14 @@
 <script lang="ts">
-    import { defaultSwitchProps } from '../props.js';
     import type { SwitchProps } from '../types.js';
 
     let {
         ref = $bindable(),
         checked = $bindable(),
         group = $bindable(),
-        value = defaultSwitchProps.value,
-        color = defaultSwitchProps.color,
-        size = defaultSwitchProps.size,
-        radius = defaultSwitchProps.radius,
+        value = undefined,
+        color = undefined,
+        size = '2',
+        radius = undefined,
         ...rest
     }: SwitchProps = $props();
 

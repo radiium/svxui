@@ -1,15 +1,14 @@
 <script lang="ts">
-    import { defaultTextareaProps } from '../props.js';
     import type { TextareaProps } from '../types.js';
 
     let {
         ref = $bindable(),
         value = $bindable(),
-        color = defaultTextareaProps.color,
-        size = defaultTextareaProps.size,
-        radius = defaultTextareaProps.radius,
-        fullWidth = defaultTextareaProps.fullWidth,
-        resizable = defaultTextareaProps.resizable,
+        color = undefined,
+        size = '2',
+        radius = undefined,
+        fullWidth = false,
+        resizable = false,
         ...rest
     }: TextareaProps = $props();
 

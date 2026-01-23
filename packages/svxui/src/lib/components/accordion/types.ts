@@ -1,13 +1,9 @@
-import type { AccordionState, AccordionStateOptions } from '$lib/utilities/index.js';
+import type { AccordionBuilder, AccordionBuilderOptions } from '$lib/builders/accordion/index.js';
 import type { Snippet } from 'svelte';
 
-export type AccordionProps<Value, Multiple extends boolean> = AccordionStateOptions<Value, Multiple> & {
-    /**
-     * Callback when value change
-     */
-    onValueChange?: (newValue: Value) => void;
+export type AccordionProps<Value, Multiple extends boolean> = AccordionBuilderOptions<Value, Multiple> & {
     /**
      * Accordion Root content to render
      */
-    children?: Snippet<[AccordionState<Value, Multiple>]>;
+    children?: Snippet<[AccordionBuilder<Value, Multiple>]>;
 };

@@ -1,4 +1,4 @@
-export interface LongpressOptions {
+export type LongpressOptions = {
     /**
      * Called when longpress starts (after delay)
      */
@@ -17,4 +17,4 @@ export interface LongpressOptions {
      * @default 800
      */
     delay?: number;
-}
+};

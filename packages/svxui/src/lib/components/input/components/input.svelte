@@ -1,18 +1,17 @@
 <script lang="ts">
-    import { defaultInputProps } from '../props.js';
     import type { InputProps } from '../types.js';
 
     let {
         ref = $bindable(),
         value = $bindable(),
-        type = defaultInputProps.type,
-        color = defaultInputProps.color,
-        size = defaultInputProps.size,
-        radius = defaultInputProps.radius,
-        align = defaultInputProps.align,
-        fullWidth = defaultInputProps.fullWidth,
-        readonly = defaultInputProps.readonly,
-        inputSize = defaultInputProps.inputSize,
+        type = 'text',
+        color = undefined,
+        size = '2',
+        radius = undefined,
+        align = 'start',
+        fullWidth = undefined,
+        readonly = undefined,
+        inputSize = undefined,
         ...rest
     }: InputProps = $props();
 

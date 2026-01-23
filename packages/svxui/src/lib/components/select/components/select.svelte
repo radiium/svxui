@@ -1,21 +1,20 @@
 <script lang="ts" generics="T extends SelectOptionType">
-    import { isObject } from '$lib/utilities/is.js';
-    import { defaultSelectProps } from '../props.js';
+    import { isObject } from '$lib/internals/is.js';
     import type { SelectOptionType, SelectProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        options = defaultSelectProps.options as T[],
         value = $bindable(),
-        onValueChange,
-        size = defaultSelectProps.size,
-        color = defaultSelectProps.color,
-        radius = defaultSelectProps.radius,
-        fullWidth = defaultSelectProps.fullWidth,
-        multiple = defaultSelectProps.multiple,
-        selectSize,
-        optionLabel = defaultSelectProps.optionLabel,
-        optionValue = defaultSelectProps.optionValue,
+        onValueChange = undefined,
+        options = [] as T[],
+        size = '2',
+        color = undefined,
+        radius = undefined,
+        fullWidth = false,
+        multiple = false,
+        selectSize = 4,
+        optionLabel = 'label',
+        optionValue = 'value',
         ...rest
     }: SelectProps<T> = $props();
 
@@ -47,7 +46,7 @@
      * @param opt
      */
     function isDisabled(opt: T): boolean | undefined {
-        return isObject(opt) && 'disabled' in opt //
+        return isObject(opt) && opt && 'disabled' in opt //
             ? opt.disabled === true
             : undefined;
     }
@@ -115,7 +114,7 @@
 
 <select
     {...rest}
-    size={selectSize}
+    size={multiple ? selectSize : undefined}
     class={cssClass}
     data-size={size}
     data-color={color}

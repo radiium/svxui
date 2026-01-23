@@ -1,17 +1,16 @@
 <script lang="ts">
     import type { ChangeEventHandler } from 'svelte/elements';
-    import { defaultCheckboxProps } from '../props.js';
     import type { CheckboxProps } from '../types.js';
 
     let {
         ref = $bindable(),
         group = $bindable(),
-        value = defaultCheckboxProps.value,
         checked = $bindable(),
         indeterminate = $bindable(),
-        size = defaultCheckboxProps.size,
-        color = defaultCheckboxProps.color,
-        radius = defaultCheckboxProps.radius,
+        value = undefined,
+        size = '2',
+        color = undefined,
+        radius = undefined,
         ...rest
     }: CheckboxProps = $props();
 

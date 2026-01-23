@@ -1,5 +1,6 @@
+import type { PolymorphicProps } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
-import type { HTMLAttributes, SvelteHTMLElements } from 'svelte/elements';
+import type { SvelteHTMLElements } from 'svelte/elements';
 
 export type Display = 'none' | 'inline-flex' | 'flex';
 export type Direction = 'row' | 'column' | 'row-reverse' | 'column-reverse';
@@ -9,15 +10,7 @@ export type AlignItem = 'start' | 'center' | 'end' | 'baseline' | 'stretch' | 'n
 export type Wrap = 'nowrap' | 'wrap' | 'wrap-reverse';
 export type Gap = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
 
-export type FlexboxProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
-    /**
-     * Rendered DOM element
-     */
-    ref?: HTMLElement;
-    /**
-     * Render element as
-     */
-    as?: keyof SvelteHTMLElements;
+export type FlexboxOwnProps = {
     /**
      * Flex display variant
      */
@@ -51,3 +44,5 @@ export type FlexboxProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
      */
     children?: Snippet<[void]>;
 };
+
+export type FlexboxProps<E extends keyof SvelteHTMLElements = 'div'> = PolymorphicProps<E, FlexboxOwnProps>;

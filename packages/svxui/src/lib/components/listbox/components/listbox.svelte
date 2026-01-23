@@ -1,20 +1,19 @@
 <script lang="ts" generics="Value, Multiple extends boolean">
-    import { ListboxState } from '$lib/utilities/listbox-state/listbox-state.svelte.js';
-    import { defaultListboxRootProps } from '../props.js';
+    import { ListboxBuilder } from '$lib/builders/listbox/index.js';
     import type { ListboxProps } from '../types.js';
 
     let {
         value = $bindable(),
-        onValueChange = defaultListboxRootProps.onValueChange,
-        multiple = defaultListboxRootProps.multiple! as Multiple,
-        disabled = defaultListboxRootProps.disabled!,
-        loop = defaultListboxRootProps.loop,
-        activateOnFocus = defaultListboxRootProps.activateOnFocus,
-        orientation = defaultListboxRootProps.orientation!,
+        onValueChange = undefined,
+        multiple = false as Multiple,
+        disabled = false,
+        loop = false,
+        activateOnFocus = false,
+        orientation = 'vertical',
         children
     }: ListboxProps<Value, Multiple> = $props();
 
-    const listbox = new ListboxState<Value, Multiple>({
+    const listbox = new ListboxBuilder<Value, Multiple>({
         get value() {
             return value;
         },

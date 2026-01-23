@@ -1,18 +1,17 @@
 <script lang="ts">
-    import { defaultButtonProps } from '../props.js';
     import type { ButtonProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        size = defaultButtonProps.size,
-        variant = defaultButtonProps.variant,
-        color = defaultButtonProps.color,
-        radius = defaultButtonProps.radius,
-        transform = defaultButtonProps.transform,
-        align = defaultButtonProps.align,
-        active = defaultButtonProps.active,
-        iconOnly = defaultButtonProps.iconOnly,
-        fullWidth = defaultButtonProps.fullWidth,
+        size = '2',
+        variant = 'solid',
+        color = undefined,
+        radius = undefined,
+        transform = undefined,
+        align = 'center',
+        active = undefined,
+        iconOnly = undefined,
+        fullWidth = undefined,
         children,
         ...rest
     }: ButtonProps = $props();
@@ -34,10 +33,9 @@
 </script>
 
 <button
-    tabindex="0"
     {...rest}
     aria-pressed={active === undefined ? undefined : active}
-    aria-disabled={rest.disabled}
+    aria-disabled={rest.disabled ? 'true' : undefined}
     data-color={color}
     data-size={size}
     data-radius={radius}
@@ -93,7 +91,9 @@
             background: var(--button-background-active);
             filter: var(--button-active-filter);
         }
-        &:focus-visible {
+        &:focus,
+        &:focus-visible,
+        &.button-highlight {
             outline: 2px solid var(--accent-8);
             outline-offset: 0px;
         }

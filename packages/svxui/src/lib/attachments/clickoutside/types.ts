@@ -1,4 +1,4 @@
-export interface ClickoutsideOptions {
+export type ClickoutsideOptions = {
     /**
      * Called when click outside node
      */
@@ -23,4 +23,4 @@ export interface ClickoutsideOptions {
      * @default document
      */
     eventTarget?: HTMLElement | Document | Window;
-}
+};

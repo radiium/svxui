@@ -1,13 +1,8 @@
 <script lang="ts">
-    import { portal } from '$lib/attachments/portal/attachment.svelte.js';
-    import { defaultPortalProps } from '../props.js';
+    import { portal } from '$lib/attachments/portal/index.js';
     import type { PortalProps } from '../types.js';
 
-    let {
-        target = defaultPortalProps.target,
-        disabled = defaultPortalProps.disabled,
-        children
-    }: PortalProps = $props();
+    let { target = 'body', disabled = false, children }: PortalProps = $props();
 </script>
 
 {#if disabled}

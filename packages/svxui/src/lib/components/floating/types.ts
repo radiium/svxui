@@ -2,16 +2,6 @@ import type { Color, FloatingPlacement, Radius } from '$lib/shared.types.js';
 import type { FloatingEngineState } from '$lib/utilities/floating-engine/types.js';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes, SVGAttributes } from 'svelte/elements';
-import type { PanelProps } from '../panel/types.js';
-import type {
-    ArrowOptions,
-    AutoPlacementOptions,
-    FlipOptions,
-    HideOptions,
-    OffsetOptions,
-    ShiftOptions,
-    SizeOptions
-} from '@floating-ui/dom';
 
 export type FloatingSize = '0' | '1' | '2' | '3' | '4' | '5';
 export type FloatingVariant = 'solid' | 'soft' | 'clear';

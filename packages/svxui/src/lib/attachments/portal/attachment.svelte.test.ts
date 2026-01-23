@@ -1,6 +1,5 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { portal } from './attachment.svelte.js';
-import { flushSync, tick } from 'svelte';
 
 describe('portal attachment', () => {
     let node: HTMLElement;

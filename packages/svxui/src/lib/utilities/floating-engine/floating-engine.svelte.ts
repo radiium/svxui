@@ -1,3 +1,4 @@
+import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
 import {
     computePosition,
     type FloatingElement,
@@ -7,7 +8,6 @@ import {
 import { onDestroy } from 'svelte';
 import { parsePlacement } from './internals/parse-placement.js';
 import { roundByDPR } from './internals/round-by-dpr.js';
-import { styleObjectToString } from './internals/style-object-to-string.js';
 import type { FloatingEngineOptions, FloatingEngineState } from './types.js';
 
 /**
@@ -33,9 +33,9 @@ export class FloatingEngine {
         }
 
         const response = await computePosition(this.reference, this.floating, {
-            strategy: this.#options?.strategy,
-            placement: this.#options?.placement,
-            middleware: this.#options?.middleware,
+            strategy: this.#options?.strategy ?? 'fixed',
+            placement: this.#options?.placement ?? 'bottom',
+            middleware: this.#options?.middleware ?? [],
             ...(this.#options?.platform //
                 ? { platform: this.#options?.platform }
                 : undefined)

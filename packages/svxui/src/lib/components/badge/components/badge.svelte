@@ -1,14 +1,13 @@
 <script lang="ts">
-    import { defaultBadgeProps } from '../props.js';
     import type { BadgeProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        size = defaultBadgeProps.size,
-        variant = defaultBadgeProps.variant,
-        color = defaultBadgeProps.color,
-        radius = defaultBadgeProps.radius,
-        disabled = defaultBadgeProps.disabled,
+        size = '1',
+        variant = 'solid',
+        color = undefined,
+        radius = undefined,
+        disabled = false,
         children,
         ...rest
     }: BadgeProps = $props();

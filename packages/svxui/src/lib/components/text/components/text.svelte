@@ -1,21 +1,20 @@
 <script lang="ts" generics="E extends keyof SvelteHTMLElements = 'div'">
     import type { SvelteHTMLElements } from 'svelte/elements';
-    import { defaultTextProps } from '../props.js';
     import type { TextProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        as = defaultTextProps.as as E,
-        color = defaultTextProps.color,
-        size = defaultTextProps.size,
-        weight = defaultTextProps.weight,
-        transform = defaultTextProps.transform,
-        align = defaultTextProps.align,
-        wrap = defaultTextProps.wrap,
-        underline = defaultTextProps.underline,
-        truncate = defaultTextProps.truncate,
-        muted = defaultTextProps.muted,
-        disabled = defaultTextProps.disabled,
+        as = 'div' as E,
+        color = undefined,
+        size = '3',
+        weight = 'regular',
+        transform = undefined,
+        align = 'start',
+        wrap = undefined,
+        underline = 'none',
+        truncate = false,
+        muted = false,
+        disabled = false,
         children,
         ...rest
     }: TextProps<E> = $props();

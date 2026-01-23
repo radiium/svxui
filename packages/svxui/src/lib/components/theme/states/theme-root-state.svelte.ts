@@ -1,5 +1,5 @@
 import type { Radius } from '$lib/shared.types.js';
-import { PersistedState } from '$lib/utilities/persisted-state/persisted-state.svelte.js';
+import { PersistedState } from '$lib/utilities/persisted/index.js';
 import { onDestroy } from 'svelte';
 import { withoutTransition } from '../internals/without-transition.js';
 import {
@@ -94,9 +94,9 @@ export class ThemeRootState {
         }
     }
 
-    setStrategy(strategy: StrategyType) {
+    setStrategy = (strategy: StrategyType) => {
         this.#strategy.current = strategy;
-    }
+    };
     get strategy(): StrategyType {
         return this.#strategy.current;
     }
@@ -104,9 +104,9 @@ export class ThemeRootState {
         return this.#strategyKey;
     }
 
-    setRadius(radius: Radius) {
+    setRadius = (radius: Radius) => {
         this.#radius.current = radius;
-    }
+    };
     get radius(): Radius {
         return this.#radius.current;
     }
@@ -114,9 +114,9 @@ export class ThemeRootState {
         return this.#radiusKey;
     }
 
-    setColor(color: string) {
+    setColor = (color: string) => {
         this.#color.current = color;
-    }
+    };
     get color(): string {
         return this.#color.current;
     }

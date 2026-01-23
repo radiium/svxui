@@ -1,13 +1,7 @@
 <script lang="ts">
-    import { defaultInputGroupItemProps } from '../props.js';
     import type { InputGroupItemProps } from '../types.js';
 
-    let {
-        ref = $bindable(),
-        color = defaultInputGroupItemProps.color,
-        children,
-        ...rest
-    }: InputGroupItemProps = $props();
+    let { ref = $bindable(), color = undefined, children, ...rest }: InputGroupItemProps = $props();
 
     let cssClass = $derived([rest.class, 'input-group-item']);
 </script>

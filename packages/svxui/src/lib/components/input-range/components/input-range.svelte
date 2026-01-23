@@ -1,15 +1,14 @@
 <script lang="ts">
-    import { defaultInputRangeProps } from '../props.js';
     import type { InputRangeProps } from '../types.js';
 
     let {
         ref = $bindable(),
         value = $bindable(),
-        size = defaultInputRangeProps.size,
-        radius = defaultInputRangeProps.radius,
-        color = defaultInputRangeProps.color,
-        fullWidth = defaultInputRangeProps.fullWidth,
-        orientation = defaultInputRangeProps.orientation,
+        size = '2',
+        radius = undefined,
+        color = undefined,
+        fullWidth = false,
+        orientation = 'horizontal',
         ...rest
     }: InputRangeProps = $props();
 

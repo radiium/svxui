@@ -1,12 +1,11 @@
 <script lang="ts">
-    import { defaultRadioProps } from '../props.js';
     import type { RadioProps } from '../types.js';
 
     let {
         ref = $bindable(),
         group = $bindable(),
-        size = defaultRadioProps.size,
-        color = defaultRadioProps.color,
+        size = '2',
+        color = undefined,
         ...rest
     }: RadioProps = $props();
 

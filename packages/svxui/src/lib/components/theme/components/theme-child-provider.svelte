@@ -1,13 +1,12 @@
 <script lang="ts">
-    import { defaultThemeChildProviderProps } from '../props.js';
     import { useThemeChildContext } from '../states/context.svelte.js';
     import { type ThemeChildProviderProps } from '../types.js';
 
     let {
-        strategy = defaultThemeChildProviderProps.strategy,
-        radius = defaultThemeChildProviderProps.radius,
-        color = defaultThemeChildProviderProps.color,
-        hasBackground = defaultThemeChildProviderProps.hasBackground,
+        strategy = undefined,
+        radius = undefined,
+        color = undefined,
+        hasBackground = undefined,
         children,
         ...rest
     }: ThemeChildProviderProps = $props();

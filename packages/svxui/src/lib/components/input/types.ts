@@ -16,7 +16,7 @@ export type InputType =
     | 'month'
     | 'week';
 
-export type InputProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'> & {
+export type InputProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type' | 'children'> & {
     /**
      * Rendered DOM element
      */

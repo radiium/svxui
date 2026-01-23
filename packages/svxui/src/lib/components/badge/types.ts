@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'svelte/elements';
 export type BadgeSize = '1' | '2' | '3';
 export type BadgeVariant = 'solid' | 'soft' | 'outline';
 
-export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
+export type BadgeProps = Omit<HTMLAttributes<HTMLSpanElement>, 'color' | 'children'> & {
     /**
      * Rendered DOM element
      */
@@ -29,7 +29,7 @@ export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
     /**
      * Disable badge
      */
-    disabled?: boolean | undefined;
+    disabled?: boolean;
     /**
      * Badge content to render
      */

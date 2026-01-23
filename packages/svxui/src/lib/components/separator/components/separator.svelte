@@ -1,12 +1,11 @@
 <script lang="ts">
-    import { defaultSeparatorProps } from '../props.js';
     import type { SeparatorProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        color = defaultSeparatorProps.color,
-        size = defaultSeparatorProps.size,
-        orientation = defaultSeparatorProps.orientation,
+        color = undefined,
+        size = '2',
+        orientation = 'horizontal',
         ...rest
     }: SeparatorProps = $props();
 

@@ -1,18 +1,17 @@
 <script lang="ts" generics="Value, Multiple extends boolean">
-    import { AccordionState } from '$lib/utilities/index.js';
-    import { defaultAccordionProps } from '../props.js';
+    import { AccordionBuilder } from '$lib/builders/accordion/index.js';
     import type { AccordionProps } from '../types.js';
 
     let {
         value = $bindable(),
         onValueChange,
-        multiple = defaultAccordionProps.multiple! as Multiple,
-        disabled = defaultAccordionProps.disabled!,
-        orientation = defaultAccordionProps.orientation!,
+        multiple = false as Multiple,
+        disabled = false,
+        orientation = 'vertical',
         children
     }: AccordionProps<Value, Multiple> = $props();
 
-    const accordion = new AccordionState<Value, Multiple>({
+    const accordion = new AccordionBuilder<Value, Multiple>({
         get value() {
             return value;
         },

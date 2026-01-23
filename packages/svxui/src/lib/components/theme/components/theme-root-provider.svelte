@@ -2,20 +2,19 @@
     import ThemeColorsDefault from '../internals/components/theme-colors-default.svelte';
     import ThemeColors from '../internals/components/theme-colors.svelte';
     import ThemeScript from '../internals/components/theme-script.svelte';
-    import { defaultThemeRootProviderProps } from '../props.js';
     import { createThemeRootContext } from '../states/context.svelte.js';
-    import { type ThemeRootProviderProps } from '../types.js';
+    import { MetaThemeColors, ThemeSystem, type ThemeRootProviderProps } from '../types.js';
 
     let {
-        defaultStrategy = defaultThemeRootProviderProps.defaultStrategy,
-        defaultRadius = defaultThemeRootProviderProps.defaultRadius,
-        defaultColor = defaultThemeRootProviderProps.defaultColor,
-        metaThemeColors = defaultThemeRootProviderProps.metaThemeColors,
-        disableTransitions = defaultThemeRootProviderProps.disableTransitions,
-        hasBackground = defaultThemeRootProviderProps.hasBackground,
-        track = defaultThemeRootProviderProps.track,
-        disableHeadScriptInjection = defaultThemeRootProviderProps.disableHeadScriptInjection,
-        customThemeColors,
+        defaultStrategy = ThemeSystem,
+        defaultRadius = 'medium',
+        defaultColor = 'neutral',
+        metaThemeColors = MetaThemeColors,
+        disableTransitions = true,
+        hasBackground = true,
+        track = true,
+        disableHeadScriptInjection = false,
+        customThemeColors = undefined,
         children,
         ...rest
     }: ThemeRootProviderProps = $props();

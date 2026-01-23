@@ -4,7 +4,7 @@ import type { InputGroupProps } from '../input-group/types.js';
 export type InputNumberVariant = 'solid' | 'soft' | 'outline' | 'clear';
 export type InputNumberSize = '1' | '2' | '3';
 
-export type InputNumberProps = Omit<InputGroupProps, 'ref' | 'color' | 'children'> & {
+export type InputNumberProps = Omit<InputGroupProps, 'ref' | 'children'> & {
     /**
      * Rendered DOM element
      */

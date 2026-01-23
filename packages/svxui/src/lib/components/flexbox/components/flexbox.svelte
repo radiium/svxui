@@ -1,20 +1,20 @@
-<script lang="ts">
-    import { defaultFlexboxProps } from '../props.js';
+<script lang="ts" generics="E extends keyof SvelteHTMLElements = 'div'">
+    import type { SvelteHTMLElements } from 'svelte/elements';
     import type { FlexboxProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        as = defaultFlexboxProps.as,
-        display = defaultFlexboxProps.display,
-        direction = defaultFlexboxProps.direction,
-        justify = defaultFlexboxProps.justify,
-        align = defaultFlexboxProps.align,
-        wrap = defaultFlexboxProps.wrap,
-        gap = defaultFlexboxProps.gap,
-        fullWidth = defaultFlexboxProps.fullWidth,
+        as = 'div' as E,
+        display = 'flex',
+        justify = 'start',
+        direction = undefined,
+        align = undefined,
+        wrap = undefined,
+        gap = undefined,
+        fullWidth = undefined,
         children,
         ...rest
-    }: FlexboxProps = $props();
+    }: FlexboxProps<E> = $props();
 
     let cssClass = $derived([
         rest.class,

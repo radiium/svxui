@@ -5,7 +5,7 @@ import type { HTMLButtonAttributes } from 'svelte/elements';
 export type ButtonSize = '1' | '2' | '3' | '4';
 export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'clear';
 
-export type ButtonProps = HTMLButtonAttributes & {
+export type ButtonProps = Omit<HTMLButtonAttributes, 'color' | 'children'> & {
     /**
      * Rendered DOM element
      */

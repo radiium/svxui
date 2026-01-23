@@ -1,29 +1,28 @@
 <script lang="ts">
+    import { focustrap } from '$lib/attachments/focustrap/index.js';
+    import { scrolllock } from '$lib/attachments/scrolllock/index.js';
     import { fade, scale } from 'svelte/transition';
-    import { defaultDialogProps } from '../props.js';
     import type { DialogProps } from '../types.js';
-    import { scrolllock } from '$lib/attachments/scrolllock/attachment.svelte.js';
-    import { focustrap } from '$lib/attachments/focustrap/attachment.svelte.js';
 
     let {
         ref = $bindable(),
         isOpen = $bindable(),
-        onClose = defaultDialogProps.onClose,
-        size = defaultDialogProps.size,
-        radius = defaultDialogProps.radius,
-        noPadding = defaultDialogProps.noPadding,
-        fullScreen = defaultDialogProps.fullScreen,
-        closeOnBackdropClick = defaultDialogProps.closeOnBackdropClick,
-        closeOnEscape = defaultDialogProps.closeOnEscape,
-        lockScroll = defaultDialogProps.lockScroll,
-        transitionDelay = defaultDialogProps.transitionDelay,
-        transitionDuration = defaultDialogProps.transitionDuration,
-        width = defaultDialogProps.width,
-        minWidth = defaultDialogProps.minWidth,
-        maxWidth = defaultDialogProps.maxWidth,
-        height = defaultDialogProps.height,
-        minHeight = defaultDialogProps.minHeight,
-        maxHeight = defaultDialogProps.maxHeight,
+        onClose = undefined,
+        size = '3',
+        radius = undefined,
+        noPadding = false,
+        fullScreen = false,
+        closeOnBackdropClick = false,
+        closeOnEscape = false,
+        lockScroll = false,
+        transitionDelay = 0,
+        transitionDuration = 150,
+        width = undefined,
+        minWidth = undefined,
+        maxWidth = undefined,
+        height = undefined,
+        minHeight = undefined,
+        maxHeight = undefined,
         children,
         ...rest
     }: DialogProps = $props();

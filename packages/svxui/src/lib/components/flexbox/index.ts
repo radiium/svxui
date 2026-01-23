@@ -1,5 +1,2 @@
 export { default as Flexbox } from './components/flexbox.svelte';
-
-export { defaultFlexboxProps } from './props.js';
-
-export type { FlexboxProps, Display, Justify, Direction, AlignItem, Wrap, Gap } from './types.js';
+export type { AlignItem, Direction, Display, FlexboxProps, Gap, Justify, Wrap } from './types.js';

@@ -1,4 +1,4 @@
-export type FocusTrapOptions = {
+export type FocustrapOptions = {
     /**
      * Enable/disable focus trap
      * @default true

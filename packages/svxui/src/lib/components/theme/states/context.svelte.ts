@@ -1,4 +1,4 @@
-import { Context } from '$lib/utilities/context.svelte.js';
+import { Context } from '$lib/utilities/context/index.js';
 import type { ThemeChildStateProps, ThemeRootStateProps } from '../types.js';
 import { ThemeChildState } from './theme-child-state.svelte.js';
 import { ThemeRootState } from './theme-root-state.svelte.js';

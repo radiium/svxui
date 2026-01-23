@@ -1,12 +1,12 @@
 import { flushSync } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import { FOCUSABLE_SELECTORS } from './internals/focusable-selectors.js';
-import type { FocusTrapOptions } from './types.js';
+import type { FocustrapOptions } from './types.js';
 
 /**
  * @description Traps keyboard focus within a DOM element, preventing focus from leaving it while active.
  */
-export function focustrap(options: FocusTrapOptions = {}): Attachment<HTMLElement> {
+export function focustrap(options: FocustrapOptions = {}): Attachment<HTMLElement> {
     return (node: HTMLElement) => {
         const { enabled = true, initialFocus, returnFocus = true } = options;
 

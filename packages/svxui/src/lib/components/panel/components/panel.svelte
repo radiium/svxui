@@ -1,17 +1,16 @@
 <script lang="ts" generics="E extends keyof SvelteHTMLElements = 'div'">
     import type { SvelteHTMLElements } from 'svelte/elements';
-    import { defaultPanelProps } from '../props.js';
     import type { PanelProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        as = defaultPanelProps.as as E,
-        color = defaultPanelProps.color,
-        size = defaultPanelProps.size,
-        radius = defaultPanelProps.radius,
-        variant = defaultPanelProps.variant,
-        outline = defaultPanelProps.outline,
-        fullWidth = defaultPanelProps.fullWidth,
+        as = 'div' as E,
+        color = undefined,
+        size = '3',
+        radius = undefined,
+        variant = 'solid',
+        outline = false,
+        fullWidth = false,
         children,
         ...rest
     }: PanelProps<E> = $props();

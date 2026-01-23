@@ -1,5 +1,4 @@
-import type { PolymorphicProps } from '$lib/internals/polymorphic.types.js';
-import type { Color, Radius } from '$lib/shared.types.js';
+import type { Color, PolymorphicProps, Radius } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 

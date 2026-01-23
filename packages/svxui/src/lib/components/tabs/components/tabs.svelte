@@ -1,19 +1,18 @@
 <script lang="ts" generics="Value">
-    import { TabsState } from '$lib/utilities/index.js';
-    import { defaultTabsProps } from '../props.js';
+    import { TabsBuilder } from '$lib/builders/tabs/index.js';
     import type { TabsProps } from '../types.js';
 
     let {
         value = $bindable(),
-        onValueChange = defaultTabsProps.onValueChange,
-        disabled = defaultTabsProps.disabled,
-        orientation = defaultTabsProps.orientation,
-        activateOnFocus = defaultTabsProps.activateOnFocus,
-        loop = defaultTabsProps.loop,
+        onValueChange = undefined,
+        disabled = false,
+        orientation = 'horizontal',
+        activateOnFocus = false,
+        loop = false,
         children
     }: TabsProps<Value> = $props();
 
-    const tabs = new TabsState<Value>({
+    const tabs = new TabsBuilder<Value>({
         get value() {
             return value as Value;
         },

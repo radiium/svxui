@@ -3,20 +3,19 @@
      * Credit: {@link https://github.com/skeletonlabs/floating-ui-svelte/blob/main/packages/floating-ui-svelte/src/components/floating-arrow.svelte}
      */
 
-    import { styleObjectToString } from '$lib/utilities/floating-engine/internals/style-object-to-string.js';
-    import { defaultFloatingArrowProps } from '../props.js';
+    import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { FloatingArrowProps } from '../types.js';
 
     let {
         ref = $bindable(),
         floatingState,
-        color = defaultFloatingArrowProps.color,
-        variant = defaultFloatingArrowProps.variant,
-        outline = defaultFloatingArrowProps.outline,
         zIndex,
-        width = defaultFloatingArrowProps.width!,
-        height = defaultFloatingArrowProps.height!,
-        tipRadius = defaultFloatingArrowProps.tipRadius!,
+        color = undefined,
+        variant = 'solid',
+        outline = undefined,
+        width = 14,
+        height = 8,
+        tipRadius = 3,
         ...rest
     }: FloatingArrowProps = $props();
 

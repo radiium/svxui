@@ -1,26 +1,25 @@
 <script lang="ts">
-    import { longpress } from '$lib/attachments/longpress/attachment.svelte.js';
+    import { longpress } from '$lib/attachments/longpress/index.js';
     import { Button } from '../../button/index.js';
     import InputGroup from '../../input-group/components/input-group.svelte';
     import Input from '../../input/components/input.svelte';
-    import { defaultInputNumberProps } from '../props.js';
     import type { InputNumberProps } from '../types.js';
 
     let {
         ref = $bindable(),
         value = $bindable(),
-        step = defaultInputNumberProps.step,
-        min = defaultInputNumberProps.min,
-        max = defaultInputNumberProps.max,
-        size = defaultInputNumberProps.size,
-        radius = defaultInputNumberProps.radius,
-        color = defaultInputNumberProps.color,
-        variant = defaultInputNumberProps.variant,
-        align = defaultInputNumberProps.align,
-        fullWidth = defaultInputNumberProps.fullWidth,
-        disabled = defaultInputNumberProps.disabled,
-        required = defaultInputNumberProps.required,
-        readonly = defaultInputNumberProps.readonly,
+        step = 1,
+        min = undefined,
+        max = undefined,
+        size = '2',
+        radius = undefined,
+        color = undefined,
+        variant = 'clear',
+        align = 'end',
+        fullWidth = false,
+        disabled = false,
+        required = false,
+        readonly = undefined,
         ...rest
     }: InputNumberProps = $props();
 

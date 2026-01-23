@@ -1,4 +1,4 @@
-import { isBrowser } from '$lib/utilities/is.js';
+import { isBrowser } from '$lib/internals/is.js';
 import { onDestroy } from 'svelte';
 import { MediaQuery } from 'svelte/reactivity';
 

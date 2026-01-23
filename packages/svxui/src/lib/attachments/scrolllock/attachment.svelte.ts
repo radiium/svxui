@@ -1,5 +1,5 @@
+import { toHTMLElement } from '$lib/internals/elements.js';
 import type { Attachment } from 'svelte/attachments';
-import { toHTMLElement } from './internals/to-html-element.js';
 import type { ScrolllockOptions } from './types.js';
 
 /**
