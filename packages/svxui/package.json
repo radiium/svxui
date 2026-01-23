@@ -33,16 +33,246 @@
             "types": "./dist/index.d.ts",
             "svelte": "./dist/index.js"
         },
-        "./normalize.css": "./dist/styles/normalize.css",
-        "./tokens.css": "./dist/styles/tokens.css",
-        "./utilities.css": "./dist/styles/utilities.css",
-        "./utilities.display.css": "./dist/styles/utilities.display.css",
-        "./utilities.flex.css": "./dist/styles/utilities.flex.css",
-        "./utilities.gap.css": "./dist/styles/utilities.gap.css",
-        "./utilities.position.css": "./dist/styles/utilities.position.css",
-        "./utilities.size.css": "./dist/styles/utilities.size.css",
-        "./utilities.space.css": "./dist/styles/utilities.space.css",
-        "./colors/*": "./dist/styles/colors/*"
+        "./styles/normalize.css": {
+            "default": "./dist/styles/normalize.css"
+        },
+        "./styles/tokens.css": {
+            "default": "./dist/styles/tokens.css"
+        },
+        "./styles/utilities.css": {
+            "default": "./dist/styles/utilities.css"
+        },
+        "./styles/utilities.display.css": {
+            "default": "./dist/styles/utilities.display.css"
+        },
+        "./styles/utilities.flex.css": {
+            "default": "./dist/styles/utilities.flex.css"
+        },
+        "./styles/utilities.gap.css": {
+            "default": "./dist/styles/utilities.gap.css"
+        },
+        "./styles/utilities.position.css": {
+            "default": "./dist/styles/utilities.position.css"
+        },
+        "./styles/utilities.size.css": {
+            "default": "./dist/styles/utilities.size.css"
+        },
+        "./styles/utilities.space.css": {
+            "default": "./dist/styles/utilities.space.css"
+        },
+        "./styles/colors/*": {
+            "default": "./dist/styles/colors/*"
+        },
+        "./attachments": {
+            "types": "./dist/attachments/index.d.ts",
+            "svelte": "./dist/attachments/index.js",
+            "default": "./dist/attachments/index.js"
+        },
+        "./attachments/clickoutside": {
+            "types": "./dist/attachments/clickoutside/index.d.ts",
+            "svelte": "./dist/attachments/clickoutside/index.js",
+            "default": "./dist/attachments/clickoutside/index.js"
+        },
+        "./attachments/focustrap": {
+            "types": "./dist/attachments/focustrap/index.d.ts",
+            "svelte": "./dist/attachments/focustrap/index.js",
+            "default": "./dist/attachments/focustrap/index.js"
+        },
+        "./attachments/longpress": {
+            "types": "./dist/attachments/longpress/index.d.ts",
+            "svelte": "./dist/attachments/longpress/index.js",
+            "default": "./dist/attachments/longpress/index.js"
+        },
+        "./attachments/portal": {
+            "types": "./dist/attachments/portal/index.d.ts",
+            "svelte": "./dist/attachments/portal/index.js",
+            "default": "./dist/attachments/portal/index.js"
+        },
+        "./attachments/rovingfocus": {
+            "types": "./dist/attachments/rovingfocus/index.d.ts",
+            "svelte": "./dist/attachments/rovingfocus/index.js",
+            "default": "./dist/attachments/rovingfocus/index.js"
+        },
+        "./attachments/scrolllock": {
+            "types": "./dist/attachments/scrolllock/index.d.ts",
+            "svelte": "./dist/attachments/scrolllock/index.js",
+            "default": "./dist/attachments/scrolllock/index.js"
+        },
+        "./components": {
+            "types": "./dist/components/index.d.ts",
+            "svelte": "./dist/components/index.js",
+            "default": "./dist/components/index.js"
+        },
+        "./components/accordion": {
+            "types": "./dist/components/accordion/index.d.ts",
+            "svelte": "./dist/components/accordion/index.js",
+            "default": "./dist/components/accordion/index.js"
+        },
+        "./components/badge": {
+            "types": "./dist/components/badge/index.d.ts",
+            "svelte": "./dist/components/badge/index.js",
+            "default": "./dist/components/badge/index.js"
+        },
+        "./components/button": {
+            "types": "./dist/components/button/index.d.ts",
+            "svelte": "./dist/components/button/index.js",
+            "default": "./dist/components/button/index.js"
+        },
+        "./components/checkbox": {
+            "types": "./dist/components/checkbox/index.d.ts",
+            "svelte": "./dist/components/checkbox/index.js",
+            "default": "./dist/components/checkbox/index.js"
+        },
+        "./components/dialog": {
+            "types": "./dist/components/dialog/index.d.ts",
+            "svelte": "./dist/components/dialog/index.js",
+            "default": "./dist/components/dialog/index.js"
+        },
+        "./components/flexbox": {
+            "types": "./dist/components/flexbox/index.d.ts",
+            "svelte": "./dist/components/flexbox/index.js",
+            "default": "./dist/components/flexbox/index.js"
+        },
+        "./components/floating": {
+            "types": "./dist/components/floating/index.d.ts",
+            "svelte": "./dist/components/floating/index.js",
+            "default": "./dist/components/floating/index.js"
+        },
+        "./components/input": {
+            "types": "./dist/components/input/index.d.ts",
+            "svelte": "./dist/components/input/index.js",
+            "default": "./dist/components/input/index.js"
+        },
+        "./components/input-group": {
+            "types": "./dist/components/input-group/index.d.ts",
+            "svelte": "./dist/components/input-group/index.js",
+            "default": "./dist/components/input-group/index.js"
+        },
+        "./components/input-number": {
+            "types": "./dist/components/input-number/index.d.ts",
+            "svelte": "./dist/components/input-number/index.js",
+            "default": "./dist/components/input-number/index.js"
+        },
+        "./components/input-range": {
+            "types": "./dist/components/input-range/index.d.ts",
+            "svelte": "./dist/components/input-range/index.js",
+            "default": "./dist/components/input-range/index.js"
+        },
+        "./components/listbox": {
+            "types": "./dist/components/listbox/index.d.ts",
+            "svelte": "./dist/components/listbox/index.js",
+            "default": "./dist/components/listbox/index.js"
+        },
+        "./components/panel": {
+            "types": "./dist/components/panel/index.d.ts",
+            "svelte": "./dist/components/panel/index.js",
+            "default": "./dist/components/panel/index.js"
+        },
+        "./components/portal": {
+            "types": "./dist/components/portal/index.d.ts",
+            "svelte": "./dist/components/portal/index.js",
+            "default": "./dist/components/portal/index.js"
+        },
+        "./components/radio": {
+            "types": "./dist/components/radio/index.d.ts",
+            "svelte": "./dist/components/radio/index.js",
+            "default": "./dist/components/radio/index.js"
+        },
+        "./components/select": {
+            "types": "./dist/components/select/index.d.ts",
+            "svelte": "./dist/components/select/index.js",
+            "default": "./dist/components/select/index.js"
+        },
+        "./components/separator": {
+            "types": "./dist/components/separator/index.d.ts",
+            "svelte": "./dist/components/separator/index.js",
+            "default": "./dist/components/separator/index.js"
+        },
+        "./components/switch": {
+            "types": "./dist/components/switch/index.d.ts",
+            "svelte": "./dist/components/switch/index.js",
+            "default": "./dist/components/switch/index.js"
+        },
+        "./components/tabs": {
+            "types": "./dist/components/tabs/index.d.ts",
+            "svelte": "./dist/components/tabs/index.js",
+            "default": "./dist/components/tabs/index.js"
+        },
+        "./components/text": {
+            "types": "./dist/components/text/index.d.ts",
+            "svelte": "./dist/components/text/index.js",
+            "default": "./dist/components/text/index.js"
+        },
+        "./components/textarea": {
+            "types": "./dist/components/textarea/index.d.ts",
+            "svelte": "./dist/components/textarea/index.js",
+            "default": "./dist/components/textarea/index.js"
+        },
+        "./components/theme": {
+            "types": "./dist/components/theme/index.d.ts",
+            "svelte": "./dist/components/theme/index.js",
+            "default": "./dist/components/theme/index.js"
+        },
+        "./builders": {
+            "types": "./dist/builders/index.d.ts",
+            "svelte": "./dist/builders/index.js",
+            "default": "./dist/builders/index.js"
+        },
+        "./builders/accordion": {
+            "types": "./dist/builders/accordion/index.d.ts",
+            "svelte": "./dist/builders/accordion/index.js",
+            "default": "./dist/builders/accordion/index.js"
+        },
+        "./builders/floating": {
+            "types": "./dist/builders/floating/index.d.ts",
+            "svelte": "./dist/builders/floating/index.js",
+            "default": "./dist/builders/floating/index.js"
+        },
+        "./builders/listbox": {
+            "types": "./dist/builders/listbox/index.d.ts",
+            "svelte": "./dist/builders/listbox/index.js",
+            "default": "./dist/builders/listbox/index.js"
+        },
+        "./builders/tabs": {
+            "types": "./dist/builders/tabs/index.d.ts",
+            "svelte": "./dist/builders/tabs/index.js",
+            "default": "./dist/builders/tabs/index.js"
+        },
+        "./utilities": {
+            "types": "./dist/utilities/index.d.ts",
+            "svelte": "./dist/utilities/index.js",
+            "default": "./dist/utilities/index.js"
+        },
+        "./utilities/context": {
+            "types": "./dist/utilities/context/index.d.ts",
+            "svelte": "./dist/utilities/context/index.js",
+            "default": "./dist/utilities/context/index.js"
+        },
+        "./utilities/floating-engine": {
+            "types": "./dist/utilities/floating-engine/index.d.ts",
+            "svelte": "./dist/utilities/floating-engine/index.js",
+            "default": "./dist/utilities/floating-engine/index.js"
+        },
+        "./utilities/hotkeys": {
+            "types": "./dist/utilities/hotkeys/index.d.ts",
+            "svelte": "./dist/utilities/hotkeys/index.js",
+            "default": "./dist/utilities/hotkeys/index.js"
+        },
+        "./utilities/persisted": {
+            "types": "./dist/utilities/persisted/index.d.ts",
+            "svelte": "./dist/utilities/persisted/index.js",
+            "default": "./dist/utilities/persisted/index.js"
+        },
+        "./utilities/selection": {
+            "types": "./dist/utilities/selection/index.d.ts",
+            "svelte": "./dist/utilities/selection/index.js",
+            "default": "./dist/utilities/selection/index.js"
+        },
+        "./utilities/use-id": {
+            "types": "./dist/utilities/use-id/index.d.ts",
+            "svelte": "./dist/utilities/use-id/index.js",
+            "default": "./dist/utilities/use-id/index.js"
+        }
     },
     "files": [
         "dist",
@@ -59,7 +289,7 @@
     "scripts": {
         "dev": "vite dev --host",
         "build": "vite build && npm run package",
-        "prebuild": "npm run styles",
+        "prebuild": "npm run styles && npm run ./scripts/generate-exports.mjs",
         "preview": "vite preview",
         "package": "svelte-kit sync && svelte-package && publint",
         "package:watch": "svelte-kit sync && svelte-package --watch",
@@ -72,8 +302,8 @@
         "watch": "svelte-package --watch",
         "sync": "svelte-kit sync",
         "styles": "node ./src/lib-styles/build.js",
-		"test": "npm run test:unit -- --run && npm run test:e2e",
-		"test:e2e": "playwright test",
+        "test": "npm run test:unit -- --run && npm run test:e2e",
+        "test:e2e": "playwright test",
         "test:unit": "vitest",
         "test:ui": "vitest --ui"
     },
