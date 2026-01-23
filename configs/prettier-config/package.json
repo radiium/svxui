@@ -15,7 +15,7 @@
         "format": "concurrently pnpm:format:*"
     },
     "peerDependencies": {
-        "prettier": "3.7.4"
+        "prettier": "3.8.1"
     },
     "dependencies": {
         "prettier-plugin-svelte": "^3.4.1"
