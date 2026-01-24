@@ -1,0 +1,5052 @@
+{
+  "metadata": {
+    "name": "svxui",
+    "sourceDirectory": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui",
+    "version": "0.0.13"
+  },
+  "components": [
+    {
+      "name": "Accordion",
+      "filePath": "src/lib/components/accordion/components/accordion.svelte",
+      "propsTypeName": "AccordionProps",
+      "props": [
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[AccordionBuilder<Value, Multiple>]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[AccordionBuilder<Value, Multiple>]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "AccordionBuilder<Value, Multiple>",
+                    "kind": "reference",
+                    "typeName": "AccordionBuilder",
+                    "typeArguments": [
+                      {
+                        "raw": "Value",
+                        "kind": "unknown"
+                      },
+                      {
+                        "raw": "Multiple",
+                        "kind": "unknown"
+                      }
+                    ],
+                    "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/builders/accordion/builder.svelte.ts"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Accordion Root content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "generics": [
+        {
+          "name": "Value"
+        },
+        {
+          "name": "Multiple",
+          "raw": "boolean",
+          "constraint": {
+            "raw": "boolean",
+            "kind": "boolean"
+          }
+        }
+      ],
+      "extendsTypes": [
+        {
+          "typeName": "AccordionBuilderOptions<Value, Multiple>",
+          "source": "src/lib/builders/accordion/index.js",
+          "typeArguments": [
+            {
+              "raw": "Value",
+              "kind": "unknown"
+            },
+            {
+              "raw": "Multiple",
+              "kind": "unknown"
+            }
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Badge",
+      "filePath": "src/lib/components/badge/components/badge.svelte",
+      "propsTypeName": "BadgeProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLSpanElement",
+            "kind": "reference",
+            "typeName": "HTMLSpanElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Color of badge",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Size of badge",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"1\""
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Radius of badge",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "variant",
+          "type": {
+            "raw": "\"solid\" | \"soft\" | \"outline\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"solid\"",
+                "kind": "literal",
+                "literalValue": "solid"
+              },
+              {
+                "raw": "\"soft\"",
+                "kind": "literal",
+                "literalValue": "soft"
+              },
+              {
+                "raw": "\"outline\"",
+                "kind": "literal",
+                "literalValue": "outline"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Variant of badge",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"solid\""
+        },
+        {
+          "name": "disabled",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Disable badge",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[void]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[void]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "void",
+                    "kind": "unknown"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Badge content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "extendsElement": {
+        "elementType": "span",
+        "source": "svelte/elements",
+        "typeName": "HTMLAttributes<HTMLSpanElement>",
+        "omittedProps": [
+          "color",
+          "children"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Button",
+      "filePath": "src/lib/components/button/components/button.svelte",
+      "propsTypeName": "ButtonProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "Element | HTMLButtonElement",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "Element",
+                "kind": "reference",
+                "typeName": "Element",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              },
+              {
+                "raw": "HTMLButtonElement",
+                "kind": "reference",
+                "typeName": "HTMLButtonElement",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Button color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\" | \"4\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              },
+              {
+                "raw": "\"4\"",
+                "kind": "literal",
+                "literalValue": "4"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Button size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"2\""
+        },
+        {
+          "name": "variant",
+          "type": {
+            "raw": "\"solid\" | \"soft\" | \"outline\" | \"clear\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"solid\"",
+                "kind": "literal",
+                "literalValue": "solid"
+              },
+              {
+                "raw": "\"soft\"",
+                "kind": "literal",
+                "literalValue": "soft"
+              },
+              {
+                "raw": "\"outline\"",
+                "kind": "literal",
+                "literalValue": "outline"
+              },
+              {
+                "raw": "\"clear\"",
+                "kind": "literal",
+                "literalValue": "clear"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Button variant",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"solid\""
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Button radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "transform",
+          "type": {
+            "raw": "\"lowercase\" | \"uppercase\" | \"capitalize\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"lowercase\"",
+                "kind": "literal",
+                "literalValue": "lowercase"
+              },
+              {
+                "raw": "\"uppercase\"",
+                "kind": "literal",
+                "literalValue": "uppercase"
+              },
+              {
+                "raw": "\"capitalize\"",
+                "kind": "literal",
+                "literalValue": "capitalize"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Text transform",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "align",
+          "type": {
+            "raw": "\"start\" | \"center\" | \"end\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"start\"",
+                "kind": "literal",
+                "literalValue": "start"
+              },
+              {
+                "raw": "\"center\"",
+                "kind": "literal",
+                "literalValue": "center"
+              },
+              {
+                "raw": "\"end\"",
+                "kind": "literal",
+                "literalValue": "end"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Text Align",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"center\""
+        },
+        {
+          "name": "active",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Button active state",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "iconOnly",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Button icon only",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "fullWidth",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Button full width",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[void]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[void]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "void",
+                    "kind": "unknown"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Button content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "extendsElement": {
+        "elementType": "button",
+        "source": "svelte/elements",
+        "typeName": "HTMLButtonAttributes",
+        "omittedProps": [
+          "color",
+          "children"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Checkbox",
+      "filePath": "src/lib/components/checkbox/components/checkbox.svelte",
+      "propsTypeName": "CheckboxProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLInputElement",
+            "kind": "reference",
+            "typeName": "HTMLInputElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Checkbox color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Checkbox size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"2\""
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Checkbox radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        }
+      ],
+      "extendsElement": {
+        "elementType": "input",
+        "source": "svelte/elements",
+        "typeName": "HTMLInputAttributes",
+        "omittedProps": [
+          "size",
+          "color",
+          "type"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Dialog",
+      "filePath": "src/lib/components/dialog/components/dialog.svelte",
+      "propsTypeName": "DialogProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLDivElement",
+            "kind": "reference",
+            "typeName": "HTMLDivElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "isOpen",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Manage/listen open state",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "onClose",
+          "type": {
+            "raw": "(reason: \"escape\" | \"backdrop\") => void",
+            "kind": "reference",
+            "typeName": "__type",
+            "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/components/dialog/types.ts"
+          },
+          "optional": true,
+          "description": "Callback when dialog is closed",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\" | \"4\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              },
+              {
+                "raw": "\"4\"",
+                "kind": "literal",
+                "literalValue": "4"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Dialog size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"3\""
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Dialog border radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "width",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "CSS width of dialog",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "minWidth",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "CSS min-width of dialog",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "maxWidth",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "CSS max-width of dialog",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "height",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "CSS height of dialog",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "minHeight",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "CSS min-height of dialog",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "maxHeight",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "CSS max-height of dialog",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "noPadding",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Disable dialog padding",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "fullScreen",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Open as fullscreen dialog",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "closeOnBackdropClick",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Close dialog on backdrop click",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "closeOnEscape",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Close dialog on escape key",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "lockScroll",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Lock body scroll when open",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "transitionDelay",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "Transition delay of open/close animation",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "0"
+        },
+        {
+          "name": "transitionDuration",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "Transition duration of open/close animation",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "150"
+        },
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[void]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[void]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "void",
+                    "kind": "unknown"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Dialog content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "extendsElement": {
+        "elementType": "div",
+        "source": "svelte/elements",
+        "typeName": "HTMLAttributes<HTMLDivElement>",
+        "omittedProps": [
+          "color"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Flexbox",
+      "filePath": "src/lib/components/flexbox/components/flexbox.svelte",
+      "propsTypeName": "FlexboxProps",
+      "props": [],
+      "generics": [
+        {
+          "name": "E",
+          "raw": "keyof SvelteHTMLElements",
+          "constraint": {
+            "raw": "string | number",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "number",
+                "kind": "number"
+              }
+            ]
+          },
+          "default": {
+            "raw": "\"div\"",
+            "kind": "literal",
+            "literalValue": "div"
+          }
+        }
+      ],
+      "tags": []
+    },
+    {
+      "name": "FloatingArrow",
+      "filePath": "src/lib/components/floating/components/floating-arrow.svelte",
+      "propsTypeName": "FloatingArrowProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLElement | SVGElement",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "HTMLElement",
+                "kind": "reference",
+                "typeName": "HTMLElement",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              },
+              {
+                "raw": "SVGElement",
+                "kind": "reference",
+                "typeName": "SVGElement",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "FloatingArrow color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "variant",
+          "type": {
+            "raw": "\"solid\" | \"soft\" | \"clear\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"solid\"",
+                "kind": "literal",
+                "literalValue": "solid"
+              },
+              {
+                "raw": "\"soft\"",
+                "kind": "literal",
+                "literalValue": "soft"
+              },
+              {
+                "raw": "\"clear\"",
+                "kind": "literal",
+                "literalValue": "clear"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "FloatingArrow variant",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"solid\""
+        },
+        {
+          "name": "outline",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "FloatingArrow outline",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "floatingState",
+          "type": {
+            "raw": "FloatingEngineState",
+            "kind": "intersection",
+            "intersectionTypes": [
+              {
+                "raw": "ComputePositionReturn",
+                "kind": "reference",
+                "typeName": "ComputePositionReturn",
+                "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/node_modules/.pnpm/@floating-ui+core@1.7.3/node_modules/@floating-ui/core/dist/floating-ui.core.d.ts"
+              },
+              {
+                "raw": "{ side: FloatingSide; alignment: FloatingAlignment; }",
+                "kind": "reference",
+                "typeName": "__type",
+                "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/utilities/floating-engine/types.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Floating positioning state",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "zIndex",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "Z-index of arrow",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "width",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "FloatingArrow width",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "14"
+        },
+        {
+          "name": "height",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "FloatingArrow height",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "8"
+        },
+        {
+          "name": "tipRadius",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "FloatingArrow tip radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "3"
+        }
+      ],
+      "extendsElement": {
+        "elementType": "svg",
+        "source": "svelte/elements",
+        "typeName": "SVGAttributes<SVGElement>",
+        "omittedProps": [
+          "color",
+          "width",
+          "height"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Floating",
+      "filePath": "src/lib/components/floating/components/floating.svelte",
+      "propsTypeName": "FloatingProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLDivElement",
+            "kind": "reference",
+            "typeName": "HTMLDivElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "isOpen",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Manage/listen open state",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "onClose",
+          "type": {
+            "raw": "() => void",
+            "kind": "reference",
+            "typeName": "__type",
+            "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/components/floating/types.ts"
+          },
+          "optional": true,
+          "description": "Callback when floating is closed",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\" | \"4\" | \"0\" | \"5\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              },
+              {
+                "raw": "\"4\"",
+                "kind": "literal",
+                "literalValue": "4"
+              },
+              {
+                "raw": "\"0\"",
+                "kind": "literal",
+                "literalValue": "0"
+              },
+              {
+                "raw": "\"5\"",
+                "kind": "literal",
+                "literalValue": "5"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Floating size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"3\""
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Floating color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "variant",
+          "type": {
+            "raw": "\"solid\" | \"soft\" | \"clear\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"solid\"",
+                "kind": "literal",
+                "literalValue": "solid"
+              },
+              {
+                "raw": "\"soft\"",
+                "kind": "literal",
+                "literalValue": "soft"
+              },
+              {
+                "raw": "\"clear\"",
+                "kind": "literal",
+                "literalValue": "clear"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Floating variant",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"solid\""
+        },
+        {
+          "name": "outline",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Floating outline",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Floating radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "autoUpdate",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Updateposition on scroll",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "placement",
+          "type": {
+            "raw": "\"top\" | \"right\" | \"bottom\" | \"left\" | \"top-start\" | \"top-end\" | \"right-start\" | \"right-end\" | \"bottom-start\" | \"bottom-end\" | \"left-start\" | \"left-end\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"top\"",
+                "kind": "literal",
+                "literalValue": "top"
+              },
+              {
+                "raw": "\"right\"",
+                "kind": "literal",
+                "literalValue": "right"
+              },
+              {
+                "raw": "\"bottom\"",
+                "kind": "literal",
+                "literalValue": "bottom"
+              },
+              {
+                "raw": "\"left\"",
+                "kind": "literal",
+                "literalValue": "left"
+              },
+              {
+                "raw": "\"top-start\"",
+                "kind": "literal",
+                "literalValue": "top-start"
+              },
+              {
+                "raw": "\"top-end\"",
+                "kind": "literal",
+                "literalValue": "top-end"
+              },
+              {
+                "raw": "\"right-start\"",
+                "kind": "literal",
+                "literalValue": "right-start"
+              },
+              {
+                "raw": "\"right-end\"",
+                "kind": "literal",
+                "literalValue": "right-end"
+              },
+              {
+                "raw": "\"bottom-start\"",
+                "kind": "literal",
+                "literalValue": "bottom-start"
+              },
+              {
+                "raw": "\"bottom-end\"",
+                "kind": "literal",
+                "literalValue": "bottom-end"
+              },
+              {
+                "raw": "\"left-start\"",
+                "kind": "literal",
+                "literalValue": "left-start"
+              },
+              {
+                "raw": "\"left-end\"",
+                "kind": "literal",
+                "literalValue": "left-end"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Prefered placement",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"top\""
+        },
+        {
+          "name": "offset",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "Floating offset from target",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "0"
+        },
+        {
+          "name": "arrow",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Show arrow",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "arrowWidth",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "Arrow width (only if arrow is true)",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "arrowHeight",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "Arrow height (only if arrow is true)",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "arrowTipRadius",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "FloatingArrow tip radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "flip",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Use flip floating middleware",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "shift",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Use shift floating middleware",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "hide",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Use hide floating middleware",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "backdrop",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Show backdrop",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "portal",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Enable portal rendering",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "portalTarget",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "Portal target identifier. Only if portal is true",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\".svxui[data-theme-root]\""
+        },
+        {
+          "name": "focusOnOpen",
+          "type": {
+            "raw": "string | HTMLElement",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "HTMLElement",
+                "kind": "reference",
+                "typeName": "HTMLElement",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Focus element on open flaoting",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "focusOnClose",
+          "type": {
+            "raw": "string | HTMLElement",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "HTMLElement",
+                "kind": "reference",
+                "typeName": "HTMLElement",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Focus element on close flaoting",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "focusTrap",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Trap focus inside floating content",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "closeOnClickBackdrop",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Close floating on backdrop click. Only if backdrop is true",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "closeOnClickOutside",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Close floating on outside click",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "closeOnEscape",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Close floating on escape key",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "closeOnResize",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Close floating on resize",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "closeOnScroll",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Close floating on scroll",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "transitionDelay",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "Transition delay of open/close animation",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "0"
+        },
+        {
+          "name": "transitionDuration",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "Transition duration of open/close animation",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "150"
+        },
+        {
+          "name": "trigger",
+          "type": {
+            "raw": "Snippet<[void]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[void]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "void",
+                    "kind": "unknown"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Floating trigger content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        },
+        {
+          "name": "content",
+          "type": {
+            "raw": "Snippet<[void]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[void]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "void",
+                    "kind": "unknown"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Floating content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        },
+        {
+          "name": "backdropChild",
+          "type": {
+            "raw": "Snippet<[void]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[void]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "void",
+                    "kind": "unknown"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Floating content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "extendsElement": {
+        "elementType": "div",
+        "source": "svelte/elements",
+        "typeName": "HTMLAttributes<HTMLDivElement>",
+        "omittedProps": [
+          "color"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Input",
+      "filePath": "src/lib/components/input/components/input.svelte",
+      "propsTypeName": "InputProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLInputElement",
+            "kind": "reference",
+            "typeName": "HTMLInputElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Input color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Input color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"2\""
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Input color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "type",
+          "type": {
+            "raw": "\"number\" | \"search\" | \"time\" | \"text\" | \"password\" | \"email\" | \"tel\" | \"url\" | \"date\" | \"datetime-local\" | \"month\" | \"week\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"number\"",
+                "kind": "literal",
+                "literalValue": "number"
+              },
+              {
+                "raw": "\"search\"",
+                "kind": "literal",
+                "literalValue": "search"
+              },
+              {
+                "raw": "\"time\"",
+                "kind": "literal",
+                "literalValue": "time"
+              },
+              {
+                "raw": "\"text\"",
+                "kind": "literal",
+                "literalValue": "text"
+              },
+              {
+                "raw": "\"password\"",
+                "kind": "literal",
+                "literalValue": "password"
+              },
+              {
+                "raw": "\"email\"",
+                "kind": "literal",
+                "literalValue": "email"
+              },
+              {
+                "raw": "\"tel\"",
+                "kind": "literal",
+                "literalValue": "tel"
+              },
+              {
+                "raw": "\"url\"",
+                "kind": "literal",
+                "literalValue": "url"
+              },
+              {
+                "raw": "\"date\"",
+                "kind": "literal",
+                "literalValue": "date"
+              },
+              {
+                "raw": "\"datetime-local\"",
+                "kind": "literal",
+                "literalValue": "datetime-local"
+              },
+              {
+                "raw": "\"month\"",
+                "kind": "literal",
+                "literalValue": "month"
+              },
+              {
+                "raw": "\"week\"",
+                "kind": "literal",
+                "literalValue": "week"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Allowed input type",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"text\""
+        },
+        {
+          "name": "align",
+          "type": {
+            "raw": "\"start\" | \"center\" | \"end\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"start\"",
+                "kind": "literal",
+                "literalValue": "start"
+              },
+              {
+                "raw": "\"center\"",
+                "kind": "literal",
+                "literalValue": "center"
+              },
+              {
+                "raw": "\"end\"",
+                "kind": "literal",
+                "literalValue": "end"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Text align",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"start\""
+        },
+        {
+          "name": "fullWidth",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Input full width",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "inputSize",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "Native html input size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        }
+      ],
+      "extendsElement": {
+        "elementType": "input",
+        "source": "svelte/elements",
+        "typeName": "HTMLInputAttributes",
+        "omittedProps": [
+          "size",
+          "color",
+          "type",
+          "children"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "InputGroupItem",
+      "filePath": "src/lib/components/input-group/components/input-group-item.svelte",
+      "propsTypeName": "InputGroupItemProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLDivElement",
+            "kind": "reference",
+            "typeName": "HTMLDivElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputGroupItem color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[void]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[void]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "void",
+                    "kind": "unknown"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputGroupItem content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "extendsElement": {
+        "elementType": "div",
+        "source": "svelte/elements",
+        "typeName": "HTMLAttributes<HTMLDivElement>",
+        "omittedProps": [
+          "color"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "InputGroup",
+      "filePath": "src/lib/components/input-group/components/input-group.svelte",
+      "propsTypeName": "InputGroupProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLDivElement",
+            "kind": "reference",
+            "typeName": "HTMLDivElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[void]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[void]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "void",
+                    "kind": "unknown"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputGroup content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "extendsElement": {
+        "elementType": "div",
+        "source": "svelte/elements",
+        "typeName": "HTMLAttributes<HTMLDivElement>",
+        "omittedProps": [
+          "color"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "InputNumber",
+      "filePath": "src/lib/components/input-number/components/input-number.svelte",
+      "propsTypeName": "InputNumberProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLInputElement",
+            "kind": "reference",
+            "typeName": "HTMLInputElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputNumber color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputNumbersize",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"2\""
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputNumberradius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "variant",
+          "type": {
+            "raw": "\"solid\" | \"soft\" | \"outline\" | \"clear\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"solid\"",
+                "kind": "literal",
+                "literalValue": "solid"
+              },
+              {
+                "raw": "\"soft\"",
+                "kind": "literal",
+                "literalValue": "soft"
+              },
+              {
+                "raw": "\"outline\"",
+                "kind": "literal",
+                "literalValue": "outline"
+              },
+              {
+                "raw": "\"clear\"",
+                "kind": "literal",
+                "literalValue": "clear"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputNumber variant",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"clear\""
+        },
+        {
+          "name": "align",
+          "type": {
+            "raw": "\"start\" | \"center\" | \"end\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"start\"",
+                "kind": "literal",
+                "literalValue": "start"
+              },
+              {
+                "raw": "\"center\"",
+                "kind": "literal",
+                "literalValue": "center"
+              },
+              {
+                "raw": "\"end\"",
+                "kind": "literal",
+                "literalValue": "end"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Text align",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"end\""
+        },
+        {
+          "name": "value",
+          "type": {
+            "raw": "null | number",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "null",
+                "kind": "null"
+              },
+              {
+                "raw": "number",
+                "kind": "number"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Input value",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "step",
+          "type": {
+            "raw": "null | number",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "null",
+                "kind": "null"
+              },
+              {
+                "raw": "number",
+                "kind": "number"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Increment step",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "1"
+        },
+        {
+          "name": "min",
+          "type": {
+            "raw": "null | number",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "null",
+                "kind": "null"
+              },
+              {
+                "raw": "number",
+                "kind": "number"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Min value",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "max",
+          "type": {
+            "raw": "null | number",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "null",
+                "kind": "null"
+              },
+              {
+                "raw": "number",
+                "kind": "number"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Max value",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "fullWidth",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "InputNumber full width",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "disabled",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Disabled state",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "required",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Required state",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "readonly",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "readonly",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        }
+      ],
+      "tags": []
+    },
+    {
+      "name": "InputRange",
+      "filePath": "src/lib/components/input-range/components/input-range.svelte",
+      "propsTypeName": "InputRangeProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLInputElement",
+            "kind": "reference",
+            "typeName": "HTMLInputElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputRange color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputRange size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"2\""
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputRange radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "fullWidth",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "InputRange full width",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "orientation",
+          "type": {
+            "raw": "\"horizontal\" | \"vertical\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"horizontal\"",
+                "kind": "literal",
+                "literalValue": "horizontal"
+              },
+              {
+                "raw": "\"vertical\"",
+                "kind": "literal",
+                "literalValue": "vertical"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "InputRange orientation",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"horizontal\""
+        }
+      ],
+      "extendsElement": {
+        "elementType": "input",
+        "source": "svelte/elements",
+        "typeName": "HTMLInputAttributes",
+        "omittedProps": [
+          "size",
+          "color",
+          "type"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Listbox",
+      "filePath": "src/lib/components/listbox/components/listbox.svelte",
+      "propsTypeName": "ListboxProps",
+      "props": [
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[ListboxBuilder<Value, Multiple>]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[ListboxBuilder<Value, Multiple>]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "ListboxBuilder<Value, Multiple>",
+                    "kind": "reference",
+                    "typeName": "ListboxBuilder",
+                    "typeArguments": [
+                      {
+                        "raw": "Value",
+                        "kind": "unknown"
+                      },
+                      {
+                        "raw": "Multiple",
+                        "kind": "unknown"
+                      }
+                    ],
+                    "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/builders/listbox/builder.svelte.ts"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Listbox Root content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "generics": [
+        {
+          "name": "Value"
+        },
+        {
+          "name": "Multiple",
+          "raw": "boolean",
+          "constraint": {
+            "raw": "boolean",
+            "kind": "boolean"
+          }
+        }
+      ],
+      "extendsTypes": [
+        {
+          "typeName": "ListboxBuilderOptions<Value, Multiple>",
+          "source": "src/lib/builders/listbox/index.js",
+          "typeArguments": [
+            {
+              "raw": "Value",
+              "kind": "unknown"
+            },
+            {
+              "raw": "Multiple",
+              "kind": "unknown"
+            }
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Panel",
+      "filePath": "src/lib/components/panel/components/panel.svelte",
+      "description": "Polymorphic Panel props",
+      "propsTypeName": "PanelProps",
+      "props": [],
+      "generics": [
+        {
+          "name": "E",
+          "raw": "keyof SvelteHTMLElements",
+          "constraint": {
+            "raw": "string | number",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "number",
+                "kind": "number"
+              }
+            ]
+          },
+          "default": {
+            "raw": "\"div\"",
+            "kind": "literal",
+            "literalValue": "div"
+          }
+        }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Portal",
+      "filePath": "src/lib/components/portal/components/portal.svelte",
+      "propsTypeName": "PortalProps",
+      "props": [
+        {
+          "name": "target",
+          "type": {
+            "raw": "string | HTMLElement",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "HTMLElement",
+                "kind": "reference",
+                "typeName": "HTMLElement",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Target identifier or any HTMLElement",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"body\""
+        },
+        {
+          "name": "disabled",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Disable portal",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[void]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[void]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "void",
+                    "kind": "unknown"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Portal content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Radio",
+      "filePath": "src/lib/components/radio/components/radio.svelte",
+      "propsTypeName": "RadioProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLInputElement",
+            "kind": "reference",
+            "typeName": "HTMLInputElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Radio color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Radio size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"2\""
+        }
+      ],
+      "extendsElement": {
+        "elementType": "input",
+        "source": "svelte/elements",
+        "typeName": "HTMLInputAttributes",
+        "omittedProps": [
+          "size",
+          "color",
+          "type"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Select",
+      "filePath": "src/lib/components/select/components/select.svelte",
+      "propsTypeName": "SelectProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLSelectElement",
+            "kind": "reference",
+            "typeName": "HTMLSelectElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "onValueChange",
+          "type": {
+            "raw": "SelectValueChange<T>",
+            "kind": "reference",
+            "typeName": "__type",
+            "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/components/select/types.ts"
+          },
+          "optional": true,
+          "description": "Callback when value change",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Select size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"2\""
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Select color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Select radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "options",
+          "type": {
+            "raw": "T[]",
+            "kind": "array",
+            "typeArguments": [
+              {
+                "raw": "T",
+                "kind": "unknown"
+              }
+            ]
+          },
+          "optional": false,
+          "description": "Select options",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "optionLabel",
+          "type": {
+            "raw": "string | (item: T) => string | number",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "(item: T) => string | number",
+                "kind": "reference",
+                "typeName": "__type",
+                "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/components/select/types.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Resolve value of option",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"label\""
+        },
+        {
+          "name": "optionValue",
+          "type": {
+            "raw": "string | (item: T) => string | number",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "(item: T) => string | number",
+                "kind": "reference",
+                "typeName": "__type",
+                "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/components/select/types.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Resolve label fron SelectOption object",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"value\""
+        },
+        {
+          "name": "fullWidth",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Select full size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "selectSize",
+          "type": {
+            "raw": "null | number",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "null",
+                "kind": "null"
+              },
+              {
+                "raw": "number",
+                "kind": "number"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Native html size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "4"
+        }
+      ],
+      "generics": [
+        {
+          "name": "T",
+          "raw": "SelectOptionType",
+          "constraint": {
+            "raw": "undefined | string | number | Record<string, any>",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "undefined",
+                "kind": "undefined"
+              },
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "number",
+                "kind": "number"
+              },
+              {
+                "raw": "Record<string, any>",
+                "kind": "reference",
+                "typeName": "__type",
+                "sourceFile": "/node_modules/typescript/lib/lib.es5.d.ts"
+              }
+            ]
+          },
+          "default": {
+            "raw": "undefined | string | number | Record<string, any>",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "undefined",
+                "kind": "undefined"
+              },
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "number",
+                "kind": "number"
+              },
+              {
+                "raw": "Record<string, any>",
+                "kind": "reference",
+                "typeName": "__type",
+                "sourceFile": "/node_modules/typescript/lib/lib.es5.d.ts"
+              }
+            ]
+          }
+        }
+      ],
+      "extendsElement": {
+        "elementType": "select",
+        "source": "svelte/elements",
+        "typeName": "HTMLSelectAttributes",
+        "omittedProps": [
+          "size",
+          "color"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Separator",
+      "filePath": "src/lib/components/separator/components/separator.svelte",
+      "propsTypeName": "SeparatorProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLDivElement",
+            "kind": "reference",
+            "typeName": "HTMLDivElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Separator color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\" | \"4\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              },
+              {
+                "raw": "\"4\"",
+                "kind": "literal",
+                "literalValue": "4"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Separator size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"2\""
+        },
+        {
+          "name": "orientation",
+          "type": {
+            "raw": "\"horizontal\" | \"vertical\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"horizontal\"",
+                "kind": "literal",
+                "literalValue": "horizontal"
+              },
+              {
+                "raw": "\"vertical\"",
+                "kind": "literal",
+                "literalValue": "vertical"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Separator orientation",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"horizontal\""
+        }
+      ],
+      "extendsElement": {
+        "elementType": "div",
+        "source": "svelte/elements",
+        "typeName": "HTMLAttributes<HTMLDivElement>",
+        "omittedProps": [
+          "color"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Switch",
+      "filePath": "src/lib/components/switch/components/switch.svelte",
+      "propsTypeName": "SwitchProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLInputElement",
+            "kind": "reference",
+            "typeName": "HTMLInputElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Switch color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Switch size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"2\""
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Switch radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        }
+      ],
+      "extendsElement": {
+        "elementType": "input",
+        "source": "svelte/elements",
+        "typeName": "HTMLInputAttributes",
+        "omittedProps": [
+          "size",
+          "color",
+          "type"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "Tabs",
+      "filePath": "src/lib/components/tabs/components/tabs.svelte",
+      "propsTypeName": "TabsProps",
+      "props": [
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[TabsBuilder<Value>]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[TabsBuilder<Value>]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "TabsBuilder<Value>",
+                    "kind": "reference",
+                    "typeName": "TabsBuilder",
+                    "typeArguments": [
+                      {
+                        "raw": "Value",
+                        "kind": "unknown"
+                      }
+                    ],
+                    "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/builders/tabs/builder.svelte.ts"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Tab Root content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "generics": [
+        {
+          "name": "Value"
+        }
+      ],
+      "extendsTypes": [
+        {
+          "typeName": "TabsBuilderOptions<Value>",
+          "source": "src/lib/builders/tabs/index.js",
+          "typeArguments": [
+            {
+              "raw": "Value",
+              "kind": "unknown"
+            }
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Text",
+      "filePath": "src/lib/components/text/components/text.svelte",
+      "propsTypeName": "TextProps",
+      "props": [],
+      "generics": [
+        {
+          "name": "E",
+          "raw": "keyof SvelteHTMLElements",
+          "constraint": {
+            "raw": "string | number",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "number",
+                "kind": "number"
+              }
+            ]
+          },
+          "default": {
+            "raw": "\"div\"",
+            "kind": "literal",
+            "literalValue": "div"
+          }
+        }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Textarea",
+      "filePath": "src/lib/components/textarea/components/textarea.svelte",
+      "propsTypeName": "TextareaProps",
+      "props": [
+        {
+          "name": "ref",
+          "type": {
+            "raw": "HTMLTextAreaElement",
+            "kind": "reference",
+            "typeName": "HTMLTextAreaElement",
+            "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+          },
+          "optional": true,
+          "description": "Rendered DOM element",
+          "isBindable": true,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "color",
+          "type": {
+            "raw": "\"neutral\" | \"blue\" | \"green\" | \"yellow\" | \"orange\" | \"red\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"neutral\"",
+                "kind": "literal",
+                "literalValue": "neutral"
+              },
+              {
+                "raw": "\"blue\"",
+                "kind": "literal",
+                "literalValue": "blue"
+              },
+              {
+                "raw": "\"green\"",
+                "kind": "literal",
+                "literalValue": "green"
+              },
+              {
+                "raw": "\"yellow\"",
+                "kind": "literal",
+                "literalValue": "yellow"
+              },
+              {
+                "raw": "\"orange\"",
+                "kind": "literal",
+                "literalValue": "orange"
+              },
+              {
+                "raw": "\"red\"",
+                "kind": "literal",
+                "literalValue": "red"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Textarea color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "size",
+          "type": {
+            "raw": "\"1\" | \"2\" | \"3\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"1\"",
+                "kind": "literal",
+                "literalValue": "1"
+              },
+              {
+                "raw": "\"2\"",
+                "kind": "literal",
+                "literalValue": "2"
+              },
+              {
+                "raw": "\"3\"",
+                "kind": "literal",
+                "literalValue": "3"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Textarea size",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"2\""
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Textarea radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "fullWidth",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Textarea full width",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "resizable",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Textarea resizable",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        }
+      ],
+      "extendsElement": {
+        "elementType": "textarea",
+        "source": "svelte/elements",
+        "typeName": "HTMLTextareaAttributes",
+        "omittedProps": [
+          "color"
+        ]
+      },
+      "tags": []
+    },
+    {
+      "name": "ThemeChildProvider",
+      "filePath": "src/lib/components/theme/components/theme-child-provider.svelte",
+      "propsTypeName": "ThemeChildProviderProps",
+      "props": [
+        {
+          "name": "color",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "Static Accent color or resolved from ThemeRootProvider.",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "strategy",
+          "type": {
+            "raw": "\"system\" | \"dark\" | \"light\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"system\"",
+                "kind": "literal",
+                "literalValue": "system"
+              },
+              {
+                "raw": "\"dark\"",
+                "kind": "literal",
+                "literalValue": "dark"
+              },
+              {
+                "raw": "\"light\"",
+                "kind": "literal",
+                "literalValue": "light"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Static theme strategy or resolved from ThemeRootProvider.",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "radius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Static radius or resolved from ThemeRootProvider.",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "hasBackground",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Should set the background color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[ThemeChildState]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[ThemeChildState]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "ThemeChildState",
+                    "kind": "reference",
+                    "typeName": "ThemeChildState",
+                    "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/components/theme/states/theme-child-state.svelte.ts"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "ThemeChildProvider content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "tags": []
+    },
+    {
+      "name": "ThemeRootProvider",
+      "filePath": "src/lib/components/theme/components/theme-root-provider.svelte",
+      "propsTypeName": "ThemeRootProviderProps",
+      "props": [
+        {
+          "name": "defaultColor",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "Default accent color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"neutral\""
+        },
+        {
+          "name": "colorKey",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "Storage key for accent color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "defaultStrategy",
+          "type": {
+            "raw": "\"system\" | \"dark\" | \"light\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"system\"",
+                "kind": "literal",
+                "literalValue": "system"
+              },
+              {
+                "raw": "\"dark\"",
+                "kind": "literal",
+                "literalValue": "dark"
+              },
+              {
+                "raw": "\"light\"",
+                "kind": "literal",
+                "literalValue": "light"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Default theme strategy",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "ThemeSystem"
+        },
+        {
+          "name": "strategyKey",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "Storage key for theme strategy",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "defaultRadius",
+          "type": {
+            "raw": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"none\"",
+                "kind": "literal",
+                "literalValue": "none"
+              },
+              {
+                "raw": "\"small\"",
+                "kind": "literal",
+                "literalValue": "small"
+              },
+              {
+                "raw": "\"medium\"",
+                "kind": "literal",
+                "literalValue": "medium"
+              },
+              {
+                "raw": "\"large\"",
+                "kind": "literal",
+                "literalValue": "large"
+              },
+              {
+                "raw": "\"full\"",
+                "kind": "literal",
+                "literalValue": "full"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Default radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "\"medium\""
+        },
+        {
+          "name": "radiusKey",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "Storage key for radius",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": []
+        },
+        {
+          "name": "metaThemeColors",
+          "type": {
+            "raw": "MetaThemeColorsType",
+            "kind": "reference",
+            "typeName": "__type",
+            "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/components/theme/types.ts"
+          },
+          "optional": true,
+          "description": "Content colors for meta theme-color tag",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "MetaThemeColors"
+        },
+        {
+          "name": "hasBackground",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Should set the background color",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "true"
+        },
+        {
+          "name": "track",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Should track storage change from other tab",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "true"
+        },
+        {
+          "name": "disableTransitions",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Should disable css transition when theme change",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "true"
+        },
+        {
+          "name": "disableHeadScriptInjection",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Should disable init theme script injection. This script prevent FOUC.",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "false"
+        },
+        {
+          "name": "customThemeColors",
+          "type": {
+            "raw": "ThemeColorsType",
+            "kind": "reference",
+            "typeName": "__type",
+            "sourceFile": "/node_modules/typescript/lib/lib.es5.d.ts"
+          },
+          "optional": true,
+          "description": "Custom theme colors",
+          "isBindable": false,
+          "isSnippet": false,
+          "tags": [],
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "children",
+          "type": {
+            "raw": "Snippet<[ThemeRootState]>",
+            "kind": "snippet",
+            "typeName": "Snippet",
+            "typeArguments": [
+              {
+                "raw": "[ThemeRootState]",
+                "kind": "tuple",
+                "typeArguments": [
+                  {
+                    "raw": "ThemeRootState",
+                    "kind": "reference",
+                    "typeName": "ThemeRootState",
+                    "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/components/theme/states/theme-root-state.svelte.ts"
+                  }
+                ]
+              }
+            ]
+          },
+          "optional": true,
+          "description": "ThemeRootProvider content to render",
+          "isBindable": false,
+          "isSnippet": true,
+          "tags": []
+        }
+      ],
+      "extendsElement": {
+        "elementType": "div",
+        "source": "svelte/elements",
+        "typeName": "HTMLAttributes<HTMLDivElement>",
+        "omittedProps": [
+          "children"
+        ]
+      },
+      "tags": []
+    }
+  ],
+  "attachments": [
+    {
+      "name": "clickoutside",
+      "filePath": "src/lib/attachments/clickoutside/attachment.svelte.ts",
+      "optionsTypeName": "ClickoutsideOptions",
+      "options": [
+        {
+          "name": "onClickOutside",
+          "type": {
+            "raw": "(event: MouseEvent | PointerEvent) => void",
+            "kind": "reference",
+            "typeName": "__type",
+            "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/attachments/clickoutside/types.ts"
+          },
+          "optional": false,
+          "description": "Called when click outside node",
+          "tags": []
+        },
+        {
+          "name": "enabled",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Enable/disable clickoutside",
+          "defaultValue": "true",
+          "tags": [
+            {
+              "name": "default",
+              "value": "true"
+            }
+          ]
+        },
+        {
+          "name": "ignoreElements",
+          "type": {
+            "raw": "HTMLElement[]",
+            "kind": "array",
+            "typeArguments": [
+              {
+                "raw": "HTMLElement",
+                "kind": "reference",
+                "typeName": "HTMLElement",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Elements to ignore in clickoutside detection",
+          "defaultValue": "[]",
+          "tags": [
+            {
+              "name": "default",
+              "value": "[]"
+            }
+          ]
+        },
+        {
+          "name": "eventType",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "Type of event that triggers the clickoutside detection",
+          "defaultValue": "'pointerdown'",
+          "tags": [
+            {
+              "name": "default",
+              "value": "'pointerdown'"
+            }
+          ]
+        },
+        {
+          "name": "eventTarget",
+          "type": {
+            "raw": "HTMLElement | Document | Window",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "HTMLElement",
+                "kind": "reference",
+                "typeName": "HTMLElement",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              },
+              {
+                "raw": "Document",
+                "kind": "reference",
+                "typeName": "Document",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              },
+              {
+                "raw": "Window",
+                "kind": "reference",
+                "typeName": "Window",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Element on which to listen for events instead of document",
+          "defaultValue": "document",
+          "tags": [
+            {
+              "name": "default",
+              "value": "document"
+            }
+          ]
+        }
+      ],
+      "tags": [
+        {
+          "name": "description",
+          "value": "Detects clicks outside a bound element and triggers a callback. Typically used to close dropdowns, modals, or popovers."
+        }
+      ]
+    },
+    {
+      "name": "focustrap",
+      "filePath": "src/lib/attachments/focustrap/attachment.svelte.ts",
+      "optionsTypeName": "FocustrapOptions",
+      "options": [
+        {
+          "name": "enabled",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Enable/disable focus trap",
+          "defaultValue": "true",
+          "tags": [
+            {
+              "name": "default",
+              "value": "true"
+            }
+          ]
+        },
+        {
+          "name": "initialFocus",
+          "type": {
+            "raw": "string | HTMLElement",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "HTMLElement",
+                "kind": "reference",
+                "typeName": "HTMLElement",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Element to focus on mount (default: )",
+          "defaultValue": "any first focusable element",
+          "tags": [
+            {
+              "name": "default",
+              "value": "any first focusable element"
+            }
+          ]
+        },
+        {
+          "name": "returnFocus",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Return focus to the previous element during unmount",
+          "defaultValue": "true",
+          "tags": [
+            {
+              "name": "default",
+              "value": "true"
+            }
+          ]
+        }
+      ],
+      "tags": [
+        {
+          "name": "description",
+          "value": "Traps keyboard focus within a DOM element, preventing focus from leaving it while active."
+        }
+      ]
+    },
+    {
+      "name": "longpress",
+      "filePath": "src/lib/attachments/longpress/attachment.svelte.ts",
+      "optionsTypeName": "LongpressOptions",
+      "options": [
+        {
+          "name": "onLongpressStart",
+          "type": {
+            "raw": "(event: PointerEvent) => void",
+            "kind": "reference",
+            "typeName": "__type",
+            "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/attachments/longpress/types.ts"
+          },
+          "optional": true,
+          "description": "Called when longpress starts (after delay)",
+          "tags": []
+        },
+        {
+          "name": "onLongpressEnd",
+          "type": {
+            "raw": "(event: PointerEvent) => void",
+            "kind": "reference",
+            "typeName": "__type",
+            "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/packages/svxui/src/lib/attachments/longpress/types.ts"
+          },
+          "optional": true,
+          "description": "Called when longpress is released",
+          "tags": []
+        },
+        {
+          "name": "enabled",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Enable/disable longpress",
+          "defaultValue": "true",
+          "tags": [
+            {
+              "name": "default",
+              "value": "true"
+            }
+          ]
+        },
+        {
+          "name": "delay",
+          "type": {
+            "raw": "number",
+            "kind": "number"
+          },
+          "optional": true,
+          "description": "Time in milliseconds before start longpress",
+          "defaultValue": "800",
+          "tags": [
+            {
+              "name": "default",
+              "value": "800"
+            }
+          ]
+        }
+      ],
+      "tags": [
+        {
+          "name": "description",
+          "value": "Detects when a pointer is held down for a specified duration and triggers a callback. Useful for contextual actions or alternative interactions."
+        }
+      ]
+    },
+    {
+      "name": "portal",
+      "filePath": "src/lib/attachments/portal/attachment.svelte.ts",
+      "optionsTypeName": "PortalOptions",
+      "options": [
+        {
+          "name": "enabled",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Enable/disable portal",
+          "defaultValue": "true",
+          "tags": [
+            {
+              "name": "default",
+              "value": "true"
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": {
+            "raw": "string | HTMLElement",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "string",
+                "kind": "string"
+              },
+              {
+                "raw": "HTMLElement",
+                "kind": "reference",
+                "typeName": "HTMLElement",
+                "sourceFile": "/node_modules/typescript/lib/lib.dom.d.ts"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Portal target",
+          "defaultValue": "'body'",
+          "tags": [
+            {
+              "name": "default",
+              "value": "'body'"
+            }
+          ]
+        }
+      ],
+      "tags": [
+        {
+          "name": "description",
+          "value": "Moves an element to a different part of the DOM (e.g., document.body). Useful for modals, tooltips, or overlays.\n * Credits:  {@link https://github.com/romkor/svelte-portal}"
+        }
+      ]
+    },
+    {
+      "name": "rovingfocus",
+      "filePath": "src/lib/attachments/rovingfocus/attachment.svelte.ts",
+      "optionsTypeName": "RovingfocusOptions",
+      "options": [
+        {
+          "name": "target",
+          "type": {
+            "raw": "string",
+            "kind": "string"
+          },
+          "optional": true,
+          "description": "Item selector",
+          "tags": []
+        },
+        {
+          "name": "loop",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Loop roving focus",
+          "tags": []
+        },
+        {
+          "name": "orientation",
+          "type": {
+            "raw": "\"horizontal\" | \"vertical\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "\"horizontal\"",
+                "kind": "literal",
+                "literalValue": "horizontal"
+              },
+              {
+                "raw": "\"vertical\"",
+                "kind": "literal",
+                "literalValue": "vertical"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Orientation (\"horizontal\" | \"vertical\")",
+          "tags": []
+        },
+        {
+          "name": "initialIndex",
+          "type": {
+            "raw": "number | \"first\" | \"last\"",
+            "kind": "union",
+            "unionTypes": [
+              {
+                "raw": "number",
+                "kind": "number"
+              },
+              {
+                "raw": "\"first\"",
+                "kind": "literal",
+                "literalValue": "first"
+              },
+              {
+                "raw": "\"last\"",
+                "kind": "literal",
+                "literalValue": "last"
+              }
+            ]
+          },
+          "optional": true,
+          "description": "Initial item focus when wrapper is focused",
+          "tags": []
+        },
+        {
+          "name": "activateOnFocus",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Activate item when focused",
+          "tags": []
+        }
+      ],
+      "tags": [
+        {
+          "name": "description",
+          "value": "Manages keyboard focus within a group, allowing focus to move between items using arrow keys for accessible navigation."
+        }
+      ]
+    },
+    {
+      "name": "scrolllock",
+      "filePath": "src/lib/attachments/scrolllock/attachment.svelte.ts",
+      "optionsTypeName": "ScrolllockOptions",
+      "options": [
+        {
+          "name": "enabled",
+          "type": {
+            "raw": "boolean",
+            "kind": "boolean"
+          },
+          "optional": true,
+          "description": "Enable/disable scroll lock",
+          "defaultValue": "true",
+          "tags": [
+            {
+              "name": "default",
+              "value": "true"
+            }
+          ]
+        }
+      ],
+      "tags": [
+        {
+          "name": "description",
+          "value": "Prevents page scrolling while an element is active by locking the document’s scroll. Commonly used for modals and overlays."
+        }
+      ]
+    }
+  ],
+  "utilities": [
+    {
+      "name": "selection",
+      "filePath": "src/lib/utilities/selection/core.svelte.ts",
+      "className": "SelectionState",
+      "generics": [
+        {
+          "name": "V"
+        },
+        {
+          "name": "M",
+          "constraint": {
+            "kind": "unknown",
+            "raw": "boolean"
+          }
+        }
+      ],
+      "optionsTypeName": "SelectionStateOptions",
+      "optionsTypeSource": "src/lib/utilities/selection/types.ts",
+      "tags": [
+        {
+          "name": "description",
+          "value": "A utility class that manages single or multiple external selection state with methods to query and update the current selection."
+        },
+        {
+          "name": "param",
+          "value": "Configuration options including the value state to manage and multiple or single selection."
+        }
+      ]
+    }
+  ],
+  "builders": [
+    {
+      "name": "accordion",
+      "filePath": "src/lib/builders/accordion/core.svelte.ts",
+      "className": "AccordionBuilder",
+      "generics": [
+        {
+          "name": "Value"
+        },
+        {
+          "name": "Multiple",
+          "constraint": {
+            "kind": "unknown",
+            "raw": "boolean"
+          }
+        }
+      ],
+      "optionsTypeName": "AccordionBuilderOptions",
+      "optionsTypeSource": "src/lib/builders/accordion/types.ts",
+      "tags": [
+        {
+          "name": "description",
+          "value": "Manage accordion state"
+        }
+      ]
+    },
+    {
+      "name": "floating",
+      "filePath": "src/lib/builders/floating/core.svelte.ts",
+      "className": "FloatingBuilder",
+      "optionsTypeName": "FloatingBuilderOptions",
+      "optionsTypeSource": "src/lib/builders/floating/types.ts",
+      "tags": []
+    },
+    {
+      "name": "listbox",
+      "filePath": "src/lib/builders/listbox/core.svelte.ts",
+      "className": "ListboxBuilder",
+      "generics": [
+        {
+          "name": "Value"
+        },
+        {
+          "name": "Multiple",
+          "constraint": {
+            "kind": "unknown",
+            "raw": "boolean"
+          }
+        }
+      ],
+      "optionsTypeName": "ListboxBuilderOptions",
+      "optionsTypeSource": "src/lib/builders/listbox/types.ts",
+      "tags": []
+    },
+    {
+      "name": "tabs",
+      "filePath": "src/lib/builders/tabs/core.svelte.ts",
+      "className": "TabsBuilder",
+      "generics": [
+        {
+          "name": "Value"
+        }
+      ],
+      "optionsTypeName": "TabsBuilderOptions",
+      "optionsTypeSource": "src/lib/builders/tabs/types.ts",
+      "tags": [
+        {
+          "name": "description",
+          "value": "Manage tabs state"
+        }
+      ]
+    }
+  ],
+  "generatedAt": "2026-01-24T13:55:55.656Z"
+}
