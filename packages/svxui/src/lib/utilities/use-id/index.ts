@@ -1,1 +1,1 @@
-export { useId } from './core.svelte.js';
+export { useId } from './use-id.svelte.js';

@@ -11,22 +11,60 @@ import { roundByDPR } from './internals/round-by-dpr.js';
 import type { FloatingEngineOptions, FloatingEngineState } from './types.js';
 
 /**
- * @description Manage floating-ui state
+ * Low-level utility for managing floating-ui state
  */
 export class FloatingEngine {
+    /**
+     * Reference element used as anchor
+     */
     reference: HTMLElement | ReferenceElement | undefined = $state(undefined);
+
+    /**
+     * Floating element to be positioned
+     */
     floating: FloatingElement | undefined = $state(undefined);
 
+    /** Configuration options for the engine */
     #options: FloatingEngineOptions | undefined = $state(undefined);
+    /** Latest computed floating-ui state */
     #state: FloatingEngineState | undefined = $state(undefined);
+    /** Reactive CSS style object derived from state */
     #styleObject = $derived.by(() => this.#buildStyle(this.#options, this.#state));
+    /** Serialized CSS style string */
     #style = $derived.by(() => styleObjectToString(this.#styleObject));
 
+    /**
+     * Create a new FloatingEngine instance
+     */
     constructor(options: Partial<FloatingEngineOptions>) {
         this.#options = options;
         onDestroy(this.#destroy);
     }
 
+    /**
+     * Read-only access to the current engine state
+     */
+    get state(): FloatingEngineState | undefined {
+        return this.#state;
+    }
+
+    /**
+     * Computed style object
+     */
+    get styleObject(): Partial<CSSStyleDeclaration> {
+        return this.#styleObject;
+    }
+
+    /**
+     * Computed style as CSS string
+     */
+    get style(): string {
+        return this.#style;
+    }
+
+    /**
+     * Recompute the floating element position
+     */
     async update(): Promise<void> {
         if (!this.reference || !this.floating || !this.#options) {
             return;
@@ -50,6 +88,9 @@ export class FloatingEngine {
         };
     }
 
+    /**
+     * Build inline styles from options and computed state
+     */
     #buildStyle(
         props: FloatingEngineOptions | undefined,
         state: FloatingEngineState | undefined
@@ -101,6 +142,9 @@ export class FloatingEngine {
               };
     }
 
+    /**
+     * Lifecycle cleanup and auto-update handling
+     */
     #destroy = $effect.root(() => {
         $effect.pre(() => {
             if (!this.reference || !this.floating) {
@@ -119,16 +163,4 @@ export class FloatingEngine {
             );
         });
     });
-
-    get state(): FloatingEngineState | undefined {
-        return this.#state;
-    }
-
-    get styleObject(): Partial<CSSStyleDeclaration> {
-        return this.#styleObject;
-    }
-
-    get style(): string {
-        return this.#style;
-    }
 }

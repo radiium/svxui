@@ -7,13 +7,13 @@ export * from './attachments/rovingfocus/index.js';
 export * from './attachments/scrolllock/index.js';
 
 // Builders
-export * from './builders/accordion/index.js';
+export * from './builders/accordions/index.js';
 export * from './builders/floating/index.js';
 export * from './builders/listbox/index.js';
 export * from './builders/tabs/types.js';
 
 // Components
-export * from './components/accordion/index.js';
+export * from './components/accordions/index.js';
 export * from './components/badge/index.js';
 export * from './components/button/index.js';
 export * from './components/checkbox/index.js';
@@ -37,11 +37,12 @@ export * from './components/textarea/index.js';
 export * from './components/theme/index.js';
 
 // Utilities
+export * from './utilities/clipboard/index.js';
 export * from './utilities/context/index.js';
 export * from './utilities/floating-engine/index.js';
 export * from './utilities/hotkeys/index.js';
-export * from './utilities/persisted/index.js';
-export * from './utilities/selection/index.js';
+export * from './utilities/persisted-state/index.js';
+export * from './utilities/selection-state/index.js';
 export * from './utilities/use-id/index.js';
 
 // Shared

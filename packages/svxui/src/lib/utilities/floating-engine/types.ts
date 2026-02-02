@@ -1,39 +1,19 @@
 import type {
-    ArrowOptions,
     ComputePositionReturn,
-    FlipOptions,
     FloatingElement,
-    HideOptions,
     Middleware,
-    OffsetOptions,
     Placement,
     Platform,
     ReferenceElement,
-    ShiftOptions,
-    SizeOptions,
     Strategy
 } from '@floating-ui/dom';
 
 export type FloatingSide = 'top' | 'right' | 'bottom' | 'left';
 export type FloatingAlignment = 'start' | 'center' | 'end';
 
-export type BuildFloatingMiddlewareProps = {
-    /**
-     * Enable/disable/configure built in floating-ui middleware
-     */
-    offset?: boolean | OffsetOptions;
-    flip?: boolean | FlipOptions;
-    shift?: boolean | ShiftOptions;
-    size?: boolean | SizeOptions;
-    hide?: boolean | HideOptions;
-    arrow?: boolean | ArrowOptions;
-    arrowEl?: HTMLElement | SVGSVGElement | undefined;
-    /**
-     * Extra middleware(s) added at end
-     */
-    middleware?: Array<Middleware | undefined | null | false>;
-};
-
+/**
+ * Engine options
+ */
 export type FloatingEngineOptions = {
     /**
      * Use css transform instead top/left positionning
@@ -66,6 +46,9 @@ export type FloatingEngineOptions = {
     ) => () => void;
 };
 
+/**
+ * Floating ui state
+ */
 export type FloatingEngineState = ComputePositionReturn & {
     side: FloatingSide;
     alignment: FloatingAlignment;

@@ -1,7 +1,7 @@
 import { flushSync } from 'svelte';
 import { beforeEach, describe, expect, vi } from 'vitest';
 import { itWithEffect } from '../../../test/util.svelte.js';
-import { PersistedState } from './persisted.svelte.js';
+import { PersistedState } from './persisted-state.svelte.js';
 
 const key = 'test-key';
 const initialValue = 'test-value';

@@ -1,14 +1,13 @@
 import { untrack } from 'svelte';
-import type { SelectionOptions, SelectionValue } from './types.js';
+import type { SelectionStateOptions, SelectionStateValue } from './types.js';
 
 /**
- * @description A utility class that manages single or multiple external selection state with methods to query and update the current selection.
- * @param options Configuration options including the value state to manage and multiple or single selection.
+ * A utility class that manages single or multiple external selection state with methods to query and update the current selection.
  */
 export class SelectionState<V, M extends boolean> {
-    #options: SelectionOptions<V, M>;
+    #options: SelectionStateOptions<V, M>;
 
-    constructor(options: SelectionOptions<V, M>) {
+    constructor(options: SelectionStateOptions<V, M>) {
         this.#options = options;
         let prevMultiple: boolean | undefined; //= options.multiple;
 
@@ -19,7 +18,7 @@ export class SelectionState<V, M extends boolean> {
                 if (options.multiple !== prevMultiple) {
                     untrack(() => {
                         if (options.multiple && !Array.isArray(options.value)) {
-                            options.value = [] as SelectionValue<V, M>;
+                            options.value = [] as SelectionStateValue<V, M>;
                         } else if (!options.multiple && Array.isArray(options.value)) {
                             options.value = undefined;
                         }
@@ -69,9 +68,9 @@ export class SelectionState<V, M extends boolean> {
                 : this.#options.value
                   ? [this.#options.value]
                   : [];
-            this.#options.value = [...new Set([...this.#options.value, item])] as SelectionValue<V, M>;
+            this.#options.value = [...new Set([...this.#options.value, item])] as SelectionStateValue<V, M>;
         } else {
-            this.#options.value = item as SelectionValue<V, M>;
+            this.#options.value = item as SelectionStateValue<V, M>;
         }
     }
 
@@ -81,7 +80,7 @@ export class SelectionState<V, M extends boolean> {
      */
     deselect(item: V): void {
         if (this.multiple && Array.isArray(this.#options.value)) {
-            this.#options.value = this.#options.value.filter((o) => o !== item) as SelectionValue<V, M>;
+            this.#options.value = this.#options.value.filter((o) => o !== item) as SelectionStateValue<V, M>;
         } else {
             this.#options.value = this.#options.value === item ? null : this.#options.value;
         }
@@ -104,7 +103,7 @@ export class SelectionState<V, M extends boolean> {
      */
     clear(): void {
         if (this.multiple && Array.isArray(this.#options.value)) {
-            this.#options.value = [] as SelectionValue<V, M>;
+            this.#options.value = [] as SelectionStateValue<V, M>;
         } else {
             this.#options.value = null;
         }

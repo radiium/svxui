@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { SelectionState } from './core.svelte.js';
+import { SelectionState } from './selection-state.svelte.js';
 
 describe('Selection – single mode', () => {
     it('initializes with a single value', () => {

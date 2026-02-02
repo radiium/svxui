@@ -4,8 +4,7 @@ import { MODIFIERS_KEYS } from './internals/modifiers-keys.js';
 import type { HotkeysBinding } from './types.js';
 
 /**
- * @description Tracks which keys are currently pressed
- * Credit {@link https://github.com/svecosystem/runed/blob/main/packages/runed/src/lib/utilities/pressed-keys/}
+ * Tracks active keyboard keys and handles hotkey combinations with callback bindings.
  */
 export class Hotkeys {
     readonly #pressedKeys = new Set<string>();

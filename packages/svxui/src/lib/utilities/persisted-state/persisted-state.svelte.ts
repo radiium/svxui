@@ -6,12 +6,7 @@ import { proxy } from './internals/proxy.js';
 import type { PersistedStateOptions, PersistedStateSerializer, PersistedStateType } from './types.js';
 
 /**
- * @description Creates reactive state that is persisted and synchronized across browser sessions and tabs using Web Storage.
- * Credit {@link https://github.com/svecosystem/runed/blob/main/packages/runed/src/lib/utilities/persisted-state/}
- *
- * @param key The unique key used to store the state in the storage.
- * @param initialValue The initial value of the state if not already present in the storage.
- * @param options Configuration options including storage type, serializer for complex data types, and whether to sync state changes across tabs.
+ * Creates reactive state that is persisted and synchronized across browser sessions and tabs using Web Storage.
  */
 export class PersistedState<T> {
     #current: T | undefined;
@@ -27,11 +22,9 @@ export class PersistedState<T> {
     #storageCleanup?: VoidFunction;
 
     /**
-     *
-     * @param key key to use in storage
-     * @param initialValue initial value to use
-     * @param options Persisted state options
-     * @returns
+     * @param key The unique key used to store the state in the storage.
+     * @param initialValue The initial value of the state if not already present in the storage.
+     * @param options Configuration options including storage type, serializer for complex data types, and whether to sync state changes across tabs.
      */
     constructor(key: string, initialValue?: T, options?: PersistedStateOptions<T>) {
         const {
@@ -96,6 +89,11 @@ export class PersistedState<T> {
         this.#update?.();
     }
 
+    /**
+     *  Handle event from storage change
+     * @param event
+     * @returns
+     */
     #handleStorageEvent = (event: StorageEvent): void => {
         if (event.key !== this.#key || event.newValue === null) return;
         this.#current = this.#deserialize(event.newValue);
@@ -105,7 +103,7 @@ export class PersistedState<T> {
     /**
      * Deserialize value from storage
      * @param value
-     * @returns
+     * @returns Deserialized value
      */
     #deserialize = (value: string): T | undefined => {
         try {
@@ -119,7 +117,6 @@ export class PersistedState<T> {
     /**
      * Serialize value to storage
      * @param value
-     * @returns
      */
     #serialize = (value: T | undefined): void => {
         if (!this.#connected) {
@@ -142,7 +139,6 @@ export class PersistedState<T> {
 
     /**
      * Setup sync state to storage listeners
-     * @returns
      */
     #setupStorageListener = (): void => {
         if (!window || !this.#connected) return;
@@ -181,7 +177,6 @@ export class PersistedState<T> {
 
     /**
      * Disconnect sync state to storage
-     * @returns
      */
     disconnect = (): void => {
         if (!this.#connected) return;
@@ -197,7 +192,6 @@ export class PersistedState<T> {
 
     /**
      * Connect sync state to storage
-     * @returns
      */
     connect = (): void => {
         if (this.#connected) return;
