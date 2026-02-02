@@ -1,22 +1,24 @@
 <script lang="ts">
     import { navigating } from '$app/state';
-    import PageToc from '$lib/markdown/components/PageToc.svelte';
+    import BackgroundDots from '$lib/components/BackgroundDots.svelte';
+    import GithubLink from '$lib/components/layout/GithubLink.svelte';
+    import MainNavigation from '$lib/components/layout/MainNavigation.svelte';
+    import MenuButtonClose from '$lib/components/layout/MenuButtonClose.svelte';
+    import MenuButtonOpen from '$lib/components/layout/MenuButtonOpen.svelte';
+    import SettingsButton from '$lib/components/layout/SettingsButton.svelte';
+    import TitleLink from '$lib/components/layout/TitleLink.svelte';
+    import TocNavigation from '$lib/components/layout/TocNavigation.svelte';
+    import Version from '$lib/components/layout/Version.svelte';
+    import type { NavSection } from '$lib/types';
+    import { layout } from '$lib/utils/layout-state.svelte';
     import type { Snippet } from 'svelte';
-    import { layout } from '../utils/layout-state.svelte';
-    import BackgroundDots from './components/BackgroundDots.svelte';
-    import GithubLink from './components/GithubLink.svelte';
-    import MenuButtonClose from './components/MenuButtonClose.svelte';
-    import MenuButtonOpen from './components/MenuButtonOpen.svelte';
-    import Navigation from './components/Navigation.svelte';
-    import SettingsButton from './components/SettingsButton.svelte';
-    import TitleLink from './components/TitleLink.svelte';
-    import Version from './components/Version.svelte';
 
     type Props = {
+        navigation: NavSection[];
         children?: Snippet;
     };
 
-    let { children }: Props = $props();
+    let { navigation, children }: Props = $props();
 
     let mainRef: HTMLElement | undefined = $state();
 
@@ -90,7 +92,7 @@
                 </header>
             {/if}
             <div class="main-nav-content">
-                <Navigation />
+                <MainNavigation {navigation} />
             </div>
         </aside>
     {/if}
@@ -98,7 +100,7 @@
     <!-- Page nav -->
     {#if layout.hasTOC}
         <aside class="page-nav">
-            <PageToc />
+            <TocNavigation />
         </aside>
     {/if}
 </div>

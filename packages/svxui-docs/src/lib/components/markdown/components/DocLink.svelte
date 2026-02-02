@@ -1,9 +1,9 @@
 <script lang="ts">
     import { PUBLIC_LIB_FOLDER } from '$env/static/public';
     import ArrowSquareOut from '$lib/icons/ArrowSquareOut.svelte';
-    import { Button, Link, useThemeRootContext, type Color, type LinkProps } from 'svxui';
+    import { Button, Text, useThemeRootContext, type Color, type TextProps } from 'svxui';
 
-    type Props = LinkProps & {
+    type Props = TextProps<'a'> & {
         text?: string;
         href?: string;
         libFolder?: boolean;
@@ -21,7 +21,8 @@
     });
 </script>
 
-<Link
+<Text
+    as="a"
     underline="always"
     weight="bold"
     target="_blank"
@@ -36,4 +37,4 @@
         {@render children?.()}
         <ArrowSquareOut style="color: var(--neutral-11)" data-color="" />
     </Button>
-</Link>
+</Text>

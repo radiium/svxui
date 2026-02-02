@@ -1,20 +1,20 @@
 <script lang="ts">
-    import type { ComponentMetadata } from '$lib/types';
-    import { Badge, Button, Flexbox, Floating, Panel } from 'svxui';
-    import HyphenIcon from '../../icons/HyphenIcon.svelte';
-    import InfoIcon from '../../icons/InfoIcon.svelte';
-    import Code from './Code.svelte';
+    import Code from '$lib/components/markdown/elements/code.svelte';
+    import HyphenIcon from '$lib/icons/HyphenIcon.svelte';
+    import InfoIcon from '$lib/icons/InfoIcon.svelte';
+    import { Badge, Button, Flexbox, Floating, Panel, Text } from 'svxui';
+    import type { PropDocumentation } from '../../../content-utils/libdoc.types';
 
     type Props = {
-        componentMetadata?: ComponentMetadata;
+        props?: PropDocumentation[];
     };
 
-    let { componentMetadata }: Props = $props();
+    let { props }: Props = $props();
     const isOpenList: Record<string, boolean> = $state({});
 </script>
 
-{#if componentMetadata}
-    <Panel size="0" variant="outline" class="mt-4 overflow-hidden">
+{#if props}
+    <Panel size="0" variant="clear" outline class="mt-4 overflow-hidden">
         <div class="overflow-auto">
             <table>
                 <thead>
@@ -27,7 +27,7 @@
                 </thead>
 
                 <tbody>
-                    {#each componentMetadata.props as prop (prop.name)}
+                    {#each props as prop (prop.name)}
                         <tr>
                             <td>
                                 <Flexbox align="center" gap="2" wrap="nowrap">
@@ -49,19 +49,24 @@
                             <td>
                                 <Flexbox align="center" gap="1" wrap="nowrap">
                                     <div>
-                                        {#if prop.isSnippet && prop.aliasType}
+                                        {#if prop.isSnippet}
                                             <Code>Snippet</Code>
+                                            <!-- <Code>{JSON.stringify(prop.type)}</Code> -->
+                                        {:else if ['union', 'function'].includes(prop.type.kind)}
+                                            <Code>{prop.type.kind}</Code>
                                         {:else}
-                                            <Code>{prop.type}</Code>
+                                            <Code>{prop.type.raw}</Code>
                                         {/if}
                                     </div>
-                                    {#if prop.type === 'union' || prop.aliasType}
+                                    {#if ['union', 'function'].includes(prop.type.kind) || (prop.isSnippet && prop.type.typeArguments)}
                                         <Floating
                                             bind:isOpen={isOpenList[prop.name]}
                                             closeOnScroll
                                             closeOnClickOutside
                                             closeOnEscape
                                             shift
+                                            offset={9}
+                                            arrow
                                         >
                                             {#snippet trigger()}
                                                 <Button
@@ -77,11 +82,13 @@
                                             {/snippet}
                                             {#snippet content()}
                                                 <div style="max-width: 70vw;">
-                                                    {#if prop.aliasType}
+                                                    {prop.type.raw}
+                                                    <!-- {#if prop.aliasType}
                                                         {prop.aliasType}
-                                                    {:else}
-                                                        "{prop.values?.join('" | "')}"
-                                                    {/if}
+                                                    {:else} -->
+                                                    <!-- {prop.type.raw}
+                                                    {prop.type.typeName} -->
+                                                    <!-- {/if} -->
                                                 </div>
                                             {/snippet}
                                         </Floating>
@@ -89,23 +96,29 @@
                                 </Flexbox>
                             </td>
                             <td>
-                                {#if prop.defaultValue !== undefined && prop.defaultValue !== ''}
+                                {#if prop.defaultValue !== undefined && prop.defaultValue !== 'undefined' && prop.defaultValue !== ''}
                                     <Code>
-                                        {#if Array.isArray(prop.defaultValue) && prop.defaultValue.length === 0}
-                                            []
-                                        {:else if prop.type === 'boolean' || prop.type === 'number'}
-                                            {prop.defaultValue}
-                                        {:else}
-                                            "{prop.defaultValue}"
-                                        {/if}
+                                        {prop.defaultValue}
                                     </Code>
                                 {:else}
                                     <HyphenIcon />
                                 {/if}
                             </td>
-                            <td>
-                                {#each prop.jsDoc ?? [] as doc (doc)}
-                                    {doc.commentText}
+                            <td style="min-width: 280px;">
+                                {prop.description}
+
+                                {#each prop.tags ?? [] as tag (tag)}
+                                    {#if tag.name !== 'default'}
+                                        <br />
+                                        <Text>{tag.name}:</Text>
+                                        {#if tag.name === 'see'}
+                                            <Text as="a" underline="always" muted href={tag.value}>
+                                                {tag.value}
+                                            </Text>
+                                        {:else}
+                                            {tag.value}
+                                        {/if}
+                                    {/if}
                                 {/each}
                             </td>
                         </tr>

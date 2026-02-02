@@ -1,21 +1,20 @@
 <script lang="ts">
     import { replaceState } from '$app/navigation';
     import { page } from '$app/state';
+    import { isBrowser } from '$lib/utils/functions';
     import { onMount } from 'svelte';
     import { on } from 'svelte/events';
-    import { isBrowser, Text } from 'svxui';
+    import { Text } from 'svxui';
 
     let items: HTMLHeadingElement[] = $state([]);
     let activeHeading = $state<HTMLHeadingElement | undefined>();
-    let activeHeadingScrollOffset = 500;
+    let activeHeadingScrollOffset = 100;
 
     function initListeners(): () => void {
-        const listeners: (() => void)[] = [];
-        const main = document.querySelector('main');
-        if (main) {
-            listeners.push(on(main, 'scroll', () => setActiveHeading()));
-            listeners.push(on(main, 'resize', () => setActiveHeading()));
-        }
+        const listeners: (() => void)[] = [
+            on(document, 'scroll', () => setActiveHeading()),
+            on(document, 'resize', () => setActiveHeading())
+        ];
 
         return () => {
             listeners.forEach((off) => off());
@@ -66,6 +65,7 @@
             node.scrollIntoView?.({ behavior: 'smooth', block: `start` });
 
             if (node.id) {
+                // eslint-disable-next-line svelte/no-navigation-without-resolve
                 replaceState(`${page.url.pathname}${page.url.search}#${node.id}`, page.state);
             }
         };

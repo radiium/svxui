@@ -1,6 +1,6 @@
 <script lang="ts">
+    import FadersIcon from '$lib/icons/FadersIcon.svelte';
     import { Button, Floating } from 'svxui';
-    import FadersIcon from '../../icons/FadersIcon.svelte';
     import SettingsMenu from './SettingsMenu.svelte';
 
     let isOpen = $state(false);
@@ -9,7 +9,7 @@
 <Floating
     bind:isOpen
     placement="bottom-end"
-    variant="outline"
+    outline
     size="4"
     autoUpdate
     shift

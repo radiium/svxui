@@ -1,11 +1,17 @@
 <script lang="ts">
     import { page } from '$app/state';
-    import { docNavigation } from '$lib/content-utils/doc-navigation.js';
-    import { layout } from '../../utils/layout-state.svelte.js';
+    import type { NavSection } from '$lib/types.js';
+    import { layout } from '$lib/utils/layout-state.svelte';
+
+    type Props = {
+        navigation: NavSection[];
+    };
+
+    let { navigation }: Props = $props();
 </script>
 
 <nav class="py-4 px-3">
-    {#each docNavigation as section, i (i)}
+    {#each navigation as section, i (i)}
         <section class="p-0 mb-5">
             {#if section.title}
                 <h4 class="my-0">{section.title}</h4>
@@ -18,6 +24,7 @@
                             class:active={page.url.pathname.endsWith(item.slugFull)}
                             data-sveltekit-preload-data="tap"
                             onclick={layout.close}
+                            tabindex="0"
                         >
                             {#if item.IconComponent}
                                 <item.IconComponent size="1rem" />

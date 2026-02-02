@@ -1,11 +1,11 @@
 <script>
-    import DemoContainer from '../DemoContainer.svelte';
+    import CodePreview from '../components/CodePreview.svelte';
 
     let { children, meta } = $props();
 </script>
 
-<DemoContainer {meta}>
+<CodePreview {meta}>
     {#snippet code()}
         {@render children?.()}
     {/snippet}
-</DemoContainer>
+</CodePreview>

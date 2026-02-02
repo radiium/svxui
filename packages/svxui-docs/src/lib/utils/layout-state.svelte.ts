@@ -1,6 +1,6 @@
 import { page } from '$app/state';
 import { MediaQuery } from 'svelte/reactivity';
-import { isBrowser } from 'svxui';
+import { isBrowser } from './functions';
 
 class LayoutState {
     /*

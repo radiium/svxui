@@ -1,17 +1,19 @@
 <script lang="ts">
     import {
         Button,
-        colorOptions,
         Flexbox,
-        radiusOptions,
         Text,
         useThemeRootContext,
+        type Color,
+        type Radius,
         type StrategyType
     } from 'svxui';
 
     const themeRoot = useThemeRootContext();
 
     const strategies: StrategyType[] = ['system', 'light', 'dark'];
+    const radius: Radius[] = ['none', 'small', 'medium', 'large', 'full'];
+    const colors: Color[] = ['neutral', 'green', 'blue', 'yellow', 'orange', 'red'];
 </script>
 
 <Flexbox direction="column" gap="3" class="settings-content">
@@ -34,7 +36,7 @@
     <Flexbox gap="2" direction="column" class="w-100">
         <Text size="4" weight="medium">Radius:</Text>
         <Flexbox gap="2" wrap="wrap">
-            {#each radiusOptions as item (item)}
+            {#each radius as item (item)}
                 <Button
                     radius="small"
                     variant={themeRoot.radius === item ? 'solid' : 'outline'}
@@ -50,7 +52,7 @@
     <Flexbox gap="2" direction="column">
         <Text size="4" weight="medium">Accent color:</Text>
         <Flexbox gap="2" wrap="wrap">
-            {#each colorOptions as item (item)}
+            {#each colors as item (item)}
                 <button
                     aria-label="color"
                     title={item}
