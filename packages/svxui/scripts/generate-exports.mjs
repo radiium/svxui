@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'fs';
+import { join, resolve } from 'path';
 
 const SRC = 'src/lib';
 const DIST = './dist';
@@ -7,12 +7,11 @@ const DIST = './dist';
 const GROUPS = ['attachments', 'components', 'builders', 'utilities'];
 
 function isDirectory(p) {
-    return fs.existsSync(p) && fs.statSync(p).isDirectory();
+    return existsSync(p) && statSync(p).isDirectory();
 }
 
 function getSubDirs(dir) {
-    return fs
-        .readdirSync(dir, { withFileTypes: true })
+    return readdirSync(dir, { withFileTypes: true })
         .filter((d) => d.isDirectory())
         .map((d) => d.name)
         .filter((name) => !name.startsWith('_'));
@@ -27,8 +26,8 @@ function entry(distPath) {
 }
 
 // ---- load package.json
-const pkgPath = path.resolve('package.json');
-const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+const pkgPath = resolve('package.json');
+const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
 
 // ---- preserve manual exports
 const preservedExports = {};
@@ -42,8 +41,8 @@ const generatedExports = {};
 
 // ---- generate group + sub-exports
 for (const group of GROUPS) {
-    const srcGroupPath = path.join(SRC, group);
-    console.log(srcGroupPath);
+    const srcGroupPath = join(SRC, group);
+    console.log('generate export for', srcGroupPath);
 
     if (!isDirectory(srcGroupPath)) continue;
 
@@ -62,5 +61,5 @@ pkg.exports = {
     ...generatedExports
 };
 
-fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 4));
-console.log('✅ exports générés :', Object.keys(generatedExports).length);
+writeFileSync(pkgPath, JSON.stringify(pkg, null, 4));
+console.log('✅ exports generated :', Object.keys(generatedExports).length);

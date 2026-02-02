@@ -1,31 +1,36 @@
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
 import { compile } from 'sass';
 
-const baseInputDir = resolve(import.meta.dirname, './');
-const baseOutputDir = resolve(import.meta.dirname, '../lib/styles/');
+const BASE_INPUT_DIR = resolve('src/lib-styles');
+const BASE_OUTPUT_DIR = resolve('src/lib/styles');
 
-// Clean output folder
-if (existsSync(baseOutputDir)) {
-    rmSync(baseOutputDir, { recursive: true });
+// ---- clean output folder
+if (existsSync(BASE_OUTPUT_DIR)) {
+    rmSync(BASE_OUTPUT_DIR, { recursive: true });
 }
-mkdirSync(baseOutputDir);
+mkdirSync(BASE_OUTPUT_DIR);
 
-// Copy Radix color
-console.log('[STYLES] copy folders');
+// ---- copy radix colors
 [
     {
         src: 'colors',
         dest: 'colors'
     }
 ].forEach(({ src, dest }) => {
-    const input = resolve(baseInputDir, src);
-    const output = resolve(baseOutputDir, dest);
+    const input = resolve(BASE_INPUT_DIR, src);
+    const output = resolve(BASE_OUTPUT_DIR, dest);
+
     cpSync(input, output, { recursive: true });
+
+    console.log('copy directory :', input.replace(resolve('./'), '.'));
+    // console.log('✅ folder copied :', {
+    //     from: input.replace(resolve('./'), '.'),
+    //     to: output.replace(resolve('./'), '.')
+    // });
 });
 
-// Build CSS files
-console.log('[STYLES] build scss files');
+// ---- Build CSS files
 [
     /**
      * Theme
@@ -89,9 +94,12 @@ console.log('[STYLES] build scss files');
         dest: 'utilities.visibility.css'
     }
 ].forEach(({ src, dest }) => {
-    const input = resolve(baseInputDir, src);
-    const output = resolve(baseOutputDir, dest);
+    const input = resolve(BASE_INPUT_DIR, src);
+    const output = resolve(BASE_OUTPUT_DIR, dest);
 
     const result = compile(input, { sourceMap: true, verbose: true });
     writeFileSync(output, result.css);
+    console.log('compile sass file:', input.replace(resolve('./'), '.'));
 });
+
+console.log('✅ styles generated');

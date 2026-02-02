@@ -289,7 +289,7 @@
     "scripts": {
         "dev": "vite dev --host",
         "build": "vite build && npm run package",
-        "prebuild": "npm run styles && npm run ./scripts/generate-exports.mjs",
+        "prebuild": "npm run styles && npm run exports",
         "preview": "vite preview",
         "package": "svelte-kit sync && svelte-package && publint",
         "package:watch": "svelte-kit sync && svelte-package --watch",
@@ -301,7 +301,8 @@
         "format": "prettier ./eslint.config.js --ignore-path=../../.prettierignore --write . --cache && eslint --fix .",
         "watch": "svelte-package --watch",
         "sync": "svelte-kit sync",
-        "styles": "node ./src/lib-styles/build.js",
+        "styles": "node ./scripts/generate-styles.mjs",
+        "exports": "node ./scripts/generate-exports.mjs",
         "test": "npm run test:unit -- --run && npm run test:e2e",
         "test:e2e": "playwright test",
         "test:unit": "vitest",
