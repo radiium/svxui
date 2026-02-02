@@ -4,11 +4,11 @@ import { FOCUSABLE_SELECTORS } from './internals/focusable-selectors.js';
 import type { FocustrapOptions } from './types.js';
 
 /**
- * @description Traps keyboard focus within a DOM element, preventing focus from leaving it while active.
+ * Traps keyboard focus within a DOM element, preventing focus from leaving it while active.
  */
 export function focustrap(options: FocustrapOptions = {}): Attachment<HTMLElement> {
     return (node: HTMLElement) => {
-        const { enabled = true, initialFocus, returnFocus = true } = options;
+        const { enabled = true, initialFocus } = options;
 
         let previouslyFocused: HTMLElement | null = null;
         let isActive = false;
@@ -90,16 +90,7 @@ export function focustrap(options: FocustrapOptions = {}): Attachment<HTMLElemen
         function deactivate() {
             if (!isActive) return;
             isActive = false;
-
             document.removeEventListener('keydown', handleKeydown);
-
-            if (returnFocus && previouslyFocused) {
-                // Verify that the element is still in the DOM
-                if (document.body.contains(previouslyFocused)) {
-                    flushSync();
-                    previouslyFocused.focus({ preventScroll: true });
-                }
-            }
         }
 
         if (enabled) {

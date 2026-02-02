@@ -1,8 +1,9 @@
 import type { Attachment } from 'svelte/attachments';
 import type { ClickoutsideOptions } from './types.js';
+import { getHtmlElement, toHTMLElement } from '$lib/internals/elements.js';
 
 /**
- * @description Detects clicks outside a bound element and triggers a callback. Typically used to close dropdowns, modals, or popovers.
+ * Detects clicks outside a bound element and triggers a callback. Typically used to close dropdowns, modals, or popovers.
  */
 export function clickoutside(options: ClickoutsideOptions): Attachment<HTMLElement> {
     return (node: HTMLElement) => {
@@ -14,8 +15,13 @@ export function clickoutside(options: ClickoutsideOptions): Attachment<HTMLEleme
             eventTarget = document
         } = options;
 
-        if (!onClickOutside) {
-            throw new Error('clickoutside: onClickOutside callback is required');
+        const resolvedEventTarget =
+            typeof eventTarget === 'string'
+                ? getHtmlElement(eventTarget, document)
+                : toHTMLElement(eventTarget);
+
+        if (!resolvedEventTarget) {
+            throw new Error(`Invalid eventTarget : ${resolvedEventTarget}`);
         }
 
         function onClick(event: Event) {
@@ -29,17 +35,20 @@ export function clickoutside(options: ClickoutsideOptions): Attachment<HTMLEleme
 
             // Ignore clicks inside any ignored elements
             for (const el of ignoreElements) {
-                if (el && el.contains(target)) return;
+                if (el) {
+                    const resolvedEl = getHtmlElement(el, resolvedEventTarget);
+                    if (resolvedEl && resolvedEl.contains(target)) return;
+                }
             }
 
-            onClickOutside(event as MouseEvent | PointerEvent);
+            onClickOutside?.(event as MouseEvent | PointerEvent);
         }
 
         // Use capture phase to detect events early
-        eventTarget.addEventListener(eventType, onClick, true);
+        resolvedEventTarget.addEventListener(eventType, onClick, true);
 
         return () => {
-            eventTarget.removeEventListener(eventType, onClick, true);
+            resolvedEventTarget.removeEventListener(eventType, onClick, true);
         };
     };
 }

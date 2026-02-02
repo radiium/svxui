@@ -392,11 +392,11 @@ describe('clickoutside attachment', () => {
         expect(onClickOutside).not.toHaveBeenCalled();
     });
 
-    it('should work with window as eventTarget', () => {
+    it('should work with document as eventTarget', () => {
         const onClickOutside = vi.fn();
         const attachment = clickoutside({
             onClickOutside,
-            eventTarget: window
+            eventTarget: document
         });
         detach = attachment(element);
 

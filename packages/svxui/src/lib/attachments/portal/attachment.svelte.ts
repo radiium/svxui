@@ -2,14 +2,15 @@ import type { Attachment } from 'svelte/attachments';
 import type { PortalOptions } from './types.js';
 
 /**
- * @description Moves an element to a different part of the DOM (e.g., document.body). Useful for modals, tooltips, or overlays.
- * Credits: {@link https://github.com/romkor/svelte-portal}
+ * Moves an element to a different part of the DOM (e.g., document.body). Useful for modals, tooltips, or overlays.
  */
 export function portal(options: PortalOptions = {}): Attachment<HTMLElement> {
     return (node: HTMLElement) => {
         const { enabled = true, target = 'body' } = options;
+
         const originalParent = node.parentNode;
         const originalNextSibling = node.nextSibling;
+        const originalnextElementSibling = node.nextElementSibling;
 
         function getTargetEl(target?: PortalOptions['target']): HTMLElement {
             let targetEl: HTMLElement | null;
@@ -35,19 +36,28 @@ export function portal(options: PortalOptions = {}): Attachment<HTMLElement> {
         function activate() {
             const targetEl = getTargetEl(target);
             targetEl.appendChild(node);
-            node.hidden = false;
         }
-        function deactivate() {
-            if (!originalParent) return;
 
-            node.remove();
-            originalParent.insertBefore(node, originalNextSibling);
+        function deactivate() {
+            // Restore the element to its original parent and sibling position
+            // if it is currently attached to a different DOM node
+            if (originalParent && node.parentNode && originalParent !== node.parentNode) {
+                try {
+                    // Checking the validity of the following node
+                    // because the Svelte hot update removes some comment nodes
+                    // and causes an error here.
+                    const nextNode = originalParent.contains(originalNextSibling)
+                        ? originalNextSibling
+                        : originalnextElementSibling;
+                    originalParent.insertBefore(node, nextNode);
+                } catch (error) {
+                    console.warn(error);
+                }
+            }
         }
 
         if (enabled) {
             activate();
-        } else {
-            deactivate();
         }
 
         return () => {

@@ -1,26 +1,27 @@
 export type ClickoutsideOptions = {
     /**
-     * Called when click outside node
+     * Called when click outside is detected on target.
      */
-    onClickOutside: (event: MouseEvent | PointerEvent) => void;
+    onClickOutside?: (event: MouseEvent | PointerEvent) => void;
     /**
      * Enable/disable clickoutside
      * @default true
      */
     enabled?: boolean;
     /**
-     * Elements to ignore in clickoutside detection
+     * Elements to ignore in clickoutside detection.
+     * Can be an array of selector string or HTMLElement.
      * @default []
      */
-    ignoreElements?: HTMLElement[];
+    ignoreElements?: (HTMLElement | string | undefined)[];
     /**
-     * Type of event that triggers the clickoutside detection
+     * Type of event that triggers the clickoutside detection.
      * @default 'pointerdown'
      */
     eventType?: string;
     /**
-     * Element on which to listen for events instead of document
+     * Element on which to listen for events instead of document.
      * @default document
      */
-    eventTarget?: HTMLElement | Document | Window;
+    eventTarget?: Document | HTMLElement | string;
 };

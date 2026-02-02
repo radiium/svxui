@@ -2,7 +2,7 @@ import type { Attachment } from 'svelte/attachments';
 import type { LongpressOptions } from './types.js';
 
 /**
- * @description Detects when a pointer is held down for a specified duration and triggers a callback. Useful for contextual actions or alternative interactions.
+ * Detects when a pointer is held down for a specified duration and triggers a callback. Useful for contextual actions or alternative interactions.
  */
 export function longpress(options: LongpressOptions = {}): Attachment<HTMLElement> {
     return (node) => {

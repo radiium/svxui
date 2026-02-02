@@ -152,17 +152,6 @@ describe('focustrap attachment', () => {
         expect(document.activeElement).toBe(outsideButton);
     });
 
-    it('does not restore focus when returnFocus is false', () => {
-        const button = document.createElement('button');
-        container.appendChild(button);
-
-        const attachment = focustrap({ returnFocus: false });
-        const cleanup = attachment(container);
-        cleanup?.();
-
-        expect(document.activeElement).not.toBe(outsideButton);
-    });
-
     it('does not activate when enabled is false', () => {
         const button = document.createElement('button');
         container.appendChild(button);

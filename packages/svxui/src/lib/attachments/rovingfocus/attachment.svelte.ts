@@ -5,7 +5,7 @@ import { buildConfig } from './internals/build-config.js';
 import type { RovingfocusOptions } from './types.js';
 
 /**
- * @description Manages keyboard focus within a group, allowing focus to move between items using arrow keys for accessible navigation.
+ * Manages keyboard focus within a group, allowing focus to move between items using arrow keys for accessible navigation.
  */
 export function rovingfocus(options?: RovingfocusOptions): Attachment<HTMLElement> {
     return (node: HTMLElement) => {

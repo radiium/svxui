@@ -5,8 +5,9 @@ export function buildConfig(options?: RovingfocusOptions): Readonly<RovingfocusC
     const target = options?.target ?? '[data-roving-item]';
     const loop = options?.loop ?? false;
     const orientation = options?.orientation ?? 'vertical';
-    const initialIndex = options?.initialIndex ?? 'first';
-    const activateOnFocus = options?.activateOnFocus ?? true;
+    const activateOnFocus = options?.activateOnFocus ?? false;
+    const initialIndexNumber = Number(options?.initialIndex);
+    const initialIndex = isNaN(initialIndexNumber) ? 'first' : initialIndexNumber;
 
     const keysMapping = {
         vertical: {

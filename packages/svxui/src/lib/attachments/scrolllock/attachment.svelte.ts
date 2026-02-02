@@ -3,7 +3,7 @@ import type { Attachment } from 'svelte/attachments';
 import type { ScrolllockOptions } from './types.js';
 
 /**
- * @description Prevents page scrolling while an element is active by locking the document’s scroll. Commonly used for modals and overlays.
+ * Prevents page scrolling while an element is active by locking the document’s scroll. Commonly used for modals and overlays.
  */
 export function scrolllock(options: ScrolllockOptions = {}): Attachment<HTMLElement | Document> {
     return (node: HTMLElement | Document) => {

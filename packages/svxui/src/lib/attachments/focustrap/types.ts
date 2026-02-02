@@ -5,13 +5,9 @@ export type FocustrapOptions = {
      */
     enabled?: boolean;
     /**
-     * Element to focus on mount (default: )
-     * @default any first focusable element
+     * Element to focus when the focus trap is mounted.
+     * If not specified, the first focusable element is focused.
+     * @default undefined
      */
     initialFocus?: HTMLElement | string;
-    /**
-     * Return focus to the previous element during unmount
-     * @default true
-     */
-    returnFocus?: boolean;
 };
