@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Flexbox, rovingFocus, type Orientation } from '$lib/index.js';
+    import { Button, Flexbox, rovingfocus, type Orientation } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
@@ -12,7 +12,7 @@
     const items = ['item 1', 'item 2', 'item 3', 'item 4', 'item 5'];
 </script>
 
-<h1>Longpress</h1>
+<h1>Rovingfocus</h1>
 
 <Playground>
     {#snippet controls()}
@@ -26,7 +26,7 @@
         direction={orientation === 'vertical' ? 'column' : 'row'}
         wrap="wrap"
         gap="1"
-        {@attach rovingFocus({
+        {@attach rovingfocus({
             target: '[data-item]',
             get loop() {
                 return loop;

@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Button, Flexbox, isObject, Listbox, Panel, type ListboxProps } from '$lib/index.js';
+    import { Button, Flexbox, Listbox, Panel, type ListboxProps } from '$lib/index.js';
+    import { isObject } from '$lib/internals/is.js';
     import ControlButton from '../../controls/ControlButton.svelte';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -62,7 +63,7 @@
 
     <Listbox {...props} bind:value={props.value} onValueChange={(v) => console.log(v)}>
         {#snippet children(rootState)}
-            <Panel variant="soft" size="2" style="width: 220px;">
+            <Panel variant="clear" outline size="2" style="width: 220px;">
                 <Flexbox direction="column" gap="1" {...rootState.attrs}>
                     {#each options as opt, i (i)}
                         {@const item = rootState.getItem(opt, {
@@ -73,7 +74,7 @@
                             <Panel
                                 as="button"
                                 size="6"
-                                variant={item.selected ? 'clear' : 'soft'}
+                                variant={item.selected ? 'solid' : 'clear'}
                                 {...item.attrs}
                             >
                                 <Flexbox direction="column" align="start" gap="3">

@@ -52,7 +52,7 @@
                                 {/if}
                                 panel
 
-                                <Panel outline>nested</Panel>
+                                <Panel outline color="neutral">nested</Panel>
                             </Flexbox>
                         </Panel>
                     {/each}

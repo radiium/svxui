@@ -9,7 +9,7 @@
         Listbox,
         offset,
         Panel,
-        type SelectionValue
+        type SelectionStateValue
     } from '$lib/index.js';
     import { flushSync } from 'svelte';
     import type { SelectFloatProps } from './SelectFloat.types.js';
@@ -29,7 +29,7 @@
     }: SelectFloatProps<Value, Multiple> = $props();
 
     let isOpen = $state(false);
-    let listboxRef: HTMLElement | undefined = $state();
+    let listboxRef: HTMLDivElement | undefined = $state();
 
     const open = () => {
         isOpen = true;
@@ -45,7 +45,7 @@
     const toggle = () => {
         isOpen = !isOpen;
     };
-    const select = (newValue: SelectionValue<Value, Multiple>) => {
+    const select = (newValue: SelectionStateValue<Value, Multiple>) => {
         value = newValue;
     };
 

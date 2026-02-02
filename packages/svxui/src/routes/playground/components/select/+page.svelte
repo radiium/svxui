@@ -39,9 +39,9 @@
 
     const selectValue = (): void => {
         if (props.multiple) {
-            props.value = [options[1], options[2]];
+            props.value = optionsType === 'string' ? ['opt1', 'opt2'] : [1, 2];
         } else {
-            props.value = options[1];
+            props.value = optionsType === 'string' ? 'opt2' : 2;
         }
     };
 </script>

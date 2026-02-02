@@ -1,10 +1,10 @@
 <script>
-    import { Flexbox, HotkeysState } from '$lib/index.js';
+    import { Flexbox, Hotkeys } from '$lib/index.js';
     import { onDestroy } from 'svelte';
     import ControlLabelValue from '../../controls/ControlLabelValue.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let hotkeys = new HotkeysState();
+    let hotkeys = new Hotkeys();
 
     let isCtrla = $derived(hotkeys.has('Control+a'));
     let isMetaE = $derived(hotkeys.has(['Meta', 'e']));
@@ -18,7 +18,7 @@
     onDestroy(offMetaZ);
 </script>
 
-<h1>HotkeysState</h1>
+<h1>Hotkeys</h1>
 
 <Playground>
     <Flexbox direction="column" align="start">

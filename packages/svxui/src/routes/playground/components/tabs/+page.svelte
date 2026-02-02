@@ -10,7 +10,7 @@
         disabled: false,
         loop: false,
         activateOnFocus: false,
-        value: undefined
+        value: '1'
     });
 
     let json = $derived(
@@ -40,7 +40,7 @@
 
     <Tabs {...props} bind:value={props.value}>
         {#snippet children(tabs)}
-            <Flexbox direction="column" gap="3" {...tabs.attrs}>
+            <Flexbox direction="column" gap="3" {...tabs.rootAttrs}>
                 <Flexbox gap="2" {...tabs.triggerListAttrs}>
                     {#each items as option, i (i)}
                         {@const trigger = tabs.getTrigger(option)}

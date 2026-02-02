@@ -1,13 +1,5 @@
 <script lang="ts">
-    import {
-        rovingFocus,
-        Select,
-        Text,
-        ThemeRootProvider,
-        useThemeRootContext,
-        type Radius,
-        type StrategyType
-    } from '$lib/index.js';
+    import { rovingfocus, Select, Text, ThemeRootProvider, useThemeRootContext } from '$lib/index.js';
     import '$lib/styles/normalize.css';
     import '$lib/styles/tokens.css';
     import '$lib/styles/utilities.css';
@@ -40,6 +32,7 @@
                 'floating',
                 'listbox',
                 'panel',
+                'portal',
                 'select',
                 'tabs',
                 'text'
@@ -99,7 +92,7 @@
             </label>
         </header>
         <aside>
-            <ul {@attach rovingFocus({ target: '[data-page]', activateOnFocus: false })}>
+            <ul {@attach rovingfocus({ target: '[data-page]', activateOnFocus: false })}>
                 {#each sections as section, i (i)}
                     <li>
                         <Text muted>{section.name}</Text>

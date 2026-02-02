@@ -6,7 +6,6 @@
 
     let enabled = $state(false);
     let initialFocus = $state('[data-initialfocus]');
-    let returnFocus = $state(false);
 </script>
 
 <h1>Focustrap</h1>
@@ -16,7 +15,6 @@
         <ControlCheckbox label="enabled" bind:checked={enabled} />
 
         <ControlInput label="initialFocus" bind:value={initialFocus} />
-        <ControlInput label="returnFocus" disabled bind:value={returnFocus} />
     {/snippet}
 
     <Panel
@@ -26,9 +24,6 @@
             },
             get initialFocus() {
                 return initialFocus;
-            },
-            get returnFocus() {
-                return returnFocus;
             }
         })}
     >

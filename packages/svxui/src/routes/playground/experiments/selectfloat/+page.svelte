@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { isObject } from '$lib/index.js';
+    import { isObject } from '$lib/internals/is.js';
     import ControlButton from '../../controls/ControlButton.svelte';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';

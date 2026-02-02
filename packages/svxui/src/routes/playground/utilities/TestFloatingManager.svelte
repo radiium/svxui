@@ -1,22 +1,21 @@
 <script lang="ts">
     import FloatingArrow from '$lib/components/floating/components/floating-arrow.svelte';
     import Input from '$lib/components/input/components/input.svelte';
-    import { Button, Flexbox, Panel } from '$lib/index.js';
-    import { FloatingState } from '$lib/utilities/floating-state/floating-state.svelte.js';
+    import { Button, Flexbox, FloatingBuilder, Panel } from '$lib/index.js';
     import { arrow, autoUpdate, offset, size, type Middleware } from '@floating-ui/dom';
     import { fade } from 'svelte/transition';
 
     let opened = $state(false);
     let arrowEl: HTMLElement | undefined = $state(undefined);
 
-    const floating = new FloatingState({
+    const floating = new FloatingBuilder({
         get isOpen() {
             return opened;
         },
         set isOpen(newOpened: boolean) {
             opened = newOpened;
         },
-        floating: {
+        engineOptions: {
             placement: 'top',
             strategy: 'absolute',
             whileElementsMounted: autoUpdate,

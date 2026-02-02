@@ -23,18 +23,11 @@
             <Panel>
                 <Flexbox direction="column" align="center" gap="3">
                     Source
-
                     <Panel variant="clear" outline>Before</Panel>
-                    <Badge
-                        variant="solid"
-                        size="3"
-                        {@attach portal({
-                            enabled,
-                            target
-                        })}
-                    >
-                        content
-                    </Badge>
+
+                    <Portal {enabled} {target}>
+                        <Badge variant="solid" size="3">content</Badge>
+                    </Portal>
                     <Panel variant="clear" outline>after</Panel>
                 </Flexbox>
             </Panel>
