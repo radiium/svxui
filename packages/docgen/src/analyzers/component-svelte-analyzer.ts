@@ -1,6 +1,5 @@
 import * as fs from "fs";
-import { parse } from "svelte/compiler";
-import type { AST } from "svelte/compiler";
+import { parse, type AST } from "svelte/compiler";
 
 /**
  * Prop info extracted from Svelte component
@@ -21,7 +20,7 @@ export interface SvelteAnalysisResult {
 /**
  * Svelte component analyzer using svelte/compiler
  */
-export class SvelteAnalyzer {
+export class ComponentSvelteAnalyzer {
   private filePath: string;
 
   constructor(filePath: string) {
@@ -33,9 +32,8 @@ export class SvelteAnalyzer {
    */
   analyze(): SvelteAnalysisResult {
     const content = fs.readFileSync(this.filePath, "utf-8");
-    const ast = parse(content);
-
-    const props = this.extractPropsFromAST(ast as AST.Root);
+    const ast = parse(content) as AST.Root;
+    const props = this.extractPropsFromAST(ast);
 
     return { props };
   }
@@ -181,6 +179,9 @@ export class SvelteAnalyzer {
     }
 
     switch (node.type) {
+      case "TSAsExpression": {
+        return this.extractDefaultValue(node.expression);
+      }
       case "Literal":
         return this.formatLiteralValue(node.value);
 

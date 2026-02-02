@@ -135,11 +135,21 @@ export class TypeResolver {
         // Check for Snippet
         if (typeName === "Snippet") {
           const typeArgs = type.getTypeArguments();
+
+          // Unwrap tuple: Snippet<[MyType]> => MyType
+          // const typeArguments = typeArgs.map((t) => this.resolve(t, false))
+          const typeArguments =
+            typeArgs && typeArgs.length > 0
+              ? typeArgs[0]
+                  .getTupleElements()
+                  .map((t) => this.resolve(t, false))
+              : undefined;
+
           return {
             raw,
             kind: "snippet",
             typeName,
-            typeArguments: typeArgs.map((t) => this.resolve(t, false)),
+            typeArguments,
           };
         }
 
@@ -151,6 +161,16 @@ export class TypeResolver {
             kind: "reference",
             typeName,
             typeArguments: typeArgs.map((t) => this.resolve(t, false)),
+            sourceFile: this.getTypeSourceFile(type),
+          };
+        }
+
+        // Function type reference
+        if (type.getCallSignatures().length > 0) {
+          return {
+            raw,
+            kind: "function",
+            typeName,
             sourceFile: this.getTypeSourceFile(type),
           };
         }
@@ -177,6 +197,19 @@ export class TypeResolver {
         raw,
         kind: "function",
       };
+    }
+
+    // Generic contraint
+    if (raw !== "void") {
+      const declarations = type.getSymbol()?.getDeclarations() ?? [];
+      const typeParamDecl = declarations.find(Node.isTypeParameterDeclaration);
+      const contraintTypeName = typeParamDecl?.getConstraint()?.getText();
+      if (contraintTypeName) {
+        return {
+          raw: contraintTypeName,
+          kind: "generic",
+        };
+      }
     }
 
     // Unknown/any

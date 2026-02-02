@@ -208,9 +208,9 @@ export class DocumentationGenerator {
     for (const entry of entries) {
       if (entry.isDirectory()) {
         const utilityDir = path.join(utilitiesBase, entry.name);
-        // Verify it has a core.svelte.ts file
-        const coreFile = path.join(utilityDir, "core.svelte.ts");
-        if (fs.existsSync(coreFile)) {
+        // Verify it has a utility file
+        const utilityFile = path.join(utilityDir, `${entry.name}.svelte.ts`);
+        if (fs.existsSync(utilityFile)) {
           dirs.push(utilityDir);
         }
       }

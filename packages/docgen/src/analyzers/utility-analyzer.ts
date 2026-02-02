@@ -2,6 +2,9 @@ import * as path from "path";
 import { Project, SourceFile } from "ts-morph";
 import { JSDocExtractor } from "../extractors/jsdoc-extractor";
 import type { GenericParameter, UtilityDocumentation } from "../types";
+import { generateDTS, highlight } from "../utils/dts-helpers";
+import { ComponentPropsAnalyzer } from "./component-props-analyzer";
+import { TypeResolver } from "./type-resolver";
 
 /**
  * Utility analyzer (minimaliste - pas de méthodes/propriétés)
@@ -19,9 +22,9 @@ export class UtilityAnalyzer {
    * Analyze utility in the directory
    */
   analyze(): UtilityDocumentation | null {
-    const coreFile = this.getCoreFile();
-    if (!coreFile) {
-      console.warn(`⚠️  No core.svelte.ts found in ${this.utilityDir}`);
+    const utilityFile = this.getUtilityFile();
+    if (!utilityFile) {
+      console.warn(`⚠️  No .svelte.ts found in ${this.utilityDir}`);
       return null;
     }
 
@@ -33,19 +36,61 @@ export class UtilityAnalyzer {
 
     const utilityName = this.getUtilityName();
 
+    const utilityFunction = this.findMainFunction(utilityFile);
+    if (utilityFunction) {
+      const className = utilityFunction.getName() || "Unknown";
+      const classDef = generateDTS(utilityFunction.getText());
+      const typeDef = typesFile
+        ? highlight(typesFile?.getFullText() ?? "")
+        : undefined;
+
+      // Extract generics from class
+      const generics = this.extractGenerics(utilityFunction);
+      // Find the Options type name
+      const optionsTypeName = this.findOptionsTypeName(className);
+
+      // Extract JSDoc from class
+      const jsdocExtractor = new JSDocExtractor();
+      const jsdoc = jsdocExtractor.extract(utilityFunction);
+
+      const doc: UtilityDocumentation = {
+        category: "utility",
+        name: utilityName,
+        filePath: this.getRelativePath(
+          path.join(this.utilityDir, `${this.utilityDir}.svelte.ts`),
+        ),
+        description: jsdoc.description,
+        className: className,
+        classDef: classDef,
+        generics: generics.length > 0 ? generics : undefined,
+        typeName: optionsTypeName,
+        typeDef: typeDef,
+        typeSource: this.getRelativePath(
+          path.join(this.utilityDir, "types.ts"),
+        ),
+        tags: jsdoc.tags,
+      };
+
+      return doc;
+    }
+
     // Find the main exported class
-    const utilityClass = this.findMainClass(coreFile);
+    const utilityClass = this.findMainClass(utilityFile);
     if (!utilityClass) {
       console.warn(
-        `⚠️  No exported class found in ${utilityName}/core.svelte.ts`,
+        `⚠️  No exported class found in ${utilityName}/${utilityName}.svelte.ts`,
       );
 
-      // const utilityFunction = this.findMainFunction(coreFile);
       // console.log("utilityFunction found", utilityFunction?.getName());
       return null;
     }
 
     const className = utilityClass.getName() || "Unknown";
+    const classDef = generateDTS(utilityClass.getText());
+    const typeDef = typesFile
+      ? highlight(typesFile?.getFullText() ?? "")
+      : undefined;
+
     // Extract generics from class
     const generics = this.extractGenerics(utilityClass);
     // Find the Options type name
@@ -56,17 +101,18 @@ export class UtilityAnalyzer {
     const jsdoc = jsdocExtractor.extract(utilityClass);
 
     const doc: UtilityDocumentation = {
+      category: "utility",
       name: utilityName,
       filePath: this.getRelativePath(
-        path.join(this.utilityDir, "core.svelte.ts"),
+        path.join(this.utilityDir, `${this.utilityDir}.svelte.ts`),
       ),
       description: jsdoc.description,
       className: className,
+      classDef: classDef,
       generics: generics.length > 0 ? generics : undefined,
-      optionsTypeName: optionsTypeName,
-      optionsTypeSource: this.getRelativePath(
-        path.join(this.utilityDir, "types.ts"),
-      ),
+      typeName: optionsTypeName,
+      typeDef: typeDef,
+      typeSource: this.getRelativePath(path.join(this.utilityDir, "types.ts")),
       tags: jsdoc.tags,
     };
 
@@ -74,11 +120,13 @@ export class UtilityAnalyzer {
   }
 
   /**
-   * Get core.svelte.ts source file
+   * Get .svelte.ts source file
    */
-  private getCoreFile(): SourceFile | undefined {
-    const corePath = path.join(this.utilityDir, "core.svelte.ts");
-    return this.project.getSourceFile(corePath);
+  private getUtilityFile(): SourceFile | undefined {
+    const utilityName = path.basename(this.utilityDir);
+    const utilityPath = path.join(this.utilityDir, `${utilityName}.svelte.ts`);
+
+    return this.project.getSourceFile(utilityPath);
   }
 
   /**

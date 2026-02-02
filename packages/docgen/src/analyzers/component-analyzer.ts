@@ -1,10 +1,13 @@
-import { Project, SourceFile, SyntaxKind } from "ts-morph";
-import * as path from "path";
 import * as fs from "fs";
-import type { ComponentDocumentation } from "../types";
-import { PropsAnalyzer } from "./props-analyzer";
+import * as path from "path";
+import { Project, SourceFile } from "ts-morph";
 import { JSDocExtractor } from "../extractors/jsdoc-extractor";
-import { SvelteAnalyzer } from "./svelte-analyzer";
+import type { ComponentDocumentation, PropDocumentation } from "../types";
+import { ComponentPropsAnalyzer } from "./component-props-analyzer";
+import {
+  ComponentSvelteAnalyzer,
+  SveltePropInfo,
+} from "./component-svelte-analyzer";
 
 /**
  * Component analyzer
@@ -40,6 +43,7 @@ export class ComponentAnalyzer {
     const propsTypes = this.extractPropsTypes(typesFile);
 
     for (const componentFile of componentFiles) {
+      const componentBaseName = this.getComponentBaseName(componentFile);
       const componentName = this.getComponentName(componentFile);
 
       // Find corresponding props type
@@ -54,7 +58,7 @@ export class ComponentAnalyzer {
       }
 
       // Analyze TypeScript props
-      const propsAnalyzer = new PropsAnalyzer(
+      const propsAnalyzer = new ComponentPropsAnalyzer(
         this.project,
         typesFile,
         propsType,
@@ -62,7 +66,7 @@ export class ComponentAnalyzer {
       const propsDoc = propsAnalyzer.analyze();
 
       // Analyze Svelte component for $bindable and default values
-      const svelteAnalyzer = new SvelteAnalyzer(componentFile);
+      const svelteAnalyzer = new ComponentSvelteAnalyzer(componentFile);
       const svelteAnalysis = svelteAnalyzer.analyze();
 
       // Merge Svelte analysis into props documentation
@@ -72,14 +76,12 @@ export class ComponentAnalyzer {
       const jsdoc = jsdocExtractor.extract(propsType);
 
       const doc: ComponentDocumentation = {
-        name: componentName,
+        category: "component",
+        name: componentBaseName,
         filePath: this.getRelativePath(componentFile),
         description: jsdoc.description,
-        propsTypeName: propsTypeName,
+        typeName: propsTypeName,
         props: propsDoc.props,
-        generics: propsDoc.generics,
-        extendsElement: propsDoc.extendsElement,
-        extendsTypes: propsDoc.extendsTypes,
         tags: jsdoc.tags,
       };
 
@@ -116,6 +118,10 @@ export class ComponentAnalyzer {
   /**
    * Extract component name from file path
    */
+  private getComponentBaseName(filePath: string): string {
+    return path.basename(filePath, ".svelte");
+  }
+
   private getComponentName(filePath: string): string {
     const basename = path.basename(filePath, ".svelte");
     // Capitalize first letter and handle kebab-case
@@ -137,8 +143,8 @@ export class ComponentAnalyzer {
    * Merge Svelte analysis (bindable, default values) into props documentation
    */
   private mergeSvelteAnalysis(
-    props: import("../types").PropDocumentation[],
-    svelteProps: Map<string, import("./svelte-analyzer").SveltePropInfo>,
+    props: PropDocumentation[],
+    svelteProps: Map<string, SveltePropInfo>,
   ): void {
     for (const prop of props) {
       const svelteProp = svelteProps.get(prop.name);

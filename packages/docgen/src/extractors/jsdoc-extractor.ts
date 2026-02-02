@@ -62,8 +62,26 @@ export class JSDocExtractor {
       const comment = tag.getComment();
 
       let value: string | undefined;
+      let link: string | undefined;
 
-      if (typeof comment === "string") {
+      /*if (tagName === "credits" || tagName === "see") {
+        console.log(comment);
+        if (Array.isArray(comment)) {
+          for (const part of comment) {
+            if (!part) continue;
+            if (Node.isJSDocText(part)) {
+              value = (value ?? "") + part.getText();
+            }
+
+            if (Node.isJSDocLink(part)) {
+              const linkMatch = part.getText().match(/\{@link\s+([^}]+)\}/);
+              if (linkMatch) {
+                link = linkMatch[1].trim();
+              }
+            }
+          }
+        }
+      } else */ if (typeof comment === "string") {
         value = comment.trim();
       } else if (Array.isArray(comment)) {
         value = comment
@@ -80,6 +98,7 @@ export class JSDocExtractor {
       tags.push({
         name: tagName,
         value: value || undefined,
+        link: link || undefined,
       });
     }
 

@@ -21,7 +21,7 @@ export interface LibraryDocumentation {
   /**
    * Documented builders
    */
-  builders: UtilityDocumentation[];
+  builders: BuilderDocumentation[];
   /**
    * Generation timestamp
    */
@@ -46,46 +46,103 @@ export interface LibraryMetadata {
   sourceDirectory: string;
 }
 
-/**
- * Component documentation
- */
-export interface ComponentDocumentation {
+export interface BaseContentDocumentation {
   /**
-   * Component name
+   * Name
    */
   name: string;
   /**
-   * Component file path relative to library root
+   * File path relative to library root
    */
   filePath: string;
   /**
-   * Component description from JSDoc
+   * Description from JSDoc
    */
   description?: string;
   /**
-   * Component props type name
+   * Props type name
    */
-  propsTypeName: string;
+  typeName: string;
+  /**
+   * Additional JSDoc tags
+   */
+  tags?: JSDocTag[];
+}
+
+/**
+ * Component documentation
+ */
+export interface ComponentDocumentation extends BaseContentDocumentation {
+  category: "component";
   /**
    * Component props
    */
   props: PropDocumentation[];
+}
+
+/**
+ * Attachment documentation
+ */
+export interface AttachmentDocumentation extends BaseContentDocumentation {
+  category: "attachment";
+  /**
+   * Attachment options
+   */
+  options: PropDocumentation[];
+}
+
+/**
+ * Builder documentation
+ */
+export interface BuilderDocumentation extends BaseContentDocumentation {
+  category: "builder";
+  /**
+   * Class name
+   */
+  className: string;
+  /**
+   * Class .d.ts definition
+   */
+  classDef?: string;
+  /**
+   * Type .d.ts definition
+   */
+  typeDef?: string;
   /**
    * Generic type parameters
    */
   generics?: GenericParameter[];
   /**
-   * HTML element extended (if applicable)
+   * Source file for options type
    */
-  extendsElement?: HTMLElementExtension;
+  typeSource: string;
+}
+
+/**
+ * Utility documentation
+ */
+export interface UtilityDocumentation extends BaseContentDocumentation {
+  category: "utility";
   /**
-   * Internal types extended (utility classes, state options, etc.)
+   * Class name
    */
-  extendsTypes?: TypeExtension[];
+  className: string;
   /**
-   * Additional JSDoc tags
+   * Class .d.ts definition
    */
-  tags?: JSDocTag[];
+  classDef?: string;
+  /**
+   * Type .d.ts definition
+   */
+  typeDef?: string;
+  /**
+   * Generic type parameters
+   */
+  generics?: GenericParameter[];
+  /**
+   * Source file for options type
+   */
+  typeSource: string;
 }
 
 /**
@@ -97,33 +154,33 @@ export interface PropDocumentation {
    */
   name: string;
   /**
+   * Prop description from JSDoc
+   */
+  description?: string;
+  /**
    * Prop type representation
    */
   type: TypeDocumentation;
-  /**
-   * Is prop optional
-   */
-  optional: boolean;
   /**
    * Default value if detectable
    */
   defaultValue?: string;
   /**
-   * Prop description from JSDoc
-   */
-  description?: string;
-  /**
-   * Is prop bindable ($bindable)
-   */
-  isBindable: boolean;
-  /**
-   * Is prop a Snippet type
-   */
-  isSnippet: boolean;
-  /**
    * Additional JSDoc tags
    */
   tags?: JSDocTag[];
+  /**
+   * Is prop optional
+   */
+  isOptional: boolean;
+  /**
+   * Is prop bindable ($bindable)
+   */
+  isBindable?: boolean;
+  /**
+   * Is prop a Snippet type
+   */
+  isSnippet?: boolean;
 }
 
 /**
@@ -163,7 +220,6 @@ export interface TypeDocumentation {
    */
   sourceFile?: string;
 }
-
 /**
  * Type kinds
  */
@@ -171,17 +227,19 @@ export type TypeKind =
   | "string"
   | "number"
   | "boolean"
-  | "undefined"
-  | "null"
   | "literal"
   | "union"
   | "intersection"
   | "reference"
   | "array"
   | "tuple"
+  | "snippet"
+  | "undefined"
+  | "generic"
+  //
+  | "null"
   | "function"
   | "object"
-  | "snippet"
   | "unknown";
 
 /**
@@ -204,144 +262,6 @@ export interface GenericParameter {
 }
 
 /**
- * HTML element extension info
- */
-export interface HTMLElementExtension {
-  /**
-   * Element tag name (div, button, input, etc.)
-   */
-  elementType: string;
-  /**
-   * Source of the extension (svelte/elements)
-   */
-  source: string;
-  /**
-   * Original type name (HTMLInputAttributes, etc.)
-   */
-  typeName: string;
-  /**
-   * Omitted props from the HTML type
-   */
-  omittedProps?: string[];
-}
-
-/**
- * Internal type extension info (utility classes, state options, etc.)
- */
-export interface TypeExtension {
-  /**
-   * Type name being extended
-   */
-  typeName: string;
-  /**
-   * Source file path relative to library root
-   */
-  source: string;
-  /**
-   * Type arguments if generic
-   */
-  typeArguments?: TypeDocumentation[];
-}
-
-/**
- * Attachment documentation
- */
-export interface AttachmentDocumentation {
-  /**
-   * Attachment function name
-   */
-  name: string;
-  /**
-   * Attachment file path relative to library root
-   */
-  filePath: string;
-  /**
-   * Attachment description from JSDoc
-   */
-  description?: string;
-  /**
-   * Options type name
-   */
-  optionsTypeName: string;
-  /**
-   * Attachment options (parameters)
-   */
-  options: OptionDocumentation[];
-  /**
-   * Additional JSDoc tags
-   */
-  tags?: JSDocTag[];
-}
-
-/**
- * Option documentation (for attachments)
- */
-export interface OptionDocumentation {
-  /**
-   * Option name
-   */
-  name: string;
-  /**
-   * Option type representation
-   */
-  type: TypeDocumentation;
-  /**
-   * Is option optional
-   */
-  optional: boolean;
-  /**
-   * Default value from @default JSDoc tag
-   */
-  defaultValue?: string;
-  /**
-   * Option description from JSDoc
-   */
-  description?: string;
-  /**
-   * Additional JSDoc tags
-   */
-  tags?: JSDocTag[];
-}
-
-/**
- * Utility documentation (minimaliste)
- */
-export interface UtilityDocumentation {
-  /**
-   * Utility class name
-   */
-  name: string;
-  /**
-   * Utility file path relative to library root
-   */
-  filePath: string;
-  /**
-   * Utility description from JSDoc
-   */
-  description?: string;
-  /**
-   * Class name
-   */
-  className: string;
-  /**
-   * Generic type parameters
-   */
-  generics?: GenericParameter[];
-  /**
-   * Options type name for constructor
-   */
-  optionsTypeName: string;
-  /**
-   * Source file for options type
-   */
-  optionsTypeSource: string;
-  /**
-   * Additional JSDoc tags
-   */
-  tags?: JSDocTag[];
-}
-
-/**
  * JSDoc tag
  */
 export interface JSDocTag {
@@ -353,4 +273,8 @@ export interface JSDocTag {
    * Tag value/comment
    */
   value?: string;
+  /**
+   * Tag link
+   */
+  link?: string;
 }

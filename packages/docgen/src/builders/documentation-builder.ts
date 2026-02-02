@@ -6,6 +6,7 @@ import type {
   ComponentDocumentation,
   AttachmentDocumentation,
   UtilityDocumentation,
+  BuilderDocumentation,
 } from "../types";
 
 /**
@@ -16,7 +17,7 @@ export class DocumentationBuilder {
   private components: ComponentDocumentation[] = [];
   private attachments: AttachmentDocumentation[] = [];
   private utilities: UtilityDocumentation[] = [];
-  private builders: UtilityDocumentation[] = [];
+  private builders: BuilderDocumentation[] = [];
 
   constructor(libraryPath: string) {
     this.libraryPath = libraryPath;
@@ -46,7 +47,7 @@ export class DocumentationBuilder {
   /**
    * Add a utility documentation
    */
-  addBuilder(builder: UtilityDocumentation): void {
+  addBuilder(builder: BuilderDocumentation): void {
     this.builders.push(builder);
   }
 

@@ -3,7 +3,7 @@ import * as path from "path";
 import * as fs from "fs";
 import type { AttachmentDocumentation } from "../types";
 import { JSDocExtractor } from "../extractors/jsdoc-extractor";
-import { OptionsAnalyzer } from "./options-analyzer";
+import { AttachmentOptionsAnalyzer } from "./attachment-options-analyzer";
 
 /**
  * Attachment analyzer
@@ -38,39 +38,38 @@ export class AttachmentAnalyzer {
     const attachmentName = this.getAttachmentName();
 
     // Find the Options type
-    const optionsTypeName = `${this.capitalize(attachmentName)}Options`;
-    const optionsType = typesFile.getTypeAlias(optionsTypeName);
+    const propsTypeName = `${this.capitalize(attachmentName)}Options`;
+    const propsType = typesFile.getTypeAlias(propsTypeName);
 
-    if (!optionsType) {
+    if (!propsType) {
       console.warn(
-        `⚠️  Options type ${optionsTypeName} not found for ${attachmentName}`,
+        `⚠️  Options type ${propsTypeName} not found for ${attachmentName}`,
       );
 
       return null;
     }
 
     // Analyze options
-    const optionsAnalyzer = new OptionsAnalyzer(
+    const optionsAnalyzer = new AttachmentOptionsAnalyzer(
       this.project,
       typesFile,
-      optionsType,
+      propsType,
     );
     const options = optionsAnalyzer.analyze();
 
     // Extract JSDoc from attachment function
-    const attachmentFunc = this.findAttachmentFunction(attachmentFile);
+    // const attachmentFunc = this.findAttachmentFunction(attachmentFile);
     const jsdocExtractor = new JSDocExtractor();
-    const jsdoc = attachmentFunc
-      ? jsdocExtractor.extract(attachmentFunc)
-      : { tags: [] };
+    const jsdoc = jsdocExtractor.extract(propsType);
 
     const doc: AttachmentDocumentation = {
+      category: "attachment",
       name: attachmentName,
       filePath: this.getRelativePath(
         path.join(this.attachmentDir, "attachment.svelte.ts"),
       ),
       description: jsdoc.description,
-      optionsTypeName: optionsTypeName,
+      typeName: propsTypeName,
       options: options,
       tags: jsdoc.tags,
     };

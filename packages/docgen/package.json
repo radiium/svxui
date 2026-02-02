@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.19.7",
+    "shiki": "^3.21.0",
     "svelte": "^5.48.0",
     "ts-morph": "^27.0.2",
     "ts-node": "^10.9.2",

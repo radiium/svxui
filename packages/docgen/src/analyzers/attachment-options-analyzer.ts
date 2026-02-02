@@ -1,13 +1,13 @@
 import { Project, SourceFile, TypeAliasDeclaration, Node } from "ts-morph";
 import * as path from "path";
-import type { OptionDocumentation } from "../types";
+import type { PropDocumentation } from "../types";
 import { TypeResolver } from "./type-resolver";
 import { JSDocExtractor } from "../extractors/jsdoc-extractor";
 
 /**
  * Options analyzer for attachments
  */
-export class OptionsAnalyzer {
+export class AttachmentOptionsAnalyzer {
   private project: Project;
   private typesFile: SourceFile;
   private optionsType: TypeAliasDeclaration;
@@ -29,7 +29,7 @@ export class OptionsAnalyzer {
   /**
    * Analyze options type
    */
-  analyze(): OptionDocumentation[] {
+  analyze(): PropDocumentation[] {
     const typeNode = this.optionsType.getTypeNode();
     if (!typeNode) {
       return [];
@@ -56,18 +56,18 @@ export class OptionsAnalyzer {
   /**
    * Analyze object type literal
    */
-  private analyzeObjectType(typeNode: Node): OptionDocumentation[] {
+  private analyzeObjectType(typeNode: Node): PropDocumentation[] {
     if (!Node.isTypeLiteral(typeNode)) {
       return [];
     }
 
-    const options: OptionDocumentation[] = [];
+    const options: PropDocumentation[] = [];
     const members = typeNode.getMembers();
 
     for (const member of members) {
       if (Node.isPropertySignature(member)) {
         const name = member.getName();
-        const optional = member.hasQuestionToken();
+        const isOptional = member.hasQuestionToken();
         const typeNode = member.getTypeNode();
 
         if (!typeNode) {
@@ -75,16 +75,16 @@ export class OptionsAnalyzer {
         }
 
         // Pass optional flag to TypeResolver to normalize unions with undefined
-        const type = this.typeResolver.resolve(typeNode.getType(), optional);
+        const type = this.typeResolver.resolve(typeNode.getType(), isOptional);
         const jsdoc = this.jsdocExtractor.extract(member);
 
         // Extract @default tag value
         const defaultValue = this.extractDefaultValue(jsdoc.tags || []);
 
-        const option: OptionDocumentation = {
+        const option: PropDocumentation = {
           name,
           type,
-          optional,
+          isOptional,
           description: jsdoc.description,
           defaultValue,
           tags: jsdoc.tags,
@@ -100,8 +100,8 @@ export class OptionsAnalyzer {
   /**
    * Analyze intersection type
    */
-  private analyzeIntersection(typeNode: Node): OptionDocumentation[] {
-    const options: OptionDocumentation[] = [];
+  private analyzeIntersection(typeNode: Node): PropDocumentation[] {
+    const options: PropDocumentation[] = [];
     const types = (typeNode as any).getTypeNodes();
 
     for (const type of types) {
@@ -120,7 +120,7 @@ export class OptionsAnalyzer {
   /**
    * Analyze type reference
    */
-  private analyzeTypeReference(typeNode: Node): OptionDocumentation[] {
+  private analyzeTypeReference(typeNode: Node): PropDocumentation[] {
     if (!Node.isTypeReference(typeNode)) {
       return [];
     }

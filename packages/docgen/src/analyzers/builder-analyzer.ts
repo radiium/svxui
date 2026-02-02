@@ -1,7 +1,8 @@
 import * as path from "path";
 import { Project, SourceFile } from "ts-morph";
 import { JSDocExtractor } from "../extractors/jsdoc-extractor";
-import type { GenericParameter, UtilityDocumentation } from "../types";
+import type { GenericParameter, BuilderDocumentation } from "../types";
+import { generateDTS, highlight } from "../utils/dts-helpers";
 
 /**
  * Builder analyzer (minimaliste - pas de méthodes/propriétés)
@@ -18,7 +19,7 @@ export class BuilderAnalyzer {
   /**
    * Analyze builder in the directory
    */
-  analyze(): UtilityDocumentation | null {
+  analyze(): BuilderDocumentation | null {
     const builderFile = this.getBuilderFile();
     if (!builderFile) {
       console.warn(`⚠️  No core.svelte.ts found in ${this.builderDir}`);
@@ -43,6 +44,11 @@ export class BuilderAnalyzer {
     }
 
     const className = builderClass.getName() || "Unknown";
+    const classDef = generateDTS(builderClass.getText());
+    const typeDef = typesFile
+      ? highlight(typesFile?.getFullText() ?? "")
+      : undefined;
+
     // Extract generics from class
     const generics = this.extractGenerics(builderClass);
     // Find the Options type name
@@ -52,18 +58,19 @@ export class BuilderAnalyzer {
     const jsdocExtractor = new JSDocExtractor();
     const jsdoc = jsdocExtractor.extract(builderClass);
 
-    const doc: UtilityDocumentation = {
+    const doc: BuilderDocumentation = {
+      category: "builder",
       name: builderName,
       filePath: this.getRelativePath(
         path.join(this.builderDir, "core.svelte.ts"),
       ),
       description: jsdoc.description,
       className: className,
+      classDef: classDef,
       generics: generics.length > 0 ? generics : undefined,
-      optionsTypeName: optionsTypeName,
-      optionsTypeSource: this.getRelativePath(
-        path.join(this.builderDir, "types.ts"),
-      ),
+      typeName: optionsTypeName,
+      typeDef: typeDef,
+      typeSource: this.getRelativePath(path.join(this.builderDir, "types.ts")),
       tags: jsdoc.tags,
     };
 
