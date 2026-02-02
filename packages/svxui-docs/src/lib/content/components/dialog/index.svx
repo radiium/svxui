@@ -1,0 +1,21 @@
+---
+title: Dialog
+description: A generic customizable dialog component for displays modal content on a page, typically used for alerts, confirmations, or custom forms.
+category: components
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview }/>
+
+<ApiReference category="components" names={['dialog']}/>
+
+## Examples
+
+{#each examples.items as item }
+<SectionDemo {...item }/>
+{/each}

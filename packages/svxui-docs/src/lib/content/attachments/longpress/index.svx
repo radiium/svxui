@@ -1,0 +1,38 @@
+---
+title: Longpress
+description: Detects when a pointer is held down for a specified duration and triggers a callback. Useful for contextual actions or alternative interactions.
+category: attachments
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview } />
+
+## Usage
+
+```svelte
+<script>
+    import { longpress } from 'svxui';
+</script>
+
+<button
+    {@attach longpress({
+        // Enable/disable longpress
+        enabled: true,
+        // Custom delay before trigger longpress
+        delay: 800,
+        // Handle longpress start event
+        onLongpressStart: () => console.log('Longpress start'),
+        // Handle longpress end event
+        onLongpressEnd: () => console.log('Longpress end')
+    })}
+>
+    longpress me
+</button>
+```
+
+<ApiReference category="attachments" names={['longpress']}/>

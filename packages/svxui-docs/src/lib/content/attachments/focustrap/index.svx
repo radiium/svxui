@@ -1,0 +1,37 @@
+---
+title: Focustrap
+description: Traps keyboard focus within a DOM element, preventing focus from leaving it while active. Designed for use with components such as dialog or modal.
+category: attachments
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview } />
+
+## Usage
+The `focustrap` attachment should be used in dialog, modal, or similar interactive components to ensure that keyboard navigation remains confined within the component while it is open.
+
+```svelte
+<script>
+    import { focustrap } from 'svxui';
+</script>
+
+<form
+    {@attach focustrap({
+        // Enable/disable focus trap
+        enabled: true,
+        // Custom initial focus
+        initialFocus: '#email'
+    })}
+>
+    <input id="email" name="email" type="email" />
+    <input id="password" name="password" type="password" />
+    <button type="submit">signin</button>
+</form>
+```
+
+<ApiReference category="attachments" names={['focustrap']}/>

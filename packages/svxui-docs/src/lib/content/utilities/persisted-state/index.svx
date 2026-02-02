@@ -1,0 +1,24 @@
+---
+title: PersistedState
+description: Creates reactive state that is persisted and synchronized across browser sessions and tabs using Web Storage.
+category: utilities
+links: 
+    - text: Credits Runed
+      href: https://github.com/svecosystem/runed/blob/main/packages/runed/src/lib/utilities/persisted-state/persisted-state.svelte.ts
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview }/>
+
+<ApiReference category="utilities" names={['persisted-state']}/>
+
+## Examples
+
+{#each examples.items as item }
+<SectionDemo {...item }/>
+{/each}

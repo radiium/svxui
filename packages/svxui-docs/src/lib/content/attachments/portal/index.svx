@@ -1,0 +1,37 @@
+---
+title: Portal
+description: Moves an element to a different part of the DOM (e.g., document.body). Useful for modals, tooltips, or overlays.
+category: attachments
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview } />
+
+## Usage
+
+```svelte
+<script>
+    import { portal } from 'svxui';
+</script>
+
+<div
+    {@attach portal({
+        // Enable/disable portal
+        enabled: true,
+        // Define portal target
+        target: '#target'
+    })}
+>
+    content
+</div>
+
+<!-- elsewhere in the application -->
+<div id="target">target</div>
+```
+
+<ApiReference category="attachments" names={['portal']}/>

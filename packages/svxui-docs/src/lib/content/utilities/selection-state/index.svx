@@ -1,0 +1,11 @@
+---
+title: SelectionState
+description: A utility class that manages single or multiple external selection state with methods to query and update the current selection.
+category: utilities
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+</script>
+
+<ApiReference category="utilities" names={['selection-state']}/>

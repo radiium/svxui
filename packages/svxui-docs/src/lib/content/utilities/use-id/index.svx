@@ -1,0 +1,24 @@
+---
+title: Use Id
+description: Utility for generate non secure random id. Use it only for html element.
+category: utilities
+links: 
+    - text: Credits nanoid/non-secure
+      href: https://github.com/ai/nanoid/blob/main/non-secure/index.js
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview }/>
+
+<ApiReference category="utilities" names={['use-id']}/>
+
+## Examples
+
+{#each examples.items as item }
+<SectionDemo {...item }/>
+{/each}

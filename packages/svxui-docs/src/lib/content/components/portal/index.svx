@@ -1,0 +1,21 @@
+---
+title: Portal
+description: A component for renders content outside the main DOM hierarchy, useful for modals, tooltips, or overlays that need to escape parent styling or positioning constraints.
+category: components
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview }/>
+
+<ApiReference category="components" names={['portal']}/>
+
+## Examples
+
+{#each examples.items as item }
+<SectionDemo {...item }/>
+{/each}
