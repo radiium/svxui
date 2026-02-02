@@ -1468,7 +1468,7 @@
                 "raw": "ComputePositionReturn",
                 "kind": "reference",
                 "typeName": "ComputePositionReturn",
-                "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/node_modules/.pnpm/@floating-ui+core@1.7.3/node_modules/@floating-ui/core/dist/floating-ui.core.d.ts"
+                "sourceFile": "/Users/amigamac/workspace/github-perso/svxui/node_modules/.pnpm/@floating-ui+core@1.7.4/node_modules/@floating-ui/core/dist/floating-ui.core.d.ts"
               },
               {
                 "raw": "{ side: FloatingSide; alignment: FloatingAlignment; }",
@@ -2183,12 +2183,7 @@
           "tags": []
         }
       ],
-      "tags": [
-        {
-          "name": "see",
-          "value": "/docs/builders/floating"
-        }
-      ]
+      "tags": []
     },
     {
       "category": "component",
@@ -5632,5 +5627,5 @@
       "tags": []
     }
   ],
-  "generatedAt": "2026-02-02T08:19:29.511Z"
+  "generatedAt": "2026-02-02T22:54:44.693Z"
 }

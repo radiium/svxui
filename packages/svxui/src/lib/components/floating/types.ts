@@ -8,7 +8,6 @@ export type FloatingVariant = 'solid' | 'soft' | 'clear';
 
 /**
  * Extends all the standard HTML attributes of the `<div>` element.
- * @see /docs/builders/floating
  */
 export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**

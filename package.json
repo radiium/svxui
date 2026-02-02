@@ -36,14 +36,14 @@
         "dev": "concurrently \"pnpm:dev:lib:watch\" \"pnpm:dev:docs\"",
         "dev:lib": "pnpm --filter=svxui -r dev",
         "dev:lib:watch": "pnpm --filter=svxui -r package:watch",
-        "dev:docs": "pnpm --filter=svxui-docs -r dev",
+        "dev:docs": "pnpm --filter=docs -r dev",
         "-- BUILD": "",
-        "build": "pnpm --filter=!@configs/** --filter=!svxui-docs-builder -r build",
+        "build": "pnpm --filter=!@configs/** --filter=!docgen -r build",
         "build:lib": "pnpm --filter=svxui build",
-        "build:docs": "pnpm --filter=svxui-docs-builder build",
-        "build:sites": "pnpm --filter=svxui-docs build",
+        "generate:docs": "pnpm --filter=docgen generate",
+        "build:sites": "pnpm --filter=docs build",
         "-- VERCEL": "",
-        "vercel:prepare": "pnpm run build:lib && pnpm run build:docs",
+        "vercel:prepare": "pnpm run build:lib && pnpm run generate:docs",
         "vercel:build": "pnpm run build:sites",
         "-- UTILS": "",
         "check": "pnpm --filter=!@configs/** -r check",
@@ -57,5 +57,5 @@
         "@changesets/cli": "^2.29.8",
         "concurrently": "^9.2.1"
     },
-    "packageManager": "pnpm@10.28.1"
+    "packageManager": "pnpm@10.28.2"
 }

@@ -9,7 +9,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const highlighter = await createHighlighter({
     themes: ['dark-plus', 'light-plus'],
-    langs: ['svelte', 'javascript', 'typescript', 'bash']
+    langs: ['svelte', 'javascript', 'typescript', 'bash', 'css']
 });
 
 /**
@@ -48,7 +48,7 @@ function parseMeta(meta = '') {
 /** @type {import('mdsvex').MdsvexOptions} */
 export const mdsvexOptions = defineMDSveXConfig({
     extensions: ['.svx'],
-    layout: resolve(__dirname, './src/lib/markdown/MdsvexLayout.svelte'),
+    layout: resolve(__dirname, './src/lib/components/markdown/MarkdownLayout.svelte'),
     highlight: {
         /**
          *

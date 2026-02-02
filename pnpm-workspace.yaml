@@ -1,6 +1,7 @@
 packages:
   - configs/*
   - packages/*
+  - sites/*
 
 onlyBuiltDependencies:
   - '@parcel/watcher'
