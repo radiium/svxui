@@ -1,12 +1,18 @@
 import type { Orientation } from '$lib/shared.types.js';
-import type { SelectionOptions } from '$lib/utilities/selection/index.js';
+import type { SelectionStateOptions } from '$lib/utilities/selection-state/index.js';
 
 export type AccordionHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 /**
- * Accordion builder options
+ * Accordions builder options
+ *
+ * @template Value - Value of single or multiple selection.
+ * @template Multiple - Boolean indicating if multiple selection is enabled.
  */
-export type AccordionBuilderOptions<Value, Multiple extends boolean> = SelectionOptions<Value, Multiple> & {
+export type AccordionsBuilderOptions<Value, Multiple extends boolean> = SelectionStateOptions<
+    Value,
+    Multiple
+> & {
     /**
      * Callback called on value change
      * @param newValue
@@ -14,59 +20,59 @@ export type AccordionBuilderOptions<Value, Multiple extends boolean> = Selection
      */
     onValueChange?: (newValue: Value) => void;
     /**
-     * Accordion orientation
+     * Accordions orientation
      */
     orientation?: Orientation;
     /**
-     * Accordion must be disabled or not
+     * Accordions must be disabled or not
      */
     disabled?: boolean;
 };
 
 /**
- * Accordion item customization
+ * Accordions item customization
  */
 export type AccordionItemOptions = {
     /**
-     * Custom accordion item id
+     * Custom accordions item id
      */
     id?: string;
     /**
-     * Disable or not accordion item
+     * Disable or not accordions item
      */
     disabled?: boolean;
     /**
-     * Custom accordion item heading level
+     * Custom accordions item heading level
      */
     headingLevel?: AccordionHeadingLevel;
 };
 
 /**
- * Accordion item state
+ * Accordions item state
  */
 export type AccordionItem = {
     /**
-     * Accordion item is expanded
+     * Accordions item is expanded
      */
     readonly expanded: boolean;
     /**
-     * Accordion item is disabled
+     * Accordions item is disabled
      */
     readonly disabled: boolean;
     /**
-     * Accordion item wrapper attributes
+     * Accordions item wrapper attributes
      */
     readonly itemAttrs: AccordionItemAttributes;
     /**
-     * Accordion item heading attributes
+     * Accordions item heading attributes
      */
     readonly headingAttrs: AccordionHeadingAttributes;
     /**
-     * Accordion item trigger attributes
+     * Accordions item trigger attributes
      */
     readonly triggerAttrs: AccordionTriggerAttributes;
     /**
-     * Accordion item content attributes
+     * Accordions item content attributes
      */
     readonly contentAttrs: AccordionContentAttributes;
 };

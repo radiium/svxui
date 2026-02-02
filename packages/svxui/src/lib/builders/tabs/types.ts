@@ -1,10 +1,10 @@
 import type { Orientation } from '$lib/shared.types.js';
-import type { SelectionOptions } from '$lib/utilities/selection/index.js';
+import type { SelectionStateOptions } from '$lib/utilities/selection-state/index.js';
 
 /**
  * Tabs state options
  */
-export type TabsBuilderOptions<Value> = Omit<SelectionOptions<Value, false>, 'multiple'> & {
+export type TabsBuilderOptions<Value> = Omit<SelectionStateOptions<Value, false>, 'multiple'> & {
     /**
      * Callback called on value change
      * @param newValue
@@ -36,7 +36,7 @@ export type TabsRootAttributes = {
     readonly 'data-orientation': Orientation;
 };
 
-export type TabsTriggerListAttributes = {
+export type TabsItemTriggerListAttributes = {
     readonly [x: string]: '' | Orientation | `tabs-list-${string}` | 'tablist' | undefined;
     readonly id: `tabs-list-${string}`;
     readonly 'data-disabled': '' | undefined;
@@ -45,9 +45,9 @@ export type TabsTriggerListAttributes = {
 };
 
 /**
- * Tab item trigger part customization
+ * Tabs item trigger part customization
  */
-export type TabsTriggerOptions = {
+export type TabsItemTriggerOptions = {
     /**
      * Custom tab item triggert part id
      */
@@ -59,9 +59,9 @@ export type TabsTriggerOptions = {
 };
 
 /**
- * Tab item trigger part state
+ * Tabs item trigger part state
  */
-export type TabsTrigger = {
+export type TabsItemTrigger = {
     /**
      * Tab item is activated or not
      */
@@ -73,10 +73,10 @@ export type TabsTrigger = {
     /**
      * Tab trigger part attributes
      */
-    readonly attrs: TabsTriggerAttributes;
+    readonly attrs: TabsItemTriggerAttributes;
 };
 
-export type TabsTriggerAttributes = {
+export type TabsItemTriggerAttributes = {
     readonly [x: string]:
         | string
         | number
@@ -100,9 +100,9 @@ export type TabsTriggerAttributes = {
 };
 
 /**
- * Tab item content part customization
+ * Tabs item content part customization
  */
-export type TabsContentOptions = {
+export type TabsItemContentOptions = {
     /**
      * Custom tab item content part id
      */
@@ -116,7 +116,7 @@ export type TabsContentOptions = {
 /**
  * Tab item content part state
  */
-export type TabsContent = {
+export type TabsItemContent = {
     /**
      * Tab item is activated or not
      */
@@ -128,10 +128,10 @@ export type TabsContent = {
     /**
      * Tab content part attributes
      */
-    readonly attrs: TabsContentAttributes;
+    readonly attrs: TabsItemContentAttributes;
 };
 
-export type TabsContentAttributes = {
+export type TabsItemContentAttributes = {
     readonly [x: string]: string | number | boolean | undefined;
     readonly id: string;
     readonly disabled: boolean;

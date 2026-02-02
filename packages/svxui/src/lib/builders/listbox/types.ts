@@ -1,14 +1,16 @@
 import type { Orientation } from '$lib/shared.types.js';
-import type { SelectionOptions } from '$lib/utilities/selection/index.js';
+import type { SelectionStateOptions } from '$lib/utilities/selection-state/index.js';
 
 /**
  * Listbox builder options
  */
-export type ListboxBuilderOptions<Value, Multiple extends boolean> = SelectionOptions<Value, Multiple> & {
+export type ListboxBuilderOptions<Value, Multiple extends boolean> = SelectionStateOptions<
+    Value,
+    Multiple
+> & {
     /**
      * Callback called on value change
      * @param newValue
-     * @returns
      */
     onValueChange?: (newValue: Value) => void;
     /**

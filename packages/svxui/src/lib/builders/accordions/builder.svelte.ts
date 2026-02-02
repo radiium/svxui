@@ -1,5 +1,5 @@
 import type { Orientation } from '$lib/shared.types.js';
-import { SelectionState } from '$lib/utilities/selection/index.js';
+import { SelectionState } from '$lib/utilities/selection-state/index.js';
 import { useId } from '$lib/utilities/use-id/index.js';
 import {
     ACCORDION_CONTENT_KEY,
@@ -9,21 +9,21 @@ import {
     ACCORDION_TRIGGER_KEY
 } from './internals/keys.js';
 import type {
-    AccordionBuilderOptions,
     AccordionItem,
     AccordionItemOptions,
-    AccordionRootAttributes
+    AccordionRootAttributes,
+    AccordionsBuilderOptions
 } from './types.js';
 
 /**
- * @description Manage accordion state
+ * Builder class for creating accessible Accordions components. Handles keyboard navigation, ARIA attributes, and panel toggling.
  */
-export class AccordionBuilder<Value, Multiple extends boolean> {
+export class AccordionsBuilder<Value, Multiple extends boolean> {
     #id!: string;
-    #options!: AccordionBuilderOptions<Value, Multiple>;
+    #options!: AccordionsBuilderOptions<Value, Multiple>;
     #selection!: SelectionState<Value, Multiple>;
 
-    constructor(options: AccordionBuilderOptions<Value, Multiple>) {
+    constructor(options: AccordionsBuilderOptions<Value, Multiple>) {
         this.#id = useId();
         this.#options = options;
 
@@ -42,74 +42,71 @@ export class AccordionBuilder<Value, Multiple extends boolean> {
     }
 
     /**
-     * Accordion instance id
+     * Accordions instance id
      */
     get id(): string {
         return this.#id;
     }
 
     /**
-     * Can open single or multiple accordion item at time
+     * Can open single or multiple accordions item at time
      */
     get multiple(): boolean {
         return this.#options.multiple === true;
     }
 
     /**
-     * Accordion orientation
+     * Accordions orientation
      */
     get orientation(): Orientation {
         return this.#options.orientation ?? 'vertical';
     }
 
     /**
-     * Accordion is globaly disabled
+     * Accordions is globaly disabled
      */
     get disabled(): boolean {
         return this.#options.disabled === true;
     }
 
     /**
-     * Check if an accordion item is expanded
+     * Check if an accordions item is expanded
      * @param value
      * @returns
      */
-    isExpanded(value: Value) {
+    isExpanded = (value: Value): boolean => {
         return this.#selection.has(value);
-    }
+    };
 
     /**
-     * Expand an accordion item
+     * Expand an accordions item
      * @param value
-     * @returns
      */
-    expand(value: Value) {
+    expand = (value: Value): void => {
         if (this.disabled) return;
         this.#selection.select(value);
-    }
+    };
 
     /**
-     * Collapse an accordion item
+     * Collapse an accordions item
      * @param value
-     * @returns
      */
-    collapse(value: Value) {
+    collapse = (value: Value): void => {
         if (this.disabled) return;
         this.#selection.deselect(value);
-    }
+    };
 
     /**
-     * Toggle expand/collapse an accordion item
+     * Toggle expand/collapse an accordions item
      * @param value
-     * @returns
      */
-    toggle(value: Value) {
+    toggle = (value: Value): void => {
         if (this.disabled) return;
         this.#selection.toggle(value);
-    }
+    };
 
     /**
-     * Accordion root attributes
+     * Accordions root attributes
      */
     get rootAttrs(): AccordionRootAttributes {
         return {
@@ -123,10 +120,10 @@ export class AccordionBuilder<Value, Multiple extends boolean> {
     }
 
     /**
-     * Build an accordion item state
+     * Build an accordions item state
      * @param value
      * @param props
-     * @returns
+     * @returns The accordions item instance
      */
     getItem = (value: Value, itemOptions?: AccordionItemOptions): AccordionItem => {
         const id = itemOptions?.id ?? useId();

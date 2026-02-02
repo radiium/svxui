@@ -1,6 +1,6 @@
 import { rovingfocus } from '$lib/attachments/rovingfocus/index.js';
 import type { Orientation } from '$lib/shared.types.js';
-import { SelectionState } from '$lib/utilities/selection/core.svelte.js';
+import { SelectionState } from '$lib/utilities/selection-state/selection-state.svelte.js';
 import { useId } from '$lib/utilities/use-id/index.js';
 import { createAttachmentKey } from 'svelte/attachments';
 import { LISTBOX_ITEM_KEY, LISTBOX_ROOT_KEY } from './internals/keys.js';
@@ -12,7 +12,7 @@ import type {
 } from './types.js';
 
 /**
- *
+ * Builder class for creating accessible Listbox components. Manages focus, selection state, keyboard interactions, and ARIA roles.
  */
 export class ListboxBuilder<Value, Multiple extends boolean> {
     #id!: string;
@@ -82,44 +82,40 @@ export class ListboxBuilder<Value, Multiple extends boolean> {
     /**
      * Check if item is selected or not
      * @param value
-     * @returns
      */
-    isSelected(value: Value) {
+    isSelected = (value: Value): boolean => {
         return this.#selection.has(value);
-    }
+    };
 
     /**
      * Select listbox item
      * @param value
-     * @returns
      */
-    select(value: Value) {
+    select = (value: Value): void => {
         if (this.disabled) return;
         this.#selection.select(value);
-    }
+    };
 
     /**
      * Deselect listbox item
      * @param value
-     * @returns
      */
-    deselect(value: Value) {
+    deselect = (value: Value): void => {
         if (this.disabled) return;
         this.#selection.deselect(value);
-    }
+    };
 
     /**
      * Toggle select/deselect item
      * @param value
-     * @returns
      */
-    toggle(value: Value) {
+    toggle = (value: Value): void => {
         if (this.disabled) return;
         this.#selection.toggle(value);
-    }
+    };
 
     /**
-     * Listbox root attributes
+     * Listbox root element attributes
      */
     get attrs(): ListboxRootAttributes {
         return {
@@ -146,7 +142,7 @@ export class ListboxBuilder<Value, Multiple extends boolean> {
      * Buil listbox item state
      * @param value
      * @param options
-     * @returns
+     * @returns The listbox item instance
      */
     getItem = (value: Value, options?: ListboxItemOptions): ListboxItem => {
         const id = options?.id ?? useId();

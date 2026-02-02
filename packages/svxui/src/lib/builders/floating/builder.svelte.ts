@@ -2,18 +2,36 @@ import { clickoutside } from '$lib/attachments/clickoutside/index.js';
 import { focustrap } from '$lib/attachments/focustrap/index.js';
 import { getHtmlElement } from '$lib/internals/elements.js';
 import { kbd } from '$lib/internals/kbd.js';
-import { type FloatingEngineOptions, FloatingEngine } from '$lib/utilities/floating-engine/index.js';
+import { FloatingEngine, type FloatingEngineOptions } from '$lib/utilities/floating-engine/index.js';
 import { useId } from '$lib/utilities/use-id/index.js';
 import { flushSync } from 'svelte';
 import { createAttachmentKey } from 'svelte/attachments';
 import { on } from 'svelte/events';
-import { FloatingPattern } from './internals/floating-pattern.js';
-import type { FloatingBuilderOptions, FloatingPatternState } from './types.js';
+import { FloatingPattern, type FloatingPatternState } from './internals/floating-pattern.js';
+import type { FloatingBuilderOptions } from './types.js';
 
+/**
+ * Builder class for creating accessible floating UI elements like tooltips and popovers. It connects triggers, content, and optional backdrops to a positioning engine while handling focus management, ARIA patterns, and common close behaviors (outside click, escape, scroll, resize).
+ */
 export class FloatingBuilder {
+    /**
+     * User-provided builder options
+     */
     #options: FloatingBuilderOptions;
+
+    /**
+     * Floating positioning engine instance
+     */
     #engine: FloatingEngine;
+
+    /**
+     * Reactive engine configuration
+     */
     #engineOptions: FloatingEngineOptions = $derived.by(() => this.#options.engineOptions ?? {});
+
+    /**
+     * Resolved ARIA pattern attributes (tooltip or popover)
+     */
     #pattern: FloatingPatternState = $derived.by(() =>
         FloatingPattern.resolve({
             open: this.#options.isOpen === true,
@@ -23,6 +41,9 @@ export class FloatingBuilder {
         })
     );
 
+    /**
+     * Current backdrop element reference
+     */
     #backdropEl?: HTMLElement | SVGElement = $state();
 
     constructor(options: FloatingBuilderOptions) {
@@ -30,17 +51,39 @@ export class FloatingBuilder {
         this.#engine = new FloatingEngine(this.#engineOptions);
     }
 
-    get state() {
-        return this.#engine.state;
-    }
+    /**
+     * Returns whether the floating element is open
+     */
     get #isOpen() {
         return this.#options.isOpen;
     }
 
-    toggle = () => (this.#options.isOpen = !this.#options.isOpen);
+    /**
+     * Current computed floating engine state
+     */
+    get state() {
+        return this.#engine.state;
+    }
+
+    /**
+     * Open the floating element
+     */
     open = () => (this.#options.isOpen = true);
+
+    /**
+     * Close the floating element
+     */
     close = () => (this.#options.isOpen = false);
 
+    /**
+     * Toggle the open state
+     */
+    toggle = () => (this.#options.isOpen = !this.#options.isOpen);
+
+    /**
+     * Focuses a DOM element by reference or selector
+     * @param el Target element or selector
+     */
     #focusElement(el?: string | HTMLElement): void {
         if (el) {
             flushSync();
@@ -49,14 +92,18 @@ export class FloatingBuilder {
     }
 
     /**
-     *
+     * =================
      * TRIGGER
-     *
+     * =================
      */
 
+    /** Trigger element id */
     #triggerId = $state(useId());
+    /** Trigger data attribute name */
     #triggerDataAttr = 'data-floating-trigger';
+    /** Attachment key for trigger element */
     #triggerAttachmentKey = createAttachmentKey();
+    /** Attachment for trigger element */
     #triggerAttachment = (node: HTMLElement) => {
         this.#engine.reference = node;
 
@@ -68,6 +115,10 @@ export class FloatingBuilder {
             this.#engine.reference = undefined;
         };
     };
+
+    /**
+     * Trigger attributes to spread on the trigger element
+     */
     get triggerAttrs() {
         return {
             [this.#triggerDataAttr]: '',
@@ -77,14 +128,18 @@ export class FloatingBuilder {
     }
 
     /**
-     *
+     * =================
      * BACKDROP
-     *
+     * =================
      */
 
+    /** Backdrop element id */
     #backdropId = $state(useId());
+    /** Backdrop data attribute name */
     #backdropDataAttr = 'data-floating-backdrop';
+    /** Attachment key for backdrop element */
     #backdropAttachmentKey = createAttachmentKey();
+    /** Attachment for backdrop element */
     #backdropAttachment = (node: HTMLElement) => {
         this.#backdropEl = node;
 
@@ -92,22 +147,28 @@ export class FloatingBuilder {
         if (node.id) this.#backdropId = node.id;
         else node.id = this.#backdropId;
 
-        // Fix nested backdrop
+        // Fix nested backdrop positioning
         let prevTransform = node.style.transform;
         if (node.offsetParent && node.offsetParent instanceof HTMLElement) {
             const { left, top } = node.offsetParent.getBoundingClientRect();
             node.style.transform = `translate(-${left}px, -${top}px)`;
         }
-        // Close on click backdrop
+
+        // Close on backdrop click
         const off = on(node, 'click', () => {
             if (this.#options.closeOn?.clickBackdrop === true) this.close();
         });
+
         return () => {
             off();
             node.style.transform = prevTransform;
             this.#backdropEl = undefined;
         };
     };
+
+    /**
+     * Backdrop attributes to spread on the backdrop element
+     */
     get backdropAttrs() {
         return {
             role: 'button',
@@ -118,14 +179,18 @@ export class FloatingBuilder {
     }
 
     /**
-     *
+     * =================
      * CONTENT
-     *
+     * =================
      */
 
+    /** Floating content element id */
     #contentId = $state(useId());
+    /** Content data attribute name */
     #contentDataAttr = 'data-floating-content';
+    /** Attachment key for content element */
     #contentAttachmentKey = createAttachmentKey();
+    /** Attachment for content element*/
     #contentAttachment = (node: HTMLElement) => {
         this.#engine.floating = node;
 
@@ -134,29 +199,32 @@ export class FloatingBuilder {
         else node.id = this.#contentId;
 
         const offs = [
-            // Focus trap
+            // Trap focus inside content
             focustrap({
-                enabled: this.#isOpen && this.#options.focus?.trap === true,
-                returnFocus: false
+                enabled: this.#isOpen && this.#options.focus?.trap === true
             })(node),
-            // Close on click outside
+
+            // Close on outside click
             clickoutside({
                 enabled: this.#isOpen && this.#options.closeOn?.clickOutside === true,
                 ignoreElements: [this.#engine.reference, this.#backdropEl].filter(Boolean) as HTMLElement[],
                 onClickOutside: () => this.close()
             })(node),
-            // Close on escape
+
+            // Close on Escape key
             on(window, 'keydown', (evt: KeyboardEvent) => {
                 if (this.#isOpen && this.#options.closeOn?.escape === true && evt.key === kbd.ESCAPE) {
                     this.close();
                 }
             }),
-            // Close on resize
+
+            // Close on window resize
             on(window, 'resize', () => {
                 if (this.#isOpen && this.#options.closeOn?.resize === true) {
                     this.close();
                 }
             }),
+
             // Close on scroll
             on(
                 window,
@@ -170,16 +238,20 @@ export class FloatingBuilder {
             )
         ];
 
-        // Focus element inside content on open
+        // Focus element on open
         this.#focusElement(this.#options.focus?.onOpen);
 
         return () => {
-            // Focus element outside content
+            // Restore focus on close
             this.#focusElement(this.#options.focus?.onClose);
             offs.forEach((off) => off?.());
             this.#engine.floating = undefined;
         };
     };
+
+    /**
+     * Content element attributes
+     */
     get contentAttrs() {
         return {
             'data-state': this.#isOpen ? 'open' : 'close',

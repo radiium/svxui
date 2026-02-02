@@ -1,12 +1,12 @@
-export { AccordionBuilder } from './builder.svelte.js';
+export { AccordionsBuilder } from './builder.svelte.js';
 export type {
     AccordionContentAttributes,
-    AccordionItemOptions,
-    AccordionItem,
     AccordionHeadingAttributes,
     AccordionHeadingLevel,
+    AccordionItem,
     AccordionItemAttributes,
+    AccordionItemOptions,
     AccordionRootAttributes,
-    AccordionBuilderOptions,
+    AccordionsBuilderOptions,
     AccordionTriggerAttributes
 } from './types.js';

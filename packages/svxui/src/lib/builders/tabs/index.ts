@@ -1,12 +1,12 @@
 export { TabsBuilder } from './builder.svelte.js';
 export type {
     TabsBuilderOptions,
-    TabsContent,
-    TabsContentAttributes,
-    TabsContentOptions,
-    TabsRootAttributes,
-    TabsTrigger,
-    TabsTriggerAttributes,
-    TabsTriggerListAttributes,
-    TabsTriggerOptions
+    TabsItemContent,
+    TabsItemContentAttributes,
+    TabsItemContentOptions,
+    TabsItemTrigger,
+    TabsItemTriggerAttributes,
+    TabsItemTriggerListAttributes,
+    TabsItemTriggerOptions,
+    TabsRootAttributes
 } from './types.js';

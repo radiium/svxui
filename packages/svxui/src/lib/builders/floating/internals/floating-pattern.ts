@@ -1,4 +1,14 @@
-import type { FloatingPatternState, FloationgPatternContext } from '../types.js';
+export type FloationgPatternContext = {
+    pattern?: 'tooltip' | 'popover';
+    open?: boolean;
+    triggerId?: string;
+    contentId?: string;
+};
+
+export type FloatingPatternState = {
+    readonly triggerAttrs: Record<string, unknown>;
+    readonly contentAttrs: Record<string, unknown>;
+};
 
 export class FloatingPattern {
     static resolve(context: FloationgPatternContext): FloatingPatternState {
