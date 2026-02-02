@@ -71,6 +71,9 @@ export type ThemeRootStateProps = {
     customThemeColors?: ThemeColorsType;
 };
 
+/**
+ * Extends all the standard HTML attributes of the `<div>` element.
+ */
 export type ThemeRootProviderProps = ThemeRootStateProps &
     Omit<HTMLAttributes<HTMLDivElement>, 'children'> & {
         /**
@@ -98,6 +101,9 @@ export type ThemeChildStateProps = {
     hasBackground?: boolean;
 };
 
+/**
+ * Extends all the standard HTML attributes of the `<div>` element.
+ */
 export type ThemeChildProviderProps = ThemeChildStateProps &
     HTMLAttributes<HTMLDivElement> & {
         /**

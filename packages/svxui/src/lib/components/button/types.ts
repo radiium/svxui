@@ -5,11 +5,14 @@ import type { HTMLButtonAttributes } from 'svelte/elements';
 export type ButtonSize = '1' | '2' | '3' | '4';
 export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'clear';
 
+/**
+ * Extends all the standard HTML attributes of the `<button>` element.
+ */
 export type ButtonProps = Omit<HTMLButtonAttributes, 'color' | 'children'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
-    ref?: HTMLButtonElement | Element;
+    ref?: HTMLButtonElement;
     /**
      * Button color
      */

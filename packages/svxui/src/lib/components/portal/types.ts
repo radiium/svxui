@@ -1,14 +1,7 @@
+import type { PortalOptions } from '$lib/attachments/index.js';
 import type { Snippet } from 'svelte';
 
-export type PortalProps = {
-    /**
-     * Target identifier or any HTMLElement
-     */
-    target?: HTMLElement | string;
-    /**
-     * Disable portal
-     */
-    disabled?: boolean;
+export type PortalProps = PortalOptions & {
     /**
      * Portal content to render
      */

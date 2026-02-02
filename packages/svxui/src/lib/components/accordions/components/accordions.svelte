@@ -1,6 +1,6 @@
 <script lang="ts" generics="Value, Multiple extends boolean">
-    import { AccordionBuilder } from '$lib/builders/accordion/index.js';
-    import type { AccordionProps } from '../types.js';
+    import { AccordionsBuilder } from '$lib/builders/accordions/index.js';
+    import type { AccordionsProps } from '../types.js';
 
     let {
         value = $bindable(),
@@ -9,9 +9,9 @@
         disabled = false,
         orientation = 'vertical',
         children
-    }: AccordionProps<Value, Multiple> = $props();
+    }: AccordionsProps<Value, Multiple> = $props();
 
-    const accordion = new AccordionBuilder<Value, Multiple>({
+    const accordions = new AccordionsBuilder<Value, Multiple>({
         get value() {
             return value;
         },
@@ -31,4 +31,4 @@
     });
 </script>
 
-{@render children?.(accordion)}
+{@render children?.(accordions)}

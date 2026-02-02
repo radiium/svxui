@@ -15,6 +15,7 @@
         closeOnBackdropClick = false,
         closeOnEscape = false,
         lockScroll = false,
+        focusTrap = false,
         transitionDelay = 0,
         transitionDuration = 150,
         width = undefined,
@@ -54,7 +55,7 @@
     ]);
 
     let lockScrollEnabled = $derived(lockScroll === true && isOpen === true);
-    let focusTrapEnabled = $derived(isOpen === true);
+    let focusTrapEnabled = $derived(isOpen === true && focusTrap);
 </script>
 
 <svelte:window onkeydown={handlekeydown} />

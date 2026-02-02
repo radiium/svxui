@@ -4,9 +4,12 @@ import type { HTMLAttributes } from 'svelte/elements';
 
 export type DialogSize = '1' | '2' | '3' | '4';
 
+/**
+ * Extends all the standard HTML attributes of the `<div>` element.
+ */
 export type DialogProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
     ref?: HTMLDivElement;
     /**
@@ -65,6 +68,10 @@ export type DialogProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
      * Close dialog on escape key
      */
     closeOnEscape?: boolean;
+    /**
+     * Trap focus inside dialog content
+     */
+    focusTrap?: boolean;
     /**
      * Lock body scroll when open
      */

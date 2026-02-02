@@ -5,13 +5,14 @@
 <script lang="ts">
     import { FloatingBuilder } from '$lib/builders/floating/index.js';
     import Panel from '$lib/components/panel/components/panel.svelte';
-    import { buildFloatingMiddlewares } from '$lib/utilities/floating-engine/internals/build-floating-middlewares.js';
     import { autoUpdate as floatingAutoUpdate } from '@floating-ui/dom';
     import { untrack } from 'svelte';
     import { fade } from 'svelte/transition';
-    import { Portal } from '../../portal/index.js';
+    import { portal as portalAttachment } from '../../../attachments/portal/index.js';
     import type { FloatingProps } from '../types.js';
     import FloatingArrow from './floating-arrow.svelte';
+    import Portal from '$lib/components/portal/components/portal.svelte';
+    import { buildFloatingMiddlewares } from '$lib/internals/build-floating-middlewares.js';
 
     let {
         ref = $bindable(),
@@ -121,7 +122,7 @@
     // Manage current active floating
     let id = $props.id();
     let active = $derived(items.length > 0 && items.at(-1) === id);
-    let index = $derived(items.findIndex((o) => o === id));
+    let zIndex = $derived(items.findIndex((o) => o === id) + 1);
     $effect(() => {
         if (isOpen) {
             untrack(() => items.push(id));
@@ -139,7 +140,8 @@
 </div>
 
 <!-- Floating -->
-<Portal target={portalTarget} disabled={!portal}>
+<Portal target={portalTarget} enabled={portal}>
+    <!-- <div {@attach portalAttachment({ enabled: portal, target: portalTarget })} style="display: content;"> -->
     {#if isOpen}
         <!-- Backdrop -->
         {#if backdrop}
@@ -147,7 +149,7 @@
                 transition:fade={{ duration: transitionDuration, delay: transitionDelay }}
                 {...floating.backdropAttrs}
                 class="floating-backdrop"
-                style:z-index={index}
+                style:z-index={zIndex}
             ></div>
         {/if}
 
@@ -157,7 +159,7 @@
             {...floating.contentAttrs}
             bind:this={ref}
             class={cssClass}
-            style:z-index={index}
+            style:z-index={zIndex}
             data-active={active}
         >
             <Panel {size} {color} {variant} {outline} {radius}>
@@ -167,7 +169,7 @@
             {#if arrow}
                 <FloatingArrow
                     bind:ref={arrowEl}
-                    zIndex={index}
+                    {zIndex}
                     floatingState={floating.state}
                     {color}
                     {variant}
@@ -179,6 +181,7 @@
             {/if}
         </div>
     {/if}
+    <!-- </div> -->
 </Portal>
 
 <style>
@@ -195,7 +198,7 @@
         inset: 0 0 0 0;
         width: 100vw;
         height: 100vh;
-        cursor: pointer;
+        /* cursor: pointer; */
         background: var(--color-overlay);
     }
 

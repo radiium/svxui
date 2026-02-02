@@ -5,9 +5,12 @@ import type { HTMLAttributes } from 'svelte/elements';
 export type BadgeSize = '1' | '2' | '3';
 export type BadgeVariant = 'solid' | 'soft' | 'outline';
 
+/**
+ * Extends all the standard HTML attributes of the `<span>` element.
+ */
 export type BadgeProps = Omit<HTMLAttributes<HTMLSpanElement>, 'color' | 'children'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
     ref?: HTMLSpanElement;
     /**

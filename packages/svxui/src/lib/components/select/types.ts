@@ -5,12 +5,12 @@ export type SelectSize = '1' | '2' | '3';
 export type SelectOptionType = string | number | Record<string, any> | undefined;
 export type SelectValueChange<T> = (newValue: T) => void;
 
-export type SelectProps<T extends SelectOptionType = SelectOptionType> = Omit<
-    HTMLSelectAttributes,
-    'size' | 'color'
-> & {
+/**
+ * Extends all the standard HTML attributes of the `<select>` element.
+ */
+export type SelectProps<T extends SelectOptionType> = Omit<HTMLSelectAttributes, 'size' | 'color'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
     ref?: HTMLSelectElement;
     /**

@@ -2,13 +2,13 @@
     import { portal } from '$lib/attachments/portal/index.js';
     import type { PortalProps } from '../types.js';
 
-    let { target = 'body', disabled = false, children }: PortalProps = $props();
+    let { enabled = true, target = 'body', children }: PortalProps = $props();
 </script>
 
-{#if disabled}
-    {@render children?.()}
-{:else}
-    <div {@attach portal({ target })}>
+{#if enabled}
+    <div {@attach portal({ enabled: true, target })} style="display: content;">
         {@render children?.()}
     </div>
+{:else}
+    {@render children?.()}
 {/if}

@@ -45,7 +45,7 @@
 
 <style>
     .panel {
-        display: block;
+        /* display: block; */
         position: relative;
         box-sizing: border-box;
         padding: var(--panel-padding);

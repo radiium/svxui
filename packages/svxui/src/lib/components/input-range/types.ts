@@ -3,9 +3,12 @@ import type { HTMLInputAttributes } from 'svelte/elements';
 
 export type InputRangeSize = '1' | '2' | '3';
 
+/**
+ * Extends all the standard HTML attributes of the `<input type="range">` element.
+ */
 export type InputRangeProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
     ref?: HTMLInputElement;
     /**

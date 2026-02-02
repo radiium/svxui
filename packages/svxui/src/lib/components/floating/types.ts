@@ -6,9 +6,13 @@ import type { HTMLAttributes, SVGAttributes } from 'svelte/elements';
 export type FloatingSize = '0' | '1' | '2' | '3' | '4' | '5';
 export type FloatingVariant = 'solid' | 'soft' | 'clear';
 
+/**
+ * Extends all the standard HTML attributes of the `<div>` element.
+ * @see /docs/builders/floating
+ */
 export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
     ref?: HTMLDivElement;
     /**
@@ -93,11 +97,11 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     portalTarget?: string;
     // portal?: Pick<PortalProps, 'target' | 'disabled'>;
     /**
-     * Focus element on open flaoting
+     * Focus element on open floating
      */
     focusOnOpen?: string | HTMLElement | undefined;
     /**
-     * Focus element on close flaoting
+     * Focus element on close floating
      */
     focusOnClose?: string | HTMLElement | undefined;
     /**
@@ -140,15 +144,14 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
      * Floating content to render
      */
     content?: Snippet<[void]>;
-    /**
-     * Floating content to render
-     */
-    backdropChild?: Snippet<[void]>;
 };
 
+/**
+ * Extends all the standard HTML attributes of the `<svg>` element.
+ */
 export type FloatingArrowProps = Omit<SVGAttributes<SVGElement>, 'color' | 'width' | 'height'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
     ref?: SVGElement | HTMLElement;
     /**

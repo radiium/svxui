@@ -1,5 +1,5 @@
 import type { Radius } from '$lib/shared.types.js';
-import { PersistedState } from '$lib/utilities/persisted/index.js';
+import { PersistedState } from '$lib/utilities/persisted-state/index.js';
 import { onDestroy } from 'svelte';
 import { withoutTransition } from '../internals/without-transition.js';
 import {

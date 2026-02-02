@@ -1,4 +1,4 @@
-import type { PolymorphicProps } from '$lib/shared.types.js';
+import type { RefFromHTMLAttributes } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 
@@ -10,7 +10,22 @@ export type AlignItem = 'start' | 'center' | 'end' | 'baseline' | 'stretch' | 'n
 export type Wrap = 'nowrap' | 'wrap' | 'wrap-reverse';
 export type Gap = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
 
-export type FlexboxOwnProps = {
+/**
+ * Extends native HTML attributes inferred from the rendered element `as`.
+ */
+export type FlexboxProps<E extends keyof SvelteHTMLElements = 'div'> = Omit<
+    SvelteHTMLElements[E],
+    'as' | 'ref' | 'align'
+> & {
+    /**
+     * HTML element to render as.
+     */
+    as?: E;
+    /**
+     * Reference to the rendered DOM element.
+     * The element type is inferred from `as`.
+     */
+    ref?: RefFromHTMLAttributes<SvelteHTMLElements[E]>;
     /**
      * Flex display variant
      */
@@ -44,5 +59,3 @@ export type FlexboxOwnProps = {
      */
     children?: Snippet<[void]>;
 };
-
-export type FlexboxProps<E extends keyof SvelteHTMLElements = 'div'> = PolymorphicProps<E, FlexboxOwnProps>;

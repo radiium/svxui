@@ -2,9 +2,12 @@ import type { Color } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 
+/**
+ * Extends all the standard HTML attributes of the `<div>` element.
+ */
 export type InputGroupItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
     ref?: HTMLDivElement;
     /**
@@ -17,9 +20,12 @@ export type InputGroupItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> 
     children?: Snippet<[void]>;
 };
 
+/**
+ * Extends all the standard HTML attributes of the `<div>` element.
+ */
 export type InputGroupProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
     ref?: HTMLDivElement;
     /**

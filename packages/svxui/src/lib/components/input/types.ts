@@ -16,9 +16,12 @@ export type InputType =
     | 'month'
     | 'week';
 
+/**
+ * Extends all the standard HTML attributes of the `<div>` element.
+ */
 export type InputProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type' | 'children'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
     ref?: HTMLInputElement;
     /**

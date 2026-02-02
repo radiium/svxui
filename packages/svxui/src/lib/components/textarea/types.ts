@@ -3,9 +3,12 @@ import type { HTMLTextareaAttributes } from 'svelte/elements';
 
 export type TextareaSize = '1' | '2' | '3';
 
+/**
+ * Extends all the standard HTML attributes of the `<textarea>` element.
+ */
 export type TextareaProps = Omit<HTMLTextareaAttributes, 'color'> & {
     /**
-     * Rendered DOM element
+     * Reference to the rendered DOM element.
      */
     ref?: HTMLTextAreaElement;
     /**
