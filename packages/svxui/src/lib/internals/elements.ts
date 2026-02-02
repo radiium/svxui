@@ -5,8 +5,12 @@ import { isHtmlElement } from './is.js';
  * @param el string or HTMLElement
  * @returns HTMLElement or undefined if not found
  */
-export function getHtmlElement(el: string | HTMLElement): HTMLElement | undefined {
-    const elm = typeof el === 'string' ? document.querySelector(el) : el;
+export function getHtmlElement(
+    el: string | HTMLElement,
+    customTarget: HTMLElement | Document = document
+): HTMLElement | undefined {
+    if (!el || !customTarget) return undefined;
+    const elm = typeof el === 'string' ? customTarget.querySelector(el) : el;
     if (!isHtmlElement(elm)) return undefined;
     return elm;
 }
