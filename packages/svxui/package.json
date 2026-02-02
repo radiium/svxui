@@ -103,10 +103,10 @@
             "svelte": "./dist/components/index.js",
             "default": "./dist/components/index.js"
         },
-        "./components/accordion": {
-            "types": "./dist/components/accordion/index.d.ts",
-            "svelte": "./dist/components/accordion/index.js",
-            "default": "./dist/components/accordion/index.js"
+        "./components/accordions": {
+            "types": "./dist/components/accordions/index.d.ts",
+            "svelte": "./dist/components/accordions/index.js",
+            "default": "./dist/components/accordions/index.js"
         },
         "./components/badge": {
             "types": "./dist/components/badge/index.d.ts",
@@ -218,10 +218,10 @@
             "svelte": "./dist/builders/index.js",
             "default": "./dist/builders/index.js"
         },
-        "./builders/accordion": {
-            "types": "./dist/builders/accordion/index.d.ts",
-            "svelte": "./dist/builders/accordion/index.js",
-            "default": "./dist/builders/accordion/index.js"
+        "./builders/accordions": {
+            "types": "./dist/builders/accordions/index.d.ts",
+            "svelte": "./dist/builders/accordions/index.js",
+            "default": "./dist/builders/accordions/index.js"
         },
         "./builders/floating": {
             "types": "./dist/builders/floating/index.d.ts",
@@ -243,6 +243,11 @@
             "svelte": "./dist/utilities/index.js",
             "default": "./dist/utilities/index.js"
         },
+        "./utilities/clipboard": {
+            "types": "./dist/utilities/clipboard/index.d.ts",
+            "svelte": "./dist/utilities/clipboard/index.js",
+            "default": "./dist/utilities/clipboard/index.js"
+        },
         "./utilities/context": {
             "types": "./dist/utilities/context/index.d.ts",
             "svelte": "./dist/utilities/context/index.js",
@@ -258,15 +263,15 @@
             "svelte": "./dist/utilities/hotkeys/index.js",
             "default": "./dist/utilities/hotkeys/index.js"
         },
-        "./utilities/persisted": {
-            "types": "./dist/utilities/persisted/index.d.ts",
-            "svelte": "./dist/utilities/persisted/index.js",
-            "default": "./dist/utilities/persisted/index.js"
+        "./utilities/persisted-state": {
+            "types": "./dist/utilities/persisted-state/index.d.ts",
+            "svelte": "./dist/utilities/persisted-state/index.js",
+            "default": "./dist/utilities/persisted-state/index.js"
         },
-        "./utilities/selection": {
-            "types": "./dist/utilities/selection/index.d.ts",
-            "svelte": "./dist/utilities/selection/index.js",
-            "default": "./dist/utilities/selection/index.js"
+        "./utilities/selection-state": {
+            "types": "./dist/utilities/selection-state/index.d.ts",
+            "svelte": "./dist/utilities/selection-state/index.js",
+            "default": "./dist/utilities/selection-state/index.js"
         },
         "./utilities/use-id": {
             "types": "./dist/utilities/use-id/index.d.ts",
