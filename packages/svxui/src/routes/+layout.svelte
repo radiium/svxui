@@ -1,5 +1,15 @@
 <script lang="ts">
-    import { rovingfocus, Select, Text, ThemeRootProvider, useThemeRootContext } from '$lib/index.js';
+    import SelectOption from '$lib/components/select/components/select-option.svelte';
+    import {
+        rovingfocus,
+        Select,
+        Text,
+        ThemeRootProvider,
+        useThemeRootContext,
+        type StrategyType,
+        type Color,
+        type Radius
+    } from '$lib/index.js';
     import '$lib/styles/normalize.css';
     import '$lib/styles/tokens.css';
     import '$lib/styles/utilities.css';
@@ -29,7 +39,9 @@
                 'accordion', //
                 'badge',
                 'button',
+                'dialog',
                 'floating',
+                'input-number',
                 'listbox',
                 'panel',
                 'portal',
@@ -48,9 +60,16 @@
         },
         {
             name: 'experiments',
-            items: ['selectfloat']
+            items: [
+                'selectfloat', //
+                'xp'
+            ]
         }
     ];
+
+    const strategies = ['dark', 'light', 'system'] as StrategyType[];
+    const colors = ['neutral', 'blue', 'green', 'yellow', 'orange', 'red'] as Color[];
+    const radius = ['none', 'small', 'medium', 'large', 'full'] as Radius[];
 </script>
 
 <ThemeRootProvider>
@@ -67,31 +86,41 @@
             <label>
                 theme:
                 <Select
-                    options={['dark', 'light', 'system']}
                     value={themeRoot.strategy}
-                    onValueChange={themeRoot.setStrategy}
-                />
+                    onValueChange={(newValue) => newValue && themeRoot.setStrategy(newValue)}
+                >
+                    {#each strategies as value (value)}
+                        <SelectOption {value}>{value}</SelectOption>
+                    {/each}
+                </Select>
             </label>
 
             <label>
                 color:
                 <Select
-                    options={['neutral', 'blue', 'green', 'yellow', 'orange', 'red']}
                     value={themeRoot.color}
-                    onValueChange={themeRoot.setColor}
-                />
+                    onValueChange={(newValue) => newValue && themeRoot.setColor(newValue)}
+                >
+                    {#each colors as value (value)}
+                        <SelectOption {value}>{value}</SelectOption>
+                    {/each}
+                </Select>
             </label>
 
             <label>
                 radius:
                 <Select
-                    options={['none', 'small', 'medium', 'large', 'full']}
                     value={themeRoot.radius}
-                    onValueChange={themeRoot.setRadius}
-                />
+                    onValueChange={(newValue) => newValue && themeRoot.setRadius(newValue)}
+                >
+                    {#each radius as value (value)}
+                        <SelectOption {value}>{value}</SelectOption>
+                    {/each}
+                </Select>
             </label>
         </header>
         <aside>
+            <div class="box"></div>
             <ul {@attach rovingfocus({ target: '[data-page]', activateOnFocus: false })}>
                 {#each sections as section, i (i)}
                     <li>
@@ -164,6 +193,34 @@
             grid-area: 2 / 1 / 3 / 2;
             border-right: 1px solid var(--accent-7);
             padding: var(--space-3);
+            position: relative;
+
+            .box {
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 100px;
+
+                --mask:
+                    radial-gradient(
+                            16.16px at calc(100% + 7.8px) 50%,
+                            #0000 calc(99% - 2px),
+                            red calc(101% - 2px) 99%,
+                            #0000 101%
+                        )
+                        calc(50% - 7.5px + 0.5px) calc(50% - 26px)/15px 52px repeat-y,
+                    radial-gradient(
+                            16.16px at -7.8px 50%,
+                            #0000 calc(99% - 2px),
+                            red calc(101% - 2px) 99%,
+                            #0000 101%
+                        )
+                        calc(50% + 7.5px) 50%/15px 52px repeat-y;
+                -webkit-mask: var(--mask);
+                mask: var(--mask);
+            }
 
             > ul {
                 list-style: none;

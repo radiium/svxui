@@ -1,0 +1,25 @@
+---
+title: Listbox
+description: A renderless component for displaying a list of selectable options. Supports single or multiple selection, dynamic content, keyboard navigation, and customizable item rendering.
+category: components
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview }/>
+
+> This component wraps [ListboxBuilder](/docs/builders/listbox) and exposes its behavior as a renderless component.
+
+## API Reference
+
+<ApiReference category="components" names={['listbox']}/>
+
+## Examples
+
+{#each examples.items as item }
+<SectionDemo {...item }/>
+{/each}

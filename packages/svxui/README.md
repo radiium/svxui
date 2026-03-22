@@ -1,68 +1,55 @@
 # svxui
 
-Svxui is free and open-source UI component library for svelte app.
+Svxui is a Svelte 5 component library inspired by the design system and DX of [@radix-ui/themes](https://www.radix-ui.com), powered by the [Radix color system](https://www.radix-ui.com/colors). It takes a prop-driven approach to customization — for those who'd rather not count utility classes for a living.
 
---- 
-
-## Interactive [Documentation](https://svxui.vercel.app/)
-
-## Features
-
-### 23 customizable components:
-- Type-safe with TypeScript.
-- Most components are based on [Radix UI Themes](https://www.radix-ui.com/themes/docs/overview/getting-started).
-
-### Accessible colors:
-- Based on [Radix Colors](https://www.radix-ui.com/colors).
-- Intuitive aliases `gray`/`primary`/`blue`/`green`/`yellow`/`orange`/`red`.
-  
-### Light & Dark themes:
-- Prevent FLOUC (Flash Of Unstyled Content).
-- Real time system theme tracking.
-- ssr/ssg compatible
+> **Documentation:** [svxui.vercel.app →](https://svxui.vercel.app/)
 
 ## Installation
 
 ```bash
 npm install svxui
-```
-
-```bash
-pnpm install svxui
-```
-
-```bash
+# or
+pnpm add svxui
+# or
 yarn add svxui
 ```
 
-## Development
+## Quick start
 
-### Install 
+**1. Set up your root layout**
 
-```bash
-pnpm install
+Add the required CSS and wrap your app with `<ThemeRootProvider/>`. All svxui components must be used inside it.
+
+`tokens.css` is required — it contains all the CSS variables the components depend on. The others are optional.
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+    import 'svxui/styles/tokens.css'; // Required
+    import 'svxui/styles/normalize.css'; // Optional
+    import 'svxui/styles/utilities.css'; // Optional
+    import { ThemeRootProvider } from 'svxui';
+
+    let { children } = $props();
+</script>
+
+<ThemeRootProvider>
+    {@render children?.()}
+</ThemeRootProvider>
 ```
 
-### Serve docs site + lib
+**2. Start building**
 
-```bash
-pnpm run dev
+```svelte
+<!-- src/routes/+page.svelte -->
+<script>
+    import { Button } from 'svxui';
+</script>
+
+<Button>Hello</Button>
 ```
 
-### Serve lib only
+## License & Credits
 
-```bash
-pnpm run dev:lib
-```
-
-## Credits
-
-Some parts of this lib come from the following:  
-(thanks to the developers for their incredible work!)
-
--   [Radix UI](https://www.radix-ui.com/)
--   [Svecosystem](https://github.com/svecosystem)
--   [sthemer](https://github.com/ivanhofer/sthemer)
--   [svelte-portal](https://github.com/romkor/svelte-portal)
--   [trap-focus-svelte](https://github.com/henrygd/trap-focus-svelte)
--   [clsx](https://github.com/lukeed/clsx)
+MIT License.
+See [NOTICE.md](https://github.com/radiium/svxui/blob/main/NOTICE.md) for third-party credits.

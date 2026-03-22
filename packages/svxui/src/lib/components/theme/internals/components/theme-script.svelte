@@ -34,9 +34,9 @@
             const rootEl = document.documentElement;
             const themeMetaEl = document.querySelector('meta[name="theme-color"]');
 
-            const strategy = localStorage.getItem(strategyKey) || defaultStrategy;
-            const radius = localStorage.getItem(radiusKey) || defaultRadius;
-            const color = localStorage.getItem(colorKey) || defaultColor;
+            const strategy = localStorage.getItem(strategyKey) ?? defaultStrategy;
+            const radius = localStorage.getItem(radiusKey) ?? defaultRadius;
+            const color = localStorage.getItem(colorKey) ?? defaultColor;
 
             const isLight =
                 strategy === 'light' ||

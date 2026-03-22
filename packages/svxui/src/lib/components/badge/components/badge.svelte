@@ -3,7 +3,7 @@
 
     let {
         ref = $bindable(),
-        size = '1',
+        size = '2',
         variant = 'solid',
         color = undefined,
         radius = undefined,
@@ -16,22 +16,20 @@
         rest.class,
         'badge',
         {
+            'badge-disabled': disabled,
             [`badge-size-${size}`]: size,
-            [`badge-color-${color}`]: color,
-            [`badge-variant-${variant}`]: variant,
-            'badge-disabled': disabled
+            [`badge-variant-${variant}`]: variant
         }
     ]);
 </script>
 
 <span
     {...rest}
-    data-color={color}
-    data-size={size}
-    data-radius={radius}
-    aria-disabled={disabled}
-    class={cssClass}
     bind:this={ref}
+    class={cssClass}
+    aria-disabled={disabled ? 'true' : undefined}
+    data-color={color}
+    data-radius={radius}
 >
     {@render children?.()}
 </span>

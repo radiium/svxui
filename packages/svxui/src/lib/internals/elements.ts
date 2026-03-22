@@ -16,9 +16,9 @@ export function getHtmlElement(
 }
 
 /**
- *
- * @param node
- * @returns
+ * Returns the document's root element if given a `Document`, otherwise returns the node as-is.
+ * @param node HTMLElement or Document to unwrap
+ * @returns The corresponding HTMLElement
  */
 export function toHTMLElement(node: HTMLElement | Document): HTMLElement {
     if (node.isSameNode(document)) {

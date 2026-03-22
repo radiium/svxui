@@ -6,7 +6,7 @@
     import { fade } from 'svelte/transition';
 
     let opened = $state(false);
-    let arrowEl: HTMLElement | undefined = $state(undefined);
+    let arrowEl: SVGSVGElement | undefined = $state(undefined);
 
     const floating = new FloatingBuilder({
         get isOpen() {
@@ -34,18 +34,14 @@
                 ];
             }
         },
-        focus: {
-            onOpen: '[data-focusopen]',
-            onClose: '[data-focusclose]',
-            trap: true
-        },
-        closeOn: {
-            clickBackdrop: false,
-            clickOutside: false,
-            escape: false,
-            resize: false,
-            scroll: false
-        }
+        focusOnOpen: '[data-focusopen]',
+        focusOnClose: '[data-focusclose]',
+        focusTrap: true,
+        closeOnBackdropClick: false,
+        closeOnOutsideClick: false,
+        closeOnEscape: false,
+        closeOnResize: false,
+        closeOnScroll: false
     });
 </script>
 

@@ -22,17 +22,20 @@
         border-radius: max(var(--radius-3), var(--radius-full));
     }
 
-    :global(.input-group > :first-child) {
+    :global(.input-group > :first-child:not(:only-child)) {
         border-bottom-right-radius: 0 !important;
         border-top-right-radius: 0 !important;
     }
+
     :global(.input-group > :not(:first-child, :last-child)) {
         border-radius: 0 !important;
     }
-    :global(.input-group > :last-child) {
+
+    :global(.input-group > :last-child:not(:only-child)) {
         border-bottom-left-radius: 0 !important;
         border-top-left-radius: 0 !important;
     }
+
     :global(.input-group > :not(:first-child)) {
         margin-left: -1px;
     }

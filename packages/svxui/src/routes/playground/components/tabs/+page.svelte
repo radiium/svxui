@@ -6,7 +6,7 @@
 
     const items = ['1', '2', '3', '4'];
 
-    let props: TabsProps<string> = $state({
+    const props: TabsProps<string> = $state({
         disabled: false,
         loop: false,
         activateOnFocus: false,

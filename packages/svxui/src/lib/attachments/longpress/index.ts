@@ -1,2 +1,2 @@
-export { longpress } from './attachment.svelte.js';
+export { longpress } from './longpress.svelte.ts';
 export type { LongpressOptions } from './types.js';

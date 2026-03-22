@@ -1,0 +1,21 @@
+---
+title: Hotkeys
+description: Tracks active keyboard keys and handles hotkey combinations with callback bindings.
+category: utilities
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview }/>
+
+## Type Definition
+
+<ApiReference category="utilities" names={['hotkeys']}/>
+
+## Credits
+
+[Runed](https://github.com/svecosystem/runed/blob/main/packages/runed/src/lib/utilities/pressed-keys/pressed-keys.svelte.ts)

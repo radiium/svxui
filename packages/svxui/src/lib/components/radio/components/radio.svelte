@@ -13,21 +13,22 @@
         rest.class,
         'radio',
         {
-            [`radio-size-${size}`]: size,
-            [`radio-color-${color}`]: color
+            [`radio-size-${size}`]: size
         }
     ]);
+
+    let dataState = $derived(group === rest.value ? 'checked' : 'unchecked');
 </script>
 
 <input
     {...rest}
-    data-color={color}
-    data-size={size}
-    data-checked={group === rest.value ? 'true' : undefined}
+    bind:this={ref}
+    bind:group
     type="radio"
     class={cssClass}
-    bind:group
-    bind:this={ref}
+    data-color={color}
+    data-size={size}
+    data-state={dataState}
 />
 
 <style>
@@ -48,8 +49,6 @@
 
         width: var(--radio-size);
         height: var(--radio-size);
-        background-color: var(--radio-background);
-        box-shadow: inset 0px 0px 0px 1px var(--color-box-shadow);
 
         --radio-background: var(--accent-surface);
         --radio-background-checked: var(--accent-track);
@@ -62,12 +61,21 @@
             transform: scale(0.4);
             position: absolute;
             border-radius: 100%;
-            background-color: transparent;
             transition: background-color ease 0.2s;
         }
 
         /* States */
-        &:checked {
+        &:not(:checked),
+        &[data-state='unchecked'] {
+            background-color: var(--radio-background);
+            box-shadow: inset 0px 0px 0px 1px var(--color-box-shadow);
+
+            &:after {
+                background-color: transparent;
+            }
+        }
+        &:checked,
+        &[data-state='checked'] {
             background-color: var(--radio-background-checked);
             box-shadow: none;
 

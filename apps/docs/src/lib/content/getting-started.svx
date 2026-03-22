@@ -1,0 +1,78 @@
+---
+title: Getting Started
+description: Install Svxui and start building.
+---
+
+## Installation
+
+### 1. Install svxui
+
+Install svxui with the package manager of your choice.
+
+```bash
+npm install svxui
+```
+
+### 2. Set up your root layout
+
+Add the required CSS and wrap your app with `<ThemeRootProvider/>`. All svxui components must be used inside it.
+
+`tokens.css` is required — it contains all the CSS variables the components depend on. The others are optional.
+
+```svelte title="src/routes/+layout.svelte"
+<script>
+    import 'svxui/styles/tokens.css'; // Required // [!code highlight]
+    import 'svxui/styles/normalize.css'; // Optional
+    import 'svxui/styles/utilities.css'; // Optional
+    import { ThemeRootProvider } from 'svxui'; // [!code highlight]
+
+    let { children } = $props();
+</script>
+
+<ThemeRootProvider> // [!code highlight]
+    {@render children?.()}
+</ThemeRootProvider> // [!code highlight]
+```
+
+### 3. Start building
+
+Your app is ready to use **svxui**!
+
+```svelte title="+page.svelte"
+<script>
+    import { Button } from 'svxui';
+</script>
+
+<Button>Button</Button>
+```
+
+## Imports
+
+### Default import
+
+Import everything from the root entry point:
+
+```ts
+import { Button, Badge, Dialog } from 'svxui';
+```
+
+### Granular imports
+
+Each layer has its own entry point. Use granular imports for better tree-shaking or when you only need specific modules:
+
+```ts
+// Components
+import { Button } from 'svxui/components/button';
+
+// Builders
+import { TabsBuilder } from 'svxui/builders/tabs';
+import { DialogBuilder } from 'svxui/builders/dialog';
+
+// Attachments
+import { clickoutside } from 'svxui/attachments/clickoutside';
+import { focustrap } from 'svxui/attachments/focustrap';
+
+// Utilities
+import { hotkeys } from 'svxui/utilities/hotkeys';
+import { PersistedState } from 'svxui/utilities/persisted-state';
+```

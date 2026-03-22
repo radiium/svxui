@@ -1,22 +1,37 @@
 import type { Color, Radius } from '$lib/shared.types.js';
-import type { HTMLSelectAttributes } from 'svelte/elements';
+import type { Snippet } from 'svelte';
+import type { HTMLOptgroupAttributes, HTMLOptionAttributes, HTMLSelectAttributes } from 'svelte/elements';
 
 export type SelectSize = '1' | '2' | '3';
-export type SelectOptionType = string | number | Record<string, any> | undefined;
-export type SelectValueChange<T> = (newValue: T) => void;
+export type SelectValue<Value extends string | number = string | number, Multiple extends boolean = false> =
+    | (Multiple extends true ? Value[] : Value)
+    | null
+    | undefined;
 
 /**
  * Extends all the standard HTML attributes of the `<select>` element.
  */
-export type SelectProps<T extends SelectOptionType> = Omit<HTMLSelectAttributes, 'size' | 'color'> & {
+export type SelectProps<Value extends string | number, Multiple extends boolean> = Omit<
+    HTMLSelectAttributes,
+    'value' | 'multiple' | 'color' | 'size' | 'children'
+> & {
     /**
      * Reference to the rendered DOM element.
      */
     ref?: HTMLSelectElement;
     /**
+     * Current selected value(s).
+     * If `multiple` is true, this will be an array of values.
+     */
+    value?: SelectValue<Value, Multiple>;
+    /**
      * Callback when value change
      */
-    onValueChange?: SelectValueChange<T>;
+    onValueChange?: (newValue: SelectValue<Value, Multiple>) => void;
+    /**
+     * Whether multiple values can be selected.
+     */
+    multiple?: Multiple;
     /**
      * Select size
      */
@@ -30,23 +45,51 @@ export type SelectProps<T extends SelectOptionType> = Omit<HTMLSelectAttributes,
      */
     radius?: Radius;
     /**
-     * Select options
-     */
-    options: T[];
-    /**
-     * Resolve value of option
-     */
-    optionLabel?: string | ((item: T) => string | number);
-    /**
-     * Resolve label fron SelectOption object
-     */
-    optionValue?: string | ((item: T) => string | number);
-    /**
      * Select full size
      */
     fullWidth?: boolean;
     /**
-     * Native html size
+     * The native `size` property of HTMLSelectElement. Used only if `multiple` is true.
      */
     selectSize?: HTMLSelectAttributes['size'];
+    /**
+     * Select content to render
+     */
+    children?: Snippet<[void]>;
+};
+
+/**
+ * Extends all the standard HTML attributes of the `<optgroup>` element.
+ */
+export type SelectOptgroupProps = Omit<HTMLOptgroupAttributes, 'children'> & {
+    /**
+     * Reference to the rendered DOM element.
+     */
+    ref?: HTMLOptGroupElement;
+    /**
+     * The label of optgroup
+     */
+    label: string | number;
+    /**
+     * Optgroup content to render
+     */
+    children?: Snippet<[void]>;
+};
+
+/**
+ * Extends all the standard HTML attributes of the `<option>` element.
+ */
+export type SelectOptionProps = Omit<HTMLOptionAttributes, 'children'> & {
+    /**
+     * Reference to the rendered DOM element.
+     */
+    ref?: HTMLOptionElement;
+    /**
+     * The value of option
+     */
+    value: string | number;
+    /**
+     * Option content to render
+     */
+    children?: Snippet<[void]>;
 };

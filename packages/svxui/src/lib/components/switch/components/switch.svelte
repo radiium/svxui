@@ -1,9 +1,11 @@
 <script lang="ts">
+    import { isNil } from '$lib/internals/is.js';
     import type { SwitchProps } from '../types.js';
 
     let {
         ref = $bindable(),
         checked = $bindable(),
+        onCheckedChange = undefined,
         group = $bindable(),
         value = undefined,
         color = undefined,
@@ -12,47 +14,52 @@
         ...rest
     }: SwitchProps = $props();
 
+    // Update group when switch changes
+    function onChange(event: Event & { currentTarget: HTMLInputElement }) {
+        if (!isNil(group) && !isNil(value)) {
+            group = group.includes(value)
+                ? // Remove value
+                  group.filter((v: string | number) => v !== value)
+                : // Add value
+                  [...group, value];
+        }
+
+        rest.onchange?.(event);
+        onCheckedChange?.(checked === true);
+    }
+
+    // Update checked when group change
+    $effect(() => {
+        if (!isNil(group)) {
+            checked = group?.includes(value);
+        }
+    });
+
     let cssClass = $derived([
         rest.class,
         'switch',
         {
-            [`switch-size-${size}`]: size,
-            [`switch-color-${color}`]: color
+            [`switch-size-${size}`]: size
         }
     ]);
+
+    let dataState = $derived(checked ? 'checked' : 'unchecked');
 </script>
 
-{#if group}
-    <input
-        {...rest}
-        class={cssClass}
-        type="checkbox"
-        role="switch"
-        aria-checked={checked}
-        data-color={color}
-        data-size={size}
-        data-radius={radius}
-        data-state={checked ? 'checked' : 'unchecked'}
-        {value}
-        bind:group
-        bind:this={ref}
-    />
-{:else}
-    <input
-        {...rest}
-        class={cssClass}
-        type="checkbox"
-        role="switch"
-        aria-checked={checked}
-        data-color={color}
-        data-size={size}
-        data-radius={radius}
-        data-state={checked ? 'checked' : 'unchecked'}
-        {value}
-        bind:checked
-        bind:this={ref}
-    />
-{/if}
+<input
+    {...rest}
+    bind:this={ref}
+    bind:checked
+    onchange={onChange}
+    {value}
+    indeterminate={false}
+    type="checkbox"
+    role="switch"
+    class={cssClass}
+    data-color={color}
+    data-radius={radius}
+    data-state={dataState}
+/>
 
 <style>
     .switch {
@@ -71,7 +78,6 @@
         width: var(--switch-width);
         height: var(--switch-height);
         border-radius: var(--switch-border-radius);
-        background: var(--switch-background);
         padding: var(--switch-padding);
 
         --switch-background: var(--neutral-3);
@@ -93,12 +99,18 @@
         }
 
         /* States */
-        &:checked {
+        &:not(:checked),
+        &[data-state='unchecked'] {
+            background: var(--switch-background);
+        }
+
+        &:checked,
+        &[data-state='checked'] {
             background-color: var(--switch-background-checked);
 
             &:after {
-                transform: translateX(var(--switch-thumb-translate));
                 display: block;
+                transform: translateX(var(--switch-thumb-translate));
             }
         }
 

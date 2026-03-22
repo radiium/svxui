@@ -1,0 +1,55 @@
+/*
+ * Utilities: border-radius
+ */
+
+@use 'sass:meta';
+
+$radiusProps: (
+    't': (
+        'border-top-left-radius',
+        'border-top-right-radius'
+    ),
+    'b': (
+        'border-bottom-left-radius',
+        'border-bottom-right-radius'
+    ),
+    'l': (
+        'border-top-left-radius',
+        'border-bottom-left-radius'
+    ),
+    'r': (
+        'border-top-right-radius',
+        'border-bottom-right-radius'
+    ),
+    'tl': 'border-top-left-radius',
+    'tr': 'border-top-right-radius',
+    'bl': 'border-bottom-left-radius',
+    'br': 'border-bottom-right-radius',
+    '': 'border-radius'
+) !default;
+
+$radiusValues: (
+    'none': 0,
+    '0': var(--radius-0),
+    '1': var(--radius-1),
+    '2': var(--radius-2),
+    '3': var(--radius-3),
+    '4': var(--radius-4),
+    '5': var(--radius-5),
+    '6': var(--radius-6),
+    'full': var(--radius-full)
+) !default;
+
+@each $propKey, $propValue in $radiusProps {
+    @each $radiusKey, $radiusValue in $radiusValues {
+        .r#{$propKey}-#{$radiusKey} {
+            @if meta.type-of($propValue) == 'list' {
+                @each $prop in $propValue {
+                    #{$prop}: $radiusValue;
+                }
+            } @else {
+                #{$propValue}: $radiusValue;
+            }
+        }
+    }
+}

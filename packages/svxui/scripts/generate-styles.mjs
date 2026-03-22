@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
 import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { compile } from 'sass';
 
-const BASE_INPUT_DIR = resolve('src/lib-styles');
+const BASE_INPUT_DIR = resolve('styles');
 const BASE_OUTPUT_DIR = resolve('src/lib/styles');
 
 // ---- clean output folder
@@ -22,12 +23,7 @@ mkdirSync(BASE_OUTPUT_DIR);
     const output = resolve(BASE_OUTPUT_DIR, dest);
 
     cpSync(input, output, { recursive: true });
-
     console.log('copy directory :', input.replace(resolve('./'), '.'));
-    // console.log('✅ folder copied :', {
-    //     from: input.replace(resolve('./'), '.'),
-    //     to: output.replace(resolve('./'), '.')
-    // });
 });
 
 // ---- Build CSS files
@@ -82,6 +78,10 @@ mkdirSync(BASE_OUTPUT_DIR);
         dest: 'utilities.position.css'
     },
     {
+        src: 'utilities/radius.scss',
+        dest: 'utilities.radius.css'
+    },
+    {
         src: 'utilities/size.scss',
         dest: 'utilities.size.css'
     },
@@ -97,8 +97,16 @@ mkdirSync(BASE_OUTPUT_DIR);
     const input = resolve(BASE_INPUT_DIR, src);
     const output = resolve(BASE_OUTPUT_DIR, dest);
 
-    const result = compile(input, { sourceMap: true, verbose: true });
-    writeFileSync(output, result.css);
+    try {
+        const result = compile(input, { sourceMap: true, verbose: true });
+        writeFileSync(output, result.css);
+    } catch (error) {
+        console.log('compile sass file error:', {
+            src: input,
+            dest: output,
+            error
+        });
+    }
     console.log('compile sass file:', input.replace(resolve('./'), '.'));
 });
 

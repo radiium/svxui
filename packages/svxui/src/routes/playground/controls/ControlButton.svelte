@@ -7,5 +7,5 @@
 </script>
 
 <Flexbox align="center" gap="2" as="label">
-    <Button variant="outline" {...rest}>{@render children?.()}</Button>
+    <Button variant="outline" tabindex={0} {...rest}>{@render children?.()}</Button>
 </Flexbox>

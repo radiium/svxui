@@ -3,7 +3,7 @@
     import ControlButton from '../../controls/ControlButton.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let persisted = new PersistedState('test-key', 'hello world');
+    const persisted = new PersistedState('test-key', 'hello world');
     let connected = $state(persisted.connected);
 </script>
 

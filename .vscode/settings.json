@@ -1,32 +1,20 @@
 {
-  "editor.formatOnSave": true,
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
-  "eslint.useFlatConfig": true,
-  "eslint.validate": ["javascript", "svelte"],
-  "eslint.debug": true,
-  "eslint.probe": [
-    "astro",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "html",
-    "svx",
-    "mdx",
-    "vue",
-    "markdown",
-    "json",
-    "jsonc",
-    "svelte"
-  ],
-  "files.associations": {
-    "*.svx": "svx"
-  },
-  "[svelte]": {
-    "editor.wordWrap": "off"
-  }
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "html",
+        "markdown",
+        "json",
+        "jsonc",
+        "yaml",
+        "toml",
+        "gql",
+        "graphql",
+        "svelte"
+    ]
 }

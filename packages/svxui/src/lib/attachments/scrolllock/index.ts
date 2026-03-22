@@ -1,2 +1,2 @@
-export { scrolllock } from './attachment.svelte.js';
+export { scrolllock } from './scrolllock.svelte.ts';
 export type { ScrolllockOptions } from './types.js';

@@ -1,18 +1,17 @@
 <script lang="ts" module>
-    let items: string[] = $state([]);
+    let layers: string[] = $state([]);
 </script>
 
 <script lang="ts">
     import { FloatingBuilder } from '$lib/builders/floating/index.js';
     import Panel from '$lib/components/panel/components/panel.svelte';
+    import Portal from '$lib/components/portal/components/portal.svelte';
+    import { buildFloatingMiddlewares } from '$lib/internals/build-floating-middlewares.js';
     import { autoUpdate as floatingAutoUpdate } from '@floating-ui/dom';
     import { untrack } from 'svelte';
     import { fade } from 'svelte/transition';
-    import { portal as portalAttachment } from '../../../attachments/portal/index.js';
     import type { FloatingProps } from '../types.js';
     import FloatingArrow from './floating-arrow.svelte';
-    import Portal from '$lib/components/portal/components/portal.svelte';
-    import { buildFloatingMiddlewares } from '$lib/internals/build-floating-middlewares.js';
 
     let {
         ref = $bindable(),
@@ -39,14 +38,14 @@
         arrowTipRadius = undefined,
         // Portal config
         portal = false,
-        portalTarget = '.svxui[data-theme-root]',
+        portalTarget = '[data-theme-root]',
         // Focus config
+        focusTrap = false,
         focusOnOpen = undefined,
         focusOnClose = undefined,
-        focusTrap = false,
         // Close config
-        closeOnClickBackdrop = false,
-        closeOnClickOutside = false,
+        closeOnBackdropClick = false,
+        closeOnOutsideClick = false,
         closeOnEscape = false,
         closeOnResize = false,
         closeOnScroll = false,
@@ -59,7 +58,7 @@
         ...rest
     }: FloatingProps = $props();
 
-    let arrowEl: HTMLElement | undefined = $state(undefined);
+    let arrowEl: SVGSVGElement | undefined = $state(undefined);
     const floating = new FloatingBuilder({
         // pattern: 'popover',
         get isOpen() {
@@ -89,45 +88,41 @@
                 });
             }
         },
-        focus: {
-            get onOpen() {
-                return focusOnOpen;
-            },
-            get onClose() {
-                return focusOnClose;
-            },
-            get trap() {
-                return focusTrap;
-            }
+        get focusOnOpen() {
+            return focusOnOpen;
         },
-        closeOn: {
-            get clickBackdrop() {
-                return closeOnClickBackdrop;
-            },
-            get clickOutside() {
-                return closeOnClickOutside;
-            },
-            get escape() {
-                return closeOnEscape;
-            },
-            get resize() {
-                return closeOnResize;
-            },
-            get scroll() {
-                return closeOnScroll;
-            }
+        get focusOnClose() {
+            return focusOnClose;
+        },
+        get focusTrap() {
+            return focusTrap;
+        },
+        get closeOnBackdropClick() {
+            return closeOnBackdropClick;
+        },
+        get closeOnOutsideClick() {
+            return closeOnOutsideClick;
+        },
+        get closeOnEscape() {
+            return closeOnEscape;
+        },
+        get closeOnResize() {
+            return closeOnResize;
+        },
+        get closeOnScroll() {
+            return closeOnScroll;
         }
     });
 
     // Manage current active floating
     let id = $props.id();
-    let active = $derived(items.length > 0 && items.at(-1) === id);
-    let zIndex = $derived(items.findIndex((o) => o === id) + 1);
+    let active = $derived(layers.length > 0 && layers.at(-1) === id);
+    let zIndex = $derived(layers.findIndex((o) => o === id) + 1);
     $effect(() => {
         if (isOpen) {
-            untrack(() => items.push(id));
+            untrack(() => layers.push(id));
         } else {
-            untrack(() => (items = items.filter((o) => o !== id)));
+            untrack(() => (layers = layers.filter((o) => o !== id)));
         }
     });
 
@@ -140,8 +135,7 @@
 </div>
 
 <!-- Floating -->
-<Portal target={portalTarget} enabled={portal}>
-    <!-- <div {@attach portalAttachment({ enabled: portal, target: portalTarget })} style="display: content;"> -->
+<Portal target={portalTarget} enabled={portal && isOpen}>
     {#if isOpen}
         <!-- Backdrop -->
         {#if backdrop}
@@ -169,8 +163,8 @@
             {#if arrow}
                 <FloatingArrow
                     bind:ref={arrowEl}
-                    {zIndex}
                     floatingState={floating.state}
+                    {zIndex}
                     {color}
                     {variant}
                     {outline}
@@ -181,7 +175,6 @@
             {/if}
         </div>
     {/if}
-    <!-- </div> -->
 </Portal>
 
 <style>
@@ -198,7 +191,6 @@
         inset: 0 0 0 0;
         width: 100vw;
         height: 100vh;
-        /* cursor: pointer; */
         background: var(--color-overlay);
     }
 

@@ -1,0 +1,54 @@
+---
+title: Introduction
+description: An alternative Svelte 5 component library.
+---
+
+## Overview
+
+Svxui is a Svelte 5 component library inspired by the design system and DX of [@radix-ui/themes](https://www.radix-ui.com), powered by the [Radix color system](https://www.radix-ui.com/colors). It takes a prop-driven approach to customization — for those who'd rather not count utility classes for a living.
+
+## Architecture
+
+The library is organized into four layers:
+
+- **Components** — Pre-built, styled UI components ready to use
+- **Builders** — Headless state managers: use these when you need full control over markup and style
+- **Attachments** — Composable behaviors (focus trap, click outside, scroll lock...) usable in any component
+- **Utilities** — Standalone helper modules (hotkeys, persisted state, clipboard...)
+
+Start with Components. Reach for Builders when the pre-built markup doesn't fit your design.
+
+## Color System
+
+The color system is based on [@radix-ui/colors](https://www.radix-ui.com/colors). A default palette ships out of the box. You can extend it with any pre-built Radix palette or create custom ones — and map them to semantic aliases like `primary`, `danger`, or `info` via TypeScript namespace augmentation.
+
+## Theming System
+
+The library includes a theming system with support for light, dark, and system preference modes. This implementation draws inspiration from Svelte 5 [mode-watcher](https://mode-watcher.sveco.dev/) library.
+
+Key features of the theming system include:
+
+- Full compatibility with server-side rendering (SSR) and static site generation (SSG)
+- Prevention of Flash Of Unstyled Content (FOUC) during theme transitions
+- Active monitoring of system preference changes to maintain synchronization
+- Smooth visual transitions when switching between themes
+
+## Extensibility
+
+The color system is extensible via TypeScript namespace augmentation — add any Radix color palette as a named alias in your project. For UI, use Builders to create fully custom components that share the same accessibility foundations as the pre-built ones.
+
+## Credits
+
+This library includes, adapts, or is inspired by code from the following projects:
+
+- [@radix-ui/colors](https://github.com/radix-ui/colors)
+- [@radix-ui/themes](https://github.com/radix-ui/themes)
+- [bits-ui](https://github.com/huntabyte/bits-ui)
+- [melt](https://github.com/melt-ui/next-gen)
+- [runed](https://github.com/svecosystem/runed)
+- [mode-watcher](https://github.com/svecosystem/mode-watcher)
+- [@skeletonlabs/floating-ui-svelte](https://github.com/skeletonlabs/floating-ui-svelte)
+- [trap-focus-svelte](https://github.com/henrygd/trap-focus-svelte)
+- [svelte-portal](https://github.com/romkor/svelte-portal)
+- [nanoid](https://github.com/ai/nanoid)
+- [modern-normalize](https://github.com/sindresorhus/modern-normalize)

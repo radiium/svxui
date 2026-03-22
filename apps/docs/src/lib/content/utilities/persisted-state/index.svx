@@ -1,0 +1,44 @@
+---
+title: PersistedState
+description: Creates reactive state that is persisted and synchronized across browser sessions and tabs using Web Storage.
+category: utilities
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview }/>
+
+## Usage 
+
+```typescript
+import { PersistedState } from 'svxui';
+
+let persisted = new PersistedState('storageKey', 0);
+
+// Disconnect sync state to storage
+persisted.disconnect();
+
+// Connect state sync to storage
+persisted.connect();
+
+// Check if state is connected
+console.log(persisted.connected);
+
+// Get current state value
+persisted.current;
+
+// Set current state value
+persisted.current = 42;
+```
+
+## Type Definition
+
+<ApiReference category="utilities" names={['persisted-state']}/>
+
+## Credits
+
+[Runed](https://github.com/svecosystem/runed/blob/main/packages/runed/src/lib/utilities/persisted-state/persisted-state.svelte.ts)

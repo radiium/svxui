@@ -1,0 +1,244 @@
+import { Dialog, type DialogProps } from '$lib/index.js';
+import { describe, expect, test, vi } from 'vitest';
+import { userEvent } from 'vitest/browser';
+import { renderWithWrapper } from '../../../../tests/render-with-wrapper.svelte.ts';
+import { createRawSnippet } from 'svelte';
+
+describe('Dialog component', () => {
+    const selector = '[role="dialog"]';
+
+    /* ------------------------------------------------- */
+    /* Basic rendering                                   */
+    /* ------------------------------------------------- */
+
+    describe('Basic Rendering', () => {
+        test('does not render when isOpen is false', async () => {
+            const { container } = renderWithWrapper(Dialog, { isOpen: false });
+            const dialog = container.querySelector(selector);
+
+            expect(dialog).toBeNull();
+        });
+
+        test('renders when isOpen is true', async () => {
+            const { container } = renderWithWrapper(Dialog, { isOpen: true });
+            const dialog = container.querySelector(selector);
+
+            expect(dialog).not.toBeNull();
+        });
+
+        test('renders with default props', async () => {
+            const { container } = renderWithWrapper(Dialog, { isOpen: true });
+            const dialog = container.querySelector(selector);
+
+            expect(dialog?.classList.contains('dialog')).toBe(true);
+            expect(dialog?.classList.contains('fixed')).toBe(true);
+        });
+
+        test('renders children content', async () => {
+            const children = createRawSnippet(() => ({
+                render: () => '<p data-testid="content">Hello</p>'
+            }));
+
+            const { container } = renderWithWrapper(Dialog, {
+                isOpen: true,
+                children
+            });
+
+            const content = container.querySelector('[data-testid="content"]');
+            expect(content).not.toBeNull();
+        });
+
+        test('forwards extra html attributes', async () => {
+            const { container } = renderWithWrapper(Dialog, {
+                isOpen: true,
+                id: 'my-dialog',
+                'data-testid': 'dialog'
+            });
+            const dialog = container.querySelector(selector);
+
+            expect(dialog?.getAttribute('id')).toBe('my-dialog');
+            expect(dialog?.getAttribute('data-testid')).toBe('dialog');
+        });
+    });
+
+    /* ------------------------------------------------- */
+    /* Layout                                            */
+    /* ------------------------------------------------- */
+
+    describe('Layout', () => {
+        test.each(['fixed', 'scroll', 'fullscreen'] as DialogProps['layout'][])(
+            'applies layout %s',
+            async (layout) => {
+                const { container } = renderWithWrapper(Dialog, { isOpen: true, layout });
+                const dialog = container.querySelector(selector);
+                const backdrop = container.querySelector('.backdrop');
+
+                expect(dialog?.classList.contains(layout!)).toBe(true);
+                expect(backdrop?.classList.contains(layout!)).toBe(true);
+            }
+        );
+    });
+
+    /* ------------------------------------------------- */
+    /* Backdrop                                          */
+    /* ------------------------------------------------- */
+
+    describe('Backdrop', () => {
+        test('renders backdrop when open', async () => {
+            const { container } = renderWithWrapper(Dialog, { isOpen: true });
+            const backdrop = container.querySelector('.backdrop');
+
+            expect(backdrop).not.toBeNull();
+        });
+
+        test('applies blurBackdrop class', async () => {
+            const { container } = renderWithWrapper(Dialog, {
+                isOpen: true,
+                blurBackdrop: true
+            });
+            const backdrop = container.querySelector('.backdrop');
+
+            expect(backdrop?.classList.contains('blurbackdrop')).toBe(true);
+        });
+
+        test('does not apply blurBackdrop in fullscreen layout', async () => {
+            const { container } = renderWithWrapper(Dialog, {
+                isOpen: true,
+                blurBackdrop: true,
+                layout: 'fullscreen'
+            });
+            const backdrop = container.querySelector('.backdrop');
+
+            expect(backdrop?.classList.contains('blurbackdrop')).toBe(false);
+        });
+
+        test('closes dialog on backdrop click when closeOnBackdropClick is true', async () => {
+            const onClose = vi.fn();
+            const { container } = renderWithWrapper(Dialog, {
+                isOpen: true,
+                closeOnBackdropClick: true,
+                onClose
+            });
+            const backdrop = container.querySelector('.backdrop') as HTMLElement;
+
+            await userEvent.click(backdrop);
+
+            expect(onClose).toHaveBeenCalledOnce();
+        });
+
+        test('does not close dialog on backdrop click when closeOnBackdropClick is false', async () => {
+            const onClose = vi.fn();
+            const { container } = renderWithWrapper(Dialog, {
+                isOpen: true,
+                closeOnBackdropClick: false,
+                onClose
+            });
+            const backdrop = container.querySelector('.backdrop') as HTMLElement;
+
+            await userEvent.click(backdrop);
+
+            expect(onClose).not.toHaveBeenCalled();
+        });
+    });
+
+    /* ------------------------------------------------- */
+    /* Keyboard interactions                             */
+    /* ------------------------------------------------- */
+
+    describe('Keyboard interactions', () => {
+        test('closes dialog on Escape key when closeOnEscape is true', async () => {
+            const onClose = vi.fn();
+            renderWithWrapper(Dialog, {
+                isOpen: true,
+                closeOnEscape: true,
+                onClose
+            });
+
+            await userEvent.keyboard('{Escape}');
+
+            expect(onClose).toHaveBeenCalledOnce();
+        });
+
+        test('does not close dialog on Escape key when closeOnEscape is false', async () => {
+            const onClose = vi.fn();
+            renderWithWrapper(Dialog, {
+                isOpen: true,
+                closeOnEscape: false,
+                onClose
+            });
+
+            await userEvent.keyboard('{Escape}');
+
+            expect(onClose).not.toHaveBeenCalled();
+        });
+    });
+
+    /* ------------------------------------------------- */
+    /* keepMounted                                       */
+    /* ------------------------------------------------- */
+
+    describe('keepMounted', () => {
+        test('renders dialog in DOM when keepMounted is true and isOpen is false', async () => {
+            const { container } = renderWithWrapper(Dialog, {
+                isOpen: false,
+                keepMounted: true
+            });
+            const dialog = container.querySelector(selector);
+
+            expect(dialog).not.toBeNull();
+        });
+
+        test('applies keepmounted class on backdrop and dialog', async () => {
+            const { container } = renderWithWrapper(Dialog, {
+                isOpen: true,
+                keepMounted: true
+            });
+            const backdrop = container.querySelector('.backdrop');
+            const dialog = container.querySelector(selector);
+
+            expect(backdrop?.classList.contains('keepmounted')).toBe(true);
+            expect(dialog?.classList.contains('keepmounted')).toBe(true);
+        });
+    });
+
+    /* ------------------------------------------------- */
+    /* Ref binding                                       */
+    /* ------------------------------------------------- */
+
+    describe('Ref binding', () => {
+        test('binds ref correctly', async () => {
+            let current: HTMLDivElement | undefined = undefined;
+
+            renderWithWrapper(Dialog, {
+                isOpen: true,
+                get ref() {
+                    return current;
+                },
+                set ref(value) {
+                    current = value;
+                }
+            });
+
+            await Promise.resolve();
+
+            expect(current).toBeInstanceOf(HTMLElement);
+        });
+    });
+
+    /* ------------------------------------------------- */
+    /* Custom class merging                              */
+    /* ------------------------------------------------- */
+
+    describe('Custom class', () => {
+        test('merges custom class with base classes', async () => {
+            const { container } = renderWithWrapper(Dialog, {
+                isOpen: true,
+                class: 'custom-class'
+            });
+            const dialog = container.querySelector(selector);
+
+            expect(dialog?.classList.contains('dialog')).toBe(true);
+            expect(dialog?.classList.contains('custom-class')).toBe(true);
+        });
+    });
+});

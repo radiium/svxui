@@ -18,7 +18,7 @@ export type ClickoutsideOptions = {
      * Type of event that triggers the clickoutside detection.
      * @default 'pointerdown'
      */
-    eventType?: string;
+    eventType?: 'pointerdown' | 'mousedown' | 'touchstart' | 'click';
     /**
      * Element on which to listen for events instead of document.
      * @default document

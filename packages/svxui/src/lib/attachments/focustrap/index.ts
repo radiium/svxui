@@ -1,2 +1,2 @@
-export { focustrap } from './attachment.svelte.js';
+export { focustrap } from './focustrap.svelte.ts';
 export type { FocustrapOptions } from './types.js';

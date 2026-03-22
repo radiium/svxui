@@ -18,4 +18,13 @@ export type SelectionStateOptions<Value, Multiple extends boolean> = {
      * Can select single or multiple value
      */
     multiple?: Multiple;
+    /**
+     * Callback called on value change
+     * @param newValue
+     */
+    onValueChange?: (newValue: SelectionStateValue<Value, Multiple>) => void;
+    /**
+     * Determines equality between two values. Defaults to `===`
+     */
+    compare?: (a: Value, b: Value) => boolean;
 };

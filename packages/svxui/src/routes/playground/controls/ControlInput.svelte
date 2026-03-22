@@ -12,5 +12,5 @@
     {#if label}
         <Text size="3">{label}</Text>
     {/if}
-    <Input {...rest} bind:value />
+    <Input tabindex={0} {...rest} bind:value />
 </Flexbox>

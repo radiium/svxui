@@ -1,2 +1,7 @@
-export { FloatingBuilder } from './builder.svelte.js';
-export type { FloatingBuilderOptions } from './types.js';
+export { FloatingBuilder } from './floating-builder.svelte.ts';
+export type {
+    FloatingBackdropAttributes,
+    FloatingBuilderOptions,
+    FloatingContentAttributes,
+    FloatingTriggerAttributes
+} from './types.js';

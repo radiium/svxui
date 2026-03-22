@@ -4,12 +4,12 @@ import type { Snippet } from 'svelte';
 import type { HTMLAttributes, SVGAttributes } from 'svelte/elements';
 
 export type FloatingSize = '0' | '1' | '2' | '3' | '4' | '5';
-export type FloatingVariant = 'solid' | 'soft' | 'clear';
+export type FloatingVariant = 'solid' | 'soft' | 'surface' | 'clear';
 
 /**
  * Extends all the standard HTML attributes of the `<div>` element.
  */
-export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
+export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color' | 'children'> & {
     /**
      * Reference to the rendered DOM element.
      */
@@ -98,11 +98,11 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
      * Focus element on open floating
      */
-    focusOnOpen?: string | HTMLElement | undefined;
+    focusOnOpen?: string | HTMLElement;
     /**
      * Focus element on close floating
      */
-    focusOnClose?: string | HTMLElement | undefined;
+    focusOnClose?: string | HTMLElement;
     /**
      * Trap focus inside floating content
      */
@@ -110,11 +110,11 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
      * Close floating on backdrop click. Only if backdrop is true
      */
-    closeOnClickBackdrop?: boolean;
+    closeOnBackdropClick?: boolean;
     /**
      * Close floating on outside click
      */
-    closeOnClickOutside?: boolean;
+    closeOnOutsideClick?: boolean;
     /**
      * Close floating on escape key
      */
@@ -148,11 +148,11 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
 /**
  * Extends all the standard HTML attributes of the `<svg>` element.
  */
-export type FloatingArrowProps = Omit<SVGAttributes<SVGElement>, 'color' | 'width' | 'height'> & {
+export type FloatingArrowProps = Omit<SVGAttributes<SVGSVGElement>, 'color' | 'width' | 'height'> & {
     /**
      * Reference to the rendered DOM element.
      */
-    ref?: SVGElement | HTMLElement;
+    ref?: SVGSVGElement;
     /**
      * FloatingArrow color
      */

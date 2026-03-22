@@ -1,10 +1,10 @@
-<script lang="ts" generics="E extends keyof SvelteHTMLElements = 'div'">
+<script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'span'">
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { TextProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        as = 'div' as E,
+        as = 'span' as ElementTag,
         color = undefined,
         size = '3',
         weight = 'regular',
@@ -17,14 +17,13 @@
         disabled = false,
         children,
         ...rest
-    }: TextProps<E> = $props();
+    }: TextProps<ElementTag> = $props();
 
     let cssClass = $derived([
         rest.class,
         'text',
         {
             [`text-size-${size}`]: size,
-            [`text-color-${color}`]: color,
             [`text-weight-${weight}`]: weight,
             [`text-align-${align}`]: align,
             [`text-transform-${transform}`]: transform,
@@ -42,11 +41,10 @@
 <svelte:element
     this={as}
     {...rest}
-    data-color={color}
-    data-size={size}
-    class={cssClass}
-    aria-disabled={disabled ?? undefined}
     bind:this={ref}
+    class={cssClass}
+    aria-disabled={disabled ? 'true' : undefined}
+    data-color={color}
 >
     {@render children?.()}
 </svelte:element>

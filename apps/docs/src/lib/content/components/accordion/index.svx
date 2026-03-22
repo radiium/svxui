@@ -1,0 +1,69 @@
+---
+title: Accordion
+description: A renderless interactive component for expanding and collapsing content sections, with built-in accessibility.
+category: components
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+
+<SectionDemo {...examples.overview }/>
+
+> This component wraps [AccordionBuilder](/docs/builders/accordion) and exposes its behavior as a renderless component.
+
+## Minimal usage
+
+```svelte
+<script>
+    import { Accordion } from 'svxui';
+</script>
+
+<Accordion>
+    {#snippet children(accordion)}
+        <div {...accordion.rootAttrs}>
+            {#each items as value, i (value)}
+                <!-- Create item -->
+                {@const item = accordion.getItem(value)}
+
+
+                <!-- Accordion item wrapper -->
+                <div class="" {...item.itemAttrs}>
+
+                    <!-- Heading -->
+                    <div {...item.headingAttrs}>
+                        <h2>Title {value}</h2>
+
+                        <!-- Trigger -->
+                        <button {...item.triggerAttrs}>
+                            {item.expanded ? 'close' : 'open'}
+                        </button>
+                    </div>
+
+                    <!-- Content -->
+                    {#if item.expanded}
+                        <div {...item.contentAttrs}>
+                            Content {value}
+                        </div>
+                    {/if}
+                </div>
+            {/each}
+        </div>
+    {/snippet}
+</Accordion>
+```
+
+## API Reference
+
+<!-- This type extends all properties from [AccordionBuilderOptions](/docs/builders/accordion#accordionbuilderoptions). -->
+
+<ApiReference category="components" names={['accordion']}/>
+
+## Examples
+
+{#each examples.items as item }
+<SectionDemo {...item }/>
+{/each}

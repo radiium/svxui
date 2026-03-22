@@ -1,18 +1,34 @@
-import type { Align, Color, Radius, TextTransform } from '$lib/shared.types.js';
+import type {
+    Align,
+    Color,
+    OmitByWord,
+    Radius,
+    RefFromHTMLAttributes,
+    TextTransform
+} from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
-import type { HTMLButtonAttributes } from 'svelte/elements';
+import type { SvelteHTMLElements } from 'svelte/elements';
 
 export type ButtonSize = '1' | '2' | '3' | '4';
 export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'clear';
+export type ButtonHTMLElements = Pick<SvelteHTMLElements, 'button' | 'a'>;
 
 /**
- * Extends all the standard HTML attributes of the `<button>` element.
+ * Extends all the standard HTML attributes of the `<button>` or `<a>` elements.
  */
-export type ButtonProps = Omit<HTMLButtonAttributes, 'color' | 'children'> & {
+export type ButtonProps<ElementTag extends keyof ButtonHTMLElements = 'button'> = OmitByWord<
+    ButtonHTMLElements[ElementTag],
+    'on:' | 'color' | 'disabled' | 'children'
+> & {
+    /**
+     * HTML element to render as.
+     */
+    as?: ElementTag;
     /**
      * Reference to the rendered DOM element.
+     * The element type is inferred from `as`.
      */
-    ref?: HTMLButtonElement;
+    ref?: RefFromHTMLAttributes<ButtonHTMLElements[ElementTag]>;
     /**
      * Button color
      */
@@ -41,6 +57,10 @@ export type ButtonProps = Omit<HTMLButtonAttributes, 'color' | 'children'> & {
      * Button active state
      */
     active?: boolean;
+    /**
+     * Button disabled state
+     */
+    disabled?: boolean;
     /**
      * Button icon only
      */

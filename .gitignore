@@ -3,9 +3,6 @@ node_modules
 .AppleDouble
 .LSOverride
 
-dist
-tmp
-
 # Logs
 logs
 *.log
@@ -74,3 +71,6 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
+
+# Generated files
+apps/docs/src/lib/content-utils/libdoc.json

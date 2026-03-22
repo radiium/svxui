@@ -14,7 +14,6 @@
         'separator',
         {
             [`separator-size-${size}`]: size,
-            [`separator-color-${color}`]: color,
             [`separator-orientation-${orientation}`]: orientation
         }
     ]);
@@ -22,17 +21,16 @@
 
 <div
     {...rest}
-    class={cssClass}
+    bind:this={ref}
     role="separator"
     aria-orientation={orientation}
+    class={cssClass}
     data-color={color}
-    data-size={size}
-    bind:this={ref}
 ></div>
 
 <style>
     .separator {
-        display: block;
+        display: inline-block;
         background-color: var(--accent-7);
         min-width: var(--separator-width);
         min-height: var(--separator-height);

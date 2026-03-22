@@ -1,4 +1,5 @@
 <script lang="ts" generics="Value, Multiple extends boolean">
+    /* eslint-disable no-console */
     import {
         autoUpdate,
         Button,
@@ -8,10 +9,8 @@
         FloatingEngine,
         Listbox,
         offset,
-        Panel,
-        type SelectionStateValue
+        Panel
     } from '$lib/index.js';
-    import { flushSync } from 'svelte';
     import type { SelectFloatProps } from './SelectFloat.types.js';
 
     let {
@@ -31,23 +30,22 @@
     let isOpen = $state(false);
     let listboxRef: HTMLDivElement | undefined = $state();
 
-    const open = () => {
-        isOpen = true;
-        flushSync();
-        console.log('listboxRef', listboxRef?.children);
-        if (listboxRef?.children) {
-            (listboxRef?.children.item(0) as HTMLElement)?.focus();
-        }
-    };
+    // const open = () => {
+    //     isOpen = true;
+    //     flushSync();
+    //     if (listboxRef?.children) {
+    //         (listboxRef?.children.item(0) as HTMLElement)?.focus();
+    //     }
+    // };
     const close = () => {
         isOpen = false;
     };
     const toggle = () => {
         isOpen = !isOpen;
     };
-    const select = (newValue: SelectionStateValue<Value, Multiple>) => {
-        value = newValue;
-    };
+    // const select = (newValue: SelectionStateValue<Value, Multiple>) => {
+    //     value = newValue;
+    // };
 
     const floating = new FloatingEngine({
         strategy: 'fixed',
@@ -103,7 +101,7 @@
             >
                 {#snippet children(listbox)}
                     <Panel variant="clear" outline size="2">
-                        <Flexbox direction="column" gap="1" {...listbox.attrs} bind:ref={listboxRef}>
+                        <Flexbox direction="column" gap="1" {...listbox.rootAttrs} bind:ref={listboxRef}>
                             {#each options as opt, i (i)}
                                 {@const item = listbox.getItem(opt)}
 

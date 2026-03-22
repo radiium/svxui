@@ -1,2 +1,2 @@
-export { clickoutside } from './attachment.svelte.js';
+export { clickoutside } from './clickoutside.svelte.ts';
 export type { ClickoutsideOptions } from './types.js';

@@ -19,7 +19,11 @@ export type InputType =
 /**
  * Extends all the standard HTML attributes of the `<div>` element.
  */
-export type InputProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type' | 'children'> & {
+export type InputProps = Omit<HTMLInputAttributes, 'color' | 'size' | 'type' | 'children'> & {
+    /**
+     * Callback called on value change
+     */
+    onValueChange?: (newValue: HTMLInputAttributes['value']) => void;
     /**
      * Reference to the rendered DOM element.
      */
@@ -29,11 +33,11 @@ export type InputProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type' | '
      */
     color?: Color;
     /**
-     * Input color
+     * Input size
      */
     size?: InputSize;
     /**
-     * Input color
+     * Input radius
      */
     radius?: Radius;
     /**

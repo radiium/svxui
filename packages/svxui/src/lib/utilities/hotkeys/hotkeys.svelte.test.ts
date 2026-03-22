@@ -1,6 +1,6 @@
 import { flushSync } from 'svelte';
 import { beforeEach, describe, expect, vi } from 'vitest';
-import { itWithEffect } from '../../../test/util.svelte.js';
+import { itWithEffect } from '../../../tests/util.svelte.js';
 import { Hotkeys } from './hotkeys.svelte.js';
 
 describe('Hotkeys', () => {
@@ -11,6 +11,7 @@ describe('Hotkeys', () => {
      */
     function initReactivity() {
         $effect(() => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             hotkeys.all;
         });
     }

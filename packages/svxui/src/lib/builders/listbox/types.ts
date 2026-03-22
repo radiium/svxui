@@ -9,11 +9,6 @@ export type ListboxBuilderOptions<Value, Multiple extends boolean> = SelectionSt
     Multiple
 > & {
     /**
-     * Callback called on value change
-     * @param newValue
-     */
-    onValueChange?: (newValue: Value) => void;
-    /**
      * Listbox orientation
      */
     orientation?: Orientation;
@@ -74,12 +69,12 @@ export type ListboxRootAttributes = {
 
 export type ListboxItemAttributes = {
     readonly id: string;
-    readonly 'data-selected'?: string;
+    readonly 'data-state': 'selected' | 'unselected';
     readonly 'data-disabled'?: string;
     readonly 'data-orientation': Orientation;
     readonly tabindex: number;
     readonly role: string;
-    readonly 'aria-selected': boolean;
+    readonly 'aria-selected'?: boolean;
     readonly 'aria-disabled': boolean;
     readonly disabled: boolean;
     onclick: (event: MouseEvent) => void;

@@ -18,8 +18,12 @@ export class Context<TContext> {
     /**
      * The key used to get and set the context.
      *
-     * It is not recommended to use this value directly.
-     * Instead, use the methods provided by this class.
+     * @remarks
+     * **Warning:** It is not recommended to use this value directly.
+     * Using the raw key bypasses the type-safe API provided by this class.
+     * Prefer using `exists()`, `get()`, `getOr()`, and `set()` methods instead.
+     *
+     * @internal Exposed for advanced use cases only.
      */
     get key(): symbol {
         return this.#key;

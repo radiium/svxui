@@ -6,8 +6,8 @@
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let optionsString = ['opt1', 'opt2', 'opt3'];
-    let optionsObject = [
+    const optionsString = ['opt1', 'opt2', 'opt3'];
+    const optionsObject = [
         { key: 'opt1', val: 1 },
         { key: 'opt2', val: 2 },
         { key: 'opt3', val: 3 },
@@ -19,7 +19,7 @@
     let optionsType: 'string' | 'object' = $state('string');
     let options = $derived(optionsType === 'string' ? optionsString : optionsObject);
 
-    let props: ListboxProps<unknown, boolean> = $state({
+    const props: ListboxProps<unknown, boolean> = $state({
         multiple: false,
         loop: false,
         activateOnFocus: false,
@@ -61,10 +61,17 @@
         <ControlButton onclick={() => selectValue()}>select values (controlled)</ControlButton>
     {/snippet}
 
-    <Listbox {...props} bind:value={props.value} onValueChange={(v) => console.log(v)}>
+    <Listbox
+        {...props}
+        bind:value={props.value}
+        onValueChange={(v) => {
+            // eslint-disable-next-line no-console
+            console.log(v);
+        }}
+    >
         {#snippet children(rootState)}
             <Panel variant="clear" outline size="2" style="width: 220px;">
-                <Flexbox direction="column" gap="1" {...rootState.attrs}>
+                <Flexbox direction="column" gap="1" {...rootState.rootAttrs}>
                     {#each options as opt, i (i)}
                         {@const item = rootState.getItem(opt, {
                             disabled: isObject(opt) ? opt.disabled === true : false

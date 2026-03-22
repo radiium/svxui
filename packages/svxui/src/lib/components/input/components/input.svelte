@@ -4,13 +4,13 @@
     let {
         ref = $bindable(),
         value = $bindable(),
+        onValueChange = undefined,
         type = 'text',
         color = undefined,
         size = '2',
         radius = undefined,
         align = 'start',
         fullWidth = undefined,
-        readonly = undefined,
         inputSize = undefined,
         ...rest
     }: InputProps = $props();
@@ -26,6 +26,11 @@
         }
     ]);
 
+    function onChange(event: Event & { currentTarget: HTMLInputElement }) {
+        rest.onchange?.(event);
+        onValueChange?.(value);
+    }
+
     function setInputType(el: HTMLInputElement) {
         $effect(() => {
             el.type = type ?? 'text';
@@ -37,15 +42,14 @@
     spellcheck="false"
     autocomplete="off"
     {...rest}
-    class={cssClass}
-    size={inputSize}
-    {readonly}
-    data-color={color}
-    data-size={size}
-    data-radius={radius}
     bind:this={ref}
     bind:value
+    onchange={onChange}
     {@attach setInputType}
+    class={cssClass}
+    size={inputSize}
+    data-color={color}
+    data-radius={radius}
 />
 
 <style>
@@ -61,10 +65,6 @@
         -moz-appearance: none;
         -webkit-appearance: none;
         -webkit-tap-highlight-color: transparent;
-        &[type='number'] {
-            appearance: textfield;
-            -moz-appearance: textfield;
-        }
 
         color: var(--color);
         font-size: var(--input-font-size);
@@ -72,12 +72,16 @@
         font-family: var(--default-font-family);
         letter-spacing: var(--input-letter-spacing);
         text-align: var(--input-text-align);
-        line-height: var(--input-font-size);
         min-height: var(--input-height);
         padding: var(--input-padding);
         background: var(--color-surface);
         box-shadow: inset 0px 0px 0px 1px var(--color-box-shadow);
         border-radius: var(--input-border-radius);
+
+        &[type='number'] {
+            appearance: textfield;
+            -moz-appearance: textfield;
+        }
 
         /* States */
         &:active,
@@ -104,10 +108,6 @@
             cursor: default;
             outline: none !important;
             box-shadow: none !important;
-        }
-
-        &::selection {
-            background-color: var(--accent-5);
         }
 
         /* Sizes */
@@ -149,6 +149,14 @@
             width: 100%;
         }
 
+        &::placeholder {
+            color: var(--accent-12);
+            opacity: 0.6;
+        }
+        &::selection {
+            background-color: var(--accent-a5);
+        }
+
         /* Input type search */
         &::-webkit-search-cancel-button {
             --search-cancel-button-size: calc(var(--input-font-size) * 0.7);
@@ -163,6 +171,12 @@
             background-position: center;
             background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjEyMy4wNXB4IiBoZWlnaHQ9IjEyMy4wNXB4IiB2aWV3Qm94PSIwIDAgMTIzLjA1IDEyMy4wNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTIzLjA1IDEyMy4wNTsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZD0iTTEyMS4zMjUsMTAuOTI1bC04LjUtOC4zOTljLTIuMy0yLjMtNi4xLTIuMy04LjUsMGwtNDIuNCw0Mi4zOTlMMTguNzI2LDEuNzI2Yy0yLjMwMS0yLjMwMS02LjEwMS0yLjMwMS04LjUsMGwtOC41LDguNQ0KCQljLTIuMzAxLDIuMy0yLjMwMSw2LjEsMCw4LjVsNDMuMSw0My4xbC00Mi4zLDQyLjVjLTIuMywyLjMtMi4zLDYuMSwwLDguNWw4LjUsOC41YzIuMywyLjMsNi4xLDIuMyw4LjUsMGw0Mi4zOTktNDIuNGw0Mi40LDQyLjQNCgkJYzIuMywyLjMsNi4xLDIuMyw4LjUsMGw4LjUtOC41YzIuMy0yLjMsMi4zLTYuMSwwLTguNWwtNDIuNS00Mi40bDQyLjQtNDIuMzk5QzEyMy42MjUsMTcuMTI1LDEyMy42MjUsMTMuMzI1LDEyMS4zMjUsMTAuOTI1eiIvPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=);
             margin-left: 4px;
+        }
+        :global([data-theme='dark'] .input::-webkit-search-cancel-button) {
+            filter: invert(1);
+        }
+        :global([data-theme='light'] .input::-webkit-search-cancel-button) {
+            filter: unset;
         }
 
         /* Input type date/datetime-local/month/time/week */
@@ -193,6 +207,7 @@
             }
         }
 
+        /* Input inside InputGroup */
         &.input-number-in-group {
             width: 6em;
             background: transparent !important;
@@ -205,13 +220,5 @@
                 margin: 0;
             }
         }
-    }
-
-    :global([data-theme='dark'] .input::-webkit-search-cancel-button) {
-        filter: invert(1);
-    }
-
-    :global([data-theme='light'] .input::-webkit-search-cancel-button) {
-        filter: unset;
     }
 </style>

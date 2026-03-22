@@ -19,7 +19,9 @@
         },
         set value(newValue) {
             value = newValue;
-            onValueChange?.(newValue as Value);
+        },
+        get onValueChange() {
+            return onValueChange;
         },
         get multiple() {
             return multiple;

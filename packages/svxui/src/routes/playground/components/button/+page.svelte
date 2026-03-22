@@ -5,7 +5,8 @@
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let base: ButtonProps = $state({
+    let asLink = $state(false);
+    const base: ButtonProps<'button'> & ButtonProps<'a'> = $state({
         size: '2',
         align: 'center',
         transform: undefined,
@@ -28,11 +29,12 @@
 
 <Playground>
     {#snippet controls()}
+        <ControlCheckbox label="as link" bind:checked={asLink} />
         <ControlCheckbox label="disabled" bind:checked={base.disabled} />
         <ControlCheckbox label="active" bind:checked={base.active} />
         <ControlCheckbox label="fullWidth" bind:checked={base.fullWidth} />
         <ControlCheckbox label="iconOnly" bind:checked={base.iconOnly} />
-        <ControlSelect label="size" bind:value={base.size} options={['1', '2', '3']} />
+        <ControlSelect label="size" bind:value={base.size} options={['1', '2', '3', '4']} />
         <ControlSelect label="align" bind:value={base.align} options={['start', 'center', 'end']} />
         <ControlSelect
             label="transform"
@@ -47,7 +49,13 @@
                 <Flexbox wrap="wrap" gap="3">
                     {#each section as item, j (j)}
                         {@const props = { ...base, ...item }}
-                        <Button {...props} title={JSON.stringify(props, null, 2)}>
+
+                        <Button
+                            {...props}
+                            as="a"
+                            href={asLink ? '#' : undefined}
+                            title={JSON.stringify(props, null, 2)}
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 256 256"

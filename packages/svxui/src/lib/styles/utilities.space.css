@@ -3,7 +3,7 @@
  */
 /* Margin */
 .mt-auto {
-  margin-top: "auto";
+  margin-top: auto;
 }
 
 .mt-0 {
@@ -83,7 +83,7 @@
 }
 
 .mb-auto {
-  margin-bottom: "auto";
+  margin-bottom: auto;
 }
 
 .mb-0 {
@@ -163,7 +163,7 @@
 }
 
 .mr-auto {
-  margin-right: "auto";
+  margin-right: auto;
 }
 
 .mr-0 {
@@ -243,7 +243,7 @@
 }
 
 .ml-auto {
-  margin-left: "auto";
+  margin-left: auto;
 }
 
 .ml-0 {
@@ -323,8 +323,8 @@
 }
 
 .mx-auto {
-  margin-right: "auto";
-  margin-left: "auto";
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .mx-0 {
@@ -423,8 +423,8 @@
 }
 
 .my-auto {
-  margin-top: "auto";
-  margin-bottom: "auto";
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .my-0 {
@@ -523,7 +523,7 @@
 }
 
 .m-auto {
-  margin: "auto";
+  margin: auto;
 }
 
 .m-0 {
@@ -604,7 +604,7 @@
 
 /* Padding */
 .pt-auto {
-  padding-top: "auto";
+  padding-top: auto;
 }
 
 .pt-0 {
@@ -648,7 +648,7 @@
 }
 
 .pb-auto {
-  padding-bottom: "auto";
+  padding-bottom: auto;
 }
 
 .pb-0 {
@@ -692,7 +692,7 @@
 }
 
 .pr-auto {
-  padding-right: "auto";
+  padding-right: auto;
 }
 
 .pr-0 {
@@ -736,7 +736,7 @@
 }
 
 .pl-auto {
-  padding-left: "auto";
+  padding-left: auto;
 }
 
 .pl-0 {
@@ -780,8 +780,8 @@
 }
 
 .px-auto {
-  padding-right: "auto";
-  padding-left: "auto";
+  padding-right: auto;
+  padding-left: auto;
 }
 
 .px-0 {
@@ -835,8 +835,8 @@
 }
 
 .py-auto {
-  padding-top: "auto";
-  padding-bottom: "auto";
+  padding-top: auto;
+  padding-bottom: auto;
 }
 
 .py-0 {
@@ -890,7 +890,7 @@
 }
 
 .p-auto {
-  padding: "auto";
+  padding: auto;
 }
 
 .p-0 {

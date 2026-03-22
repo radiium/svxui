@@ -1,5 +1,5 @@
 import type { Radius } from '$lib/shared.types.js';
-import type { StrategyType, ThemeColorsType, ThemeType } from '../types.js';
+import type { StrategyType, ThemeType } from '../types.js';
 
 export type ThemeScriptProps = {
     strategyKey: string;
@@ -8,7 +8,7 @@ export type ThemeScriptProps = {
     radius: Radius;
     colorKey: string;
     color: string;
-    theme: ThemeType;
+    theme?: ThemeType;
 };
 
 export type InitThemeConfig = {
@@ -25,5 +25,5 @@ export type InitThemeConfig = {
 };
 
 export type ThemeColorsProps = {
-    themeColors: ThemeColorsType;
+    themeColors: Svxui.ColorMap;
 };

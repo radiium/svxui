@@ -2,25 +2,30 @@ import { untrack } from 'svelte';
 import type { SelectionStateOptions, SelectionStateValue } from './types.js';
 
 /**
- * A utility class that manages single or multiple external selection state with methods to query and update the current selection.
+ * A utility class that manages single or multiple selection state with methods to query and update the current selection.
+ * Supporting both controlled and uncontrolled modes.
  */
-export class SelectionState<V, M extends boolean> {
-    #options: SelectionStateOptions<V, M>;
+export class SelectionState<Value, Multiple extends boolean> {
+    #internalValue = $state<SelectionStateValue<Value, Multiple>>();
+    #options: SelectionStateOptions<Value, Multiple>;
 
-    constructor(options: SelectionStateOptions<V, M>) {
+    /** Cleanup function to stop internal reactive effects. */
+    readonly destroy: () => void;
+
+    constructor(options: SelectionStateOptions<Value, Multiple>) {
         this.#options = options;
         let prevMultiple: boolean | undefined; //= options.multiple;
 
-        // Handle multiple change
-        // And update value type if needed
-        $effect.root(() => {
+        // When `multiple` changes, coerce the current value to the correct type:
+        // array for multiple mode, undefined for single mode.
+        this.destroy = $effect.root(() => {
             $effect(() => {
                 if (options.multiple !== prevMultiple) {
                     untrack(() => {
                         if (options.multiple && !Array.isArray(options.value)) {
-                            options.value = [] as SelectionStateValue<V, M>;
+                            this.#setValue([] as SelectionStateValue<Value, Multiple>);
                         } else if (!options.multiple && Array.isArray(options.value)) {
-                            options.value = undefined;
+                            this.#setValue(undefined);
                         }
                         prevMultiple = options.multiple;
                     });
@@ -30,67 +35,85 @@ export class SelectionState<V, M extends boolean> {
     }
 
     /**
-     * Can select single or multiple item at time
+     * Current selection value. Reads from external value when controlled.
+     */
+    get value(): SelectionStateValue<Value, Multiple> {
+        return 'value' in this.#options ? this.#options.value : this.#internalValue;
+    }
+
+    set value(val: SelectionStateValue<Value, Multiple>) {
+        this.#setValue(val);
+        this.#options.onValueChange?.(val);
+    }
+
+    #setValue(val: SelectionStateValue<Value, Multiple>) {
+        if ('value' in this.#options) {
+            this.#options.value = val;
+        } else {
+            this.#internalValue = val;
+        }
+    }
+
+    /**
+     * Whether multiple items can be selected simultaneously
      */
     get multiple() {
         return this.#options.multiple ?? false;
     }
 
     /**
-     * Selected items count
+     * Number of currently selected items.
      */
     get count(): number {
-        if (this.multiple && Array.isArray(this.#options.value)) {
-            return this.#options.value.length;
+        if (this.multiple && Array.isArray(this.value)) {
+            return this.value.length;
         }
-        return this.#options.value === null || this.#options.value === undefined ? 0 : 1;
+        return this.value === null || this.value === undefined ? 0 : 1;
     }
 
     /**
-     * Check if item is selected or not
-     * @param item
-     * @returns
+     * Returns `true` if the given item is currently selected.
+     * @param item - The value to check.
      */
-    has(item: V): boolean {
-        return this.multiple && Array.isArray(this.#options.value)
-            ? this.#options.value.includes(item)
-            : this.#options.value === item;
+    has(item: Value): boolean {
+        const isEqual = this.#options.compare ?? ((a, b) => a === b);
+        return this.multiple && Array.isArray(this.value)
+            ? this.value.some((v) => isEqual(v, item))
+            : isEqual(this.value as Value, item);
     }
 
     /**
-     * Select item
-     * @param item
+     * Selects the given item. In multiple mode, appends it if not already selected.
+     * @param item - The value to select.
      */
-    select(item: V): void {
-        if (this.multiple && Array.isArray(this.#options.value)) {
-            const value = Array.isArray(this.#options.value)
-                ? this.#options.value
-                : this.#options.value
-                  ? [this.#options.value]
-                  : [];
-            this.#options.value = [...new Set([...this.#options.value, item])] as SelectionStateValue<V, M>;
+    select(item: Value): void {
+        if (this.multiple && Array.isArray(this.value)) {
+            if (!this.has(item)) {
+                this.value = [...this.value, item] as SelectionStateValue<Value, Multiple>;
+            }
         } else {
-            this.#options.value = item as SelectionStateValue<V, M>;
+            this.value = item as SelectionStateValue<Value, Multiple>;
         }
     }
 
     /**
-     * Deselect item
-     * @param item
+     * Deselects the given item. In single mode, clears the selection if it matches.
+     * @param item - The value to deselect.
      */
-    deselect(item: V): void {
-        if (this.multiple && Array.isArray(this.#options.value)) {
-            this.#options.value = this.#options.value.filter((o) => o !== item) as SelectionStateValue<V, M>;
+    deselect(item: Value): void {
+        const isEqual = this.#options.compare ?? ((a, b) => a === b);
+        if (this.multiple && Array.isArray(this.value)) {
+            this.value = this.value.filter((o) => !isEqual(o, item)) as SelectionStateValue<Value, Multiple>;
         } else {
-            this.#options.value = this.#options.value === item ? null : this.#options.value;
+            this.value = isEqual(this.value as Value, item) ? undefined : this.value;
         }
     }
 
     /**
-     * Toggle select item
-     * @param item
+     * Toggles the selection state of the given item.
+     * @param item - The value to toggle.
      */
-    toggle(item: V): void {
+    toggle(item: Value): void {
         if (this.has(item)) {
             this.deselect(item);
         } else {
@@ -99,13 +122,13 @@ export class SelectionState<V, M extends boolean> {
     }
 
     /**
-     * Clear selection
+     * Resets the selection to empty (undefined in single mode, [] in multiple mode).
      */
     clear(): void {
-        if (this.multiple && Array.isArray(this.#options.value)) {
-            this.#options.value = [] as SelectionStateValue<V, M>;
+        if (this.multiple && Array.isArray(this.value)) {
+            this.value = [] as SelectionStateValue<Value, Multiple>;
         } else {
-            this.#options.value = null;
+            this.value = undefined;
         }
     }
 }

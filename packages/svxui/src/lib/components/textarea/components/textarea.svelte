@@ -17,7 +17,6 @@
         'textarea',
         {
             [`textarea-size-${size}`]: size,
-            [`textarea-color-${color}`]: color,
             'textarea-full-width': fullWidth,
             'textarea-resizable': resizable
         }
@@ -28,12 +27,11 @@
     rows={3}
     spellcheck={false}
     {...rest}
-    data-size={size}
-    data-color={color}
-    data-radius={radius}
-    class={cssClass}
     bind:this={ref}
     bind:value
+    class={cssClass}
+    data-color={color}
+    data-radius={radius}
 ></textarea>
 
 <style>
@@ -49,15 +47,10 @@
         cursor: text;
         font-family: inherit;
         text-overflow: ellipsis;
-        letter-spacing: normal;
         resize: none;
-
-        font-size: var(--font-size-3);
-        border-radius: var(--radius-3);
         color: var(--color);
         background: var(--color-surface);
         box-shadow: inset 0px 0px 0px 1px var(--color-box-shadow);
-
         min-width: var(--textarea-min-width);
         padding: var(--textarea-padding);
         border-radius: var(--textarea-border-radius);

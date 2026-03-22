@@ -1,6 +1,4 @@
-import type { ThemeColorsType } from '../types.js';
-
-export const defaultThemeColors: ThemeColorsType = {
+export const defaultThemeColors: Svxui.ColorMap = {
     neutral: 'neutral',
     blue: 'blue',
     green: 'grass',

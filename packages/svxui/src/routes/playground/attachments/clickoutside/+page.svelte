@@ -1,14 +1,18 @@
-<script>
+<script lang="ts">
     import Text from '$lib/components/text/components/text.svelte';
     import { clickoutside, Flexbox, Panel } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
-    import ControlNumber from '../../controls/ControlNumber.svelte';
+    import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let enabled = $state(false);
-    let delay = $state(800);
-    let currentState = $state('idle');
-    let eventTarget = $state();
+    type EventType = 'pointerdown' | 'mousedown' | 'touchstart' | 'click';
+    const eventTypeOptions: EventType[] = ['pointerdown', 'mousedown', 'touchstart', 'click'];
+
+    let enabled: boolean = $state(false);
+    let eventTarget: HTMLDivElement | undefined = $state();
+    let eventType: EventType = $state(eventTypeOptions[0]);
+    let countInside: number = $state(0);
+    let countOutside: number = $state(0);
 </script>
 
 <h1>Clickoutside</h1>
@@ -16,8 +20,9 @@
 <Playground>
     {#snippet controls()}
         <ControlCheckbox label="enabled" bind:checked={enabled} />
-        <ControlNumber label="delay" bind:value={delay} />
-        <Text>State: {currentState}</Text>
+        <ControlSelect label="eventType" bind:value={eventType} options={eventTypeOptions} />
+        <Text>countInside: {countInside}</Text>
+        <Text>countOutside: {countOutside}</Text>
     {/snippet}
 
     <Panel variant="soft" size="9" bind:ref={eventTarget}>
@@ -30,14 +35,13 @@
                 {@attach clickoutside({
                     enabled,
                     eventTarget,
+                    eventType,
                     onClickOutside() {
-                        currentState = 'click outside';
+                        countOutside++;
                     }
                 })}
                 onclick={() => {
-                    if (enabled) {
-                        currentState = 'click inside';
-                    }
+                    if (enabled) countInside++;
                 }}
             >
                 inside

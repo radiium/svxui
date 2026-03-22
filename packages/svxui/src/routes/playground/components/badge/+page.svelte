@@ -5,7 +5,7 @@
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let base: BadgeProps = $state({
+    const base: BadgeProps = $state({
         size: '2',
         disabled: false
     });

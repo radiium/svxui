@@ -9,7 +9,7 @@
 </script>
 
 <Flexbox align="center" gap="2" as="label">
-    <Checkbox {...rest} bind:checked />
+    <Checkbox tabindex={0} {...rest} bind:checked />
     {#if label}
         <Text size="3">{label}</Text>
     {/if}

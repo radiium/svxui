@@ -8,7 +8,7 @@
 
     let isOpenNested = $state(false);
 
-    let props: FloatingProps = $state({
+    const props: FloatingProps = $state({
         isOpen: false,
         placement: 'bottom',
         color: 'neutral',
@@ -27,8 +27,8 @@
         arrowHeight: 12,
         arrowWidth: 16,
         arrowTipRadius: undefined,
-        closeOnClickOutside: true,
-        closeOnClickBackdrop: true,
+        closeOnOutsideClick: true,
+        closeOnBackdropClick: true,
         closeOnEscape: true,
         closeOnResize: false,
         closeOnScroll: false,
@@ -72,7 +72,11 @@
                 'left-end'
             ]}
         />
-        <ControlSelect label="variant" bind:value={props.variant} options={['solid', 'soft', 'clear']} />
+        <ControlSelect
+            label="variant"
+            bind:value={props.variant}
+            options={['solid', 'soft', 'surface', 'clear']}
+        />
         <ControlSelect
             label="color"
             bind:value={props.color}
@@ -92,8 +96,8 @@
         <ControlNumber label="arrowHeight" bind:value={props.arrowHeight} />
         <ControlNumber label="arrowTipRadius" bind:value={props.arrowTipRadius} />
         <ControlNumber label="offset" bind:value={props.offset} />
-        <ControlCheckbox label="closeOnClickOutside" bind:checked={props.closeOnClickOutside} />
-        <ControlCheckbox label="closeOnClickBackdrop" bind:checked={props.closeOnClickBackdrop} />
+        <ControlCheckbox label="closeOnOutsideClick" bind:checked={props.closeOnOutsideClick} />
+        <ControlCheckbox label="closeOnBackdropClick" bind:checked={props.closeOnBackdropClick} />
         <ControlCheckbox label="closeOnEscape" bind:checked={props.closeOnEscape} />
         <ControlCheckbox label="closeOnResize" bind:checked={props.closeOnResize} />
         <ControlCheckbox label="closeOnScroll" bind:checked={props.closeOnScroll} />
@@ -117,7 +121,7 @@
                 <Floating
                     bind:isOpen={isOpenNested}
                     placement="top"
-                    closeOnClickOutside
+                    closeOnOutsideClick
                     closeOnEscape
                     autoUpdate
                     arrow

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Accordions, Button, Flexbox, Panel, Separator, Text, type AccordionsProps } from '$lib/index.js';
+    import { Accordion, Button, Flexbox, Panel, Separator, Text, type AccordionProps } from '$lib/index.js';
     import { slide } from 'svelte/transition';
     import ControlButton from '../../controls/ControlButton.svelte';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
@@ -7,7 +7,7 @@
 
     const items = ['1', '2', '3', '4'];
 
-    let props: AccordionsProps<string, boolean> = $state({
+    const props: AccordionProps<string, boolean> = $state({
         multiple: false,
         disabled: false,
         value: undefined
@@ -45,12 +45,12 @@
         <ControlButton onclick={() => selectValue()}>select value (controlled)</ControlButton>
     {/snippet}
 
-    <Accordions {...props} bind:value={props.value}>
-        {#snippet children(accordions)}
+    <Accordion {...props} bind:value={props.value}>
+        {#snippet children(accordion)}
             <Panel variant="clear" outline size="0" class="w-100" style="max-width: 300px;">
-                <Flexbox direction="column" {...accordions.rootAttrs}>
+                <Flexbox direction="column" {...accordion.rootAttrs}>
                     {#each items as value, i (value)}
-                        {@const item = accordions.getItem(value)}
+                        {@const item = accordion.getItem(value)}
                         <!-- Item -->
                         <Flexbox direction="column" {...item.itemAttrs}>
                             <!-- Heading -->
@@ -83,7 +83,7 @@
                 </Flexbox>
             </Panel>
         {/snippet}
-    </Accordions>
+    </Accordion>
 </Playground>
 
 <div><pre>{json}</pre></div>

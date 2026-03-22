@@ -6,6 +6,7 @@
 
     let enabled = $state(false);
     let initialFocus = $state('[data-initialfocus]');
+    let enabled2 = $state(false);
 </script>
 
 <h1>Focustrap</h1>
@@ -13,8 +14,8 @@
 <Playground>
     {#snippet controls()}
         <ControlCheckbox label="enabled" bind:checked={enabled} />
-
         <ControlInput label="initialFocus" bind:value={initialFocus} />
+        <ControlCheckbox label="enabled2" bind:checked={enabled2} />
     {/snippet}
 
     <Panel
@@ -31,8 +32,25 @@
             <Input placeholder="First name" />
             <Input placeholder="Last name" data-initialfocus />
             <Flexbox gap="3">
-                <Button variant="outline">cancel</Button>
-                <Button variant="soft" onclick={() => (enabled = false)}>confirm</Button>
+                <Button variant="outline" tabindex={0}>cancel</Button>
+                <Button variant="soft" tabindex={0} onclick={() => (enabled = false)}>confirm</Button>
+            </Flexbox>
+        </Flexbox>
+    </Panel>
+
+    <Panel
+        {@attach focustrap({
+            get enabled() {
+                return enabled2;
+            }
+        })}
+    >
+        <Flexbox direction="column" gap="3" as="form">
+            <Input placeholder="First name" />
+            <Input placeholder="Last name" data-initialfocus />
+            <Flexbox gap="3">
+                <Button variant="outline" tabindex={0}>cancel</Button>
+                <Button variant="soft" tabindex={0} onclick={() => (enabled2 = false)}>confirm</Button>
             </Flexbox>
         </Flexbox>
     </Panel>

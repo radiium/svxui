@@ -1,0 +1,79 @@
+---
+title: Floating builder
+description: Builder class for creating accessible floating UI elements like tooltips and popovers. It connects triggers, content, and optional backdrops to a positioning engine while handling focus management, ARIA patterns, and common close behaviors (outside click, escape, scroll, resize).
+category: builders
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+</script>
+
+## Prerequisites
+
+For the positioning to work correctly, the floating content element must use fixed positioning.
+Apply the following CSS to the content element:
+
+```css
+position: fixed;
+width: max-content;
+top: 0;
+left: 0;
+```
+
+## Usage
+
+```svelte
+<script>
+    import { FloatingBuilder } from 'svxui';
+
+    // Controlled open state
+    let isOpen = $state(false);
+
+    // Initialize floating
+    const floating = new FloatingBuilder({
+        get isOpen() {
+            return isOpen;
+        },
+        set isOpen(value) {
+            isOpen = value;
+        },
+        pattern: 'popover',
+        closeOnOutsideClick: true,
+        closeOnEscape: true
+    });
+</script>
+
+<!-- Trigger element -->
+<button {...floating.triggerAttrs} onclick={floating.toggle}>
+    Open popover
+</button>
+
+<!-- Content element -->
+{#if isOpen}
+    <div {...floating.contentAttrs} class="popover">
+        <p>This is a popover</p>
+    </div>
+{/if}
+
+<style>
+    .popover {
+        /* Required styles */
+        position: fixed;
+        width: max-content;
+        top: 0;
+        left: 0;
+
+        /* Others styles */
+        z-index: 1;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid light-dark(black, white);
+        background-color: light-dark(white, black);
+        color: light-dark(black, white);
+    }
+</style>
+```
+
+## Type Definition
+
+<ApiReference category="builders" names={['floating']}/>

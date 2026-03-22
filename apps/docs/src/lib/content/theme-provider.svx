@@ -1,0 +1,205 @@
+---
+title: Theme Provider
+description: Configure entry point of the application.
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+</script>
+
+## Overview
+
+The `<ThemeRootProvider />` component is the entry point of the library.<br/>
+It allows you to configure the global theme behavior of your application.<br/>
+All components from the library **must be used inside** the `ThemeRootProvider` to work correctly.
+
+You can locally override the theme configuration in any part of your component tree using the `<ThemeChildProvider />`.
+
+## ThemeRootProvider
+
+### Features
+
+The `<ThemeRootProvider />` component is used to define the **global theme configuration**.
+<br/>
+<br/>
+It includes:
+
+- the default theme strategy (`system`, `light`, `dark`)
+- the default accent color
+- the default border radius
+- the light and dark colors used for the theme meta tag
+- whether the default background color is applied
+- whether the theme loading script is injected for SSR
+- whether system theme changes are detected
+- whether CSS transitions are enabled during theme changes
+- custom color palettes
+
+This provider should be placed at the root of your application.
+
+### Usage
+
+```svelte
+<script>
+    // Import provider and required CSS
+    import { ThemeRootProvider } from 'svxui';
+    import 'svxui/styles/tokens.css';
+
+    let { children } = $props();
+</script>
+
+<ThemeRootProvider 
+    defaultStrategy="system"
+    defaultColor="blue"
+    defaultRadius="none"
+>
+    <!-- The strategy, radius, and color apply to all child components. -->
+    {@render children?.()}
+</ThemeRootProvider>
+```
+
+## ThemeChildProvider
+
+### Features
+
+The `<ThemeChildProvider />` component allows you to **locally override** part of the global theme configuration for a subtree of components.
+
+It can override:
+- the theme strategy (`system`, `light`, `dark`)
+- the accent color
+- the border radius
+
+This is useful for scoped theming, such as theming a specific page, layout, or component group differently from the rest of the application.
+
+### Usage
+
+```svelte
+<script>
+    import { ThemeChildProvider, Panel } from 'svxui';
+</script>
+
+<ThemeChildProvider color="neutral">
+    <!-- 
+    The panel and button will have a neutral color by default, 
+    but will inherit radius and strategy from the root theme.
+    -->
+    <Panel>
+        <Button>button</Button>
+    </Panel>
+</ThemeChildProvider>
+```
+
+## Theme Context
+
+### Features
+
+You can update default `strategy`, `color` and `radius` with the theme context via `useThemeRootContext`.
+
+### Update theme
+
+```svelte
+<script lang="ts">
+    import { useThemeRootContext, type StrategyType, type Radius, type Color } from 'svxui';
+
+    const themeRoot = useThemeRootContext();
+    const strategies: StrategyType[] = ['system', 'light', 'dark'];
+    const radius: Radius[] = ['none', 'small', 'medium', 'large', 'full'];
+    const colors: Color[] = ['neutral', 'green', 'blue', 'yellow', 'orange', 'red'];
+</script>
+
+<!-- Update strategy -->
+{#each strategies as strategy (strategy)}
+    <button
+        class:active={themeRoot.strategy === strategy}
+        onclick={() => themeRoot.setStrategy(strategy)}
+    >
+        {strategy}
+    </button>
+{/each}
+
+<!-- Update radius -->
+{#each radius as rad (rad)}
+    <button
+        class:active={themeRoot.radius === rad}
+        onclick={() => themeRoot.setRadius(rad)}
+    >
+        {rad}
+    </button>
+{/each}
+
+<!-- Update color -->
+{#each colors as color (color)}
+    <button
+        class:active={themeRoot.color === color}
+        onclick={() => themeRoot.setColor(color)}
+    >
+        {color}
+    </button>
+{/each}
+```
+
+## API Reference
+
+<ApiReference category="components" names={['theme-root-provider', 'theme-child-provider']}/>
+
+### ThemeRootState
+
+```typescript
+export declare class ThemeRootState {
+    constructor(props: ThemeRootStateProps);
+  
+    /**
+     * Get the current radius key used for storage
+     */
+    get radiusKey(): string;
+
+    /**
+     * Get the current radius
+     */
+    get radius(): Radius;
+
+    /**
+     * Set radius
+     */
+    setRadius: (radius: Radius) => void;
+
+    /**
+     * Get the current color key used for storage
+     */
+    get colorKey(): string;
+
+    /**
+     * Get the current color
+     */
+    get color(): string;
+
+    /**
+     * Set color
+     */
+    setColor: (color: string) => void;
+
+    /**
+     * Get the current strategy key used for storage
+     */
+    get strategyKey(): string;
+
+    /**
+     * Get the current strategy
+     */
+    get strategy(): StrategyType;
+
+    /**
+     * Set strategy
+     */
+    setStrategy: (strategy: StrategyType) => void;
+
+    /**
+     * Get the current system theme
+     */
+    get system(): ThemeType | undefined;
+
+    /**
+     * Get the current resolved theme
+     */
+    get theme(): "light" | "dark" | undefined;
+}
+```

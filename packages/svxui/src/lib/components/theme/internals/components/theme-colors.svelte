@@ -1,13 +1,12 @@
 <script lang="ts">
-    import type { ThemeColorsType } from '../../types.js';
     import { defaultThemeColors } from '../props.js';
     import type { ThemeColorsProps } from '../types.js';
 
-    let { themeColors = {} }: ThemeColorsProps = $props();
+    let { themeColors }: ThemeColorsProps = $props();
 
     let colorsConfig = $derived(minifyCSS(buildCSS(themeColors)));
 
-    function buildCSS(config: ThemeColorsType = {}): string {
+    function buildCSS(config: Partial<Svxui.ColorMap> = {}): string {
         return Object.entries({ ...defaultThemeColors, ...config })
             .map(([aliasName, colorName]) => {
                 return `

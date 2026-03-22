@@ -1,3 +1,4 @@
+import { isNil } from '$lib/internals/is.js';
 import { kbd } from '$lib/internals/kbd.js';
 import type { RovingfocusConfigInternal, RovingfocusOptions } from '../types.js';
 
@@ -6,8 +7,7 @@ export function buildConfig(options?: RovingfocusOptions): Readonly<RovingfocusC
     const loop = options?.loop ?? false;
     const orientation = options?.orientation ?? 'vertical';
     const activateOnFocus = options?.activateOnFocus ?? false;
-    const initialIndexNumber = Number(options?.initialIndex);
-    const initialIndex = isNaN(initialIndexNumber) ? 'first' : initialIndexNumber;
+    const initialIndex = isNil(options?.initialIndex) ? 'first' : options?.initialIndex;
 
     const keysMapping = {
         vertical: {
@@ -33,5 +33,5 @@ export function buildConfig(options?: RovingfocusOptions): Readonly<RovingfocusC
         prevKey,
         nextKey,
         allowedKeys
-    };
+    } as const;
 }

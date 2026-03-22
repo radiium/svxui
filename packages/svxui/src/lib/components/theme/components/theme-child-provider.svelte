@@ -3,6 +3,7 @@
     import { type ThemeChildProviderProps } from '../types.js';
 
     let {
+        ref = $bindable(),
         strategy = undefined,
         radius = undefined,
         color = undefined,
@@ -29,6 +30,6 @@
     let cssClass = $derived([rest.class, 'svxui', themeChildState.theme]);
 </script>
 
-<div {...rest} {...themeChildState.attrs} class={cssClass}>
-    {@render children?.()}
+<div {...rest} {...themeChildState.attrs} bind:this={ref} class={cssClass}>
+    {@render children?.(themeChildState)}
 </div>

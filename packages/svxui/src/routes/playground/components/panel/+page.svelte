@@ -1,11 +1,12 @@
 <script lang="ts">
+    import Button from '$lib/components/button/components/button.svelte';
     import { Checkbox, Flexbox, Panel, type Color, type PanelProps, type PanelVariant } from '$lib/index.js';
     import { cartesianProduct, groupBy } from '../../controls/cartesian-product.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let base: PanelProps<'div'> | PanelProps<'a'> | PanelProps<'button'> | PanelProps<'label'> = $state({
+    const base: PanelProps<'div'> | PanelProps<'a'> | PanelProps<'button'> | PanelProps<'label'> = $state({
         size: '3',
         outline: false,
         fullWidth: false,
@@ -15,7 +16,7 @@
     const sections = groupBy(
         cartesianProduct({
             color: ['neutral', 'blue', 'green', 'yellow', 'orange', 'red'] as Color[],
-            variant: ['solid', 'soft', 'clear'] as PanelVariant[]
+            variant: ['solid', 'soft', 'surface', 'clear'] as PanelVariant[]
         }),
         'color'
     );
@@ -41,23 +42,65 @@
 
     <Flexbox direction="column" gap="3">
         {#each sections as section, i (i)}
-            <Panel variant="clear" outline>
-                <Flexbox wrap="wrap" gap="3">
-                    {#each section as item, j (j)}
-                        {@const props = { ...base, ...item }}
-                        <Panel {...props} title={JSON.stringify(props, null, 2)}>
-                            <Flexbox justify="center" align="center" gap="3" class="w-100 h-100">
-                                {#if (base as PanelProps<'label'>).as === 'label'}
-                                    <Checkbox />
-                                {/if}
-                                panel
+            <Panel variant="clear" outline size="0">
+                <div class="background">
+                    <Flexbox direction="column" gap="5" class="p-5">
+                        {#each section as item, j (j)}
+                            {@const props = { ...base, ...item }}
+                            <Flexbox direction="column" gap="3" data-color={props.color}>
+                                <Panel {...props} title={JSON.stringify(props, null, 2)}>
+                                    <Flexbox
+                                        direction="column"
+                                        justify="center"
+                                        align="center"
+                                        gap="5"
+                                        class="w-100 h-100"
+                                    >
+                                        {#if (base as PanelProps<'label'>).as === 'label'}
+                                            <Checkbox />
+                                        {/if}
+                                        <h2>{props.color} {props.variant}</h2>
 
-                                <Panel outline color="neutral">nested</Panel>
+                                        <Panel outline color="neutral">Nested panel</Panel>
+
+                                        <Flexbox gap="3">
+                                            <Button variant="solid">button</Button>
+                                            <Button variant="soft">button</Button>
+                                            <Button variant="outline">button</Button>
+                                            <Button variant="clear">button</Button>
+                                        </Flexbox>
+                                    </Flexbox>
+                                </Panel>
+
+                                <Flexbox gap="3" class="px-5">
+                                    <Button variant="solid">button</Button>
+                                    <Button variant="soft">button</Button>
+                                    <Button variant="outline">button</Button>
+                                    <Button variant="clear">button</Button>
+                                </Flexbox>
                             </Flexbox>
-                        </Panel>
-                    {/each}
-                </Flexbox>
+                        {/each}
+                    </Flexbox>
+                </div>
             </Panel>
         {/each}
     </Flexbox>
 </Playground>
+
+<style>
+    :global([data-theme='light']) {
+        --bg: rgba(0, 0, 0, 0.1);
+    }
+    :global([data-theme='dark']) {
+        --bg: rgba(255, 255, 255, 0.1);
+    }
+
+    .background {
+        background-image:
+            linear-gradient(to right, var(--bg) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--bg) 1px, transparent 1px);
+
+        background-size: 20px 20px;
+        background-position: center;
+    }
+</style>

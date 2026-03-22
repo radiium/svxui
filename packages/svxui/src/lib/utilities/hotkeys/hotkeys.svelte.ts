@@ -7,8 +7,11 @@ import type { HotkeysBinding } from './types.js';
  * Tracks active keyboard keys and handles hotkey combinations with callback bindings.
  */
 export class Hotkeys {
+    // eslint-disable-next-line svelte/prefer-svelte-reactivity
     readonly #pressedKeys = new Set<string>();
+    // eslint-disable-next-line svelte/prefer-svelte-reactivity
     readonly #bindings = new Set<HotkeysBinding>();
+    // eslint-disable-next-line svelte/prefer-svelte-reactivity
     readonly #activeBindings = new Set<HotkeysBinding>();
 
     readonly #subscribe?: () => void;
@@ -72,7 +75,7 @@ export class Hotkeys {
         for (const binding of this.#bindings) {
             if (
                 binding.combo.length === this.#pressedKeys.size &&
-                binding.combo.every((k) => this.#pressedKeys.has(k))
+                binding.combo.every((comboKey) => this.#pressedKeys.has(comboKey))
             ) {
                 if (!this.#activeBindings.has(binding)) {
                     this.#activeBindings.add(binding);

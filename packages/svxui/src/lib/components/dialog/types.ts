@@ -1,13 +1,12 @@
-import type { Radius } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 
-export type DialogSize = '1' | '2' | '3' | '4';
+export type DialogSize = '0' | '1' | '2' | '3' | '4';
 
 /**
  * Extends all the standard HTML attributes of the `<div>` element.
  */
-export type DialogProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
+export type DialogProps = Omit<HTMLAttributes<HTMLDivElement>, 'open' | 'children'> & {
     /**
      * Reference to the rendered DOM element.
      */
@@ -19,47 +18,14 @@ export type DialogProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
     /**
      * Callback when dialog is closed
      */
-    onClose?: (reason: 'escape' | 'backdrop') => void;
+    onClose?: (reason?: 'escape' | 'backdrop') => void;
     /**
-     * Dialog size
+     * Manage dialog layout
+     *  - 'fixed'      => Centered in viewport, overflow hidden
+     *  - 'scroll'     => Scrollable vertically, useful for tall content
+     *  - 'fullscreen' => Fills the entire viewport (100vw × 100vh)
      */
-    size?: DialogSize;
-    /**
-     * Dialog border radius
-     */
-    radius?: Radius;
-    /**
-     * CSS width of dialog
-     */
-    width?: string;
-    /**
-     * CSS min-width of dialog
-     */
-    minWidth?: string;
-    /**
-     * CSS max-width of dialog
-     */
-    maxWidth?: string;
-    /**
-     * CSS height of dialog
-     */
-    height?: string;
-    /**
-     * CSS min-height of dialog
-     */
-    minHeight?: string;
-    /**
-     * CSS max-height of dialog
-     */
-    maxHeight?: string;
-    /**
-     * Disable dialog padding
-     */
-    noPadding?: boolean;
-    /**
-     * Open as fullscreen dialog
-     */
-    fullScreen?: boolean;
+    layout?: 'fixed' | 'scroll' | 'fullscreen';
     /**
      * Close dialog on backdrop click
      */
@@ -76,6 +42,14 @@ export type DialogProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
      * Lock body scroll when open
      */
     lockScroll?: boolean;
+    /**
+     * Apply blur effect to the backdrop
+     */
+    blurBackdrop?: boolean;
+    /**
+     * Keep dialog in the DOM when closed instead of unmounting it
+     */
+    keepMounted?: boolean;
     /**
      * Transition delay of open/close animation
      */

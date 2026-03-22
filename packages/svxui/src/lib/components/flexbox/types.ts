@@ -13,19 +13,19 @@ export type Gap = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
 /**
  * Extends native HTML attributes inferred from the rendered element `as`.
  */
-export type FlexboxProps<E extends keyof SvelteHTMLElements = 'div'> = Omit<
-    SvelteHTMLElements[E],
-    'as' | 'ref' | 'align'
+export type FlexboxProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omit<
+    SvelteHTMLElements[ElementTag],
+    'display' | 'justify' | 'direction' | 'align' | 'children'
 > & {
     /**
      * HTML element to render as.
      */
-    as?: E;
+    as?: ElementTag;
     /**
      * Reference to the rendered DOM element.
      * The element type is inferred from `as`.
      */
-    ref?: RefFromHTMLAttributes<SvelteHTMLElements[E]>;
+    ref?: RefFromHTMLAttributes<SvelteHTMLElements[ElementTag]>;
     /**
      * Flex display variant
      */
@@ -54,6 +54,10 @@ export type FlexboxProps<E extends keyof SvelteHTMLElements = 'div'> = Omit<
      * Flexbox full width
      */
     fullWidth?: boolean;
+    /**
+     * Flexbox full height
+     */
+    fullHeight?: boolean;
     /**
      * Flexbox content to render
      */

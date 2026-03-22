@@ -21,16 +21,16 @@
             onValueChange?.(newValue);
         },
         get disabled() {
-            return disabled!;
+            return disabled;
         },
         get orientation() {
-            return orientation!;
+            return orientation;
         },
         get activateOnFocus() {
-            return activateOnFocus!;
+            return activateOnFocus;
         },
         get loop() {
-            return loop!;
+            return loop;
         }
     });
 </script>

@@ -1,0 +1,45 @@
+---
+title: Context
+description: A type-safe wrapper around Svelte's Context API.
+category: utilities
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview }/>
+
+## Usage
+
+```typescript
+import { Context } from 'svxui';
+
+// Create a context
+const themeContext = new Context<string>('theme');
+
+// Set context value
+themeContext.set('dark');
+
+// Get context value and throw error if not set
+themeContext.get();
+
+// Get context value with fallback if not set
+themeContext.getOr('dark');
+
+// Check if context is set
+themeContext.exists();
+
+// Get the context key
+themeContext.key;
+```
+
+## Type Definition
+
+<ApiReference category="utilities" names={['context']}/>
+
+## Credits
+
+[Runed](https://github.com/svecosystem/runed/blob/main/packages/runed/src/lib/utilities/context/context.ts)

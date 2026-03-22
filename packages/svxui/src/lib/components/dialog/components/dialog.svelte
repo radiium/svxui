@@ -1,178 +1,208 @@
 <script lang="ts">
-    import { focustrap } from '$lib/attachments/focustrap/index.js';
+    import { DialogBuilder } from '$lib/builders/dialog/index.js';
     import { scrolllock } from '$lib/attachments/scrolllock/index.js';
-    import { fade, scale } from 'svelte/transition';
     import type { DialogProps } from '../types.js';
+    import { onDestroy } from 'svelte';
+    import { cubicOut } from 'svelte/easing';
+    import { fade, scale } from 'svelte/transition';
 
     let {
         ref = $bindable(),
-        isOpen = $bindable(),
-        onClose = undefined,
-        size = '3',
-        radius = undefined,
-        noPadding = false,
-        fullScreen = false,
-        closeOnBackdropClick = false,
-        closeOnEscape = false,
-        lockScroll = false,
-        focusTrap = false,
+        isOpen = $bindable(false),
+        onClose,
+        layout = 'fixed',
+        closeOnBackdropClick = true,
+        closeOnEscape = true,
+        lockScroll = true,
+        focusTrap = true,
+        blurBackdrop = false,
+        keepMounted = false,
         transitionDelay = 0,
-        transitionDuration = 150,
-        width = undefined,
-        minWidth = undefined,
-        maxWidth = undefined,
-        height = undefined,
-        minHeight = undefined,
-        maxHeight = undefined,
+        transitionDuration = 250,
         children,
         ...rest
     }: DialogProps = $props();
 
-    function handlekeydown(event: KeyboardEvent): void {
-        if (closeOnEscape) {
-            if (event.key === 'Escape') {
-                isOpen = false;
-                onClose?.('escape');
+    const dialog = new DialogBuilder({
+        get isOpen() {
+            return isOpen;
+        },
+        set isOpen(value) {
+            isOpen = value;
+        },
+        get onClose() {
+            return onClose;
+        },
+        get closeOnBackdropClick() {
+            return closeOnBackdropClick;
+        },
+        get closeOnEscape() {
+            return closeOnEscape;
+        },
+        get focusTrap() {
+            return focusTrap;
+        }
+    });
+    onDestroy(() => dialog.destroy());
+
+    let lockScrollEnabled = $derived(dialog.active && dialog.isOpen && lockScroll);
+    let previouslyFocusedElement: HTMLElement | null = null;
+
+    $effect(() => {
+        if (dialog.isOpen) {
+            previouslyFocusedElement = document.activeElement as HTMLElement;
+            if (focusTrap) {
+                requestAnimationFrame(() => {
+                    ref?.focus();
+                });
             }
+        } else {
+            requestAnimationFrame(() => {
+                previouslyFocusedElement?.focus();
+                previouslyFocusedElement = null;
+            });
         }
-    }
+    });
 
-    function onBackdropClick(): void {
-        if (closeOnBackdropClick) {
-            isOpen = false;
-            onClose?.('backdrop');
-        }
-    }
-
-    let cssClass = $derived([
-        rest.class,
-        `dialog`,
+    let backdropCssClass = $derived([
+        'backdrop',
         {
-            [`dialog-size-${size}`]: size,
-            [`dialog-no-padding`]: noPadding,
-            [`dialog-fullscreen`]: fullScreen
+            fixed: layout === 'fixed',
+            scroll: layout === 'scroll',
+            fullscreen: layout === 'fullscreen',
+            blurbackdrop: blurBackdrop && layout !== 'fullscreen',
+            keepmounted: keepMounted
         }
     ]);
 
-    let lockScrollEnabled = $derived(lockScroll === true && isOpen === true);
-    let focusTrapEnabled = $derived(isOpen === true && focusTrap);
+    let dialogCssClass = $derived([
+        rest.class,
+        'dialog',
+        {
+            fixed: layout === 'fixed',
+            scroll: layout === 'scroll',
+            fullscreen: layout === 'fullscreen',
+            blurbackdrop: blurBackdrop && layout !== 'fullscreen',
+            keepmounted: keepMounted
+        }
+    ]);
 </script>
 
-<svelte:window onkeydown={handlekeydown} />
 <svelte:body {@attach scrolllock({ enabled: lockScrollEnabled })} />
 
-{#if isOpen}
-    <div class={cssClass} data-size={size} data-radius={radius} bind:this={ref}>
-        <div
-            role="button"
-            class="dialog-backdrop"
-            tabindex="-1"
-            onclick={onBackdropClick}
-            onkeydown={handlekeydown}
-            transition:fade={{
-                duration: transitionDuration,
-                delay: transitionDelay
-            }}
-        ></div>
-
-        <div
-            style:width={fullScreen ? undefined : width}
-            style:min-width={fullScreen ? undefined : minWidth}
-            style:max-width={fullScreen ? undefined : maxWidth}
-            style:height={fullScreen ? undefined : height}
-            style:min-height={fullScreen ? undefined : minHeight}
-            style:max-height={fullScreen ? undefined : maxHeight}
-            role="dialog"
-            class="dialog-content"
-            data-size={size}
-            data-radius={radius}
-            {@attach focustrap({ enabled: focusTrapEnabled })}
-            transition:scale={{
-                duration: transitionDuration,
-                delay: transitionDelay,
-                start: 0.9,
-                opacity: 0
-            }}
-        >
+{#if keepMounted}
+    <div
+        {...dialog.backdropAttrs}
+        class={backdropCssClass}
+        style:--z-index={dialog.index + 1}
+        style:--transitionDelay={transitionDelay + 'ms'}
+        style:--transitionDuration={transitionDuration + 'ms'}
+    >
+        <div {...dialog.contentAttrs} {...rest} bind:this={ref} class={dialogCssClass}>
             {@render children?.()}
         </div>
     </div>
+{:else}
+    <!--  -->
+    {#if dialog.isOpen}
+        <div
+            {...dialog.backdropAttrs}
+            class={backdropCssClass}
+            style:--z-index={dialog.index + 1}
+            transition:fade={{
+                delay: transitionDelay,
+                duration: transitionDuration,
+                easing: cubicOut
+            }}
+        >
+            <div
+                {...dialog.contentAttrs}
+                {...rest}
+                bind:this={ref}
+                class={dialogCssClass}
+                transition:scale={{
+                    delay: transitionDelay,
+                    duration: transitionDuration,
+                    start: 0.92,
+                    opacity: 0,
+                    easing: cubicOut
+                }}
+            >
+                {@render children?.()}
+            </div>
+        </div>
+    {/if}
 {/if}
 
 <style>
-    .dialog {
-        z-index: 100000;
+    .backdrop {
         position: fixed;
-        overflow: auto;
-        width: 100%;
-        height: 100%;
-        inset: 0px;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
+        z-index: var(--z-index, 1);
 
-        .dialog-backdrop {
-            z-index: 10001;
-            position: fixed;
+        &.fixed {
             overflow: hidden;
-            height: 100%;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            inset: 0px;
-            border: none;
-            background: var(--color-overlay);
+            align-items: center;
         }
 
-        .dialog-content {
-            z-index: 10002;
-            position: relative;
-            color: var(--color);
-            background: var(--color-background-0);
-            border-radius: var(--dialog-border-radius);
-            padding: var(--dialog-padding);
-            box-shadow: inset var(--accent-box-shadow);
-            overflow: auto;
+        &.scroll {
+            overflow-y: auto;
+            align-items: center;
+            justify-content: flex-start;
+
+            .dialog {
+                max-height: none;
+                margin: var(--space-9) auto;
+            }
         }
 
-        /* Sizes */
-        &.dialog-size-1 {
-            --dialog-padding: var(--space-3);
-            --dialog-border-radius: var(--radius-4);
-        }
-        &.dialog-size-2 {
-            --dialog-padding: var(--space-4);
-            --dialog-border-radius: var(--radius-4);
-        }
-        &.dialog-size-3 {
-            --dialog-padding: var(--space-5);
-            --dialog-border-radius: var(--radius-5);
-        }
-        &.dialog-size-4 {
-            --dialog-padding: var(--space-6);
-            --dialog-border-radius: var(--radius-5);
-        }
-
-        /* No Padding */
-        &.dialog-no-padding {
-            --dialog-padding: var(--space-0);
-        }
-
-        /* Full Screen */
-        &.dialog-fullscreen {
-            --dialog-border-radius: var(--radius-0) !important;
-            width: 100vw;
-            height: 100vh;
-
-            .dialog-content {
+        &.fullscreen {
+            .dialog {
                 width: 100vw;
                 height: 100vh;
-                min-width: unset;
-                max-width: unset;
-                margin: unset;
-                box-shadow: unset;
+                max-width: 100vw;
+                max-height: 100vh;
             }
+        }
+
+        &.blurbackdrop {
+            backdrop-filter: blur(4px);
+        }
+
+        &.keepmounted {
+            opacity: 0;
+            transition: opacity var(--transitionDuration) cubic-bezier(0.33, 1, 0.68, 1)
+                var(--transitionDelay);
+
+            &[data-state='open'] {
+                opacity: 1;
+
+                .dialog {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            .dialog {
+                opacity: 0;
+                transform: scale(0.92);
+
+                transition:
+                    transform var(--transitionDuration, 250ms) cubic-bezier(0.33, 1, 0.68, 1)
+                        var(--transitionDelay, 0),
+                    opacity var(--transitionDuration, 250ms) cubic-bezier(0.33, 1, 0.68, 1)
+                        var(--transitionDelay, 0);
+            }
+        }
+
+        .dialog {
+            margin: auto;
+            max-width: calc(100% - 2em - 6px);
+            max-height: calc(100% - 2em - 6px);
         }
     }
 </style>

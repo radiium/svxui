@@ -23,7 +23,7 @@ export type InputGroupItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> 
 /**
  * Extends all the standard HTML attributes of the `<div>` element.
  */
-export type InputGroupProps = Omit<HTMLAttributes<HTMLDivElement>, 'color'> & {
+export type InputGroupProps = HTMLAttributes<HTMLDivElement> & {
     /**
      * Reference to the rendered DOM element.
      */

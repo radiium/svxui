@@ -24,10 +24,12 @@
             enabled,
             delay,
             onLongpressStart: () => {
+                // eslint-disable-next-line no-console
                 console.log('onLongpressStart');
                 currentState = 'started';
             },
             onLongpressEnd: () => {
+                // eslint-disable-next-line no-console
                 console.log('onLongpressEnd');
                 currentState = 'ended';
             }

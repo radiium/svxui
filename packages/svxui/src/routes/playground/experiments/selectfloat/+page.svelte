@@ -7,8 +7,8 @@
     import SelectFloat from './SelectFloat.svelte';
     import type { SelectFloatProps } from './SelectFloat.types.js';
 
-    let optionsString = ['opt1', 'opt2', 'opt3'];
-    let optionsObject = [
+    const optionsString = ['opt1', 'opt2', 'opt3'];
+    const optionsObject = [
         { key: 'opt1', val: 1 },
         { key: 'opt2', val: 2 },
         { key: 'opt3', val: 3 },
@@ -19,7 +19,8 @@
     let optionsType: 'string' | 'object' = $state('string');
     let options = $derived(optionsType === 'string' ? optionsString : optionsObject);
 
-    let props: Omit<SelectFloatProps<any, boolean>, 'options'> = $state({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const props: Omit<SelectFloatProps<any, boolean>, 'options'> = $state({
         value: undefined,
         multiple: false,
         disabled: false
@@ -81,7 +82,7 @@
 
 <div><pre>{json}</pre></div>
 
-{#snippet renderOpt(opt: any)}
+{#snippet renderOpt(opt: unknown)}
     {#if typeof opt === 'string'}
         {opt}
     {:else if isObject(opt)}

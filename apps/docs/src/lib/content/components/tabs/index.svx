@@ -1,0 +1,26 @@
+---
+title: Tabs
+description: A renderless component for organizing content into sections. Switch between views by clicking a tab trigger. Supports active state, dynamic content, and keyboard navigation.
+category: components
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+
+<SectionDemo {...examples.overview }/>
+
+> This component wraps [TabsBuilder](/docs/builders/tabs) and exposes its behavior as a renderless component.
+
+## API Reference
+
+<ApiReference category="components" names={['tabs']}/>
+
+## Examples
+
+{#each examples.items as item }
+<SectionDemo {...item }/>
+{/each}

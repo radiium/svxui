@@ -1,0 +1,86 @@
+---
+title: Accordion builder
+description: Builder class for creating accessible Accordion components. Handles keyboard navigation, ARIA attributes, and panel toggling.
+category: builders
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+</script>
+
+## Usage
+
+```svelte
+<script>
+    import { AccordionBuilder } from 'svxui';
+
+    // Controlled value state
+    let value: string[] = $state([]);
+    const options = ['Accordion1', 'Accordion2', 'Accordion3'];
+
+    // Initialize accordion
+    const accordion = new AccordionBuilder({
+        get value() {
+            return value;
+        },
+        set value(newValue) {
+            value = newValue;
+        }
+    });
+</script>
+
+<!-- Accordion container -->
+<div class="accordion-root" {...accordion.rootAttrs}>
+    <!-- Accordion items -->
+    {#each options as opt, i (i)}
+        {@const item = accordion.getItem(opt)}
+
+        <div class="accordion" {...item.itemAttrs}>
+            <!-- Heading -->
+            <div class="heading" {...item.headingAttrs}>
+                Title {value}
+
+                <!-- Trigger -->
+                <button {...item.triggerAttrs}>
+                    {item.expanded ? 'close' : 'open'}
+                </button>
+            </div>
+
+            <!-- Content -->
+            {#if item.expanded}
+                <div class="content" {...item.contentAttrs}>
+                    Content {value}
+                </div>
+            {/if}
+        </div>
+    {/each}
+</div>
+
+<style>
+    .accordion-root {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid light-dark(black, white);
+
+            .heading {
+                padding: 1rem;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+        }
+    }
+</style>
+```
+
+## Type Definition
+
+<ApiReference category="builders" names={['accordion']}/>

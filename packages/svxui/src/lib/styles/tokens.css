@@ -32,10 +32,11 @@
 :root,
 .light,
 [data-theme=light] {
-  --color: #1f1f1f;
   --color-background-0: #fcfcfc;
   --color-background-1: #f9f9f9;
   --color-background-2: #f0f0f0;
+  --color: #1f1f1f;
+  --color-background: var(--color-background-0);
   --color-overlay: var(--black-a6);
   --color-panel-solid: white;
   --color-panel-translucent: rgba(255, 255, 255, 0.7);
@@ -46,10 +47,11 @@
 /* Theme dark */
 .dark,
 [data-theme=dark] {
-  --color: #ebebeb;
   --color-background-0: #111111;
   --color-background-1: #191919;
   --color-background-2: #222222;
+  --color: #ebebeb;
+  --color-background: var(--color-background-0);
   --color-overlay: var(--black-a8);
   --color-panel-solid: #191919;
   --color-panel-translucent: #ffffff09;
@@ -58,7 +60,7 @@
 }
 
 [data-has-background=true] {
-  background-color: var(--color-background-0);
+  background-color: var(--color-background);
 }
 
 .svxui {
@@ -159,8 +161,6 @@
   --letter-spacing-7: -0.0075em;
   --letter-spacing-8: -0.01em;
   --letter-spacing-9: -0.025em;
-  /* --default-font-family: sans-serif; */
-  /* FIXME vertical alignment with macos system font */
   --default-font-family:
       -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)', Roboto, 'Helvetica Neue',
       'Open Sans (Custom)', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';

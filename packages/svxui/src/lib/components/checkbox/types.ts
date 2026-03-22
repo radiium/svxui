@@ -6,7 +6,11 @@ export type CheckboxSize = '1' | '2' | '3';
 /**
  * Extends all the standard HTML attributes of the `<input type="checkbox">` element.
  */
-export type CheckboxProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'> & {
+export type CheckboxProps = Omit<HTMLInputAttributes, 'color' | 'size' | 'type'> & {
+    /**
+     * Callback when checked change
+     */
+    onCheckedChange?: (checked: boolean) => void;
     /**
      * Reference to the rendered DOM element.
      */

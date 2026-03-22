@@ -126,7 +126,7 @@
             --floating-background: var(--accent-5);
         }
         &.floating-arrow-soft {
-            --floating-background: var(--accent-3);
+            --floating-background: var(--accent-2);
         }
         &.floating-arrow-clear {
             --floating-background: var(--color-background-0);

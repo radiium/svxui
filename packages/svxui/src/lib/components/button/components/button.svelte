@@ -1,8 +1,9 @@
-<script lang="ts">
-    import type { ButtonProps } from '../types.js';
+<script lang="ts" generics="ElementTag extends keyof ButtonHTMLElements = 'button'">
+    import type { ButtonHTMLElements, ButtonProps } from '../types.ts';
 
     let {
         ref = $bindable(),
+        as = 'button' as ElementTag,
         size = '2',
         variant = 'solid',
         color = undefined,
@@ -10,40 +11,68 @@
         transform = undefined,
         align = 'center',
         active = undefined,
+        disabled = undefined,
         iconOnly = undefined,
         fullWidth = undefined,
         children,
+        class: className,
         ...rest
-    }: ButtonProps = $props();
+    }: ButtonProps<ElementTag> = $props();
 
     let cssClass = $derived([
-        rest.class,
+        className,
         'button',
         {
             [`button-variant-${variant}`]: variant,
             [`button-size-${size}`]: size,
-            [`button-color-${color}`]: color,
             [`button-align-${align}`]: align,
             [`button-transform-${transform}`]: transform,
             'button-full-width': fullWidth,
             'button-active': active,
+            'button-disabled': disabled,
+            'button-link': as === 'a',
             'button-icon-only': iconOnly
         }
     ]);
+
+    let attributes = $derived.by(() => {
+        switch (as) {
+            case 'button':
+                return {
+                    ['aria-pressed']: active === undefined ? undefined : active
+                };
+            case 'a':
+                return {
+                    tabindex: disabled ? -1 : 0,
+                    role: 'link'
+                };
+            default:
+                return {};
+        }
+    });
+
+    let internalRef = $state();
+    $effect(() => {
+        if (internalRef) {
+            ref = internalRef as ButtonProps<ElementTag>['ref'];
+        }
+    });
 </script>
 
-<button
-    {...rest}
-    aria-pressed={active === undefined ? undefined : active}
-    aria-disabled={rest.disabled ? 'true' : undefined}
-    data-color={color}
-    data-size={size}
-    data-radius={radius}
-    class={cssClass}
-    bind:this={ref}
->
-    {@render children?.()}
-</button>
+{#if as === 'button' || as === 'a'}
+    <svelte:element
+        this={as}
+        {...rest}
+        {...attributes}
+        bind:this={internalRef}
+        class={cssClass}
+        aria-disabled={disabled ? 'true' : undefined}
+        data-color={color}
+        data-radius={radius}
+    >
+        {@render children?.()}
+    </svelte:element>
+{/if}
 
 <style>
     .button {
@@ -91,13 +120,13 @@
             background: var(--button-background-active);
             filter: var(--button-active-filter);
         }
-        &:focus,
-        &:focus-visible,
-        &.button-highlight {
+        /* &:focus, */
+        &:focus-visible {
             outline: 2px solid var(--accent-8);
             outline-offset: 0px;
         }
-        &:disabled {
+        &:disabled,
+        &.button-disabled {
             cursor: default !important;
             opacity: 0.5 !important;
             outline: none !important;
@@ -133,9 +162,9 @@
         &.button-size-2 {
             --button-height: var(--space-6);
             --button-min-width: calc(var(--space-6) * 2);
-            --button-padding: 0 var(--space-2);
+            --button-padding: 0 var(--space-3);
             --button-border-radius: max(var(--radius-3), var(--radius-full));
-            --button-gap: var(--space-1);
+            --button-gap: var(--space-2);
 
             --button-font-size: var(--font-size-2);
             --button-line-height: var(--line-height-2);
@@ -150,7 +179,7 @@
         &.button-size-3 {
             --button-height: var(--space-7);
             --button-min-width: calc(var(--space-7) * 2);
-            --button-padding: 0 var(--space-3);
+            --button-padding: 0 var(--space-4);
             --button-border-radius: max(var(--radius-3), var(--radius-full));
             --button-gap: var(--space-3);
 
@@ -167,7 +196,7 @@
         &.button-size-4 {
             --button-height: var(--space-8);
             --button-min-width: calc(var(--space-8) * 2);
-            --button-padding: 0 var(--space-4);
+            --button-padding: 0 var(--space-5);
             --button-border-radius: max(var(--radius-3), var(--radius-full));
             --button-gap: var(--space-3);
 
@@ -193,26 +222,26 @@
         }
         &.button-variant-soft {
             --button-box-shadow: none;
-            --button-color: var(--accent-12);
-            --button-background: var(--accent-4);
-            --button-background-hover: var(--accent-5);
-            --button-background-active: var(--accent-6);
+            --button-color: var(--accent-a11);
+            --button-background: var(--accent-a4);
+            --button-background-hover: var(--accent-a5);
+            --button-background-active: var(--accent-a6);
             --button-active-filter: none;
         }
         &.button-variant-outline {
             --button-box-shadow: inset 0 0 0 1px var(--accent-8);
-            --button-color: var(--accent-11);
+            --button-color: var(--accent-a11);
             --button-background: transparent;
-            --button-background-hover: var(--accent-3);
-            --button-background-active: var(--accent-4);
+            --button-background-hover: var(--accent-a3);
+            --button-background-active: var(--accent-a4);
             --button-active-filter: none;
         }
         &.button-variant-clear {
             --button-box-shadow: none;
-            --button-color: var(--accent-12);
+            --button-color: var(--accent-a11);
             --button-background: transparent;
-            --button-background-hover: var(--accent-3);
-            --button-background-active: var(--accent-4);
+            --button-background-hover: var(--accent-a3);
+            --button-background-active: var(--accent-a4);
             --button-active-filter: none;
         }
 

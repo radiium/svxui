@@ -6,6 +6,7 @@
     import { MetaThemeColors, ThemeSystem, type ThemeRootProviderProps } from '../types.js';
 
     let {
+        ref = $bindable(),
         defaultStrategy = ThemeSystem,
         defaultRadius = 'medium',
         defaultColor = 'neutral',
@@ -54,7 +55,7 @@
         radius={themeRootState.radius}
         colorKey={themeRootState.colorKey}
         color={themeRootState.color}
-        theme={themeRootState.theme!}
+        theme={themeRootState.theme}
     />
 {/if}
 
@@ -64,7 +65,7 @@
     <ThemeColorsDefault />
 {/if}
 
-<div {...rest} {...themeRootState.attrs} class={cssClass}>
+<div {...rest} {...themeRootState.attrs} bind:this={ref} class={cssClass}>
     {@render children?.(themeRootState)}
 </div>
 

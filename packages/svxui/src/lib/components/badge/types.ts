@@ -8,7 +8,7 @@ export type BadgeVariant = 'solid' | 'soft' | 'outline';
 /**
  * Extends all the standard HTML attributes of the `<span>` element.
  */
-export type BadgeProps = Omit<HTMLAttributes<HTMLSpanElement>, 'color' | 'children'> & {
+export type BadgeProps = Omit<HTMLAttributes<HTMLSpanElement>, 'children'> & {
     /**
      * Reference to the rendered DOM element.
      */

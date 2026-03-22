@@ -4,13 +4,13 @@
     import ControlLabelValue from '../../controls/ControlLabelValue.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let hotkeys = new Hotkeys();
+    const hotkeys = new Hotkeys();
 
     let isCtrla = $derived(hotkeys.has('Control+a'));
     let isMetaE = $derived(hotkeys.has(['Meta', 'e']));
 
     let count = $state(0);
-    let offMetaZ = hotkeys.on(['meta', 'z'], (event) => {
+    const offMetaZ = hotkeys.on(['meta', 'z'], (event) => {
         event.preventDefault();
         count++;
     });

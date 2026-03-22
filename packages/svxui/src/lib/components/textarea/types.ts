@@ -6,7 +6,7 @@ export type TextareaSize = '1' | '2' | '3';
 /**
  * Extends all the standard HTML attributes of the `<textarea>` element.
  */
-export type TextareaProps = Omit<HTMLTextareaAttributes, 'color'> & {
+export type TextareaProps = Omit<HTMLTextareaAttributes, 'color' | 'children'> & {
     /**
      * Reference to the rendered DOM element.
      */

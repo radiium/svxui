@@ -1,12 +1,12 @@
 /**
  * Proxify value
- * @param value
- * @param root
- * @param proxies
- * @param subscribe
- * @param update
- * @param serialize
- * @returns
+ * @param value     The initial value to wrap in a proxy
+ * @param root      The root persisted-state instance owning this proxy
+ * @param proxies   WeakMap cache of already-proxied objects to avoid cycles
+ * @param subscribe Callback fired when a nested property is read
+ * @param update    Callback fired when a nested property is written
+ * @param serialize Serialization function used to persist the updated value
+ * @returns A reactive Proxy that tracks reads and writes on the value
  */
 export function proxy<T>(
     value: unknown,

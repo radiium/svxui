@@ -1,54 +1,30 @@
-<script lang="ts" generics="T extends SelectOptionType">
-    import { isObject } from '$lib/internals/is.js';
-    import type { SelectOptionType, SelectProps } from '../types.js';
+<script
+    lang="ts"
+    generics="Value extends string | number = string | number, Multiple extends boolean = false"
+>
+    import { isNil } from '$lib/internals/is.js';
+    import type { SelectProps, SelectValue } from '../types.js';
 
     let {
         ref = $bindable(),
         value = $bindable(),
         onValueChange = undefined,
-        options = [] as T[],
+        multiple = false as Multiple,
         size = '2',
         color = undefined,
         radius = undefined,
         fullWidth = false,
-        multiple = false,
-        selectSize = 4,
-        optionLabel = 'label',
-        optionValue = 'value',
+        selectSize,
+        children,
         ...rest
-    }: SelectProps<T> = $props();
+    }: SelectProps<Value, Multiple> = $props();
 
     /**
-     * Option label/value resolution
-     * @param opt
-     * @param resolver
+     * Emit onValueChange when select change
      */
-    function resolveOptionProperty(
-        opt: T,
-        resolver?: string | SelectProps<T>['optionLabel'] | SelectProps<T>['optionValue']
-    ): string | number {
-        if (isObject(opt)) {
-            switch (typeof resolver) {
-                case 'function':
-                    return resolver(opt);
-                case 'string':
-                    return opt[resolver as keyof T] as string;
-                default:
-                    return JSON.stringify(opt);
-            }
-        }
-
-        return String(opt);
-    }
-
-    /**
-     * Check if the item is an object and if it has a disabled property.
-     * @param opt
-     */
-    function isDisabled(opt: T): boolean | undefined {
-        return isObject(opt) && opt && 'disabled' in opt //
-            ? opt.disabled === true
-            : undefined;
+    function onChange(event: Event & { currentTarget: HTMLSelectElement }): void {
+        rest.onchange?.(event);
+        onValueChange?.(value);
     }
 
     /**
@@ -66,28 +42,20 @@
         });
     }
 
-    /**
-     * Emit onValueChange when select change
-     */
-    function onchange(): void {
-        onValueChange?.(value);
-    }
-
-    // Update value type when multiple change
+    // Update 'value' when 'multiple' change
     $effect.pre(() => {
         if (multiple) {
-            // => When multiple is true => value must be an array
+            // => When 'multiple' is true => value must be an array
             if (!Array.isArray(value)) {
-                if (value === undefined || value === null) {
-                    value = [];
-                } else {
-                    value = [value];
-                }
+                value = (value === undefined || value === null ? [] : [value]) as unknown as SelectValue<
+                    Value,
+                    Multiple
+                >;
             }
         } else {
-            // => When multiple is false => value must not be an array
+            // => When 'multiple' is false => value must not be an array
             if (Array.isArray(value)) {
-                value = value.length > 0 ? value[0] : undefined;
+                value = (value.length > 0 ? value[0] : undefined) as SelectValue<Value, Multiple>;
             }
         }
     });
@@ -97,42 +65,29 @@
         `select`,
         {
             [`select-size-${size}`]: size,
-            [`select-color-${color}`]: color,
             'select-full-width': fullWidth
         }
     ]);
-
-    let resolvedOptions = $derived(
-        options.map((opt) => ({
-            value: resolveOptionProperty(opt, optionValue),
-            label: resolveOptionProperty(opt, optionLabel),
-            disabled: isDisabled(opt),
-            original: opt
-        }))
-    );
 </script>
 
 <select
     {...rest}
-    size={multiple ? selectSize : undefined}
-    class={cssClass}
-    data-size={size}
-    data-color={color}
-    data-radius={radius}
     bind:this={ref}
     bind:value
-    {onchange}
+    onchange={onChange}
     {@attach updateMultiple}
+    size={multiple ? selectSize : undefined}
+    class={cssClass}
+    data-color={color}
+    data-radius={radius}
 >
-    {#if !value && !multiple && rest.placeholder}
-        <option value="" selected disabled>-- {rest.placeholder} --</option>
+    {#if rest.placeholder && !multiple && (isNil(value) || value === '')}
+        <option value="" selected disabled>
+            --{rest.placeholder}--
+        </option>
     {/if}
 
-    {#each resolvedOptions as opt, i (i)}
-        <option value={opt.value} disabled={opt.disabled}>
-            {opt.label}
-        </option>
-    {/each}
+    {@render children?.()}
 </select>
 
 <style>
@@ -158,30 +113,7 @@
         /* Select multiple */
         &[multiple] {
             height: auto !important;
-            padding: 0 !important;
-
-            option {
-                height: var(--select-height);
-                position: relative;
-                display: inline-flex;
-                align-items: center;
-                padding-left: var(--select-padding-left);
-                padding-right: var(--select-padding-right);
-
-                &:checked {
-                    color: var(--color);
-                    background-color: var(--accent-a6);
-                }
-            }
-
-            &:focus {
-                option {
-                    &:checked {
-                        background: var(--accent-a6)
-                            linear-gradient(0deg, var(--accent-a6) 0%, var(--accent-a6) 100%);
-                    }
-                }
-            }
+            padding: var(--space-1) !important;
         }
 
         /* Custom arrow icon */

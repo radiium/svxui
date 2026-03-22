@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type CartesianOptions<T> = {
     [K in keyof T]?: readonly NonNullable<T[K]>[];
 };

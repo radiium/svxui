@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 import { flushSync } from 'svelte';
 import { beforeEach, describe, expect, vi } from 'vitest';
-import { itWithEffect } from '../../../test/util.svelte.js';
+import { itWithEffect } from '../../../tests/util.svelte.js';
 import { PersistedState } from './persisted-state.svelte.js';
 
 const key = 'test-key';
@@ -77,7 +78,7 @@ describe('PersistedState', async () => {
             values.push(persistedState.current);
         });
         $effect(() => {
-            valuesOnly.push(persistedState.current.at(-1)!);
+            valuesOnly.push(persistedState.current.at(-1) as string);
         });
         flushSync();
         expect(values).toStrictEqual([[initialValue]]);

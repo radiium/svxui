@@ -5,7 +5,7 @@
 /* blue light */
 :root,
 .light,
-.light-theme {
+[data-theme=light] {
   --blue-1: #fbfdff;
   --blue-2: #f4faff;
   --blue-3: #e6f4fe;
@@ -38,7 +38,7 @@
 
 /* blue dark */
 .dark,
-.dark-theme {
+[data-theme=dark] {
   --blue-1: #0d1520;
   --blue-2: #111927;
   --blue-3: #0d2847;
@@ -110,7 +110,7 @@
 /* grass light */
 :root,
 .light,
-.light-theme {
+[data-theme=light] {
   --grass-1: #fbfefb;
   --grass-2: #f5fbf5;
   --grass-3: #e9f6e9;
@@ -143,7 +143,7 @@
 
 /* grass dark */
 .dark,
-.dark-theme {
+[data-theme=dark] {
   --grass-1: #0e1511;
   --grass-2: #141a15;
   --grass-3: #1b2a1e;
@@ -222,7 +222,7 @@
 /* neutral light */
 :root,
 .light,
-.light-theme {
+[data-theme=light] {
   --neutral-1: #f9f9f9;
   --neutral-2: #f5f5f5;
   --neutral-3: #ececec;
@@ -255,7 +255,7 @@
 
 /* neutral dark */
 .dark,
-.dark-theme {
+[data-theme=dark] {
   --neutral-1: #111;
   --neutral-2: #191919;
   --neutral-3: #222;
@@ -327,7 +327,7 @@
 /* orange light */
 :root,
 .light,
-.light-theme {
+[data-theme=light] {
   --orange-1: #fefcfb;
   --orange-2: #fff7ed;
   --orange-3: #ffefd6;
@@ -360,7 +360,7 @@
 
 /* orange dark */
 .dark,
-.dark-theme {
+[data-theme=dark] {
   --orange-1: #17120e;
   --orange-2: #1e160f;
   --orange-3: #331e0b;
@@ -416,8 +416,8 @@
   --accent-a10: var(--orange-a10);
   --accent-a11: var(--orange-a11);
   --accent-a12: var(--orange-a12);
-  --accent-contrast: var(--amber-contrast);
-  --accent-surface: var(--amber-surface);
+  --accent-contrast: var(--orange-contrast);
+  --accent-surface: var(--orange-surface);
   --accent-indicator: var(--orange-indicator);
   --accent-track: var(--orange-track);
   --accent-box-shadow: 0px 0px 0px 1px var(--accent-5);
@@ -432,7 +432,7 @@
 /* tomato light */
 :root,
 .light,
-.light-theme {
+[data-theme=light] {
   --tomato-1: #fffcfc;
   --tomato-2: #fff8f7;
   --tomato-3: #feebe7;
@@ -465,7 +465,7 @@
 
 /* tomato dark */
 .dark,
-.dark-theme {
+[data-theme=dark] {
   --tomato-1: #181111;
   --tomato-2: #1f1513;
   --tomato-3: #391714;
@@ -537,7 +537,7 @@
 /* amber light */
 :root,
 .light,
-.light-theme {
+[data-theme=light] {
   --amber-1: #fefdfb;
   --amber-2: #fefbe9;
   --amber-3: #fff7c2;
@@ -570,7 +570,7 @@
 
 /* amber dark */
 .dark,
-.dark-theme {
+[data-theme=dark] {
   --amber-1: #16120c;
   --amber-2: #1d180f;
   --amber-3: #302008;

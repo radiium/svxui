@@ -17,6 +17,10 @@ export type InputNumberProps = Omit<InputGroupProps, 'ref' | 'children'> & {
      */
     value?: number | undefined | null;
     /**
+     * Callback called on value change
+     */
+    onValueChange?: (newValue: number | undefined | null) => void;
+    /**
      * Increment step
      */
     step?: number | undefined | null;
@@ -28,6 +32,10 @@ export type InputNumberProps = Omit<InputGroupProps, 'ref' | 'children'> & {
      * Max value
      */
     max?: number | undefined | null;
+    /**
+     * Decimal places for rounding and display. Omit to disable.
+     */
+    decimals?: number | undefined;
     /**
      * InputNumber color
      */

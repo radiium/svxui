@@ -7,13 +7,15 @@ export * from './attachments/rovingfocus/index.js';
 export * from './attachments/scrolllock/index.js';
 
 // Builders
-export * from './builders/accordions/index.js';
+export * from './builders/accordion/index.js';
+export * from './builders/dialog/index.js';
 export * from './builders/floating/index.js';
+export * from './builders/input-number/index.js';
 export * from './builders/listbox/index.js';
-export * from './builders/tabs/types.js';
+export * from './builders/tabs/index.js';
 
 // Components
-export * from './components/accordions/index.js';
+export * from './components/accordion/index.js';
 export * from './components/badge/index.js';
 export * from './components/button/index.js';
 export * from './components/checkbox/index.js';

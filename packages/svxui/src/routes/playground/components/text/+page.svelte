@@ -5,7 +5,7 @@
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let base: TextProps<'div'> | TextProps<'a'> = $state({
+    const base: TextProps<'div'> | TextProps<'a'> = $state({
         as: 'div',
         color: undefined,
         size: '3',

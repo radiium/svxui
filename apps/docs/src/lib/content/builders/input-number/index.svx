@@ -1,0 +1,34 @@
+---
+title: InputNumber builder
+description: Builder class for creating a number input with increment/decrement buttons. Handles value clamping, step, decimals, long-press repeat, and ARIA labels.
+category: builders
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+</script>
+
+## Usage
+
+```svelte
+<script>
+    import { InputNumberBuilder } from 'svxui/builders/input-number';
+
+    const inputNumber = new InputNumberBuilder({
+        value: 0,
+        min: 0,
+        max: 100,
+        step: 1
+    });
+</script>
+
+<div>
+    <button {...inputNumber.decrementAttrs}>-</button>
+    <input {...inputNumber.inputAttrs} />
+    <button {...inputNumber.incrementAttrs}>+</button>
+</div>
+```
+
+## Type Definition
+
+<ApiReference category="builders" names={['input-number']}/>

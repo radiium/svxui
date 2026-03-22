@@ -1,6 +1,6 @@
 <script>
     import Badge from '$lib/components/badge/components/badge.svelte';
-    import { Flexbox, Panel, Portal, portal } from '$lib/index.js';
+    import { Flexbox, Panel, portal } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';

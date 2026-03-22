@@ -148,7 +148,7 @@ export class PersistedState<T> {
 
             this.#storageCleanup =
                 this.#connected && this.#syncTabs && this.#storageType === 'local'
-                    ? on(window!, 'storage', this.#handleStorageEvent)
+                    ? on(window, 'storage', this.#handleStorageEvent)
                     : undefined;
 
             return () => {

@@ -1,16 +1,18 @@
 <script lang="ts">
-    import { longpress } from '$lib/attachments/longpress/index.js';
+    import { InputNumberBuilder } from '$lib/builders/input-number/input-number-builder.svelte.js';
     import { Button } from '../../button/index.js';
-    import InputGroup from '../../input-group/components/input-group.svelte';
-    import Input from '../../input/components/input.svelte';
+    import { InputGroup } from '../../input-group/index.js';
+    import { Input } from '../../input/index.js';
     import type { InputNumberProps } from '../types.js';
 
     let {
         ref = $bindable(),
         value = $bindable(),
+        onValueChange = undefined,
         step = 1,
         min = undefined,
         max = undefined,
+        decimals = undefined,
         size = '2',
         radius = undefined,
         color = undefined,
@@ -23,7 +25,29 @@
         ...rest
     }: InputNumberProps = $props();
 
-    let intervalId: ReturnType<typeof setInterval> | undefined = undefined;
+    const inputNumber = new InputNumberBuilder({
+        get value() {
+            return value;
+        },
+        set value(newValue) {
+            value = newValue;
+        },
+        get onValueChange() {
+            return onValueChange;
+        },
+        get min() {
+            return min;
+        },
+        get max() {
+            return max;
+        },
+        get step() {
+            return step;
+        },
+        get decimals() {
+            return decimals;
+        }
+    });
 
     // Input css classes
     let cssClass = $derived([
@@ -31,91 +55,16 @@
         'input-number',
         {
             [`input-number-size-${size}`]: size,
-            [`input-number-color-${color}`]: color,
             'input-disabled': disabled,
             'input-required': required,
             'input-readonly': readonly
         }
     ]);
-
-    function parseValue(val: string | number | undefined | null): number {
-        if (!val) {
-            val = 0;
-        }
-
-        return parseFloat(`${val}`);
-    }
-
-    function decrement(): void {
-        if (disabled) {
-            return;
-        }
-
-        value = parseValue(value);
-        if (typeof value === 'number' && typeof step === 'number') {
-            if (typeof min === 'number') {
-                value = Math.max(value - step, min);
-            } else {
-                value = value - step;
-            }
-        }
-    }
-
-    function increment(): void {
-        if (disabled) {
-            return;
-        }
-        value = parseValue(value);
-        if (typeof value === 'number' && typeof step === 'number') {
-            if (typeof max === 'number') {
-                value = Math.min(value + step, max);
-            } else {
-                value = value + step;
-            }
-        }
-    }
-
-    function incrementMouseDown() {
-        clearIntervalId();
-        intervalId = setInterval(() => {
-            increment();
-        }, 100);
-    }
-
-    function decrementMouseDown() {
-        clearIntervalId();
-        intervalId = setInterval(() => {
-            decrement();
-        }, 100);
-    }
-
-    function mouseUp() {
-        clearIntervalId();
-    }
-
-    function clearIntervalId(): void {
-        if (intervalId) {
-            clearInterval(intervalId);
-            intervalId = undefined;
-        }
-    }
 </script>
 
 <InputGroup {...rest} class={cssClass} aria-disabled={disabled ? 'true' : undefined} bind:ref>
-    <Button
-        onclick={decrement}
-        {@attach longpress({ onLongpressStart: decrementMouseDown, onLongpressEnd: mouseUp })}
-        {variant}
-        {size}
-        {radius}
-        {color}
-        {disabled}
-        iconOnly
-    >
-        -
-    </Button>
+    <Button {...inputNumber.decrementAttrs} {variant} {size} {radius} {color} {disabled} iconOnly>-</Button>
     <Input
-        type="number"
         inputmode="numeric"
         class="input-number-in-group"
         {color}
@@ -126,21 +75,7 @@
         {disabled}
         {required}
         {readonly}
-        {step}
-        {min}
-        {max}
-        bind:value
+        {...inputNumber.inputAttrs}
     />
-    <Button
-        onclick={increment}
-        {@attach longpress({ onLongpressStart: incrementMouseDown, onLongpressEnd: mouseUp })}
-        {variant}
-        {size}
-        {radius}
-        {color}
-        {disabled}
-        iconOnly
-    >
-        +
-    </Button>
+    <Button {...inputNumber.incrementAttrs} {variant} {size} {radius} {color} {disabled} iconOnly>+</Button>
 </InputGroup>

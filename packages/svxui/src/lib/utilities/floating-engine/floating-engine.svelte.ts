@@ -11,7 +11,9 @@ import { roundByDPR } from './internals/round-by-dpr.js';
 import type { FloatingEngineOptions, FloatingEngineState } from './types.js';
 
 /**
- * Low-level utility for managing floating-ui state
+ * Low-level utility for managing floating-ui position computation, CSS style generation, and auto-update lifecycle.
+ *
+ * For complete tooltip/popover behavior with ARIA patterns and focus management, use `FloatingBuilder` instead.
  */
 export class FloatingEngine {
     /**

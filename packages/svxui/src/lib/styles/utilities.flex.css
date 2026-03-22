@@ -51,7 +51,7 @@
   justify-content: stretch;
 }
 
-.flex-justify-ncontent-ormal {
+.flex-justify-ncontent-normal {
   justify-content: normal;
 }
 
@@ -179,7 +179,7 @@
 }
 
 .flex-initial {
-  flex: O 1 auto;
+  flex: 0 1 auto;
 }
 
 .flex-none {

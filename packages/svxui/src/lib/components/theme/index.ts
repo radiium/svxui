@@ -8,7 +8,6 @@ export type {
     StrategyType,
     ThemeChildProviderProps,
     ThemeChildStateProps,
-    ThemeColorsType,
     ThemeRootProviderProps,
     ThemeRootStateProps,
     Themes,

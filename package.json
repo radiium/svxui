@@ -7,7 +7,6 @@
     "license": "MIT",
     "author": {
         "name": "radiium",
-        "email": "remip.dev@gmail.com",
         "url": "https://github.com/radiium"
     },
     "keywords": [
@@ -31,31 +30,29 @@
         "node": ">=22",
         "pnpm": ">=10"
     },
+    "packageManager": "pnpm@10.32.1",
     "scripts": {
-        "-- DEV": "",
-        "dev": "concurrently \"pnpm:dev:lib:watch\" \"pnpm:dev:docs\"",
-        "dev:lib": "pnpm --filter=svxui -r dev",
-        "dev:lib:watch": "pnpm --filter=svxui -r package:watch",
-        "dev:docs": "pnpm --filter=docs -r dev",
-        "-- BUILD": "",
-        "build": "pnpm --filter=!@configs/** --filter=!docgen -r build",
-        "build:lib": "pnpm --filter=svxui build",
-        "generate:docs": "pnpm --filter=docgen generate",
-        "build:sites": "pnpm --filter=docs build",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "pnpm run build:*",
+        "build:packages": "pnpm --filter=./packages/** --parallel build",
+        "build:docs": "pnpm --filter docs -r build",
+        "check": "pnpm -r check",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "format": "prettier --write .",
         "-- VERCEL": "",
-        "vercel:prepare": "pnpm run build:lib && pnpm run generate:docs",
-        "vercel:build": "pnpm run build:sites",
-        "-- UTILS": "",
-        "check": "pnpm --filter=!@configs/** -r check",
-        "lint": "pnpm --filter=!@configs/** -r lint",
-        "format": "pnpm --filter=!@configs/** -r format",
-        "test": "pnpm --filter=svxui -r test",
-        "package": " pnpm --filter=svxui -r package",
-        "ci:publish": " pnpm build:packages && changeset publish"
+        "vercel:prepare": "pnpm run build:packages",
+        "vercel:build": "pnpm run build:docs"
     },
     "devDependencies": {
-        "@changesets/cli": "^2.29.8",
-        "concurrently": "^9.2.1"
-    },
-    "packageManager": "pnpm@10.28.2"
+        "@eslint/compat": "^2.0.3",
+        "@eslint/js": "^9.39.4",
+        "eslint": "^9.39.4",
+        "eslint-config-prettier": "^9.1.2",
+        "eslint-plugin-svelte": "^3.16.0",
+        "globals": "^17.4.0",
+        "prettier": "latest",
+        "prettier-plugin-svelte": "^3.5.1",
+        "typescript-eslint": "^8.57.1"
+    }
 }

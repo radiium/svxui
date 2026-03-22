@@ -4,17 +4,10 @@
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let options = $state(['opt1', 'opt2', 'opt3']);
-    let value: string | string[] | undefined = $state(undefined);
+    const options = ['opt1', 'opt2', 'opt3'];
     let multiple = $state(false);
 
-    let selection = new SelectionState({
-        get value() {
-            return value;
-        },
-        set value(newValue) {
-            value = newValue;
-        },
+    const selection = new SelectionState({
         get multiple() {
             return multiple;
         }
@@ -23,7 +16,7 @@
     let json = $derived(
         JSON.stringify(
             {
-                value,
+                value: selection.value,
                 multiple,
                 count: selection.count
             },

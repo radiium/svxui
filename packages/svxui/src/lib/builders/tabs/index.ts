@@ -1,4 +1,4 @@
-export { TabsBuilder } from './builder.svelte.js';
+export { TabsBuilder } from './tabs-builder.svelte.ts';
 export type {
     TabsBuilderOptions,
     TabsItemContent,

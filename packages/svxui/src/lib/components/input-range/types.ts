@@ -6,7 +6,11 @@ export type InputRangeSize = '1' | '2' | '3';
 /**
  * Extends all the standard HTML attributes of the `<input type="range">` element.
  */
-export type InputRangeProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'> & {
+export type InputRangeProps = Omit<HTMLInputAttributes, 'color' | 'size' | 'type'> & {
+    /**
+     * Callback called on value change
+     */
+    onValueChange?: (newValue: number | undefined | null) => void;
     /**
      * Reference to the rendered DOM element.
      */

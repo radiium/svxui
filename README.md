@@ -1,84 +1,51 @@
 # svxui
 
-An alternative Svelte 5 component library
+A modern alternative Svelte 5 component library
 
---- 
-
-[Documentation](https://svxui.vercel.app/)
+> **Documentation:** [svxui.vercel.app →](https://svxui.vercel.app/)
 
 ## Overview
 
-Svxui is a component library for Svelte 5 inspired by [@radix-ui/themes](https://www.radix-ui.com). Proposed as an alternative to Tailwincss-based solutions, the library offers developers a different approach to creating modern interfaces.
+Svxui is a Svelte 5 component library inspired by the design system and DX of [@radix-ui/themes](https://www.radix-ui.com), powered by the [Radix color system](https://www.radix-ui.com/colors). It takes a prop-driven approach to customization — for those who'd rather not count utility classes for a living.
 
-## Components
+The library is organized into four layers, from ready-to-use to fully custom:
 
-The library includes a collection of +20 UI components and an assortment of handy utility functions/classes.
+- **Components** — Pre-built, styled UI components
+- **Builders** — Headless class-based state managers to build your own components
+- **Attachments** — Composable Svelte 5 attachments for common behaviors
+- **Utilities** — Standalone helper modules
 
-## Color System
+## Features
 
-The library implements a color system based on [@radix-ui/colors](https://www.radix-ui.com/colors). Comes with default color palettes, the system offers developers the ability to incorporate additional color aliases from the full range of Radix palettes to meet specific design requirements.
-
-## Theming System
-
-The library include theming system with support for light, dark, and system preference modes. This implementation draws inspiration from Svelte 5 [mode-watcher](https://mode-watcher.sveco.dev/) library.
-
-Key features of the theming system include:
-
-- Full compatibility with server-side rendering (SSR) and static site generation (SSG)
-- Prevention of Flash Of Unstyled Content (FOUC) during theme transitions
-- Active monitoring of system preference changes to maintain synchronization
-- Smooth visual transitions when switching between themes
-
-## Developer Experience
-
-Built specifically for Svelte 5, the library offers a straightforward development experience with TypeScript support. Developers will find helpful autocompletion, type checking, and inline documentation to make implementation easier.
-
-## Extensibility
-
-While providing a comprehensive set of pre-designed components, the library remains highly extensible. Developers can customize existing components or build upon them to create specialized variants that match specific design requirements.
+- **Svelte 5 Native** — Built with runes (`$props`, `$state`, `$derived`, `$effect`) and Svelte 5 attachments
+- **Fully Typed** — Complete TypeScript support with strict mode
+- **Accessible** — ARIA compliant components with keyboard navigation
+- **Extensible Theming** — CSS custom properties + TypeScript namespace augmentation for custom colors
+- **Tree-shakeable** — Granular export map, import only what you need
+- **Headless Builders** — Class-based state managers to build fully custom components with full a11y
+- **Lightweight** — Single runtime dependency (`@floating-ui/dom`)
 
 ## Installation
 
 ```bash
 npm install svxui
-```
-
-```bash
-pnpm install svxui
-```
-
-```bash
+# or
+pnpm add svxui
+# or
 yarn add svxui
 ```
 
-## Development
+## Requirements
 
-### Install 
+- Node.js >= 22
+- Svelte >= 5.54.0
 
-```bash
-pnpm install
-```
+## Contributing
 
-### Serve docs site + lib
+Please follow our coding conventions.
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-```bash
-pnpm run dev
-```
+## License & Credits
 
-### Serve lib only
-
-```bash
-pnpm run dev:lib
-```
-
-## Credits
-
-Some parts of this library are inspired or derived from:
-- [@radix-ui/themes](https://www.radix-ui.com/themes/)
-- [@radix-ui/colors](https://www.radix-ui.com/colors/)
-- [bits-ui](https://www.bits-ui.com/)
-- [melt](https://www.melt-ui.com/)
-- [mode-watcher](https://mode-watcher.sveco.dev/)
-- [runed](https://runed.dev/)
-- [svelte-portal](https://github.com/romkor/svelte-portal)
-- [trap-focus-svelte](https://github.com/henrygd/trap-focus-svelte)
+This project is licensed under the MIT License.
+See [NOTICE.md](./NOTICE.md) for a list of third-party code and credits.

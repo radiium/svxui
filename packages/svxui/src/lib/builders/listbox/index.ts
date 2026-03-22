@@ -1,4 +1,4 @@
-export { ListboxBuilder } from './builder.svelte.js';
+export { ListboxBuilder } from './listbox-builder.svelte.ts';
 export type {
     ListboxBuilderOptions,
     ListboxItem,

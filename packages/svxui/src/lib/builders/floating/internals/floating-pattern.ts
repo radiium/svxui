@@ -1,4 +1,4 @@
-export type FloationgPatternContext = {
+export type FloatingPatternContext = {
     pattern?: 'tooltip' | 'popover';
     open?: boolean;
     triggerId?: string;
@@ -11,7 +11,7 @@ export type FloatingPatternState = {
 };
 
 export class FloatingPattern {
-    static resolve(context: FloationgPatternContext): FloatingPatternState {
+    static resolve(context: FloatingPatternContext): FloatingPatternState {
         switch (context.pattern) {
             case 'tooltip':
                 return this.#tooltip(context);
@@ -25,7 +25,8 @@ export class FloatingPattern {
     /**
      *  Default pattern
      */
-    static #default(_: FloationgPatternContext): FloatingPatternState {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    static #default(_: FloatingPatternContext): FloatingPatternState {
         return {
             get triggerAttrs(): Record<string, unknown> {
                 return {};
@@ -43,7 +44,7 @@ export class FloatingPattern {
      * @param context
      * @returns
      */
-    static #tooltip(context: FloationgPatternContext): FloatingPatternState {
+    static #tooltip(context: FloatingPatternContext): FloatingPatternState {
         return {
             get triggerAttrs(): Record<string, unknown> {
                 return {
@@ -65,7 +66,7 @@ export class FloatingPattern {
      * @param context
      * @returns
      */
-    static #popover(context: FloationgPatternContext): FloatingPatternState {
+    static #popover(context: FloatingPatternContext): FloatingPatternState {
         return {
             get triggerAttrs(): Record<string, unknown> {
                 return {

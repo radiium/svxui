@@ -1,0 +1,60 @@
+---
+title: Dialog builder
+description: Builder class for creating accessible dialog components. Manages focus, keyboard interactions, and ARIA roles.
+category: builders
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+</script>
+
+## Usage
+
+```svelte
+<script>
+    import { DialogBuilder } from 'svxui';
+
+    // Initialize dialog
+    const dialog = new DialogBuilder({
+        onClose: (reason) => console.log('onClose', reason),
+        closeOnBackdropClick: true,
+        closeOnEscape: true,
+        focusTrap: true
+    });
+</script>
+
+<button onclick={() => dialog.open()}>Open dialog</button>
+
+{#if dialog.isOpen}
+    <div class="backdrop" {...dialog.backdropAttrs}></div>
+    <dialog open {...dialog.contentAttrs}>
+        <p>Dialog content</p>
+        <button onclick={() => dialog.close()}>Close dialog</button>
+    </dialog>
+{/if}
+
+<style>
+    .backdrop {
+        z-index: 1;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.35);
+    }
+
+    dialog {
+        z-index: 1;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+```
+
+## Type Definition
+
+<ApiReference category="builders" names={['dialog']}/>

@@ -1,4 +1,4 @@
-import type { Radius } from '$lib/shared.types.js';
+import type { Color, Radius } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { ThemeChildState } from './states/theme-child-state.svelte.js';
@@ -18,13 +18,11 @@ export type ThemeType = (typeof Themes)[number];
 export const MetaThemeColors = { light: '#fcfcfc', dark: '#111111' } as const;
 export type MetaThemeColorsType = { light: string; dark: string };
 
-export type ThemeColorsType = Record<string, string>;
-
 export type ThemeRootStateProps = {
     /**
      * Default accent color
      */
-    defaultColor?: string;
+    defaultColor?: Color;
     /**
      * Storage key for accent color
      */
@@ -68,7 +66,7 @@ export type ThemeRootStateProps = {
     /**
      * Custom theme colors
      */
-    customThemeColors?: ThemeColorsType;
+    customThemeColors?: Svxui.ColorMap;
 };
 
 /**
@@ -76,6 +74,10 @@ export type ThemeRootStateProps = {
  */
 export type ThemeRootProviderProps = ThemeRootStateProps &
     Omit<HTMLAttributes<HTMLDivElement>, 'children'> & {
+        /**
+         * Reference to the rendered DOM element.
+         */
+        ref?: HTMLDivElement;
         /**
          * ThemeRootProvider content to render
          */
@@ -86,7 +88,7 @@ export type ThemeChildStateProps = {
     /**
      * Static Accent color or resolved from ThemeRootProvider.
      */
-    color?: string;
+    color?: Color;
     /**
      * Static theme strategy or resolved from ThemeRootProvider.
      */
@@ -106,6 +108,10 @@ export type ThemeChildStateProps = {
  */
 export type ThemeChildProviderProps = ThemeChildStateProps &
     HTMLAttributes<HTMLDivElement> & {
+        /**
+         * Reference to the rendered DOM element.
+         */
+        ref?: HTMLDivElement;
         /**
          * ThemeChildProvider content to render
          */

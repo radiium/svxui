@@ -34,8 +34,8 @@ export type BuildFloatingMiddlewareProps = {
 
 /**
  * Build array of common floating-ui middleware
- * @param props
- * @returns
+ * @param props Floating middleware configuration options
+ * @returns Array of configured floating-ui middleware instances
  */
 export function buildFloatingMiddlewares(props: BuildFloatingMiddlewareProps): Middleware[] {
     const middlewares: Middleware[] = [];

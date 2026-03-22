@@ -6,12 +6,6 @@ import type { SelectionStateOptions } from '$lib/utilities/selection-state/index
  */
 export type TabsBuilderOptions<Value> = Omit<SelectionStateOptions<Value, false>, 'multiple'> & {
     /**
-     * Callback called on value change
-     * @param newValue
-     * @returns
-     */
-    onValueChange?: (newValue: Value) => void;
-    /**
      * Tabs orientation
      */
     orientation?: Orientation;
@@ -30,7 +24,6 @@ export type TabsBuilderOptions<Value> = Omit<SelectionStateOptions<Value, false>
 };
 
 export type TabsRootAttributes = {
-    readonly [x: string]: '' | Orientation | `tabs-root-${string}` | undefined;
     readonly id: `tabs-root-${string}`;
     readonly 'data-disabled': '' | undefined;
     readonly 'data-orientation': Orientation;
@@ -65,11 +58,11 @@ export type TabsItemTrigger = {
     /**
      * Tab item is activated or not
      */
-    active: boolean;
+    readonly active: boolean;
     /**
      * Tab item is disabled or not
      */
-    disabled?: boolean;
+    readonly disabled?: boolean;
     /**
      * Tab trigger part attributes
      */
@@ -77,14 +70,6 @@ export type TabsItemTrigger = {
 };
 
 export type TabsItemTriggerAttributes = {
-    readonly [x: string]:
-        | string
-        | number
-        | boolean
-        | undefined
-        | (() => void)
-        | ((e: MouseEvent) => void)
-        | ((e: KeyboardEvent) => void);
     readonly id: string;
     readonly tabindex: 0 | -1;
     readonly disabled: boolean;
@@ -92,7 +77,7 @@ export type TabsItemTriggerAttributes = {
     readonly 'data-orientation': Orientation;
     readonly 'data-disabled': '' | undefined;
     readonly role: 'tab';
-    readonly 'aria-selected': 'true' | 'false';
+    readonly 'aria-selected'?: boolean;
     readonly 'aria-controls': string | undefined;
     readonly onfocus: () => void;
     readonly onclick: (e: MouseEvent) => void;
@@ -120,11 +105,11 @@ export type TabsItemContent = {
     /**
      * Tab item is activated or not
      */
-    active: boolean;
+    readonly active: boolean;
     /**
      * Tab item is disabled or not
      */
-    disabled?: boolean;
+    readonly disabled?: boolean;
     /**
      * Tab content part attributes
      */
@@ -132,15 +117,13 @@ export type TabsItemContent = {
 };
 
 export type TabsItemContentAttributes = {
-    readonly [x: string]: string | number | boolean | undefined;
     readonly id: string;
     readonly disabled: boolean;
     readonly tabindex: 0;
     readonly hidden: true | undefined;
     readonly 'data-state': 'active' | 'inactive';
     readonly 'data-orientation': Orientation;
-    readonly 'data-disabled': '' | undefined;
+    readonly 'data-disabled'?: '';
     readonly role: 'tabpanel';
-    readonly 'aria-selected': 'true' | 'false';
-    readonly 'aria-labelledby': string | undefined;
+    readonly 'aria-labelledby'?: string;
 };

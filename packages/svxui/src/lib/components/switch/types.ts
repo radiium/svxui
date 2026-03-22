@@ -6,7 +6,11 @@ export type SwitchSize = '1' | '2' | '3';
 /**
  * Extends all the standard HTML attributes of the `<input type="checkbox">` element.
  */
-export type SwitchProps = Omit<HTMLInputAttributes, 'size' | 'color' | 'type'> & {
+export type SwitchProps = Omit<HTMLInputAttributes, 'color' | 'size' | 'type' | 'indeterminate'> & {
+    /**
+     * Callback when checked change
+     */
+    onCheckedChange?: (checked: boolean) => void;
     /**
      * Reference to the rendered DOM element.
      */

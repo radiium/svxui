@@ -10,19 +10,19 @@ export type TextUnderline = 'auto' | 'always' | 'hover' | 'none';
 /**
  * Extends native HTML attributes inferred from the rendered element `as`.
  */
-export type TextProps<E extends keyof SvelteHTMLElements = 'div'> = Omit<
-    SvelteHTMLElements[E],
-    'as' | 'ref' | 'color' | 'size' | 'align'
+export type TextProps<ElementTag extends keyof SvelteHTMLElements = 'span'> = Omit<
+    SvelteHTMLElements[ElementTag],
+    'color' | 'size' | 'weight' | 'transform' | 'align' | 'disabled'
 > & {
     /**
      * HTML element to render as.
      */
-    as?: E;
+    as?: ElementTag;
     /**
      * Reference to the rendered DOM element.
      * The element type is inferred from `as`.
      */
-    ref?: RefFromHTMLAttributes<SvelteHTMLElements[E]>;
+    ref?: RefFromHTMLAttributes<SvelteHTMLElements[ElementTag]>;
     /**
      * Text color
      */

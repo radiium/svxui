@@ -1,29 +1,30 @@
-<script lang="ts" generics="E extends keyof SvelteHTMLElements = 'div'">
+<script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { PanelProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        as = 'div' as E,
+        as = 'div' as ElementTag,
         color = undefined,
         size = '3',
         radius = undefined,
         variant = 'solid',
         outline = false,
         fullWidth = false,
+        fullHeight = false,
         children,
         ...rest
-    }: PanelProps<E> = $props();
+    }: PanelProps<ElementTag> = $props();
 
     let cssClass = $derived([
         rest.class,
         'panel',
         {
             [`panel-size-${size}`]: size,
-            [`panel-color-${color}`]: color,
             [`panel-variant-${variant}`]: variant,
             'panel-outline': outline,
             'panel-full-width': fullWidth,
+            'panel-full-height': fullHeight,
             'panel-button': as === 'button',
             'panel-link': as === 'a',
             'panel-label': as === 'label'
@@ -34,18 +35,17 @@
 <svelte:element
     this={as}
     {...rest}
-    data-color={color}
-    data-size={size}
-    data-radius={radius}
-    class={cssClass}
     bind:this={ref}
+    class={cssClass}
+    aria-disabled={rest.disabled ? 'true' : undefined}
+    data-color={color}
+    data-radius={radius}
 >
     {@render children?.()}
 </svelte:element>
 
 <style>
     .panel {
-        /* display: block; */
         position: relative;
         box-sizing: border-box;
         padding: var(--panel-padding);
@@ -72,6 +72,10 @@
 
         &.panel-full-width {
             width: 100%;
+        }
+
+        &.panel-full-height {
+            height: 100%;
         }
 
         /* Sizes */
@@ -125,10 +129,15 @@
             --panel-background: var(--accent-2);
             --panel-background-hover: var(--accent-3);
         }
-        &.panel-variant-clear {
-            --panel-background: var(--color-background-0);
+        &.panel-variant-surface {
+            --panel-background: var(--accent-1);
             --panel-background-hover: var(--accent-2);
         }
+        &.panel-variant-clear {
+            --panel-background: transparent;
+            --panel-background-hover: var(--accent-2);
+        }
+        /* --color-panel-solid: var(--gray-2); */
 
         /* Renderd as button, link or label */
         &.panel-button {

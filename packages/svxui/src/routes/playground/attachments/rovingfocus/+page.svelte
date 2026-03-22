@@ -19,7 +19,7 @@
         <ControlCheckbox label="loop" bind:checked={loop} />
         <ControlCheckbox label="activateOnFocus" bind:checked={activateOnFocus} />
         <ControlSelect label="orientation" bind:value={orientation} options={['vertical', 'horizontal']} />
-        <ControlSelect label="initialIndex" bind:value={initialIndex} options={['first', 'last', 2]} />
+        <ControlSelect label="initialIndex" bind:value={initialIndex} options={['first', 'last', '2']} />
     {/snippet}
 
     <Flexbox
@@ -44,7 +44,16 @@
     >
         {#each items as item, i (item)}
             {@const disabled = i === 1}
-            <Button data-item variant="soft" {disabled} onclick={() => console.log('click', item)}>
+
+            <Button
+                data-item
+                variant="soft"
+                {disabled}
+                onclick={() => {
+                    // eslint-disable-next-line no-console
+                    console.log('click', item);
+                }}
+            >
                 {item}
                 {#if disabled}
                     (disabled)

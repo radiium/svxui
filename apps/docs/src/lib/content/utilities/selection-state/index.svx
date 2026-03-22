@@ -1,0 +1,55 @@
+---
+title: SelectionState
+description: A utility class that manages single or multiple external selection state with methods to query and update the current selection.
+category: utilities
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+
+<SectionDemo {...examples.overview }/>
+
+## Usage
+
+```typescript
+import { SelectionState } from 'svxui';
+
+let value: string[] = $state();
+
+// Initialize the selection state with the value to be managed
+// Use accessors (getter and setter) for external updates
+// The external value can be an array or a single value
+// depending on the multiple option.
+let selection = new SelectionState({
+    get value() {
+        return value;
+    },
+    set value(newValue) {
+        value = newValue;
+    },
+    multiple: true
+});
+
+// Manage selection
+selection.select(item);
+selection.deselect(item);
+selection.toggle(item);
+selection.has(item);
+
+// Clear selection
+selection.clear();
+
+// Get selection count (reactive)
+selection.count;
+
+```
+
+## Type Definition
+
+<ApiReference category="utilities" names={['selection-state']}/>
+
+

@@ -1,20 +1,21 @@
-<script lang="ts" generics="E extends keyof SvelteHTMLElements = 'div'">
+<script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { FlexboxProps } from '../types.js';
 
     let {
         ref = $bindable(),
-        as = 'div' as E,
+        as = 'div' as ElementTag,
         display = 'flex',
         justify = 'start',
         direction = undefined,
         align = undefined,
         wrap = undefined,
         gap = undefined,
-        fullWidth = undefined,
+        fullWidth = false,
+        fullHeight = false,
         children,
         ...rest
-    }: FlexboxProps<E> = $props();
+    }: FlexboxProps<ElementTag> = $props();
 
     let cssClass = $derived([
         rest.class,
@@ -25,12 +26,13 @@
             [`flexbox-items-${align}`]: align,
             [`flexbox-${wrap}`]: wrap,
             [`flexbox-gap-${gap}`]: gap,
-            'flexbox-full-width': fullWidth
+            'flexbox-full-width': fullWidth,
+            'flexbox-full-height': fullHeight
         }
     ]);
 </script>
 
-<svelte:element this={as} {...rest} class={cssClass} bind:this={ref}>
+<svelte:element this={as} {...rest} bind:this={ref} class={cssClass}>
     {@render children?.()}
 </svelte:element>
 
@@ -74,7 +76,7 @@
     .flexbox-justify-stretch {
         justify-content: stretch;
     }
-    .flexbox-justify-ormal {
+    .flexbox-justify-normal {
         justify-content: normal;
     }
 
@@ -170,8 +172,11 @@
         gap: var(--space-9);
     }
 
-    /* Others */
+    /* Width/Height */
     .flexbox-full-width {
         width: 100%;
+    }
+    .flexbox-full-height {
+        height: 100%;
     }
 </style>

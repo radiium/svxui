@@ -9,7 +9,7 @@ CHANGELOG.md
 pnpm-lock.yaml
 pnpm-workspace.yaml
 **/.changeset/
-**/package.json
+# **/package.json
 **/.vercel
 **/.contentlayer
 **/.svelte-kit
@@ -22,3 +22,6 @@ pnpm-workspace.yaml
 
 **/*.md
 **/*.svx
+
+apps/docs/src/lib/content-utils/libdoc.json
+packages/svxui/src/lib/styles

@@ -4,6 +4,7 @@
     let {
         ref = $bindable(),
         value = $bindable(),
+        onValueChange = undefined,
         size = '2',
         radius = undefined,
         color = undefined,
@@ -16,23 +17,28 @@
         rest.class,
         'input-range',
         {
-            [`input-range-orientation-${orientation}`]: orientation,
             [`input-range-size-${size}`]: size,
-            [`input-range-color-${color}`]: color,
+            [`input-range-orientation-${orientation}`]: orientation,
             'input-range-full-width': fullWidth
         }
     ]);
+
+    function onChange(event: Event & { currentTarget: HTMLInputElement }) {
+        rest.onchange?.(event);
+        onValueChange?.(value);
+    }
 </script>
 
 <input
     {...rest}
-    type="range"
-    data-color={color}
-    data-size={size}
-    data-radius={radius}
-    class={cssClass}
     bind:this={ref}
     bind:value
+    onchange={onChange}
+    type="range"
+    aria-orientation={orientation}
+    class={cssClass}
+    data-color={color}
+    data-radius={radius}
 />
 
 <style>
@@ -69,6 +75,57 @@
         --track-radius: max(var(--radius-2), var(--radius-full));
         --track-background: var(--accent-9);
 
+        /* States */
+        &:active,
+        &:focus,
+        &:focus-visible {
+            outline: 2px solid var(--accent-8);
+            outline-offset: -1px;
+        }
+
+        &[disabled] {
+            cursor: default !important;
+            opacity: 0.5 !important;
+            outline: none !important;
+            pointer-events: none;
+
+            &:focus,
+            &:focus-visible {
+                box-shadow: none !important;
+                outline: none !important;
+            }
+        }
+
+        /* Sizes */
+        &.input-range-size-1 {
+            --input-range-height: var(--space-5);
+            --input-range-thumb-width: var(--space-2);
+            --input-range-thumb-height: calc(var(--space-5) - var(--space-2));
+            --input-range-thumb-margin-top: calc(
+                -1 * ((var(--input-range-thumb-height) - var(--space-2)) / 2)
+            );
+            --input-range-track-height: var(--space-2);
+        }
+        &.input-range-size-2 {
+            --input-range-height: var(--space-6);
+            --input-range-thumb-width: var(--space-3);
+            --input-range-thumb-height: calc(var(--space-6) - var(--space-2));
+            --input-range-thumb-margin-top: calc(
+                -1 * ((var(--input-range-thumb-height) - var(--space-3)) / 2)
+            );
+            --input-range-track-height: var(--space-3);
+        }
+        &.input-range-size-3 {
+            --input-range-height: var(--space-7);
+            --input-range-thumb-width: var(--space-4);
+            --input-range-thumb-height: calc(var(--space-7) - var(--space-2));
+            --input-range-thumb-margin-top: calc(
+                -1 * ((var(--input-range-thumb-height) - var(--space-3)) / 2)
+            );
+            --input-range-track-height: var(--space-3);
+        }
+
+        /* Orientation */
         &.input-range-orientation-horizontal {
             padding: 0 var(--space-2);
             height: var(--input-range-height);
@@ -154,56 +211,6 @@
             }
         }
 
-        /* States */
-        &:active,
-        &:focus,
-        &:focus-visible {
-            outline: 2px solid var(--accent-8);
-            outline-offset: -1px;
-        }
-
-        &[disabled] {
-            cursor: default !important;
-            opacity: 0.5 !important;
-            outline: none !important;
-            pointer-events: none;
-
-            &:focus,
-            &:focus-visible {
-                box-shadow: none !important;
-                outline: none !important;
-            }
-        }
-
-        /* Sizes */
-        &.input-range-size-1 {
-            --input-range-height: var(--space-5);
-            --input-range-thumb-width: var(--space-2);
-            --input-range-thumb-height: calc(var(--space-5) - var(--space-2));
-            --input-range-thumb-margin-top: calc(
-                -1 * ((var(--input-range-thumb-height) - var(--space-2)) / 2)
-            );
-            --input-range-track-height: var(--space-2);
-        }
-        &.input-range-size-2 {
-            --input-range-height: var(--space-6);
-            --input-range-thumb-width: var(--space-3);
-            --input-range-thumb-height: calc(var(--space-6) - var(--space-2));
-            --input-range-thumb-margin-top: calc(
-                -1 * ((var(--input-range-thumb-height) - var(--space-3)) / 2)
-            );
-            --input-range-track-height: var(--space-3);
-        }
-        &.input-range-size-3 {
-            --input-range-height: var(--space-7);
-            --input-range-thumb-width: var(--space-4);
-            --input-range-thumb-height: calc(var(--space-7) - var(--space-2));
-            --input-range-thumb-margin-top: calc(
-                -1 * ((var(--input-range-thumb-height) - var(--space-3)) / 2)
-            );
-            --input-range-track-height: var(--space-3);
-        }
-
         /* thumb */
         &::-webkit-slider-thumb {
             appearance: none;
@@ -240,7 +247,6 @@
         &::-moz-range-track {
             background: var(--track-background);
             border-radius: var(--track-radius);
-            border-radius: var(--radius-2);
             cursor: pointer;
         }
         &::-ms-track {
