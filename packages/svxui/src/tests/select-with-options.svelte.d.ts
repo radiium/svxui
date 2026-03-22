@@ -6,6 +6,6 @@ type $$ComponentProps = {
         disabled?: boolean;
     }[];
 } & SelectProps<any, boolean>;
-declare const SelectWithOptions: import("svelte").Component<$$ComponentProps, {}, "ref">;
+declare const SelectWithOptions: import('svelte').Component<$$ComponentProps, {}, 'ref'>;
 type SelectWithOptions = ReturnType<typeof SelectWithOptions>;
 export default SelectWithOptions;

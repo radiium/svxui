@@ -38,8 +38,7 @@ export class SourceFileContext {
             const currentDir = fromFile.getDirectoryPath();
             const resolvedPath = path.resolve(currentDir, moduleSpecifier);
             return (
-                this.project.getSourceFile(resolvedPath + '.ts') ||
-                this.project.getSourceFile(resolvedPath)
+                this.project.getSourceFile(resolvedPath + '.ts') || this.project.getSourceFile(resolvedPath)
             );
         }
 

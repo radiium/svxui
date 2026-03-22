@@ -5,6 +5,6 @@ import { type Snippet } from 'svelte';
 interface Props {
     children?: Snippet;
 }
-declare const Wrapper: import("svelte").Component<Props, {}, "">;
+declare const Wrapper: import('svelte').Component<Props, {}, ''>;
 type Wrapper = ReturnType<typeof Wrapper>;
 export default Wrapper;
