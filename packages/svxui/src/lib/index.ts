@@ -48,7 +48,7 @@ export * from './utilities/selection-state/index.js';
 export * from './utilities/use-id/index.js';
 
 // Shared
-export * from './extensible.types.d.js';
+export type * from './extensible.types.d.js';
 export * from './shared.types.js';
 
 // Re-export from '@floating-ui/dom'
