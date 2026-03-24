@@ -14,7 +14,6 @@
         hasBackground = true,
         track = true,
         disableHeadScriptInjection = false,
-        customThemeColors = undefined,
         children,
         ...rest
     }: ThemeRootProviderProps = $props();
@@ -56,10 +55,6 @@
         color={themeRootState.color}
         theme={themeRootState.theme}
     />
-{/if}
-
-{#if customThemeColors}
-    <ThemeColors themeColors={customThemeColors} />
 {/if}
 
 <div {...rest} {...themeRootState.attrs} bind:this={ref} class={cssClass}>

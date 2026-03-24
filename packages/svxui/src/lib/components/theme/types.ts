@@ -63,10 +63,6 @@ export type ThemeRootStateProps = {
      * Should disable init theme script injection. This script prevent FOUC.
      */
     disableHeadScriptInjection?: boolean;
-    /**
-     * Custom theme colors
-     */
-    customThemeColors?: Svxui.ColorMap;
 };
 
 /**
