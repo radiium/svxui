@@ -36,7 +36,11 @@ By default, the library includes the following color palettes:
 
 ### Usage
 
-The default palettes are loaded automatically by `<ThemeRootProvider/>` — no import needed.
+Import `theme.default.css` to load the default palettes:
+
+```js
+import 'svxui/styles/theme.default.css';
+```
 
 
 ## Additional Radix palettes

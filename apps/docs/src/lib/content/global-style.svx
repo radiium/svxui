@@ -35,7 +35,13 @@ A set of utility CSS classes (margin, padding, size, gap, etc...).
 
 <DocLink href="/styles/utilities.css" libFolder>View utilities.css on GitHub</DocLink>
 
-## 4. Color themes (optional)
+## 4. Default palettes (required)
+
+Contains the 6 default color palettes used by `<ThemeRootProvider/>`: neutral, blue, green, yellow, orange, red.
+
+<DocLink href="/styles/theme.default.css" libFolder>View theme.default.css on GitHub</DocLink>
+
+## 5. Color themes (optional)
 
 Import one or more color palettes from the Radix Colors set:
 
@@ -54,10 +60,11 @@ Import the CSS files at the root of your application.
 ```svelte
 <script>
     import 'svxui/styles/tokens.css'; // Required
+    import 'svxui/styles/theme.default.css'; // Required
     import 'svxui/styles/normalize.css'; // Optional
     import 'svxui/styles/utilities.css'; // Optional
 
-    // Color themes (pick one or more)
+    // Additional color themes (pick one or more)
     import 'svxui/styles/colors/blue.css'; // Optional
     import 'svxui/styles/colors/green.css'; // Optional
 </script>

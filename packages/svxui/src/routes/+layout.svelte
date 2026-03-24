@@ -12,6 +12,7 @@
     } from '$lib/index.js';
     import '$lib/styles/normalize.css';
     import '$lib/styles/tokens.css';
+    import '$lib/styles/theme.default.css';
     import '$lib/styles/utilities.css';
     import { type Snippet } from 'svelte';
 

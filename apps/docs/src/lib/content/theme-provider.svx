@@ -43,6 +43,7 @@ This provider should be placed at the root of your application.
     // Import provider and required CSS
     import { ThemeRootProvider } from 'svxui';
     import 'svxui/styles/tokens.css';
+    import 'svxui/styles/theme.default.css';
 
     let { children } = $props();
 </script>

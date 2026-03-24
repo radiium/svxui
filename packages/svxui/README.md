@@ -20,12 +20,13 @@ yarn add svxui
 
 Add the required CSS and wrap your app with `<ThemeRootProvider/>`. All svxui components must be used inside it.
 
-`tokens.css` is required — it contains all the CSS variables the components depend on. The others are optional.
+`tokens.css` and `theme.default.css` are required. The others are optional.
 
 ```svelte
 <!-- src/routes/+layout.svelte -->
 <script>
     import 'svxui/styles/tokens.css'; // Required
+    import 'svxui/styles/theme.default.css'; // Required
     import 'svxui/styles/normalize.css'; // Optional
     import 'svxui/styles/utilities.css'; // Optional
     import { ThemeRootProvider } from 'svxui';

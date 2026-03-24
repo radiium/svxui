@@ -1,5 +1,4 @@
 <script lang="ts">
-    import ThemeColorsDefault from '../internals/components/theme-colors-default.svelte';
     import ThemeColors from '../internals/components/theme-colors.svelte';
     import ThemeScript from '../internals/components/theme-script.svelte';
     import { createThemeRootContext } from '../states/context.svelte.js';
@@ -61,8 +60,6 @@
 
 {#if customThemeColors}
     <ThemeColors themeColors={customThemeColors} />
-{:else}
-    <ThemeColorsDefault />
 {/if}
 
 <div {...rest} {...themeRootState.attrs} bind:this={ref} class={cssClass}>

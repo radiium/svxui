@@ -39,6 +39,9 @@
         "./styles/tokens.css": {
             "default": "./dist/styles/tokens.css"
         },
+        "./styles/theme.default.css": {
+            "default": "./dist/styles/theme.default.css"
+        },
         "./styles/utilities.css": {
             "default": "./dist/styles/utilities.css"
         },

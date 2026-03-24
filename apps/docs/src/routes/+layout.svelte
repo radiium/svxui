@@ -9,6 +9,7 @@
     // Svxui styles
     import 'svxui/styles/normalize.css';
     import 'svxui/styles/tokens.css';
+    import 'svxui/styles/theme.default.css';
     import 'svxui/styles/utilities.css';
 
     let { data, children }: LayoutProps = $props();
