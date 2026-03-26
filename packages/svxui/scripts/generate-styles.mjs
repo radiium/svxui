@@ -74,6 +74,10 @@ mkdirSync(BASE_OUTPUT_DIR);
         dest: 'utilities.overflow.css'
     },
     {
+        src: 'utilities/inset.scss',
+        dest: 'utilities.inset.css'
+    },
+    {
         src: 'utilities/position.scss',
         dest: 'utilities.position.css'
     },
@@ -92,6 +96,18 @@ mkdirSync(BASE_OUTPUT_DIR);
     {
         src: 'utilities/visibility.scss',
         dest: 'utilities.visibility.css'
+    },
+    {
+        src: 'utilities/cursor.scss',
+        dest: 'utilities.cursor.css'
+    },
+    {
+        src: 'utilities/pointer-events.scss',
+        dest: 'utilities.pointer-events.css'
+    },
+    {
+        src: 'utilities/z-index.scss',
+        dest: 'utilities.z-index.css'
     }
 ].forEach(({ src, dest }) => {
     const input = resolve(BASE_INPUT_DIR, src);

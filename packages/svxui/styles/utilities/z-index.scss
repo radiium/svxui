@@ -1,0 +1,20 @@
+/*
+ * Utilities: z-index
+ */
+
+$zIndexValues: (
+    '0': 0,
+    '1': 1,
+    '2': 2,
+    '3': 3,
+    '10': 10,
+    '20': 20,
+    '50': 50,
+    'auto': auto
+) !default;
+
+@each $key, $value in $zIndexValues {
+    .z-#{$key} {
+        z-index: $value;
+    }
+}
