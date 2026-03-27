@@ -14,6 +14,9 @@ importers:
       '@eslint/js':
         specifier: ^9.39.4
         version: 9.39.4
+      cz-git:
+        specifier: ^1.12.0
+        version: 1.12.0
       eslint:
         specifier: ^9.39.4
         version: 9.39.4
