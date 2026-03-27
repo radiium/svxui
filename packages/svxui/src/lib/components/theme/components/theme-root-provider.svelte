@@ -1,5 +1,4 @@
 <script lang="ts">
-    import ThemeColors from '../internals/components/theme-colors.svelte';
     import ThemeScript from '../internals/components/theme-script.svelte';
     import { createThemeRootContext } from '../states/context.svelte.js';
     import { MetaThemeColors, ThemeSystem, type ThemeRootProviderProps } from '../types.js';
