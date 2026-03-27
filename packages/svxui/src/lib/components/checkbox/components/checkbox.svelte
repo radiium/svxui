@@ -83,7 +83,7 @@
 
         --checkbox-background: var(--accent-surface);
         --checkbox-background-checked: var(--accent-track);
-        --check-color: var(--accent-contrast);
+        --checkbox-check-color: var(--accent-contrast);
 
         &:after {
             content: '';
@@ -92,7 +92,7 @@
             height: var(--check-height);
             top: 50%;
             left: 50%;
-            border: solid var(--check-color);
+            border: solid var(--checkbox-check-color);
             transform: translate(-50%, -60%) rotate(45deg);
             border-width: 0 2px 2px 0;
         }

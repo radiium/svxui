@@ -52,7 +52,7 @@
 
         --radio-background: var(--accent-surface);
         --radio-background-checked: var(--accent-track);
-        --check-color: var(--accent-contrast);
+        --radio-check-color: var(--accent-contrast);
 
         &:after {
             width: var(--radio-size);
@@ -80,7 +80,7 @@
             box-shadow: none;
 
             &:after {
-                background-color: var(--check-color);
+                background-color: var(--radio-check-color);
                 display: block;
             }
         }
