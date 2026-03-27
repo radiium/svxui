@@ -5,7 +5,10 @@ import type { HTMLAttributes } from 'svelte/elements';
 /**
  * Available color palettes. Extend via `Svxui.ColorMap`.
  */
-export type Color = keyof Svxui.ColorMap;
+
+export type Color = keyof Svxui.ColorMap extends never
+    ? 'neutral' | 'blue' | 'green' | 'yellow' | 'orange' | 'red'
+    : keyof Svxui.ColorMap;
 
 /**
  * Border radius scale tokens.

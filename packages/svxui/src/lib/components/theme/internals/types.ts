@@ -23,7 +23,3 @@ export type InitThemeConfig = {
     lightClass: string;
     lightColor: string;
 };
-
-export type ThemeColorsProps = {
-    themeColors: Svxui.ColorMap;
-};

@@ -20,14 +20,8 @@
 
 declare global {
     namespace Svxui {
-        export interface ColorMap {
-            neutral: 'neutral';
-            blue: 'blue';
-            green: 'grass';
-            yellow: 'amber';
-            orange: 'orange';
-            red: 'tomato';
-        }
+        // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+        export interface ColorMap {}
     }
 }
 
