@@ -1,6 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { portal } from './portal.svelte.ts';
-import { ROOT_SELECTOR } from '$lib/internals/root-selector.js';
 
 describe('portal attachment', () => {
     let node: HTMLElement;
@@ -12,8 +11,6 @@ describe('portal attachment', () => {
 
         host = document.createElement('div');
         host.id = 'host';
-        host.classList.add('svxui');
-        host.setAttribute('data-theme-root', '');
 
         node = document.createElement('div');
         node.id = 'node';
@@ -26,11 +23,11 @@ describe('portal attachment', () => {
         document.body.appendChild(target);
     });
 
-    it('moves the node to root selector by default', () => {
+    it('moves the node to body by default', () => {
         const attachment = portal();
         const cleanup = attachment(node);
 
-        expect(node.parentElement).toBe(document.body.querySelector(ROOT_SELECTOR));
+        expect(node.parentElement).toBe(document.body);
 
         cleanup?.();
     });

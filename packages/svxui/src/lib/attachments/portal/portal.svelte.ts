@@ -1,4 +1,3 @@
-import { ROOT_SELECTOR } from '$lib/internals/root-selector.js';
 import type { Attachment } from 'svelte/attachments';
 import type { PortalOptions } from './types.ts';
 
@@ -7,7 +6,7 @@ import type { PortalOptions } from './types.ts';
  */
 export function portal(options: PortalOptions = {}): Attachment<HTMLElement> {
     return (node: HTMLElement) => {
-        const { enabled = true, target = ROOT_SELECTOR } = options;
+        const { enabled = true, target = 'body' } = options;
 
         const originalParent = node.parentNode;
         const originalNextSibling = node.nextSibling;
