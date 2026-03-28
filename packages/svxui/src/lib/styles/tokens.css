@@ -63,7 +63,7 @@
   background-color: var(--color-background);
 }
 
-.svxui {
+[data-theme-root] {
   color: var(--color);
 }
 
@@ -111,9 +111,9 @@
 }
 
 /*
- * Tokens: space    
+ * Tokens: space
  */
-.svxui {
+:root {
   --space-0: 0px;
   --space-1: 4px;
   --space-2: 8px;
@@ -127,9 +127,9 @@
 }
 
 /*
- * Tokens: typography    
+ * Tokens: typography
  */
-.svxui {
+:root {
   --font-size-1: 12px;
   --font-size-2: 14px;
   --font-size-3: 16px;
@@ -173,7 +173,7 @@
   --default-leading-trim-end: 0.36em;
 }
 
-.svxui {
+[data-theme-root] {
   font-family: var(--default-font-family);
   font-size: var(--default-font-size);
   font-weight: var(--default-font-weight);
