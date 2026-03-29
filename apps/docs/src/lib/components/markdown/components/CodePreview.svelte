@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Snippet } from 'svelte';
-    import { Flexbox, Panel, Separator, Switch, Text, useThemeRootContext, type Color } from 'svxui';
+    import { Flexbox, Panel, Separator, Switch, Text, useTheme, type Color } from 'svxui';
     import CopyCodeButton from './CopyCodeButton.svelte';
 
     type Props = {
@@ -30,7 +30,7 @@
         }
     });
 
-    const themeRoot = useThemeRootContext();
+    const theme = useTheme();
 </script>
 
 <Flexbox direction="column" gap="3" class="{enableOpenCode ? '' : 'mt-6'} w-100 wrapper">
@@ -39,11 +39,7 @@
             <Text as="label" size="2">
                 <Flexbox gap="2" align="center">
                     Show code
-                    <Switch
-                        name="toggle-code-{id}"
-                        bind:checked={codeOpened}
-                        color={themeRoot.color as Color}
-                    />
+                    <Switch name="toggle-code-{id}" bind:checked={codeOpened} color={theme.color as Color} />
                 </Flexbox>
             </Text>
         </Flexbox>

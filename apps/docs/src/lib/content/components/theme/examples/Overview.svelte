@@ -1,17 +1,8 @@
 <script lang="ts">
-    import {
-        Button,
-        Flexbox,
-        Text,
-        useThemeRootContext,
-        type Color,
-        type Radius,
-        type StrategyType
-    } from 'svxui';
+    import { Button, Flexbox, Modes, Text, useTheme, type Color, type Mode, type Radius } from 'svxui';
 
-    const themeRoot = useThemeRootContext();
-
-    const strategies: StrategyType[] = ['system', 'light', 'dark'];
+    const theme = useTheme();
+    const strategies: Mode[] = Modes;
     const radius: Radius[] = ['none', 'small', 'medium', 'large', 'full'];
     const colors: Color[] = ['neutral', 'green', 'blue', 'yellow', 'orange', 'red'];
 </script>
@@ -23,9 +14,9 @@
             {#each strategies as item (item)}
                 <Button
                     radius="small"
-                    variant={themeRoot.strategy === item ? 'solid' : 'outline'}
+                    variant={theme.mode === item ? 'solid' : 'outline'}
                     size="2"
-                    onclick={() => themeRoot.setStrategy(item)}
+                    onclick={() => theme.setMode(item)}
                 >
                     {item}
                 </Button>
@@ -39,9 +30,9 @@
             {#each radius as item (item)}
                 <Button
                     radius="small"
-                    variant={themeRoot.radius === item ? 'solid' : 'outline'}
+                    variant={theme.radius === item ? 'solid' : 'outline'}
                     size="2"
-                    onclick={() => themeRoot.setRadius(item)}
+                    onclick={() => theme.setRadius(item)}
                 >
                     {item}
                 </Button>
@@ -57,10 +48,10 @@
                     aria-label="color"
                     title={item}
                     class="color-btn"
-                    class:selected={themeRoot.color === item}
+                    class:selected={theme.color === item}
                     data-radius="small"
                     data-color={item}
-                    onclick={() => themeRoot.setColor(item)}
+                    onclick={() => theme.setColor(item)}
                 >
                 </button>
             {/each}

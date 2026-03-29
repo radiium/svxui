@@ -1,20 +1,7 @@
 <script lang="ts">
-    import {
-        Button,
-        Flexbox,
-        rovingfocus,
-        Text,
-        useThemeRootContext,
-        type Color,
-        type Radius,
-        type StrategyType
-    } from 'svxui';
+    import { AllRadixColors, Button, Flexbox, Modes, Radiuses, rovingfocus, Text, useTheme } from 'svxui';
 
-    const themeRoot = useThemeRootContext();
-
-    const strategies: StrategyType[] = ['system', 'light', 'dark'];
-    const radius: Radius[] = ['none', 'small', 'medium', 'large', 'full'];
-    const colors: Color[] = ['neutral', 'green', 'blue', 'yellow', 'orange', 'red'];
+    const theme = useTheme();
 </script>
 
 <Flexbox direction="column" gap="3" class="settings-content" data-color="neutral">
@@ -25,13 +12,13 @@
             wrap="wrap"
             {@attach rovingfocus({ loop: true, activateOnFocus: true, orientation: 'horizontal' })}
         >
-            {#each strategies as item (item)}
+            {#each Modes as item (item)}
                 <Button
                     data-roving-item
                     radius="small"
-                    variant={themeRoot.strategy === item ? 'solid' : 'outline'}
+                    variant={theme.mode === item ? 'solid' : 'outline'}
                     size="2"
-                    onclick={() => themeRoot.setStrategy(item)}
+                    onclick={() => theme.setMode(item)}
                 >
                     {item}
                 </Button>
@@ -46,13 +33,13 @@
             wrap="wrap"
             {@attach rovingfocus({ loop: true, activateOnFocus: true, orientation: 'horizontal' })}
         >
-            {#each radius as item (item)}
+            {#each Radiuses as item (item)}
                 <Button
                     data-roving-item
                     radius="small"
-                    variant={themeRoot.radius === item ? 'solid' : 'outline'}
+                    variant={theme.radius === item ? 'solid' : 'outline'}
                     size="2"
-                    onclick={() => themeRoot.setRadius(item)}
+                    onclick={() => theme.setRadius(item)}
                 >
                     {item}
                 </Button>
@@ -67,15 +54,15 @@
             wrap="wrap"
             {@attach rovingfocus({ loop: true, activateOnFocus: true, orientation: 'horizontal' })}
         >
-            {#each colors as item (item)}
+            {#each AllRadixColors as item (item)}
                 <Button
                     data-roving-item
-                    active={themeRoot.color === item}
+                    active={theme.color === item}
                     color={item}
-                    onclick={() => themeRoot.setColor(item)}
-                >
-                    {item}
-                </Button>
+                    onclick={() => theme.setColor(item)}
+                    iconOnly
+                    radius="full"
+                ></Button>
             {/each}
         </Flexbox>
     </Flexbox>
@@ -83,6 +70,15 @@
 
 <style>
     :global(.settings-content) {
+        width: 400px;
         max-width: 85vw;
+    }
+
+    :global(.settings-content .button) {
+        &:focus-visible,
+        &.button-active {
+            outline: 2px solid white;
+            outline-offset: 1px;
+        }
     }
 </style>

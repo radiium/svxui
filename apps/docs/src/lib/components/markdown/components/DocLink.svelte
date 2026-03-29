@@ -1,7 +1,7 @@
 <script lang="ts">
     import { PUBLIC_LIB_FOLDER } from '$env/static/public';
     import ArrowSquareOut from '$lib/components/icons/ArrowSquareOut.svelte';
-    import { Button, Text, useThemeRootContext, type Color, type TextProps } from 'svxui';
+    import { Button, Text, useTheme, type Color, type TextProps } from 'svxui';
 
     type Props = TextProps<'a'> & {
         text?: string;
@@ -11,8 +11,8 @@
     };
     let { children, href, libFolder, themeColor, ...restProps }: Props = $props();
 
-    const themeRoot = useThemeRootContext();
-    const color = $derived(themeColor ? (themeRoot.color as Color) : 'neutral');
+    const theme = useTheme();
+    const color = $derived(themeColor ? (theme.color as Color) : 'neutral');
 
     let hrefFull = $derived.by(() => {
         return libFolder

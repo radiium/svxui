@@ -21,7 +21,7 @@
     import type { PageContentData } from '$lib/types';
     import { stringToId } from '$lib/utils/functions';
     import type { Snippet } from 'svelte';
-    import { Badge, Button, Flexbox, Panel, Text, useThemeRootContext, type Color } from 'svxui';
+    import { Badge, Button, Flexbox, Panel, Text, useTheme, type Color } from 'svxui';
     import GithubIcon from '../icons/GithubIcon.svelte';
     import PageNavigation from './components/PageNavigation.svelte';
 
@@ -30,8 +30,8 @@
     };
     let { navigation, slug, slugFull, frontmatter, children }: Props = $props();
 
-    const themeRoot = useThemeRootContext();
-    const themeColor = $derived(themeRoot.color as Color);
+    const theme = useTheme();
+    const themeColor = $derived(theme.color as Color);
 
     let sourceLink = $derived(
         frontmatter?.category
@@ -67,6 +67,7 @@
 
         {#if sourceLink}
             <Button
+                as="a"
                 href={sourceLink}
                 target="_blank"
                 rel="external"

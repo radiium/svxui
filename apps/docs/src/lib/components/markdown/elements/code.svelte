@@ -1,15 +1,15 @@
 <script lang="ts">
     import type { Snippet } from 'svelte';
     import type { HTMLAttributes } from 'svelte/elements';
-    import { useThemeRootContext } from 'svxui';
+    import { useTheme } from 'svxui';
 
     type Props = HTMLAttributes<HTMLElement> & {
         color?: string;
         children?: Snippet<[void]>;
     };
     let { color = 'neutral', children, ...restProps }: Props = $props();
-    const themeRoot = useThemeRootContext();
-    let dataColor = $derived(color === 'current' ? themeRoot.color : color);
+    const theme = useTheme();
+    let dataColor = $derived(color === 'current' ? theme.color : color);
 </script>
 
 <code data-color={dataColor} {...restProps}>

@@ -2,7 +2,7 @@
     import ArrowSquareOut from '$lib/components/icons/ArrowSquareOut.svelte';
     import H3 from '$lib/components/markdown/elements/h3.svelte';
     import { stringToId } from '$lib/utils/functions';
-    import { Flexbox, Text, useThemeRootContext, type Color } from 'svxui';
+    import { Flexbox, Text, useTheme, type Color } from 'svxui';
     import { libDoc } from '../../../content-utils/libdoc';
     import type {
         AttachmentDocumentation,
@@ -36,8 +36,8 @@
     const isBuilder = (item: ItemDoc): item is BuilderDocumentation => item.category === 'builder';
     const isUtility = (item: ItemDoc): item is UtilityDocumentation => item.category === 'utility';
 
-    const themeRoot = useThemeRootContext();
-    const themeColor = $derived(themeRoot.color as Color);
+    const theme = useTheme();
+    const themeColor = $derived(theme.color as Color);
 
     // $inspect(libDoc[category]).with((_, value) =>
     //     console.log('ApiReference category', names, libDoc[category])

@@ -6,8 +6,8 @@
 
     let {
         mode = ThemeSystem,
-        radius = 'medium',
-        color = 'neutral',
+        radius = undefined,
+        color = undefined,
         transitions = false,
         script = true,
         systemTracking = true,

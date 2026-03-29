@@ -68,7 +68,7 @@
     const radius = ['none', 'small', 'medium', 'large', 'full'] as Radius[];
 </script>
 
-<ThemeProvider>
+<ThemeProvider color="neutral" radius="medium">
     {@const themeRoot = useTheme()}
     <div class="container">
         <header>
