@@ -33,7 +33,7 @@ describe('AccordionBuilder — defaults', () => {
 
 describe('AccordionBuilder — expand / collapse / toggle', () => {
     itWithEffect('isExpanded returns false initially', () => {
-        const accordion = new AccordionBuilder({ value: null, multiple: false });
+        const accordion = new AccordionBuilder<string, false>({ value: null, multiple: false });
         expect(accordion.isExpanded('a')).toBe(false);
         accordion.destroy();
     });
@@ -96,7 +96,7 @@ describe('AccordionBuilder — expand / collapse / toggle', () => {
 
 describe('AccordionBuilder — getItem', () => {
     itWithEffect('collapsed item has correct data-state and aria-expanded', () => {
-        const accordion = new AccordionBuilder({ value: null, multiple: false });
+        const accordion = new AccordionBuilder<string, false>({ value: null, multiple: false });
         const item = accordion.getItem('a');
         expect(item.expanded).toBe(false);
         expect(item.triggerAttrs['aria-expanded']).toBe(false);
@@ -115,7 +115,7 @@ describe('AccordionBuilder — getItem', () => {
     });
 
     itWithEffect('trigger aria-controls points to content id', () => {
-        const accordion = new AccordionBuilder({ value: null, multiple: false });
+        const accordion = new AccordionBuilder<string, false>({ value: null, multiple: false });
         const item = accordion.getItem('a', { id: 'test-id' });
         expect(item.triggerAttrs['aria-controls']).toBe('accordion-content-test-id');
         expect(item.contentAttrs.id).toBe('accordion-content-test-id');
@@ -123,14 +123,14 @@ describe('AccordionBuilder — getItem', () => {
     });
 
     itWithEffect('content has role region', () => {
-        const accordion = new AccordionBuilder({ value: null, multiple: false });
+        const accordion = new AccordionBuilder<string, false>({ value: null, multiple: false });
         const item = accordion.getItem('a');
         expect(item.contentAttrs.role).toBe('region');
         accordion.destroy();
     });
 
     itWithEffect('disabled item has aria-disabled on trigger', () => {
-        const accordion = new AccordionBuilder({ value: null, multiple: false });
+        const accordion = new AccordionBuilder<string, false>({ value: null, multiple: false });
         const item = accordion.getItem('a', { disabled: true });
         expect(item.disabled).toBe(true);
         expect(item.triggerAttrs['aria-disabled']).toBe(true);

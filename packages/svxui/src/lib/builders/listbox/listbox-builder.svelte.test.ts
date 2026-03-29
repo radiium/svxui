@@ -36,7 +36,7 @@ describe('ListboxBuilder — defaults', () => {
 
 describe('ListboxBuilder — select / deselect / toggle', () => {
     itWithEffect('isSelected returns false initially', () => {
-        const listbox = new ListboxBuilder({ value: null, multiple: false });
+        const listbox = new ListboxBuilder<string, false>({ value: null, multiple: false });
         expect(listbox.isSelected('a')).toBe(false);
         listbox.destroy();
     });
@@ -116,7 +116,7 @@ describe('ListboxBuilder — rootAttrs', () => {
 
 describe('ListboxBuilder — getItem', () => {
     itWithEffect('unselected item has correct attrs', () => {
-        const listbox = new ListboxBuilder({ value: null, multiple: false });
+        const listbox = new ListboxBuilder<string, false>({ value: null, multiple: false });
         const item = listbox.getItem('a');
         expect(item.selected).toBe(false);
         expect(item.attrs.role).toBe('option');
@@ -136,7 +136,7 @@ describe('ListboxBuilder — getItem', () => {
     });
 
     itWithEffect('disabled item has no aria-selected', () => {
-        const listbox = new ListboxBuilder({ value: null, multiple: false });
+        const listbox = new ListboxBuilder<string, false>({ value: null, multiple: false });
         const item = listbox.getItem('a', { disabled: true });
         expect(item.disabled).toBe(true);
         expect(item.attrs['aria-selected']).toBeUndefined();
