@@ -14,7 +14,7 @@ category: components
 
 ## API Reference
 
-<ApiReference category="components" names={['theme-root-provider', 'theme-child-provider']}/>
+<ApiReference category="components" names={['theme-provider', 'theme-scope']}/>
 
 ## Examples
 
