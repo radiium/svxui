@@ -1,6 +1,4 @@
-/* Color: bronze */
-
-/* bronze light */
+/* bronze — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --bronze-track: var(--bronze-9);
 }
 
-/* bronze dark */
+/* bronze — dark */
 
 .dark,
 [data-theme='dark'] {

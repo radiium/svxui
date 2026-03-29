@@ -1,6 +1,4 @@
-/* Color: iris */
-
-/* iris light */
+/* iris — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --iris-track: var(--iris-9);
 }
 
-/* iris dark */
+/* iris — dark */
 
 .dark,
 [data-theme='dark'] {

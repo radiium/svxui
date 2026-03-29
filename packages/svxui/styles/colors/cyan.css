@@ -1,6 +1,4 @@
-/* Color: cyan */
-
-/* cyan light */
+/* cyan — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --cyan-track: var(--cyan-9);
 }
 
-/* cyan dark */
+/* cyan — dark */
 
 .dark,
 [data-theme='dark'] {

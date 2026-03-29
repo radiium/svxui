@@ -1,6 +1,4 @@
-/* Color: sky */
-
-/* sky light */
+/* sky — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --sky-track: var(--sky-9);
 }
 
-/* sky dark */
+/* sky — dark */
 
 .dark,
 [data-theme='dark'] {

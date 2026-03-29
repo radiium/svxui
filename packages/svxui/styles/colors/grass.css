@@ -1,6 +1,4 @@
-/* Color: grass */
-
-/* grass light */
+/* grass — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --grass-track: var(--grass-9);
 }
 
-/* grass dark */
+/* grass — dark */
 
 .dark,
 [data-theme='dark'] {

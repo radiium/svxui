@@ -1,6 +1,4 @@
-/* Color: tomato */
-
-/* tomato light */
+/* tomato — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --tomato-track: var(--tomato-9);
 }
 
-/* tomato dark */
+/* tomato — dark */
 
 .dark,
 [data-theme='dark'] {

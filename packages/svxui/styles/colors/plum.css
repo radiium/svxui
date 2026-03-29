@@ -1,6 +1,4 @@
-/* Color: plum */
-
-/* plum light */
+/* plum — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --plum-track: var(--plum-9);
 }
 
-/* plum dark */
+/* plum — dark */
 
 .dark,
 [data-theme='dark'] {

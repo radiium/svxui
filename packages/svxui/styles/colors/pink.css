@@ -1,6 +1,5 @@
-/* Color: pink */
+/* pink — light */
 
-/* pink light */
 :root,
 .light,
 [data-theme='light'] {
@@ -36,7 +35,7 @@
     --pink-track: var(--pink-9);
 }
 
-/* pink dark */
+/* pink — dark */
 
 .dark,
 [data-theme='dark'] {

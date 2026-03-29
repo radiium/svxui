@@ -1,6 +1,4 @@
-/* Color: jade */
-
-/* jade light */
+/* jade — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --jade-track: var(--jade-9);
 }
 
-/* jade dark */
+/* jade — dark */
 
 .dark,
 [data-theme='dark'] {

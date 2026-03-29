@@ -1,6 +1,4 @@
-/* Color: indigo */
-
-/* indigo light */
+/* indigo — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --indigo-track: var(--indigo-9);
 }
 
-/* indigo dark */
+/* indigo — dark */
 
 .dark,
 [data-theme='dark'] {

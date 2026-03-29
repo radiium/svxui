@@ -1,6 +1,4 @@
-/* Color: mint */
-
-/* mint light */
+/* mint — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --mint-track: var(--mint-9);
 }
 
-/* mint dark */
+/* mint — dark */
 
 .dark,
 [data-theme='dark'] {

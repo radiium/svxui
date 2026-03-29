@@ -1,6 +1,4 @@
-/* Color: crimson */
-
-/* crimson light */
+/* crimson — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --crimson-track: var(--crimson-9);
 }
 
-/* crimson dark */
+/* crimson — dark */
 
 .dark,
 [data-theme='dark'] {

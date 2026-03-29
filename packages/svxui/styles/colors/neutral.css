@@ -1,13 +1,4 @@
-/*****************************************************************************/
-/*                                                                           */
-/* Color: neutral                                               */
-/*                                                                           */
-/* Credits: Radix colors                                                     */
-/* https://www.radix-ui.com/                                                 */
-/*                                                                           */
-/*****************************************************************************/
-
-/* neutral light */
+/* neutral — light */
 
 :root,
 .light,
@@ -44,7 +35,7 @@
     --neutral-track: var(--neutral-9);
 }
 
-/* neutral dark */
+/* neutral — dark */
 
 .dark,
 [data-theme='dark'] {

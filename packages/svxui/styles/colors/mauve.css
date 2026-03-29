@@ -1,6 +1,4 @@
-/* Color: mauve */
-
-/* mauve light */
+/* mauve — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --mauve-track: var(--mauve-9);
 }
 
-/* mauve dark */
+/* mauve — dark */
 
 .dark,
 [data-theme='dark'] {
