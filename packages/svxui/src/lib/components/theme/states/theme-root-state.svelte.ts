@@ -1,156 +1,142 @@
-import type { Color, Radius } from '$lib/shared.types.js';
+import type { Color, Mode, Radius, Theme } from '$lib/shared.types.js';
 import { PersistedState } from '$lib/utilities/persisted-state/index.js';
 import { onDestroy } from 'svelte';
+import { MetaThemeColors, ThemeDark, ThemeLight, ThemeSystem } from '../constants.js';
 import { withoutTransition } from '../internals/without-transition.js';
-import {
-    MetaThemeColors,
-    ThemeDark,
-    ThemeLight,
-    ThemeSystem,
-    type MetaThemeColorsType,
-    type StrategyType,
-    type ThemeRootStateProps,
-    type ThemeType
-} from '../types.js';
-import { ThemeSystemState } from './theme-system-state.svelte.js';
+import { type ThemeMutableContext, type ThemeRootStateOptions } from '../types.js';
+
+const stringSerializer = {
+    serialize: <T>(v: T) => v as string,
+    deserialize: <T>(v: string) => v as T
+};
 
 /**
  * ThemeRootState
  *
- * @description Manage root theme state
- * Credit: {@link https://github.com/svecosystem/mode-watcher}
+ * @description Manages root theme state — mode, color, radius — and syncs them
+ * to `localStorage` and the `<html>` element. Implements {@link ThemeMutableContext}.
  */
-export class ThemeRootState {
-    #props: ThemeRootStateProps | undefined = $state();
+export class ThemeRootState implements ThemeMutableContext {
+    #props: ThemeRootStateOptions = $state({});
+    #system: Theme | undefined = $state(undefined);
 
-    #system: ThemeSystemState;
-    #theme = $derived.by(() => {
-        return this.#strategy.current === ThemeSystem
-            ? this.#system.current //
-            : this.#strategy.current;
-    });
+    #modeKey: string = $derived(this.#props.storage?.modeKey ?? 'svxui-mode');
+    #colorKey: string = $derived(this.#props.storage?.colorKey ?? 'svxui-color');
+    #radiusKey: string = $derived(this.#props.storage?.radiusKey ?? 'svxui-radius');
 
-    #defaultStrategy: StrategyType = $derived(this.#props?.defaultStrategy ?? ThemeSystem);
-    #strategyKey: string = $derived(this.#props?.strategyKey ?? 'svxui-strategy');
-    #strategy: PersistedState<StrategyType>;
+    #persistedMode: PersistedState<Mode>;
+    #persistedColor: PersistedState<Color>;
+    #persistedRadius: PersistedState<Radius>;
 
-    #defaultColor: Color = $derived(this.#props?.defaultColor ?? 'neutral');
-    #colorKey: string = $derived(this.#props?.colorKey ?? 'svxui-color');
-    #color: PersistedState<Color>;
+    // ─── ThemeContext ─────────────────────────────────────────────────────────
 
-    #defaultRadius: Radius = $derived(this.#props?.defaultRadius ?? 'medium');
-    #radiusKey: string = $derived(this.#props?.radiusKey ?? 'svxui-radius');
-    #radius: PersistedState<Radius>;
-
-    #contentColors: MetaThemeColorsType = $derived(this.#props?.metaThemeColors ?? MetaThemeColors);
-    #disableTransitions: boolean = $derived(this.#props?.disableTransitions ?? true);
-    #hasBackground: boolean = $derived(this.#props?.hasBackground ?? true);
-    #track: boolean = $derived(this.#props?.track ?? true);
-
-    constructor(props: ThemeRootStateProps) {
-        this.#props = props;
-
-        this.#system = new ThemeSystemState();
-        this.#system.query();
-
-        const serializer = {
-            serialize: <T>(v: T) => v as string,
-            deserialize: <T>(v: string) => v as T
-        };
-        this.#strategy = new PersistedState<StrategyType>(this.#strategyKey, this.#defaultStrategy, {
-            serializer
-        });
-        this.#color = new PersistedState<Color>(this.#colorKey, this.#defaultColor, {
-            serializer
-        });
-        this.#radius = new PersistedState<Radius>(this.#radiusKey, this.#defaultRadius, {
-            serializer
-        });
-
-        onDestroy(
-            $effect.root(() => {
-                $effect.pre(() => {
-                    if (this.#track !== undefined) {
-                        this.#system.tracking(this.#track);
-                    }
-                });
-
-                $effect.pre(() => {
-                    if (this.#disableTransitions) {
-                        withoutTransition(this.#update);
-                    } else {
-                        this.#update();
-                    }
-                });
-            })
-        );
+    get mode(): Mode {
+        return this.#persistedMode.current;
     }
-
-    #update = (): void => {
-        const htmlEl = document.documentElement;
-        const themeColorEl = document.querySelector('meta[name="theme-color"]');
-
-        if (this.theme === ThemeLight) {
-            htmlEl.classList.remove(ThemeDark);
-            htmlEl.classList.add(ThemeLight);
-            htmlEl.style.colorScheme = ThemeLight;
-            themeColorEl?.setAttribute('content', this.#contentColors.light);
-        } else if (this.theme === ThemeDark) {
-            htmlEl.classList.remove(ThemeLight);
-            htmlEl.classList.add(ThemeDark);
-            htmlEl.style.colorScheme = ThemeDark;
-            themeColorEl?.setAttribute('content', this.#contentColors.dark);
-        }
-    };
-
-    setStrategy = (strategy: StrategyType) => {
-        this.#strategy.current = strategy;
-    };
-    get strategy(): StrategyType {
-        return this.#strategy.current;
-    }
-    get strategyKey(): string {
-        return this.#strategyKey;
-    }
-
-    setColor = (color?: Color | null | undefined) => {
-        if (color) {
-            this.#color.current = color;
-        }
-    };
     get color(): Color {
-        return this.#color.current;
+        return this.#persistedColor.current;
+    }
+    get radius(): Radius {
+        return this.#persistedRadius.current;
+    }
+    get system(): Theme | undefined {
+        return this.#system;
+    }
+    get theme(): Theme {
+        const m = this.mode;
+        return m === ThemeSystem ? (this.#system ?? ThemeLight) : m;
+    }
+
+    setMode(value: Mode): void {
+        this.#persistedMode.current = value;
+    }
+    setColor(value: Color): void {
+        this.#persistedColor.current = value;
+    }
+    setRadius(value: Radius): void {
+        this.#persistedRadius.current = value;
+    }
+
+    // ─── Internal (used by ThemeProvider component) ───────────────────────────
+
+    get modeKey(): string {
+        return this.#modeKey;
     }
     get colorKey(): string {
         return this.#colorKey;
-    }
-
-    setRadius = (radius: Radius) => {
-        this.#radius.current = radius;
-    };
-    get radius(): Radius {
-        return this.#radius.current;
     }
     get radiusKey(): string {
         return this.#radiusKey;
     }
 
-    get system(): ThemeType | undefined {
-        return this.#system.current;
-    }
+    // ─── Constructor ─────────────────────────────────────────────────────────
 
-    get theme() {
-        return this.#theme;
-    }
+    constructor(options: ThemeRootStateOptions) {
+        this.#props = options;
 
-    get attrs() {
-        return {
-            class: `svxui ${this.theme}`,
-            'data-theme-root': '',
-            'data-theme': this.theme,
-            'data-radius': this.radius,
-            'data-color': this.color,
-            'data-has-background': this.#hasBackground === true ? 'true' : undefined
-        };
+        this.#persistedMode = new PersistedState<Mode>(
+            this.#modeKey, //
+            options.mode ?? ThemeSystem,
+            { serializer: stringSerializer }
+        );
+        this.#persistedColor = new PersistedState<Color>(
+            this.#colorKey, //
+            (options.color ?? 'neutral') as Color,
+            { serializer: stringSerializer }
+        );
+        this.#persistedRadius = new PersistedState<Radius>(
+            this.#radiusKey, //
+            options.radius ?? 'medium',
+            { serializer: stringSerializer }
+        );
+
+        onDestroy(
+            $effect.root(() => {
+                // System preference tracking
+                $effect.pre(() => {
+                    if (this.#props.systemTracking === false) return;
+
+                    const mq = window.matchMedia('(prefers-color-scheme: light)');
+                    const update = () => {
+                        this.#system = mq.matches ? ThemeLight : ThemeDark;
+                    };
+                    update();
+                    mq.addEventListener('change', update);
+                    return () => mq.removeEventListener('change', update);
+                });
+
+                // DOM updates on <html>
+                $effect.pre(() => {
+                    const apply = () => {
+                        const rootEl = document.documentElement;
+                        const metaThemeEl = document.querySelector('meta[name="theme-color"]');
+                        const colors = this.#props.metaColors ?? MetaThemeColors;
+
+                        rootEl.setAttribute('data-theme-root', '');
+                        rootEl.setAttribute('data-theme', this.theme);
+                        rootEl.setAttribute('data-color', this.color);
+                        rootEl.setAttribute('data-radius', this.radius);
+
+                        if (this.theme === ThemeLight) {
+                            rootEl.classList.remove(ThemeDark);
+                            rootEl.classList.add(ThemeLight);
+                            rootEl.style.colorScheme = ThemeLight;
+                            metaThemeEl?.setAttribute('content', colors.light);
+                        } else {
+                            rootEl.classList.remove(ThemeLight);
+                            rootEl.classList.add(ThemeDark);
+                            rootEl.style.colorScheme = ThemeDark;
+                            metaThemeEl?.setAttribute('content', colors.dark);
+                        }
+                    };
+
+                    if (this.#props.transitions) {
+                        apply();
+                    } else {
+                        withoutTransition(apply);
+                    }
+                });
+            })
+        );
     }
 }

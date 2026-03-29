@@ -1,115 +1,153 @@
-import type { Color, Radius } from '$lib/shared.types.js';
+import type { Color, Mode, Radius, Theme } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { ThemeChildState } from './states/theme-child-state.svelte.js';
-import type { ThemeRootState } from './states/theme-root-state.svelte.js';
 
-// Theme keys
-export const ThemeSystem = 'system' as const;
-export const ThemeDark = 'dark' as const;
-export const ThemeLight = 'light' as const;
+// ─── Public interfaces ────────────────────────────────────────────────────────
 
-export const Strategies = [ThemeSystem, ThemeDark, ThemeLight] as const;
-export type StrategyType = (typeof Strategies)[number];
-
-export const Themes = [ThemeDark, ThemeLight] as const;
-export type ThemeType = (typeof Themes)[number];
-
-export const MetaThemeColors = { light: '#fcfcfc', dark: '#111111' } as const;
-export type MetaThemeColorsType = { light: string; dark: string };
-
-export type ThemeRootStateProps = {
+/**
+ * Read-only snapshot of the current theme values. Passed to children snippets.
+ */
+export type ThemeContext = {
     /**
-     * Default accent color
+     * Active mode (system | light | dark)
      */
-    defaultColor?: Color;
+    readonly mode: Mode;
     /**
-     * Storage key for accent color
+     * Resolved theme — never 'system'; always 'light' or 'dark'
      */
-    colorKey?: string;
+    readonly theme: Theme;
     /**
-     * Default theme strategy
+     * Active accent color
      */
-    defaultStrategy?: StrategyType;
+    readonly color: Color;
     /**
-     * Storage key for theme strategy
+     * Active border-radius scale
      */
-    strategyKey?: string;
+    readonly radius: Radius;
     /**
-     * Default radius
+     * OS-level color scheme detected via `prefers-color-scheme`, or undefined on SSR
      */
-    defaultRadius?: Radius;
-    /**
-     * Storage key for radius
-     */
-    radiusKey?: string;
-    /**
-     * Content colors for meta theme-color tag
-     */
-    metaThemeColors?: MetaThemeColorsType;
-    /**
-     * Should set the background color
-     */
-    hasBackground?: boolean;
-    /**
-     * Should track storage change from other tab
-     */
-    track?: boolean;
-    /**
-     * Should disable css transition when theme change
-     */
-    disableTransitions?: boolean;
-    /**
-     * Should disable init theme script injection. This script prevent FOUC.
-     */
-    disableHeadScriptInjection?: boolean;
+    readonly system: Theme | undefined;
 };
 
 /**
- * Extends all the standard HTML attributes of the `<div>` element.
+ * ThemeContext extended with setters — exposed by ThemeProvider only
  */
-export type ThemeRootProviderProps = ThemeRootStateProps &
-    Omit<HTMLAttributes<HTMLDivElement>, 'children'> & {
-        /**
-         * Reference to the rendered DOM element.
-         */
-        ref?: HTMLDivElement;
-        /**
-         * ThemeRootProvider content to render
-         */
-        children?: Snippet<[ThemeRootState]>;
-    };
-
-export type ThemeChildStateProps = {
+export type ThemeMutableContext = ThemeContext & {
     /**
-     * Static Accent color or resolved from ThemeRootProvider.
+     * Set the active mode and persist it to storage
+     */
+    setMode(value: Mode): void;
+    /**
+     * Set the active accent color and persist it to storage
+     */
+    setColor(value: Color): void;
+    /**
+     * Set the active radius and persist it to storage
+     */
+    setRadius(value: Radius): void;
+};
+
+// ─── Theme root ───────────────────────────────────────────────────────────────
+
+/**
+ * ThemeRootState options
+ */
+export type ThemeRootStateOptions = {
+    /**
+     * Default mode. Defaults to `'system'`
+     */
+    mode?: Mode;
+    /**
+     * Default accent color. Defaults to `'neutral'`
      */
     color?: Color;
     /**
-     * Static theme strategy or resolved from ThemeRootProvider.
-     */
-    strategy?: StrategyType;
-    /**
-     * Static radius or resolved from ThemeRootProvider.
+     * Default radius scale. Defaults to `'medium'`
      */
     radius?: Radius;
     /**
-     * Should set the background color
+     * Allow CSS transitions during theme changes. Defaults to `false`
+     */
+    transitions?: boolean;
+    /**
+     * Track OS color-scheme changes in real time. Defaults to `true`
+     */
+    systemTracking?: boolean;
+    /**
+     * Override content values for the `<meta name="theme-color">` tag
+     */
+    metaColors?: {
+        light: string;
+        dark: string;
+    };
+    /**
+     * localStorage keys used to persist each value
+     */
+    storage?: {
+        colorKey?: string;
+        radiusKey?: string;
+        modeKey?: string;
+    };
+};
+
+export type ThemeProviderProps = ThemeRootStateOptions & {
+    /**
+     * Inject the anti-FOUC inline script into `<head>`. Defaults to `true`
+     */
+    script?: boolean;
+    /**
+     * ThemeProvider content — receives a {@link ThemeMutableContext}
+     */
+    children?: Snippet<[ThemeMutableContext]>;
+};
+
+// ─── Theme Scope ──────────────────────────────────────────────────────────────
+
+/**
+ * ThemeScopeState options
+ */
+export type ThemeScopeStateOptions = {
+    /**
+     * Override the mode for this scope. Inherits from parent when omitted
+     */
+    mode?: Mode;
+    /**
+     * Override the accent color for this scope. Inherits from parent when omitted
+     */
+    color?: Color;
+    /**
+     * Override the radius scale for this scope. Inherits from parent when omitted
+     */
+    radius?: Radius;
+    /**
+     * Apply background color token to the scope element. Defaults to `true`
      */
     hasBackground?: boolean;
 };
 
 /**
+ * HTML data-attributes written to the ThemeScope element
+ */
+export type ThemeScopeAttributes = {
+    'data-theme-scope': '';
+    'data-theme': Theme;
+    'data-radius': Radius;
+    'data-color': Color;
+    'data-has-background'?: '';
+};
+
+/**
  * Extends all the standard HTML attributes of the `<div>` element.
  */
-export type ThemeChildProviderProps = ThemeChildStateProps &
-    HTMLAttributes<HTMLDivElement> & {
+export type ThemeScopeProps = ThemeScopeStateOptions &
+    Omit<HTMLAttributes<HTMLDivElement>, 'color' | 'children'> & {
         /**
-         * Reference to the rendered DOM element.
+         * Reference to the rendered DOM element
          */
         ref?: HTMLDivElement;
         /**
-         * ThemeChildProvider content to render
+         * ThemeScope content — receives a read-only {@link ThemeContext}
          */
-        children?: Snippet<[ThemeChildState]>;
+        children?: Snippet<[ThemeContext]>;
     };

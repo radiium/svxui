@@ -1,15 +1,5 @@
-export { default as ThemeChildProvider } from './components/theme-child-provider.svelte';
-export { default as ThemeRootProvider } from './components/theme-root-provider.svelte';
-export { useThemeChildContext, useThemeRootContext } from './states/context.svelte.js';
-export type {
-    MetaThemeColors,
-    MetaThemeColorsType,
-    Strategies,
-    StrategyType,
-    ThemeChildProviderProps,
-    ThemeChildStateProps,
-    ThemeRootProviderProps,
-    ThemeRootStateProps,
-    Themes,
-    ThemeType
-} from './types.js';
+export { default as ThemeProvider } from './components/theme-provider.svelte';
+export { default as ThemeScope } from './components/theme-scope.svelte';
+export { Modes, Radiuses, Themes } from './constants.js';
+export { useTheme, useThemeScope } from './states/theme-context.svelte.js';
+export type { ThemeContext, ThemeMutableContext, ThemeProviderProps, ThemeScopeProps } from './types.js';

@@ -1,13 +1,36 @@
 <script lang="ts">
-    import { MetaThemeColors, ThemeDark, ThemeLight } from '../../types.js';
-    import type { InitThemeConfig, ThemeScriptProps } from '../types.js';
+    import type { Color, Mode, Radius, Theme } from '$lib/shared.types.js';
+    import { MetaThemeColors, ThemeDark, ThemeLight } from '../constants.js';
 
-    let { strategyKey, strategy, radiusKey, radius, colorKey, color, theme }: ThemeScriptProps = $props();
+    type ThemeScriptProps = {
+        theme: Theme;
+        modeKey: string;
+        mode: Mode;
+        radiusKey: string;
+        radius: Radius;
+        colorKey: string;
+        color: Color;
+    };
+
+    type InitThemeConfig = {
+        modeKey: string;
+        defaultMode: Mode;
+        radiusKey: string;
+        defaultRadius: Radius;
+        colorKey: string;
+        defaultColor: string;
+        darkClass: string;
+        darkColor: string;
+        lightClass: string;
+        lightColor: string;
+    };
+
+    let { theme, modeKey, mode, radiusKey, radius, colorKey, color }: ThemeScriptProps = $props();
 
     let themeColor = $derived(theme === ThemeLight ? MetaThemeColors.light : MetaThemeColors.dark);
     let initThemeConfig: InitThemeConfig = $derived({
-        strategyKey,
-        defaultStrategy: strategy,
+        modeKey,
+        defaultMode: mode,
         radiusKey,
         defaultRadius: radius,
         colorKey,
@@ -20,8 +43,8 @@
 
     let initTheme = $derived(
         ({
-            strategyKey,
-            defaultStrategy,
+            modeKey,
+            defaultMode,
             radiusKey,
             defaultRadius,
             colorKey,
@@ -32,9 +55,9 @@
             lightColor
         }: InitThemeConfig) => {
             const rootEl = document.documentElement;
-            const themeMetaEl = document.querySelector('meta[name="theme-color"]');
+            const metaThemeEl = document.querySelector('meta[name="theme-color"]');
 
-            const strategy = localStorage.getItem(strategyKey) ?? defaultStrategy;
+            const strategy = localStorage.getItem(modeKey) ?? defaultMode;
             const radius = localStorage.getItem(radiusKey) ?? defaultRadius;
             const color = localStorage.getItem(colorKey) ?? defaultColor;
 
@@ -42,6 +65,7 @@
                 strategy === 'light' ||
                 (strategy === 'system' && window.matchMedia('(prefers-color-scheme: light)').matches);
 
+            rootEl.setAttribute('data-theme-root', '');
             rootEl.setAttribute('data-radius', radius);
             rootEl.setAttribute('data-color', color);
 
@@ -50,13 +74,13 @@
                 rootEl.classList.add(lightClass);
                 rootEl.style.colorScheme = lightClass;
                 rootEl.setAttribute('data-theme', lightClass);
-                themeMetaEl?.setAttribute('content', lightColor);
+                metaThemeEl?.setAttribute('content', lightColor);
             } else {
                 rootEl.classList.remove(lightClass);
                 rootEl.classList.add(darkClass);
                 rootEl.style.colorScheme = darkClass;
                 rootEl.setAttribute('data-theme', darkClass);
-                themeMetaEl?.setAttribute('content', darkColor);
+                metaThemeEl?.setAttribute('content', darkColor);
             }
         }
     );
