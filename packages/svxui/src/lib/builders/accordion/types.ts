@@ -71,6 +71,9 @@ export type AccordionItem = {
     readonly contentAttrs: AccordionContentAttributes;
 };
 
+/**
+ * HTML data-attributes written to the root wrapper element
+ */
 export type AccordionRootAttributes = {
     readonly id: string;
     readonly tabindex: number;
@@ -78,6 +81,9 @@ export type AccordionRootAttributes = {
     readonly 'data-orientation': Orientation;
 };
 
+/**
+ * HTML data-attributes written to the accordion item element
+ */
 export type AccordionItemAttributes = {
     readonly id: string;
     readonly 'data-state': string;
@@ -85,6 +91,9 @@ export type AccordionItemAttributes = {
     readonly 'data-orientation': Orientation;
 };
 
+/**
+ * HTML data-attributes written to the accordion heading element
+ */
 export type AccordionHeadingAttributes = {
     readonly id: string;
     readonly 'data-state': string;
@@ -95,6 +104,9 @@ export type AccordionHeadingAttributes = {
     readonly role: string;
 };
 
+/**
+ * HTML data-attributes written to the accordion trigger element
+ */
 export type AccordionTriggerAttributes = {
     readonly id: string;
     readonly tabindex: number;
@@ -108,6 +120,9 @@ export type AccordionTriggerAttributes = {
     readonly onclick: (e: MouseEvent) => void;
 };
 
+/**
+ * HTML data-attributes written to the accordion content element
+ */
 export type AccordionContentAttributes = {
     readonly id: string;
     readonly role: string;

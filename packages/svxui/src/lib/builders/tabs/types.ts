@@ -23,12 +23,18 @@ export type TabsBuilderOptions<Value> = Omit<SelectionStateOptions<Value, false>
     activateOnFocus?: boolean;
 };
 
+/**
+ * HTML data-attributes written to the tabs root wrapper element
+ */
 export type TabsRootAttributes = {
     readonly id: `tabs-root-${string}`;
     readonly 'data-disabled': '' | undefined;
     readonly 'data-orientation': Orientation;
 };
 
+/**
+ * HTML data-attributes written to the tabs triggers wrapper element
+ */
 export type TabsItemTriggerListAttributes = {
     readonly [x: string]: '' | Orientation | `tabs-list-${string}` | 'tablist' | undefined;
     readonly id: `tabs-list-${string}`;
@@ -69,6 +75,9 @@ export type TabsItemTrigger = {
     readonly attrs: TabsItemTriggerAttributes;
 };
 
+/**
+ * HTML data-attributes written to the tab trigger element
+ */
 export type TabsItemTriggerAttributes = {
     readonly id: string;
     readonly tabindex: 0 | -1;
@@ -116,6 +125,9 @@ export type TabsItemContent = {
     readonly attrs: TabsItemContentAttributes;
 };
 
+/**
+ * HTML data-attributes written to the tab content element
+ */
 export type TabsItemContentAttributes = {
     readonly id: string;
     readonly disabled: boolean;

@@ -56,7 +56,7 @@ export type FloatingBuilderOptions = {
 };
 
 /**
- * Floating trigger attributes
+ * HTML data-attributes written to the floating trigger element
  */
 export type FloatingTriggerAttributes = {
     readonly 'data-state': 'open' | 'closed';
@@ -64,7 +64,7 @@ export type FloatingTriggerAttributes = {
 };
 
 /**
- * Floating backdrop attributes
+ * HTML data-attributes written to the floating backdrop element
  */
 export type FloatingBackdropAttributes = {
     readonly role: 'button';
@@ -73,7 +73,7 @@ export type FloatingBackdropAttributes = {
 };
 
 /**
- * Floating content attributes
+ * HTML data-attributes written to the floating content element
  */
 export type FloatingContentAttributes = {
     readonly 'data-state': 'open' | 'closed';

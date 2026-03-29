@@ -30,7 +30,7 @@ export type DialogBuilderOptions = {
 };
 
 /**
- * Dialog backdrop attributes
+ * HTML data-attributes written to the dialog backdrop element
  */
 export type DialogBackdropAttributes = {
     readonly id: string;
@@ -41,7 +41,7 @@ export type DialogBackdropAttributes = {
 };
 
 /**
- * Dialog content attributes
+ * HTML data-attributes written to the dialog content element
  */
 export type DialogContentAttributes = {
     readonly id: string;

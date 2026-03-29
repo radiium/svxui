@@ -12,7 +12,7 @@ export type InputNumberBuilderOptions = {
 };
 
 /**
- * Input-number Input attributes
+ * HTML data-attributes written to the Input element
  */
 export type InputNumberInputAttributes = {
     readonly id: `input-number-input-${string}`;
@@ -25,7 +25,7 @@ export type InputNumberInputAttributes = {
 };
 
 /**
- * Input-number decrement button attributes
+ * HTML data-attributes written to the decrement button element
  */
 export type InputNumberDecrementAttributes = {
     readonly id: `input-number-decrement-${string}`;
@@ -36,7 +36,7 @@ export type InputNumberDecrementAttributes = {
 };
 
 /**
- * Input-number increment button attributes
+ * HTML data-attributes written to the increment button element
  */
 export type InputNumberIncrementAttributes = {
     readonly id: `input-number-increment-${string}`;

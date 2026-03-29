@@ -58,6 +58,9 @@ export type ListboxItem = {
     readonly attrs: ListboxItemAttributes;
 };
 
+/**
+ * HTML data-attributes written to the root wrapper element
+ */
 export type ListboxRootAttributes = {
     readonly id: string;
     readonly 'data-disabled': string | undefined;
@@ -67,6 +70,9 @@ export type ListboxRootAttributes = {
     readonly 'aria-multiselectable': boolean;
 };
 
+/**
+ * HTML data-attributes written to the item element
+ */
 export type ListboxItemAttributes = {
     readonly id: string;
     readonly 'data-state': 'selected' | 'unselected';
