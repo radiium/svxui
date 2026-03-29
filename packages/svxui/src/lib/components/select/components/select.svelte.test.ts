@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { type Color, type Radius, type SelectSize } from '$lib/index.js';
 import { describe, expect, test, vi } from 'vitest';
 import { userEvent } from 'vitest/browser';

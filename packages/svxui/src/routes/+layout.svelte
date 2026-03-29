@@ -1,24 +1,18 @@
 <script lang="ts">
     import SelectOption from '$lib/components/select/components/select-option.svelte';
-    import {
-        rovingfocus,
-        Select,
-        Text,
-        ThemeRootProvider,
-        useThemeRootContext,
-        type StrategyType,
-        type Color,
-        type Radius
-    } from '$lib/index.js';
-    import '$lib/styles/normalize.css';
-    import '$lib/styles/tokens.css';
-    import '$lib/styles/theme.default.css';
-    import '$lib/styles/utilities.css';
+    import ThemeProvider from '$lib/components/theme/components/theme-provider.svelte';
+    import { useTheme } from '$lib/components/theme/index.js';
+    import { rovingfocus, Select, Text, type Color, type Mode, type Radius } from '$lib/index.js';
     import { type Snippet } from 'svelte';
+    // Styles
+    import '$lib/styles/normalize.css';
+    import '$lib/styles/theme.default.css';
+    import '$lib/styles/tokens.css';
+    import '$lib/styles/utilities.css';
 
-    interface Props {
+    type Props = {
         children?: Snippet;
-    }
+    };
 
     let { children }: Props = $props();
 
@@ -48,7 +42,8 @@
                 'portal',
                 'select',
                 'tabs',
-                'text'
+                'text',
+                'theme-scope'
             ]
         },
         {
@@ -68,13 +63,13 @@
         }
     ];
 
-    const strategies = ['dark', 'light', 'system'] as StrategyType[];
+    const strategies = ['dark', 'light', 'system'] as Mode[];
     const colors = ['neutral', 'blue', 'green', 'yellow', 'orange', 'red'] as Color[];
     const radius = ['none', 'small', 'medium', 'large', 'full'] as Radius[];
 </script>
 
-<ThemeRootProvider>
-    {@const themeRoot = useThemeRootContext()}
+<ThemeProvider>
+    {@const themeRoot = useTheme()}
     <div class="container">
         <header>
             <h1>
@@ -87,8 +82,8 @@
             <label>
                 theme:
                 <Select
-                    value={themeRoot.strategy}
-                    onValueChange={(newValue) => newValue && themeRoot.setStrategy(newValue)}
+                    value={themeRoot.mode}
+                    onValueChange={(newValue) => newValue && themeRoot.setMode(newValue)}
                 >
                     {#each strategies as value (value)}
                         <SelectOption {value}>{value}</SelectOption>
@@ -149,7 +144,7 @@
             {@render children?.()}
         </main>
     </div>
-</ThemeRootProvider>
+</ThemeProvider>
 
 <style>
     :global(h1) {

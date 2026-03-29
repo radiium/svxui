@@ -1,18 +1,19 @@
 <script lang="ts">
-    import { ThemeRootProvider } from '$lib/index.js';
-    import '$lib/styles/normalize.css';
-    import '$lib/styles/tokens.css';
-    import '$lib/styles/theme.default.css';
-    import '$lib/styles/utilities.css';
+    import { ThemeProvider } from '$lib/index.js';
     import { type Snippet } from 'svelte';
 
-    interface Props {
+    import '$lib/styles/normalize.css';
+    import '$lib/styles/theme.default.css';
+    import '$lib/styles/tokens.css';
+    import '$lib/styles/utilities.css';
+
+    type Props = {
         children?: Snippet;
-    }
+    };
 
     let { children }: Props = $props();
 </script>
 
-<ThemeRootProvider>
+<ThemeProvider>
     {@render children?.()}
-</ThemeRootProvider>
+</ThemeProvider>

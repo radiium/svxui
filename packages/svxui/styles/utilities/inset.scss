@@ -21,16 +21,32 @@ $offsetValues: (
 /* Directional offsets */
 
 @each $key, $value in $offsetValues {
-    .top-#{$key}    { top: $value; }
-    .right-#{$key}  { right: $value; }
-    .bottom-#{$key} { bottom: $value; }
-    .left-#{$key}   { left: $value; }
+    .top-#{$key} {
+        top: $value;
+    }
+    .right-#{$key} {
+        right: $value;
+    }
+    .bottom-#{$key} {
+        bottom: $value;
+    }
+    .left-#{$key} {
+        left: $value;
+    }
 }
 
 /* Inset shorthands */
 
 @each $key, $value in $offsetValues {
-    .inset-#{$key}   { inset: $value; }
-    .inset-x-#{$key} { left: $value; right: $value; }
-    .inset-y-#{$key} { top: $value; bottom: $value; }
+    .inset-#{$key} {
+        inset: $value;
+    }
+    .inset-x-#{$key} {
+        left: $value;
+        right: $value;
+    }
+    .inset-y-#{$key} {
+        top: $value;
+        bottom: $value;
+    }
 }

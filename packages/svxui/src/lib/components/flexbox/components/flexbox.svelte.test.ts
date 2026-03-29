@@ -67,6 +67,7 @@ describe('Flexbox component', () => {
         test.each(['div', 'section', 'article', 'main', 'nav', 'aside', 'header', 'footer'] as const)(
             'renders as %s element',
             async (tag) => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const screen = renderWithWrapper<any>(Flexbox, { children, as: tag });
                 const flexbox = screen.getByText(label);
 

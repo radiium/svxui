@@ -2,8 +2,18 @@
  * Utilities: position
  */
 
-.static   { position: static; }
-.absolute { position: absolute; }
-.relative { position: relative; }
-.fixed    { position: fixed; }
-.sticky   { position: sticky; }
+.static {
+    position: static;
+}
+.absolute {
+    position: absolute;
+}
+.relative {
+    position: relative;
+}
+.fixed {
+    position: fixed;
+}
+.sticky {
+    position: sticky;
+}

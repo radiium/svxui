@@ -1,6 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { clickoutside } from './clickoutside.svelte.ts';
-import type { ClickoutsideOptions } from './types.ts';
 
 describe('clickoutside attachment', () => {
     let element: HTMLElement;

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" generics="Value extends string | number">
     import { Select, SelectOption, type SelectProps } from '$lib/index.js';
 
     let {
@@ -6,7 +6,7 @@
         options = [],
         ...props
     }: { options: { label: string; value: string; disabled?: boolean }[] } & SelectProps<
-        any,
+        Value,
         boolean
     > = $props();
 </script>

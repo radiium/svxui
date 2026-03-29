@@ -3,12 +3,17 @@
 import type { HTMLAttributes } from 'svelte/elements';
 
 /**
+ * Theme & theme mode.
+ */
+export type Mode = 'dark' | 'light' | 'system';
+export type Theme = 'dark' | 'light';
+
+/**
  * Available color palettes. Extend via `Svxui.ColorMap`.
  */
-
 export type Color = keyof Svxui.ColorMap extends never
-    ? 'neutral' | 'blue' | 'green' | 'yellow' | 'orange' | 'red'
-    : keyof Svxui.ColorMap;
+    ? 'neutral' | 'blue' | 'green' | 'yellow' | 'orange' | 'red' // Default color palettes
+    : keyof Svxui.ColorMap; // Custom color palettes
 
 /**
  * Border radius scale tokens.

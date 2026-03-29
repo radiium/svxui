@@ -1,8 +1,8 @@
 import { Dialog, type DialogProps } from '$lib/index.js';
+import { createRawSnippet } from 'svelte';
 import { describe, expect, test, vi } from 'vitest';
 import { userEvent } from 'vitest/browser';
 import { renderWithWrapper } from '../../../../tests/render-with-wrapper.svelte.ts';
-import { createRawSnippet } from 'svelte';
 
 describe('Dialog component', () => {
     const selector = '[role="dialog"]';
@@ -68,12 +68,14 @@ describe('Dialog component', () => {
     describe('Layout', () => {
         test.each(['fixed', 'scroll', 'fullscreen'] as DialogProps['layout'][])(
             'applies layout %s',
-            async (layout) => {
+            async (layout: DialogProps['layout']) => {
                 const { container } = renderWithWrapper(Dialog, { isOpen: true, layout });
                 const dialog = container.querySelector(selector);
                 const backdrop = container.querySelector('.backdrop');
 
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 expect(dialog?.classList.contains(layout!)).toBe(true);
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 expect(backdrop?.classList.contains(layout!)).toBe(true);
             }
         );

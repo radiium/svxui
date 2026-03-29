@@ -60,10 +60,10 @@ describe('parseBooleanOrObject', () => {
     });
 
     it('should preserve object type', () => {
-        interface Config {
+        type Config = {
             enabled: boolean;
             timeout: number;
-        }
+        };
 
         const config: Config = { enabled: true, timeout: 5000 };
         const result = parseBooleanOrObject<Config>(config);
