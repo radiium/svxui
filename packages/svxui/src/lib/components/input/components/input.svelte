@@ -103,7 +103,6 @@
                 outline: none !important;
             }
         }
-        &:readonly,
         &:read-only {
             cursor: default;
             outline: none !important;
