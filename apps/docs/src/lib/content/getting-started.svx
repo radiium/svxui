@@ -15,24 +15,24 @@ npm install svxui
 
 ### 2. Set up your root layout
 
-Add the required CSS and wrap your app with `<ThemeRootProvider/>`. All svxui components must be used inside it.
+Add the required CSS and wrap your app with `<ThemeProvider/>`. All svxui components must be used inside it.
 
 `tokens.css` and `theme.default.css` are required. The others are optional.
 
 ```svelte title="src/routes/+layout.svelte"
 <script>
-    import 'svxui/styles/tokens.css'; // Required // [!code highlight]
     import 'svxui/styles/theme.default.css'; // Required // [!code highlight]
-    import 'svxui/styles/normalize.css'; // Optional
-    import 'svxui/styles/utilities.css'; // Optional
-    import { ThemeRootProvider } from 'svxui'; // [!code highlight]
+    import 'svxui/styles/tokens.css'; // Required // [!code highlight]
+    import 'svxui/styles/normalize.css'; // Optional // [!code highlight]
+    import 'svxui/styles/utilities.css'; // Optional // [!code highlight]
+    import { ThemeProvider } from 'svxui'; // [!code highlight]
 
     let { children } = $props();
 </script>
 
-<ThemeRootProvider> // [!code highlight]
+<ThemeProvider> // [!code highlight]
     {@render children?.()}
-</ThemeRootProvider> // [!code highlight]
+</ThemeProvider> // [!code highlight]
 ```
 
 ### 3. Start building

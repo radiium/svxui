@@ -9,17 +9,17 @@ description: Configure entry point of the application.
 
 ## Overview
 
-The `<ThemeRootProvider />` component is the entry point of the library.<br/>
+The `<ThemeProvider />` component is the entry point of the library.<br/>
 It allows you to configure the global theme behavior of your application.<br/>
-All components from the library **must be used inside** the `ThemeRootProvider` to work correctly.
+All components from the library **must be used inside** the `ThemeProvider` to work correctly.
 
-You can locally override the theme configuration in any part of your component tree using the `<ThemeChildProvider />`.
+You can locally override the theme configuration in any part of your component tree using the `<ThemeScope />`.
 
-## ThemeRootProvider
+## ThemeProvider
 
 ### Features
 
-The `<ThemeRootProvider />` component is used to define the **global theme configuration**.
+The `<ThemeProvider />` component is used to define the **global theme configuration**.
 <br/>
 <br/>
 It includes:
@@ -41,28 +41,28 @@ This provider should be placed at the root of your application.
 ```svelte
 <script>
     // Import provider and required CSS
-    import { ThemeRootProvider } from 'svxui';
-    import 'svxui/styles/tokens.css';
+    import { ThemeProvider } from 'svxui';
     import 'svxui/styles/theme.default.css';
+    import 'svxui/styles/tokens.css';
 
     let { children } = $props();
 </script>
 
-<ThemeRootProvider 
-    defaultStrategy="system"
-    defaultColor="blue"
-    defaultRadius="none"
+<ThemeProvider 
+    strategy="system"
+    color="blue"
+    radius="none"
 >
     <!-- The strategy, radius, and color apply to all child components. -->
     {@render children?.()}
-</ThemeRootProvider>
+</ThemeProvider>
 ```
 
-## ThemeChildProvider
+## ThemeScope
 
 ### Features
 
-The `<ThemeChildProvider />` component allows you to **locally override** part of the global theme configuration for a subtree of components.
+The `<ThemeScope />` component allows you to **locally override** part of the global theme configuration for a subtree of components.
 
 It can override:
 - the theme strategy (`system`, `light`, `dark`)
@@ -75,10 +75,10 @@ This is useful for scoped theming, such as theming a specific page, layout, or c
 
 ```svelte
 <script>
-    import { ThemeChildProvider, Panel } from 'svxui';
+    import { ThemeScope, Panel } from 'svxui';
 </script>
 
-<ThemeChildProvider color="neutral">
+<ThemeScope color="neutral">
     <!-- 
     The panel and button will have a neutral color by default, 
     but will inherit radius and strategy from the root theme.
@@ -86,7 +86,7 @@ This is useful for scoped theming, such as theming a specific page, layout, or c
     <Panel>
         <Button>button</Button>
     </Panel>
-</ThemeChildProvider>
+</ThemeScope>
 ```
 
 ## Theme Context
@@ -99,39 +99,39 @@ You can update default `strategy`, `color` and `radius` with the theme context v
 
 ```svelte
 <script lang="ts">
-    import { useThemeRootContext, type StrategyType, type Radius, type Color } from 'svxui';
+    import { useThemeRootContext, type Mode, type Radius, type Color } from 'svxui';
 
-    const themeRoot = useThemeRootContext();
-    const strategies: StrategyType[] = ['system', 'light', 'dark'];
-    const radius: Radius[] = ['none', 'small', 'medium', 'large', 'full'];
+    const theme = useTheme();
+    const modes: Mode[] = ['system', 'light', 'dark'];
+    const radiuses: Radius[] = ['none', 'small', 'medium', 'large', 'full'];
     const colors: Color[] = ['neutral', 'green', 'blue', 'yellow', 'orange', 'red'];
 </script>
 
-<!-- Update strategy -->
-{#each strategies as strategy (strategy)}
+<!-- Update mode -->
+{#each modes as mode (mode)}
     <button
-        class:active={themeRoot.strategy === strategy}
-        onclick={() => themeRoot.setStrategy(strategy)}
+        class:active={theme.mode === mode}
+        onclick={() => theme.setMode(mode)}
     >
-        {strategy}
+        {mode}
     </button>
 {/each}
 
 <!-- Update radius -->
-{#each radius as rad (rad)}
+{#each radiuses as radius (radius)}
     <button
-        class:active={themeRoot.radius === rad}
-        onclick={() => themeRoot.setRadius(rad)}
+        class:active={theme.radius === radius}
+        onclick={() => theme.setRadius(radius)}
     >
-        {rad}
+        {radius}
     </button>
 {/each}
 
 <!-- Update color -->
 {#each colors as color (color)}
     <button
-        class:active={themeRoot.color === color}
-        onclick={() => themeRoot.setColor(color)}
+        class:active={theme.color === color}
+        onclick={() => theme.setColor(color)}
     >
         {color}
     </button>
@@ -140,67 +140,55 @@ You can update default `strategy`, `color` and `radius` with the theme context v
 
 ## API Reference
 
-<ApiReference category="components" names={['theme-root-provider', 'theme-child-provider']}/>
+<ApiReference category="components" names={['theme-provider', 'theme-scope']}/>
 
-### ThemeRootState
+
+### Type Definition
+
+#### ThemeContext
 
 ```typescript
-export declare class ThemeRootState {
-    constructor(props: ThemeRootStateProps);
-  
+/**
+ * Read-only snapshot of the current theme values. Passed to children snippets.
+ */
+export type ThemeContext = {
     /**
-     * Get the current radius key used for storage
+     * Active mode (system | light | dark)
      */
-    get radiusKey(): string;
+    readonly mode: Mode;
+    /**
+     * Resolved theme — never 'system'; always 'light' or 'dark'
+     */
+    readonly theme: Theme;
+    /**
+     * Active accent color
+     */
+    readonly color: Color;
+    /**
+     * Active border-radius scale
+     */
+    readonly radius: Radius;
+    /**
+     * OS-level color scheme detected via `prefers-color-scheme`, or undefined on SSR
+     */
+    readonly system: Theme | undefined;
+};
 
+/**
+ * ThemeContext extended with setters — exposed by ThemeProvider only
+ */
+export type ThemeRootContext = ThemeContext & {
     /**
-     * Get the current radius
+     * Set the active mode and persist it to storage
      */
-    get radius(): Radius;
-
+    setMode(value: Mode): void;
     /**
-     * Set radius
+     * Set the active accent color and persist it to storage
      */
-    setRadius: (radius: Radius) => void;
-
+    setColor(value: Color): void;
     /**
-     * Get the current color key used for storage
+     * Set the active radius and persist it to storage
      */
-    get colorKey(): string;
-
-    /**
-     * Get the current color
-     */
-    get color(): string;
-
-    /**
-     * Set color
-     */
-    setColor: (color: string) => void;
-
-    /**
-     * Get the current strategy key used for storage
-     */
-    get strategyKey(): string;
-
-    /**
-     * Get the current strategy
-     */
-    get strategy(): StrategyType;
-
-    /**
-     * Set strategy
-     */
-    setStrategy: (strategy: StrategyType) => void;
-
-    /**
-     * Get the current system theme
-     */
-    get system(): ThemeType | undefined;
-
-    /**
-     * Get the current resolved theme
-     */
-    get theme(): "light" | "dark" | undefined;
-}
+    setRadius(value: Radius): void;
+};
 ```

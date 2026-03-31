@@ -76,16 +76,16 @@ Import pre-built or custom color palettes you want to use.
 
 #### 2. Configure color aliases
 
-Declare color aliases on the ThemeRootProvider (for auto generate `--accent-*` CSS variables).
+Declare color aliases on the ThemeProvider (for auto generate `--accent-*` CSS variables).
 
 ```svelte title="src/routes/+layout.svelte"
-<ThemeRootProvider customColorsAlias={{
+<ThemeProvider customColorsAlias={{
     primary: 'crimson',
     info: 'cyan',
     danger: 'custom-color'
 }}>
     {@render children?.()}
-</ThemeRootProvider>
+</ThemeProvider>
 ```
 
 #### 3. Configure TypeScript

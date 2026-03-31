@@ -37,7 +37,7 @@ A set of utility CSS classes (margin, padding, size, gap, etc...).
 
 ## 4. Default palettes (required)
 
-Contains the 6 default color palettes used by `<ThemeRootProvider/>`: neutral, blue, green, yellow, orange, red.
+Contains the 6 default color palettes used by `<ThemeProvider/>`: neutral, blue, green, yellow, orange, red.
 
 <DocLink href="/styles/theme.default.css" libFolder>View theme.default.css on GitHub</DocLink>
 
@@ -59,8 +59,8 @@ Import the CSS files at the root of your application.
 
 ```svelte
 <script>
-    import 'svxui/styles/tokens.css'; // Required
     import 'svxui/styles/theme.default.css'; // Required
+    import 'svxui/styles/tokens.css'; // Required
     import 'svxui/styles/normalize.css'; // Optional
     import 'svxui/styles/utilities.css'; // Optional
 
