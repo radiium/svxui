@@ -1,14 +1,14 @@
 import { Context } from '$lib/utilities/context/index.js';
 import type {
     ThemeContext,
-    ThemeMutableContext,
+    ThemeRootContext,
     ThemeRootStateOptions,
     ThemeScopeStateOptions
 } from '../types.js';
 import { ThemeRootState } from './theme-root-state.svelte.js';
 import { ThemeScopeState } from './theme-scope-state.svelte.js';
 
-const ThemeRootCtx = new Context<ThemeMutableContext>('theme:root');
+const ThemeRootCtx = new Context<ThemeRootContext>('theme:root');
 const ThemeScopeCtx = new Context<ThemeContext>('theme:scope');
 
 /** Initialize the root theme context. Called once inside `ThemeProvider`. */
@@ -23,7 +23,7 @@ export function createThemeContext(options: ThemeRootStateOptions): ThemeRootSta
 }
 
 /** Retrieve the mutable root theme context from any descendant component. */
-export function useTheme(): ThemeMutableContext {
+export function useTheme(): ThemeRootContext {
     return ThemeRootCtx.get();
 }
 

@@ -3,7 +3,7 @@ import { PersistedState } from '$lib/utilities/persisted-state/index.js';
 import { onDestroy } from 'svelte';
 import { MetaThemeColors, ThemeDark, ThemeLight, ThemeSystem } from '../constants.js';
 import { withoutTransition } from '../internals/without-transition.js';
-import { type ThemeMutableContext, type ThemeRootStateOptions } from '../types.js';
+import { type ThemeRootContext, type ThemeRootStateOptions } from '../types.js';
 
 const stringSerializer = {
     serialize: <T>(v: T) => v as string,
@@ -14,9 +14,9 @@ const stringSerializer = {
  * ThemeRootState
  *
  * @description Manages root theme state — mode, color, radius — and syncs them
- * to `localStorage` and the `<html>` element. Implements {@link ThemeMutableContext}.
+ * to `localStorage` and the `<html>` element. Implements {@link ThemeRootContext}.
  */
-export class ThemeRootState implements ThemeMutableContext {
+export class ThemeRootState implements ThemeRootContext {
     #props: ThemeRootStateOptions = $state({});
     #system: Theme | undefined = $state(undefined);
 
@@ -27,49 +27,6 @@ export class ThemeRootState implements ThemeMutableContext {
     #persistedMode: PersistedState<Mode>;
     #persistedColor: PersistedState<Color>;
     #persistedRadius: PersistedState<Radius>;
-
-    // ─── ThemeContext ─────────────────────────────────────────────────────────
-
-    get mode(): Mode {
-        return this.#persistedMode.current;
-    }
-    get color(): Color {
-        return this.#persistedColor.current;
-    }
-    get radius(): Radius {
-        return this.#persistedRadius.current;
-    }
-    get system(): Theme | undefined {
-        return this.#system;
-    }
-    get theme(): Theme {
-        const m = this.mode;
-        return m === ThemeSystem ? (this.#system ?? ThemeLight) : m;
-    }
-
-    setMode(value: Mode): void {
-        this.#persistedMode.current = value;
-    }
-    setColor(value: Color): void {
-        this.#persistedColor.current = value;
-    }
-    setRadius(value: Radius): void {
-        this.#persistedRadius.current = value;
-    }
-
-    // ─── Internal (used by ThemeProvider component) ───────────────────────────
-
-    get modeKey(): string {
-        return this.#modeKey;
-    }
-    get colorKey(): string {
-        return this.#colorKey;
-    }
-    get radiusKey(): string {
-        return this.#radiusKey;
-    }
-
-    // ─── Constructor ─────────────────────────────────────────────────────────
 
     constructor(options: ThemeRootStateOptions) {
         this.#props = options;
@@ -138,5 +95,86 @@ export class ThemeRootState implements ThemeMutableContext {
                 });
             })
         );
+    }
+
+    /**
+     * Get the current mode key used for storage
+     */
+    get modeKey(): string {
+        return this.#modeKey;
+    }
+
+    /**
+     * Get the current color key used for storage
+     */
+    get colorKey(): string {
+        return this.#colorKey;
+    }
+
+    /**
+     * Get the current radius key used for storage
+     */
+    get radiusKey(): string {
+        return this.#radiusKey;
+    }
+
+    /**
+     * Get the current mode
+     */
+    get mode(): Mode {
+        return this.#persistedMode.current;
+    }
+
+    /**
+     * Get the current color
+     */
+    get color(): Color {
+        return this.#persistedColor.current;
+    }
+
+    /**
+     * Get the current radius
+     */
+    get radius(): Radius {
+        return this.#persistedRadius.current;
+    }
+
+    /**
+     * Get the current systeme theme
+     */
+    get system(): Theme | undefined {
+        return this.#system;
+    }
+
+    /**
+     * Get the current resolved theme
+     */
+    get theme(): Theme {
+        const m = this.mode;
+        return m === ThemeSystem ? (this.#system ?? ThemeLight) : m;
+    }
+
+    /**
+     * Update the current mode
+     * @param value new mode to set
+     */
+    setMode(value: Mode): void {
+        this.#persistedMode.current = value;
+    }
+
+    /**
+     * Update the color mode
+     * @param value new color to set
+     */
+    setColor(value: Color): void {
+        this.#persistedColor.current = value;
+    }
+
+    /**
+     * Update the radius mode
+     * @param value new radius to set
+     */
+    setRadius(value: Radius): void {
+        this.#persistedRadius.current = value;
     }
 }

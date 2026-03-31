@@ -33,7 +33,7 @@ export type ThemeContext = {
 /**
  * ThemeContext extended with setters — exposed by ThemeProvider only
  */
-export type ThemeMutableContext = ThemeContext & {
+export type ThemeRootContext = ThemeContext & {
     /**
      * Set the active mode and persist it to storage
      */
@@ -97,9 +97,9 @@ export type ThemeProviderProps = ThemeRootStateOptions & {
      */
     script?: boolean;
     /**
-     * ThemeProvider content — receives a {@link ThemeMutableContext}
+     * ThemeProvider content — receives a {@link ThemeRootContext}
      */
-    children?: Snippet<[ThemeMutableContext]>;
+    children?: Snippet<[ThemeRootContext]>;
 };
 
 // ─── Theme Scope ──────────────────────────────────────────────────────────────

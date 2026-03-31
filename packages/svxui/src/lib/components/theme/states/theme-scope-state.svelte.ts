@@ -17,31 +17,52 @@ export class ThemeScopeState implements ThemeContext {
         this.#parent = parent;
     }
 
+    /**
+     * Get the current mode
+     */
     get mode(): Mode {
         return this.#props.mode ?? this.#parent.mode;
     }
 
+    /**
+     * Get the current color
+     */
     get color(): Color {
         return this.#props.color ?? this.#parent.color;
     }
 
+    /**
+     * Get the current radius
+     */
     get radius(): Radius {
         return this.#props.radius ?? this.#parent.radius;
     }
 
+    /**
+     * Get the current systeme theme
+     */
     get system(): Theme | undefined {
         return this.#parent.system;
     }
 
+    /**
+     * Get the current resolved theme
+     */
     get theme(): Theme {
         const m = this.mode;
         return m === ThemeSystem ? (this.system ?? ThemeLight) : m;
     }
 
+    /**
+     * Get the current value of hasBackground to apply to the internal HTML element of the ThemeScope component
+     */
     get hasBackground(): boolean {
         return this.#props.hasBackground ?? true;
     }
 
+    /**
+     * Get the HTML data-attributes written to the ThemeScope element
+     */
     get attrs(): ThemeScopeAttributes {
         return {
             'data-theme-scope': '',
