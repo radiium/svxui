@@ -30,7 +30,6 @@
 
 <style>
     .separator {
-        display: inline-block;
         background-color: var(--accent-7);
         min-width: var(--separator-width);
         min-height: var(--separator-height);
