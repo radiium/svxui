@@ -53,7 +53,7 @@
             previouslyFocusedElement = document.activeElement as HTMLElement;
             if (focusTrap) {
                 requestAnimationFrame(() => {
-                    ref?.focus();
+                    ref?.focus({ preventScroll: true });
                 });
             }
         } else {
