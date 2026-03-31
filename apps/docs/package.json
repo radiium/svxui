@@ -10,10 +10,11 @@
         "prepare": "svelte-kit sync || echo ''",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-        "predev": "npm run gen:libdocjson",
-        "prebuild": "npm run gen:libdocjson",
-        "precheck": "npm run gen:libdocjson",
-        "gen:libdocjson": "node ./scripts/generate-api.mjs"
+        "predev": "npm run gen:libdocjson && npm run gen:color-generator",
+        "prebuild": "npm run gen:libdocjson && npm run gen:color-generator",
+        "precheck": "npm run gen:libdocjson && npm run gen:color-generator",
+        "gen:libdocjson": "node ./scripts/generate-api.mjs",
+        "gen:color-generator": "node ./scripts/generate-color-generator-content.mjs"
     },
     "dependencies": {
         "phosphor-svelte": "^3.1.0",

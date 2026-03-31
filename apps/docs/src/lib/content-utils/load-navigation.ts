@@ -42,6 +42,12 @@ export const loadNavigation = () => {
                 slugFull: '/docs/color',
                 label: 'Color',
                 IconComponent: PaletteIcon
+            },
+            {
+                slug: 'color-generator',
+                slugFull: '/docs/color-generator',
+                label: 'Color Generator',
+                IconComponent: PaletteIcon
             }
         ]
     };
