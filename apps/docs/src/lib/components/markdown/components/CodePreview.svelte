@@ -18,12 +18,12 @@
     let enableOpenCode = $derived(meta?.enableOpenCode === true);
     let codeOpened = $derived(meta?.enableOpenCode === true ? false : true);
 
-    let element: HTMLDivElement | undefined = $state();
+    let codeContainerEl: HTMLDivElement | undefined = $state();
     let id = $props.id();
 
     $effect(() => {
-        if (element) {
-            const preElement = element.querySelector('pre');
+        if (codeContainerEl) {
+            const preElement = codeContainerEl.querySelector('pre');
             if (preElement) {
                 preElement.tabIndex = -1;
             }
@@ -67,7 +67,7 @@
                 {/if}
 
                 {#if code}
-                    <div class="code" bind:this={element}>
+                    <div class="code" bind:this={codeContainerEl}>
                         <div class="code-content" use:setCodeString>
                             {@render code?.()}
                         </div>
