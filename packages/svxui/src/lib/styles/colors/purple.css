@@ -1,6 +1,4 @@
-/* Color: purple */
-
-/* purple light */
+/* purple — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --purple-track: var(--purple-9);
 }
 
-/* purple dark */
+/* purple — dark */
 
 .dark,
 [data-theme='dark'] {

@@ -1,6 +1,5 @@
-/* Color: lime */
+/* lime — light */
 
-/* lime light */
 :root,
 .light,
 [data-theme='light'] {
@@ -36,7 +35,7 @@
     --lime-track: var(--lime-9);
 }
 
-/* lime dark */
+/* lime — dark */
 
 .dark,
 [data-theme='dark'] {

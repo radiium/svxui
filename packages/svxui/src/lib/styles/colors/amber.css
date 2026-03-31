@@ -1,6 +1,4 @@
-/* Color: amber */
-
-/* amber light */
+/* amber — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --amber-track: var(--amber-9);
 }
 
-/* amber dark */
+/* amber — dark */
 
 .dark,
 [data-theme='dark'] {

@@ -1,6 +1,4 @@
-/* Color: gray */
-
-/* gray light */
+/* gray — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --gray-track: var(--gray-9);
 }
 
-/* gray dark */
+/* gray — dark */
 
 .dark,
 [data-theme='dark'] {

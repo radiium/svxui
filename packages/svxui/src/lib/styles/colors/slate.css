@@ -1,6 +1,4 @@
-/* Color: slate */
-
-/* slate light */
+/* slate — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --slate-track: var(--slate-9);
 }
 
-/* slate dark */
+/* slate — dark */
 
 .dark,
 [data-theme='dark'] {

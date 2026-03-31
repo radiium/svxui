@@ -1,6 +1,5 @@
-/* Color: olive */
+/* olive — light */
 
-/* olive light */
 :root,
 .light,
 [data-theme='light'] {
@@ -36,7 +35,7 @@
     --olive-track: var(--olive-9);
 }
 
-/* olive dark */
+/* olive — dark */
 
 .dark,
 [data-theme='dark'] {

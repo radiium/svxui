@@ -1,6 +1,4 @@
-/* Color: gold */
-
-/* gold light */
+/* gold — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --gold-track: var(--gold-9);
 }
 
-/* gold dark */
+/* gold — dark */
 
 .dark,
 [data-theme='dark'] {

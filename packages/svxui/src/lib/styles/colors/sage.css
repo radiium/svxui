@@ -1,6 +1,4 @@
-/* Color: sage */
-
-/* sage light */
+/* sage — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --sage-track: var(--sage-9);
 }
 
-/* sage dark */
+/* sage — dark */
 
 .dark,
 [data-theme='dark'] {

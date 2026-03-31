@@ -1,6 +1,5 @@
-/* Color: orange */
+/* orange — light */
 
-/* orange light */
 :root,
 .light,
 [data-theme='light'] {
@@ -36,7 +35,7 @@
     --orange-track: var(--orange-9);
 }
 
-/* orange dark */
+/* orange — dark */
 
 .dark,
 [data-theme='dark'] {

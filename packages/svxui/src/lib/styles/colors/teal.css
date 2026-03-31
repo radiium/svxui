@@ -1,6 +1,4 @@
-/* Color: teal */
-
-/* teal light */
+/* teal — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --teal-track: var(--teal-9);
 }
 
-/* teal dark */
+/* teal — dark */
 
 .dark,
 [data-theme='dark'] {

@@ -1,6 +1,4 @@
-/* Color: ruby */
-
-/* ruby light */
+/* ruby — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --ruby-track: var(--ruby-9);
 }
 
-/* ruby dark */
+/* ruby — dark */
 
 .dark,
 [data-theme='dark'] {

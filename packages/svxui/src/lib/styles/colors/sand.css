@@ -1,6 +1,4 @@
-/* Color: sand */
-
-/* sand light */
+/* sand — light */
 
 :root,
 .light,
@@ -37,7 +35,7 @@
     --sand-track: var(--sand-9);
 }
 
-/* sand dark */
+/* sand — dark */
 
 .dark,
 [data-theme='dark'] {
