@@ -74,25 +74,11 @@ Import pre-built or custom color palettes you want to use.
 </script>
 ```
 
-#### 2. Configure color aliases
-
-Declare color aliases on the ThemeProvider (for auto generate `--accent-*` CSS variables).
-
-```svelte title="src/routes/+layout.svelte"
-<ThemeProvider customColorsAlias={{
-    primary: 'crimson',
-    info: 'cyan',
-    danger: 'custom-color'
-}}>
-    {@render children?.()}
-</ThemeProvider>
-```
-
-#### 3. Configure TypeScript
+#### 2. Configure TypeScript
 
 Override `ColorMap` for TypeScript autocompletion.
 
-```typescript title="src/app.d.ts"
+```typescript title="src/svxui-colors.d.ts"
 declare global {
     namespace Svxui {
         export interface ColorMap {
@@ -102,9 +88,11 @@ declare global {
         }
     }
 }
+
+export {};
 ```
 
-#### 4. Use in components
+#### 3. Use in components
 
 ```svelte
 <script>

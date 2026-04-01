@@ -99,7 +99,7 @@ You can update default `strategy`, `color` and `radius` with the theme context v
 
 ```svelte
 <script lang="ts">
-    import { useThemeRootContext, type Mode, type Radius, type Color } from 'svxui';
+    import { useTheme, type Mode, type Radius, type Color } from 'svxui';
 
     const theme = useTheme();
     const modes: Mode[] = ['system', 'light', 'dark'];

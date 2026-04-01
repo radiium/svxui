@@ -21,9 +21,9 @@ Copy the generated `theme.css` into your project and import it in your layout in
 ```css
 /* Import your theme */
 @import './theme.css';
-/* Import svxui file */
-@import 'svxui/styles/normalize.css';
+/* Import svxui files */
 @import 'svxui/styles/tokens.css';
+@import 'svxui/styles/normalize.css';
 @import 'svxui/styles/utilities.css';
 ```
 
