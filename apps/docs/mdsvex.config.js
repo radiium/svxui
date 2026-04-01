@@ -9,7 +9,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const highlighter = await createHighlighter({
     themes: ['dark-plus', 'light-plus'],
-    langs: ['svelte', 'javascript', 'typescript', 'bash', 'css']
+    langs: ['svelte', 'javascript', 'typescript', 'bash', 'css', 'json']
 });
 
 /**

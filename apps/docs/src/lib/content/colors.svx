@@ -1,11 +1,12 @@
 ---
-title: Color
-description: Understanding the color system.
+title: Colors
+description: Understanding and customizing the color system.
 ---
 
 <script lang="ts">
     import Code from '$lib/components/markdown/elements/code.svelte';
     import DocLink from '$lib/components/markdown/components/DocLink.svelte';
+    import ColorGenerator from '$lib/components/color-generator/ColorGenerator.svelte';
 </script>
 
 ## Overview
@@ -20,7 +21,7 @@ Like the [@radix-ui/themes](https://www.radix-ui.com/themes) library, the compon
 These CSS variables are overridden in components by using the `data-color="..."` attribute.
 If no color is defined on a component, the color defined on the parent wrapper component will be applied.
 
-## Default color palettes
+## Default palettes
 
 By default, the library includes the following color palettes:
 - <Code color="neutral">Neutral</Code> (custom radix color, default)
@@ -42,7 +43,6 @@ Import `theme.default.css` to load the default palettes:
 import 'svxui/styles/theme.default.css';
 ```
 
-
 ## Additional Radix palettes
 
 All standard [Radix colors](https://www.radix-ui.com/colors) are pre-built and exported as CSS files by the library.
@@ -54,17 +54,38 @@ Each file contains definitions for both light and dark themes.
 
 ## Custom palettes
 
-You can generate a custom palette using the Radix color generator and add the resulting CSS to your project following the same structure as the pre-built files.
+You can define a fully custom color theme with semantic aliases (e.g. `primary`, `danger`, `info`) using the generator below.
 
-<DocLink href="https://www.radix-ui.com/colors/custom">
-    Generate a custom Radix color palette
-</DocLink>
+### 1. Generate your theme
 
-### Usage
+Configure your color aliases, then copy the two generated files into your project.
 
-#### 1. Import CSS files
+<ColorGenerator />
 
-Import pre-built or custom color palettes you want to use.
+**Add theme CSS** — copy the generated `theme.css` into your project and import it in your layout instead of `svxui/styles/theme.default.css`:
+
+```css
+/* Import your theme */
+@import './theme.css';
+/* Import svxui files */
+@import 'svxui/styles/tokens.css';
+@import 'svxui/styles/normalize.css';
+@import 'svxui/styles/utilities.css';
+```
+
+**Add TypeScript types** — copy `svxui-colors.d.ts` into your `src/` directory. Make sure it's included in your `tsconfig.json`:
+
+```json
+{
+    "include": ["src/**/*"]
+}
+```
+
+This [augments](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) the `Svxui.ColorMap` interface so the `color` prop on every component is typed to exactly the aliases you defined.
+
+### 2. Import additional palettes (without the generator)
+
+You can also manually import pre-built or custom color palettes:
 
 ```svelte title="src/routes/+layout.svelte"
 <script>
@@ -74,7 +95,13 @@ Import pre-built or custom color palettes you want to use.
 </script>
 ```
 
-#### 2. Configure TypeScript
+You can generate a custom palette using the Radix color generator:
+
+<DocLink href="https://www.radix-ui.com/colors/custom">
+    Generate a custom Radix color palette
+</DocLink>
+
+### 3. Configure TypeScript
 
 Override `ColorMap` for TypeScript autocompletion.
 
@@ -92,7 +119,7 @@ declare global {
 export {};
 ```
 
-#### 3. Use in components
+### 4. Use in components
 
 ```svelte
 <script>

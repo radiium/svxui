@@ -1,6 +1,6 @@
 ---
-title: Theme Provider
-description: Configure entry point of the application.
+title: Theming
+description: Configure and control the application theme.
 ---
 
 <script lang="ts">
@@ -40,15 +40,12 @@ This provider should be placed at the root of your application.
 
 ```svelte
 <script>
-    // Import provider and required CSS
     import { ThemeProvider } from 'svxui';
-    import 'svxui/styles/theme.default.css';
-    import 'svxui/styles/tokens.css';
 
     let { children } = $props();
 </script>
 
-<ThemeProvider 
+<ThemeProvider
     strategy="system"
     color="blue"
     radius="none"
@@ -79,8 +76,8 @@ This is useful for scoped theming, such as theming a specific page, layout, or c
 </script>
 
 <ThemeScope color="neutral">
-    <!-- 
-    The panel and button will have a neutral color by default, 
+    <!--
+    The panel and button will have a neutral color by default,
     but will inherit radius and strategy from the root theme.
     -->
     <Panel>
@@ -89,7 +86,7 @@ This is useful for scoped theming, such as theming a specific page, layout, or c
 </ThemeScope>
 ```
 
-## Theme Context
+## useTheme
 
 ### Features
 

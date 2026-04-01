@@ -25,28 +25,21 @@ export const loadNavigation = () => {
                 IconComponent: DoorOpenIcon
             },
             {
-                slug: 'theme-provider',
-                slugFull: '/docs/theme-provider',
-                label: 'Theme Provider',
+                slug: 'styling',
+                slugFull: '/docs/styling',
+                label: 'Styling',
+                IconComponent: FileCssIcon
+            },
+            {
+                slug: 'theming',
+                slugFull: '/docs/theming',
+                label: 'Theming',
                 IconComponent: SlidersIcon
             },
             {
-                slug: 'global-style',
-                slugFull: '/docs/global-style',
-                label: 'Global Style',
-                IconComponent: FileCssIcon
-            },
-
-            {
-                slug: 'color',
-                slugFull: '/docs/color',
-                label: 'Color',
-                IconComponent: PaletteIcon
-            },
-            {
-                slug: 'color-generator',
-                slugFull: '/docs/color-generator',
-                label: 'Color Generator',
+                slug: 'colors',
+                slugFull: '/docs/colors',
+                label: 'Colors',
                 IconComponent: PaletteIcon
             }
         ]

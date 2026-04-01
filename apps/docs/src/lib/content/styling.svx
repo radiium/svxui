@@ -1,6 +1,6 @@
 ---
-title: Global Style
-description: How to use library style sheets.
+title: Styling
+description: Library CSS files and style sheets.
 ---
 
 <script lang="ts">
@@ -24,8 +24,8 @@ It includes a set of CSS variables to configure:
 
 ## 2. Normalize (optional)
 
-Contains the [modern-normalize.css](https://github.com/sindresorhus/modern-normalize) library. 
-A set of CSS rules for normalize browsers default styles.  
+Contains the [modern-normalize.css](https://github.com/sindresorhus/modern-normalize) library.
+A set of CSS rules for normalize browsers default styles.
 
 <DocLink href="/styles/normalize.css" libFolder>View normalize.css on GitHub</DocLink>
 
@@ -51,7 +51,7 @@ import 'svxui/styles/colors/blue.css';
 
 <DocLink href="/styles/colors/" libFolder>View color files on GitHub</DocLink>
 
-See the [Color documentation](/docs/color) for the full list and how to create custom palettes.
+See [Colors](/docs/colors) for the full list and how to create custom palettes.
 
 ## Usage
 
@@ -69,5 +69,3 @@ Import the CSS files at the root of your application.
     import 'svxui/styles/colors/green.css'; // Optional
 </script>
 ```
-
-
