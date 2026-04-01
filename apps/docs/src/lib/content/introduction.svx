@@ -29,6 +29,8 @@ This library includes, adapts, or is inspired by code from the following project
 - [runed](https://github.com/svecosystem/runed)
 - [mode-watcher](https://github.com/svecosystem/mode-watcher)
 - [@skeletonlabs/floating-ui-svelte](https://github.com/skeletonlabs/floating-ui-svelte)
+- [phosphor-svelte](https://github.com/haruaki07/phosphor-svelte)
+- [phosphor-icons](https://github.com/phosphor-icons)
 - [trap-focus-svelte](https://github.com/henrygd/trap-focus-svelte)
 - [svelte-portal](https://github.com/romkor/svelte-portal)
 - [nanoid](https://github.com/ai/nanoid)

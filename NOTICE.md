@@ -53,6 +53,18 @@ This library includes, adapts, or is inspired by code from the following project
 - License: MIT
 - Usage: floating-ui svelte integration
 
+## phosphor-svelte
+- Author: haruaki07 <https://github.com/haruaki07>
+- Source: https://github.com/haruaki07/phosphor-svelte
+- License: MIT
+- Usage: Icons
+
+## phosphor
+- Author: Phosphor Icons <https://github.com/phosphor-icons>
+- Source: https://github.com/phosphor-icons
+- License: MIT
+- Usage: Icons
+
 ## trap-focus-svelte
 - Author: Henry Dollman <hank@henrygd.me>
 - Source: https://github.com/henrygd/trap-focus-svelte
