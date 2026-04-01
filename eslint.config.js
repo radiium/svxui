@@ -62,6 +62,6 @@ export default defineConfig(
         }
     },
     {
-        ignores: ['**/dist/', '**/.svelte-kit/', '**/.vercel/']
+        ignores: ['**/dist/', '**/.svelte-kit/', '**/.vercel/', 'packages/svxui/src/tests/**.d.ts']
     }
 );

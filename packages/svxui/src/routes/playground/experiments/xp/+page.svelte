@@ -36,6 +36,7 @@
             return isOpen;
         },
         onChange(value) {
+            // eslint-disable-next-line no-console
             console.log('Sync onChange', value);
         }
     });

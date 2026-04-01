@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Checkbox, Flexbox, Panel, Portal, Select } from 'svxui';
+    import { Checkbox, Flexbox, Panel, Portal, Select, SelectOption } from 'svxui';
 
     let enabled = $state(false);
     let target = $state('#target1');
@@ -12,7 +12,11 @@
             <Checkbox bind:checked={enabled} />
             Enabled
         </Flexbox>
-        <Select size="3" options={targets} bind:value={target}></Select>
+        <Select size="3" bind:value={target}>
+            {#each targets as value (value)}
+                <SelectOption {value}>{value}</SelectOption>
+            {/each}
+        </Select>
     </Flexbox>
 
     <Panel variant="clear" outline>
@@ -23,6 +27,6 @@
         </Portal>
     </Panel>
 
-    <Panel variant="clear" outline id="target1">Taget 1</Panel>
-    <Panel variant="clear" outline id="target2">Taget 2</Panel>
+    <Panel variant="clear" outline id="target1">Target 1</Panel>
+    <Panel variant="clear" outline id="target2">Target 2</Panel>
 </Flexbox>

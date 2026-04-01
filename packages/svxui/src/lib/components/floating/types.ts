@@ -43,11 +43,11 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color' | 'chil
      */
     radius?: Radius;
     /**
-     * Updateposition on scroll
+     * Update position on scroll
      */
     autoUpdate?: boolean;
     /**
-     * Prefered placement
+     * Preferred placement
      */
     placement?: FloatingPlacement;
     /**

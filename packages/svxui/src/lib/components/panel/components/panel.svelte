@@ -139,7 +139,7 @@
         }
         /* --color-panel-solid: var(--gray-2); */
 
-        /* Renderd as button, link or label */
+        /* Render as button, link or label */
         &.panel-button {
             font-family: inherit;
             font-size: inherit;

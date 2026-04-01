@@ -19,27 +19,27 @@ export const examples: ExamplesConfig = {
     },
     items: [
         {
-            title: 'Checkbox +  Input',
+            title: 'Checkbox +Input',
             Component: Checkbox_plus_Input,
             ...Checkbox_plus_InputSrc
         },
         {
-            title: 'Input +  Button',
+            title: 'Input +Button',
             Component: Input_plus_Button,
             ...Input_plus_ButtonSrc
         },
         {
-            title: 'Input +  Input Range',
+            title: 'Input +Input Range',
             Component: Input_plus_InputRange,
             ...Input_plus_InputRangeSrc
         },
         {
-            title: 'Input +  Select',
+            title: 'Input +Select',
             Component: Input_plus_Select,
             ...Input_plus_SelectSrc
         },
         {
-            title: 'Input +  Text',
+            title: 'Input +Text',
             Component: Input_plus_Text,
             ...Input_plus_TextSrc
         },

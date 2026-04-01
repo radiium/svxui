@@ -41,11 +41,11 @@ export type InputNumberProps = Omit<InputGroupProps, 'ref' | 'children'> & {
      */
     color?: Color;
     /**
-     * InputNumbersize
+     * InputNumber size
      */
     size?: InputNumberSize;
     /**
-     * InputNumberradius
+     * InputNumber radius
      */
     radius?: Radius;
     /**

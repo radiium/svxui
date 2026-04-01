@@ -30,7 +30,7 @@ export const examples: ExamplesConfig = {
             ...VariantsSrc
         },
         {
-            title: 'IconOnly',
+            title: 'Icon Only',
             Component: Icon,
             ...IconSrc
         },

@@ -25,7 +25,7 @@ export const examples: ExamplesConfig = {
             ...Close_from_insideSrc
         },
         {
-            title: 'Floating ui middlewares',
+            title: 'Floating UI Middlewares',
             Component: Floating_ui_middlewares,
             ...Floating_ui_middlewaresSrc
         },

@@ -62,6 +62,7 @@
                     onclick={() => theme.setColor(item)}
                     iconOnly
                     radius="full"
+                    title={item}
                 ></Button>
             {/each}
         </Flexbox>

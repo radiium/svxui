@@ -1,8 +1,5 @@
 <script lang="ts">
-    import InputGroupItem from '$lib/components/input-group/components/input-group-item.svelte';
-    import InputGroup from '$lib/components/input-group/components/input-group.svelte';
     import InputNumber from '$lib/components/input-number/components/input-number.svelte';
-    import Input from '$lib/components/input/components/input.svelte';
     import { type InputNumberProps } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlNumber from '../../controls/ControlNumber.svelte';
