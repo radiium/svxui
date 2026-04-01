@@ -1,12 +1,12 @@
 <script lang="ts">
     import SelectOption from '$lib/components/select/components/select-option.svelte';
     import ThemeProvider from '$lib/components/theme/components/theme-provider.svelte';
-    import { useTheme } from '$lib/components/theme/index.js';
-    import { rovingfocus, Select, Text, type Color, type Mode, type Radius } from '$lib/index.js';
+    import { AllRadixColors, Modes, Radiuses, useTheme } from '$lib/components/theme/index.js';
+    import { rovingfocus, Select, Text } from '$lib/index.js';
     import { type Snippet } from 'svelte';
     // Styles
+    import './all-colors.css';
     import '$lib/styles/normalize.css';
-    import '$lib/styles/theme.default.css';
     import '$lib/styles/tokens.css';
     import '$lib/styles/utilities.css';
 
@@ -62,10 +62,6 @@
             ]
         }
     ];
-
-    const strategies = ['dark', 'light', 'system'] as Mode[];
-    const colors = ['neutral', 'blue', 'green', 'yellow', 'orange', 'red'] as Color[];
-    const radius = ['none', 'small', 'medium', 'large', 'full'] as Radius[];
 </script>
 
 <ThemeProvider color="neutral" radius="medium">
@@ -85,7 +81,7 @@
                     value={themeRoot.mode}
                     onValueChange={(newValue) => newValue && themeRoot.setMode(newValue)}
                 >
-                    {#each strategies as value (value)}
+                    {#each Modes as value (value)}
                         <SelectOption {value}>{value}</SelectOption>
                     {/each}
                 </Select>
@@ -97,7 +93,7 @@
                     value={themeRoot.color}
                     onValueChange={(newValue) => newValue && themeRoot.setColor(newValue)}
                 >
-                    {#each colors as value (value)}
+                    {#each AllRadixColors as value (value)}
                         <SelectOption {value}>{value}</SelectOption>
                     {/each}
                 </Select>
@@ -109,7 +105,7 @@
                     value={themeRoot.radius}
                     onValueChange={(newValue) => newValue && themeRoot.setRadius(newValue)}
                 >
-                    {#each radius as value (value)}
+                    {#each Radiuses as value (value)}
                         <SelectOption {value}>{value}</SelectOption>
                     {/each}
                 </Select>
@@ -128,7 +124,7 @@
                                     <Text
                                         as="a"
                                         underline="auto"
-                                        href={'/playground/' + section.name + '/' + item}
+                                        href={'/' + section.name + '/' + item}
                                         data-page
                                     >
                                         {item}

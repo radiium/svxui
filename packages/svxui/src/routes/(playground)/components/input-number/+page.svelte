@@ -1,6 +1,6 @@
 <script lang="ts">
     import InputNumber from '$lib/components/input-number/components/input-number.svelte';
-    import { type InputNumberProps } from '$lib/index.js';
+    import { AllRadixColors, type InputNumberProps } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlNumber from '../../controls/ControlNumber.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -39,11 +39,7 @@
         <ControlNumber label="max" bind:value={props.max} />
         <ControlNumber label="step" bind:value={props.step} />
         <ControlNumber label="decimals" bind:value={props.decimals} />
-        <ControlSelect
-            label="color"
-            bind:value={props.color}
-            options={['neutral', 'blue', 'green', 'yellow', 'orange', 'red']}
-        />
+        <ControlSelect label="color" bind:value={props.color} options={AllRadixColors} />
         <ControlSelect label="size" bind:value={props.size} options={['1', '2', '3']} />
         <ControlSelect
             label="variant"

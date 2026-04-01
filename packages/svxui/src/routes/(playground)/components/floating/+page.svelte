@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Flexbox, Floating, Input, type FloatingProps } from '$lib/index.js';
+    import { AllRadixColors, Button, Flexbox, Floating, Input, type FloatingProps } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlInput from '../../controls/ControlInput.svelte';
     import ControlNumber from '../../controls/ControlNumber.svelte';
@@ -77,11 +77,7 @@
             bind:value={props.variant}
             options={['solid', 'soft', 'surface', 'clear']}
         />
-        <ControlSelect
-            label="color"
-            bind:value={props.color}
-            options={['neutral', 'blue', 'green', 'yellow', 'orange', 'red']}
-        />
+        <ControlSelect label="color" bind:value={props.color} options={AllRadixColors} />
         <ControlSelect label="size" bind:value={props.size} options={['1', '2', '3', '4', '5']} />
         <ControlCheckbox label="autoUpdate" bind:checked={props.autoUpdate} />
         <ControlCheckbox label="focusTrap" bind:checked={props.focusTrap} />

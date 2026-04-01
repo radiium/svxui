@@ -1,6 +1,13 @@
 <script lang="ts">
     import Button from '$lib/components/button/components/button.svelte';
-    import { Checkbox, Flexbox, Panel, type Color, type PanelProps, type PanelVariant } from '$lib/index.js';
+    import {
+        AllRadixColors,
+        Checkbox,
+        Flexbox,
+        Panel,
+        type PanelProps,
+        type PanelVariant
+    } from '$lib/index.js';
     import { cartesianProduct, groupBy } from '../../controls/cartesian-product.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -8,6 +15,7 @@
 
     const base: PanelProps<'div'> | PanelProps<'a'> | PanelProps<'button'> | PanelProps<'label'> = $state({
         size: '3',
+        color: 'neutral',
         outline: false,
         fullWidth: false,
         as: 'div'
@@ -15,10 +23,9 @@
 
     const sections = groupBy(
         cartesianProduct({
-            color: ['neutral', 'blue', 'green', 'yellow', 'orange', 'red'] as Color[],
             variant: ['solid', 'soft', 'surface', 'clear'] as PanelVariant[]
         }),
-        'color'
+        'variant'
     );
 </script>
 
@@ -28,6 +35,7 @@
     {#snippet controls()}
         <ControlCheckbox label="outline" bind:checked={base.outline} />
         <ControlCheckbox label="fullWidth" bind:checked={base.fullWidth} />
+        <ControlSelect label="color" bind:value={base.color} options={AllRadixColors} />
         <ControlSelect
             label="size"
             bind:value={base.size}

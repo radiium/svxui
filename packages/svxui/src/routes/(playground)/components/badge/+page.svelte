@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, Flexbox, Panel, type BadgeProps } from '$lib/index.js';
+    import { AllRadixColors, Badge, Flexbox, Panel, type BadgeProps } from '$lib/index.js';
     import { cartesianProduct, groupBy } from '../../controls/cartesian-product.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -12,7 +12,7 @@
 
     const sections = groupBy(
         cartesianProduct<BadgeProps>({
-            color: ['neutral', 'blue', 'green', 'yellow', 'orange', 'red'],
+            color: AllRadixColors,
             variant: ['solid', 'soft', 'outline']
         }),
         'color'

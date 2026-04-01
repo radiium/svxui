@@ -1,7 +1,7 @@
 <script lang="ts">
     import SelectOptgroup from '$lib/components/select/components/select-optgroup.svelte';
     import SelectOption from '$lib/components/select/components/select-option.svelte';
-    import { Select, type SelectProps } from '$lib/index.js';
+    import { AllRadixColors, Select, type SelectProps } from '$lib/index.js';
     import ControlButton from '../../controls/ControlButton.svelte';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -68,11 +68,7 @@
 
 <Playground>
     {#snippet controls()}
-        <ControlSelect
-            label="color"
-            bind:value={props.color}
-            options={['neutral', 'blue', 'green', 'yellow', 'orange', 'red']}
-        />
+        <ControlSelect label="color" bind:value={props.color} options={AllRadixColors} />
         <ControlSelect label="size" bind:value={props.size} options={['1', '2', '3']} />
         <ControlCheckbox label="multiple" bind:checked={props.multiple} />
         <ControlCheckbox label="fullWidth" bind:checked={props.fullWidth} />

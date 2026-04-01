@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Flexbox, Panel, type ButtonProps } from '$lib/index.js';
+    import { AllRadixColors, Button, Flexbox, Panel, type ButtonProps } from '$lib/index.js';
     import { cartesianProduct, groupBy } from '../../controls/cartesian-product.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -18,7 +18,7 @@
 
     const sections = groupBy(
         cartesianProduct<ButtonProps>({
-            color: ['neutral', 'blue', 'green', 'yellow', 'orange', 'red'],
+            color: AllRadixColors,
             variant: ['solid', 'soft', 'outline', 'clear']
         }),
         'color'
