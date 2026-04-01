@@ -25,3 +25,4 @@ pnpm-workspace.yaml
 
 apps/docs/src/lib/content-utils/libdoc.json
 packages/svxui/src/lib/styles
+packages/svxui/src/tests/**.d.ts
