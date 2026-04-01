@@ -240,7 +240,7 @@ describe('Button component', () => {
     /* ------------------------------------------------- */
 
     describe('Ref binding', () => {
-        test('binds ref asHTMLButtonElement correctly', async () => {
+        test('binds ref as HTMLButtonElement correctly', async () => {
             let current: HTMLButtonElement | undefined;
 
             renderWithWrapper(Button, {

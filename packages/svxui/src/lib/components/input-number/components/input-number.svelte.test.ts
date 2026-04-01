@@ -312,7 +312,7 @@ describe('InputNumber component', () => {
 
     describe('Ref binding', () => {
         test('binds ref correctly', async () => {
-            let current: HTMLInputElement | undefined;
+            let current: HTMLDivElement | undefined;
 
             renderWithWrapper(InputNumber, {
                 get ref() {

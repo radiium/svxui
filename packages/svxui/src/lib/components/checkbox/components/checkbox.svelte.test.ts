@@ -122,14 +122,14 @@ describe('Checkbox component', () => {
             expect(checkbox?.getAttribute('data-state')).toBe('unchecked');
         });
 
-        test('applies data-state="indeterminate" when indterminate is true ans checked is true', async () => {
+        test('applies data-state="indeterminate" when indeterminate is true and checked is true', async () => {
             const { container } = renderWithWrapper(Checkbox, { indeterminate: true, checked: true });
             const checkbox = container.querySelector(selector);
 
             expect(checkbox?.getAttribute('data-state')).toBe('indeterminate');
         });
 
-        test('applies data-state="indeterminate" when indterminate is true ans checked is false', async () => {
+        test('applies data-state="indeterminate" when indeterminate is true and checked is false', async () => {
             const { container } = renderWithWrapper(Checkbox, { indeterminate: true, checked: false });
             const checkbox = container.querySelector(selector);
 

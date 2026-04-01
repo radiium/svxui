@@ -99,7 +99,7 @@ describe('Switch component', () => {
             const { container } = renderWithWrapper(Switch, {});
             const switchEl = container.querySelector(selector);
 
-            expect(switchEl?.getAttribute('data-color')).toBeNull();
+            expect(switchEl?.getAttribute('data-radius')).toBeNull();
         });
     });
 
