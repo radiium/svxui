@@ -65,25 +65,25 @@
     });
 
     let backdropCssClass = $derived([
-        'backdrop',
+        'dialog-backdrop',
         {
-            fixed: layout === 'fixed',
-            scroll: layout === 'scroll',
-            fullscreen: layout === 'fullscreen',
-            blurbackdrop: blurBackdrop && layout !== 'fullscreen',
-            keepmounted: keepMounted
+            'dialog-fixed': layout === 'fixed',
+            'dialog-scroll': layout === 'scroll',
+            'dialog-fullscreen': layout === 'fullscreen',
+            'dialog-blurbackdrop': blurBackdrop && layout !== 'fullscreen',
+            'dialog-keepmounted': keepMounted
         }
     ]);
 
     let dialogCssClass = $derived([
         rest.class,
-        'dialog',
+        'dialog-content',
         {
-            fixed: layout === 'fixed',
-            scroll: layout === 'scroll',
-            fullscreen: layout === 'fullscreen',
-            blurbackdrop: blurBackdrop && layout !== 'fullscreen',
-            keepmounted: keepMounted
+            'dialog-fixed': layout === 'fixed',
+            'dialog-scroll': layout === 'scroll',
+            'dialog-fullscreen': layout === 'fullscreen',
+            'dialog-blurbackdrop': blurBackdrop && layout !== 'fullscreen',
+            'dialog-keepmounted': keepMounted
         }
     ]);
 </script>
@@ -135,7 +135,7 @@
 {/if}
 
 <style>
-    .backdrop {
+    .dialog-backdrop {
         position: fixed;
         inset: 0;
         background-color: rgba(0, 0, 0, 0.5);
@@ -144,24 +144,24 @@
         justify-content: center;
         z-index: var(--z-index, 1);
 
-        &.fixed {
+        &.dialog-fixed {
             overflow: hidden;
             align-items: center;
         }
 
-        &.scroll {
+        &.dialog-scroll {
             overflow-y: auto;
             align-items: center;
             justify-content: flex-start;
 
-            .dialog {
+            .dialog-content {
                 max-height: none;
                 margin: var(--space-9) auto;
             }
         }
 
-        &.fullscreen {
-            .dialog {
+        &.dialog-fullscreen {
+            .dialog-content {
                 width: 100vw;
                 height: 100vh;
                 max-width: 100vw;
@@ -169,11 +169,11 @@
             }
         }
 
-        &.blurbackdrop {
+        &.dialog-blurbackdrop {
             backdrop-filter: blur(4px);
         }
 
-        &.keepmounted {
+        &.dialog-keepmounted {
             opacity: 0;
             transition: opacity var(--transitionDuration) cubic-bezier(0.33, 1, 0.68, 1)
                 var(--transitionDelay);
@@ -181,13 +181,13 @@
             &[data-state='open'] {
                 opacity: 1;
 
-                .dialog {
+                .dialog-content {
                     opacity: 1;
                     transform: scale(1);
                 }
             }
 
-            .dialog {
+            .dialog-content {
                 opacity: 0;
                 transform: scale(0.92);
 
@@ -199,7 +199,7 @@
             }
         }
 
-        .dialog {
+        .dialog-content {
             margin: auto;
             max-width: calc(100% - 2em - 6px);
             max-height: calc(100% - 2em - 6px);
