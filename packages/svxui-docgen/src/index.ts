@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { AttachmentAnalyzer } from './analyzers/attachment-analyzer.js';
@@ -108,7 +109,7 @@ export class DocumentationGenerator {
 
         // Write to file
         this.writeDocumentation(documentation);
-        console.log(`Documentation generated at: ${this.config.outputPath}`);
+        console.log(`✅  Documentation generated → ${this.config.outputPath}`);
 
         return documentation;
     }

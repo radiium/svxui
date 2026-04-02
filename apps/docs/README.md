@@ -1,42 +1,28 @@
-# sv
+# svxui — docs
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-pnpm dlx sv create --template minimal --types ts --add eslint devtools-json sveltekit-adapter="adapter:vercel" mdsvex --install pnpm docs
-```
+Documentation site for [svxui](https://svxui.vercel.app), built with SvelteKit and [mdsvex](https://mdsvex.pika.page).
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm dev
 ```
 
 ## Building
 
-To create a production version of your app:
-
 ```sh
-npm run build
+pnpm build
+pnpm preview
 ```
 
-You can preview the production build with `npm run preview`.
+## Structure
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```
+src/
+├── lib/
+│   ├── content/          # .svx markdown pages (components, builders, attachments, utilities)
+│   └── components/       # Doc-specific UI components
+└── routes/               # SvelteKit routes
+```
+
+Content pages live in `src/lib/content/` and are organized by category (`components/`, `builders/`, `attachments/`, `utilities/`) with top-level pages for introduction, getting-started, theming, styling, and colors.

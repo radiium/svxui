@@ -20,7 +20,8 @@ The library is organized into four layers, from ready-to-use to fully custom:
 - **Svelte 5 Native** — Built with runes (`$props`, `$state`, `$derived`, `$effect`) and Svelte 5 attachments
 - **Fully Typed** — Complete TypeScript support with strict mode
 - **Accessible** — ARIA compliant components with keyboard navigation
-- **Extensible Theming** — CSS custom properties + TypeScript namespace augmentation for custom colors
+- **Color System** — 6 default palettes + all 32 Radix Colors palettes. Extend with custom palettes and semantic aliases via TypeScript namespace augmentation
+- **Scoped Theming** — Global theming via `<ThemeProvider/>`, local overrides via `<ThemeScope/>`, runtime updates via `useTheme()`
 - **Tree-shakeable** — Granular export map, import only what you need
 - **Headless Builders** — Class-based state managers to build fully custom components with full a11y
 - **Lightweight** — Single runtime dependency (`@floating-ui/dom`)
