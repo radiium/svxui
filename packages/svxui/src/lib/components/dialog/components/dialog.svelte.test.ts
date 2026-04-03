@@ -30,8 +30,8 @@ describe('Dialog component', () => {
             const { container } = renderWithWrapper(Dialog, { isOpen: true });
             const dialog = container.querySelector(selector);
 
-            expect(dialog?.classList.contains('dialog')).toBe(true);
-            expect(dialog?.classList.contains('fixed')).toBe(true);
+            expect(dialog?.classList.contains('dialog-content')).toBe(true);
+            expect(dialog?.classList.contains('dialog-fixed')).toBe(true);
         });
 
         test('renders children content', async () => {
@@ -71,12 +71,12 @@ describe('Dialog component', () => {
             async (layout: DialogProps['layout']) => {
                 const { container } = renderWithWrapper(Dialog, { isOpen: true, layout });
                 const dialog = container.querySelector(selector);
-                const backdrop = container.querySelector('.backdrop');
+                const backdrop = container.querySelector('.dialog-backdrop');
 
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                expect(dialog?.classList.contains(layout!)).toBe(true);
+                expect(dialog?.classList.contains('dialog-' + layout!)).toBe(true);
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                expect(backdrop?.classList.contains(layout!)).toBe(true);
+                expect(backdrop?.classList.contains('dialog-' + layout!)).toBe(true);
             }
         );
     });
@@ -88,7 +88,7 @@ describe('Dialog component', () => {
     describe('Backdrop', () => {
         test('renders backdrop when open', async () => {
             const { container } = renderWithWrapper(Dialog, { isOpen: true });
-            const backdrop = container.querySelector('.backdrop');
+            const backdrop = container.querySelector('.dialog-backdrop');
 
             expect(backdrop).not.toBeNull();
         });
@@ -98,9 +98,9 @@ describe('Dialog component', () => {
                 isOpen: true,
                 blurBackdrop: true
             });
-            const backdrop = container.querySelector('.backdrop');
+            const backdrop = container.querySelector('.dialog-backdrop');
 
-            expect(backdrop?.classList.contains('blurbackdrop')).toBe(true);
+            expect(backdrop?.classList.contains('dialog-blurbackdrop')).toBe(true);
         });
 
         test('does not apply blurBackdrop in fullscreen layout', async () => {
@@ -109,9 +109,9 @@ describe('Dialog component', () => {
                 blurBackdrop: true,
                 layout: 'fullscreen'
             });
-            const backdrop = container.querySelector('.backdrop');
+            const backdrop = container.querySelector('.dialog-backdrop');
 
-            expect(backdrop?.classList.contains('blurbackdrop')).toBe(false);
+            expect(backdrop?.classList.contains('dialog-blurbackdrop')).toBe(false);
         });
 
         test('closes dialog on backdrop click when closeOnBackdropClick is true', async () => {
@@ -121,7 +121,7 @@ describe('Dialog component', () => {
                 closeOnBackdropClick: true,
                 onClose
             });
-            const backdrop = container.querySelector('.backdrop') as HTMLElement;
+            const backdrop = container.querySelector('.dialog-backdrop') as HTMLElement;
 
             await userEvent.click(backdrop);
 
@@ -135,7 +135,7 @@ describe('Dialog component', () => {
                 closeOnBackdropClick: false,
                 onClose
             });
-            const backdrop = container.querySelector('.backdrop') as HTMLElement;
+            const backdrop = container.querySelector('.dialog-backdrop') as HTMLElement;
 
             await userEvent.click(backdrop);
 
@@ -195,11 +195,11 @@ describe('Dialog component', () => {
                 isOpen: true,
                 keepMounted: true
             });
-            const backdrop = container.querySelector('.backdrop');
+            const backdrop = container.querySelector('.dialog-backdrop');
             const dialog = container.querySelector(selector);
 
-            expect(backdrop?.classList.contains('keepmounted')).toBe(true);
-            expect(dialog?.classList.contains('keepmounted')).toBe(true);
+            expect(backdrop?.classList.contains('dialog-keepmounted')).toBe(true);
+            expect(dialog?.classList.contains('dialog-keepmounted')).toBe(true);
         });
     });
 
@@ -239,7 +239,7 @@ describe('Dialog component', () => {
             });
             const dialog = container.querySelector(selector);
 
-            expect(dialog?.classList.contains('dialog')).toBe(true);
+            expect(dialog?.classList.contains('dialog-content')).toBe(true);
             expect(dialog?.classList.contains('custom-class')).toBe(true);
         });
     });
