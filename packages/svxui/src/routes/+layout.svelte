@@ -5,10 +5,10 @@
     import { rovingfocus, Select, Text } from '$lib/index.js';
     import { type Snippet } from 'svelte';
     // Styles
-    import './all-colors.css';
     import '$lib/styles/normalize.css';
     import '$lib/styles/tokens.css';
     import '$lib/styles/utilities.css';
+    import './all-colors.css';
 
     type Props = {
         children?: Snippet;
@@ -37,6 +37,7 @@
                 'dialog',
                 'floating',
                 'input-number',
+                'layout',
                 'listbox',
                 'panel',
                 'portal',

@@ -9,38 +9,38 @@
 
 /* ─── Color definitions ─────────────────────────────────────────────────── */
 
-@import 'svxui/styles/colors/amber.css';
-@import 'svxui/styles/colors/blue.css';
-@import 'svxui/styles/colors/bronze.css';
-@import 'svxui/styles/colors/brown.css';
-@import 'svxui/styles/colors/crimson.css';
-@import 'svxui/styles/colors/cyan.css';
-@import 'svxui/styles/colors/gold.css';
-@import 'svxui/styles/colors/grass.css';
-@import 'svxui/styles/colors/green.css';
-@import 'svxui/styles/colors/gray.css';
-@import 'svxui/styles/colors/indigo.css';
-@import 'svxui/styles/colors/iris.css';
-@import 'svxui/styles/colors/jade.css';
-@import 'svxui/styles/colors/lime.css';
-@import 'svxui/styles/colors/mauve.css';
-@import 'svxui/styles/colors/mint.css';
-@import 'svxui/styles/colors/neutral.css';
-@import 'svxui/styles/colors/olive.css';
-@import 'svxui/styles/colors/orange.css';
-@import 'svxui/styles/colors/pink.css';
-@import 'svxui/styles/colors/plum.css';
-@import 'svxui/styles/colors/purple.css';
-@import 'svxui/styles/colors/red.css';
-@import 'svxui/styles/colors/ruby.css';
-@import 'svxui/styles/colors/sage.css';
-@import 'svxui/styles/colors/sand.css';
-@import 'svxui/styles/colors/sky.css';
-@import 'svxui/styles/colors/slate.css';
-@import 'svxui/styles/colors/teal.css';
-@import 'svxui/styles/colors/tomato.css';
-@import 'svxui/styles/colors/violet.css';
-@import 'svxui/styles/colors/yellow.css';
+@import '../lib/styles/colors/amber.css';
+@import '../lib/styles/colors/blue.css';
+@import '../lib/styles/colors/bronze.css';
+@import '../lib/styles/colors/brown.css';
+@import '../lib/styles/colors/crimson.css';
+@import '../lib/styles/colors/cyan.css';
+@import '../lib/styles/colors/gold.css';
+@import '../lib/styles/colors/grass.css';
+@import '../lib/styles/colors/green.css';
+@import '../lib/styles/colors/gray.css';
+@import '../lib/styles/colors/indigo.css';
+@import '../lib/styles/colors/iris.css';
+@import '../lib/styles/colors/jade.css';
+@import '../lib/styles/colors/lime.css';
+@import '../lib/styles/colors/mauve.css';
+@import '../lib/styles/colors/mint.css';
+@import '../lib/styles/colors/neutral.css';
+@import '../lib/styles/colors/olive.css';
+@import '../lib/styles/colors/orange.css';
+@import '../lib/styles/colors/pink.css';
+@import '../lib/styles/colors/plum.css';
+@import '../lib/styles/colors/purple.css';
+@import '../lib/styles/colors/red.css';
+@import '../lib/styles/colors/ruby.css';
+@import '../lib/styles/colors/sage.css';
+@import '../lib/styles/colors/sand.css';
+@import '../lib/styles/colors/sky.css';
+@import '../lib/styles/colors/slate.css';
+@import '../lib/styles/colors/teal.css';
+@import '../lib/styles/colors/tomato.css';
+@import '../lib/styles/colors/violet.css';
+@import '../lib/styles/colors/yellow.css';
 
 /* ─── Accent mappings ───────────────────────────────────────────────────── */
 
