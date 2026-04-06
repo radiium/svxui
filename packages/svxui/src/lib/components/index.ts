@@ -9,6 +9,7 @@ export * from './input-group/index.js';
 export * from './input-number/index.js';
 export * from './input-range/index.js';
 export * from './input/index.js';
+export * from './layout/index.js';
 export * from './listbox/index.js';
 export * from './panel/index.js';
 export * from './portal/index.js';

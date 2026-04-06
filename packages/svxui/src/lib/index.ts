@@ -26,6 +26,7 @@ export * from './components/input-group/index.js';
 export * from './components/input-number/index.js';
 export * from './components/input-range/index.js';
 export * from './components/input/index.js';
+export * from './components/layout/index.js';
 export * from './components/listbox/index.js';
 export * from './components/panel/index.js';
 export * from './components/portal/index.js';
