@@ -1,4 +1,4 @@
-import { InputNumber, type InputNumberSize, type InputNumberVariant, type Color, type Radius } from '$lib/index.js';
+import { InputNumber, type Color, type InputNumberSize, type Radius } from '$lib/index.js';
 import { describe, expect, test, vi } from 'vitest';
 import { userEvent } from 'vitest/browser';
 import { renderWithWrapper } from '../../../../tests/render-with-wrapper.svelte.ts';
@@ -312,7 +312,7 @@ describe('InputNumber component', () => {
 
     describe('Ref binding', () => {
         test('binds ref correctly', async () => {
-            let current: HTMLDivElement | undefined;
+            let current: HTMLInputElement | undefined;
 
             renderWithWrapper(InputNumber, {
                 get ref() {
@@ -325,7 +325,7 @@ describe('InputNumber component', () => {
 
             await Promise.resolve();
 
-            expect(current).toBeInstanceOf(HTMLDivElement);
+            expect(current).toBeInstanceOf(HTMLInputElement);
             expect(current?.classList.contains('input-number')).toBe(true);
         });
     });
