@@ -11,27 +11,6 @@ export type LayoutSpacing = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' 
 export type BoxDisplay = 'none' | 'block' | 'inline' | 'inline-block' | 'contents';
 export type BoxOverflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 export type BoxFlexValue = '0' | '1' | (string & {});
-export type BoxPositionScale =
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '-1'
-    | '-2'
-    | '-3'
-    | '-4'
-    | '-5'
-    | '-6'
-    | '-7'
-    | '-8'
-    | '-9'
-    | (string & {});
 
 /**
  * Extends native HTML attributes inferred from the rendered element `as`.
@@ -144,26 +123,6 @@ export type BoxProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omit
      * CSS `flex-shrink` value.
      */
     flexShrink?: BoxFlexValue;
-    /**
-     * Inset on all sides (`top`, `right`, `bottom`, `left`).
-     */
-    inset?: BoxPositionScale;
-    /**
-     * CSS `top` value.
-     */
-    top?: BoxPositionScale;
-    /**
-     * CSS `right` value.
-     */
-    right?: BoxPositionScale;
-    /**
-     * CSS `bottom` value.
-     */
-    bottom?: BoxPositionScale;
-    /**
-     * CSS `left` value.
-     */
-    left?: BoxPositionScale;
     /**
      * CSS `overflow` value applied to both axes.
      */
@@ -441,7 +400,6 @@ export type SwitcherProps<ElementTag extends keyof SvelteHTMLElements = 'div'> =
          * Content to render inside the switcher.
          */
         children?: Snippet<[void]>;
-        [key: string]: unknown;
     };
 
 // ─── CLUSTER ────────────────────────────────────────────────────────
@@ -461,5 +419,5 @@ export type ClusterProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = 
  */
 export type StackProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omit<
     FlexProps<ElementTag>,
-    'direction'
+    'direction' | 'wrap'
 >;

@@ -30,11 +30,6 @@
         flexBasis = undefined,
         flexGrow = undefined,
         flexShrink = undefined,
-        inset = undefined,
-        top = undefined,
-        right = undefined,
-        bottom = undefined,
-        left = undefined,
         overflow = undefined,
         overflowX = undefined,
         overflowY = undefined,
@@ -69,15 +64,11 @@
             'flex-basis': flexBasis,
             'flex-grow': flexGrow,
             'flex-shrink': flexShrink,
-            top: resolveSpace(top ?? inset),
-            right: resolveSpace(right ?? inset),
-            bottom: resolveSpace(bottom ?? inset),
-            left: resolveSpace(left ?? inset),
             'overflow-x': overflowX ?? overflow,
             'overflow-y': overflowY ?? overflow
         });
         const callerStyle = rest.style as string | undefined;
-        return [boxStyle, callerStyle].filter(Boolean).join('') || undefined;
+        return [boxStyle, callerStyle].filter(Boolean).join(' ') || undefined;
     });
 </script>
 

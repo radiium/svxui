@@ -5,26 +5,32 @@
     import Playground from '../../../controls/Playground.svelte';
 
     // Switcher controls
-    let switcherThreshold = $state('480px');
+    let threshold = $state('480px');
+
+    let json = $derived(
+        JSON.stringify(
+            {
+                props: { threshold }
+            },
+            null,
+            2
+        )
+    );
 </script>
 
 <h1>layout/switcher</h1>
 <Text muted size="2">
-    row → column automatiquement quand le conteneur est plus étroit que threshold.<br />
-    Zéro media query, zéro JS — CSS mathématique pur.
+    row → column automatically when the container is narrower than the threshold.<br />
+    Zero media query, zero JS — pure mathematical CSS.
 </Text>
 
 <Playground>
     {#snippet controls()}
-        <ControlSelect
-            label="threshold"
-            bind:value={switcherThreshold}
-            options={['320px', '480px', '640px']}
-        />
+        <ControlSelect label="threshold" bind:value={threshold} options={['320px', '480px', '640px']} />
     {/snippet}
 
     <div class="width-100p">
-        <Switcher threshold={switcherThreshold} gap="3">
+        <Switcher {threshold} gap="3">
             {#each ['Panneau A', 'Panneau B', 'Panneau C'] as label (label)}
                 <Panel variant="soft" size="3">
                     <Flex align="center" justify="center">{label}</Flex>
@@ -33,3 +39,5 @@
         </Switcher>
     </div>
 </Playground>
+
+<div><pre>{json}</pre></div>

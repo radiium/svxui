@@ -5,7 +5,7 @@
 </script>
 
 <h1>layout/stack</h1>
-<Text muted size="2">flex column + gap. Idéal pour les listes verticales.</Text>
+<Text muted size="2">Flex column + gap. Ideal for vertical lists.</Text>
 
 <Playground>
     <Panel variant="clear" outline size="3" fullWidth>
