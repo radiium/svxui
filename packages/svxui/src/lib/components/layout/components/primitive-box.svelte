@@ -1,10 +1,10 @@
-<script lang="ts" generics="Tag extends keyof SvelteHTMLElements = 'div'">
+<script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import type { SvelteHTMLElements } from 'svelte/elements';
     import { resolveSpace } from '../internals/resolve-space.js';
     import type { BoxProps } from '../types.js';
 
     let {
-        as = 'div' as Tag,
+        as = 'div' as ElementTag,
         ref = $bindable(),
         display = undefined,
         p = undefined,
@@ -40,7 +40,7 @@
         overflowY = undefined,
         children,
         ...rest
-    }: BoxProps<Tag> = $props();
+    }: BoxProps<ElementTag> = $props();
 
     function toStyle(props: Record<string, string | undefined>): string | undefined {
         const parts = Object.entries(props)

@@ -11,7 +11,6 @@ export type LayoutSpacing = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' 
 export type BoxDisplay = 'none' | 'block' | 'inline' | 'inline-block' | 'contents';
 export type BoxOverflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 export type BoxFlexValue = '0' | '1' | (string & {});
-
 export type BoxPositionScale =
     | '0'
     | '1'
@@ -34,19 +33,21 @@ export type BoxPositionScale =
     | '-9'
     | (string & {});
 
-export type BoxProps<Tag extends keyof SvelteHTMLElements = 'div'> = Omit<
-    SvelteHTMLElements[Tag],
+/**
+ * Extends native HTML attributes inferred from the rendered element `as`.
+ */
+export type BoxProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omit<
+    SvelteHTMLElements[ElementTag],
     'display' | 'width' | 'height' | 'overflow' | 'children'
 > & {
     /**
      * HTML element to render as.
-     * @default 'div'
      */
-    as?: Tag;
+    as?: ElementTag;
     /**
      * Reference to the rendered DOM element.
      */
-    ref?: RefFromHTMLAttributes<SvelteHTMLElements[Tag]>;
+    ref?: RefFromHTMLAttributes<SvelteHTMLElements[ElementTag]>;
     /**
      * CSS `display` value.
      */
@@ -183,28 +184,39 @@ export type BoxProps<Tag extends keyof SvelteHTMLElements = 'div'> = Omit<
 
 // ─── FLEX ────────────────────────────────────────────────────────
 
-export type FlexDisplay = 'flex' | 'inline-flex' | 'none';
+export type FlexDisplay = 'none' | 'inline-flex' | 'flex';
 export type FlexDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse';
-export type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly' | 'stretch';
-export type FlexAlign = 'start' | 'center' | 'end' | 'stretch' | 'baseline';
-export type FlexWrap = 'wrap' | 'nowrap' | 'wrap-reverse';
+export type FlexJustify =
+    | 'start'
+    | 'center'
+    | 'end'
+    | 'around'
+    | 'between'
+    | 'evenly'
+    | 'baseline'
+    | 'stretch'
+    | 'normal';
+export type FlexAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch' | 'normal';
+export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
+export type FlexSpacing = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
 
-export type FlexProps<Tag extends keyof SvelteHTMLElements = 'div'> = Omit<
-    SvelteHTMLElements[Tag],
-    'display' | 'children'
+/**
+ * Extends native HTML attributes inferred from the rendered element `as`.
+ */
+export type FlexProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omit<
+    SvelteHTMLElements[ElementTag],
+    'display' | 'justify' | 'direction' | 'align' | 'children'
 > & {
     /**
      * HTML element to render as.
-     * @default 'div'
      */
-    as?: Tag;
+    as?: ElementTag;
     /**
      * Reference to the rendered DOM element.
      */
-    ref?: RefFromHTMLAttributes<SvelteHTMLElements[Tag]>;
+    ref?: RefFromHTMLAttributes<SvelteHTMLElements[ElementTag]>;
     /**
      * CSS `display` value.
-     * @default 'flex'
      */
     display?: FlexDisplay;
     /**
@@ -220,21 +232,33 @@ export type FlexProps<Tag extends keyof SvelteHTMLElements = 'div'> = Omit<
      */
     align?: FlexAlign;
     /**
+     * CSS `align-content` value. Only effective when `wrap` is active and items span multiple lines.
+     */
+    alignContent?: FlexAlign;
+    /**
      * CSS `flex-wrap` value.
      */
     wrap?: FlexWrap;
     /**
      * Gap between items on both axes.
      */
-    gap?: LayoutSpacing;
+    gap?: FlexSpacing;
     /**
      * Gap between rows.
      */
-    rowGap?: LayoutSpacing;
+    rowGap?: FlexSpacing;
     /**
      * Gap between columns.
      */
-    colGap?: LayoutSpacing;
+    colGap?: FlexSpacing;
+    /**
+     * Makes the container fill its parent's width.
+     */
+    fullWidth?: boolean;
+    /**
+     * Makes the container fill its parent's height.
+     */
+    fullHeight?: boolean;
     /**
      * Content to render inside the flex container.
      */
@@ -244,40 +268,38 @@ export type FlexProps<Tag extends keyof SvelteHTMLElements = 'div'> = Omit<
 // ─── GRID ────────────────────────────────────────────────────────
 
 export type GridDisplay = 'grid' | 'inline-grid' | 'none';
+export type GridFlow = 'row' | 'column' | 'dense' | 'row-dense' | 'column-dense';
+export type GridAlign = 'start' | 'center' | 'end' | 'stretch' | 'baseline';
 
-export type GridProps<Tag extends keyof SvelteHTMLElements = 'div'> = Omit<
-    SvelteHTMLElements[Tag],
+/**
+ * Extends native HTML attributes inferred from the rendered element `as`.
+ */
+export type GridProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omit<
+    SvelteHTMLElements[ElementTag],
     'display' | 'children'
 > & {
     /**
      * HTML element to render as.
-     * @default 'div'
      */
-    as?: Tag;
+    as?: ElementTag;
     /**
      * Reference to the rendered DOM element.
      */
-    ref?: RefFromHTMLAttributes<SvelteHTMLElements[Tag]>;
+    ref?: RefFromHTMLAttributes<SvelteHTMLElements[ElementTag]>;
     /**
      * CSS `display` value.
-     * @default 'grid'
      */
     display?: GridDisplay;
     /**
-     * Number of columns (generates `repeat(N, 1fr)`) or a full CSS
-     * `grid-template-columns` string.
-     * @example cols="3"          → repeat(3, 1fr)
-     * @example cols="200px 1fr"  → 200px 1fr
+     * Number of columns as an integer shorthand (`"3"` → `repeat(3, 1fr)`) or a full `grid-template-columns` string.
      */
     cols?: string;
     /**
-     * Number of rows or a full `grid-template-rows` string.
-     * @example rows="2"        → repeat(2, 1fr)
-     * @example rows="auto 1fr" → auto 1fr
+     * Number of rows as an integer shorthand (`"2"` → `repeat(2, 1fr)`) or a full `grid-template-rows` string.
      */
     rows?: string;
     /**
-     * Named template areas string (`grid-template-areas`).
+     * CSS `grid-template-areas` string.
      */
     areas?: string;
     /**
@@ -293,16 +315,25 @@ export type GridProps<Tag extends keyof SvelteHTMLElements = 'div'> = Omit<
      */
     colGap?: LayoutSpacing;
     /**
-     * When set, generates `repeat(auto-fill, minmax(value, 1fr))`.
-     * Creates a responsive grid without media queries.
-     * @example autoFill="200px"
+     * Generates `repeat(auto-fill, minmax(value, 1fr))`. Takes precedence over `cols`.
      */
     autoFill?: string;
     /**
-     * Same as `autoFill` but uses `auto-fit` — empty tracks collapse to zero.
-     * @example autoFit="200px"
+     * Generates `repeat(auto-fit, minmax(value, 1fr))`. Empty tracks collapse to zero. Takes precedence over `cols`.
      */
     autoFit?: string;
+    /**
+     * CSS `grid-auto-rows` value.
+     */
+    autoRows?: string;
+    /**
+     * CSS `grid-auto-flow` value.
+     */
+    flow?: GridFlow;
+    /**
+     * CSS `align-items` value.
+     */
+    align?: GridAlign;
     /**
      * Content to render inside the grid container.
      */
@@ -311,175 +342,124 @@ export type GridProps<Tag extends keyof SvelteHTMLElements = 'div'> = Omit<
 
 // ─── CENTER ────────────────────────────────────────────────────────
 
-export type CenterProps<Tag extends keyof SvelteHTMLElements = 'div'> = {
-    /**
-     * HTML element to render as.
-     * @default 'div'
-     */
-    as?: Tag;
-    /**
-     * Reference to the rendered DOM element.
-     */
-    ref?: RefFromHTMLAttributes<SvelteHTMLElements[Tag]>;
-    /**
-     * Maximum width of the centered content.
-     * @default '65ch'
-     */
-    maxWidth?: string;
-    /**
-     * Horizontal padding on both sides. Accepts a space scale token or an
-     * arbitrary CSS value.
-     */
-    gutters?: LayoutSpacing;
-    /**
-     * When true, centers content intrinsically using `fit-content`
-     * instead of a hard max-width.
-     * @default false
-     */
-    intrinsic?: boolean;
-    /**
-     * Content to render inside the center container.
-     */
-    children?: Snippet<[void]>;
-    [key: string]: unknown;
-};
+/**
+ * Extends native HTML attributes inferred from the rendered element `as`.
+ */
+export type CenterProps<ElementTag extends keyof SvelteHTMLElements = 'div'> =
+    SvelteHTMLElements[ElementTag] & {
+        /**
+         * HTML element to render as.
+         */
+        as?: ElementTag;
+        /**
+         * Reference to the rendered DOM element.
+         */
+        ref?: RefFromHTMLAttributes<SvelteHTMLElements[ElementTag]>;
+        /**
+         * Maximum width of the centered content.
+         */
+        maxWidth?: string;
+        /**
+         * Horizontal padding on both sides. Accepts a space scale token or an arbitrary CSS value.
+         */
+        gutters?: LayoutSpacing;
+        /**
+         * Centers content intrinsically using `fit-content` instead of a hard max-width.
+         */
+        intrinsic?: boolean;
+        /**
+         * Content to render inside the center container.
+         */
+        children?: Snippet<[void]>;
+    };
 
 // ─── SIDEBAR ────────────────────────────────────────────────────────
 
-export type SidebarProps<Tag extends keyof SvelteHTMLElements = 'div'> = {
-    /**
-     * HTML element to render as.
-     * @default 'div'
-     */
-    as?: Tag;
-    /**
-     * Reference to the rendered DOM element.
-     */
-    ref?: RefFromHTMLAttributes<SvelteHTMLElements[Tag]>;
-    /**
-     * Which side the sidebar is on.
-     * @default 'left'
-     */
-    side?: 'left' | 'right';
-    /**
-     * Width of the sidebar. The content area fills the remaining space.
-     * @default '240px'
-     */
-    sideWidth?: string;
-    /**
-     * Minimum width the content area must maintain before the layout wraps
-     * to a stacked column. No media query needed.
-     * @default '50%'
-     */
-    contentMin?: string;
-    /**
-     * Gap between the sidebar and the content area.
-     * @default '4'
-     */
-    gap?: LayoutSpacing;
-    /**
-     * Named region: the fixed-width sidebar.
-     */
-    sidebar?: Snippet;
-    /**
-     * Named region: the fluid content area.
-     */
-    content?: Snippet;
-    /**
-     * Fallback content — rendered in the content area when the `content`
-     * snippet is not provided.
-     */
-    children?: Snippet<[void]>;
-    [key: string]: unknown;
-};
+/**
+ * Extends native HTML attributes inferred from the rendered element `as`.
+ */
+export type SidebarProps<ElementTag extends keyof SvelteHTMLElements = 'div'> =
+    SvelteHTMLElements[ElementTag] & {
+        /**
+         * HTML element to render as.
+         */
+        as?: ElementTag;
+        /**
+         * Reference to the rendered DOM element.
+         */
+        ref?: RefFromHTMLAttributes<SvelteHTMLElements[ElementTag]>;
+        /**
+         * Which side the sidebar is on.
+         */
+        side?: 'left' | 'right';
+        /**
+         * Width of the sidebar. The content area fills the remaining space.
+         */
+        sideWidth?: string;
+        /**
+         * Minimum width the content area must maintain before the layout wraps to a stacked column.
+         */
+        contentMin?: string;
+        /**
+         * Gap between the sidebar and the content area.
+         */
+        gap?: LayoutSpacing;
+        /**
+         * The fixed-width sidebar region.
+         */
+        sidebar?: Snippet;
+        /**
+         * The fluid content area.
+         */
+        children?: Snippet<[void]>;
+    };
 
 // ─── SWITCHER ────────────────────────────────────────────────────────
 
-export type SwitcherProps<Tag extends keyof SvelteHTMLElements = 'div'> = {
-    /**
-     * HTML element to render as.
-     * @default 'div'
-     */
-    as?: Tag;
-    /**
-     * Reference to the rendered DOM element.
-     */
-    ref?: RefFromHTMLAttributes<SvelteHTMLElements[Tag]>;
-    /**
-     * Container width below which items switch from a row to a stacked
-     * column layout. No media query needed.
-     * @default '600px'
-     */
-    threshold?: string;
-    /**
-     * Gap between items.
-     * @default '4'
-     */
-    gap?: LayoutSpacing;
-    /**
-     * Content to render inside the switcher.
-     */
-    children?: Snippet<[void]>;
-    [key: string]: unknown;
-};
+/**
+ * Extends native HTML attributes inferred from the rendered element `as`.
+ */
+export type SwitcherProps<ElementTag extends keyof SvelteHTMLElements = 'div'> =
+    SvelteHTMLElements[ElementTag] & {
+        /**
+         * HTML element to render as.
+         */
+        as?: ElementTag;
+        /**
+         * Reference to the rendered DOM element.
+         */
+        ref?: RefFromHTMLAttributes<SvelteHTMLElements[ElementTag]>;
+        /**
+         * Container width below which items switch from a row to a stacked column.
+         */
+        threshold?: string;
+        /**
+         * Gap between items.
+         */
+        gap?: LayoutSpacing;
+        /**
+         * Content to render inside the switcher.
+         */
+        children?: Snippet<[void]>;
+        [key: string]: unknown;
+    };
 
 // ─── CLUSTER ────────────────────────────────────────────────────────
 
-export type ClusterProps = {
-    /**
-     * HTML element to render as.
-     * @default 'div'
-     */
-    as?: string;
-    /**
-     * Reference to the rendered DOM element.
-     */
-    ref?: HTMLElement;
-    /**
-     * Gap between items.
-     * @default '2'
-     */
-    gap?: LayoutSpacing;
-    /**
-     * CSS `justify-content` value.
-     * @default 'start'
-     */
-    justify?: 'start' | 'center' | 'end';
-    /**
-     * CSS `align-items` value.
-     * @default 'center'
-     */
-    align?: 'start' | 'center' | 'end' | 'baseline';
-    /**
-     * Content to render inside the cluster.
-     */
-    children?: Snippet<[void]>;
-};
+/**
+ * Extends native HTML attributes inferred from the rendered element `as`.
+ */
+export type ClusterProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omit<
+    FlexProps<ElementTag>,
+    'wrap' | 'direction'
+>;
 
 // ─── STACK ────────────────────────────────────────────────────────
 
-export type StackProps = {
-    /**
-     * HTML element to render as.
-     * @default 'div'
-     */
-    as?: string;
-    /**
-     * Reference to the rendered DOM element.
-     */
-    ref?: HTMLElement;
-    /**
-     * Gap between stacked items.
-     * @default '4'
-     */
-    gap?: LayoutSpacing;
-    /**
-     * CSS `align-items` value.
-     */
-    align?: FlexAlign;
-    /**
-     * Content to render inside the stack.
-     */
-    children?: Snippet<[void]>;
-    [key: string]: unknown;
-};
+/**
+ * Extends native HTML attributes inferred from the rendered element `as`.
+ */
+export type StackProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omit<
+    FlexProps<ElementTag>,
+    'direction'
+>;

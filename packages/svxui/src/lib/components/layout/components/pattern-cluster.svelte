@@ -1,22 +1,20 @@
-<script lang="ts">
-    import type { ClusterProps, FlexProps, LayoutSpacing } from '../types.js';
+<script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
+    import type { SvelteHTMLElements } from 'svelte/elements';
+    import type { ClusterProps, FlexProps } from '../types.js';
     import Flex from './primitive-flex.svelte';
 
     let {
-        as = 'div',
         ref = $bindable(),
-        gap = '2' as LayoutSpacing,
-        justify = 'start',
-        align = 'center',
+        as = 'div' as ClusterProps<ElementTag>['as'],
+        gap = '2' as ClusterProps<ElementTag>['gap'],
+        justify = 'start' as ClusterProps<ElementTag>['justify'],
+        align = 'center' as ClusterProps<ElementTag>['align'],
         children,
         ...rest
-    }: ClusterProps = $props();
+    }: ClusterProps<ElementTag> = $props();
 </script>
 
-<!--
-  Cluster: groups inline elements that wrap naturally.
-  Perfect for tags, badges, buttons, nav items.
--->
-<Flex {as} bind:ref wrap="wrap" {gap} {justify} {align} {...rest as Partial<FlexProps>}>
+<!-- Cluster: groups inline elements that wrap naturally. -->
+<Flex {as} bind:ref wrap="wrap" {gap} {justify} {align} {...rest as FlexProps<ElementTag>}>
     {@render children?.()}
 </Flex>

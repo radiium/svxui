@@ -1,95 +1,99 @@
-<script lang="ts" generics="Tag extends keyof SvelteHTMLElements = 'div'">
+<script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import type { SvelteHTMLElements } from 'svelte/elements';
+    import { cssVar } from '../internals/css-var.js';
     import { resolveSpace } from '../internals/resolve-space.js';
     import type { LayoutSpacing, SidebarProps } from '../types.js';
 
     let {
-        as = 'div' as Tag,
+        as = 'div' as ElementTag,
         ref = $bindable(),
         side = 'left',
         sideWidth = '240px',
         contentMin = '50%',
         gap = '4' as LayoutSpacing,
         sidebar,
-        content,
         children,
         ...rest
-    }: SidebarProps<Tag> = $props();
+    }: SidebarProps<ElementTag> = $props();
 
     let resolvedGap = $derived(resolveSpace(gap) ?? '1rem');
 
-    let cssStyle = $derived(
-        `--sidebar-width: ${sideWidth}; --content-min: ${contentMin}; --sidebar-gap: ${resolvedGap};`
+    // flag classes activate the matching CSS rule
+    let cssClass = $derived([
+        'sidebar-layout',
+        rest.class,
+        {
+            'sidebar-layout-right': side === 'right',
+            'sidebar-layout-width': sideWidth !== undefined,
+            'sidebar-layout-content-min': contentMin !== undefined,
+            'sidebar-layout-gap': resolvedGap !== undefined
+        }
+    ]);
+
+    // CSS vars carry the computed values to the scoped CSS rules
+    let cssStyle = $derived.by(
+        () =>
+            [
+                cssVar('--sidebar-width', sideWidth),
+                cssVar('--content-min', contentMin),
+                cssVar('--sidebar-gap', resolvedGap),
+                rest.style as string | undefined
+            ]
+                .filter(Boolean)
+                .join('; ') || undefined
     );
 </script>
 
 <!--
-  Sidebar: two-column layout with a fixed-width sidebar and a fluid content area.
-
-  Uses an intrinsic flex layout trick (Every Layout):
-  - Sidebar: flex-basis fixed, flex-grow 1
-  - Content: flex-basis 0, flex-grow 999, min-width = contentMin
-
-  When the viewport is too narrow to satisfy contentMin, the layout
-  wraps to a stack automatically — NO media queries, NO JavaScript.
-
-  Uses Svelte 5 named snippets for sidebar and content regions.
-
-  @example
-  <Sidebar sideWidth="240px" contentMin="60%">
-    {#snippet sidebar()}<nav>...</nav>{/snippet}
-    {#snippet content()}<main>...</main>{/snippet}
-  </Sidebar>
+  Sidebar: fixed-width sidebar + fluid content area.
+  Wraps to a stack when the content falls below `contentMin` — no media queries.
+  Visual order (left/right) is controlled via CSS `order`, not DOM order.
 -->
-<svelte:element
-    this={as}
-    {...rest}
-    bind:this={ref}
-    class={['sidebar-layout', (rest as { class?: string }).class]}
-    style={cssStyle}
->
-    {#if side === 'left'}
-        {#if sidebar}
-            <div class="sidebar-layout__side">{@render sidebar()}</div>
-        {/if}
-        <div class="sidebar-layout__content">
-            {#if content}
-                {@render content()}{:else}{@render children?.()}
-            {/if}
-        </div>
-    {:else}
-        <div class="sidebar-layout__content">
-            {#if content}
-                {@render content()}{:else}{@render children?.()}
-            {/if}
-        </div>
-        {#if sidebar}
-            <div class="sidebar-layout__side">{@render sidebar()}</div>
-        {/if}
+<svelte:element this={as} {...rest} bind:this={ref} class={cssClass} style={cssStyle}>
+    {#if sidebar}
+        <div class="sidebar-layout-side">{@render sidebar()}</div>
     {/if}
+    <div class="sidebar-layout-content">
+        {#if children}
+            {@render children?.()}
+        {/if}
+    </div>
 </svelte:element>
 
 <style>
     .sidebar-layout {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--sidebar-gap, 1rem);
-    }
 
-    /* Fixed-width side */
-    .sidebar-layout__side {
-        flex-basis: var(--sidebar-width, 240px);
-        flex-grow: 1;
-    }
+        &.sidebar-layout-gap {
+            gap: var(--sidebar-gap, 1rem);
+        }
 
-    /*
-     * Fluid content: flex-grow 999 makes it take all remaining space.
-     * min-width: contentMin forces the layout to wrap when there is not
-     * enough room — no media query needed.
-     */
-    .sidebar-layout__content {
-        flex-basis: 0;
-        flex-grow: 999;
-        min-width: var(--content-min, 50%);
+        & .sidebar-layout-side {
+            flex-grow: 1;
+        }
+
+        &.sidebar-layout-width {
+            & .sidebar-layout-side {
+                flex-basis: var(--sidebar-width, 240px);
+            }
+        }
+
+        & .sidebar-layout-content {
+            flex-basis: 0;
+            flex-grow: 999;
+        }
+
+        &.sidebar-layout-content-min {
+            & .sidebar-layout-content {
+                min-width: var(--content-min, 50%);
+            }
+        }
+
+        &.sidebar-layout-right {
+            & .sidebar-layout-side {
+                order: 1;
+            }
+        }
     }
 </style>

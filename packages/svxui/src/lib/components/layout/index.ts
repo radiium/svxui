@@ -23,7 +23,9 @@ export type {
     FlexJustify,
     FlexProps,
     FlexWrap,
+    GridAlign,
     GridDisplay,
+    GridFlow,
     GridProps,
     LayoutSpacing
 } from './types.js';

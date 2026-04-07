@@ -32,3 +32,12 @@ export function isHtmlElement(value: unknown): value is HTMLElement {
 export function isNil<T>(value: T | null | undefined): value is null | undefined {
     return value === null || value === undefined;
 }
+
+/**
+ * Check if a string represents a non-negative integer (digits only)
+ * @param value string to check
+ * @returns true if the string contains only digits
+ */
+export function isIntegerString(value: string): boolean {
+    return /^\d+$/.test(value);
+}

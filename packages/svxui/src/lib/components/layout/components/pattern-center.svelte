@@ -1,5 +1,6 @@
 <script lang="ts" generics="Tag extends keyof SvelteHTMLElements = 'div'">
     import type { SvelteHTMLElements } from 'svelte/elements';
+    import { cssVar } from '../internals/css-var.js';
     import { resolveSpace } from '../internals/resolve-space.js';
     import type { CenterProps, LayoutSpacing } from '../types.js';
 
@@ -13,29 +14,48 @@
         ...rest
     }: CenterProps<Tag> = $props();
 
-    let cssStyle = $derived.by(() => {
-        const parts = [
-            'box-sizing: content-box',
-            'margin-left: auto',
-            'margin-right: auto',
-            `max-width: ${maxWidth}`
-        ];
-        if (gutters) {
-            const g = resolveSpace(gutters);
-            parts.push(`padding-left: ${g}`, `padding-right: ${g}`);
+    // flag classes activate the matching CSS rule
+    let cssClass = $derived([
+        'center',
+        rest.class,
+        {
+            'center-gutters': gutters !== undefined,
+            'center-intrinsic': intrinsic
         }
-        if (intrinsic) {
-            parts.push('width: fit-content');
-        }
-        const callerStyle = (rest as { style?: string }).style;
-        return [...parts, callerStyle].filter(Boolean).join('; ') + ';';
-    });
+    ]);
+
+    // CSS vars carry the computed values to the scoped CSS rules
+    let cssStyle = $derived.by(
+        () =>
+            [
+                cssVar('--center-max-width', maxWidth),
+                cssVar('--center-gutters', gutters ? resolveSpace(gutters) : undefined),
+                rest.style as string | undefined
+            ]
+                .filter(Boolean)
+                .join('; ') || undefined
+    );
 </script>
 
-<!--
-  Center: horizontally centers content within a max-width constraint.
-  No JavaScript, no media queries.
--->
-<svelte:element this={as} {...rest} bind:this={ref} style={cssStyle}>
+<!-- Center: horizontally centers content within a max-width constraint. -->
+<svelte:element this={as} {...rest} bind:this={ref} class={cssClass} style={cssStyle}>
     {@render children?.()}
 </svelte:element>
+
+<style>
+    .center {
+        box-sizing: content-box;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: var(--center-max-width);
+
+        &.center-gutters {
+            padding-left: var(--center-gutters);
+            padding-right: var(--center-gutters);
+        }
+
+        &.center-intrinsic {
+            width: fit-content;
+        }
+    }
+</style>
