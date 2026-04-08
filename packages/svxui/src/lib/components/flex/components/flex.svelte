@@ -1,7 +1,7 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import type { SvelteHTMLElements } from 'svelte/elements';
-    import { cssVar } from '../internals/css-var.js';
-    import { resolveSpace } from '../internals/resolve-space.js';
+    import { cssVar } from '$lib/internals/css-var.js';
+    import { resolveSpace } from '$lib/internals/resolve-space.js';
     import type { FlexAlign, FlexJustify, FlexProps } from '../types.js';
 
     const ALIGN_MAP: Record<FlexAlign, string> = {

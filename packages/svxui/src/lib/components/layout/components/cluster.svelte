@@ -1,7 +1,8 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import type { SvelteHTMLElements } from 'svelte/elements';
-    import type { ClusterProps, FlexProps } from '../types.js';
-    import Flex from './primitive-flex.svelte';
+    import type { FlexProps } from '../../flex/types.js';
+    import type { ClusterProps } from '../types.js';
+    import Flex from '../../flex/components/flex.svelte';
 
     let {
         ref = $bindable(),

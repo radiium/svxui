@@ -17,11 +17,13 @@ export * from './builders/tabs/index.js';
 // Components
 export * from './components/accordion/index.js';
 export * from './components/badge/index.js';
+export * from './components/box/index.js';
 export * from './components/button/index.js';
 export * from './components/checkbox/index.js';
 export * from './components/dialog/index.js';
-export * from './components/flexbox/index.js';
+export * from './components/flex/index.js';
 export * from './components/floating/index.js';
+export * from './components/grid/index.js';
 export * from './components/input-group/index.js';
 export * from './components/input-number/index.js';
 export * from './components/input-range/index.js';

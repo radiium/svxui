@@ -1,6 +1,6 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import type { SvelteHTMLElements } from 'svelte/elements';
-    import { resolveSpace } from '../internals/resolve-space.js';
+    import { resolveSpace } from '$lib/internals/resolve-space.js';
     import type { BoxProps } from '../types.js';
 
     let {
