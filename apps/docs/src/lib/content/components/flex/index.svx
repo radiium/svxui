@@ -1,6 +1,6 @@
 ---
-title: Flexbox
-description: A simple flexbox component for arranging child elements in rows or columns with flexible alignment, spacing, and wrapping.
+title: Flex
+description: Conteneur flexbox composable avec contrôle de direction, alignement, espacement et wrapping.
 category: components
 ---
 
@@ -14,7 +14,7 @@ category: components
 
 ## API Reference
 
-<ApiReference category="components" names={['flexbox']}/>
+<ApiReference category="components" names={['flex']}/>
 
 ## Examples
 

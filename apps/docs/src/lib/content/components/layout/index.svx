@@ -1,0 +1,42 @@
+---
+title: Layout
+description: Composants de mise en page basés sur des patterns CSS intrinsèques — aucune media query, aucun JavaScript.
+category: components
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview} />
+
+## Composants
+
+| Composant | Rôle |
+|---|---|
+| `Stack` | Empilement vertical avec espacement constant |
+| `Cluster` | Groupe inline qui s'enroule naturellement |
+| `Center` | Centrage horizontal par `max-width` + `margin auto` |
+| `Sidebar` | Colonne fixe + zone fluide, bascule en empilement si trop étroit |
+| `Switcher` | Rangée → colonne quand le conteneur passe sous un seuil |
+
+## API Reference
+
+<ApiReference category="components" names={[
+    'center',
+    'cluster',
+    'stack',
+    'sidebar',
+    'switcher'
+]}/>
+
+## Examples
+
+{#each examples.items as item}
+<SectionDemo {...item} />
+{/each}
+
+
+
