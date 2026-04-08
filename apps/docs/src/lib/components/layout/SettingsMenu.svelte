@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { AllRadixColors, Button, Flexbox, Modes, Radiuses, rovingfocus, Text, useTheme } from 'svxui';
+    import { AllRadixColors, Button, Flex, Modes, Radiuses, rovingfocus, Text, useTheme } from 'svxui';
 
     const theme = useTheme();
 </script>
 
-<Flexbox direction="column" gap="3" class="settings-content" data-color="neutral">
-    <Flexbox gap="2" direction="column" class="w-100">
+<Flex justify="start" direction="column" gap="3" class="settings-content" data-color="neutral">
+    <Flex justify="start" gap="2" direction="column" class="w-100">
         <Text size="4" weight="medium">Theme strategy:</Text>
-        <Flexbox
+        <Flex justify="start"
             gap="2"
             wrap="wrap"
             {@attach rovingfocus({ loop: true, activateOnFocus: true, orientation: 'horizontal' })}
@@ -23,12 +23,12 @@
                     {item}
                 </Button>
             {/each}
-        </Flexbox>
-    </Flexbox>
+        </Flex>
+    </Flex>
 
-    <Flexbox gap="2" direction="column" class="w-100">
+    <Flex justify="start" gap="2" direction="column" class="w-100">
         <Text size="4" weight="medium">Radius:</Text>
-        <Flexbox
+        <Flex justify="start"
             gap="2"
             wrap="wrap"
             {@attach rovingfocus({ loop: true, activateOnFocus: true, orientation: 'horizontal' })}
@@ -44,12 +44,12 @@
                     {item}
                 </Button>
             {/each}
-        </Flexbox>
-    </Flexbox>
+        </Flex>
+    </Flex>
 
-    <Flexbox gap="2" direction="column">
+    <Flex justify="start" gap="2" direction="column">
         <Text size="4" weight="medium">Accent color:</Text>
-        <Flexbox
+        <Flex justify="start"
             gap="2"
             wrap="wrap"
             {@attach rovingfocus({ loop: true, activateOnFocus: true, orientation: 'horizontal' })}
@@ -65,9 +65,9 @@
                     title={item}
                 ></Button>
             {/each}
-        </Flexbox>
-    </Flexbox>
-</Flexbox>
+        </Flex>
+    </Flex>
+</Flex>
 
 <style>
     :global(.settings-content) {

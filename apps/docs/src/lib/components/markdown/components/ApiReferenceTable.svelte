@@ -2,7 +2,7 @@
     import Code from '$lib/components/markdown/elements/code.svelte';
     import HyphenIcon from '$lib/components/icons/HyphenIcon.svelte';
     import InfoIcon from '$lib/components/icons/InfoIcon.svelte';
-    import { Badge, Button, Flexbox, Floating, Panel, Text } from 'svxui';
+    import { Badge, Button, Flex, Floating, Panel, Text } from 'svxui';
     import type { PropDocumentation } from '../../../content-utils/libdoc.types';
 
     type Props = {
@@ -30,7 +30,7 @@
                     {#each props as prop (prop.name)}
                         <tr>
                             <td>
-                                <Flexbox align="center" gap="2" wrap="nowrap">
+                                <Flex justify="start" align="center" gap="2" wrap="nowrap">
                                     <Code color="blue">{prop.name}</Code>
 
                                     {#if prop.isBindable}
@@ -44,10 +44,10 @@
                                     {#if !prop.isOptional}
                                         <Badge variant="outline" color="red">required</Badge>
                                     {/if}
-                                </Flexbox>
+                                </Flex>
                             </td>
                             <td>
-                                <Flexbox align="center" gap="1" wrap="nowrap">
+                                <Flex justify="start" align="center" gap="1" wrap="nowrap">
                                     <div>
                                         <Code class="p-7">{prop.type.text}</Code>
                                     </div>
@@ -83,7 +83,7 @@
                                             {/snippet}
                                         </Floating>
                                     {/if}
-                                </Flexbox>
+                                </Flex>
                             </td>
                             <td>
                                 {#if ![undefined, 'undefined', ''].includes(prop.defaultValue)}

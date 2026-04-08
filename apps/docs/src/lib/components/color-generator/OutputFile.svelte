@@ -1,7 +1,7 @@
 <script lang="ts">
     import CheckAltIcon from '$lib/components/icons/CheckAltIcon.svelte';
     import ClipboardIcon from '$lib/components/icons/ClipboardIcon.svelte';
-    import { Button, Clipboard, Dialog, Flexbox, Panel, Text } from 'svxui';
+    import { Button, Clipboard, Dialog, Flex, Panel, Text } from 'svxui';
     import EyeIcon from '../icons/EyeIcon.svelte';
     import FileArrowDownIcon from '../icons/FileArrowDownIcon.svelte';
     import XIcon from '../icons/XIcon.svelte';
@@ -48,14 +48,14 @@
     });
 </script>
 
-<Flexbox align="center" wrap="wrap" gap="3" class="p-4 flex-auto" fullWidth>
+<Flex justify="start" align="center" wrap="wrap" gap="3" class="p-4 flex-auto" fullWidth>
     <Text weight="medium">
         <Code>{name}</Code>
     </Text>
 
     <div class="flex-auto"></div>
 
-    <Flexbox align="end" wrap="wrap" gap="3">
+    <Flex justify="start" align="end" wrap="wrap" gap="3">
         <!-- Show code -->
         <Button size="2" variant="soft" onclick={() => (isOpen = true)}>
             <EyeIcon />
@@ -63,7 +63,7 @@
         </Button>
         <Dialog bind:isOpen closeOnBackdropClick closeOnEscape layout="scroll">
             <Panel variant="surface" outline class="relative">
-                <Flexbox align="center" justify="between" gap="3">
+                <Flex align="center" justify="between" gap="3">
                     <!-- Copy to clipboard -->
                     <Button
                         size="2"
@@ -96,7 +96,7 @@
                     >
                         <XIcon />
                     </Button>
-                </Flexbox>
+                </Flex>
                 <div class="code-content" bind:this={codeContainerEl}>
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html codeHtml}
@@ -119,8 +119,8 @@
             <FileArrowDownIcon />
             Download file
         </Button>
-    </Flexbox>
-</Flexbox>
+    </Flex>
+</Flex>
 
 <style>
     .code-content {

@@ -1,6 +1,6 @@
 <script>
     import InfoIcon from '$lib/components/icons/InfoIcon.svelte';
-    import { Flexbox, Panel } from 'svxui';
+    import { Flex, Panel } from 'svxui';
 
     let { children, ...restProps } = $props();
 </script>
@@ -15,11 +15,11 @@
     outline
     {...restProps}
 >
-    <Flexbox align="center" gap="3" class="blockquote-content">
+    <Flex justify="start" align="center" gap="3" class="blockquote-content">
         <InfoIcon size="25" class="shrink-0" />
 
         {@render children?.()}
-    </Flexbox>
+    </Flex>
 </Panel>
 
 <style>

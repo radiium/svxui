@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Checkbox, Flexbox, PersistedState, Text } from 'svxui';
+    import { Button, Checkbox, Flex, PersistedState, Text } from 'svxui';
 
     const persisted = new PersistedState('storageKey', 0);
 
@@ -15,15 +15,15 @@
     const increment = () => persisted.current++;
 </script>
 
-<Flexbox as="label" gap="2" align="center">
+<Flex justify="start" as="label" gap="2" align="center">
     <Checkbox checked={persisted.connected} onCheckedChange={toggle} />
     toogle connect
-</Flexbox>
+</Flex>
 
-<Flexbox align="center" gap="2">
+<Flex justify="start" align="center" gap="2">
     <Button variant="soft" onclick={decrement}>-</Button>
     {persisted.current}
     <Button variant="soft" onclick={increment}>+</Button>
-</Flexbox>
+</Flex>
 
 <Text align="center">Check storage in dev tools</Text>

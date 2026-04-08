@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Dialog, Flexbox, Input, Panel } from 'svxui';
+    import { Button, Dialog, Flex, Input, Panel } from 'svxui';
 
     let isOpen = $state(false);
     const open = () => (isOpen = true);
@@ -10,17 +10,17 @@
 
 <Dialog bind:isOpen blurBackdrop keepMounted>
     <Panel size="5" variant="soft" outline>
-        <Flexbox direction="column" gap="5">
-            <Flexbox as="header">
+        <Flex justify="start" direction="column" gap="5">
+            <Flex justify="start" as="header">
                 <h2 class="m-0">Dialog title</h2>
-            </Flexbox>
+            </Flex>
 
             <Input />
 
-            <Flexbox as="footer" gap="3" justify="end">
+            <Flex as="footer" gap="3" justify="end">
                 <Button variant="outline" onclick={() => (isOpen = false)}>Cancel</Button>
                 <Button onclick={close}>Confirm</Button>
-            </Flexbox>
-        </Flexbox>
+            </Flex>
+        </Flex>
     </Panel>
 </Dialog>

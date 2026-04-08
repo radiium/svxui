@@ -21,7 +21,7 @@
     import type { PageContentData } from '$lib/types';
     import { stringToId } from '$lib/utils/functions';
     import type { Snippet } from 'svelte';
-    import { Badge, Button, Flexbox, Panel, Text, useTheme, type Color } from 'svxui';
+    import { Badge, Button, Flex, Panel, Text, useTheme, type Color } from 'svxui';
     import GithubIcon from '../icons/GithubIcon.svelte';
     import PageNavigation from './components/PageNavigation.svelte';
 
@@ -41,7 +41,7 @@
 </script>
 
 <Panel size="5" variant="soft" class="mb-6">
-    <Flexbox as="header" direction="column" align="start" gap="3" fullWidth>
+    <Flex justify="start" as="header" direction="column" align="start" gap="3" fullWidth>
         {#if frontmatter?.category}
             <Badge variant="soft" size="3">{frontmatter.category}</Badge>
         {/if}
@@ -82,7 +82,7 @@
                 Source
             </Button>
         {/if}
-    </Flexbox>
+    </Flex>
 </Panel>
 
 {@render children?.()}

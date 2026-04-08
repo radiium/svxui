@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Floating, Button, Select, type FloatingVariant, Flexbox, Checkbox, SelectOption } from 'svxui';
+    import { Floating, Button, Select, type FloatingVariant, Flex, Checkbox, SelectOption } from 'svxui';
 
     let isOpen = $state(false);
     const open = () => (isOpen = true);
@@ -9,17 +9,17 @@
     let outline = $state(false);
 </script>
 
-<Flexbox gap="3">
+<Flex justify="start" gap="3">
     <Select bind:value={variant}>
         {#each options as value (value)}
             <SelectOption {value}>{value}</SelectOption>
         {/each}
     </Select>
-    <Flexbox as="label" gap="2" align="center">
+    <Flex justify="start" as="label" gap="2" align="center">
         <Checkbox bind:checked={outline} />
         outline
-    </Flexbox>
-</Flexbox>
+    </Flex>
+</Flex>
 
 <Floating bind:isOpen closeOnOutsideClick {variant} {outline}>
     {#snippet trigger()}

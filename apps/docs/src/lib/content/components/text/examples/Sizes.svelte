@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { Text, Flexbox } from 'svxui';
+    import { Text, Flex } from 'svxui';
 </script>
 
-<Flexbox direction="column">
+<Flex justify="start" direction="column">
     <Text size="1">Sample size 1</Text>
     <Text size="2">Sample size 2</Text>
     <Text size="3">Sample size 3</Text>
@@ -12,4 +12,4 @@
     <Text size="7">Sample size 7</Text>
     <Text size="8">Sample size 8</Text>
     <Text size="9">Sample size 9</Text>
-</Flexbox>
+</Flex>

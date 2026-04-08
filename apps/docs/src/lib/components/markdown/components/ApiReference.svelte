@@ -2,7 +2,7 @@
     import ArrowSquareOut from '$lib/components/icons/ArrowSquareOut.svelte';
     import H3 from '$lib/components/markdown/elements/h3.svelte';
     import { stringToId } from '$lib/utils/functions';
-    import { Flexbox, Text, useTheme, type Color } from 'svxui';
+    import { Flex, Text, useTheme, type Color } from 'svxui';
     import { libDoc } from '../../../content-utils/libdoc';
     import type {
         AttachmentDocumentation,
@@ -61,10 +61,10 @@
             {#each item.tags as tag (tag)}
                 {#if tag.name === 'see'}
                     <Text as="a" color={themeColor} href={'/docs' + tag.value} class="mt-3 inline-block">
-                        <Flexbox align="center" gap="1">
+                        <Flex justify="start" align="center" gap="1">
                             show
                             <ArrowSquareOut style="color: var(--neutral-11)" data-color="" />
-                        </Flexbox>
+                        </Flex>
                     </Text>
                 {:else}
                     <Text as="pre" class="mt-3 mb-0" style="font-family: inherit;">

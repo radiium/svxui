@@ -1,15 +1,15 @@
 <script lang="ts">
-    import { Checkbox, Flexbox, Panel, portal } from 'svxui';
+    import { Checkbox, Flex, Panel, portal } from 'svxui';
 
     let enabled = $state(false);
 </script>
 
-<Flexbox as="label" gap="2" align="center">
+<Flex justify="start" as="label" gap="2" align="center">
     <Checkbox bind:checked={enabled} />
     Enabled
-</Flexbox>
+</Flex>
 
-<Flexbox gap="5">
+<Flex justify="start" gap="5">
     <Panel>
         source
         <Panel
@@ -26,4 +26,4 @@
     </Panel>
 
     <Panel id="target-id">target</Panel>
-</Flexbox>
+</Flex>

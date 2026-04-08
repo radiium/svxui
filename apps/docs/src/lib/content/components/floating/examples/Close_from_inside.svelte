@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Floating, Button, Flexbox } from 'svxui';
+    import { Floating, Button, Flex } from 'svxui';
 
     let isOpen = $state(false);
     const open = () => (isOpen = true);
@@ -11,9 +11,9 @@
         <Button onclick={open}>Open</Button>
     {/snippet}
     {#snippet content()}
-        <Flexbox align="center" gap="3">
+        <Flex justify="start" align="center" gap="3">
             <div>Floating content</div>
             <Button size="1" radius="full" variant="outline" iconOnly onclick={close}>x</Button>
-        </Flexbox>
+        </Flex>
     {/snippet}
 </Floating>

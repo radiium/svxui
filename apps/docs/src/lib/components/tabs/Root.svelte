@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Flexbox, TabsBuilder, type TabsProps } from 'svxui';
+    import { Flex, TabsBuilder, type TabsProps } from 'svxui';
     import { tabsContext } from './context.svelte';
 
     let {
@@ -37,6 +37,6 @@
     tabsContext.set(tabs);
 </script>
 
-<Flexbox direction="column" gap="3" {...tabs.rootAttrs}>
+<Flex justify="start" direction="column" gap="3" {...tabs.rootAttrs}>
     {@render children?.(tabs)}
-</Flexbox>
+</Flex>

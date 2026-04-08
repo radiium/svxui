@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { Button, Flexbox, rovingfocus } from 'svxui';
+    import { Button, Flex, rovingfocus } from 'svxui';
 
     const items = ['item 1', 'item 2', 'item 3', 'item 4', 'item 5'];
 </script>
 
-<Flexbox
+<Flex justify="start"
     direction="column"
     wrap="wrap"
     gap="1"
@@ -30,4 +30,4 @@
             {/if}
         </Button>
     {/each}
-</Flexbox>
+</Flex>

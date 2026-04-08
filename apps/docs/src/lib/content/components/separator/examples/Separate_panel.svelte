@@ -1,17 +1,17 @@
 <script lang="ts">
-    import { Separator, Panel, Flexbox, Text } from 'svxui';
+    import { Separator, Panel, Flex, Text } from 'svxui';
 </script>
 
 <Panel size="0" variant="clear" outline>
-    <Flexbox direction="column" gap="4">
-        <Flexbox fullWidth class="pt-4 px-4">
+    <Flex justify="start" direction="column" gap="4">
+        <Flex justify="start" fullWidth class="pt-4 px-4">
             <Text align="center">Lorem ipsum dolor sit amet, consectetur</Text>
-        </Flexbox>
+        </Flex>
 
         <Separator size="4" />
 
-        <Flexbox fullWidth class="pb-4 px-4">
+        <Flex justify="start" fullWidth class="pb-4 px-4">
             <Text align="center">Lorem ipsum dolor sit amet, consectetur</Text>
-        </Flexbox>
-    </Flexbox>
+        </Flex>
+    </Flex>
 </Panel>

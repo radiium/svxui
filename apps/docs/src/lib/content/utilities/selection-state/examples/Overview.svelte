@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Checkbox, Flexbox, SelectionState } from 'svxui';
+    import { Button, Checkbox, Flex, SelectionState } from 'svxui';
 
     let value: string | string[] | undefined = $state([]);
     let multiple = $state(false);
@@ -18,18 +18,18 @@
     });
 </script>
 
-<Flexbox as="label" gap="2" align="center">
+<Flex justify="start" as="label" gap="2" align="center">
     <Checkbox bind:checked={multiple} />
     multiple
-</Flexbox>
+</Flex>
 <Button variant="soft" onclick={() => selection.clear()}>
     clear selection ({selection.count})
 </Button>
 
-<Flexbox align="start" gap="2">
+<Flex justify="start" align="start" gap="2">
     {#each options as opt (opt)}
         <Button variant={selection.has(opt) ? 'solid' : 'outline'} onclick={() => selection.toggle(opt)}>
             {opt}
         </Button>
     {/each}
-</Flexbox>
+</Flex>

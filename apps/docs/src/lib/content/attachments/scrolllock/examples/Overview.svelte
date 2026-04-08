@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { Button, Checkbox, Flexbox, Panel, scrolllock } from 'svxui';
+    import { Button, Checkbox, Flex, Panel, scrolllock } from 'svxui';
 
     let enabled = $state(false);
 </script>
 
-<Flexbox as="label" gap="2" align="center">
+<Flex justify="start" as="label" gap="2" align="center">
     <Checkbox bind:checked={enabled} />
     Enabled
-</Flexbox>
+</Flex>
 
 <Panel
     size="1"
@@ -15,9 +15,9 @@
     style="width: 200px; max-height: 240px; overflow: scroll;"
     {@attach scrolllock({ enabled })}
 >
-    <Flexbox direction="column" gap="1">
+    <Flex justify="start" direction="column" gap="1">
         {#each { length: 200 }, i (i)}
             <Button variant="soft" fullWidth>Item {i}</Button>
         {/each}
-    </Flexbox>
+    </Flex>
 </Panel>

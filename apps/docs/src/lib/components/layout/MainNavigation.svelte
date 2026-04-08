@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from '$app/state';
     import type { NavSection } from '$lib/types.js';
-    import { Flexbox } from 'svxui';
+    import { Flex } from 'svxui';
 
     type Props = {
         navigation: NavSection[];
@@ -11,7 +11,7 @@
     let { navigation, onSelect }: Props = $props();
 </script>
 
-<Flexbox as="nav" direction="column" fullWidth aria-label="Primary">
+<Flex justify="start" as="nav" direction="column" fullWidth aria-label="Primary">
     {#each navigation as section, i (i)}
         <section class="p-0 mb-5">
             {#if section.title}
@@ -37,7 +37,7 @@
             </ul>
         </section>
     {/each}
-</Flexbox>
+</Flex>
 
 <style>
     section {

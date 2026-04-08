@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { Flexbox, Switch } from 'svxui';
+    import { Flex, Switch } from 'svxui';
 
     let group = $state(['1']);
 </script>
 
-<Flexbox gap="6" direction="column" align="center" style="width: 300px;">
+<Flex justify="start" gap="6" direction="column" align="center" style="width: 300px;">
     group: {JSON.stringify(group)}
 
-    <Flexbox gap="3" direction="column" align="center">
+    <Flex justify="start" gap="3" direction="column" align="center">
         <label>
             <Switch name="checkboxGroup" value="1" bind:group />
             label 1
@@ -20,5 +20,5 @@
             <Switch name="checkboxGroup" value="3" bind:group />
             label 3
         </label>
-    </Flexbox>
-</Flexbox>
+    </Flex>
+</Flex>

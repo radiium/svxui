@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { Panel, Flexbox } from 'svxui';
+    import { Panel, Flex } from 'svxui';
 </script>
 
-<Flexbox direction="column" align="start" gap="3">
+<Flex justify="start" direction="column" align="start" gap="3">
     <Panel size="0">Panel size 0</Panel>
     <Panel size="1">Panel size 1</Panel>
     <Panel size="2">Panel size 2</Panel>
@@ -13,4 +13,4 @@
     <Panel size="7">Panel size 7</Panel>
     <Panel size="8">Panel size 8</Panel>
     <Panel size="9">Panel size 9</Panel>
-</Flexbox>
+</Flex>

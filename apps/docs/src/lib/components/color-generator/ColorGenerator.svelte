@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Flexbox, Panel, Separator, Text } from 'svxui';
+    import { Button, Flex, Panel, Separator, Text } from 'svxui';
     import { ColorGeneratorState } from './color-generator-state.svelte.js';
     import ColorRow from './ColorRow.svelte';
     import OutputFile from './OutputFile.svelte';
@@ -8,23 +8,23 @@
     const state = new ColorGeneratorState();
 </script>
 
-<Flexbox direction="column" align="center" gap="3" class="mt-5">
+<Flex justify="start" direction="column" align="center" gap="3" class="mt-5">
     <!-- Color entries -->
     <Panel as="article" size="0" variant="soft" color="neutral" outline fullWidth>
-        <Flexbox direction="column" gap="3">
-            <Flexbox as="header" gap="3" justify="between" align="center" class="px-3 pt-2">
-                <Flexbox direction="column" gap="1">
+        <Flex justify="start" direction="column" gap="3">
+            <Flex as="header" gap="3" justify="between" align="center" class="px-3 pt-2">
+                <Flex justify="start" direction="column" gap="1">
                     <Text size="3" weight="medium">Define color aliases</Text>
                     <Text size="1" color="neutral">Map an alias name to a Radix palette.</Text>
-                </Flexbox>
+                </Flex>
 
                 <Button size="2" variant="clear" color="neutral" onclick={state.reset}
                     >Reset to defaults</Button
                 >
-            </Flexbox>
+            </Flex>
             <Separator size="4" />
 
-            <Flexbox direction="column" gap="1" fullWidth class="px-3 pb-2">
+            <Flex justify="start" direction="column" gap="1" fullWidth class="px-3 pb-2">
                 <table>
                     <thead>
                         <tr>
@@ -63,15 +63,15 @@
                         </tr>
                     </tfoot>
                 </table>
-            </Flexbox>
-        </Flexbox>
+            </Flex>
+        </Flex>
     </Panel>
 
-    <Flexbox justify="center" align="center" fullWidth>
+    <Flex justify="center" align="center" fullWidth>
         <CaretDoubleDownIcon size="2.5rem" />
         <div style="width: 30%"></div>
         <CaretDoubleDownIcon size="2.5rem" />
-    </Flexbox>
+    </Flex>
     <!-- Generated outputs -->
     {#if state.isValid}
         <Panel color="neutral" variant="soft" outline size="0" fullWidth>
@@ -81,16 +81,16 @@
         </Panel>
     {:else}
         <Panel variant="soft" color="neutral" size="0" outline fullWidth>
-            <Flexbox direction="column" justify="center" align="center" class="p-3" fullWidth>
+            <Flex direction="column" justify="center" align="center" class="p-3" fullWidth>
                 {#if state.isEmpty}
                     <Text color="red" size="4">Add at least one color alias to generate the output.</Text>
                 {:else}
                     <Text color="red" size="4">Fix the errors above to generate the output.</Text>
                 {/if}
-            </Flexbox>
+            </Flex>
         </Panel>
     {/if}
-</Flexbox>
+</Flex>
 
 <style>
     table {

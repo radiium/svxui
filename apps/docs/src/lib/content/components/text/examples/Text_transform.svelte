@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { Text, Flexbox } from 'svxui';
+    import { Text, Flex } from 'svxui';
 </script>
 
-<Flexbox direction="column">
+<Flex justify="start" direction="column">
     <Text transform="lowercase">Sample lowercase</Text>
     <Text transform="uppercase">Sample uppercase</Text>
     <Text transform="capitalize">Sample capitalize</Text>
-</Flexbox>
+</Flex>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Flexbox, Modes, Text, useTheme, type Color, type Mode, type Radius } from 'svxui';
+    import { Button, Flex, Modes, Text, useTheme, type Color, type Mode, type Radius } from 'svxui';
 
     const theme = useTheme();
     const strategies: Mode[] = Modes;
@@ -7,10 +7,10 @@
     const colors: Color[] = ['neutral', 'green', 'blue', 'yellow', 'orange', 'red'];
 </script>
 
-<Flexbox direction="column" gap="3" class="settings-content">
-    <Flexbox gap="2" direction="column" class="w-100">
+<Flex justify="start" direction="column" gap="3" class="settings-content">
+    <Flex justify="start" gap="2" direction="column" class="w-100">
         <Text size="4" weight="medium">Theme strategy:</Text>
-        <Flexbox gap="2" wrap="wrap">
+        <Flex justify="start" gap="2" wrap="wrap">
             {#each strategies as item (item)}
                 <Button
                     radius="small"
@@ -21,12 +21,12 @@
                     {item}
                 </Button>
             {/each}
-        </Flexbox>
-    </Flexbox>
+        </Flex>
+    </Flex>
 
-    <Flexbox gap="2" direction="column" class="w-100">
+    <Flex justify="start" gap="2" direction="column" class="w-100">
         <Text size="4" weight="medium">Radius:</Text>
-        <Flexbox gap="2" wrap="wrap">
+        <Flex justify="start" gap="2" wrap="wrap">
             {#each radius as item (item)}
                 <Button
                     radius="small"
@@ -37,12 +37,12 @@
                     {item}
                 </Button>
             {/each}
-        </Flexbox>
-    </Flexbox>
+        </Flex>
+    </Flex>
 
-    <Flexbox gap="2" direction="column">
+    <Flex justify="start" gap="2" direction="column">
         <Text size="4" weight="medium">Accent color:</Text>
-        <Flexbox gap="2" wrap="wrap">
+        <Flex justify="start" gap="2" wrap="wrap">
             {#each colors as item (item)}
                 <button
                     aria-label="color"
@@ -55,9 +55,9 @@
                 >
                 </button>
             {/each}
-        </Flexbox>
-    </Flexbox>
-</Flexbox>
+        </Flex>
+    </Flex>
+</Flex>
 
 <style lang="scss">
     :global(.settings-content) {

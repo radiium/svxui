@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { Switch, Flexbox } from 'svxui';
+    import { Switch, Flex } from 'svxui';
 </script>
 
-<Flexbox as="label" align="center" gap="2">
+<Flex justify="start" as="label" align="center" gap="2">
     <Switch />
     label
-</Flexbox>
+</Flex>

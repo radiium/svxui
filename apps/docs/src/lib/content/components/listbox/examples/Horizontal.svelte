@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Flexbox, Listbox, Panel } from 'svxui';
+    import { Button, Flex, Listbox, Panel } from 'svxui';
 
     const options = ['option1', 'option2', 'option3'];
     let value = $state([options[0]]);
@@ -8,7 +8,7 @@
 <Listbox bind:value multiple orientation="horizontal">
     {#snippet children(rootState)}
         <Panel variant="clear" outline size="2">
-            <Flexbox gap="2" {...rootState.rootAttrs}>
+            <Flex justify="start" gap="2" {...rootState.rootAttrs}>
                 {#each options as opt, i (i)}
                     {@const item = rootState.getItem(opt)}
 
@@ -16,7 +16,7 @@
                         {opt}
                     </Button>
                 {/each}
-            </Flexbox>
+            </Flex>
         </Panel>
     {/snippet}
 </Listbox>

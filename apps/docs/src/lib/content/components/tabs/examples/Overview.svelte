@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Flexbox, Panel, Tabs } from 'svxui';
+    import { Button, Flex, Panel, Tabs } from 'svxui';
 
     const tabs = ['1', '2', '3', '4'];
 </script>
@@ -7,9 +7,9 @@
 <Tabs value={tabs[0]}>
     {#snippet children(root)}
         <!-- Tabs root -->
-        <Flexbox direction="column" gap="3" {...root.rootAttrs}>
+        <Flex justify="start" direction="column" gap="3" {...root.rootAttrs}>
             <!-- Tabs list -->
-            <Flexbox gap="3" {...root.triggerListAttrs}>
+            <Flex justify="start" gap="3" {...root.triggerListAttrs}>
                 {#each tabs as id (id)}
                     <!-- Tabs trigger -->
                     {@const trigger = root.getTrigger(id)}
@@ -17,7 +17,7 @@
                         Tab {id}
                     </Button>
                 {/each}
-            </Flexbox>
+            </Flex>
 
             {#each tabs as id (id)}
                 <!-- Tabs content -->
@@ -28,6 +28,6 @@
                     </Panel>
                 {/if}
             {/each}
-        </Flexbox>
+        </Flex>
     {/snippet}
 </Tabs>

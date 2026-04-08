@@ -3,7 +3,7 @@
     import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
     import type { NavItem, NavSection } from '$lib/types';
     import { MediaQuery } from 'svelte/reactivity';
-    import { Flexbox, Panel, Text, type PanelSize, type TextSize } from 'svxui';
+    import { Flex, Panel, Text, type PanelSize, type TextSize } from 'svxui';
 
     type Props = {
         slugFull?: string;
@@ -33,13 +33,13 @@
     {#if nav.prev}
         <Panel as="a" href={nav.prev.slugFull} rel="prev" variant="surface" outline size={itemSize}>
             <Text>
-                <Flexbox gap="3" align="end" justify="start">
+                <Flex gap="3" align="end" justify="start">
                     <ArrowLeft size={iconSize} />
-                    <Flexbox direction="column" align="start">
+                    <Flex justify="start" direction="column" align="start">
                         <Text weight="bold" size={subtitleSize} muted>Previous</Text>
                         <Text weight="bold" size={titleSize}>{nav.prev.label}</Text>
-                    </Flexbox>
-                </Flexbox>
+                    </Flex>
+                </Flex>
             </Text>
         </Panel>
     {/if}
@@ -55,13 +55,13 @@
             class="nav-next"
         >
             <Text>
-                <Flexbox gap="3" align="end" justify="end">
-                    <Flexbox direction="column" align="end">
+                <Flex gap="3" align="end" justify="end">
+                    <Flex justify="start" direction="column" align="end">
                         <Text weight="bold" size={subtitleSize} muted>Next</Text>
                         <Text weight="bold" align="end" size={titleSize}>{nav.next.label}</Text>
-                    </Flexbox>
+                    </Flex>
                     <ArrowRight size={iconSize} />
-                </Flexbox>
+                </Flex>
             </Text>
         </Panel>
     {/if}
