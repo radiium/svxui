@@ -1,7 +1,7 @@
 <script lang="ts">
     import FloatingArrow from '$lib/components/floating/components/floating-arrow.svelte';
     import Input from '$lib/components/input/components/input.svelte';
-    import { Button, Flexbox, FloatingBuilder, Panel } from '$lib/index.js';
+    import { Button, Flex, FloatingBuilder, Panel } from '$lib/index.js';
     import { arrow, autoUpdate, offset, size, type Middleware } from '@floating-ui/dom';
     import { fade } from 'svelte/transition';
 
@@ -46,7 +46,7 @@
 </script>
 
 <Panel variant="clear" outline fullWidth>
-    <Flexbox direction="column" gap="3">
+    <Flex justify="start" direction="column" gap="3">
         <h2>Floating Manager</h2>
         <Input data-focusclose />
         <Button {...floating.triggerAttrs} onclick={floating.toggle}>open ({opened})</Button>
@@ -60,18 +60,18 @@
 
             <div class="floating" {...floating.contentAttrs} transition:fade={{ duration: 150, delay: 0 }}>
                 <Panel>
-                    <Flexbox direction="column" gap="5">
+                    <Flex justify="start" direction="column" gap="5">
                         <h3 class="m-0">Hello popover</h3>
                         <div>
                             <Input placeholder="What's your first name?" />
                             <Input placeholder="What's your last name?" data-focusopen />
                         </div>
 
-                        <Flexbox justify="end" gap="3">
+                        <Flex justify="end" gap="3">
                             <Button variant="outline" onclick={floating.close}>Cancel</Button>
                             <Button onclick={floating.close}>Confirm</Button>
-                        </Flexbox>
-                    </Flexbox>
+                        </Flex>
+                    </Flex>
 
                     <FloatingArrow
                         bind:ref={arrowEl}
@@ -85,7 +85,7 @@
                 <!-- <div class="arrow" {...floating.arrowAttrs}></div> -->
             </div>
         {/if}
-    </Flexbox>
+    </Flex>
 </Panel>
 
 <style>

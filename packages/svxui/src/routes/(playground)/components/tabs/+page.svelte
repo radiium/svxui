@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Flexbox, Panel, Tabs, type TabsProps } from '$lib/index.js';
+    import { Button, Flex, Panel, Tabs, type TabsProps } from '$lib/index.js';
     import ControlButton from '../../controls/ControlButton.svelte';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import Playground from '../../controls/Playground.svelte';
@@ -40,27 +40,27 @@
 
     <Tabs {...props} bind:value={props.value}>
         {#snippet children(tabs)}
-            <Flexbox direction="column" gap="3" {...tabs.rootAttrs}>
-                <Flexbox gap="2" {...tabs.triggerListAttrs}>
+            <Flex justify="start" direction="column" gap="3" {...tabs.rootAttrs}>
+                <Flex justify="start" gap="2" {...tabs.triggerListAttrs}>
                     {#each items as option, i (i)}
                         {@const trigger = tabs.getTrigger(option)}
                         <Button {...trigger.attrs} variant={trigger.active ? 'solid' : 'outline'}>
                             Trigger {option}
                         </Button>
                     {/each}
-                </Flexbox>
+                </Flex>
                 {#each items as option, i (i)}
                     {@const content = tabs.getContent(option)}
 
                     {#if content.active}
                         <Panel variant="clear" outline {...content.attrs}>
-                            <Flexbox direction="column">
+                            <Flex justify="start" direction="column">
                                 Content {option}
-                            </Flexbox>
+                            </Flex>
                         </Panel>
                     {/if}
                 {/each}
-            </Flexbox>
+            </Flex>
         {/snippet}
     </Tabs>
 </Playground>

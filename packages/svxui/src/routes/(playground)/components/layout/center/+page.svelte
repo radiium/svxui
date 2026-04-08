@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Center, Flex } from '$lib/components/layout/index.js';
+    import { Center } from '$lib/components/layout/index.js';
+    import { Flex } from '$lib/components/flex/index.js';
     import type { CenterProps } from '$lib/components/layout/types.js';
     import { Panel, Text } from '$lib/index.js';
     import ControlCheckbox from '../../../controls/ControlCheckbox.svelte';

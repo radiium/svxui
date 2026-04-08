@@ -4,7 +4,7 @@
         autoUpdate,
         Button,
         clickoutside,
-        Flexbox,
+        Flex,
         flip,
         FloatingEngine,
         Listbox,
@@ -101,7 +101,7 @@
             >
                 {#snippet children(listbox)}
                     <Panel variant="clear" outline size="2">
-                        <Flexbox direction="column" gap="1" {...listbox.rootAttrs} bind:ref={listboxRef}>
+                        <Flex justify="start" direction="column" gap="1" {...listbox.rootAttrs} bind:ref={listboxRef}>
                             {#each options as opt, i (i)}
                                 {@const item = listbox.getItem(opt)}
 
@@ -121,13 +121,13 @@
                                     </Button>
                                 {/if}
                             {/each}
-                        </Flexbox>
+                        </Flex>
                     </Panel>
                 {/snippet}
             </Listbox>
 
             <!-- <Panel variant="soft" outline size="2">
-            <Flexbox direction="column">
+            <Flex justify="start" direction="column">
                 {#each options as opt, i (i)}
                     <Button
                         variant={opt === value ? 'solid' : 'clear'}
@@ -143,7 +143,7 @@
                         {/if}
                     </Button>
                 {/each}
-            </Flexbox>
+            </Flex>
         </Panel> -->
         </div>
     {/if}

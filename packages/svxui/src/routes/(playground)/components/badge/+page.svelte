@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { AllRadixColors, Badge, Flexbox, Panel, type BadgeProps } from '$lib/index.js';
+    import { AllRadixColors, Badge, Flex, Panel, type BadgeProps } from '$lib/index.js';
     import { cartesianProduct, groupBy } from '../../controls/cartesian-product.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -27,16 +27,16 @@
         <ControlSelect label="size" bind:value={base.size} options={['1', '2', '3']} />
     {/snippet}
 
-    <Flexbox direction="column" gap="3">
+    <Flex justify="start" direction="column" gap="3">
         {#each sections as section, i (i)}
             <Panel variant="clear" outline>
-                <Flexbox wrap="wrap" gap="3">
+                <Flex justify="start" wrap="wrap" gap="3">
                     {#each section as item, j (j)}
                         {@const props = { ...base, ...item }}
                         <Badge {...props} title={JSON.stringify(props, null, 2)}>badge</Badge>
                     {/each}
-                </Flexbox>
+                </Flex>
             </Panel>
         {/each}
-    </Flexbox>
+    </Flex>
 </Playground>

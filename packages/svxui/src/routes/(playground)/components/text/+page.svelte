@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { AllRadixColors, Flexbox, Panel, Text, type TextProps } from '$lib/index.js';
+    import { AllRadixColors, Flex, Panel, Text, type TextProps } from '$lib/index.js';
     import { cartesianProduct, groupBy } from '../../controls/cartesian-product.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -62,18 +62,18 @@
         <ControlSelect label="align" bind:value={base.align} options={['start', 'center', 'end']} />
     {/snippet}
 
-    <Flexbox direction="column" gap="3" fullWidth>
+    <Flex justify="start" direction="column" gap="3" fullWidth>
         {#each sections as section, i (i)}
             <Panel variant="clear" outline fullWidth>
-                <Flexbox wrap="wrap" gap="3">
+                <Flex justify="start" wrap="wrap" gap="3">
                     {#each section as item, j (j)}
                         {@const props = { ...base, ...item }}
                         <Text {...props} title={JSON.stringify(props, null, 2)} class="w-100">
                             The quick brown fox jumps over the lazy dog.
                         </Text>
                     {/each}
-                </Flexbox>
+                </Flex>
             </Panel>
         {/each}
-    </Flexbox>
+    </Flex>
 </Playground>

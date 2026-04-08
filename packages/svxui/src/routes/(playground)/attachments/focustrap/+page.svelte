@@ -1,5 +1,5 @@
 <script>
-    import { Button, Flexbox, Input, Panel, focustrap } from '$lib/index.js';
+    import { Button, Flex, Input, Panel, focustrap } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlInput from '../../controls/ControlInput.svelte';
     import Playground from '../../controls/Playground.svelte';
@@ -28,14 +28,14 @@
             }
         })}
     >
-        <Flexbox direction="column" gap="3" as="form">
+        <Flex justify="start" direction="column" gap="3" as="form">
             <Input placeholder="First name" />
             <Input placeholder="Last name" data-initialfocus />
-            <Flexbox gap="3">
+            <Flex justify="start" gap="3">
                 <Button variant="outline" tabindex={0}>cancel</Button>
                 <Button variant="soft" tabindex={0} onclick={() => (enabled = false)}>confirm</Button>
-            </Flexbox>
-        </Flexbox>
+            </Flex>
+        </Flex>
     </Panel>
 
     <Panel
@@ -45,13 +45,13 @@
             }
         })}
     >
-        <Flexbox direction="column" gap="3" as="form">
+        <Flex justify="start" direction="column" gap="3" as="form">
             <Input placeholder="First name" />
             <Input placeholder="Last name" data-initialfocus />
-            <Flexbox gap="3">
+            <Flex justify="start" gap="3">
                 <Button variant="outline" tabindex={0}>cancel</Button>
                 <Button variant="soft" tabindex={0} onclick={() => (enabled2 = false)}>confirm</Button>
-            </Flexbox>
-        </Flexbox>
+            </Flex>
+        </Flex>
     </Panel>
 </Playground>

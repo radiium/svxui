@@ -125,6 +125,11 @@
             "svelte": "./dist/components/badge/index.js",
             "default": "./dist/components/badge/index.js"
         },
+        "./components/box": {
+            "types": "./dist/components/box/index.d.ts",
+            "svelte": "./dist/components/box/index.js",
+            "default": "./dist/components/box/index.js"
+        },
         "./components/button": {
             "types": "./dist/components/button/index.d.ts",
             "svelte": "./dist/components/button/index.js",
@@ -140,15 +145,20 @@
             "svelte": "./dist/components/dialog/index.js",
             "default": "./dist/components/dialog/index.js"
         },
-        "./components/flexbox": {
-            "types": "./dist/components/flexbox/index.d.ts",
-            "svelte": "./dist/components/flexbox/index.js",
-            "default": "./dist/components/flexbox/index.js"
+        "./components/flex": {
+            "types": "./dist/components/flex/index.d.ts",
+            "svelte": "./dist/components/flex/index.js",
+            "default": "./dist/components/flex/index.js"
         },
         "./components/floating": {
             "types": "./dist/components/floating/index.d.ts",
             "svelte": "./dist/components/floating/index.js",
             "default": "./dist/components/floating/index.js"
+        },
+        "./components/grid": {
+            "types": "./dist/components/grid/index.d.ts",
+            "svelte": "./dist/components/grid/index.js",
+            "default": "./dist/components/grid/index.js"
         },
         "./components/input": {
             "types": "./dist/components/input/index.d.ts",
@@ -169,6 +179,11 @@
             "types": "./dist/components/input-range/index.d.ts",
             "svelte": "./dist/components/input-range/index.js",
             "default": "./dist/components/input-range/index.js"
+        },
+        "./components/layout": {
+            "types": "./dist/components/layout/index.d.ts",
+            "svelte": "./dist/components/layout/index.js",
+            "default": "./dist/components/layout/index.js"
         },
         "./components/listbox": {
             "types": "./dist/components/listbox/index.d.ts",

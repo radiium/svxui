@@ -1,5 +1,5 @@
 <script>
-    import { Button, Flexbox, Panel, scrolllock } from '$lib/index.js';
+    import { Button, Flex, Panel, scrolllock } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import Playground from '../../controls/Playground.svelte';
 
@@ -18,10 +18,10 @@
         style="width: 200px; max-height: 240px; overflow: auto;"
         {@attach scrolllock({ enabled })}
     >
-        <Flexbox direction="column" gap="1">
+        <Flex justify="start" direction="column" gap="1">
             {#each { length: 200 }, item (item)}
                 <Button variant="soft" fullWidth>{item}</Button>
             {/each}
-        </Flexbox>
+        </Flex>
     </Panel>
 </Playground>

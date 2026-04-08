@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { AllRadixColors, Button, Flexbox, Floating, Input, type FloatingProps } from '$lib/index.js';
+    import { AllRadixColors, Button, Flex, Floating, Input, type FloatingProps } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlInput from '../../controls/ControlInput.svelte';
     import ControlNumber from '../../controls/ControlNumber.svelte';
@@ -109,7 +109,7 @@
         {/snippet}
 
         {#snippet content()}
-            <Flexbox direction="column" align="center" gap="3" style="width: 300px;">
+            <Flex justify="start" direction="column" align="center" gap="3" style="width: 300px;">
                 Sample floating element
 
                 <Input data-floating-input />
@@ -138,7 +138,7 @@
                         Nested floating element
                     {/snippet}
                 </Floating>
-            </Flexbox>
+            </Flex>
         {/snippet}
     </Floating>
 </Playground>

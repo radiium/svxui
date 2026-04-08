@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Accordion, Button, Flexbox, Panel, Separator, Text, type AccordionProps } from '$lib/index.js';
+    import { Accordion, Button, Flex, Panel, Separator, Text, type AccordionProps } from '$lib/index.js';
     import { slide } from 'svelte/transition';
     import ControlButton from '../../controls/ControlButton.svelte';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
@@ -48,13 +48,13 @@
     <Accordion {...props} bind:value={props.value}>
         {#snippet children(accordion)}
             <Panel variant="clear" outline size="0" class="w-100" style="max-width: 300px;">
-                <Flexbox direction="column" {...accordion.rootAttrs}>
+                <Flex justify="start" direction="column" {...accordion.rootAttrs}>
                     {#each items as value, i (value)}
                         {@const item = accordion.getItem(value)}
                         <!-- Item -->
-                        <Flexbox direction="column" {...item.itemAttrs}>
+                        <Flex justify="start" direction="column" {...item.itemAttrs}>
                             <!-- Heading -->
-                            <Flexbox
+                            <Flex
                                 as="header"
                                 justify="between"
                                 align="center"
@@ -66,7 +66,7 @@
                                 <Button size="1" variant="soft" {...item.triggerAttrs}>
                                     {item.expanded ? 'close' : 'open'}
                                 </Button>
-                            </Flexbox>
+                            </Flex>
 
                             <!-- Content -->
                             {#if item.expanded}
@@ -74,13 +74,13 @@
                                     Content {value}
                                 </div>
                             {/if}
-                        </Flexbox>
+                        </Flex>
 
                         {#if i < items.length - 1}
                             <Separator size="4" />
                         {/if}
                     {/each}
-                </Flexbox>
+                </Flex>
             </Panel>
         {/snippet}
     </Accordion>

@@ -1,6 +1,6 @@
 <script>
     import Badge from '$lib/components/badge/components/badge.svelte';
-    import { Flexbox, Panel, Portal } from '$lib/index.js';
+    import { Flex, Panel, Portal } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
@@ -19,9 +19,9 @@
     {/snippet}
 
     <Panel variant="soft" size="9" bind:ref={eventTarget}>
-        <Flexbox fullWidth direction="column" gap="3">
+        <Flex justify="start" fullWidth direction="column" gap="3">
             <Panel>
-                <Flexbox direction="column" align="center" gap="3">
+                <Flex justify="start" direction="column" align="center" gap="3">
                     Source
                     <Panel variant="clear" outline>Before</Panel>
 
@@ -29,14 +29,14 @@
                         <Badge variant="solid" size="3">content</Badge>
                     </Portal>
                     <Panel variant="clear" outline>after</Panel>
-                </Flexbox>
+                </Flex>
             </Panel>
 
-            <Flexbox fullWidth gap="3">
+            <Flex justify="start" fullWidth gap="3">
                 <Panel id="taget1">#taget1</Panel>
                 <Panel id="taget2">#taget2</Panel>
-            </Flexbox>
-        </Flexbox>
+            </Flex>
+        </Flex>
     </Panel>
 </Playground>
 

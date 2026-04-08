@@ -3,7 +3,7 @@
     import {
         AllRadixColors,
         Checkbox,
-        Flexbox,
+        Flex,
         Panel,
         type PanelProps,
         type PanelVariant
@@ -48,16 +48,16 @@
         />
     {/snippet}
 
-    <Flexbox direction="column" gap="3">
+    <Flex justify="start" direction="column" gap="3">
         {#each sections as section, i (i)}
             <Panel variant="clear" outline size="0">
                 <div class="background">
-                    <Flexbox direction="column" gap="5" class="p-5">
+                    <Flex justify="start" direction="column" gap="5" class="p-5">
                         {#each section as item, j (j)}
                             {@const props = { ...base, ...item }}
-                            <Flexbox direction="column" gap="3" data-color={props.color}>
+                            <Flex justify="start" direction="column" gap="3" data-color={props.color}>
                                 <Panel {...props} title={JSON.stringify(props, null, 2)}>
-                                    <Flexbox
+                                    <Flex
                                         direction="column"
                                         justify="center"
                                         align="center"
@@ -71,28 +71,28 @@
 
                                         <Panel outline color="neutral">Nested panel</Panel>
 
-                                        <Flexbox gap="3">
+                                        <Flex justify="start" gap="3">
                                             <Button variant="solid">button</Button>
                                             <Button variant="soft">button</Button>
                                             <Button variant="outline">button</Button>
                                             <Button variant="clear">button</Button>
-                                        </Flexbox>
-                                    </Flexbox>
+                                        </Flex>
+                                    </Flex>
                                 </Panel>
 
-                                <Flexbox gap="3" class="px-5">
+                                <Flex justify="start" gap="3" class="px-5">
                                     <Button variant="solid">button</Button>
                                     <Button variant="soft">button</Button>
                                     <Button variant="outline">button</Button>
                                     <Button variant="clear">button</Button>
-                                </Flexbox>
-                            </Flexbox>
+                                </Flex>
+                            </Flex>
                         {/each}
-                    </Flexbox>
+                    </Flex>
                 </div>
             </Panel>
         {/each}
-    </Flexbox>
+    </Flex>
 </Playground>
 
 <style>

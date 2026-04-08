@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Flexbox, rovingfocus, type Orientation } from '$lib/index.js';
+    import { Button, Flex, rovingfocus, type Orientation } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
@@ -22,7 +22,7 @@
         <ControlSelect label="initialIndex" bind:value={initialIndex} options={['first', 'last', '2']} />
     {/snippet}
 
-    <Flexbox
+    <Flex justify="start"
         direction={orientation === 'vertical' ? 'column' : 'row'}
         wrap="wrap"
         gap="1"
@@ -60,5 +60,5 @@
                 {/if}
             </Button>
         {/each}
-    </Flexbox>
+    </Flex>
 </Playground>

@@ -1,6 +1,6 @@
 <script lang="ts">
     import Panel from '$lib/components/panel/components/panel.svelte';
-    import { Button, Dialog, Flexbox, type DialogProps } from '$lib/index.js';
+    import { Button, Dialog, Flex, type DialogProps } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlNumber from '../../controls/ControlNumber.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -66,7 +66,7 @@
             fullWidth={props.layout === 'fullscreen'}
             fullHeight={props.layout === 'fullscreen'}
         >
-            <Flexbox direction="column" gap="3">
+            <Flex justify="start" direction="column" gap="3">
                 <h2>Dialog title</h2>
                 {#if longContent}
                     <p>
@@ -113,24 +113,24 @@
 
                 <Button onclick={() => (isOpenNested = true)} variant="outline">Info</Button>
 
-                <Flexbox justify="end" gap="3">
+                <Flex justify="end" gap="3">
                     <Button onclick={closeDialog} variant="clear">Cancel</Button>
                     <Button onclick={closeDialog}>Confirm</Button>
-                </Flexbox>
-            </Flexbox>
+                </Flex>
+            </Flex>
         </Panel>
     </Dialog>
 
     <Dialog bind:isOpen={isOpenNested}>
         <Panel color="neutral" outline size="5">
-            <Flexbox direction="column" gap="3">
+            <Flex justify="start" direction="column" gap="3">
                 <h2>Nested dialog title</h2>
                 <p>Nested dialog paragraph</p>
 
-                <Flexbox justify="end" gap="3">
+                <Flex justify="end" gap="3">
                     <Button onclick={() => (isOpenNested = false)}>close</Button>
-                </Flexbox>
-            </Flexbox>
+                </Flex>
+            </Flex>
         </Panel>
     </Dialog>
 </Playground>

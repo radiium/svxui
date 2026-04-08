@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { AllRadixColors, Button, Flexbox, Panel, type ButtonProps } from '$lib/index.js';
+    import { AllRadixColors, Button, Flex, Panel, type ButtonProps } from '$lib/index.js';
     import { cartesianProduct, groupBy } from '../../controls/cartesian-product.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -43,10 +43,10 @@
         />
     {/snippet}
 
-    <Flexbox direction="column" gap="3">
+    <Flex justify="start" direction="column" gap="3">
         {#each sections as section, i (i)}
             <Panel variant="clear" outline>
-                <Flexbox wrap="wrap" gap="3">
+                <Flex justify="start" wrap="wrap" gap="3">
                     {#each section as item, j (j)}
                         {@const props = { ...base, ...item }}
 
@@ -89,8 +89,8 @@
                             {/if}
                         </Button>
                     {/each}
-                </Flexbox>
+                </Flex>
             </Panel>
         {/each}
-    </Flexbox>
+    </Flex>
 </Playground>

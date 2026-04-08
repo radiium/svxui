@@ -1,5 +1,5 @@
 <script>
-    import { Flexbox, Hotkeys } from '$lib/index.js';
+    import { Flex, Hotkeys } from '$lib/index.js';
     import { onDestroy } from 'svelte';
     import ControlLabelValue from '../../controls/ControlLabelValue.svelte';
     import Playground from '../../controls/Playground.svelte';
@@ -21,10 +21,10 @@
 <h1>Hotkeys</h1>
 
 <Playground>
-    <Flexbox direction="column" align="start">
+    <Flex justify="start" direction="column" align="start">
         <ControlLabelValue label="All keys" value={hotkeys.all} />
         <ControlLabelValue label="Ctrl+a" value={isCtrla} />
         <ControlLabelValue label="Meta+e" value={isMetaE} />
         <ControlLabelValue label="Meta+z pressed" value="{count} times" />
-    </Flexbox>
+    </Flex>
 </Playground>

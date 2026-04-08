@@ -1,5 +1,5 @@
 <script>
-    import { Flexbox, Input, PersistedState } from '$lib/index.js';
+    import { Flex, Input, PersistedState } from '$lib/index.js';
     import ControlButton from '../../controls/ControlButton.svelte';
     import Playground from '../../controls/Playground.svelte';
 
@@ -10,7 +10,7 @@
 <h1>PersistedState</h1>
 
 <Playground>
-    <Flexbox direction="column" align="start">
+    <Flex justify="start" direction="column" align="start">
         <ControlButton
             onclick={() => {
                 if (persisted.connected) {
@@ -23,7 +23,7 @@
         >
             toogle connect ({connected})
         </ControlButton>
-    </Flexbox>
+    </Flex>
 
     <Input bind:value={persisted.current} />
 </Playground>

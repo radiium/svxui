@@ -1,6 +1,6 @@
 <script lang="ts">
     import Text from '$lib/components/text/components/text.svelte';
-    import { clickoutside, Flexbox, Panel } from '$lib/index.js';
+    import { clickoutside, Flex, Panel } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
@@ -26,7 +26,7 @@
     {/snippet}
 
     <Panel variant="soft" size="9" bind:ref={eventTarget}>
-        <Flexbox align="center" justify="center" gap="3">
+        <Flex align="center" justify="center" gap="3">
             outside
             <Panel
                 variant="clear"
@@ -46,6 +46,6 @@
             >
                 inside
             </Panel>
-        </Flexbox>
+        </Flex>
     </Panel>
 </Playground>

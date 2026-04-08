@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Flexbox, Listbox, Panel, type ListboxProps } from '$lib/index.js';
+    import { Button, Flex, Listbox, Panel, type ListboxProps } from '$lib/index.js';
     import { isObject } from '$lib/internals/is.js';
     import ControlButton from '../../controls/ControlButton.svelte';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
@@ -71,7 +71,7 @@
     >
         {#snippet children(rootState)}
             <Panel variant="clear" outline size="2" style="width: 220px;">
-                <Flexbox direction="column" gap="1" {...rootState.rootAttrs}>
+                <Flex justify="start" direction="column" gap="1" {...rootState.rootAttrs}>
                     {#each options as opt, i (i)}
                         {@const item = rootState.getItem(opt, {
                             disabled: isObject(opt) ? opt.disabled === true : false
@@ -84,14 +84,14 @@
                                 variant={item.selected ? 'solid' : 'clear'}
                                 {...item.attrs}
                             >
-                                <Flexbox direction="column" align="start" gap="3">
+                                <Flex justify="start" direction="column" align="start" gap="3">
                                     {#if typeof opt === 'string'}
                                         {opt}
                                     {:else if isObject(opt)}
                                         <div>{(opt as (typeof optionsObject)[number]).key}</div>
                                         <div>({(opt as (typeof optionsObject)[number]).val})</div>
                                     {/if}
-                                </Flexbox>
+                                </Flex>
                             </Panel>
                         {:else}
                             <Button {...item.attrs} variant={item.selected ? 'soft' : 'clear'} align="start">
@@ -104,7 +104,7 @@
                             </Button>
                         {/if}
                     {/each}
-                </Flexbox>
+                </Flex>
             </Panel>
         {/snippet}
     </Listbox>

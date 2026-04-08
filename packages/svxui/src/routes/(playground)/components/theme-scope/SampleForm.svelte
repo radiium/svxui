@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Flexbox from '$lib/components/flexbox/components/flexbox.svelte';
+    import Flex from '$lib/components/flex/components/flex.svelte';
     import Input from '$lib/components/input/components/input.svelte';
     import Panel from '$lib/components/panel/components/panel.svelte';
     import Text from '$lib/components/text/components/text.svelte';
@@ -13,18 +13,18 @@
 </script>
 
 <Panel variant="soft" outline fullWidth>
-    <Flexbox direction="column" gap="5" fullWidth>
-        <Flexbox as="form" direction="column" gap="3" fullWidth>
-            <Flexbox as="label" direction="column" gap="1" fullWidth>
+    <Flex justify="start" direction="column" gap="5" fullWidth>
+        <Flex justify="start" as="form" direction="column" gap="3" fullWidth>
+            <Flex justify="start" as="label" direction="column" gap="1" fullWidth>
                 <Text>login</Text>
                 <Input name="login" />
-            </Flexbox>
-            <Flexbox as="label" direction="column" gap="1" fullWidth>
+            </Flex>
+            <Flex justify="start" as="label" direction="column" gap="1" fullWidth>
                 <Text>password</Text>
                 <Input name="password" type="password" />
-            </Flexbox>
-        </Flexbox>
+            </Flex>
+        </Flex>
 
         {@render children?.()}
-    </Flexbox>
+    </Flex>
 </Panel>
