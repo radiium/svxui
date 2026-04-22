@@ -38,8 +38,6 @@
         gap = undefined,
         rowGap = undefined,
         colGap = undefined,
-        fullWidth = false,
-        fullHeight = false,
         // BoxModelProps
         p = undefined,
         px = undefined,
@@ -84,9 +82,7 @@
             'flex-wrap': wrap !== undefined,
             'flex-gap': gap !== undefined,
             'flex-row-gap': rowGap !== undefined,
-            'flex-col-gap': colGap !== undefined,
-            'flex-full-width': fullWidth,
-            'flex-full-height': fullHeight
+            'flex-col-gap': colGap !== undefined
         }
     ]);
 
@@ -171,12 +167,6 @@
         }
         &.flex-col-gap {
             column-gap: var(--flex-col-gap);
-        }
-        &.flex-full-width {
-            width: 100%;
-        }
-        &.flex-full-height {
-            height: 100%;
         }
     }
 </style>

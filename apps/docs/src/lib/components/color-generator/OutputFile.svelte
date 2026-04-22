@@ -48,7 +48,7 @@
     });
 </script>
 
-<Flex justify="start" align="center" wrap="wrap" gap="3" class="p-4 flex-auto" fullWidth>
+<Flex justify="start" align="center" wrap="wrap" gap="3" p="4" class="flex-auto" width="100%">
     <Text weight="medium">
         <Code>{name}</Code>
     </Text>

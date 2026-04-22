@@ -11,7 +11,7 @@
     ];
 </script>
 
-<Grid autoFill="160px" gap="3" fullWidth>
+<Grid autoFill="160px" gap="3" width="100%">
     {#each items as item (item.label)}
         <Panel outline size="3">
             <Flex direction="column" align="center" gap="1">

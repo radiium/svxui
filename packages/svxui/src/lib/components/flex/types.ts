@@ -70,14 +70,6 @@ export type FlexProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omi
          */
         colGap?: LayoutSpacing;
         /**
-         * Makes the container fill its parent's width.
-         */
-        fullWidth?: boolean;
-        /**
-         * Makes the container fill its parent's height.
-         */
-        fullHeight?: boolean;
-        /**
          * Content to render inside the flex container.
          */
         children?: Snippet<[void]>;

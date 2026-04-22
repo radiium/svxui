@@ -62,7 +62,7 @@
         <ControlSelect label="align" bind:value={base.align} options={['start', 'center', 'end']} />
     {/snippet}
 
-    <Flex justify="start" direction="column" gap="3" fullWidth>
+    <Flex justify="start" direction="column" gap="3" width="100%">
         {#each sections as section, i (i)}
             <Panel variant="clear" outline fullWidth>
                 <Flex justify="start" wrap="wrap" gap="3">

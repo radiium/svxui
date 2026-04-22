@@ -19,7 +19,7 @@
     {/snippet}
 
     <Panel variant="soft" size="9" bind:ref={eventTarget}>
-        <Flex justify="start" fullWidth direction="column" gap="3">
+        <Flex justify="start" width="100%" direction="column" gap="3">
             <Panel>
                 <Flex justify="start" direction="column" align="center" gap="3">
                     Source
@@ -32,7 +32,7 @@
                 </Flex>
             </Panel>
 
-            <Flex justify="start" fullWidth gap="3">
+            <Flex justify="start" width="100%" gap="3">
                 <Panel id="taget1">#taget1</Panel>
                 <Panel id="taget2">#taget2</Panel>
             </Flex>

@@ -8,11 +8,11 @@
     const state = new ColorGeneratorState();
 </script>
 
-<Flex justify="start" direction="column" align="center" gap="3" class="mt-5">
+<Flex justify="start" direction="column" align="center" gap="3" mt="5">
     <!-- Color entries -->
     <Panel as="article" size="0" variant="soft" color="neutral" outline fullWidth>
         <Flex justify="start" direction="column" gap="3">
-            <Flex as="header" gap="3" justify="between" align="center" class="px-3 pt-2">
+            <Flex as="header" gap="3" justify="between" align="center" px="3" pt="2">
                 <Flex justify="start" direction="column" gap="1">
                     <Text size="3" weight="medium">Define color aliases</Text>
                     <Text size="1" color="neutral">Map an alias name to a Radix palette.</Text>
@@ -24,7 +24,7 @@
             </Flex>
             <Separator size="4" />
 
-            <Flex justify="start" direction="column" gap="1" fullWidth class="px-3 pb-2">
+            <Flex justify="start" direction="column" gap="1" width="100%" px="3" pb="2">
                 <table>
                     <thead>
                         <tr>
@@ -67,7 +67,7 @@
         </Flex>
     </Panel>
 
-    <Flex justify="center" align="center" fullWidth>
+    <Flex justify="center" align="center" width="100%">
         <CaretDoubleDownIcon size="2.5rem" />
         <div style="width: 30%"></div>
         <CaretDoubleDownIcon size="2.5rem" />
@@ -81,7 +81,7 @@
         </Panel>
     {:else}
         <Panel variant="soft" color="neutral" size="0" outline fullWidth>
-            <Flex direction="column" justify="center" align="center" class="p-3" fullWidth>
+            <Flex direction="column" justify="center" align="center" p="3" width="100%">
                 {#if state.isEmpty}
                     <Text color="red" size="4">Add at least one color alias to generate the output.</Text>
                 {:else}

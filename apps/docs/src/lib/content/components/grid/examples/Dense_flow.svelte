@@ -11,7 +11,7 @@
     ];
 </script>
 
-<Grid cols="3" gap="3" flow="row-dense" fullWidth>
+<Grid cols="3" gap="3" flow="row-dense" width="100%">
     {#each items as item (item.label)}
         <Panel outline size="3" style="grid-column: span {item.span};">
             <Flex align="center" justify="center">{item.label}</Flex>

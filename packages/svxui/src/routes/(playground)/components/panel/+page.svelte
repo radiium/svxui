@@ -52,7 +52,7 @@
         {#each sections as section, i (i)}
             <Panel variant="clear" outline size="0">
                 <div class="background">
-                    <Flex justify="start" direction="column" gap="5" class="p-5">
+                    <Flex justify="start" direction="column" gap="5" p="5">
                         {#each section as item, j (j)}
                             {@const props = { ...base, ...item }}
                             <Flex justify="start" direction="column" gap="3" data-color={props.color}>
@@ -80,7 +80,7 @@
                                     </Flex>
                                 </Panel>
 
-                                <Flex justify="start" gap="3" class="px-5">
+                                <Flex justify="start" gap="3" px="5">
                                     <Button variant="solid">button</Button>
                                     <Button variant="soft">button</Button>
                                     <Button variant="outline">button</Button>

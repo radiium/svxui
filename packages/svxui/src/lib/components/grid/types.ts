@@ -71,14 +71,6 @@ export type GridProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omi
          */
         align?: GridAlign;
         /**
-         * Makes the container fill its parent's width.
-         */
-        fullWidth?: boolean;
-        /**
-         * Makes the container fill its parent's height.
-         */
-        fullHeight?: boolean;
-        /**
          * Content to render inside the grid container.
          */
         children?: Snippet<[void]>;

@@ -4,12 +4,12 @@
     let group = $state('1');
 </script>
 
-<Flex justify="start" gap="3" fullWidth>
+<Flex justify="start" gap="3" width="100%">
     <Panel as="button">Panel button</Panel>
     <Panel as="a" id="l1" href="#l1">Panel link</Panel>
 </Flex>
 
-<Flex justify="start" gap="3" fullWidth>
+<Flex justify="start" gap="3" width="100%">
     <Panel as="label" variant="clear" outline>
         <Flex justify="start" gap="3" align="center">
             <Checkbox />
@@ -30,7 +30,7 @@
     </Panel>
 </Flex>
 
-<Flex justify="start" gap="3" fullWidth>
+<Flex justify="start" gap="3" width="100%">
     <Panel as="label" variant="soft" color="blue">
         <Flex justify="start" gap="3" align="center">
             <Radio name="radio" value="1" bind:group color="blue" />

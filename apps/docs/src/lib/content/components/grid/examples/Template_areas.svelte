@@ -7,7 +7,7 @@
     cols="160px 1fr"
     rows="auto 120px auto"
     gap="3"
-    fullWidth
+    width="100%"
 >
     <Panel outline style="grid-area: header;">
         <Flex align="center" justify="center">header</Flex>

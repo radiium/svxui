@@ -11,8 +11,8 @@
 </Text>
 
 <Playground>
-    <Flex justify="start" direction="column" gap="7" fullWidth>
-        <Flex justify="start" direction="column" gap="2" fullWidth class="p-2 dashed">
+    <Flex justify="start" direction="column" gap="7" width="100%">
+        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>cols="3" gap="3"</code>
             <Grid cols="3" gap="3">
                 {#each [1, 2, 3, 4, 5, 6] as n (n)}
@@ -23,7 +23,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" fullWidth class="p-2 dashed">
+        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>cols="4" rowGap="1" colGap="4" — asymmetric gaps</code>
             <Grid cols="4" rowGap="1" colGap="4">
                 {#each [1, 2, 3, 4, 5, 6, 7, 8] as n (n)}
@@ -34,7 +34,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" fullWidth class="p-2 dashed">
+        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>autoFill="140px" gap="3" — responsive without media query</code>
             <Grid autoFill="140px" gap="3">
                 {#each ['A', 'B', 'C', 'D', 'E'] as l (l)}
@@ -45,7 +45,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" fullWidth class="p-2 dashed">
+        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>autoFit="140px" gap="3" — The empty columns are collapsing.</code>
             <Grid autoFit="140px" gap="3">
                 {#each ['X', 'Y'] as l (l)}
@@ -56,7 +56,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" fullWidth class="p-2 dashed">
+        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>areas — named layout header / sidebar / main / footer</code>
             <Grid
                 cols="200px 1fr"
@@ -72,7 +72,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" fullWidth class="p-2 dashed">
+        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>autoRows="120px" — uniform height across all implicit lines</code>
             <Grid cols="3" gap="3" autoRows="120px">
                 {#each ['Court', 'Un contenu beaucoup plus long qui dépasse', 'Medium', 'Court', 'Assez long aussi', 'Ok'] as item, i (i)}
@@ -81,7 +81,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" fullWidth class="p-2 dashed">
+        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>flow="dense" — fills the gaps with items of varying sizes</code>
             <Grid cols="3" gap="2" flow="dense" autoRows="60px" class="grid-dense-demo">
                 <Panel variant="soft" size="2" class="span-2">Large (span 2)</Panel>
@@ -94,7 +94,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" fullWidth class="p-2 dashed">
+        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>align="center" — content vertically centered in each cell</code>
             <Grid cols="3" gap="3" autoRows="100px" align="center">
                 {#each ['Top aligné au centre', 'Moi aussi', '✓'] as item (item)}
@@ -105,7 +105,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" fullWidth class="p-2 dashed">
+        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>Grid imbriqués — props isolation</code>
             <Grid cols="2" gap="3">
                 {#each [1, 2] as n (n)}

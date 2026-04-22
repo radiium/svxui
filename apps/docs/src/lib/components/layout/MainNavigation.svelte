@@ -11,7 +11,7 @@
     let { navigation, onSelect }: Props = $props();
 </script>
 
-<Flex justify="start" as="nav" direction="column" fullWidth aria-label="Primary">
+<Flex justify="start" as="nav" direction="column" width="100%" aria-label="Primary">
     {#each navigation as section, i (i)}
         <section class="p-0 mb-5">
             {#if section.title}

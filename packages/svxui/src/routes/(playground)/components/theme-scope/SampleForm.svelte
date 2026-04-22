@@ -13,13 +13,13 @@
 </script>
 
 <Panel variant="soft" outline fullWidth>
-    <Flex justify="start" direction="column" gap="5" fullWidth>
-        <Flex justify="start" as="form" direction="column" gap="3" fullWidth>
-            <Flex justify="start" as="label" direction="column" gap="1" fullWidth>
+    <Flex justify="start" direction="column" gap="5" width="100%">
+        <Flex justify="start" as="form" direction="column" gap="3" width="100%">
+            <Flex justify="start" as="label" direction="column" gap="1" width="100%">
                 <Text>login</Text>
                 <Input name="login" />
             </Flex>
-            <Flex justify="start" as="label" direction="column" gap="1" fullWidth>
+            <Flex justify="start" as="label" direction="column" gap="1" width="100%">
                 <Text>password</Text>
                 <Input name="password" type="password" />
             </Flex>

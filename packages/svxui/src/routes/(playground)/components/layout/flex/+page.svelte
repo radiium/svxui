@@ -8,16 +8,16 @@
 <Text muted size="2">Flex container with direction, gap, justify, align</Text>
 
 <Playground>
-    <Flex justify="start" direction="column" gap="3" fullWidth>
+    <Flex justify="start" direction="column" gap="3" width="100%">
         <code>direction="row" justify="between" gap="2"</code>
-        <Flex direction="row" justify="between" gap="2" class="p-2 dashed">
+        <Flex direction="row" justify="between" gap="2" p="2" class="dashed">
             {#each ['Item 1', 'Item 2', 'Item 3'] as item (item)}
                 <Panel variant="soft" size="2">{item}</Panel>
             {/each}
         </Flex>
 
         <code>direction="column" align="center" gap="5"</code>
-        <Flex justify="start" direction="column" align="center" gap="5" class="p-2 dashed">
+        <Flex justify="start" direction="column" align="center" gap="5" p="2" class="dashed">
             {#each ['Alpha', 'Beta'] as item (item)}
                 <Panel variant="soft" size="2">{item}</Panel>
             {/each}
