@@ -39,7 +39,7 @@ export type BoxFlexValue = '0' | '1' | (string & {});
  * Box model props shared across layout container components (Box, Flex, Grid).
  * Covers spacing, sizing, flex-child behaviour, and overflow.
  */
-export interface BoxModelProps {
+export type BoxModelProps = {
     /**
      * Padding on all sides.
      */
@@ -144,7 +144,7 @@ export interface BoxModelProps {
      * CSS `overflow-y` value.
      */
     overflowY?: BoxOverflow;
-}
+};
 
 /**
  * Horizontal/vertical alignment values.

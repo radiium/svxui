@@ -33,18 +33,18 @@ export class SourceFileContext {
      * Resolve a module specifier to a source file
      */
     resolveModuleSpecifier(fromFile: SourceFile, moduleSpecifier: string): SourceFile | undefined {
-        // Handle relative imports
+        // Handle relative imports (.js extension is used in ESM source but files are .ts)
         if (moduleSpecifier.startsWith('.')) {
             const currentDir = fromFile.getDirectoryPath();
-            const resolvedPath = path.resolve(currentDir, moduleSpecifier);
+            const resolvedPath = path.resolve(currentDir, moduleSpecifier.replace(/\.js$/, ''));
             return (
                 this.project.getSourceFile(resolvedPath + '.ts') || this.project.getSourceFile(resolvedPath)
             );
         }
 
-        // Handle $lib alias
+        // Handle $lib alias (.js extension is used in ESM source but files are .ts)
         if (moduleSpecifier.startsWith('$lib/')) {
-            const libPath = moduleSpecifier.replace('$lib/', 'src/lib/');
+            const libPath = moduleSpecifier.replace('$lib/', 'src/lib/').replace(/\.js$/, '');
             for (const sf of this.project.getSourceFiles()) {
                 if (sf.getFilePath().includes(libPath)) {
                     return sf;
