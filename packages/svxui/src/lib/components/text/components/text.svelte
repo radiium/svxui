@@ -29,6 +29,7 @@
             [`text-transform-${transform}`]: transform,
             [`text-wrap-${wrap}`]: wrap,
             [`text-underline-${underline}`]: underline,
+            'text-underline': underline,
             'text-link': as === 'a',
             'text-truncate': truncate,
             'text-muted': muted,
@@ -183,20 +184,21 @@
             pointer-events: none;
         }
 
-        /* Link Underline */
+        /* Link */
         &.text-link {
+            &:not(.text-disabled) {
+                cursor: pointer;
+            }
+        }
+
+        /* Underline */
+        &.text-underline:not(.text-disabled) {
             --link-text-decoration-line: none;
             text-decoration-line: var(--link-text-decoration-line);
             text-decoration-thickness: min(2px, max(1px, 0.05em));
             text-underline-offset: calc(0.025em + 2px);
             text-decoration-color: var(--underline-color);
 
-            &:not(.text-disabled) {
-                cursor: pointer;
-            }
-        }
-
-        &:not(.text-disabled) {
             &.text-underline-auto:hover,
             &.text-underline-hover:hover,
             &.text-underline-always {
