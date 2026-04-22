@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { InputGroup, InputGroupItem, Input } from 'svxui';
+    import { Input, InputGroup, InputGroupItem } from 'svxui';
 </script>
 
 <InputGroup>
-    <InputGroupItem class="px-3">www</InputGroupItem>
+    <InputGroupItem style="padding-inline: var(--space-3)">www</InputGroupItem>
     <Input placeholder="Website" />
 </InputGroup>

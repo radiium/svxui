@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, Cluster, Grid, Panel, Sidebar, Stack, Text } from 'svxui';
+    import { Badge, Box, Cluster, Grid, Panel, Separator, Sidebar, Stack, Text } from 'svxui';
 
     const navItems = ['Dashboard', 'Projects', 'Team', 'Settings'];
     const cards = ['Report Q1', 'Active tasks', 'Team members'];
@@ -7,7 +7,7 @@
 
 <Sidebar sideWidth="160px" contentMin="60%" gap="4" style="width: 100%; min-height: 280px;">
     {#snippet sidebar()}
-        <Panel variant="soft" size="3" style="height: 100%;">
+        <Panel variant="soft" outline size="3" style="height: 100%;">
             <Stack gap="3">
                 <Text size="5">App</Text>
                 <Stack gap="1">
@@ -24,6 +24,8 @@
             <Text size="6">Dashboard</Text>
             <Badge variant="soft" size="2">v2.0</Badge>
         </Cluster>
+
+        <Separator size="4" />
 
         <Grid autoFill="140px" gap="3">
             {#each cards as card (card)}

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { InputGroup, Input, InputRange } from 'svxui';
+    import { Input, InputGroup, InputRange } from 'svxui';
 
     let value = $state();
 </script>

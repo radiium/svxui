@@ -11,10 +11,10 @@
     ];
 </script>
 
-<Grid autoFill="160px" gap="3" style="width: 100%;">
+<Grid autoFill="160px" gap="3" fullWidth>
     {#each items as item (item.label)}
-        <Panel variant="soft" size="3">
-            <Flex justify="start" direction="column" gap="1">
+        <Panel outline size="3">
+            <Flex direction="column" align="center" gap="1">
                 <Text size="2" muted>{item.label}</Text>
                 <Text size="7">{item.count}</Text>
             </Flex>

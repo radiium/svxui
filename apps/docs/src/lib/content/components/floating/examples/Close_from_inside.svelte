@@ -12,8 +12,8 @@
     {/snippet}
     {#snippet content()}
         <Flex justify="start" align="center" gap="3">
-            <div>Floating content</div>
-            <Button size="1" radius="full" variant="outline" iconOnly onclick={close}>x</Button>
+            Floating content
+            <Button size="1" radius="full" variant="outline" iconOnly onclick={close}>X</Button>
         </Flex>
     {/snippet}
 </Floating>

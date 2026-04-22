@@ -2,8 +2,8 @@
     import { Select, SelectOptgroup, SelectOption } from 'svxui';
 
     const groups = [
-        { label: 'group 1', options: ['option1', 'option2', 'option3'] },
-        { label: 'group 2', options: ['option4', 'option5', 'option6'] }
+        { label: 'group 1', options: ['option 1', 'option 2', 'option 3'] },
+        { label: 'group 2', options: ['option 4', 'option 5', 'option 6'] }
     ];
 </script>
 

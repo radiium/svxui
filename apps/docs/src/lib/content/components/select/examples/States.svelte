@@ -15,7 +15,7 @@
     {/each}
 </Select>
 
-<div class="w-100"></div>
+<div style="width: 100%"></div>
 
 <Select multiple>
     {#each options as opt (opt)}

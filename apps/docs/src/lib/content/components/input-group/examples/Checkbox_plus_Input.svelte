@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { InputGroup, InputGroupItem, Checkbox, Input } from 'svxui';
+    import { Checkbox, Input, InputGroup, InputGroupItem } from 'svxui';
 </script>
 
 <InputGroup>
-    <InputGroupItem class="px-3">
+    <InputGroupItem style="padding-inline: var(--space-3)">
         <Checkbox />
     </InputGroupItem>
     <Input />

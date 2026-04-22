@@ -11,6 +11,6 @@
         <Button onmouseenter={open} onmouseleave={close}>Hover</Button>
     {/snippet}
     {#snippet content()}
-        <div>Floating content</div>
+        Floating content
     {/snippet}
 </Floating>

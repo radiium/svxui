@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { InputGroup, Input, Select, SelectOption } from 'svxui';
+    import { Input, InputGroup, Select, SelectOption } from 'svxui';
 
     const options = ['option 1', 'option 2'];
 </script>

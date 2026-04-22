@@ -5,11 +5,11 @@
     const open = () => (isOpen = true);
 </script>
 
-<Floating bind:isOpen closeOnOutsideClick arrow offset={10}>
+<Floating bind:isOpen outline autoUpdate closeOnOutsideClick arrow offset={10}>
     {#snippet trigger()}
         <Button onclick={open}>Open</Button>
     {/snippet}
     {#snippet content()}
-        <div>Floating content</div>
+        Floating content
     {/snippet}
 </Floating>

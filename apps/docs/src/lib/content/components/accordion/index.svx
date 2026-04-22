@@ -31,7 +31,7 @@ category: components
 
 
                 <!-- Accordion item wrapper -->
-                <div class="" {...item.itemAttrs}>
+                <div {...item.itemAttrs}>
 
                     <!-- Heading -->
                     <div {...item.headingAttrs}>
@@ -57,8 +57,6 @@ category: components
 ```
 
 ## API Reference
-
-<!-- This type extends all properties from [AccordionBuilderOptions](/docs/builders/accordion#accordionbuilderoptions). -->
 
 <ApiReference category="components" names={['accordion']}/>
 

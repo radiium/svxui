@@ -7,7 +7,7 @@
         <Text size="2" muted>Stack — vertical list</Text>
         <Stack gap="2">
             {#each ['Item 1', 'Item 2', 'Item 3'] as item (item)}
-                <Panel variant="soft" size="2">{item}</Panel>
+                <Panel outline size="2">{item}</Panel>
             {/each}
         </Stack>
     </Flex>
@@ -25,7 +25,7 @@
         <Text size="2" muted>Grid — autoFill responsive</Text>
         <Grid autoFill="120px" gap="2">
             {#each ['A', 'B', 'C', 'D', 'E'] as item (item)}
-                <Panel variant="soft" size="2">
+                <Panel outline size="2">
                     <Flex align="center" justify="center">{item}</Flex>
                 </Panel>
             {/each}
@@ -36,7 +36,7 @@
         <Text size="2" muted>Switcher — row → column below threshold</Text>
         <Switcher threshold="480px" gap="2">
             {#each ['Panel A', 'Panel B', 'Panel C'] as label (label)}
-                <Panel variant="soft" size="2">
+                <Panel outline size="2">
                     <Flex align="center" justify="center">{label}</Flex>
                 </Panel>
             {/each}
@@ -47,11 +47,11 @@
         <Text size="2" muted>Sidebar — fixed side + fluid content</Text>
         <Sidebar sideWidth="140px" contentMin="55%" gap="3">
             {#snippet sidebar()}
-                <Panel variant="soft" size="3" style="min-height: 60px;">
+                <Panel outline size="3" fullHeight>
                     <Text size="2">Sidebar</Text>
                 </Panel>
             {/snippet}
-            <Panel variant="clear" outline size="3" style="min-height: 60px;">
+            <Panel variant="clear" outline size="3" fullHeight>
                 <Text size="2">Content</Text>
             </Panel>
         </Sidebar>

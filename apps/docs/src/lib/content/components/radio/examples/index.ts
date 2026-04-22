@@ -1,9 +1,9 @@
-import Colors, { source as ColorsSrc } from './Colors.svelte?withSource';
-import Overview, { source as OverviewSrc } from './Overview.svelte?withSource';
 import type { ExamplesConfig } from '$lib/types';
+import Colors, { source as ColorsSrc } from './Colors.svelte?withSource';
+import Group, { source as GroupSrc } from './Group.svelte?withSource';
+import Overview, { source as OverviewSrc } from './Overview.svelte?withSource';
 import Sizes, { source as SizesSrc } from './Sizes.svelte?withSource';
 import States, { source as StatesSrc } from './States.svelte?withSource';
-import With_label, { source as With_labelSrc } from './With_label.svelte?withSource';
 
 export const examples: ExamplesConfig = {
     overview: {
@@ -27,9 +27,10 @@ export const examples: ExamplesConfig = {
             ...StatesSrc
         },
         {
-            title: 'With label',
-            Component: With_label,
-            ...With_labelSrc
+            title: 'Group',
+            Component: Group,
+            ...GroupSrc,
+            column: true
         }
     ]
 };

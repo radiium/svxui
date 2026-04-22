@@ -1,8 +1,8 @@
-import Form, { source as FormSrc } from './Form.svelte?withSource';
-import Card_list, { source as Card_listSrc } from './Card_list.svelte?withSource';
-import Overview, { source as OverviewSrc } from './Overview.svelte?withSource';
 import type { ExamplesConfig } from '$lib/types';
-import Wrap_rows, { source as Wrap_rowsSrc } from './Wrap_rows.svelte?withSource';
+import Cluster, { source as ClusterSrc } from './Cluster.svelte?withSource';
+import Cluster_flex_basis, { source as Cluster_flex_basisSrc } from './Cluster_flex_basis.svelte?withSource';
+import Overview, { source as OverviewSrc } from './Overview.svelte?withSource';
+import Stack, { source as StackSrc } from './Stack.svelte?withSource';
 
 export const examples: ExamplesConfig = {
     overview: {
@@ -11,19 +11,19 @@ export const examples: ExamplesConfig = {
     },
     items: [
         {
-            title: 'Form',
-            Component: Form,
-            ...FormSrc
+            title: 'Stack',
+            Component: Stack,
+            ...StackSrc
         },
         {
-            title: 'Card list',
-            Component: Card_list,
-            ...Card_listSrc
+            title: 'Cluster',
+            Component: Cluster,
+            ...ClusterSrc
         },
         {
-            title: 'Wrap rows',
-            Component: Wrap_rows,
-            ...Wrap_rowsSrc
+            title: 'Cluster with flex-basis',
+            Component: Cluster_flex_basis,
+            ...Cluster_flex_basisSrc
         }
     ]
 };

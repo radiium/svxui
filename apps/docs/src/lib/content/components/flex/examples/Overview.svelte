@@ -2,8 +2,8 @@
     import { Flex, Panel } from 'svxui';
 </script>
 
-<Flex justify="start">
-    <Panel variant="clear" outline>1</Panel>
-    <Panel variant="clear" outline>2</Panel>
-    <Panel variant="clear" outline>3</Panel>
+<Flex gap="3">
+    <Panel outline>1</Panel>
+    <Panel outline>2</Panel>
+    <Panel outline>3</Panel>
 </Flex>

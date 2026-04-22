@@ -8,7 +8,7 @@
 </script>
 
 <Flex justify="start" direction="column" gap="3" class="settings-content">
-    <Flex justify="start" gap="2" direction="column" class="w-100">
+    <Flex justify="start" gap="2" direction="column" fullWidth>
         <Text size="4" weight="medium">Theme strategy:</Text>
         <Flex justify="start" gap="2" wrap="wrap">
             {#each strategies as item (item)}
@@ -24,7 +24,7 @@
         </Flex>
     </Flex>
 
-    <Flex justify="start" gap="2" direction="column" class="w-100">
+    <Flex justify="start" gap="2" direction="column" fullWidth>
         <Text size="4" weight="medium">Radius:</Text>
         <Flex justify="start" gap="2" wrap="wrap">
             {#each radius as item (item)}

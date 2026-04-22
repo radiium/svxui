@@ -2,4 +2,4 @@
     import { InputNumber } from 'svxui';
 </script>
 
-<InputNumber />
+<InputNumber min={-100} max={100} step={1} />

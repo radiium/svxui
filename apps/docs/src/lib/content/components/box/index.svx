@@ -1,6 +1,6 @@
 ---
 title: Box
-description: Conteneur générique pour appliquer du padding, margin, dimensions et overflow via des props typées.
+description: Generic container for applying padding, margin, dimensions and overflow via typed props.
 category: components
 ---
 

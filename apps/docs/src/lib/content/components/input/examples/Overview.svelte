@@ -2,4 +2,4 @@
     import { Input } from 'svxui';
 </script>
 
-<Input />
+<Input placeholder="type here..." />

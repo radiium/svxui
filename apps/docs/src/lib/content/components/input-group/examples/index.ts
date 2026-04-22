@@ -1,3 +1,4 @@
+import type { ExamplesConfig } from '$lib/types';
 import Checkbox_plus_Input, {
     source as Checkbox_plus_InputSrc
 } from './Checkbox_plus_Input.svelte?withSource';
@@ -9,7 +10,6 @@ import Input_plus_Select, { source as Input_plus_SelectSrc } from './Input_plus_
 import Input_plus_Text, { source as Input_plus_TextSrc } from './Input_plus_Text.svelte?withSource';
 import Input_sizes, { source as Input_sizesSrc } from './Input_sizes.svelte?withSource';
 import Overview, { source as OverviewSrc } from './Overview.svelte?withSource';
-import type { ExamplesConfig } from '$lib/types';
 import Toggle, { source as ToggleSrc } from './Toggle.svelte?withSource';
 
 export const examples: ExamplesConfig = {

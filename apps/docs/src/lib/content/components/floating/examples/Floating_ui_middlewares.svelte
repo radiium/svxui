@@ -10,6 +10,6 @@
         <Button onclick={open}>Open</Button>
     {/snippet}
     {#snippet content()}
-        <div>Floating content</div>
+        Floating content
     {/snippet}
 </Floating>

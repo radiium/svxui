@@ -4,49 +4,49 @@
     const tabs = [
         {
             id: '1',
-            title: 'Title 1',
-            content: 'Content 1'
+            label: 'Tab 1',
+            description: 'Tab content 1'
         },
         {
             id: '2',
-            title: 'Title 2',
-            content: 'Content 2'
+            label: 'Tab 2',
+            description: 'Tab content 2'
         },
         {
             id: '3',
-            title: 'Title 3',
-            content: 'Content 3'
+            label: 'Tab 3',
+            description: 'Tab content 3'
         },
         {
             id: '4',
-            title: 'Title 4',
-            content: 'Content 4',
+            label: 'Tab 4',
+            description: 'Tab content 4',
             disabled: true
         }
     ];
 </script>
 
-<Tabs value={tabs[0].id} orientation="vertical">
+<Tabs value={tabs[0].id} orientation="vertical" activateOnFocus loop>
     {#snippet children(root)}
         <!-- Tabs root -->
         <Flex justify="start" gap="3" {...root.rootAttrs}>
             <!-- Tabs list -->
-            <Flex justify="start" direction="column" gap="3" {...root.triggerListAttrs}>
-                {#each tabs as tab (tab.id)}
+            <Flex justify="start" direction="column" gap="1" {...root.triggerListAttrs}>
+                {#each tabs as { id, label, disabled } (id)}
                     <!-- Tabs trigger -->
-                    {@const trigger = root.getTrigger(tab.id, { id: tab.id, disabled: tab.disabled })}
-                    <Button variant={trigger.active ? 'soft' : 'outline'} {...trigger.attrs}>
-                        {tab.title}
+                    {@const trigger = root.getTrigger(id, { disabled: disabled })}
+                    <Button variant={trigger.active ? 'soft' : 'clear'} {...trigger.attrs}>
+                        {label}
                     </Button>
                 {/each}
             </Flex>
 
-            {#each tabs as tab (tab.id)}
+            {#each tabs as { id, description, disabled } (id)}
                 <!-- Tabs content -->
-                {@const content = root.getContent(tab.id, { id: tab.id, disabled: tab.disabled })}
+                {@const content = root.getContent(id, { disabled: disabled })}
                 {#if content.active}
                     <Panel variant="clear" outline {...content.attrs} style="width: 250px;">
-                        {tab.content}
+                        {description}
                     </Panel>
                 {/if}
             {/each}

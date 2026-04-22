@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { InputGroup, Button, Input } from 'svxui';
+    import { Button, Input, InputGroup } from 'svxui';
 </script>
 
 <InputGroup>
