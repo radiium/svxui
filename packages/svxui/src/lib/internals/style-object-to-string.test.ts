@@ -49,9 +49,9 @@ describe('styleObjectToString', () => {
         expect(result).toBe('display: block;');
     });
 
-    it('returns an empty string for an empty object', () => {
+    it('returns undefined for an empty object', () => {
         const result = styleObjectToString({});
 
-        expect(result).toBe('');
+        expect(result).toBeUndefined();
     });
 });

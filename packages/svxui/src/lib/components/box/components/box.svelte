@@ -1,5 +1,6 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { BoxProps } from '../types.js';
 
@@ -37,15 +38,8 @@
         ...rest
     }: BoxProps<ElementTag> = $props();
 
-    function toStyle(props: Record<string, string | undefined>): string | undefined {
-        const parts = Object.entries(props)
-            .filter((e): e is [string, string] => e[1] !== undefined && e[1] !== '')
-            .map(([k, v]) => `${k}: ${v}`);
-        return parts.length > 0 ? parts.join('; ') + ';' : undefined;
-    }
-
     let cssStyle = $derived.by(() => {
-        const boxStyle = toStyle({
+        const boxStyle = styleObjectToString({
             display,
             'padding-top': resolveSpace(pt ?? py ?? p),
             'padding-right': resolveSpace(pr ?? px ?? p),

@@ -79,6 +79,6 @@ export type FloatingContentAttributes = {
     readonly 'data-state': 'open' | 'closed';
     readonly 'data-side': FloatingSide | undefined;
     readonly 'data-align': FloatingAlignment | undefined;
-    readonly style: string;
+    readonly style: string | undefined;
     readonly [key: string]: unknown;
 };

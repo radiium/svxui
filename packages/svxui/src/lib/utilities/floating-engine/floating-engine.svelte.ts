@@ -60,7 +60,7 @@ export class FloatingEngine {
     /**
      * Computed style as CSS string
      */
-    get style(): string {
+    get style(): string | undefined {
         return this.#style;
     }
 
