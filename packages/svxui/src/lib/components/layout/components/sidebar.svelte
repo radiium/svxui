@@ -1,6 +1,6 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
-    import { cssVar } from '$lib/internals/css-var.js';
     import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { LayoutSpacing } from '$lib/shared.types.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { SidebarProps } from '../types.js';
@@ -32,17 +32,15 @@
     ]);
 
     // CSS vars carry the computed values to the scoped CSS rules
-    let cssStyle = $derived.by(
-        () =>
-            [
-                cssVar('--sidebar-width', sideWidth),
-                cssVar('--content-min', contentMin),
-                cssVar('--sidebar-gap', resolvedGap),
-                rest.style as string | undefined
-            ]
-                .filter(Boolean)
-                .join('; ') || undefined
-    );
+    let cssStyle = $derived.by(() => {
+        const allStyles = styleObjectToString({
+            '--sidebar-width': sideWidth,
+            '--content-min': contentMin,
+            '--sidebar-gap': resolvedGap
+        });
+        const callerStyle = rest.style as string | undefined;
+        return [allStyles, callerStyle].filter(Boolean).join(' ') || undefined;
+    });
 </script>
 
 <!--

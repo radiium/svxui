@@ -1,6 +1,7 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
-    import { cssVar } from '$lib/internals/css-var.js';
+    import { resolveBoxModel } from '$lib/internals/resolve-box-model.js';
     import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { FlexAlign, FlexJustify, FlexProps } from '../types.js';
 
@@ -39,11 +40,38 @@
         colGap = undefined,
         fullWidth = false,
         fullHeight = false,
+        // BoxModelProps
+        p = undefined,
+        px = undefined,
+        py = undefined,
+        pt = undefined,
+        pr = undefined,
+        pb = undefined,
+        pl = undefined,
+        m = undefined,
+        mx = undefined,
+        my = undefined,
+        mt = undefined,
+        mr = undefined,
+        mb = undefined,
+        ml = undefined,
+        width = undefined,
+        maxWidth = undefined,
+        minWidth = undefined,
+        height = undefined,
+        maxHeight = undefined,
+        minHeight = undefined,
+        flexBasis = undefined,
+        flexGrow = undefined,
+        flexShrink = undefined,
+        overflow = undefined,
+        overflowX = undefined,
+        overflowY = undefined,
         children,
         ...rest
     }: FlexProps<ElementTag> = $props();
 
-    // flag classes activate the matching CSS rule
+    // flag classes activate the matching CSS rule — prevents inheritance between nested Flex
     let cssClass = $derived([
         'flex',
         rest.class,
@@ -63,23 +91,50 @@
     ]);
 
     // CSS vars carry the computed values to the scoped CSS rules
-    let cssStyle = $derived.by(
-        () =>
-            [
-                cssVar('--flex-display', display !== 'flex' ? display : undefined),
-                cssVar('--flex-direction', direction),
-                cssVar('--flex-justify', justify ? JUSTIFY_MAP[justify] : undefined),
-                cssVar('--flex-align', align ? ALIGN_MAP[align] : undefined),
-                cssVar('--flex-align-content', alignContent ? ALIGN_MAP[alignContent] : undefined),
-                cssVar('--flex-wrap', wrap),
-                cssVar('--flex-gap', resolveSpace(gap)),
-                cssVar('--flex-row-gap', resolveSpace(rowGap)),
-                cssVar('--flex-col-gap', resolveSpace(colGap)),
-                rest.style as string | undefined
-            ]
-                .filter(Boolean)
-                .join('; ') || undefined
-    );
+    // Box model props are applied as inline styles alongside the CSS vars
+    let cssStyle = $derived.by(() => {
+        const allStyles = styleObjectToString({
+            '--flex-display': display !== 'flex' ? display : undefined,
+            '--flex-direction': direction,
+            '--flex-justify': justify ? JUSTIFY_MAP[justify] : undefined,
+            '--flex-align': align ? ALIGN_MAP[align] : undefined,
+            '--flex-align-content': alignContent ? ALIGN_MAP[alignContent] : undefined,
+            '--flex-wrap': wrap,
+            '--flex-gap': resolveSpace(gap),
+            '--flex-row-gap': resolveSpace(rowGap),
+            '--flex-col-gap': resolveSpace(colGap),
+            ...resolveBoxModel({
+                p,
+                px,
+                py,
+                pt,
+                pr,
+                pb,
+                pl,
+                m,
+                mx,
+                my,
+                mt,
+                mr,
+                mb,
+                ml,
+                width,
+                maxWidth,
+                minWidth,
+                height,
+                maxHeight,
+                minHeight,
+                flexBasis,
+                flexGrow,
+                flexShrink,
+                overflow,
+                overflowX,
+                overflowY
+            })
+        });
+        const callerStyle = rest.style as string | undefined;
+        return [allStyles, callerStyle].filter(Boolean).join(' ') || undefined;
+    });
 </script>
 
 <svelte:element this={as} {...rest} bind:this={ref} class={cssClass} style={cssStyle}>

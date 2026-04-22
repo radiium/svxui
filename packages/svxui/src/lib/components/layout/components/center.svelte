@@ -1,6 +1,6 @@
 <script lang="ts" generics="Tag extends keyof SvelteHTMLElements = 'div'">
-    import { cssVar } from '$lib/internals/css-var.js';
     import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { LayoutSpacing } from '$lib/shared.types.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { CenterProps } from '../types.js';
@@ -26,16 +26,14 @@
     ]);
 
     // CSS vars carry the computed values to the scoped CSS rules
-    let cssStyle = $derived.by(
-        () =>
-            [
-                cssVar('--center-max-width', maxWidth),
-                cssVar('--center-gutters', gutters ? resolveSpace(gutters) : undefined),
-                rest.style as string | undefined
-            ]
-                .filter(Boolean)
-                .join('; ') || undefined
-    );
+    let cssStyle = $derived.by(() => {
+        const allStyles = styleObjectToString({
+            '--center-max-width': maxWidth,
+            '--center-gutters': gutters ? resolveSpace(gutters) : undefined
+        });
+        const callerStyle = rest.style as string | undefined;
+        return [allStyles, callerStyle].filter(Boolean).join(' ') || undefined;
+    });
 </script>
 
 <!-- Center: horizontally centers content within a max-width constraint. -->

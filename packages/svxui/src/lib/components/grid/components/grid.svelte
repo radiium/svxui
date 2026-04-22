@@ -1,7 +1,8 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
-    import { cssVar } from '$lib/internals/css-var.js';
     import { isIntegerString } from '$lib/internals/is.js';
+    import { resolveBoxModel } from '$lib/internals/resolve-box-model.js';
     import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { GridProps } from '../types.js';
 
@@ -28,6 +29,33 @@
         align = undefined,
         fullWidth = false,
         fullHeight = false,
+        // BoxModelProps
+        p = undefined,
+        px = undefined,
+        py = undefined,
+        pt = undefined,
+        pr = undefined,
+        pb = undefined,
+        pl = undefined,
+        m = undefined,
+        mx = undefined,
+        my = undefined,
+        mt = undefined,
+        mr = undefined,
+        mb = undefined,
+        ml = undefined,
+        width = undefined,
+        maxWidth = undefined,
+        minWidth = undefined,
+        height = undefined,
+        maxHeight = undefined,
+        minHeight = undefined,
+        flexBasis = undefined,
+        flexGrow = undefined,
+        flexShrink = undefined,
+        overflow = undefined,
+        overflowX = undefined,
+        overflowY = undefined,
         children,
         ...rest
     }: GridProps<ElementTag> = $props();
@@ -68,24 +96,51 @@
     ]);
 
     // CSS vars carry the computed values to the scoped CSS rules
-    let cssStyle = $derived.by(
-        () =>
-            [
-                cssVar('--grid-display', display !== 'grid' ? display : undefined),
-                cssVar('--grid-cols', resolvedCols),
-                cssVar('--grid-rows', resolvedRows),
-                cssVar('--grid-areas', areas),
-                cssVar('--grid-gap', resolveSpace(gap)),
-                cssVar('--grid-row-gap', resolveSpace(rowGap)),
-                cssVar('--grid-col-gap', resolveSpace(colGap)),
-                cssVar('--grid-auto-rows', autoRows),
-                cssVar('--grid-flow', flow ? (FLOW_MAP[flow] ?? flow) : undefined),
-                cssVar('--grid-align', align),
-                rest.style as string | undefined
-            ]
-                .filter(Boolean)
-                .join('; ') || undefined
-    );
+    // Box model props are applied as inline styles alongside the CSS vars
+    let cssStyle = $derived.by(() => {
+        const allStyles = styleObjectToString({
+            '--grid-display': display !== 'grid' ? display : undefined,
+            '--grid-cols': resolvedCols,
+            '--grid-rows': resolvedRows,
+            '--grid-areas': areas,
+            '--grid-gap': resolveSpace(gap),
+            '--grid-row-gap': resolveSpace(rowGap),
+            '--grid-col-gap': resolveSpace(colGap),
+            '--grid-auto-rows': autoRows,
+            '--grid-flow': flow ? (FLOW_MAP[flow] ?? flow) : undefined,
+            '--grid-align': align,
+            ...resolveBoxModel({
+                p,
+                px,
+                py,
+                pt,
+                pr,
+                pb,
+                pl,
+                m,
+                mx,
+                my,
+                mt,
+                mr,
+                mb,
+                ml,
+                width,
+                maxWidth,
+                minWidth,
+                height,
+                maxHeight,
+                minHeight,
+                flexBasis,
+                flexGrow,
+                flexShrink,
+                overflow,
+                overflowX,
+                overflowY
+            })
+        });
+        const callerStyle = rest.style as string | undefined;
+        return [allStyles, callerStyle].filter(Boolean).join(' ') || undefined;
+    });
 </script>
 
 <svelte:element this={as} {...rest} bind:this={ref} class={cssClass} style={cssStyle}>

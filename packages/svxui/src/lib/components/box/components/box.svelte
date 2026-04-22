@@ -1,5 +1,5 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
-    import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import { resolveBoxModel } from '$lib/internals/resolve-box-model.js';
     import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { BoxProps } from '../types.js';
@@ -41,25 +41,34 @@
     let cssStyle = $derived.by(() => {
         const boxStyle = styleObjectToString({
             display,
-            'padding-top': resolveSpace(pt ?? py ?? p),
-            'padding-right': resolveSpace(pr ?? px ?? p),
-            'padding-bottom': resolveSpace(pb ?? py ?? p),
-            'padding-left': resolveSpace(pl ?? px ?? p),
-            'margin-top': resolveSpace(mt ?? my ?? m),
-            'margin-right': resolveSpace(mr ?? mx ?? m),
-            'margin-bottom': resolveSpace(mb ?? my ?? m),
-            'margin-left': resolveSpace(ml ?? mx ?? m),
-            width,
-            'max-width': maxWidth,
-            'min-width': minWidth,
-            height,
-            'max-height': maxHeight,
-            'min-height': minHeight,
-            'flex-basis': flexBasis,
-            'flex-grow': flexGrow,
-            'flex-shrink': flexShrink,
-            'overflow-x': overflowX ?? overflow,
-            'overflow-y': overflowY ?? overflow
+            ...resolveBoxModel({
+                p,
+                px,
+                py,
+                pt,
+                pr,
+                pb,
+                pl,
+                m,
+                mx,
+                my,
+                mt,
+                mr,
+                mb,
+                ml,
+                width,
+                maxWidth,
+                minWidth,
+                height,
+                maxHeight,
+                minHeight,
+                flexBasis,
+                flexGrow,
+                flexShrink,
+                overflow,
+                overflowX,
+                overflowY
+            })
         });
         const callerStyle = rest.style as string | undefined;
         return [boxStyle, callerStyle].filter(Boolean).join(' ') || undefined;

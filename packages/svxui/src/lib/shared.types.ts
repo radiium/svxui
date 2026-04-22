@@ -26,6 +26,127 @@ export type Radius = 'none' | 'small' | 'medium' | 'large' | 'full';
 export type LayoutSpacing = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | (string & {});
 
 /**
+ * CSS `overflow` values.
+ */
+export type BoxOverflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
+
+/**
+ * CSS flex child values (`flex-grow`, `flex-shrink`, `flex-basis`).
+ */
+export type BoxFlexValue = '0' | '1' | (string & {});
+
+/**
+ * Box model props shared across layout container components (Box, Flex, Grid).
+ * Covers spacing, sizing, flex-child behaviour, and overflow.
+ */
+export interface BoxModelProps {
+    /**
+     * Padding on all sides.
+     */
+    p?: LayoutSpacing;
+    /**
+     * Padding on the left and right sides.
+     */
+    px?: LayoutSpacing;
+    /**
+     * Padding on the top and bottom sides.
+     */
+    py?: LayoutSpacing;
+    /**
+     * Padding on the top side.
+     */
+    pt?: LayoutSpacing;
+    /**
+     * Padding on the right side.
+     */
+    pr?: LayoutSpacing;
+    /**
+     * Padding on the bottom side.
+     */
+    pb?: LayoutSpacing;
+    /**
+     * Padding on the left side.
+     */
+    pl?: LayoutSpacing;
+    /**
+     * Margin on all sides.
+     */
+    m?: LayoutSpacing;
+    /**
+     * Margin on the left and right sides.
+     */
+    mx?: LayoutSpacing;
+    /**
+     * Margin on the top and bottom sides.
+     */
+    my?: LayoutSpacing;
+    /**
+     * Margin on the top side.
+     */
+    mt?: LayoutSpacing;
+    /**
+     * Margin on the right side.
+     */
+    mr?: LayoutSpacing;
+    /**
+     * Margin on the bottom side.
+     */
+    mb?: LayoutSpacing;
+    /**
+     * Margin on the left side.
+     */
+    ml?: LayoutSpacing;
+    /**
+     * CSS `width` value.
+     */
+    width?: string;
+    /**
+     * CSS `max-width` value.
+     */
+    maxWidth?: string;
+    /**
+     * CSS `min-width` value.
+     */
+    minWidth?: string;
+    /**
+     * CSS `height` value.
+     */
+    height?: string;
+    /**
+     * CSS `max-height` value.
+     */
+    maxHeight?: string;
+    /**
+     * CSS `min-height` value.
+     */
+    minHeight?: string;
+    /**
+     * CSS `flex-basis` value.
+     */
+    flexBasis?: BoxFlexValue;
+    /**
+     * CSS `flex-grow` value.
+     */
+    flexGrow?: BoxFlexValue;
+    /**
+     * CSS `flex-shrink` value.
+     */
+    flexShrink?: BoxFlexValue;
+    /**
+     * CSS `overflow` value applied to both axes.
+     */
+    overflow?: BoxOverflow;
+    /**
+     * CSS `overflow-x` value.
+     */
+    overflowX?: BoxOverflow;
+    /**
+     * CSS `overflow-y` value.
+     */
+    overflowY?: BoxOverflow;
+}
+
+/**
  * Horizontal/vertical alignment values.
  */
 export type Align = 'start' | 'center' | 'end';
