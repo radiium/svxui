@@ -28,9 +28,13 @@ export type InputRangeProps = Omit<HTMLInputAttributes, 'color' | 'size' | 'type
      */
     radius?: Radius;
     /**
-     * InputRange full width
+     * InputRange full width (only when orientation is "horizontal")
      */
     fullWidth?: boolean;
+    /**
+     * InputRange full height  (only when orientation is "vertical")
+     */
+    fullHeight?: boolean;
     /**
      * InputRange orientation
      */

@@ -9,6 +9,7 @@
         radius = undefined,
         color = undefined,
         fullWidth = false,
+        fullHeight = false,
         orientation = 'horizontal',
         ...rest
     }: InputRangeProps = $props();
@@ -19,7 +20,8 @@
         {
             [`input-range-size-${size}`]: size,
             [`input-range-orientation-${orientation}`]: orientation,
-            'input-range-full-width': fullWidth
+            'input-range-full-width': fullWidth,
+            'input-range-full-height': fullHeight
         }
     ]);
 
@@ -172,7 +174,7 @@
             height: calc(var(--input-range-height) * 3);
             min-width: var(--input-range-height);
 
-            &.input-range-full-width {
+            &.input-range-full-height {
                 height: 100%;
             }
 
