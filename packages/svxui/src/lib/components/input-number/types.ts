@@ -11,7 +11,7 @@ export type InputNumberProps = Omit<InputGroupProps, 'ref' | 'children'> & {
     /**
      * Reference to the rendered DOM element.
      */
-    ref?: HTMLInputElement;
+    ref?: HTMLDivElement;
     /**
      * Input value
      */

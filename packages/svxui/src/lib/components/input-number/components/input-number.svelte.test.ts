@@ -312,7 +312,7 @@ describe('InputNumber component', () => {
 
     describe('Ref binding', () => {
         test('binds ref correctly', async () => {
-            let current: HTMLInputElement | undefined;
+            let current: HTMLDivElement | undefined;
 
             renderWithWrapper(InputNumber, {
                 get ref() {
@@ -325,7 +325,7 @@ describe('InputNumber component', () => {
 
             await Promise.resolve();
 
-            expect(current).toBeInstanceOf(HTMLInputElement);
+            expect(current).toBeInstanceOf(HTMLDivElement);
             expect(current?.classList.contains('input-number')).toBe(true);
         });
     });
