@@ -6,11 +6,5 @@ export { default as Stack } from './components/stack.svelte';
 export { default as Switcher } from './components/switcher.svelte';
 
 // Types
-export type {
-    CenterProps,
-    ClusterProps,
-    LayoutSpacing,
-    SidebarProps,
-    StackProps,
-    SwitcherProps
-} from './types.js';
+export type { LayoutSpacing } from '$lib/shared.types.js';
+export type { CenterProps, ClusterProps, SidebarProps, StackProps, SwitcherProps } from './types.js';

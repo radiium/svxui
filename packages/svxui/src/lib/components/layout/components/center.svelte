@@ -1,8 +1,9 @@
 <script lang="ts" generics="Tag extends keyof SvelteHTMLElements = 'div'">
-    import type { SvelteHTMLElements } from 'svelte/elements';
     import { cssVar } from '$lib/internals/css-var.js';
     import { resolveSpace } from '$lib/internals/resolve-space.js';
-    import type { CenterProps, LayoutSpacing } from '../types.js';
+    import type { LayoutSpacing } from '$lib/shared.types.js';
+    import type { SvelteHTMLElements } from 'svelte/elements';
+    import type { CenterProps } from '../types.js';
 
     let {
         as = 'div' as Tag,

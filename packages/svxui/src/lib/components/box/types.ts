@@ -1,7 +1,6 @@
-import type { RefFromHTMLAttributes } from '$lib/shared.types.js';
+import type { LayoutSpacing, RefFromHTMLAttributes } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
-import type { LayoutSpacing } from '../layout/types.js';
 
 // ─── BOX ────────────────────────────────────────────────────────
 

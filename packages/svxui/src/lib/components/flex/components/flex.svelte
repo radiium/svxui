@@ -1,28 +1,28 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
-    import type { SvelteHTMLElements } from 'svelte/elements';
     import { cssVar } from '$lib/internals/css-var.js';
     import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import type { SvelteHTMLElements } from 'svelte/elements';
     import type { FlexAlign, FlexJustify, FlexProps } from '../types.js';
 
     const ALIGN_MAP: Record<FlexAlign, string> = {
-        start:    'flex-start',
-        end:      'flex-end',
-        center:   'center',
+        start: 'flex-start',
+        end: 'flex-end',
+        center: 'center',
         baseline: 'baseline',
-        stretch:  'stretch',
-        normal:   'normal'
+        stretch: 'stretch',
+        normal: 'normal'
     };
 
     const JUSTIFY_MAP: Record<FlexJustify, string> = {
-        start:    'flex-start',
-        end:      'flex-end',
-        center:   'center',
-        around:   'space-around',
-        between:  'space-between',
-        evenly:   'space-evenly',
+        start: 'flex-start',
+        end: 'flex-end',
+        center: 'center',
+        around: 'space-around',
+        between: 'space-between',
+        evenly: 'space-evenly',
         baseline: 'baseline',
-        stretch:  'stretch',
-        normal:   'normal'
+        stretch: 'stretch',
+        normal: 'normal'
     };
 
     let {
@@ -48,17 +48,17 @@
         'flex',
         rest.class,
         {
-            'flex-display':       display !== 'flex',
-            'flex-direction':     direction !== undefined,
-            'flex-justify':       justify !== undefined,
-            'flex-align':         align !== undefined,
+            'flex-display': display !== 'flex',
+            'flex-direction': direction !== undefined,
+            'flex-justify': justify !== undefined,
+            'flex-align': align !== undefined,
             'flex-align-content': alignContent !== undefined,
-            'flex-wrap':          wrap !== undefined,
-            'flex-gap':           gap !== undefined,
-            'flex-row-gap':       rowGap !== undefined,
-            'flex-col-gap':       colGap !== undefined,
-            'flex-full-width':    fullWidth,
-            'flex-full-height':   fullHeight
+            'flex-wrap': wrap !== undefined,
+            'flex-gap': gap !== undefined,
+            'flex-row-gap': rowGap !== undefined,
+            'flex-col-gap': colGap !== undefined,
+            'flex-full-width': fullWidth,
+            'flex-full-height': fullHeight
         }
     ]);
 
@@ -66,15 +66,15 @@
     let cssStyle = $derived.by(
         () =>
             [
-                cssVar('--flex-display',        display !== 'flex' ? display : undefined),
-                cssVar('--flex-direction',       direction),
-                cssVar('--flex-justify',         justify ? JUSTIFY_MAP[justify] : undefined),
-                cssVar('--flex-align',           align ? ALIGN_MAP[align] : undefined),
-                cssVar('--flex-align-content',   alignContent ? ALIGN_MAP[alignContent] : undefined),
-                cssVar('--flex-wrap',            wrap),
-                cssVar('--flex-gap',             resolveSpace(gap)),
-                cssVar('--flex-row-gap',         resolveSpace(rowGap)),
-                cssVar('--flex-col-gap',         resolveSpace(colGap)),
+                cssVar('--flex-display', display !== 'flex' ? display : undefined),
+                cssVar('--flex-direction', direction),
+                cssVar('--flex-justify', justify ? JUSTIFY_MAP[justify] : undefined),
+                cssVar('--flex-align', align ? ALIGN_MAP[align] : undefined),
+                cssVar('--flex-align-content', alignContent ? ALIGN_MAP[alignContent] : undefined),
+                cssVar('--flex-wrap', wrap),
+                cssVar('--flex-gap', resolveSpace(gap)),
+                cssVar('--flex-row-gap', resolveSpace(rowGap)),
+                cssVar('--flex-col-gap', resolveSpace(colGap)),
                 rest.style as string | undefined
             ]
                 .filter(Boolean)

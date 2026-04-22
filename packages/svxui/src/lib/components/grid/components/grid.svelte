@@ -1,8 +1,8 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
-    import type { SvelteHTMLElements } from 'svelte/elements';
-    import { isIntegerString } from '$lib/internals/is.js';
     import { cssVar } from '$lib/internals/css-var.js';
+    import { isIntegerString } from '$lib/internals/is.js';
     import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import type { SvelteHTMLElements } from 'svelte/elements';
     import type { GridProps } from '../types.js';
 
     // grid-auto-flow uses "row dense" / "column dense" (space-separated), not hyphens

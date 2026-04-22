@@ -1,8 +1,9 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
-    import type { SvelteHTMLElements } from 'svelte/elements';
     import { cssVar } from '$lib/internals/css-var.js';
     import { resolveSpace } from '$lib/internals/resolve-space.js';
-    import type { LayoutSpacing, SwitcherProps } from '../types.js';
+    import type { LayoutSpacing } from '$lib/shared.types.js';
+    import type { SvelteHTMLElements } from 'svelte/elements';
+    import type { SwitcherProps } from '../types.js';
 
     let {
         as = 'div' as ElementTag,
