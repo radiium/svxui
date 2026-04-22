@@ -23,7 +23,7 @@ export type Radius = 'none' | 'small' | 'medium' | 'large' | 'full';
 /**
  * Spacing scale tokens. Accepts a numeric scale token (`'0'`–`'9'`) or an arbitrary CSS value.
  */
-export type LayoutSpacing = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | string;
+export type LayoutSpacing = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | (string & {});
 
 /**
  * Horizontal/vertical alignment values.
