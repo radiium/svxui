@@ -26,6 +26,8 @@
         autoRows = undefined,
         flow = undefined,
         align = undefined,
+        fullWidth = false,
+        fullHeight = false,
         children,
         ...rest
     }: GridProps<ElementTag> = $props();
@@ -59,7 +61,9 @@
             'grid-col-gap': colGap !== undefined,
             'grid-auto-rows': autoRows !== undefined,
             'grid-flow': flow !== undefined,
-            'grid-align': align !== undefined
+            'grid-align': align !== undefined,
+            'grid-full-width': fullWidth,
+            'grid-full-height': fullHeight
         }
     ]);
 
@@ -122,6 +126,12 @@
         }
         &.grid-align {
             align-items: var(--grid-align);
+        }
+        &.grid-full-width {
+            width: 100%;
+        }
+        &.grid-full-height {
+            height: 100%;
         }
     }
 </style>
