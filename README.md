@@ -8,8 +8,9 @@ A modern alternative Svelte 5 component library
 
 Svxui is a Svelte 5 component library inspired by the design system and DX of [@radix-ui/themes](https://www.radix-ui.com), powered by the [Radix color system](https://www.radix-ui.com/colors). It takes a prop-driven approach to customization — for those who'd rather not count utility classes for a living.
 
-The library is organized into four layers, from ready-to-use to fully custom:
+The library is organized into five layers, from ready-to-use to fully custom:
 
+- **Layouts** — Composable layout primitives (Box, Flex, Grid, Center, Sidebar, Switcher)
 - **Components** — Pre-built, styled UI components
 - **Builders** — Headless class-based state managers to build your own components
 - **Attachments** — Composable Svelte 5 attachments for common behaviors

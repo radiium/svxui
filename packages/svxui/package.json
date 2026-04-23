@@ -75,45 +75,35 @@
         "./styles/colors/*": {
             "default": "./dist/styles/colors/*"
         },
-        "./attachments": {
-            "types": "./dist/attachments/index.d.ts",
-            "svelte": "./dist/attachments/index.js",
-            "default": "./dist/attachments/index.js"
+        "./layouts/box": {
+            "types": "./dist/layouts/box/index.d.ts",
+            "svelte": "./dist/layouts/box/index.js",
+            "default": "./dist/layouts/box/index.js"
         },
-        "./attachments/clickoutside": {
-            "types": "./dist/attachments/clickoutside/index.d.ts",
-            "svelte": "./dist/attachments/clickoutside/index.js",
-            "default": "./dist/attachments/clickoutside/index.js"
+        "./layouts/center": {
+            "types": "./dist/layouts/center/index.d.ts",
+            "svelte": "./dist/layouts/center/index.js",
+            "default": "./dist/layouts/center/index.js"
         },
-        "./attachments/focustrap": {
-            "types": "./dist/attachments/focustrap/index.d.ts",
-            "svelte": "./dist/attachments/focustrap/index.js",
-            "default": "./dist/attachments/focustrap/index.js"
+        "./layouts/flex": {
+            "types": "./dist/layouts/flex/index.d.ts",
+            "svelte": "./dist/layouts/flex/index.js",
+            "default": "./dist/layouts/flex/index.js"
         },
-        "./attachments/longpress": {
-            "types": "./dist/attachments/longpress/index.d.ts",
-            "svelte": "./dist/attachments/longpress/index.js",
-            "default": "./dist/attachments/longpress/index.js"
+        "./layouts/grid": {
+            "types": "./dist/layouts/grid/index.d.ts",
+            "svelte": "./dist/layouts/grid/index.js",
+            "default": "./dist/layouts/grid/index.js"
         },
-        "./attachments/portal": {
-            "types": "./dist/attachments/portal/index.d.ts",
-            "svelte": "./dist/attachments/portal/index.js",
-            "default": "./dist/attachments/portal/index.js"
+        "./layouts/sidebar": {
+            "types": "./dist/layouts/sidebar/index.d.ts",
+            "svelte": "./dist/layouts/sidebar/index.js",
+            "default": "./dist/layouts/sidebar/index.js"
         },
-        "./attachments/rovingfocus": {
-            "types": "./dist/attachments/rovingfocus/index.d.ts",
-            "svelte": "./dist/attachments/rovingfocus/index.js",
-            "default": "./dist/attachments/rovingfocus/index.js"
-        },
-        "./attachments/scrolllock": {
-            "types": "./dist/attachments/scrolllock/index.d.ts",
-            "svelte": "./dist/attachments/scrolllock/index.js",
-            "default": "./dist/attachments/scrolllock/index.js"
-        },
-        "./components": {
-            "types": "./dist/components/index.d.ts",
-            "svelte": "./dist/components/index.js",
-            "default": "./dist/components/index.js"
+        "./layouts/switcher": {
+            "types": "./dist/layouts/switcher/index.d.ts",
+            "svelte": "./dist/layouts/switcher/index.js",
+            "default": "./dist/layouts/switcher/index.js"
         },
         "./components/accordion": {
             "types": "./dist/components/accordion/index.d.ts",
@@ -124,11 +114,6 @@
             "types": "./dist/components/badge/index.d.ts",
             "svelte": "./dist/components/badge/index.js",
             "default": "./dist/components/badge/index.js"
-        },
-        "./components/box": {
-            "types": "./dist/components/box/index.d.ts",
-            "svelte": "./dist/components/box/index.js",
-            "default": "./dist/components/box/index.js"
         },
         "./components/button": {
             "types": "./dist/components/button/index.d.ts",
@@ -145,20 +130,10 @@
             "svelte": "./dist/components/dialog/index.js",
             "default": "./dist/components/dialog/index.js"
         },
-        "./components/flex": {
-            "types": "./dist/components/flex/index.d.ts",
-            "svelte": "./dist/components/flex/index.js",
-            "default": "./dist/components/flex/index.js"
-        },
         "./components/floating": {
             "types": "./dist/components/floating/index.d.ts",
             "svelte": "./dist/components/floating/index.js",
             "default": "./dist/components/floating/index.js"
-        },
-        "./components/grid": {
-            "types": "./dist/components/grid/index.d.ts",
-            "svelte": "./dist/components/grid/index.js",
-            "default": "./dist/components/grid/index.js"
         },
         "./components/input": {
             "types": "./dist/components/input/index.d.ts",
@@ -179,11 +154,6 @@
             "types": "./dist/components/input-range/index.d.ts",
             "svelte": "./dist/components/input-range/index.js",
             "default": "./dist/components/input-range/index.js"
-        },
-        "./components/layout": {
-            "types": "./dist/components/layout/index.d.ts",
-            "svelte": "./dist/components/layout/index.js",
-            "default": "./dist/components/layout/index.js"
         },
         "./components/listbox": {
             "types": "./dist/components/listbox/index.d.ts",
@@ -240,11 +210,6 @@
             "svelte": "./dist/components/theme/index.js",
             "default": "./dist/components/theme/index.js"
         },
-        "./builders": {
-            "types": "./dist/builders/index.d.ts",
-            "svelte": "./dist/builders/index.js",
-            "default": "./dist/builders/index.js"
-        },
         "./builders/accordion": {
             "types": "./dist/builders/accordion/index.d.ts",
             "svelte": "./dist/builders/accordion/index.js",
@@ -275,10 +240,35 @@
             "svelte": "./dist/builders/tabs/index.js",
             "default": "./dist/builders/tabs/index.js"
         },
-        "./utilities": {
-            "types": "./dist/utilities/index.d.ts",
-            "svelte": "./dist/utilities/index.js",
-            "default": "./dist/utilities/index.js"
+        "./attachments/clickoutside": {
+            "types": "./dist/attachments/clickoutside/index.d.ts",
+            "svelte": "./dist/attachments/clickoutside/index.js",
+            "default": "./dist/attachments/clickoutside/index.js"
+        },
+        "./attachments/focustrap": {
+            "types": "./dist/attachments/focustrap/index.d.ts",
+            "svelte": "./dist/attachments/focustrap/index.js",
+            "default": "./dist/attachments/focustrap/index.js"
+        },
+        "./attachments/longpress": {
+            "types": "./dist/attachments/longpress/index.d.ts",
+            "svelte": "./dist/attachments/longpress/index.js",
+            "default": "./dist/attachments/longpress/index.js"
+        },
+        "./attachments/portal": {
+            "types": "./dist/attachments/portal/index.d.ts",
+            "svelte": "./dist/attachments/portal/index.js",
+            "default": "./dist/attachments/portal/index.js"
+        },
+        "./attachments/rovingfocus": {
+            "types": "./dist/attachments/rovingfocus/index.d.ts",
+            "svelte": "./dist/attachments/rovingfocus/index.js",
+            "default": "./dist/attachments/rovingfocus/index.js"
+        },
+        "./attachments/scrolllock": {
+            "types": "./dist/attachments/scrolllock/index.d.ts",
+            "svelte": "./dist/attachments/scrolllock/index.js",
+            "default": "./dist/attachments/scrolllock/index.js"
         },
         "./utilities/clipboard": {
             "types": "./dist/utilities/clipboard/index.d.ts",

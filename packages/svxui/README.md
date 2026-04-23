@@ -64,6 +64,14 @@ Each layer also has its own entry point for granular imports:
 // Components
 import { Button } from 'svxui/components/button';
 
+// Layouts
+import { Box } from 'svxui/layouts/box';
+import { Flex } from 'svxui/layouts/flex';
+import { Grid } from 'svxui/layouts/grid';
+import { Center } from 'svxui/layouts/center';
+import { Sidebar } from 'svxui/layouts/sidebar';
+import { Switcher } from 'svxui/layouts/switcher';
+
 // Builders
 import { TabsBuilder } from 'svxui/builders/tabs';
 import { DialogBuilder } from 'svxui/builders/dialog';

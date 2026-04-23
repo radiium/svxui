@@ -9,14 +9,15 @@ Svxui is a Svelte 5 component library inspired by the design system and DX of [@
 
 ## Architecture
 
-The library is organized into four layers:
+The library is organized into five layers:
 
+- **Layouts** — Composable layout primitives (Box, Flex, Grid, Center, Sidebar, Switcher)
 - **Components** — Pre-built, styled UI components ready to use
 - **Builders** — Headless state managers: use these when you need full control over markup and style
 - **Attachments** — Composable behaviors (focus trap, click outside, scroll lock...) usable in any component
 - **Utilities** — Standalone helper modules (hotkeys, persisted state, clipboard...)
 
-Start with Components. Reach for Builders when the pre-built markup doesn't fit your design.
+Start with Layouts and Components. Reach for Builders when the pre-built markup doesn't fit your design.
 
 ## Credits
 

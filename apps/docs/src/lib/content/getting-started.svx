@@ -60,6 +60,11 @@ import { Button, Badge, Dialog } from 'svxui';
 Each layer has its own entry point. Use granular imports for better tree-shaking or when you only need specific modules:
 
 ```ts
+// Layouts
+import { Box } from 'svxui/layouts/box';
+import { Flex } from 'svxui/layouts/flex';
+import { Grid } from 'svxui/layouts/grid';
+
 // Components
 import { Button } from 'svxui/components/button';
 
