@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Flex from '$lib/components/flex/components/flex.svelte';
     import Input from '$lib/components/input/components/input.svelte';
     import Panel from '$lib/components/panel/components/panel.svelte';
     import Text from '$lib/components/text/components/text.svelte';
+    import Flex from '$lib/layouts/flex/components/flex.svelte';
     import type { Snippet } from 'svelte';
 
     type Props = {

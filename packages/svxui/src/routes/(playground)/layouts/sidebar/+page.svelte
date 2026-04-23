@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { Sidebar, type SidebarProps } from '$lib/components/layout/index.js';
     import { Panel, Text } from '$lib/index.js';
-    import ControlSelect from '../../../controls/ControlSelect.svelte';
-    import Playground from '../../../controls/Playground.svelte';
+    import { Sidebar, type SidebarProps } from '$lib/layouts/sidebar/index.js';
+    import ControlSelect from '../../controls/ControlSelect.svelte';
+    import Playground from '../../controls/Playground.svelte';
 
     const props: SidebarProps = $state({
         side: 'left',

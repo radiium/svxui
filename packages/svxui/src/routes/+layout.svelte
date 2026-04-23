@@ -18,14 +18,14 @@
 
     const sections = [
         {
-            name: 'attachments',
+            name: 'layouts',
             items: [
-                'clickoutside', //
-                'focustrap',
-                'longpress',
-                'portal',
-                'rovingfocus',
-                'scrolllock'
+                'box', //
+                'flex',
+                'grid',
+                'center',
+                'switcher',
+                'sidebar'
             ]
         },
         {
@@ -50,6 +50,17 @@
                 'tabs',
                 'text',
                 'theme-scope'
+            ]
+        },
+        {
+            name: 'attachments',
+            items: [
+                'clickoutside', //
+                'focustrap',
+                'longpress',
+                'portal',
+                'rovingfocus',
+                'scrolllock'
             ]
         },
         {

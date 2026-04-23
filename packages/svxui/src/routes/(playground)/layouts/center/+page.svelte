@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { Center } from '$lib/components/layout/index.js';
-    import { Flex } from '$lib/components/flex/index.js';
-    import type { CenterProps } from '$lib/components/layout/types.js';
     import { Panel, Text } from '$lib/index.js';
-    import ControlCheckbox from '../../../controls/ControlCheckbox.svelte';
-    import ControlSelect from '../../../controls/ControlSelect.svelte';
-    import Playground from '../../../controls/Playground.svelte';
+    import { Center } from '$lib/layouts/center/index.js';
+    import type { CenterProps } from '$lib/layouts/center/types.js';
+    import { Flex } from '$lib/layouts/flex/index.js';
+    import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
+    import ControlSelect from '../../controls/ControlSelect.svelte';
+    import Playground from '../../controls/Playground.svelte';
 
     const props: CenterProps = $state({
         maxWidth: '300px',

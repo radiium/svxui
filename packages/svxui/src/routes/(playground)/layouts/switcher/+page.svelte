@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { Flex } from '$lib/components/flex/index.js';
-    import { Switcher } from '$lib/components/layout/index.js';
     import { Panel, Text } from '$lib/index.js';
-    import ControlSelect from '../../../controls/ControlSelect.svelte';
-    import Playground from '../../../controls/Playground.svelte';
+    import { Flex } from '$lib/layouts/flex/index.js';
+    import { Switcher } from '$lib/layouts/switcher/index.js';
+    import ControlSelect from '../../controls/ControlSelect.svelte';
+    import Playground from '../../controls/Playground.svelte';
 
     // Switcher controls
     let threshold = $state('480px');
@@ -32,7 +32,7 @@
 
     <div class="width-100p">
         <Switcher {threshold} gap="3">
-            {#each ['Panneau A', 'Panneau B', 'Panneau C'] as label (label)}
+            {#each ['Panel A', 'Panel B', 'Panel C'] as label (label)}
                 <Panel variant="soft" size="3">
                     <Flex align="center" justify="center">{label}</Flex>
                 </Panel>

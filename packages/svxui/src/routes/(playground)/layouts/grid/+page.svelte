@@ -1,8 +1,9 @@
 <script lang="ts">
-    import { Flex } from '$lib/components/flex/index.js';
-    import { Grid } from '$lib/components/grid/index.js';
     import { Panel, Text } from '$lib/index.js';
-    import Playground from '../../../controls/Playground.svelte';
+    import Box from '$lib/layouts/box/components/box.svelte';
+    import { Flex } from '$lib/layouts/flex/index.js';
+    import { Grid } from '$lib/layouts/grid/index.js';
+    import Playground from '../../controls/Playground.svelte';
 </script>
 
 <h1>layout/grid</h1>
@@ -63,19 +64,26 @@
                 rows="auto 1fr auto"
                 areas="'header header' 'sidebar main' 'footer footer'"
                 gap="2"
-                class="grid-areas-demo"
             >
-                <Panel size="2" variant="soft" class="area-header">Header</Panel>
-                <Panel size="2" variant="soft" class="area-sidebar">Sidebar</Panel>
-                <Panel size="2" variant="clear" class="area-main" outline>Main</Panel>
-                <Panel size="2" variant="soft" class="area-footer">Footer</Panel>
+                <Box gridArea="header">
+                    <Panel size="2" variant="soft" fullWidth fullHeight>Header</Panel>
+                </Box>
+                <Box gridArea="sidebar">
+                    <Panel size="2" variant="soft" fullWidth fullHeight>Sidebar</Panel>
+                </Box>
+                <Box gridArea="main" minHeight="60px">
+                    <Panel size="2" variant="clear" outline fullWidth fullHeight>Main</Panel>
+                </Box>
+                <Box gridArea="footer">
+                    <Panel size="2" variant="soft" fullWidth fullHeight>Footer</Panel>
+                </Box>
             </Grid>
         </Flex>
 
         <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>autoRows="120px" — uniform height across all implicit lines</code>
             <Grid cols="3" gap="3" autoRows="120px">
-                {#each ['Court', 'Un contenu beaucoup plus long qui dépasse', 'Medium', 'Court', 'Assez long aussi', 'Ok'] as item, i (i)}
+                {#each ['Short', 'Much longer content that overflows', 'Medium', 'Short', 'Fairly long too', 'Ok'] as item, i (i)}
                     <Panel variant="soft" size="2">{item}</Panel>
                 {/each}
             </Grid>
@@ -84,20 +92,34 @@
         <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>flow="dense" — fills the gaps with items of varying sizes</code>
             <Grid cols="3" gap="2" flow="dense" autoRows="60px" class="grid-dense-demo">
-                <Panel variant="soft" size="2" class="span-2">Large (span 2)</Panel>
-                <Panel variant="soft" size="2">1</Panel>
-                <Panel variant="soft" size="2">2</Panel>
-                <Panel variant="soft" size="2" class="span-2">Large (span 2)</Panel>
-                <Panel variant="soft" size="2">3</Panel>
-                <Panel variant="soft" size="2">4</Panel>
-                <Panel variant="soft" size="2">5</Panel>
+                <Box gridColumn="span 2">
+                    <Panel variant="soft" size="2" fullHeight>Large (span 2)</Panel>
+                </Box>
+                <Box>
+                    <Panel variant="soft" size="2" fullHeight>1</Panel>
+                </Box>
+                <Box>
+                    <Panel variant="soft" size="2" fullHeight>2</Panel>
+                </Box>
+                <Box gridColumn="span 2">
+                    <Panel variant="soft" size="2" fullHeight>Large (span 2)</Panel>
+                </Box>
+                <Box>
+                    <Panel variant="soft" size="2" fullHeight>3</Panel>
+                </Box>
+                <Box>
+                    <Panel variant="soft" size="2" fullHeight>4</Panel>
+                </Box>
+                <Box>
+                    <Panel variant="soft" size="2" fullHeight>5</Panel>
+                </Box>
             </Grid>
         </Flex>
 
         <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
             <code>align="center" — content vertically centered in each cell</code>
             <Grid cols="3" gap="3" autoRows="100px" align="center">
-                {#each ['Top aligné au centre', 'Moi aussi', '✓'] as item (item)}
+                {#each ['Vertically centered', 'Me too', '✓'] as item (item)}
                     <Panel variant="soft" size="2">
                         <Flex justify="center">{item}</Flex>
                     </Panel>
@@ -106,7 +128,7 @@
         </Flex>
 
         <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
-            <code>Grid imbriqués — props isolation</code>
+            <code>Nested grids — props isolation</code>
             <Grid cols="2" gap="3">
                 {#each [1, 2] as n (n)}
                     <Panel variant="soft" size="2">
@@ -132,21 +154,5 @@
     :global(.dashed) {
         outline: 1px dashed var(--gray-6);
         border-radius: 4px;
-    }
-    :global(.area-header) {
-        grid-area: header;
-    }
-    :global(.area-sidebar) {
-        grid-area: sidebar;
-    }
-    :global(.area-main) {
-        grid-area: main;
-        min-height: 60px;
-    }
-    :global(.area-footer) {
-        grid-area: footer;
-    }
-    :global(.span-2) {
-        grid-column: span 2;
     }
 </style>

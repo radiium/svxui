@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { Box } from '$lib/components/box/index.js';
-    import { Flex } from '$lib/components/flex/index.js';
     import { Text } from '$lib/index.js';
-    import Playground from '../../../controls/Playground.svelte';
+    import Box from '$lib/layouts/box/components/box.svelte';
+    import Flex from '$lib/layouts/flex/components/flex.svelte';
+    import Playground from '../../controls/Playground.svelte';
 </script>
 
 <h1>layout/box</h1>
