@@ -23,6 +23,10 @@ export interface LibraryDocumentation {
      */
     builders: BuilderDocumentation[];
     /**
+     * Documented layouts
+     */
+    layouts: ComponentDocumentation[];
+    /**
      * Generation timestamp
      */
     generatedAt: string;

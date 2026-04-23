@@ -45,6 +45,11 @@ export const loadNavigation = () => {
         ]
     };
 
+    const layoutsSection: NavSection = {
+        title: 'Layouts',
+        category: 'layouts',
+        pages: []
+    };
     const componentsSection: NavSection = {
         title: 'Components',
         category: 'components',
@@ -69,7 +74,13 @@ export const loadNavigation = () => {
     for (const path of Object.keys(modules)) {
         const slug = getSlugFromPath(path);
 
-        if (path.includes('/content/components')) {
+        if (path.includes('/content/layouts')) {
+            layoutsSection.pages.push({
+                slug,
+                slugFull: `/docs/layouts/${slug}`,
+                label: toPascalCase(slug)
+            });
+        } else if (path.includes('/content/components')) {
             componentsSection.pages.push({
                 slug,
                 slugFull: `/docs/components/${slug}`,
@@ -130,6 +141,7 @@ export const loadNavigation = () => {
 
     return [
         startSection, //
+        layoutsSection,
         componentsSection,
         buildersSection,
         attachmentsSection,

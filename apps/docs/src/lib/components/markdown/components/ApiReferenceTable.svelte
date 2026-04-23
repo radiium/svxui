@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Code from '$lib/components/markdown/elements/code.svelte';
     import HyphenIcon from '$lib/components/icons/HyphenIcon.svelte';
     import InfoIcon from '$lib/components/icons/InfoIcon.svelte';
+    import Code from '$lib/components/markdown/elements/code.svelte';
     import { Badge, Button, Flex, Floating, Panel, Text } from 'svxui';
     import type { PropDocumentation } from '../../../content-utils/libdoc.types';
 

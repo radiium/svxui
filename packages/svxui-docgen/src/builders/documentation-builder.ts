@@ -18,6 +18,7 @@ export class DocumentationBuilder {
     private attachments: AttachmentDocumentation[] = [];
     private utilities: UtilityDocumentation[] = [];
     private builders: BuilderDocumentation[] = [];
+    private layouts: ComponentDocumentation[] = [];
 
     constructor(libraryPath: string) {
         this.libraryPath = libraryPath;
@@ -52,6 +53,13 @@ export class DocumentationBuilder {
     }
 
     /**
+     * Add a layout documentation
+     */
+    addLayout(layout: ComponentDocumentation): void {
+        this.layouts.push(layout);
+    }
+
+    /**
      * Build final documentation
      */
     build(): LibraryDocumentation {
@@ -63,6 +71,7 @@ export class DocumentationBuilder {
             attachments: this.attachments,
             utilities: this.utilities,
             builders: this.builders,
+            layouts: this.layouts,
             generatedAt: new Date().toISOString()
         };
     }

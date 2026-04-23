@@ -15,7 +15,10 @@
     import CodePreview from './CodePreview.svelte';
 
     type Props = {
-        category: keyof Pick<LibraryDocumentation, 'components' | 'attachments' | 'builders' | 'utilities'>;
+        category: keyof Pick<
+            LibraryDocumentation,
+            'layouts' | 'components' | 'attachments' | 'builders' | 'utilities'
+        >;
         names: string[];
     };
     let { category, names }: Props = $props();

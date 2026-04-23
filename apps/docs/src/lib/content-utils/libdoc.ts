@@ -3,6 +3,7 @@ import type { LibraryDocumentation } from './libdoc.types';
 
 export const libDoc = libDocJson as LibraryDocumentation;
 
+export const getLayout = (slug: string) => libDoc.layouts.find((item) => item.name === slug);
 export const getComponent = (slug: string) => libDoc.components.find((item) => item.name === slug);
 export const getBuilder = (slug: string) => libDoc.builders.find((item) => item.name === slug);
 export const getAttachment = (slug: string) => libDoc.attachments.find((item) => item.name === slug);

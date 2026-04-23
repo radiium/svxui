@@ -124,4 +124,15 @@ export class DirectoryScanner {
             validator: DirectoryValidators.hasFile('{name}-builder.svelte.ts')
         });
     }
+
+    /**
+     * Pre-configured scanner for layouts (has types.ts)
+     */
+    static forLayouts(libraryPath: string): string[] {
+        return this.scan({
+            basePath: path.join(libraryPath, 'src/lib/layouts'),
+            categoryName: 'Layouts',
+            validator: DirectoryValidators.hasTypesFile
+        });
+    }
 }

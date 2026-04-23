@@ -1,7 +1,7 @@
 ---
 title: Grid
-description: Grille CSS composable avec colonnes, rangées, template areas et repeat auto-fill/auto-fit intrinsics.
-category: components
+description: Composable CSS grid with columns, rows, template areas and repeat auto-fill/auto-fit intrinsics.
+category: layouts
 ---
 
 <script lang="ts">
@@ -10,14 +10,14 @@ category: components
     import { examples } from './examples/index.js'
 </script>
 
-<SectionDemo {...examples.overview }/>
+<SectionDemo {...examples.overview} />
 
 ## API Reference
 
-<ApiReference category="components" names={['grid']}/>
+<ApiReference category="layouts" names={['grid']}/>
 
 ## Examples
 
-{#each examples.items as item }
-<SectionDemo {...item }/>
+{#each examples.items as item}
+<SectionDemo {...item} />
 {/each}

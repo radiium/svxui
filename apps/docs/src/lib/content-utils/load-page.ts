@@ -23,6 +23,7 @@ export const loadPage = async (category: string, slug: string) => {
 };
 
 export const loadBasePage = (slug: string) => loadPage('', slug);
+export const loadLayoutPage = (slug: string) => loadPage('layouts', slug);
 export const loadComponentPage = (slug: string) => loadPage('components', slug);
 export const loadUtilityPage = (slug: string) => loadPage('utilities', slug);
 export const loadBuilderPage = (slug: string) => loadPage('builders', slug);

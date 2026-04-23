@@ -104,6 +104,19 @@ export class DocumentationGenerator {
             }
         }
 
+        // Find and analyze layouts
+        const layoutDirs = DirectoryScanner.forLayouts(this.config.libraryPath);
+        console.log(`Found ${layoutDirs.length} layout(s)`);
+
+        for (const layoutDir of layoutDirs) {
+            const analyzer = new ComponentAnalyzer(project, layoutDir);
+            const layoutDocs = analyzer.analyze();
+
+            for (const doc of layoutDocs) {
+                builder.addLayout(doc);
+            }
+        }
+
         // Build final documentation
         const documentation = builder.build();
 

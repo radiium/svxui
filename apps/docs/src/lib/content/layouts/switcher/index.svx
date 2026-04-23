@@ -1,0 +1,17 @@
+---
+title: Switcher
+description: Row → column automatically when the container is narrower than the threshold. Zero media queries, zero JS — pure CSS math.
+category: layouts
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview} />
+
+## API Reference
+
+<ApiReference category="layouts" names={['switcher']}/>

@@ -6,6 +6,7 @@ export const loadEntries = (): Record<string, { slug: string }[]> => {
 
     const entries: Record<string, { slug: string }[]> = {
         base: [],
+        layouts: [],
         components: [],
         attachments: [],
         builders: [],
@@ -15,7 +16,9 @@ export const loadEntries = (): Record<string, { slug: string }[]> => {
     for (const path of Object.keys(modules)) {
         const slug = getSlugFromPath(path);
 
-        if (path.includes('/content/components')) {
+        if (path.includes('/content/layouts')) {
+            entries.layouts.push({ slug });
+        } else if (path.includes('/content/components')) {
             entries.components.push({ slug });
         } else if (path.includes('/content/attachments')) {
             entries.attachments.push({ slug });
@@ -34,6 +37,7 @@ export const loadEntries = (): Record<string, { slug: string }[]> => {
 };
 
 export const loadBaseEntries = () => loadEntries().base;
+export const loadLayoutEntries = () => loadEntries().layouts;
 export const loadComponentEntries = () => loadEntries().components;
 export const loadUtilityEntries = () => loadEntries().utilities;
 export const loadBuilderEntries = () => loadEntries().builders;

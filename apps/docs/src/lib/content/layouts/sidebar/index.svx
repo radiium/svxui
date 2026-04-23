@@ -1,7 +1,7 @@
 ---
-title: Box
-description: Generic container for applying padding, margin, dimensions and overflow via typed props.
-category: components
+title: Sidebar
+description: Fixed-width column + fluid content area. Reverts to stacking when too narrow. Zero media queries.
+category: layouts
 ---
 
 <script lang="ts">
@@ -10,8 +10,9 @@ category: components
     import { examples } from './examples/index.js'
 </script>
 
-<SectionDemo {...examples.overview }/>
+<SectionDemo {...examples.overview} />
 
 ## API Reference
 
-<ApiReference category="components" names={['box']}/>
+<ApiReference category="layouts" names={['sidebar']}/>
+ŒŒ

@@ -1,7 +1,7 @@
 ---
 title: Flex
-description: Conteneur flexbox composable avec contrôle de direction, alignement, espacement et wrapping.
-category: components
+description: Composable flexbox container with direction, alignment, gap and wrap control.
+category: layouts
 ---
 
 <script lang="ts">
@@ -10,14 +10,14 @@ category: components
     import { examples } from './examples/index.js'
 </script>
 
-<SectionDemo {...examples.overview }/>
+<SectionDemo {...examples.overview} />
 
 ## API Reference
 
-<ApiReference category="components" names={['flex']}/>
+<ApiReference category="layouts" names={['flex']}/>
 
 ## Examples
 
-{#each examples.items as item }
-<SectionDemo {...item }/>
+{#each examples.items as item}
+<SectionDemo {...item} />
 {/each}

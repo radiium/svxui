@@ -1,0 +1,17 @@
+---
+title: Box
+description: Generic container for applying padding, margin, dimensions and overflow via typed props.
+category: layouts
+---
+
+<script lang="ts">
+    import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+<SectionDemo {...examples.overview} />
+
+## API Reference
+
+<ApiReference category="layouts" names={['box']}/>
