@@ -5,9 +5,10 @@
 </script>
 
 <Flex justify="start" direction="column" gap="3" class="settings-content" data-color="neutral">
-    <Flex justify="start" gap="2" direction="column" class="w-100">
+    <Flex justify="start" gap="2" direction="column" width="100%">
         <Text size="4" weight="medium">Theme strategy:</Text>
-        <Flex justify="start"
+        <Flex
+            justify="start"
             gap="2"
             wrap="wrap"
             {@attach rovingfocus({ loop: true, activateOnFocus: true, orientation: 'horizontal' })}
@@ -26,9 +27,10 @@
         </Flex>
     </Flex>
 
-    <Flex justify="start" gap="2" direction="column" class="w-100">
+    <Flex justify="start" gap="2" direction="column" style="100%">
         <Text size="4" weight="medium">Radius:</Text>
-        <Flex justify="start"
+        <Flex
+            justify="start"
             gap="2"
             wrap="wrap"
             {@attach rovingfocus({ loop: true, activateOnFocus: true, orientation: 'horizontal' })}
@@ -49,7 +51,8 @@
 
     <Flex justify="start" gap="2" direction="column">
         <Text size="4" weight="medium">Accent color:</Text>
-        <Flex justify="start"
+        <Flex
+            justify="start"
             gap="2"
             wrap="wrap"
             {@attach rovingfocus({ loop: true, activateOnFocus: true, orientation: 'horizontal' })}

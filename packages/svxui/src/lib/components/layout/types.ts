@@ -1,7 +1,6 @@
 import type { LayoutSpacing, RefFromHTMLAttributes } from '$lib/shared.types.js';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
-import type { FlexProps } from '../flex/types.js';
 
 // ─── CENTER ────────────────────────────────────────────────────────
 
@@ -111,23 +110,3 @@ export type SwitcherProps<ElementTag extends keyof SvelteHTMLElements = 'div'> =
      */
     children?: Snippet<[void]>;
 };
-
-// ─── CLUSTER ────────────────────────────────────────────────────────
-
-/**
- * Extends native HTML attributes inferred from the rendered element `as`.
- */
-export type ClusterProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omit<
-    FlexProps<ElementTag>,
-    'wrap' | 'direction'
->;
-
-// ─── STACK ────────────────────────────────────────────────────────
-
-/**
- * Extends native HTML attributes inferred from the rendered element `as`.
- */
-export type StackProps<ElementTag extends keyof SvelteHTMLElements = 'div'> = Omit<
-    FlexProps<ElementTag>,
-    'direction' | 'wrap'
->;

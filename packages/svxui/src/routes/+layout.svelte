@@ -41,8 +41,6 @@
                 'layout/flex',
                 'layout/grid',
                 'layout/center',
-                'layout/cluster',
-                'layout/stack',
                 'layout/sidebar',
                 'layout/switcher',
                 'listbox',

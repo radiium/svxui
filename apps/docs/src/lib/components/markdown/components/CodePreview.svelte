@@ -33,9 +33,9 @@
     const theme = useTheme();
 </script>
 
-<Flex justify="start" direction="column" gap="3" class="{enableOpenCode ? '' : 'mt-6'} w-100 wrapper">
+<Flex justify="start" direction="column" gap="3" mt={enableOpenCode ? '' : '6'} width="100%" class="wrapper">
     {#if enableOpenCode}
-        <Flex justify="end" gap="3" class="w-100">
+        <Flex justify="end" gap="3" width="100%">
             <Text as="label" size="2">
                 <Flex justify="start" gap="2" align="center">
                     Show code
@@ -45,7 +45,7 @@
         </Flex>
     {/if}
 
-    <Panel size="0" variant="soft" color="neutral" outline class="w-100">
+    <Panel size="0" variant="soft" color="neutral" outline style="width: 100%">
         <Flex justify="start" direction="column">
             {#if meta?.title}
                 <div class="title w-100 py-2 px-3">
