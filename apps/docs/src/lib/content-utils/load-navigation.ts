@@ -96,11 +96,44 @@ export const loadNavigation = () => {
         }
     }
 
+    const recipesSection: NavSection = {
+        title: 'Recipes',
+        category: 'recipes',
+        pages: [
+            {
+                slug: 'overview',
+                slugFull: '/docs/recipes/overview',
+                label: 'Overview'
+            },
+            {
+                slug: 'layout',
+                slugFull: '/docs/recipes/layout',
+                label: 'Layout'
+            },
+            {
+                slug: 'form',
+                slugFull: '/docs/recipes/form',
+                label: 'Form'
+            },
+            {
+                slug: 'navigation',
+                slugFull: '/docs/recipes/navigation',
+                label: 'Navigation'
+            },
+            {
+                slug: 'feedback',
+                slugFull: '/docs/recipes/feedback',
+                label: 'Feedback'
+            }
+        ]
+    };
+
     return [
         startSection, //
         componentsSection,
         buildersSection,
         attachmentsSection,
-        utilitiesSection
+        utilitiesSection,
+        recipesSection
     ];
 };

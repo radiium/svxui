@@ -9,7 +9,8 @@ export const loadEntries = (): Record<string, { slug: string }[]> => {
         components: [],
         attachments: [],
         builders: [],
-        utilities: []
+        utilities: [],
+        recipes: []
     };
     for (const path of Object.keys(modules)) {
         const slug = getSlugFromPath(path);
@@ -22,6 +23,8 @@ export const loadEntries = (): Record<string, { slug: string }[]> => {
             entries.builders.push({ slug });
         } else if (path.includes('/content/utilities')) {
             entries.utilities.push({ slug });
+        } else if (path.includes('/content/recipes')) {
+            entries.recipes.push({ slug });
         } else {
             entries.base.push({ slug });
         }
@@ -35,3 +38,4 @@ export const loadComponentEntries = () => loadEntries().components;
 export const loadUtilityEntries = () => loadEntries().utilities;
 export const loadBuilderEntries = () => loadEntries().builders;
 export const loadAttachmentEntries = () => loadEntries().attachments;
+export const loadRecipeEntries = () => loadEntries().recipes;

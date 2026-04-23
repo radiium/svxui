@@ -79,7 +79,6 @@ body {
         h3,
         h4 {
             scroll-margin-top: var(--doc-header-height);
-            margin: 0;
         }
     }
 

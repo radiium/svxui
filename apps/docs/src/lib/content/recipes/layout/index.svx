@@ -1,0 +1,13 @@
+---
+title: Layout
+category: recipes
+---
+
+<script lang="ts">
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './examples/index.js'
+</script>
+
+{#each examples.items as item }
+<SectionDemo {...item }/>
+{/each}
