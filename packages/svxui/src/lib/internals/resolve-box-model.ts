@@ -31,7 +31,10 @@ export function resolveBoxModel(props: BoxModelProps): Record<string, string | u
         flexShrink,
         overflow,
         overflowX,
-        overflowY
+        overflowY,
+        gridArea,
+        gridColumn,
+        gridRow
     } = props;
 
     return {
@@ -53,6 +56,9 @@ export function resolveBoxModel(props: BoxModelProps): Record<string, string | u
         'flex-grow': flexGrow,
         'flex-shrink': flexShrink,
         'overflow-x': overflowX ?? overflow,
-        'overflow-y': overflowY ?? overflow
+        'overflow-y': overflowY ?? overflow,
+        'grid-area': gridArea,
+        'grid-column': gridColumn,
+        'grid-row': gridRow
     };
 }

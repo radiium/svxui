@@ -5,7 +5,7 @@ import { join, resolve } from 'path';
 const SRC = 'src/lib';
 const DIST = './dist';
 
-const GROUPS = ['attachments', 'components', 'builders', 'utilities'];
+const GROUPS = ['layouts', 'components', 'builders', 'attachments', 'utilities'];
 
 function isDirectory(p) {
     return existsSync(p) && statSync(p).isDirectory();
@@ -40,19 +40,16 @@ for (const [key, value] of Object.entries(pkg.exports ?? {})) {
 
 const generatedExports = {};
 
-// ---- generate group + sub-exports
+// ---- generate sub-exports only (no group-level entry)
 for (const group of GROUPS) {
     const srcGroupPath = join(SRC, group);
-    console.log('generate export for', srcGroupPath);
 
     if (!isDirectory(srcGroupPath)) continue;
 
-    // parent export (./components)
-    generatedExports[`./${group}`] = entry(`${DIST}/${group}`);
-
-    // children exports
     for (const name of getSubDirs(srcGroupPath)) {
-        generatedExports[`./${group}/${name}`] = entry(`${DIST}/${group}/${name}`);
+        const key = `./${group}/${name}`;
+        generatedExports[key] = entry(`${DIST}/${group}/${name}`);
+        console.log('generated:', key);
     }
 }
 

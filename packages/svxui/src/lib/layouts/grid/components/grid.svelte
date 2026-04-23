@@ -54,6 +54,9 @@
         overflow = undefined,
         overflowX = undefined,
         overflowY = undefined,
+        gridArea = undefined,
+        gridColumn = undefined,
+        gridRow = undefined,
         children,
         ...rest
     }: GridProps<ElementTag> = $props();
@@ -131,7 +134,10 @@
                 flexShrink,
                 overflow,
                 overflowX,
-                overflowY
+                overflowY,
+                gridArea,
+                gridColumn,
+                gridRow
             })
         });
         const callerStyle = rest.style as string | undefined;

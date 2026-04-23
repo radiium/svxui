@@ -1,4 +1,4 @@
-import { focustrap } from '$lib/attachments/index.js';
+import { focustrap } from '$lib/attachments/focustrap/index.js';
 import { useId } from '$lib/utilities/use-id/index.js';
 import { untrack } from 'svelte';
 import { createAttachmentKey } from 'svelte/attachments';

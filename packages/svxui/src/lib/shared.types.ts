@@ -144,6 +144,18 @@ export type BoxModelProps = {
      * CSS `overflow-y` value.
      */
     overflowY?: BoxOverflow;
+    /**
+     * CSS `grid-area` value. Places the element in a named grid area.
+     */
+    gridArea?: string;
+    /**
+     * CSS `grid-column` shorthand (`"1 / 3"`, `"span 2"`, etc.).
+     */
+    gridColumn?: string;
+    /**
+     * CSS `grid-row` shorthand (`"1 / 3"`, `"span 2"`, etc.).
+     */
+    gridRow?: string;
 };
 
 /**

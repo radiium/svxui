@@ -14,21 +14,25 @@ export * from './builders/input-number/index.js';
 export * from './builders/listbox/index.js';
 export * from './builders/tabs/index.js';
 
+// Layouts
+export * from './layouts/box/index.js';
+export * from './layouts/flex/index.js';
+export * from './layouts/grid/index.js';
+export * from './layouts/center/index.js';
+export * from './layouts/sidebar/index.js';
+export * from './layouts/switcher/index.js';
+
 // Components
 export * from './components/accordion/index.js';
 export * from './components/badge/index.js';
-export * from './components/box/index.js';
 export * from './components/button/index.js';
 export * from './components/checkbox/index.js';
 export * from './components/dialog/index.js';
-export * from './components/flex/index.js';
 export * from './components/floating/index.js';
-export * from './components/grid/index.js';
 export * from './components/input-group/index.js';
 export * from './components/input-number/index.js';
 export * from './components/input-range/index.js';
 export * from './components/input/index.js';
-export * from './components/layout/index.js';
 export * from './components/listbox/index.js';
 export * from './components/panel/index.js';
 export * from './components/portal/index.js';
