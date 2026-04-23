@@ -1,26 +1,8 @@
 <script lang="ts">
-    import { Badge, Cluster, Flex, Grid, Panel, Sidebar, Stack, Switcher, Text } from 'svxui';
+    import { Flex, Grid, Panel, Sidebar, Switcher, Text } from 'svxui';
 </script>
 
 <Flex justify="start" direction="column" gap="6" style="width: 100%;">
-    <Flex justify="start" direction="column" gap="2">
-        <Text size="2" muted>Stack — vertical list</Text>
-        <Stack gap="2">
-            {#each ['Item 1', 'Item 2', 'Item 3'] as item (item)}
-                <Panel outline size="2">{item}</Panel>
-            {/each}
-        </Stack>
-    </Flex>
-
-    <Flex justify="start" direction="column" gap="2">
-        <Text size="2" muted>Cluster — wrapping inline group</Text>
-        <Cluster gap="2">
-            {#each ['Svelte', 'Layout', 'CSS', 'No media query', 'Intrinsic', 'Design tokens'] as tag (tag)}
-                <Badge variant="soft">{tag}</Badge>
-            {/each}
-        </Cluster>
-    </Flex>
-
     <Flex justify="start" direction="column" gap="2">
         <Text size="2" muted>Grid — autoFill responsive</Text>
         <Grid autoFill="120px" gap="2">
