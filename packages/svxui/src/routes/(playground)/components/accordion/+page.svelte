@@ -47,7 +47,7 @@
 
     <Accordion {...props} bind:value={props.value}>
         {#snippet children(accordion)}
-            <Panel variant="clear" outline size="0" class="w-100" style="max-width: 300px;">
+            <Panel variant="clear" outline size="0" fullWidth style="max-width: 300px;">
                 <Flex justify="start" direction="column" {...accordion.rootAttrs}>
                     {#each items as value, i (value)}
                         {@const item = accordion.getItem(value)}

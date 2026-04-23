@@ -45,7 +45,7 @@
         </Flex>
     {/if}
 
-    <Panel size="0" variant="soft" color="neutral" outline style="width: 100%">
+    <Panel size="0" variant="soft" color="neutral" outline fullWidth>
         <Flex justify="start" direction="column">
             {#if meta?.title}
                 <div class="title w-100 py-2 px-3">

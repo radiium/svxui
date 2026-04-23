@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Panel, Text } from '$lib/index.js';
+    import Box from '$lib/layouts/box/components/box.svelte';
     import { Center } from '$lib/layouts/center/index.js';
     import type { CenterProps } from '$lib/layouts/center/types.js';
     import { Flex } from '$lib/layouts/flex/index.js';
@@ -37,13 +38,13 @@
         />
     {/snippet}
 
-    <div class="w-100">
+    <Box width="100%">
         <Center {...props}>
             <Panel variant="soft" size="9">
                 <Flex align="center" justify="center">Centered</Flex>
             </Panel>
         </Center>
-    </div>
+    </Box>
 </Playground>
 
 <div><pre>{json}</pre></div>

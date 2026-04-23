@@ -11,7 +11,7 @@
     let { children, controls }: Props = $props();
 </script>
 
-<Flex justify="start" gap="5" class="max-w-100">
+<Flex justify="start" gap="5" maxWidth="100%">
     <Panel variant="clear" outline size="5" class="flex-auto min-w-0">
         <Flex gap="2" direction="column" justify="center" align="center">
             {@render children?.()}

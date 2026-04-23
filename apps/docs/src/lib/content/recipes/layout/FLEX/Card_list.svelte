@@ -13,7 +13,15 @@
                     alt="Card image item {item}"
                     style="border-radius: 50%;"
                 />
-                <Flex justify="start" direction="column" gap="1" class="flex-auto min-w-0">
+                <Flex
+                    justify="start"
+                    direction="column"
+                    gap="1"
+                    minWidth="0"
+                    flexGrow="1"
+                    flexShrink="1"
+                    flexBasis="auto"
+                >
                     <Text size="5">Title {item}</Text>
                     <Text size="3" muted truncate>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
