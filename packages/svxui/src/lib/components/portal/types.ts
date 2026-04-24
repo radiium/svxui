@@ -1,4 +1,4 @@
-import type { PortalOptions } from '$lib/attachments/index.js';
+import type { PortalOptions } from '$lib/attachments/portal/types.js';
 import type { Snippet } from 'svelte';
 
 export type PortalProps = PortalOptions & {
