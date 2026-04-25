@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Panel, Text } from '$lib/index.js';
-    import { Flex } from '$lib/layouts/flex/index.js';
+    import { Flex } from '$lib/components/flex/index.js';
     import Playground from '../../controls/Playground.svelte';
 </script>
 

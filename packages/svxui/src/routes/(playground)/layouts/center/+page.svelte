@@ -1,9 +1,9 @@
 <script lang="ts">
     import { Panel, Text } from '$lib/index.js';
-    import Box from '$lib/layouts/box/components/box.svelte';
-    import { Center } from '$lib/layouts/center/index.js';
-    import type { CenterProps } from '$lib/layouts/center/types.js';
-    import { Flex } from '$lib/layouts/flex/index.js';
+    import Box from '$lib/components/box/components/box.svelte';
+    import { Center } from '$lib/components/center/index.js';
+    import type { CenterProps } from '$lib/components/center/types.js';
+    import { Flex } from '$lib/components/flex/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';

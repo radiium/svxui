@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Panel, Text } from '$lib/index.js';
-    import Box from '$lib/layouts/box/components/box.svelte';
-    import Flex from '$lib/layouts/flex/components/flex.svelte';
+    import Box from '$lib/components/box/components/box.svelte';
+    import Flex from '$lib/components/flex/components/flex.svelte';
     import Playground from '../../controls/Playground.svelte';
 </script>
 
