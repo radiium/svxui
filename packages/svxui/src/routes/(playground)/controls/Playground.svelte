@@ -1,6 +1,5 @@
 <script lang="ts">
-    import Panel from '$lib/components/panel/components/panel.svelte';
-    import { Flex } from '$lib/index.js';
+    import { Flex, Panel } from '$lib/index.js';
     import type { Snippet } from 'svelte';
 
     type Props = {
@@ -12,7 +11,7 @@
 </script>
 
 <Flex justify="start" gap="5" maxWidth="100%">
-    <Panel variant="clear" outline size="5" class="flex-auto min-w-0">
+    <Panel variant="clear" outline size="5" class="spacer" style="min-width: 0">
         <Flex gap="2" direction="column" justify="center" align="center">
             {@render children?.()}
         </Flex>

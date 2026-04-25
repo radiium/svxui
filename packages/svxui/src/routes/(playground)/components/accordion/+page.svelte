@@ -54,13 +54,7 @@
                         <!-- Item -->
                         <Flex justify="start" direction="column" {...item.itemAttrs}>
                             <!-- Heading -->
-                            <Flex
-                                as="header"
-                                justify="between"
-                                align="center"
-                                class="p-4"
-                                {...item.headingAttrs}
-                            >
+                            <Flex as="header" justify="between" align="center" p="4" {...item.headingAttrs}>
                                 <Text disabled={item.disabled}>Title {value}</Text>
                                 <!-- Trigger -->
                                 <Button size="1" variant="soft" {...item.triggerAttrs}>
@@ -70,7 +64,11 @@
 
                             <!-- Content -->
                             {#if item.expanded}
-                                <div transition:slide={{ duration: 150 }} class="p-4" {...item.contentAttrs}>
+                                <div
+                                    transition:slide={{ duration: 150 }}
+                                    style="padding: var(--space-4)"
+                                    {...item.contentAttrs}
+                                >
                                     Content {value}
                                 </div>
                             {/if}

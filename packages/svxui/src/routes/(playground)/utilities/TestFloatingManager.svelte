@@ -61,7 +61,7 @@
             <div class="floating" {...floating.contentAttrs} transition:fade={{ duration: 150, delay: 0 }}>
                 <Panel>
                     <Flex justify="start" direction="column" gap="5">
-                        <h3 class="m-0">Hello popover</h3>
+                        <h3 style="margin: 0">Hello popover</h3>
                         <div>
                             <Input placeholder="What's your first name?" />
                             <Input placeholder="What's your last name?" data-focusopen />

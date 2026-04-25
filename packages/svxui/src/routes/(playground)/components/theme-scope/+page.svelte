@@ -8,7 +8,7 @@
 
 <Playground>
     <!-- Light -->
-    <ThemeScope mode="light" class="w-100">
+    <ThemeScope mode="light" style="width: 100%">
         <SampleForm>
             <!-- Dark -->
             <ThemeScope mode="dark" radius="full" color="blue">

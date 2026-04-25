@@ -7,7 +7,6 @@
     // Styles
     import '$lib/styles/normalize.css';
     import '$lib/styles/tokens.css';
-    import '$lib/styles/utilities.css';
     import './all-colors.css';
 
     type Props = {
@@ -90,7 +89,7 @@
                 <Text weight="bold" muted>PLAYGROUND</Text>
             </h1>
 
-            <div class="flex-auto"></div>
+            <div class="spacer"></div>
 
             <label>
                 theme:
@@ -171,6 +170,10 @@
 
     :global(h2) {
         margin: 0;
+    }
+
+    :global(.spacer) {
+        flex: 1 1 auto;
     }
 
     .container {

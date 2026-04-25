@@ -68,7 +68,7 @@
                 <Flex justify="start" wrap="wrap" gap="3">
                     {#each section as item, j (j)}
                         {@const props = { ...base, ...item }}
-                        <Text {...props} title={JSON.stringify(props, null, 2)} class="w-100">
+                        <Text {...props} title={JSON.stringify(props, null, 2)} style="width: 100%">
                             The quick brown fox jumps over the lazy dog.
                         </Text>
                     {/each}
