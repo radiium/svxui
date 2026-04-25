@@ -40,12 +40,12 @@
     <div class="width-100p">
         <Sidebar {...props}>
             {#snippet sidebar()}
-                <Panel variant="soft" size="3" class="min-height-80 height-100p">
+                <Panel variant="soft" p="3" class="min-height-80 height-100p">
                     <strong>Sidebar</strong><br />
                     <Text muted size="2">{props.sideWidth}</Text>
                 </Panel>
             {/snippet}
-            <Panel variant="clear" outline size="3" class="min-height-80">
+            <Panel variant="clear" outline p="3" class="min-height-80">
                 <p>Smooth content. Switches to stacking if too narrow (contentMin={props.contentMin}).</p>
             </Panel>
         </Sidebar>

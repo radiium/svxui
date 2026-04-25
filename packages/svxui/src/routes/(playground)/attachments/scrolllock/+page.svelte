@@ -14,7 +14,7 @@
     {/snippet}
 
     <Panel
-        size="1"
+        p="1"
         style="width: 200px; max-height: 240px; overflow: auto;"
         {@attach scrolllock({ enabled })}
     >

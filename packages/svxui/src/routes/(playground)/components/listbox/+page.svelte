@@ -70,7 +70,7 @@
         }}
     >
         {#snippet children(rootState)}
-            <Panel variant="clear" outline size="2" style="width: 220px;">
+            <Panel variant="clear" outline p="2" style="width: 220px;">
                 <Flex justify="start" direction="column" gap="1" {...rootState.rootAttrs}>
                     {#each options as opt, i (i)}
                         {@const item = rootState.getItem(opt, {
@@ -80,7 +80,7 @@
                         {#if isCardMode}
                             <Panel
                                 as="button"
-                                size="6"
+                                p="6"
                                 variant={item.selected ? 'solid' : 'clear'}
                                 {...item.attrs}
                             >

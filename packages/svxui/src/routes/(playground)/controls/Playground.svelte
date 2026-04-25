@@ -11,14 +11,14 @@
 </script>
 
 <Flex justify="start" gap="5" maxWidth="100%">
-    <Panel variant="clear" outline size="5" class="spacer" style="min-width: 0">
+    <Panel variant="clear" outline p="5" class="spacer" style="min-width: 0">
         <Flex gap="2" direction="column" justify="center" align="center">
             {@render children?.()}
         </Flex>
     </Panel>
 
     {#if controls}
-        <Panel variant="clear" outline size="5" style="width: 300px">
+        <Panel variant="clear" outline p="5" style="width: 300px">
             <Flex justify="start" gap="2" direction="column" align="start">
                 {@render controls?.()}
             </Flex>

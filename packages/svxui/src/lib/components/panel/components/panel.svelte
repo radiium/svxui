@@ -1,4 +1,6 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
+    import { resolveSpacing } from '$lib/internals/resolve-spacing.js';
+    import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { PanelProps } from '../types.js';
 
@@ -6,21 +8,41 @@
         ref = $bindable(),
         as = 'div' as ElementTag,
         color = undefined,
-        size = '3',
         radius = undefined,
         variant = 'solid',
         outline = false,
         fullWidth = false,
         fullHeight = false,
+        p = '3',
+        px = undefined,
+        py = undefined,
+        pt = undefined,
+        pr = undefined,
+        pb = undefined,
+        pl = undefined,
+        m = undefined,
+        mx = undefined,
+        my = undefined,
+        mt = undefined,
+        mr = undefined,
+        mb = undefined,
+        ml = undefined,
         children,
         ...rest
     }: PanelProps<ElementTag> = $props();
+
+    const cssStyle = $derived.by(() => {
+        const spacingStyle = styleObjectToString(
+            resolveSpacing({ p, px, py, pt, pr, pb, pl, m, mx, my, mt, mr, mb, ml })
+        );
+        const callerStyle = rest.style as string | undefined;
+        return [spacingStyle, callerStyle].filter(Boolean).join(' ') || undefined;
+    });
 
     let cssClass = $derived([
         rest.class,
         'panel',
         {
-            [`panel-size-${size}`]: size,
             [`panel-variant-${variant}`]: variant,
             'panel-outline': outline,
             'panel-full-width': fullWidth,
@@ -37,6 +59,7 @@
     {...rest}
     bind:this={ref}
     class={cssClass}
+    style={cssStyle}
     aria-disabled={rest.disabled ? 'true' : undefined}
     data-color={color}
     data-radius={radius}
@@ -48,8 +71,7 @@
     .panel {
         position: relative;
         box-sizing: border-box;
-        padding: var(--panel-padding);
-        border-radius: var(--panel-border-radius);
+        border-radius: var(--panel-border-radius, var(--radius-3));
         background-color: var(--panel-background);
         border: none;
 
@@ -61,7 +83,7 @@
             position: absolute;
             pointer-events: none;
             inset: 0;
-            border-radius: var(--panel-border-radius);
+            border-radius: var(--panel-border-radius, var(--radius-3));
         }
 
         &.panel-outline {
@@ -76,48 +98,6 @@
 
         &.panel-full-height {
             height: 100%;
-        }
-
-        /* Sizes */
-        &.panel-size-0 {
-            --panel-padding: var(--space-0);
-            --panel-border-radius: var(--radius-3);
-        }
-        &.panel-size-1 {
-            --panel-padding: var(--space-1);
-            --panel-border-radius: var(--radius-3);
-        }
-        &.panel-size-2 {
-            --panel-padding: var(--space-2);
-            --panel-border-radius: var(--radius-3);
-        }
-        &.panel-size-3 {
-            --panel-padding: var(--space-3);
-            --panel-border-radius: var(--radius-3);
-        }
-        &.panel-size-4 {
-            --panel-padding: var(--space-4);
-            --panel-border-radius: var(--radius-5);
-        }
-        &.panel-size-5 {
-            --panel-padding: var(--space-5);
-            --panel-border-radius: var(--radius-5);
-        }
-        &.panel-size-6 {
-            --panel-padding: var(--space-6);
-            --panel-border-radius: var(--radius-5);
-        }
-        &.panel-size-7 {
-            --panel-padding: var(--space-7);
-            --panel-border-radius: var(--radius-6);
-        }
-        &.panel-size-8 {
-            --panel-padding: var(--space-8);
-            --panel-border-radius: var(--radius-6);
-        }
-        &.panel-size-9 {
-            --panel-padding: var(--space-9);
-            --panel-border-radius: var(--radius-6);
         }
 
         /* Variants */
@@ -137,7 +117,6 @@
             --panel-background: transparent;
             --panel-background-hover: var(--accent-2);
         }
-        /* --color-panel-solid: var(--gray-2); */
 
         /* Render as button, link or label */
         &.panel-button {

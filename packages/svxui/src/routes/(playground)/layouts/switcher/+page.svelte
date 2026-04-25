@@ -33,7 +33,7 @@
     <div class="width-100p">
         <Switcher {threshold} gap="3">
             {#each ['Panel A', 'Panel B', 'Panel C'] as label (label)}
-                <Panel variant="soft" size="3">
+                <Panel variant="soft" p="3">
                     <Flex align="center" justify="center">{label}</Flex>
                 </Panel>
             {/each}

@@ -1,25 +1,11 @@
 import type { BoxModelProps } from '$lib/shared.types.js';
-import { resolveSpace } from './resolve-space.js';
+import { resolveSpacing } from './resolve-spacing.js';
 
 /**
  * Resolves box model props into a flat CSS property record for use with `styleObjectToString`.
  */
 export function resolveBoxModel(props: BoxModelProps): Record<string, string | undefined> {
     const {
-        p,
-        px,
-        py,
-        pt,
-        pr,
-        pb,
-        pl,
-        m,
-        mx,
-        my,
-        mt,
-        mr,
-        mb,
-        ml,
         width,
         maxWidth,
         minWidth,
@@ -38,14 +24,7 @@ export function resolveBoxModel(props: BoxModelProps): Record<string, string | u
     } = props;
 
     return {
-        'padding-top': resolveSpace(pt ?? py ?? p),
-        'padding-right': resolveSpace(pr ?? px ?? p),
-        'padding-bottom': resolveSpace(pb ?? py ?? p),
-        'padding-left': resolveSpace(pl ?? px ?? p),
-        'margin-top': resolveSpace(mt ?? my ?? m),
-        'margin-right': resolveSpace(mr ?? mx ?? m),
-        'margin-bottom': resolveSpace(mb ?? my ?? m),
-        'margin-left': resolveSpace(ml ?? mx ?? m),
+        ...resolveSpacing(props),
         width,
         'max-width': maxWidth,
         'min-width': minWidth,

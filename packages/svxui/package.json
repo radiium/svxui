@@ -75,35 +75,35 @@
         "./styles/colors/*": {
             "default": "./dist/styles/colors/*"
         },
-        "./layouts/box": {
-            "types": "./dist/layouts/box/index.d.ts",
-            "svelte": "./dist/layouts/box/index.js",
-            "default": "./dist/layouts/box/index.js"
+        "./components/box": {
+            "types": "./dist/components/box/index.d.ts",
+            "svelte": "./dist/components/box/index.js",
+            "default": "./dist/components/box/index.js"
         },
-        "./layouts/center": {
-            "types": "./dist/layouts/center/index.d.ts",
-            "svelte": "./dist/layouts/center/index.js",
-            "default": "./dist/layouts/center/index.js"
+        "./components/center": {
+            "types": "./dist/components/center/index.d.ts",
+            "svelte": "./dist/components/center/index.js",
+            "default": "./dist/components/center/index.js"
         },
-        "./layouts/flex": {
-            "types": "./dist/layouts/flex/index.d.ts",
-            "svelte": "./dist/layouts/flex/index.js",
-            "default": "./dist/layouts/flex/index.js"
+        "./components/flex": {
+            "types": "./dist/components/flex/index.d.ts",
+            "svelte": "./dist/components/flex/index.js",
+            "default": "./dist/components/flex/index.js"
         },
-        "./layouts/grid": {
-            "types": "./dist/layouts/grid/index.d.ts",
-            "svelte": "./dist/layouts/grid/index.js",
-            "default": "./dist/layouts/grid/index.js"
+        "./components/grid": {
+            "types": "./dist/components/grid/index.d.ts",
+            "svelte": "./dist/components/grid/index.js",
+            "default": "./dist/components/grid/index.js"
         },
-        "./layouts/sidebar": {
-            "types": "./dist/layouts/sidebar/index.d.ts",
-            "svelte": "./dist/layouts/sidebar/index.js",
-            "default": "./dist/layouts/sidebar/index.js"
+        "./components/sidebar": {
+            "types": "./dist/components/sidebar/index.d.ts",
+            "svelte": "./dist/components/sidebar/index.js",
+            "default": "./dist/components/sidebar/index.js"
         },
-        "./layouts/switcher": {
-            "types": "./dist/layouts/switcher/index.d.ts",
-            "svelte": "./dist/layouts/switcher/index.js",
-            "default": "./dist/layouts/switcher/index.js"
+        "./components/switcher": {
+            "types": "./dist/components/switcher/index.d.ts",
+            "svelte": "./dist/components/switcher/index.js",
+            "default": "./dist/components/switcher/index.js"
         },
         "./components/accordion": {
             "types": "./dist/components/accordion/index.d.ts",

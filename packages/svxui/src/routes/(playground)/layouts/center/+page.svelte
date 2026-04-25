@@ -40,7 +40,7 @@
 
     <Box width="100%">
         <Center {...props}>
-            <Panel variant="soft" size="9">
+            <Panel variant="soft" p="9">
                 <Flex align="center" justify="center">Centered</Flex>
             </Panel>
         </Center>

@@ -1,4 +1,4 @@
-import { Panel, type Color, type PanelSize, type PanelVariant, type Radius } from '$lib/index.js';
+import { Panel, type Color, type LayoutSpacing, type PanelVariant, type Radius } from '$lib/index.js';
 import { createRawSnippet } from 'svelte';
 import { describe, expect, test } from 'vitest';
 import { renderWithWrapper } from '../../../../tests/render-with-wrapper.svelte.ts';
@@ -20,7 +20,6 @@ describe('Panel component', () => {
 
             await expect.element(panel).toBeVisible();
             await expect.element(panel).toHaveClass('panel');
-            await expect.element(panel).toHaveClass('panel-size-3');
             await expect.element(panel).toHaveClass('panel-variant-solid');
             await expect.element(panel).not.toHaveClass('panel-outline');
             await expect.element(panel).not.toHaveClass('panel-full-width');
@@ -90,13 +89,16 @@ describe('Panel component', () => {
     /* Sizes                                             */
     /* ------------------------------------------------- */
 
-    describe('Sizes', () => {
-        test.each(['1', '2', '3', '4', '5'] as PanelSize[])('applies size %s', async (size) => {
-            const screen = renderWithWrapper(Panel, { children, size });
-            const panel = screen.getByText(content);
+    describe('Spacing', () => {
+        test.each(['1', '2', '3', '4', '5'] as LayoutSpacing[])(
+            'applies padding p=%s via inline style',
+            async (p) => {
+                const screen = renderWithWrapper(Panel, { children, p });
+                const panel = screen.getByText(content);
 
-            await expect.element(panel).toHaveClass(`panel-size-${size}`);
-        });
+                await expect.element(panel).toHaveStyle({ padding: `var(--space-${p})` });
+            }
+        );
     });
 
     /* ------------------------------------------------- */

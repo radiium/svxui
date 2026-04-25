@@ -7,7 +7,7 @@
     import Playground from '../../controls/Playground.svelte';
 
     const base: PanelProps<'div'> | PanelProps<'a'> | PanelProps<'button'> | PanelProps<'label'> = $state({
-        size: '3',
+        p: '3',
         color: 'neutral',
         outline: false,
         fullWidth: false,
@@ -30,9 +30,9 @@
         <ControlCheckbox label="fullWidth" bind:checked={base.fullWidth} />
         <ControlSelect label="color" bind:value={base.color} options={AllRadixColors} />
         <ControlSelect
-            label="size"
-            bind:value={base.size}
-            options={['1', '2', '3', '4', '5', '6', '7', '8', '9']}
+            label="p"
+            bind:value={base.p}
+            options={['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']}
         />
         <ControlSelect
             label={(base as PanelProps<'label'>).as === 'label' ? 'as (with checkbox inside)' : 'as'}
@@ -43,7 +43,7 @@
 
     <Flex justify="start" direction="column" gap="3">
         {#each sections as section, i (i)}
-            <Panel variant="clear" outline size="0">
+            <Panel variant="clear" outline p="0">
                 <div class="background">
                     <Flex justify="start" direction="column" gap="5" p="5">
                         {#each section as item, j (j)}

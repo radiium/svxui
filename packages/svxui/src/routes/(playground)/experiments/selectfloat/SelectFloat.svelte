@@ -100,7 +100,7 @@
                 {disabled}
             >
                 {#snippet children(listbox)}
-                    <Panel variant="clear" outline size="2">
+                    <Panel variant="clear" outline p="2">
                         <Flex justify="start" direction="column" gap="1" {...listbox.rootAttrs} bind:ref={listboxRef}>
                             {#each options as opt, i (i)}
                                 {@const item = listbox.getItem(opt)}
@@ -126,7 +126,7 @@
                 {/snippet}
             </Listbox>
 
-            <!-- <Panel variant="soft" outline size="2">
+            <!-- <Panel variant="soft" outline p="2">
             <Flex justify="start" direction="column">
                 {#each options as opt, i (i)}
                     <Button

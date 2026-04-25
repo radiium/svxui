@@ -17,7 +17,7 @@
             <code>cols="3" gap="3"</code>
             <Grid cols="3" gap="3">
                 {#each [1, 2, 3, 4, 5, 6] as n (n)}
-                    <Panel variant="soft" size="2">
+                    <Panel variant="soft" p="2">
                         <Flex align="center" justify="center">{n}</Flex>
                     </Panel>
                 {/each}
@@ -28,7 +28,7 @@
             <code>cols="4" rowGap="1" colGap="4" — asymmetric gaps</code>
             <Grid cols="4" rowGap="1" colGap="4">
                 {#each [1, 2, 3, 4, 5, 6, 7, 8] as n (n)}
-                    <Panel variant="soft" size="2">
+                    <Panel variant="soft" p="2">
                         <Flex align="center" justify="center">{n}</Flex>
                     </Panel>
                 {/each}
@@ -39,7 +39,7 @@
             <code>autoFill="140px" gap="3" — responsive without media query</code>
             <Grid autoFill="140px" gap="3">
                 {#each ['A', 'B', 'C', 'D', 'E'] as l (l)}
-                    <Panel variant="soft" size="2">
+                    <Panel variant="soft" p="2">
                         <Flex align="center" justify="center">{l}</Flex>
                     </Panel>
                 {/each}
@@ -50,7 +50,7 @@
             <code>autoFit="140px" gap="3" — The empty columns are collapsing.</code>
             <Grid autoFit="140px" gap="3">
                 {#each ['X', 'Y'] as l (l)}
-                    <Panel variant="soft" size="2">
+                    <Panel variant="soft" p="2">
                         <Flex align="center" justify="center">{l}</Flex>
                     </Panel>
                 {/each}
@@ -66,16 +66,16 @@
                 gap="2"
             >
                 <Box gridArea="header">
-                    <Panel size="2" variant="soft" fullWidth fullHeight>Header</Panel>
+                    <Panel p="2" variant="soft" fullWidth fullHeight>Header</Panel>
                 </Box>
                 <Box gridArea="sidebar">
-                    <Panel size="2" variant="soft" fullWidth fullHeight>Sidebar</Panel>
+                    <Panel p="2" variant="soft" fullWidth fullHeight>Sidebar</Panel>
                 </Box>
                 <Box gridArea="main" minHeight="60px">
-                    <Panel size="2" variant="clear" outline fullWidth fullHeight>Main</Panel>
+                    <Panel p="2" variant="clear" outline fullWidth fullHeight>Main</Panel>
                 </Box>
                 <Box gridArea="footer">
-                    <Panel size="2" variant="soft" fullWidth fullHeight>Footer</Panel>
+                    <Panel p="2" variant="soft" fullWidth fullHeight>Footer</Panel>
                 </Box>
             </Grid>
         </Flex>
@@ -84,7 +84,7 @@
             <code>autoRows="120px" — uniform height across all implicit lines</code>
             <Grid cols="3" gap="3" autoRows="120px">
                 {#each ['Short', 'Much longer content that overflows', 'Medium', 'Short', 'Fairly long too', 'Ok'] as item, i (i)}
-                    <Panel variant="soft" size="2">{item}</Panel>
+                    <Panel variant="soft" p="2">{item}</Panel>
                 {/each}
             </Grid>
         </Flex>
@@ -93,25 +93,25 @@
             <code>flow="dense" — fills the gaps with items of varying sizes</code>
             <Grid cols="3" gap="2" flow="dense" autoRows="60px" class="grid-dense-demo">
                 <Box gridColumn="span 2">
-                    <Panel variant="soft" size="2" fullHeight>Large (span 2)</Panel>
+                    <Panel variant="soft" p="2" fullHeight>Large (span 2)</Panel>
                 </Box>
                 <Box>
-                    <Panel variant="soft" size="2" fullHeight>1</Panel>
+                    <Panel variant="soft" p="2" fullHeight>1</Panel>
                 </Box>
                 <Box>
-                    <Panel variant="soft" size="2" fullHeight>2</Panel>
+                    <Panel variant="soft" p="2" fullHeight>2</Panel>
                 </Box>
                 <Box gridColumn="span 2">
-                    <Panel variant="soft" size="2" fullHeight>Large (span 2)</Panel>
+                    <Panel variant="soft" p="2" fullHeight>Large (span 2)</Panel>
                 </Box>
                 <Box>
-                    <Panel variant="soft" size="2" fullHeight>3</Panel>
+                    <Panel variant="soft" p="2" fullHeight>3</Panel>
                 </Box>
                 <Box>
-                    <Panel variant="soft" size="2" fullHeight>4</Panel>
+                    <Panel variant="soft" p="2" fullHeight>4</Panel>
                 </Box>
                 <Box>
-                    <Panel variant="soft" size="2" fullHeight>5</Panel>
+                    <Panel variant="soft" p="2" fullHeight>5</Panel>
                 </Box>
             </Grid>
         </Flex>
@@ -120,7 +120,7 @@
             <code>align="center" — content vertically centered in each cell</code>
             <Grid cols="3" gap="3" autoRows="100px" align="center">
                 {#each ['Vertically centered', 'Me too', '✓'] as item (item)}
-                    <Panel variant="soft" size="2">
+                    <Panel variant="soft" p="2">
                         <Flex justify="center">{item}</Flex>
                     </Panel>
                 {/each}
@@ -131,10 +131,10 @@
             <code>Nested grids — props isolation</code>
             <Grid cols="2" gap="3">
                 {#each [1, 2] as n (n)}
-                    <Panel variant="soft" size="2">
+                    <Panel variant="soft" p="2">
                         <Grid cols="3" gap="1">
                             {#each [1, 2, 3] as m (m)}
-                                <Panel variant="surface" size="1">
+                                <Panel variant="surface" p="1">
                                     <Flex align="center" justify="center">{n}.{m}</Flex>
                                 </Panel>
                             {/each}

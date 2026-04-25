@@ -25,13 +25,13 @@
         <Text>countOutside: {countOutside}</Text>
     {/snippet}
 
-    <Panel variant="soft" size="9" bind:ref={eventTarget}>
+    <Panel variant="soft" p="9" bind:ref={eventTarget}>
         <Flex align="center" justify="center" gap="3">
             outside
             <Panel
                 variant="clear"
                 outline
-                size="9"
+                p="9"
                 {@attach clickoutside({
                     enabled,
                     eventTarget,

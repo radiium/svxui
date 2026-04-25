@@ -18,7 +18,7 @@
         <ControlSelect label="target" bind:value={target} options={['#taget1', '#taget2']} />
     {/snippet}
 
-    <Panel variant="soft" size="9" bind:ref={eventTarget}>
+    <Panel variant="soft" p="9" bind:ref={eventTarget}>
         <Flex justify="start" width="100%" direction="column" gap="3">
             <Panel>
                 <Flex justify="start" direction="column" align="center" gap="3">

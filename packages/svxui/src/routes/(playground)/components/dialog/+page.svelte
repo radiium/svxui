@@ -62,7 +62,7 @@
             color="neutral"
             outline
             variant="solid"
-            size="5"
+            p="5"
             fullWidth={props.layout === 'fullscreen'}
             fullHeight={props.layout === 'fullscreen'}
         >
@@ -122,7 +122,7 @@
     </Dialog>
 
     <Dialog bind:isOpen={isOpenNested}>
-        <Panel color="neutral" outline size="5">
+        <Panel color="neutral" outline p="5">
             <Flex justify="start" direction="column" gap="3">
                 <h2>Nested dialog title</h2>
                 <p>Nested dialog paragraph</p>
