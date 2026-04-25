@@ -35,6 +35,7 @@ export function scrolllock(options: ScrolllockOptions = {}): Attachment<HTMLElem
                 target.style.overflow = originalStyle.overflow;
                 target.style.paddingRight = originalStyle.paddingRight;
             }
+            originalStyle = undefined;
         }
 
         if (enabled) {
