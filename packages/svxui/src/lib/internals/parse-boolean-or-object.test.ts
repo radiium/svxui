@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { parseBooleanOrObject } from './parse-boolean-or-object.js';
 
 describe('parseBooleanOrObject', () => {

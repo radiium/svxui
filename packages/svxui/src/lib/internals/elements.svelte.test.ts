@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, it, expect } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { getHtmlElement, toHTMLElement } from './elements.js';
 
 describe('getHtmlElement', () => {

@@ -1,5 +1,5 @@
 <script lang="ts" generics="Tag extends keyof SvelteHTMLElements = 'div'">
-    import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import { toSpaceVar } from '$lib/internals/to-space-var.js';
     import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { LayoutSpacing } from '$lib/shared.types.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
@@ -29,7 +29,7 @@
     let cssStyle = $derived.by(() => {
         const allStyles = styleObjectToString({
             '--center-max-width': maxWidth,
-            '--center-gutters': gutters ? resolveSpace(gutters) : undefined
+            '--center-gutters': gutters ? toSpaceVar(gutters) : undefined
         });
         const callerStyle = rest.style as string | undefined;
         return [allStyles, callerStyle].filter(Boolean).join(' ') || undefined;

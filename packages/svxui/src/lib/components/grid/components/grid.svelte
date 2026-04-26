@@ -1,7 +1,7 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import { isIntegerString } from '$lib/internals/is.js';
     import { resolveBoxModel } from '$lib/internals/resolve-box-model.js';
-    import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import { toSpaceVar } from '$lib/internals/to-space-var.js';
     import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { GridProps } from '../types.js';
@@ -102,9 +102,9 @@
             '--grid-cols': resolvedCols,
             '--grid-rows': resolvedRows,
             '--grid-areas': areas,
-            '--grid-gap': resolveSpace(gap),
-            '--grid-row-gap': resolveSpace(rowGap),
-            '--grid-col-gap': resolveSpace(colGap),
+            '--grid-gap': toSpaceVar(gap),
+            '--grid-row-gap': toSpaceVar(rowGap),
+            '--grid-col-gap': toSpaceVar(colGap),
             '--grid-auto-rows': autoRows,
             '--grid-flow': flow ? (FLOW_MAP[flow] ?? flow) : undefined,
             '--grid-align': align,

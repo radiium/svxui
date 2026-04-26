@@ -1,5 +1,5 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
-    import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import { toSpaceVar } from '$lib/internals/to-space-var.js';
     import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { LayoutSpacing } from '$lib/shared.types.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
@@ -14,7 +14,7 @@
         ...rest
     }: SwitcherProps<ElementTag> = $props();
 
-    let resolvedGap = $derived(resolveSpace(gap) ?? '1rem');
+    let resolvedGap = $derived(toSpaceVar(gap) ?? '1rem');
 
     // flag classes activate the matching CSS rule
     let cssClass = $derived([

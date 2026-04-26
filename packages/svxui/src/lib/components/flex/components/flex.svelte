@@ -1,6 +1,6 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import { resolveBoxModel } from '$lib/internals/resolve-box-model.js';
-    import { resolveSpace } from '$lib/internals/resolve-space.js';
+    import { toSpaceVar } from '$lib/internals/to-space-var.js';
     import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { FlexAlign, FlexJustify, FlexProps } from '../types.js';
@@ -99,9 +99,9 @@
             '--flex-align': align ? ALIGN_MAP[align] : undefined,
             '--flex-align-content': alignContent ? ALIGN_MAP[alignContent] : undefined,
             '--flex-wrap': wrap,
-            '--flex-gap': resolveSpace(gap),
-            '--flex-row-gap': resolveSpace(rowGap),
-            '--flex-col-gap': resolveSpace(colGap),
+            '--flex-gap': toSpaceVar(gap),
+            '--flex-row-gap': toSpaceVar(rowGap),
+            '--flex-col-gap': toSpaceVar(colGap),
             ...resolveBoxModel({
                 p,
                 px,

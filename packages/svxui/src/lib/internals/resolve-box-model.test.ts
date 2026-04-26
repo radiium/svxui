@@ -115,7 +115,7 @@ describe('resolveBoxModel', () => {
 
     // ─── Arbitrary CSS values ────────────────────────────────────────
 
-    it('passes arbitrary CSS values through resolveSpace unchanged', () => {
+    it('passes arbitrary CSS values through toSpaceVar unchanged', () => {
         const result = resolveBoxModel({ p: '1.5rem', m: 'auto' });
 
         expect(result['padding-top']).toBe('1.5rem');

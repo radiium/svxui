@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
 import { flip as flipMw } from '@floating-ui/dom';
+import { describe, expect, it } from 'vitest';
 import { buildFloatingMiddlewares } from './build-floating-middlewares.js';
 
 describe('buildFloatingMiddlewares', () => {
