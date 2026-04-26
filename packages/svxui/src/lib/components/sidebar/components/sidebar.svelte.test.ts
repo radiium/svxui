@@ -30,8 +30,8 @@ describe('Sidebar component', () => {
             const wrapper = screen.getByTestId('sidebar');
 
             await expect.element(wrapper).toBeVisible();
-            await expect.element(wrapper).toHaveClass('sidebar-layout');
-            await expect.element(wrapper).not.toHaveClass('sidebar-layout-right');
+            await expect.element(wrapper).toHaveClass('sidebar');
+            await expect.element(wrapper).not.toHaveClass('sidebar-right');
         });
 
         test('renders as div by default', async () => {
@@ -45,7 +45,7 @@ describe('Sidebar component', () => {
             const screen = render();
             const wrapper = screen.getByTestId('sidebar');
 
-            await expect.element(wrapper).toBeVisible();
+            await expect.element(wrapper).toHaveClass('sidebar');
         });
 
         test('forwards extra html attributes', async () => {
@@ -59,7 +59,7 @@ describe('Sidebar component', () => {
             const screen = render({ children, class: 'custom-class' });
             const wrapper = screen.getByTestId('sidebar');
 
-            await expect.element(wrapper).toHaveClass('sidebar-layout');
+            await expect.element(wrapper).toHaveClass('sidebar');
             await expect.element(wrapper).toHaveClass('custom-class');
         });
     });
@@ -88,7 +88,7 @@ describe('Sidebar component', () => {
             const main = screen.getByText(content);
 
             await expect.element(main).toBeVisible();
-            expect(main.element().closest('.sidebar-layout-content')).not.toBeNull();
+            expect(main.element().closest('.sidebar-content')).not.toBeNull();
         });
 
         test('renders sidebar snippet in sidebar region', async () => {
@@ -96,13 +96,13 @@ describe('Sidebar component', () => {
             const side = screen.getByText(sideContent);
 
             await expect.element(side).toBeVisible();
-            expect(side.element().closest('.sidebar-layout-side')).not.toBeNull();
+            expect(side.element().closest('.sidebar-side')).not.toBeNull();
         });
 
         test('does not render sidebar region when sidebar snippet is not provided', async () => {
             const { container } = render({ children });
 
-            expect(container.querySelector('.sidebar-layout-side')).toBeNull();
+            expect(container.querySelector('.sidebar-side')).toBeNull();
         });
     });
 
@@ -111,18 +111,18 @@ describe('Sidebar component', () => {
     /* ------------------------------------------------- */
 
     describe('Side', () => {
-        test('does not add sidebar-layout-right class when side=left (default)', async () => {
+        test('does not add sidebar-right class when side=left (default)', async () => {
             const screen = render({ children, side: 'left' });
             const wrapper = screen.getByTestId('sidebar');
 
-            await expect.element(wrapper).not.toHaveClass('sidebar-layout-right');
+            await expect.element(wrapper).not.toHaveClass('sidebar-right');
         });
 
-        test('adds sidebar-layout-right class when side=right', async () => {
+        test('adds sidebar-right class when side=right', async () => {
             const screen = render({ children, side: 'right' });
             const wrapper = screen.getByTestId('sidebar');
 
-            await expect.element(wrapper).toHaveClass('sidebar-layout-right');
+            await expect.element(wrapper).toHaveClass('sidebar-right');
         });
     });
 
@@ -138,12 +138,12 @@ describe('Sidebar component', () => {
             expect(wrapper.element().style.getPropertyValue('--sidebar-width')).toBe('240px');
         });
 
-        test('applies custom sideWidth and adds sidebar-layout-width class', async () => {
+        test('applies custom sideWidth and adds sidebar-width class', async () => {
             const screen = render({ children, sideWidth: '320px' });
             const wrapper = screen.getByTestId('sidebar');
 
             expect(wrapper.element().style.getPropertyValue('--sidebar-width')).toBe('320px');
-            await expect.element(wrapper).toHaveClass('sidebar-layout-width');
+            await expect.element(wrapper).toHaveClass('sidebar-width');
         });
     });
 
@@ -159,12 +159,12 @@ describe('Sidebar component', () => {
             expect(wrapper.element().style.getPropertyValue('--content-min')).toBe('50%');
         });
 
-        test('applies custom contentMin and adds sidebar-layout-content-min class', async () => {
+        test('applies custom contentMin and adds sidebar-content-min class', async () => {
             const screen = render({ children, contentMin: '60%' });
             const wrapper = screen.getByTestId('sidebar');
 
             expect(wrapper.element().style.getPropertyValue('--content-min')).toBe('60%');
-            await expect.element(wrapper).toHaveClass('sidebar-layout-content-min');
+            await expect.element(wrapper).toHaveClass('sidebar-content-min');
         });
     });
 
@@ -216,7 +216,8 @@ describe('Sidebar component', () => {
         test('binds ref as HTMLDivElement by default', async () => {
             let current: HTMLDivElement | undefined;
 
-            render({
+            renderWithWrapper(Sidebar, {
+                'data-testid': 'sidebar',
                 children,
                 get ref() {
                     return current;

@@ -21,13 +21,13 @@
 
     // flag classes activate the matching CSS rule
     let cssClass = $derived([
-        'sidebar-layout',
+        'sidebar',
         rest.class,
         {
-            'sidebar-layout-right': side === 'right',
-            'sidebar-layout-width': sideWidth !== undefined,
-            'sidebar-layout-content-min': contentMin !== undefined,
-            'sidebar-layout-gap': resolvedGap !== undefined
+            'sidebar-right': side === 'right',
+            'sidebar-width': sideWidth !== undefined,
+            'sidebar-content-min': contentMin !== undefined,
+            'sidebar-gap': resolvedGap !== undefined
         }
     ]);
 
@@ -48,11 +48,11 @@
   Wraps to a stack when the content falls below `contentMin` — no media queries.
   Visual order (left/right) is controlled via CSS `order`, not DOM order.
 -->
-<svelte:element this={as} {...rest} bind:this={ref} class={cssClass} style={cssStyle}>
+<svelte:element this={as} bind:this={ref} {...rest} class={cssClass} style={cssStyle}>
     {#if sidebar}
-        <div class="sidebar-layout-side">{@render sidebar()}</div>
+        <div class="sidebar-side">{@render sidebar()}</div>
     {/if}
-    <div class="sidebar-layout-content">
+    <div class="sidebar-content">
         {#if children}
             {@render children?.()}
         {/if}
@@ -60,37 +60,37 @@
 </svelte:element>
 
 <style>
-    .sidebar-layout {
+    .sidebar {
         display: flex;
         flex-wrap: wrap;
 
-        &.sidebar-layout-gap {
+        &.sidebar-gap {
             gap: var(--sidebar-gap, 1rem);
         }
 
-        & .sidebar-layout-side {
+        & .sidebar-side {
             flex-grow: 1;
         }
 
-        &.sidebar-layout-width {
-            & .sidebar-layout-side {
+        &.sidebar-width {
+            & .sidebar-side {
                 flex-basis: var(--sidebar-width, 240px);
             }
         }
 
-        & .sidebar-layout-content {
+        & .sidebar-content {
             flex-basis: 0;
             flex-grow: 999;
         }
 
-        &.sidebar-layout-content-min {
-            & .sidebar-layout-content {
+        &.sidebar-content-min {
+            & .sidebar-content {
                 min-width: var(--content-min, 50%);
             }
         }
 
-        &.sidebar-layout-right {
-            & .sidebar-layout-side {
+        &.sidebar-right {
+            & .sidebar-side {
                 order: 1;
             }
         }

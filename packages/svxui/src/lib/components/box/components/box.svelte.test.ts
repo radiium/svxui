@@ -104,12 +104,11 @@ describe('Box component', () => {
             const screen = renderWithWrapper(Box, { children, pt: '2', pb: '4', pl: '1', pr: '3' });
             const box = screen.getByText(content);
 
-            await expect.element(box).toHaveStyle({
-                paddingTop: 'var(--space-2)',
-                paddingBottom: 'var(--space-4)',
-                paddingLeft: 'var(--space-1)',
-                paddingRight: 'var(--space-3)'
-            });
+            const style = box.element().style;
+            expect(style.getPropertyValue('padding-top')).toBe('var(--space-2)');
+            expect(style.getPropertyValue('padding-bottom')).toBe('var(--space-4)');
+            expect(style.getPropertyValue('padding-left')).toBe('var(--space-1)');
+            expect(style.getPropertyValue('padding-right')).toBe('var(--space-3)');
         });
 
         test('applies margin m=%s via inline style', async () => {
@@ -123,12 +122,11 @@ describe('Box component', () => {
             const screen = renderWithWrapper(Box, { children, px: '2', py: '4' });
             const box = screen.getByText(content);
 
-            await expect.element(box).toHaveStyle({
-                paddingLeft: 'var(--space-2)',
-                paddingRight: 'var(--space-2)',
-                paddingTop: 'var(--space-4)',
-                paddingBottom: 'var(--space-4)'
-            });
+            const style = box.element().style;
+            expect(style.getPropertyValue('padding-top')).toBe('var(--space-4)');
+            expect(style.getPropertyValue('padding-bottom')).toBe('var(--space-4)');
+            expect(style.getPropertyValue('padding-left')).toBe('var(--space-2)');
+            expect(style.getPropertyValue('padding-right')).toBe('var(--space-2)');
         });
 
         test('p=0 resolves to 0px', async () => {
