@@ -214,9 +214,6 @@ describe('InputGroupItem component', () => {
 describe('InputGroup + InputGroupItem composition', () => {
     test('renders InputGroupItem children inside InputGroup', async () => {
         const itemLabel = 'item';
-        const itemChildren = createRawSnippet(() => ({
-            render: () => `<span>${itemLabel}</span>`
-        }));
         const groupChildren = createRawSnippet(() => ({
             render: () => `<div class="input-group-item">${itemLabel}</div>`
         }));

@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { DialogBuilder } from '$lib/builders/dialog/index.js';
     import { scrolllock } from '$lib/attachments/scrolllock/index.js';
-    import type { DialogProps } from '../types.js';
+    import { DialogBuilder } from '$lib/builders/dialog/index.js';
     import { onDestroy } from 'svelte';
     import { cubicOut } from 'svelte/easing';
     import { fade, scale } from 'svelte/transition';
+    import type { DialogProps } from '../types.js';
 
     let {
         ref = $bindable(),

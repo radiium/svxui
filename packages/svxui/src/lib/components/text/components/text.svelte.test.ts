@@ -1,11 +1,11 @@
 import {
     Text,
-    type TextSize,
-    type TextWeight,
-    type TextWrap,
-    type Color,
     type Align,
-    type TextTransform
+    type Color,
+    type TextSize,
+    type TextTransform,
+    type TextWeight,
+    type TextWrap
 } from '$lib/index.js';
 import { createRawSnippet } from 'svelte';
 import { describe, expect, test } from 'vitest';

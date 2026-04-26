@@ -1,8 +1,8 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import { isIntegerString } from '$lib/internals/is.js';
     import { resolveBoxModel } from '$lib/internals/resolve-box-model.js';
-    import { toSpaceVar } from '$lib/internals/to-space-var.js';
     import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
+    import { toSpaceVar } from '$lib/internals/to-space-var.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { GridProps } from '../types.js';
 

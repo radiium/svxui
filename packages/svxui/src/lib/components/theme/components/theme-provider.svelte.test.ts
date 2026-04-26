@@ -34,6 +34,7 @@ describe('ThemeProvider component', () => {
 
     describe('Basic Rendering', () => {
         test('renders children', async () => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const children = createRawSnippet<[ThemeRootContext]>((_getCtx) => ({
                 render: () => `<div class="tp-child">content</div>`
             }));

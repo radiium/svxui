@@ -1,4 +1,4 @@
-import { Separator, type SeparatorSize, type Color, type Orientation } from '$lib/index.js';
+import { Separator, type Color, type Orientation, type SeparatorSize } from '$lib/index.js';
 import { describe, expect, test } from 'vitest';
 import { renderWithWrapper } from '../../../../tests/render-with-wrapper.svelte.ts';
 

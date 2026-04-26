@@ -1,4 +1,4 @@
-import { Textarea, type TextareaSize, type Color, type Radius } from '$lib/index.js';
+import { Textarea, type Color, type Radius, type TextareaSize } from '$lib/index.js';
 import { describe, expect, test, vi } from 'vitest';
 import { userEvent } from 'vitest/browser';
 import { renderWithWrapper } from '../../../../tests/render-with-wrapper.svelte.ts';

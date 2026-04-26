@@ -75,36 +75,6 @@
         "./styles/colors/*": {
             "default": "./dist/styles/colors/*"
         },
-        "./components/box": {
-            "types": "./dist/components/box/index.d.ts",
-            "svelte": "./dist/components/box/index.js",
-            "default": "./dist/components/box/index.js"
-        },
-        "./components/center": {
-            "types": "./dist/components/center/index.d.ts",
-            "svelte": "./dist/components/center/index.js",
-            "default": "./dist/components/center/index.js"
-        },
-        "./components/flex": {
-            "types": "./dist/components/flex/index.d.ts",
-            "svelte": "./dist/components/flex/index.js",
-            "default": "./dist/components/flex/index.js"
-        },
-        "./components/grid": {
-            "types": "./dist/components/grid/index.d.ts",
-            "svelte": "./dist/components/grid/index.js",
-            "default": "./dist/components/grid/index.js"
-        },
-        "./components/sidebar": {
-            "types": "./dist/components/sidebar/index.d.ts",
-            "svelte": "./dist/components/sidebar/index.js",
-            "default": "./dist/components/sidebar/index.js"
-        },
-        "./components/switcher": {
-            "types": "./dist/components/switcher/index.d.ts",
-            "svelte": "./dist/components/switcher/index.js",
-            "default": "./dist/components/switcher/index.js"
-        },
         "./components/accordion": {
             "types": "./dist/components/accordion/index.d.ts",
             "svelte": "./dist/components/accordion/index.js",
@@ -115,10 +85,20 @@
             "svelte": "./dist/components/badge/index.js",
             "default": "./dist/components/badge/index.js"
         },
+        "./components/box": {
+            "types": "./dist/components/box/index.d.ts",
+            "svelte": "./dist/components/box/index.js",
+            "default": "./dist/components/box/index.js"
+        },
         "./components/button": {
             "types": "./dist/components/button/index.d.ts",
             "svelte": "./dist/components/button/index.js",
             "default": "./dist/components/button/index.js"
+        },
+        "./components/center": {
+            "types": "./dist/components/center/index.d.ts",
+            "svelte": "./dist/components/center/index.js",
+            "default": "./dist/components/center/index.js"
         },
         "./components/checkbox": {
             "types": "./dist/components/checkbox/index.d.ts",
@@ -130,10 +110,20 @@
             "svelte": "./dist/components/dialog/index.js",
             "default": "./dist/components/dialog/index.js"
         },
+        "./components/flex": {
+            "types": "./dist/components/flex/index.d.ts",
+            "svelte": "./dist/components/flex/index.js",
+            "default": "./dist/components/flex/index.js"
+        },
         "./components/floating": {
             "types": "./dist/components/floating/index.d.ts",
             "svelte": "./dist/components/floating/index.js",
             "default": "./dist/components/floating/index.js"
+        },
+        "./components/grid": {
+            "types": "./dist/components/grid/index.d.ts",
+            "svelte": "./dist/components/grid/index.js",
+            "default": "./dist/components/grid/index.js"
         },
         "./components/input": {
             "types": "./dist/components/input/index.d.ts",
@@ -185,10 +175,20 @@
             "svelte": "./dist/components/separator/index.js",
             "default": "./dist/components/separator/index.js"
         },
+        "./components/sidebar": {
+            "types": "./dist/components/sidebar/index.d.ts",
+            "svelte": "./dist/components/sidebar/index.js",
+            "default": "./dist/components/sidebar/index.js"
+        },
         "./components/switch": {
             "types": "./dist/components/switch/index.d.ts",
             "svelte": "./dist/components/switch/index.js",
             "default": "./dist/components/switch/index.js"
+        },
+        "./components/switcher": {
+            "types": "./dist/components/switcher/index.d.ts",
+            "svelte": "./dist/components/switcher/index.js",
+            "default": "./dist/components/switcher/index.js"
         },
         "./components/tabs": {
             "types": "./dist/components/tabs/index.d.ts",

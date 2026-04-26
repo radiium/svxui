@@ -156,7 +156,7 @@
             style:z-index={zIndex}
             data-active={active}
         >
-            <Panel {size} {color} {variant} {outline} {radius}>
+            <Panel p={size} {color} {variant} {outline} {radius}>
                 {@render content?.()}
             </Panel>
 

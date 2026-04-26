@@ -1,6 +1,6 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
-    import { toSpaceVar } from '$lib/internals/to-space-var.js';
     import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
+    import { toSpaceVar } from '$lib/internals/to-space-var.js';
     import type { LayoutSpacing } from '$lib/shared.types.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { SwitcherProps } from '../types.js';

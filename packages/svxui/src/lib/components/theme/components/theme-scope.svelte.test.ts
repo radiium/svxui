@@ -77,6 +77,7 @@ describe('ThemeScope component', () => {
 
         test('renders children', async () => {
             const label = 'scope content';
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const children = createRawSnippet<[ThemeContext]>((_getCtx) => ({
                 render: () => `<span>${label}</span>`
             }));

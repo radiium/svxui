@@ -1,6 +1,6 @@
+import { getHtmlElement, toHTMLElement } from '$lib/internals/elements.js';
 import type { Attachment } from 'svelte/attachments';
 import type { ClickoutsideOptions } from './types.ts';
-import { getHtmlElement, toHTMLElement } from '$lib/internals/elements.js';
 
 /**
  * Detects clicks outside a bound element and triggers a callback. Typically used to close dropdowns, modals, or popovers.

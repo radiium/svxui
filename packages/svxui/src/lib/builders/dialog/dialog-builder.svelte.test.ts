@@ -1,5 +1,5 @@
-import { describe, expect, vi } from 'vitest';
 import { flushSync } from 'svelte';
+import { describe, expect, vi } from 'vitest';
 import { itWithEffect } from '../../../tests/util.svelte.js';
 import { DialogBuilder } from './dialog-builder.svelte.js';
 
