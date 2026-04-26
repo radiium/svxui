@@ -91,7 +91,7 @@ describe('ThemeProvider component', () => {
     /* ------------------------------------------------- */
 
     describe('Color', () => {
-        test("sets data-color on <html>", async () => {
+        test('sets data-color on <html>', async () => {
             render(ThemeProvider, { script: false, mode: 'light', color: 'blue' });
 
             expect(html.getAttribute('data-color')).toBe('blue');
@@ -109,7 +109,7 @@ describe('ThemeProvider component', () => {
     /* ------------------------------------------------- */
 
     describe('Radius', () => {
-        test("sets data-radius on <html>", async () => {
+        test('sets data-radius on <html>', async () => {
             render(ThemeProvider, { script: false, mode: 'light', radius: 'large' });
 
             expect(html.getAttribute('data-radius')).toBe('large');

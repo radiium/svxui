@@ -22,7 +22,8 @@
         <ControlSelect label="initialIndex" bind:value={initialIndex} options={['first', 'last', '2']} />
     {/snippet}
 
-    <Flex justify="start"
+    <Flex
+        justify="start"
         direction={orientation === 'vertical' ? 'column' : 'row'}
         wrap="wrap"
         gap="1"

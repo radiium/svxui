@@ -233,8 +233,7 @@ describe('InputGroup + InputGroupItem composition', () => {
 
     test('InputGroup renders multiple children', async () => {
         const groupChildren = createRawSnippet(() => ({
-            render: () =>
-                `<div><input class="input" /><button class="button">Go</button></div>`
+            render: () => `<div><input class="input" /><button class="button">Go</button></div>`
         }));
 
         const { container } = renderWithWrapper(InputGroup, { children: groupChildren });

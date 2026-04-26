@@ -184,9 +184,7 @@ describe('Sidebar component', () => {
             const screen = render({ children, gap });
             const wrapper = screen.getByTestId('sidebar');
 
-            expect(wrapper.element().style.getPropertyValue('--sidebar-gap')).toBe(
-                `var(--space-${gap})`
-            );
+            expect(wrapper.element().style.getPropertyValue('--sidebar-gap')).toBe(`var(--space-${gap})`);
         });
 
         test('accepts arbitrary CSS value for gap', async () => {

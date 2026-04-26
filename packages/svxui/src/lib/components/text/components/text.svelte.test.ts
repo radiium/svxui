@@ -1,4 +1,12 @@
-import { Text, type TextSize, type TextWeight, type TextWrap, type Color, type Align, type TextTransform } from '$lib/index.js';
+import {
+    Text,
+    type TextSize,
+    type TextWeight,
+    type TextWrap,
+    type Color,
+    type Align,
+    type TextTransform
+} from '$lib/index.js';
 import { createRawSnippet } from 'svelte';
 import { describe, expect, test } from 'vitest';
 import { renderWithWrapper } from '../../../../tests/render-with-wrapper.svelte.ts';
@@ -182,15 +190,12 @@ describe('Text component', () => {
     /* ------------------------------------------------- */
 
     describe('Alignment', () => {
-        test.each(['start', 'center', 'end'] as Align[])(
-            'applies alignment %s',
-            async (align) => {
-                const screen = renderWithWrapper(Text, { children, align });
-                const text = screen.getByText(label);
+        test.each(['start', 'center', 'end'] as Align[])('applies alignment %s', async (align) => {
+            const screen = renderWithWrapper(Text, { children, align });
+            const text = screen.getByText(label);
 
-                await expect.element(text).toHaveClass(`text-align-${align}`);
-            }
-        );
+            await expect.element(text).toHaveClass(`text-align-${align}`);
+        });
     });
 
     /* ------------------------------------------------- */
@@ -198,15 +203,12 @@ describe('Text component', () => {
     /* ------------------------------------------------- */
 
     describe('Wrap', () => {
-        test.each(['wrap', 'nowrap', 'pretty', 'balance'] as TextWrap[])(
-            'applies wrap %s',
-            async (wrap) => {
-                const screen = renderWithWrapper(Text, { children, wrap });
-                const text = screen.getByText(label);
+        test.each(['wrap', 'nowrap', 'pretty', 'balance'] as TextWrap[])('applies wrap %s', async (wrap) => {
+            const screen = renderWithWrapper(Text, { children, wrap });
+            const text = screen.getByText(label);
 
-                await expect.element(text).toHaveClass(`text-wrap-${wrap}`);
-            }
-        );
+            await expect.element(text).toHaveClass(`text-wrap-${wrap}`);
+        });
 
         test('does not set wrap class when wrap is undefined', async () => {
             const screen = renderWithWrapper(Text, { children });
@@ -222,15 +224,12 @@ describe('Text component', () => {
     /* ------------------------------------------------- */
 
     describe('Underline', () => {
-        test.each(['auto', 'always', 'hover', 'none'] as const)(
-            'applies underline %s',
-            async (underline) => {
-                const screen = renderWithWrapper(Text, { children, underline });
-                const text = screen.getByText(label);
+        test.each(['auto', 'always', 'hover', 'none'] as const)('applies underline %s', async (underline) => {
+            const screen = renderWithWrapper(Text, { children, underline });
+            const text = screen.getByText(label);
 
-                await expect.element(text).toHaveClass(`text-underline-${underline}`);
-            }
-        );
+            await expect.element(text).toHaveClass(`text-underline-${underline}`);
+        });
     });
 
     /* ------------------------------------------------- */
