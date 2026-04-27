@@ -1,4 +1,4 @@
-import { Panel, type Color, type LayoutSpacing, type PanelVariant, type Radius } from '$lib/index.js';
+import { Panel, type Color, type PanelPadding, type PanelVariant, type Radius } from '$lib/index.js';
 import { createRawSnippet } from 'svelte';
 import { describe, expect, test } from 'vitest';
 import { renderWithWrapper } from '../../../../tests/render-with-wrapper.svelte.ts';
@@ -90,7 +90,7 @@ describe('Panel component', () => {
     /* ------------------------------------------------- */
 
     describe('Spacing', () => {
-        test.each(['1', '2', '3', '4', '5'] as LayoutSpacing[])(
+        test.each(['1', '2', '3', '4', '5'] as PanelPadding[])(
             'applies padding p=%s via inline style',
             async (p) => {
                 const screen = renderWithWrapper(Panel, { children, p });

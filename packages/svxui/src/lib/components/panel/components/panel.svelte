@@ -1,6 +1,6 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
-    import { resolveSpacing } from '$lib/internals/resolve-spacing.js';
     import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
+    import { toSpaceVar } from '$lib/internals/to-space-var.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { PanelProps } from '../types.js';
 
@@ -20,23 +20,19 @@
         pr = undefined,
         pb = undefined,
         pl = undefined,
-        m = undefined,
-        mx = undefined,
-        my = undefined,
-        mt = undefined,
-        mr = undefined,
-        mb = undefined,
-        ml = undefined,
         children,
         ...rest
     }: PanelProps<ElementTag> = $props();
 
     const cssStyle = $derived.by(() => {
-        const spacingStyle = styleObjectToString(
-            resolveSpacing({ p, px, py, pt, pr, pb, pl, m, mx, my, mt, mr, mb, ml })
-        );
+        const paddingStyle = styleObjectToString({
+            'padding-top': toSpaceVar(pt ?? py ?? p),
+            'padding-right': toSpaceVar(pr ?? px ?? p),
+            'padding-bottom': toSpaceVar(pb ?? py ?? p),
+            'padding-left': toSpaceVar(pl ?? px ?? p)
+        });
         const callerStyle = rest.style as string | undefined;
-        return [spacingStyle, callerStyle].filter(Boolean).join(' ') || undefined;
+        return [paddingStyle, callerStyle].filter(Boolean).join(' ') || undefined;
     });
 
     let cssClass = $derived([
