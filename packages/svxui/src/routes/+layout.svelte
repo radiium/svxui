@@ -7,6 +7,7 @@
     // Styles
     import '$lib/styles/normalize.css';
     import '$lib/styles/tokens.css';
+    import '$lib/styles/utilities.css';
     import './all-colors.css';
 
     type Props = {

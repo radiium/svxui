@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Accordion, Button, Flex, Panel, Separator, Text, type AccordionProps } from '$lib/index.js';
+    import { Accordion, Button, cc, Flex, Panel, Separator, Text, type AccordionProps } from '$lib/index.js';
     import { slide } from 'svelte/transition';
     import ControlButton from '../../controls/ControlButton.svelte';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
@@ -54,7 +54,13 @@
                         <!-- Item -->
                         <Flex justify="start" direction="column" {...item.itemAttrs}>
                             <!-- Heading -->
-                            <Flex as="header" justify="between" align="center" p="4" {...item.headingAttrs}>
+                            <Flex
+                                as="header"
+                                justify="between"
+                                align="center"
+                                class={cc({ p: '4' })}
+                                {...item.headingAttrs}
+                            >
                                 <Text disabled={item.disabled}>Title {value}</Text>
                                 <!-- Trigger -->
                                 <Button size="1" variant="soft" {...item.triggerAttrs}>

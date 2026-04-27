@@ -1,8 +1,5 @@
 <script lang="ts">
-    import { Panel, Text } from '$lib/index.js';
-    import Box from '$lib/components/box/components/box.svelte';
-    import { Flex } from '$lib/components/flex/index.js';
-    import { Grid } from '$lib/components/grid/index.js';
+    import { cc, Flex, Grid, Panel, Text } from '$lib/index.js';
     import Playground from '../../controls/Playground.svelte';
 </script>
 
@@ -12,8 +9,8 @@
 </Text>
 
 <Playground>
-    <Flex justify="start" direction="column" gap="7" width="100%">
-        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
+    <Flex justify="start" direction="column" gap="7" class={cc({ w: '100' })}>
+        <Flex justify="start" direction="column" gap="2" class="dashed {cc({ w: '100', p: '2' })}">
             <code>cols="3" gap="3"</code>
             <Grid cols="3" gap="3">
                 {#each [1, 2, 3, 4, 5, 6] as n (n)}
@@ -24,7 +21,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
+        <Flex justify="start" direction="column" gap="2" class="dashed {cc({ w: '100', p: '2' })}">
             <code>cols="4" rowGap="1" colGap="4" — asymmetric gaps</code>
             <Grid cols="4" rowGap="1" colGap="4">
                 {#each [1, 2, 3, 4, 5, 6, 7, 8] as n (n)}
@@ -35,7 +32,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
+        <Flex justify="start" direction="column" gap="2" class="dashed {cc({ w: '100', p: '2' })}">
             <code>autoFill="140px" gap="3" — responsive without media query</code>
             <Grid autoFill="140px" gap="3">
                 {#each ['A', 'B', 'C', 'D', 'E'] as l (l)}
@@ -46,7 +43,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
+        <Flex justify="start" direction="column" gap="2" class="dashed {cc({ w: '100', p: '2' })}">
             <code>autoFit="140px" gap="3" — The empty columns are collapsing.</code>
             <Grid autoFit="140px" gap="3">
                 {#each ['X', 'Y'] as l (l)}
@@ -57,7 +54,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
+        <Flex justify="start" direction="column" gap="2" class="dashed {cc({ w: '100', p: '2' })}">
             <code>areas — named layout header / sidebar / main / footer</code>
             <Grid
                 cols="200px 1fr"
@@ -65,22 +62,21 @@
                 areas="'header header' 'sidebar main' 'footer footer'"
                 gap="2"
             >
-                <Box gridArea="header">
-                    <Panel p="2" variant="soft" fullWidth fullHeight>Header</Panel>
-                </Box>
-                <Box gridArea="sidebar">
-                    <Panel p="2" variant="soft" fullWidth fullHeight>Sidebar</Panel>
-                </Box>
-                <Box gridArea="main" minHeight="60px">
-                    <Panel p="2" variant="clear" outline fullWidth fullHeight>Main</Panel>
-                </Box>
-                <Box gridArea="footer">
-                    <Panel p="2" variant="soft" fullWidth fullHeight>Footer</Panel>
-                </Box>
+                <Panel p="2" variant="soft" fullWidth fullHeight style="grid-area: header;">Header</Panel>
+                <Panel p="2" variant="soft" fullWidth fullHeight style="grid-area: sidebar;">Sidebar</Panel>
+                <Panel
+                    p="2"
+                    variant="clear"
+                    outline
+                    fullWidth
+                    fullHeight
+                    style="grid-area: main; min-height: 60px;">Main</Panel
+                >
+                <Panel p="2" variant="soft" fullWidth fullHeight style="grid-area: footer;">Footer</Panel>
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
+        <Flex justify="start" direction="column" gap="2" class="dashed {cc({ w: '100', p: '2' })}">
             <code>autoRows="120px" — uniform height across all implicit lines</code>
             <Grid cols="3" gap="3" autoRows="120px">
                 {#each ['Short', 'Much longer content that overflows', 'Medium', 'Short', 'Fairly long too', 'Ok'] as item, i (i)}
@@ -89,34 +85,20 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
+        <Flex justify="start" direction="column" gap="2" class="dashed {cc({ w: '100', p: '2' })}">
             <code>flow="dense" — fills the gaps with items of varying sizes</code>
             <Grid cols="3" gap="2" flow="dense" autoRows="60px" class="grid-dense-demo">
-                <Box gridColumn="span 2">
-                    <Panel variant="soft" p="2" fullHeight>Large (span 2)</Panel>
-                </Box>
-                <Box>
-                    <Panel variant="soft" p="2" fullHeight>1</Panel>
-                </Box>
-                <Box>
-                    <Panel variant="soft" p="2" fullHeight>2</Panel>
-                </Box>
-                <Box gridColumn="span 2">
-                    <Panel variant="soft" p="2" fullHeight>Large (span 2)</Panel>
-                </Box>
-                <Box>
-                    <Panel variant="soft" p="2" fullHeight>3</Panel>
-                </Box>
-                <Box>
-                    <Panel variant="soft" p="2" fullHeight>4</Panel>
-                </Box>
-                <Box>
-                    <Panel variant="soft" p="2" fullHeight>5</Panel>
-                </Box>
+                <Panel variant="soft" p="2" fullHeight class={cc({ colSpan: '2' })}>Large (span 2)</Panel>
+                <Panel variant="soft" p="2" fullHeight>1</Panel>
+                <Panel variant="soft" p="2" fullHeight>2</Panel>
+                <Panel variant="soft" p="2" fullHeight class={cc({ colSpan: '2' })}>Large (span 2)</Panel>
+                <Panel variant="soft" p="2" fullHeight>3</Panel>
+                <Panel variant="soft" p="2" fullHeight>4</Panel>
+                <Panel variant="soft" p="2" fullHeight>5</Panel>
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
+        <Flex justify="start" direction="column" gap="2" class="dashed {cc({ w: '100', p: '2' })}">
             <code>align="center" — content vertically centered in each cell</code>
             <Grid cols="3" gap="3" autoRows="100px" align="center">
                 {#each ['Vertically centered', 'Me too', '✓'] as item (item)}
@@ -127,7 +109,7 @@
             </Grid>
         </Flex>
 
-        <Flex justify="start" direction="column" gap="2" width="100%" p="2" class="dashed">
+        <Flex justify="start" direction="column" gap="2" class="dashed {cc({ w: '100', p: '2' })}">
             <code>Nested grids — props isolation</code>
             <Grid cols="2" gap="3">
                 {#each [1, 2] as n (n)}

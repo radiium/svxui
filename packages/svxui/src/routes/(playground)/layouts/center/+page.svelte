@@ -1,9 +1,5 @@
 <script lang="ts">
-    import { Panel, Text } from '$lib/index.js';
-    import Box from '$lib/components/box/components/box.svelte';
-    import { Center } from '$lib/components/center/index.js';
-    import type { CenterProps } from '$lib/components/center/types.js';
-    import { Flex } from '$lib/components/flex/index.js';
+    import { cc, Center, type CenterProps, Flex, Panel, Text } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
@@ -38,13 +34,11 @@
         />
     {/snippet}
 
-    <Box width="100%">
-        <Center {...props}>
-            <Panel variant="soft" p="9">
-                <Flex align="center" justify="center">Centered</Flex>
-            </Panel>
-        </Center>
-    </Box>
+    <Center {...props} class={cc({ w: '100' })}>
+        <Panel variant="soft" p="9">
+            <Flex align="center" justify="center">Centered</Flex>
+        </Panel>
+    </Center>
 </Playground>
 
 <div><pre>{json}</pre></div>

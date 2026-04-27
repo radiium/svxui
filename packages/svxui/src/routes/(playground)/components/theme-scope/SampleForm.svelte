@@ -1,8 +1,5 @@
 <script lang="ts">
-    import Input from '$lib/components/input/components/input.svelte';
-    import Panel from '$lib/components/panel/components/panel.svelte';
-    import Text from '$lib/components/text/components/text.svelte';
-    import Flex from '$lib/components/flex/components/flex.svelte';
+    import { cc, Flex, Input, Panel, Text } from '$lib/index.js';
     import type { Snippet } from 'svelte';
 
     type Props = {
@@ -13,13 +10,13 @@
 </script>
 
 <Panel variant="soft" outline fullWidth>
-    <Flex justify="start" direction="column" gap="5" width="100%">
-        <Flex justify="start" as="form" direction="column" gap="3" width="100%">
-            <Flex justify="start" as="label" direction="column" gap="1" width="100%">
+    <Flex justify="start" direction="column" gap="5" class={cc({ w: '100' })}>
+        <Flex justify="start" as="form" direction="column" gap="3" class={cc({ w: '100' })}>
+            <Flex justify="start" as="label" direction="column" gap="1" class={cc({ w: '100' })}>
                 <Text>login</Text>
                 <Input name="login" />
             </Flex>
-            <Flex justify="start" as="label" direction="column" gap="1" width="100%">
+            <Flex justify="start" as="label" direction="column" gap="1" class={cc({ w: '100' })}>
                 <Text>password</Text>
                 <Input name="password" type="password" />
             </Flex>

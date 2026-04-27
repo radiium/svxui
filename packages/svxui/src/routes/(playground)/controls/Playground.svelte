@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Flex, Panel } from '$lib/index.js';
+    import { cc, Flex, Panel } from '$lib/index.js';
     import type { Snippet } from 'svelte';
 
     type Props = {
@@ -10,8 +10,8 @@
     let { children, controls }: Props = $props();
 </script>
 
-<Flex justify="start" gap="5" maxWidth="100%">
-    <Panel variant="clear" outline p="5" class="spacer" style="min-width: 0">
+<Flex justify="start" gap="5" class={cc({ maxW: '100' })}>
+    <Panel variant="clear" outline p="5" class="spacer {cc({ minW: '0' })}">
         <Flex gap="2" direction="column" justify="center" align="center">
             {@render children?.()}
         </Flex>

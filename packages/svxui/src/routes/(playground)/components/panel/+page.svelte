@@ -1,6 +1,14 @@
 <script lang="ts">
     import Button from '$lib/components/button/components/button.svelte';
-    import { AllRadixColors, Checkbox, Flex, Panel, type PanelProps, type PanelVariant } from '$lib/index.js';
+    import {
+        AllRadixColors,
+        cc,
+        Checkbox,
+        Flex,
+        Panel,
+        type PanelProps,
+        type PanelVariant
+    } from '$lib/index.js';
     import { cartesianProduct, groupBy } from '../../controls/cartesian-product.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -45,7 +53,7 @@
         {#each sections as section, i (i)}
             <Panel variant="clear" outline p="0">
                 <div class="background">
-                    <Flex justify="start" direction="column" gap="5" p="5">
+                    <Flex justify="start" direction="column" gap="5" class={cc({ px: '5' })}>
                         {#each section as item, j (j)}
                             {@const props = { ...base, ...item }}
                             <Flex justify="start" direction="column" gap="3" data-color={props.color}>
@@ -55,8 +63,7 @@
                                         justify="center"
                                         align="center"
                                         gap="5"
-                                        width="100%"
-                                        height="100%"
+                                        class={cc({ w: '100', h: '100' })}
                                     >
                                         {#if (base as PanelProps<'label'>).as === 'label'}
                                             <Checkbox />
@@ -74,7 +81,7 @@
                                     </Flex>
                                 </Panel>
 
-                                <Flex justify="start" gap="3" px="5">
+                                <Flex justify="start" gap="3" class={cc({ px: '5' })}>
                                     <Button variant="solid">button</Button>
                                     <Button variant="soft">button</Button>
                                     <Button variant="outline">button</Button>

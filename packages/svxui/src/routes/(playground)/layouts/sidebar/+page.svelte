@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { Panel, Text } from '$lib/index.js';
-    import { Sidebar, type SidebarProps } from '$lib/components/sidebar/index.js';
+    import { Panel, Sidebar, Text, type SidebarProps } from '$lib/index.js';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
 

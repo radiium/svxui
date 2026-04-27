@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { Panel, Text } from '$lib/index.js';
-    import { Flex } from '$lib/components/flex/index.js';
+    import { cc, Flex, Panel, Text } from '$lib/index.js';
     import Playground from '../../controls/Playground.svelte';
 </script>
 
@@ -8,16 +7,16 @@
 <Text muted size="2">Flex container with direction, gap, justify, align</Text>
 
 <Playground>
-    <Flex justify="start" direction="column" gap="3" width="100%">
+    <Flex justify="start" direction="column" gap="3" class={cc({ w: '100' })}>
         <code>direction="row" justify="between" gap="2"</code>
-        <Flex direction="row" justify="between" gap="2" p="2" class="dashed">
+        <Flex direction="row" justify="between" gap="2" class="dashed {cc({ p: '2' })}">
             {#each ['Item 1', 'Item 2', 'Item 3'] as item (item)}
                 <Panel variant="soft" p="2">{item}</Panel>
             {/each}
         </Flex>
 
         <code>direction="column" align="center" gap="5"</code>
-        <Flex justify="start" direction="column" align="center" gap="5" p="2" class="dashed">
+        <Flex justify="start" direction="column" align="center" gap="5" class="dashed {cc({ p: '2' })}">
             {#each ['Alpha', 'Beta'] as item (item)}
                 <Panel variant="soft" p="2">{item}</Panel>
             {/each}

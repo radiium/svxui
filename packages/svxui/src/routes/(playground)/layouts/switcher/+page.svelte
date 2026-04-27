@@ -1,7 +1,5 @@
 <script lang="ts">
-    import { Panel, Text } from '$lib/index.js';
-    import { Flex } from '$lib/components/flex/index.js';
-    import { Switcher } from '$lib/components/switcher/index.js';
+    import { Flex, Panel, Switcher, Text } from '$lib/index.js';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
 
