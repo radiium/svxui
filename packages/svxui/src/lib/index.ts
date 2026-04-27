@@ -17,14 +17,10 @@ export * from './builders/tabs/index.js';
 // Components
 export * from './components/accordion/index.js';
 export * from './components/badge/index.js';
-export * from './components/box/index.js';
 export * from './components/button/index.js';
-export * from './components/center/index.js';
 export * from './components/checkbox/index.js';
 export * from './components/dialog/index.js';
-export * from './components/flex/index.js';
 export * from './components/floating/index.js';
-export * from './components/grid/index.js';
 export * from './components/input-group/index.js';
 export * from './components/input-number/index.js';
 export * from './components/input-range/index.js';
@@ -35,13 +31,18 @@ export * from './components/portal/index.js';
 export * from './components/radio/index.js';
 export * from './components/select/index.js';
 export * from './components/separator/index.js';
-export * from './components/sidebar/index.js';
 export * from './components/switch/index.js';
-export * from './components/switcher/index.js';
 export * from './components/tabs/index.js';
 export * from './components/text/index.js';
 export * from './components/textarea/index.js';
 export * from './components/theme/index.js';
+
+// Layouts
+export * from './layouts/center/index.js';
+export * from './layouts/flex/index.js';
+export * from './layouts/grid/index.js';
+export * from './layouts/sidebar/index.js';
+export * from './layouts/switcher/index.js';
 
 // Utilities
 export * from './utilities/clipboard/index.js';
@@ -51,6 +52,9 @@ export * from './utilities/hotkeys/index.js';
 export * from './utilities/persisted-state/index.js';
 export * from './utilities/selection-state/index.js';
 export * from './utilities/use-id/index.js';
+
+// cc()
+export * from './cc/index.js';
 
 // Shared
 export type * from './extensible.types.d.js';
