@@ -1,81 +1,85 @@
+@use './config' as *;
+
 /*
- * Utilities: width/height/size      
+ * Utilities: sizing (width, height, min/max, size)
  */
 
-@use 'sass:map';
+$width-props: (
+    'w': 'width',
+    'min-w': 'min-width',
+    'max-w': 'max-width'
+) !default;
 
-$sizeProps: (
-    'width': (
-        'prefix': 'w',
-        'viewport': 'vw'
-    ),
-    'min-width': (
-        'prefix': 'min-w',
-        'viewport': 'vw'
-    ),
-    'max-width': (
-        'prefix': 'max-w',
-        'viewport': 'vw'
-    ),
-    'height': (
-        'prefix': 'h',
-        'viewport': 'vh'
-    ),
-    'min-height': (
-        'prefix': 'min-h',
-        'viewport': 'vh'
-    ),
-    'max-height': (
-        'prefix': 'max-h',
-        'viewport': 'vh'
-    )
-);
+$height-props: (
+    'h': 'height',
+    'min-h': 'min-height',
+    'max-h': 'max-height'
+) !default;
 
-$sizeValues: (
-    '0': 0px,
-    '1': var(--space-1),
-    '2': var(--space-2),
-    '3': var(--space-3),
-    '4': var(--space-4),
-    '5': var(--space-5),
-    '6': var(--space-6),
-    '7': var(--space-7),
-    '8': var(--space-8),
-    '9': var(--space-9),
-    '50': 50%,
-    '100': 100%,
+/* Width */
+
+@each $abbr, $prop in $width-props {
+    @each $key, $value in $space-scale {
+        .#{$prefix}#{$abbr}-#{$key} {
+            #{$prop}: $value;
+        }
+    }
+    @each $key, $value in $size-percent {
+        .#{$prefix}#{$abbr}-#{$key} {
+            #{$prop}: $value;
+        }
+    }
+    @each $key, $value in $size-w-keywords {
+        .#{$prefix}#{$abbr}-#{$key} {
+            #{$prop}: $value;
+        }
+    }
+}
+
+/* Height */
+
+@each $abbr, $prop in $height-props {
+    @each $key, $value in $space-scale {
+        .#{$prefix}#{$abbr}-#{$key} {
+            #{$prop}: $value;
+        }
+    }
+    @each $key, $value in $size-percent {
+        .#{$prefix}#{$abbr}-#{$key} {
+            #{$prop}: $value;
+        }
+    }
+    @each $key, $value in $size-h-keywords {
+        .#{$prefix}#{$abbr}-#{$key} {
+            #{$prop}: $value;
+        }
+    }
+}
+
+/* Size (square shorthand) */
+
+$size-square-keywords: (
     'min': min-content,
     'max': max-content,
     'fit': fit-content,
     'auto': auto
 ) !default;
 
-@each $propKey, $propConfig in $sizeProps {
-    $prefix: map.get($propConfig, 'prefix');
-    $viewportUnit: map.get($propConfig, 'viewport');
-
-    /* #{$propKey} */
-
-    @each $key, $value in $sizeValues {
-        .#{$prefix}-#{$key} {
-            #{$propKey}: $value;
-        }
-    }
-
-    .#{$prefix}-screen {
-        #{$propKey}: #{100 + $viewportUnit};
-    }
-}
-
-/* Size (square) */
-
-@each $key, $value in $sizeValues {
-    .size-#{$key} {
+@each $key, $value in $space-scale {
+    .#{$prefix}size-#{$key} {
         width: $value;
         height: $value;
     }
 }
-.size-screen {
-    width: 100vw;
-    height: 100vh;
+@each $key, $value in $size-percent {
+    .#{$prefix}size-#{$key} {
+        width: $value;
+        height: $value;
+    }
+}
+@each $key, $value in $size-square-keywords {
+    .#{$prefix}size-#{$key} {
+        width: $value;
+        height: $value;
+    }
 }

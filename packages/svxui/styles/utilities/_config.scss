@@ -1,0 +1,73 @@
+/*
+ * Config: shared variables for svxui CSS utilities
+ * Override $prefix to '' to strip the prefix.
+ */
+
+// Utility class prefix
+$prefix: 'svx-' !default;
+
+// Space scale — mirrors CSS tokens --space-0 through --space-9
+$space-scale: (
+    '0': 0px,
+    '1': var(--space-1),
+    '2': var(--space-2),
+    '3': var(--space-3),
+    '4': var(--space-4),
+    '5': var(--space-5),
+    '6': var(--space-6),
+    '7': var(--space-7),
+    '8': var(--space-8),
+    '9': var(--space-9)
+) !default;
+
+// Margin scale — space + auto
+$margin-scale: (
+    '0': 0px,
+    '1': var(--space-1),
+    '2': var(--space-2),
+    '3': var(--space-3),
+    '4': var(--space-4),
+    '5': var(--space-5),
+    '6': var(--space-6),
+    '7': var(--space-7),
+    '8': var(--space-8),
+    '9': var(--space-9),
+    'auto': auto
+) !default;
+
+// Negative margin scale (no 0, no auto)
+$space-negative: (
+    '1': var(--space-1),
+    '2': var(--space-2),
+    '3': var(--space-3),
+    '4': var(--space-4),
+    '5': var(--space-5),
+    '6': var(--space-6),
+    '7': var(--space-7),
+    '8': var(--space-8),
+    '9': var(--space-9)
+) !default;
+
+// Size — percentage values
+$size-percent: (
+    '50': 50%,
+    '100': 100%
+) !default;
+
+// Size keywords for width
+$size-w-keywords: (
+    'min': min-content,
+    'max': max-content,
+    'fit': fit-content,
+    'auto': auto,
+    'screen': 100vw
+) !default;
+
+// Size keywords for height (screen = 100vh)
+$size-h-keywords: (
+    'min': min-content,
+    'max': max-content,
+    'fit': fit-content,
+    'auto': auto,
+    'screen': 100vh
+) !default;

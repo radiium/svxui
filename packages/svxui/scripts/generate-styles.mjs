@@ -51,64 +51,33 @@ mkdirSync(BASE_OUTPUT_DIR);
     },
 
     /**
-     * Utilities
+     * Utilities — combined bundle
      */
     {
         src: 'utilities/index.scss',
         dest: 'utilities.css'
     },
+
+    /**
+     * Utilities — individual files (opt-in imports)
+     */
     {
-        src: 'utilities/display.scss',
-        dest: 'utilities.display.css'
-    },
-    {
-        src: 'utilities/flex.scss',
-        dest: 'utilities.flex.css'
-    },
-    {
-        src: 'utilities/gap.scss',
-        dest: 'utilities.gap.css'
-    },
-    {
-        src: 'utilities/overflow.scss',
-        dest: 'utilities.overflow.css'
-    },
-    {
-        src: 'utilities/inset.scss',
-        dest: 'utilities.inset.css'
-    },
-    {
-        src: 'utilities/position.scss',
-        dest: 'utilities.position.css'
-    },
-    {
-        src: 'utilities/radius.scss',
-        dest: 'utilities.radius.css'
+        src: 'utilities/space.scss',
+        dest: 'utilities.space.css'
     },
     {
         src: 'utilities/size.scss',
         dest: 'utilities.size.css'
     },
     {
-        src: 'utilities/space.scss',
-        dest: 'utilities.space.css'
+        src: 'utilities/flex-child.scss',
+        dest: 'utilities.flex-child.css'
     },
     {
-        src: 'utilities/visibility.scss',
-        dest: 'utilities.visibility.css'
+        src: 'utilities/grid-child.scss',
+        dest: 'utilities.grid-child.css'
     },
-    {
-        src: 'utilities/cursor.scss',
-        dest: 'utilities.cursor.css'
-    },
-    {
-        src: 'utilities/pointer-events.scss',
-        dest: 'utilities.pointer-events.css'
-    },
-    {
-        src: 'utilities/z-index.scss',
-        dest: 'utilities.z-index.css'
-    }
+
 ].forEach(({ src, dest }) => {
     const input = resolve(BASE_INPUT_DIR, src);
     const output = resolve(BASE_OUTPUT_DIR, dest);

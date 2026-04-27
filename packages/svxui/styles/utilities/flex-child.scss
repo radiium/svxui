@@ -1,0 +1,52 @@
+@use './config' as *;
+
+/*
+ * Utilities: flex child
+ */
+
+/* Align Self */
+
+$self-values: (
+    'auto': auto,
+    'start': flex-start,
+    'center': center,
+    'end': flex-end,
+    'stretch': stretch,
+    'baseline': baseline
+) !default;
+
+@each $key, $value in $self-values {
+    .#{$prefix}self-#{$key} {
+        align-self: $value;
+    }
+}
+
+/* Grow & Shrink */
+
+.#{$prefix}grow-0 {
+    flex-grow: 0;
+}
+.#{$prefix}grow-1 {
+    flex-grow: 1;
+}
+.#{$prefix}shrink-0 {
+    flex-shrink: 0;
+}
+.#{$prefix}shrink-1 {
+    flex-shrink: 1;
+}
+
+/* Flex shorthand */
+
+.#{$prefix}flex-1 {
+    flex: 1 1 0%;
+}
+.#{$prefix}flex-auto {
+    flex: 1 1 auto;
+}
+.#{$prefix}flex-initial {
+    flex: 0 1 auto;
+}
+.#{$prefix}flex-none {
+    flex: none;
+}
