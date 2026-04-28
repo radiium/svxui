@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cc, Center, type CenterProps, Flex, Panel, Text } from '$lib/index.js';
+    import { Center, type CenterProps, Flex, Panel, Text } from '$lib/index.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
@@ -34,7 +34,7 @@
         />
     {/snippet}
 
-    <Center {...props} class={cc({ w: '100' })}>
+    <Center {...props} class="w-full">
         <Panel variant="soft" p="9">
             <Flex align="center" justify="center">Centered</Flex>
         </Panel>

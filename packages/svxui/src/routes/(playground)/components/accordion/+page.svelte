@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Accordion, Button, cc, Flex, Panel, Separator, Text, type AccordionProps } from '$lib/index.js';
+    import { Accordion, Button, Flex, Panel, Separator, Text, type AccordionProps } from '$lib/index.js';
     import { slide } from 'svelte/transition';
     import ControlButton from '../../controls/ControlButton.svelte';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
@@ -58,7 +58,7 @@
                                 as="header"
                                 justify="between"
                                 align="center"
-                                class={cc({ p: '4' })}
+                                class="p-4"
                                 {...item.headingAttrs}
                             >
                                 <Text disabled={item.disabled}>Title {value}</Text>

@@ -2,7 +2,6 @@
     import Button from '$lib/components/button/components/button.svelte';
     import {
         AllRadixColors,
-        cc,
         Checkbox,
         Flex,
         Panel,
@@ -53,7 +52,7 @@
         {#each sections as section, i (i)}
             <Panel variant="clear" outline p="0">
                 <div class="background">
-                    <Flex justify="start" direction="column" gap="5" class={cc({ px: '5' })}>
+                    <Flex justify="start" direction="column" gap="5" class="px-5">
                         {#each section as item, j (j)}
                             {@const props = { ...base, ...item }}
                             <Flex justify="start" direction="column" gap="3" data-color={props.color}>
@@ -63,7 +62,7 @@
                                         justify="center"
                                         align="center"
                                         gap="5"
-                                        class={cc({ w: '100', h: '100' })}
+                                        class="w-full h-full"
                                     >
                                         {#if (base as PanelProps<'label'>).as === 'label'}
                                             <Checkbox />
@@ -81,7 +80,7 @@
                                     </Flex>
                                 </Panel>
 
-                                <Flex justify="start" gap="3" class={cc({ px: '5' })}>
+                                <Flex justify="start" gap="3" class="px-5">
                                     <Button variant="solid">button</Button>
                                     <Button variant="soft">button</Button>
                                     <Button variant="outline">button</Button>

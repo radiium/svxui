@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { AllRadixColors, cc, Flex, Panel, Text, type TextProps } from '$lib/index.js';
+    import { AllRadixColors, Flex, Panel, Text, type TextProps } from '$lib/index.js';
     import { cartesianProduct, groupBy } from '../../controls/cartesian-product.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
@@ -62,7 +62,7 @@
         <ControlSelect label="align" bind:value={base.align} options={['start', 'center', 'end']} />
     {/snippet}
 
-    <Flex justify="start" direction="column" gap="3" class={cc({ w: '100' })}>
+    <Flex justify="start" direction="column" gap="3" class="w-full">
         {#each sections as section, i (i)}
             <Panel variant="clear" outline fullWidth>
                 <Flex justify="start" wrap="wrap" gap="3">
