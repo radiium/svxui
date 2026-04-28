@@ -60,6 +60,11 @@
         "./styles/colors/*": {
             "default": "./dist/styles/colors/*"
         },
+        "./layouts/box": {
+            "types": "./dist/layouts/box/index.d.ts",
+            "svelte": "./dist/layouts/box/index.js",
+            "default": "./dist/layouts/box/index.js"
+        },
         "./layouts/center": {
             "types": "./dist/layouts/center/index.d.ts",
             "svelte": "./dist/layouts/center/index.js",

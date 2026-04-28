@@ -70,6 +70,14 @@ mkdirSync(BASE_OUTPUT_DIR);
         dest: 'utilities.size.css'
     },
     {
+        src: 'utilities/display.scss',
+        dest: 'utilities.display.css'
+    },
+    {
+        src: 'utilities/overflow.scss',
+        dest: 'utilities.overflow.css'
+    },
+    {
         src: 'utilities/flex-child.scss',
         dest: 'utilities.flex-child.css'
     },
