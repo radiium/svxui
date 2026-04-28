@@ -1,5 +1,3 @@
-@use './config' as *;
-
 /*
  * Utilities: grid child
  */
@@ -7,43 +5,43 @@
 /* Col span */
 
 @for $i from 1 through 12 {
-    .#{$prefix}col-span-#{$i} {
+    .col-span-#{$i} {
         grid-column: span #{$i} / span #{$i};
     }
 }
-.#{$prefix}col-span-full {
+.col-span-full {
     grid-column: 1 / -1;
 }
 
 /* Row span */
 
 @for $i from 1 through 6 {
-    .#{$prefix}row-span-#{$i} {
+    .row-span-#{$i} {
         grid-row: span #{$i} / span #{$i};
     }
 }
-.#{$prefix}row-span-full {
+.row-span-full {
     grid-row: 1 / -1;
 }
 
 /* Col start */
 
 @for $i from 1 through 13 {
-    .#{$prefix}col-start-#{$i} {
+    .col-start-#{$i} {
         grid-column-start: #{$i};
     }
 }
-.#{$prefix}col-start-auto {
+.col-start-auto {
     grid-column-start: auto;
 }
 
 /* Row start */
 
 @for $i from 1 through 7 {
-    .#{$prefix}row-start-#{$i} {
+    .row-start-#{$i} {
         grid-row-start: #{$i};
     }
 }
-.#{$prefix}row-start-auto {
+.row-start-auto {
     grid-row-start: auto;
 }

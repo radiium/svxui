@@ -4,7 +4,7 @@
  */
 
 // Utility class prefix
-$prefix: 'svx-' !default;
+$prefix: '' !default;
 
 // Space scale — mirrors CSS tokens --space-0 through --space-9
 $space-scale: (
@@ -51,7 +51,7 @@ $space-negative: (
 // Size — percentage values
 $size-percent: (
     '50': 50%,
-    '100': 100%
+    'full': 100%
 ) !default;
 
 // Size keywords for width

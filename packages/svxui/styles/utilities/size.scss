@@ -20,17 +20,17 @@ $height-props: (
 
 @each $abbr, $prop in $width-props {
     @each $key, $value in $space-scale {
-        .#{$prefix}#{$abbr}-#{$key} {
+        .#{$abbr}-#{$key} {
             #{$prop}: $value;
         }
     }
     @each $key, $value in $size-percent {
-        .#{$prefix}#{$abbr}-#{$key} {
+        .#{$abbr}-#{$key} {
             #{$prop}: $value;
         }
     }
     @each $key, $value in $size-w-keywords {
-        .#{$prefix}#{$abbr}-#{$key} {
+        .#{$abbr}-#{$key} {
             #{$prop}: $value;
         }
     }
@@ -40,17 +40,17 @@ $height-props: (
 
 @each $abbr, $prop in $height-props {
     @each $key, $value in $space-scale {
-        .#{$prefix}#{$abbr}-#{$key} {
+        .#{$abbr}-#{$key} {
             #{$prop}: $value;
         }
     }
     @each $key, $value in $size-percent {
-        .#{$prefix}#{$abbr}-#{$key} {
+        .#{$abbr}-#{$key} {
             #{$prop}: $value;
         }
     }
     @each $key, $value in $size-h-keywords {
-        .#{$prefix}#{$abbr}-#{$key} {
+        .#{$abbr}-#{$key} {
             #{$prop}: $value;
         }
     }
@@ -66,19 +66,19 @@ $size-square-keywords: (
 ) !default;
 
 @each $key, $value in $space-scale {
-    .#{$prefix}size-#{$key} {
+    .size-#{$key} {
         width: $value;
         height: $value;
     }
 }
 @each $key, $value in $size-percent {
-    .#{$prefix}size-#{$key} {
+    .size-#{$key} {
         width: $value;
         height: $value;
     }
 }
 @each $key, $value in $size-square-keywords {
-    .#{$prefix}size-#{$key} {
+    .size-#{$key} {
         width: $value;
         height: $value;
     }

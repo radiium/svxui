@@ -1,65 +1,61 @@
 /*
- * Config: shared variables for svxui CSS utilities
- * Override $prefix to '' to strip the prefix.
- */
-/*
  * Utilities: flex child
  */
 /* Align Self */
-.svx-self-auto {
+.self-auto {
   align-self: auto;
 }
 
-.svx-self-start {
+.self-start {
   align-self: flex-start;
 }
 
-.svx-self-center {
+.self-center {
   align-self: center;
 }
 
-.svx-self-end {
+.self-end {
   align-self: flex-end;
 }
 
-.svx-self-stretch {
+.self-stretch {
   align-self: stretch;
 }
 
-.svx-self-baseline {
+.self-baseline {
   align-self: baseline;
 }
 
 /* Grow & Shrink */
-.svx-grow-0 {
+.grow-0 {
   flex-grow: 0;
 }
 
-.svx-grow-1 {
+.grow {
   flex-grow: 1;
 }
 
-.svx-shrink-0 {
+.shrink-0 {
   flex-shrink: 0;
 }
 
-.svx-shrink-1 {
+.shrink {
   flex-shrink: 1;
 }
 
 /* Flex shorthand */
-.svx-flex-1 {
+.flex-1 {
   flex: 1 1 0%;
 }
 
-.svx-flex-auto {
+.flex-auto {
   flex: 1 1 auto;
 }
 
-.svx-flex-initial {
+.flex-initial {
   flex: 0 1 auto;
 }
 
-.svx-flex-none {
+.flex-none {
   flex: none;
 }

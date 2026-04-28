@@ -1,3 +1,5 @@
+@use './display' as *;
+@use './overflow' as *;
 @use './space' as *;
 @use './size' as *;
 @use './flex-child' as *;

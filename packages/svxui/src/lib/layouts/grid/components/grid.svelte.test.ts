@@ -244,6 +244,26 @@ describe('Grid component', () => {
     });
 
     /* ------------------------------------------------- */
+    /* Spacing (BoxModelProps)                           */
+    /* ------------------------------------------------- */
+
+    describe('Spacing', () => {
+        test('applies padding via inline style', async () => {
+            const screen = renderWithWrapper(Grid, { children, p: '4' });
+            const grid = screen.getByText(content);
+
+            await expect.element(grid).toHaveStyle({ padding: 'var(--space-4)' });
+        });
+
+        test('applies margin via inline style', async () => {
+            const screen = renderWithWrapper(Grid, { children, m: '2' });
+            const grid = screen.getByText(content);
+
+            await expect.element(grid).toHaveStyle({ margin: 'var(--space-2)' });
+        });
+    });
+
+    /* ------------------------------------------------- */
     /* Ref binding                                       */
     /* ------------------------------------------------- */
 

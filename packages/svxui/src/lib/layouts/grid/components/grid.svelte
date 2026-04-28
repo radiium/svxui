@@ -1,5 +1,6 @@
 <script lang="ts" generics="ElementTag extends keyof SvelteHTMLElements = 'div'">
     import { isIntegerString } from '$lib/internals/is.js';
+    import { resolveBoxModel } from '$lib/internals/resolve-box-model.js';
     import { styleObjectToString } from '$lib/internals/style-object-to-string.js';
     import { toSpaceVar } from '$lib/internals/to-space-var.js';
     import type { SvelteHTMLElements } from 'svelte/elements';
@@ -26,6 +27,36 @@
         autoRows = undefined,
         flow = undefined,
         align = undefined,
+        // BoxModelProps
+        p = undefined,
+        px = undefined,
+        py = undefined,
+        pt = undefined,
+        pr = undefined,
+        pb = undefined,
+        pl = undefined,
+        m = undefined,
+        mx = undefined,
+        my = undefined,
+        mt = undefined,
+        mr = undefined,
+        mb = undefined,
+        ml = undefined,
+        width = undefined,
+        maxWidth = undefined,
+        minWidth = undefined,
+        height = undefined,
+        maxHeight = undefined,
+        minHeight = undefined,
+        flexBasis = undefined,
+        flexGrow = undefined,
+        flexShrink = undefined,
+        overflow = undefined,
+        overflowX = undefined,
+        overflowY = undefined,
+        gridArea = undefined,
+        gridColumn = undefined,
+        gridRow = undefined,
         children,
         ...rest
     }: GridProps<ElementTag> = $props();
@@ -64,6 +95,7 @@
     ]);
 
     // CSS vars carry the computed values to the scoped CSS rules
+    // Box model props are applied as inline styles alongside the CSS vars
     let cssStyle = $derived.by(() => {
         const allStyles = styleObjectToString({
             '--grid-display': display !== 'grid' ? display : undefined,
@@ -75,7 +107,38 @@
             '--grid-col-gap': toSpaceVar(colGap),
             '--grid-auto-rows': autoRows,
             '--grid-flow': flow ? (FLOW_MAP[flow] ?? flow) : undefined,
-            '--grid-align': align
+            '--grid-align': align,
+            ...resolveBoxModel({
+                p,
+                px,
+                py,
+                pt,
+                pr,
+                pb,
+                pl,
+                m,
+                mx,
+                my,
+                mt,
+                mr,
+                mb,
+                ml,
+                width,
+                maxWidth,
+                minWidth,
+                height,
+                maxHeight,
+                minHeight,
+                flexBasis,
+                flexGrow,
+                flexShrink,
+                overflow,
+                overflowX,
+                overflowY,
+                gridArea,
+                gridColumn,
+                gridRow
+            })
         });
         const callerStyle = rest.style as string | undefined;
         return [allStyles, callerStyle].filter(Boolean).join(' ') || undefined;

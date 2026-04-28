@@ -1,178 +1,174 @@
 /*
- * Config: shared variables for svxui CSS utilities
- * Override $prefix to '' to strip the prefix.
- */
-/*
  * Utilities: grid child
  */
 /* Col span */
-.svx-col-span-1 {
+.col-span-1 {
   grid-column: span 1/span 1;
 }
 
-.svx-col-span-2 {
+.col-span-2 {
   grid-column: span 2/span 2;
 }
 
-.svx-col-span-3 {
+.col-span-3 {
   grid-column: span 3/span 3;
 }
 
-.svx-col-span-4 {
+.col-span-4 {
   grid-column: span 4/span 4;
 }
 
-.svx-col-span-5 {
+.col-span-5 {
   grid-column: span 5/span 5;
 }
 
-.svx-col-span-6 {
+.col-span-6 {
   grid-column: span 6/span 6;
 }
 
-.svx-col-span-7 {
+.col-span-7 {
   grid-column: span 7/span 7;
 }
 
-.svx-col-span-8 {
+.col-span-8 {
   grid-column: span 8/span 8;
 }
 
-.svx-col-span-9 {
+.col-span-9 {
   grid-column: span 9/span 9;
 }
 
-.svx-col-span-10 {
+.col-span-10 {
   grid-column: span 10/span 10;
 }
 
-.svx-col-span-11 {
+.col-span-11 {
   grid-column: span 11/span 11;
 }
 
-.svx-col-span-12 {
+.col-span-12 {
   grid-column: span 12/span 12;
 }
 
-.svx-col-span-full {
+.col-span-full {
   grid-column: 1/-1;
 }
 
 /* Row span */
-.svx-row-span-1 {
+.row-span-1 {
   grid-row: span 1/span 1;
 }
 
-.svx-row-span-2 {
+.row-span-2 {
   grid-row: span 2/span 2;
 }
 
-.svx-row-span-3 {
+.row-span-3 {
   grid-row: span 3/span 3;
 }
 
-.svx-row-span-4 {
+.row-span-4 {
   grid-row: span 4/span 4;
 }
 
-.svx-row-span-5 {
+.row-span-5 {
   grid-row: span 5/span 5;
 }
 
-.svx-row-span-6 {
+.row-span-6 {
   grid-row: span 6/span 6;
 }
 
-.svx-row-span-full {
+.row-span-full {
   grid-row: 1/-1;
 }
 
 /* Col start */
-.svx-col-start-1 {
+.col-start-1 {
   grid-column-start: 1;
 }
 
-.svx-col-start-2 {
+.col-start-2 {
   grid-column-start: 2;
 }
 
-.svx-col-start-3 {
+.col-start-3 {
   grid-column-start: 3;
 }
 
-.svx-col-start-4 {
+.col-start-4 {
   grid-column-start: 4;
 }
 
-.svx-col-start-5 {
+.col-start-5 {
   grid-column-start: 5;
 }
 
-.svx-col-start-6 {
+.col-start-6 {
   grid-column-start: 6;
 }
 
-.svx-col-start-7 {
+.col-start-7 {
   grid-column-start: 7;
 }
 
-.svx-col-start-8 {
+.col-start-8 {
   grid-column-start: 8;
 }
 
-.svx-col-start-9 {
+.col-start-9 {
   grid-column-start: 9;
 }
 
-.svx-col-start-10 {
+.col-start-10 {
   grid-column-start: 10;
 }
 
-.svx-col-start-11 {
+.col-start-11 {
   grid-column-start: 11;
 }
 
-.svx-col-start-12 {
+.col-start-12 {
   grid-column-start: 12;
 }
 
-.svx-col-start-13 {
+.col-start-13 {
   grid-column-start: 13;
 }
 
-.svx-col-start-auto {
+.col-start-auto {
   grid-column-start: auto;
 }
 
 /* Row start */
-.svx-row-start-1 {
+.row-start-1 {
   grid-row-start: 1;
 }
 
-.svx-row-start-2 {
+.row-start-2 {
   grid-row-start: 2;
 }
 
-.svx-row-start-3 {
+.row-start-3 {
   grid-row-start: 3;
 }
 
-.svx-row-start-4 {
+.row-start-4 {
   grid-row-start: 4;
 }
 
-.svx-row-start-5 {
+.row-start-5 {
   grid-row-start: 5;
 }
 
-.svx-row-start-6 {
+.row-start-6 {
   grid-row-start: 6;
 }
 
-.svx-row-start-7 {
+.row-start-7 {
   grid-row-start: 7;
 }
 
-.svx-row-start-auto {
+.row-start-auto {
   grid-row-start: auto;
 }

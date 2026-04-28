@@ -234,6 +234,26 @@ describe('Flex component', () => {
     });
 
     /* ------------------------------------------------- */
+    /* Spacing (BoxModelProps)                           */
+    /* ------------------------------------------------- */
+
+    describe('Spacing', () => {
+        test('applies padding p=%s via inline style', async () => {
+            const screen = renderWithWrapper(Flex, { children, p: '3' });
+            const flex = screen.getByText(content);
+
+            await expect.element(flex).toHaveStyle({ padding: 'var(--space-3)' });
+        });
+
+        test('applies margin m=%s via inline style', async () => {
+            const screen = renderWithWrapper(Flex, { children, m: '2' });
+            const flex = screen.getByText(content);
+
+            await expect.element(flex).toHaveStyle({ margin: 'var(--space-2)' });
+        });
+    });
+
+    /* ------------------------------------------------- */
     /* Style forwarding                                  */
     /* ------------------------------------------------- */
 

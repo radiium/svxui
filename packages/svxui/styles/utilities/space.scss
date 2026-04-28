@@ -34,7 +34,7 @@ $directions: (
 
 @each $dir, $props in $directions {
     @each $key, $value in $margin-scale {
-        .#{$prefix}m#{$dir}-#{$key} {
+        .m#{$dir}-#{$key} {
             @each $prop in $props {
                 margin#{$prop}: $value;
             }
@@ -42,7 +42,7 @@ $directions: (
     }
 
     @each $key, $value in $space-negative {
-        .-#{$prefix}m#{$dir}-#{$key} {
+        .-m#{$dir}-#{$key} {
             @each $prop in $props {
                 margin#{$prop}: calc(-1 * #{$value});
             }
@@ -54,7 +54,7 @@ $directions: (
 
 @each $dir, $props in $directions {
     @each $key, $value in $space-scale {
-        .#{$prefix}p#{$dir}-#{$key} {
+        .p#{$dir}-#{$key} {
             @each $prop in $props {
                 padding#{$prop}: $value;
             }
