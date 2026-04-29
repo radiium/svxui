@@ -1,4 +1,5 @@
 <script module>
+    /* eslint-disable no-import-assign */
     import { default as a } from './elements/a.svelte';
     import { default as blockquote } from './elements/blockquote.svelte';
     import { default as code } from './elements/code.svelte';
@@ -12,9 +13,34 @@
     import { default as p } from './elements/p.svelte';
     import { default as pre } from './elements/pre.svelte';
     import { default as strong } from './elements/strong.svelte';
+    import { default as table } from './elements/table.svelte';
+    import { default as tbody } from './elements/tbody.svelte';
+    import { default as td } from './elements/td.svelte';
+    import { default as th } from './elements/th.svelte';
+    import { default as thead } from './elements/thead.svelte';
+    import { default as tr } from './elements/tr.svelte';
 
-    // eslint-disable-next-line no-import-assign
-    export { a, blockquote, code, em, h1, h2, h3, h4, hr, li, p, pre, strong };
+    export {
+        a,
+        blockquote,
+        code,
+        em,
+        h1,
+        h2,
+        h3,
+        h4,
+        hr,
+        li,
+        p,
+        pre,
+        strong,
+        table,
+        tbody,
+        td,
+        th,
+        thead,
+        tr
+    };
 </script>
 
 <script lang="ts">
@@ -40,6 +66,7 @@
     );
 </script>
 
+/* eslint-disable no-import-assign */
 <header>
     <Panel p="5" variant="soft" fullWidth>
         <Flex justify="start" direction="column" align="start" gap="3" class="w-full">
