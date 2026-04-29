@@ -31,7 +31,7 @@
     href={hrefFull}
     {color}
     {...restProps}
-    class="mt-6"
+    class="mt-6 inline-block"
 >
     <Button variant="outline" size="3" {color}>
         {@render children?.()}
