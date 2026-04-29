@@ -40,69 +40,66 @@
     );
 </script>
 
-<Panel size="5" variant="soft" class="mb-6">
-    <Flex justify="start" as="header" direction="column" align="start" gap="3" width="100%">
-        {#if frontmatter?.category}
-            <Badge variant="soft" size="3">{frontmatter.category}</Badge>
-        {/if}
+<header>
+    <Panel p="5" variant="soft" fullWidth>
+        <Flex justify="start" direction="column" align="start" gap="3" class="w-full">
+            {#if frontmatter?.category}
+                <Badge variant="soft" size="3">{frontmatter.category}</Badge>
+            {/if}
 
-        {#if frontmatter?.title}
-            <Text
-                as="h1"
-                id={stringToId(frontmatter.title)}
-                class="m-0"
-                weight="bold"
-                size="9"
-                style="display: flex;"
-            >
-                {frontmatter.title}
-            </Text>
-        {/if}
+            {#if frontmatter?.title}
+                <Text id={stringToId(frontmatter.title)} as="h1" weight="bold" size="9">
+                    {frontmatter.title}
+                </Text>
+            {/if}
 
-        {#if frontmatter?.description}
-            <Text as="p" class="m-0" weight="bold" size="5" muted>
-                {frontmatter?.description}
-            </Text>
-        {/if}
+            {#if frontmatter?.description}
+                <Text as="p" weight="bold" size="5" muted>
+                    {frontmatter?.description}
+                </Text>
+            {/if}
 
-        {#if sourceLink}
-            <Button
-                as="a"
-                href={sourceLink}
-                target="_blank"
-                rel="external"
-                title="See the source code on GitHub"
-                data-sveltekit-preload-data="tap"
-                variant="outline"
-                size="2"
-                class="mt-3"
-                color={themeColor}
-            >
-                <GithubIcon size="14px" />
-                Source
-            </Button>
-        {/if}
-    </Flex>
-</Panel>
+            {#if sourceLink}
+                <div class="action">
+                    <Button
+                        as="a"
+                        href={sourceLink}
+                        target="_blank"
+                        rel="external"
+                        title="See the source code on GitHub"
+                        variant="outline"
+                        size="2"
+                        color={themeColor}
+                        data-sveltekit-preload-data="tap"
+                    >
+                        <GithubIcon size="14px" />
+                        Source
+                    </Button>
+                </div>
+            {/if}
+        </Flex>
+    </Panel>
+</header>
 
 {@render children?.()}
 
-<footer class="mt-9 w-100">
+<footer>
     <PageNavigation {slugFull} {navigation} />
 </footer>
 
 <style lang="scss">
-    :global(ul) {
-        margin-bottom: 0;
+    header {
+        width: 100%;
+        margin-bottom: var(--space-6);
+
+        .action {
+            width: 100%;
+            margin-top: var(--space-3);
+        }
     }
 
-    :global(ul li strong em) {
-        color: var(--teal-a11);
-        padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 1.5);
-        box-shadow: inset 0px 0px 0px 1px var(--teal-a8);
-        border-radius: max(var(--radius-1), var(--radius-full));
-        font-size: var(--font-size-1);
-        line-height: var(--line-height-1);
-        letter-spacing: var(--letter-spacing-1);
+    footer {
+        width: 100%;
+        margin-top: var(--space-9);
     }
 </style>

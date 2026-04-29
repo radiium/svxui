@@ -3,7 +3,7 @@
     import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
     import type { NavItem, NavSection } from '$lib/types';
     import { MediaQuery } from 'svelte/reactivity';
-    import { Flex, Panel, Text, type PanelSize, type TextSize } from 'svxui';
+    import { Flex, Panel, Text, type LayoutSpacing, type PanelPadding, type TextSize } from 'svxui';
 
     type Props = {
         slugFull?: string;
@@ -23,7 +23,7 @@
     // Responsive
     const isMobile = new MediaQuery('(max-width: 768px)');
     const isTablet = new MediaQuery('(max-width: 1024px)');
-    let itemSize = $derived<PanelSize>(isTablet.current ? '3' : '5');
+    let itemSize = $derived<LayoutSpacing & PanelPadding>(isTablet.current ? '3' : '5');
     let titleSize = $derived<TextSize>(isTablet.current ? '5' : '7');
     let subtitleSize = $derived<TextSize>(isTablet.current ? '3' : '5');
     let iconSize = $derived<string>(isTablet.current ? '25px' : '30px');
@@ -31,7 +31,7 @@
 
 <nav aria-label="Page navigation" class:is-mobile={isMobile}>
     {#if nav.prev}
-        <Panel as="a" href={nav.prev.slugFull} rel="prev" variant="surface" outline size={itemSize}>
+        <Panel as="a" href={nav.prev.slugFull} rel="prev" variant="surface" outline p={itemSize}>
             <Text>
                 <Flex gap="3" align="end" justify="start">
                     <ArrowLeft size={iconSize} />
@@ -51,7 +51,7 @@
             rel="next"
             variant="surface"
             outline
-            size={itemSize}
+            p={itemSize}
             class="nav-next"
         >
             <Text>

@@ -10,7 +10,7 @@
 
 <Dialog bind:isOpen closeOnBackdropClick={false} closeOnEscape={false} blurBackdrop>
     <Box width="400px" maxWidth="90vw">
-        <Panel size="4" color="yellow" fullWidth>
+        <Panel p="4" color="yellow" fullWidth>
             <Flex justify="start" direction="column" gap="3">
                 <h2>Alert title</h2>
                 <p>Alert description</p>

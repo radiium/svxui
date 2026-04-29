@@ -5,9 +5,7 @@
 
 {#each sizes as size (size)}
     <InputGroup>
-        <InputGroupItem style="padding-inline: var(--space-3)">
-            Size {size}
-        </InputGroupItem>
+        <InputGroupItem class="px-3">Size {size}</InputGroupItem>
         <Input {size} />
     </InputGroup>
 {/each}

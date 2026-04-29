@@ -7,8 +7,8 @@
 
 <Listbox bind:value>
     {#snippet children(rootState)}
-        <Panel variant="clear" size="2" outline style="width: 220px;">
-            <Flex justify="start" direction="column" gap="1" {...rootState.rootAttrs}>
+        <Panel variant="clear" p="2" outline>
+            <Flex justify="start" direction="column" gap="1" width="220px" {...rootState.rootAttrs}>
                 {#each options as opt, i (i)}
                     {@const item = rootState.getItem(opt)}
 

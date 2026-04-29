@@ -13,7 +13,7 @@
 
 <Grid autoFill="160px" gap="3" width="100%">
     {#each items as item (item.label)}
-        <Panel outline size="3">
+        <Panel outline p="3">
             <Flex direction="column" align="center" gap="1">
                 <Text size="2" muted>{item.label}</Text>
                 <Text size="7">{item.count}</Text>

@@ -4,6 +4,6 @@
     let { children, ...restProps } = $props();
 </script>
 
-<Text as="h2" class="mt-8 mb-0" weight="bold" size="8" {...restProps}>
+<Text as="h2" weight="bold" size="8" {...restProps} class="mt-8 mb-0">
     {@render children?.()}
 </Text>

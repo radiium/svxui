@@ -8,7 +8,7 @@ count: {count}
 <Panel
     outline
     variant="clear"
-    size="9"
+    p="9"
     {@attach clickoutside({
         onClickOutside: () => count++
     })}

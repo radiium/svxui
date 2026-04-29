@@ -9,7 +9,7 @@
 <Button onclick={open}>Open fullscreen dialog</Button>
 
 <Dialog bind:isOpen layout="fullscreen">
-    <Panel size="5" fullWidth fullHeight>
+    <Panel p="5" fullWidth fullHeight>
         <Flex justify="start" direction="column" gap="3">
             <h2>Dialog title</h2>
             <p>Dialog content</p>

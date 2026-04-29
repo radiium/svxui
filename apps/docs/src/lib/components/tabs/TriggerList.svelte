@@ -8,6 +8,6 @@
     const tabs = tabsContext.get();
 </script>
 
-<Flex justify="start" gap="1" py="1" mt="4" class="-mb-5" {...tabs.triggerListAttrs}>
+<Flex justify="start" gap="1" {...tabs.triggerListAttrs} class="-mb-5 py-1 mt-4">
     {@render children?.()}
 </Flex>

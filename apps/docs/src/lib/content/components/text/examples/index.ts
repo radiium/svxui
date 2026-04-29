@@ -11,43 +11,51 @@ import Weights, { source as WeightsSrc } from './Weights.svelte?withSource';
 export const examples: ExamplesConfig = {
     overview: {
         Component: Overview,
-        ...OverviewSrc
+        ...OverviewSrc,
+        column: true
     },
     items: [
         {
             title: 'Colors',
             Component: Colors,
-            ...ColorsSrc
+            ...ColorsSrc,
+            column: true
         },
         {
             title: 'Sizes',
             Component: Sizes,
-            ...SizesSrc
+            ...SizesSrc,
+            column: true
         },
         {
             title: 'States',
             Component: States,
-            ...StatesSrc
+            ...StatesSrc,
+            column: true
         },
         {
             title: 'Text align',
             Component: Text_align,
-            ...Text_alignSrc
+            ...Text_alignSrc,
+            column: true
         },
         {
             title: 'Text transform',
             Component: Text_transform,
-            ...Text_transformSrc
+            ...Text_transformSrc,
+            column: true
         },
         {
             title: 'Truncate',
             Component: Truncate,
-            ...TruncateSrc
+            ...TruncateSrc,
+            column: true
         },
         {
             title: 'Weights',
             Component: Weights,
-            ...WeightsSrc
+            ...WeightsSrc,
+            column: true
         }
     ]
 };

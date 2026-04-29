@@ -30,14 +30,23 @@
                 {@render target?.()}
             {:else}
                 <Button size="1" variant="clear" iconOnly>
-                    <InfoIcon size="18px" color="var(--neutral-8)" />
+                    <InfoIcon size="18px" data-color="neutral" color="var(--accent-8)" />
                 </Button>
             {/if}
         {/snippet}
         {#snippet content()}
-            <div style="max-width: 350px; height: auto; text-wrap: auto; text-align: center;">
+            <div class="tooltip-content">
                 {@render children?.()}
             </div>
         {/snippet}
     </Floating>
 </span>
+
+<style>
+    .tooltip-content {
+        max-width: 350px;
+        height: auto;
+        text-wrap: auto;
+        text-align: center;
+    }
+</style>

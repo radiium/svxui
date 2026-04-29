@@ -2,12 +2,12 @@
     let { children, ...restProps } = $props();
 </script>
 
-<em class="em" {...restProps}>
+<em {...restProps}>
     {@render children?.()}
 </em>
 
 <style>
-    em.em {
+    em {
         display: inline-block;
         font-style: italic;
     }

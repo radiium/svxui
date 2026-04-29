@@ -11,9 +11,10 @@ category: components
 </script>
 
 
+> This component wraps [TabsBuilder](/docs/builders/tabs) and exposes its behavior as a renderless component.
+
 <SectionDemo {...examples.overview }/>
 
-> This component wraps [TabsBuilder](/docs/builders/tabs) and exposes its behavior as a renderless component.
 
 ## API Reference
 

@@ -2,7 +2,7 @@
     import HyphenIcon from '$lib/components/icons/HyphenIcon.svelte';
     import InfoIcon from '$lib/components/icons/InfoIcon.svelte';
     import Code from '$lib/components/markdown/elements/code.svelte';
-    import { Badge, Button, Flex, Floating, Panel, Text } from 'svxui';
+    import { Badge, Box, Button, Flex, Floating, Panel, Text } from 'svxui';
     import type { PropDocumentation } from '../../../content-utils/libdoc.types';
 
     type Props = {
@@ -14,8 +14,8 @@
 </script>
 
 {#if props}
-    <Panel size="0" variant="surface" color="neutral" outline class="mt-4 overflow-hidden">
-        <div class="overflow-auto">
+    <Panel p="0" variant="surface" color="neutral" outline class="api-reference-table">
+        <div class="inner">
             <table>
                 <thead>
                     <tr>
@@ -49,7 +49,7 @@
                             <td>
                                 <Flex justify="start" align="center" gap="1" wrap="nowrap">
                                     <div>
-                                        <Code class="p-7">{prop.type.text}</Code>
+                                        <Code>{prop.type.text}</Code>
                                     </div>
                                     {#if prop.type.hint}
                                         <Floating
@@ -77,9 +77,9 @@
                                                 </Button>
                                             {/snippet}
                                             {#snippet content()}
-                                                <div style="max-width: 70vw;">
+                                                <Box maxWidth="70vw">
                                                     {prop.type.hint}
-                                                </div>
+                                                </Box>
                                             {/snippet}
                                         </Floating>
                                     {/if}
@@ -92,7 +92,7 @@
                                     <HyphenIcon />
                                 {/if}
                             </td>
-                            <td style="min-width: 260px;">
+                            <td class="description">
                                 {#each prop.description?.split('\n') as desc, i (i)}
                                     {desc}
                                     <br />
@@ -121,57 +121,70 @@
 {/if}
 
 <style>
-    table {
-        width: 100%;
-        max-width: 100%;
-        border-spacing: 0;
-        border-collapse: collapse;
-        background-color: var(--color-background-0);
+    :global(.api-reference-table) {
+        margin-top: var(--space-4);
         overflow: hidden;
-        border-radius: var(--radius-4);
-        font-size: var(--font-size-2);
-        line-height: var(--line-height-2);
+    }
 
-        th,
-        td {
-            text-align: left;
-            height: 44px;
-            padding: var(--space-3);
-        }
+    .inner {
+        overflow: auto;
 
-        td {
-            box-shadow: inset 0 -1px var(--neutral-a5);
-        }
+        table {
+            width: 100%;
+            max-width: 100%;
+            border-spacing: 0;
+            border-collapse: collapse;
+            background-color: var(--color-background-0);
+            overflow: hidden;
+            border-radius: var(--radius-4);
+            font-size: var(--font-size-2);
+            line-height: var(--line-height-2);
 
-        thead {
-            tr {
-                th {
-                    background-color: var(--color-background-1);
-                    font-weight: 700;
+            th,
+            td {
+                text-align: left;
+                height: 44px;
+                padding: var(--space-3);
+            }
 
-                    &:first-child {
-                        border-top-left-radius: var(--radius-4);
-                    }
-                    &:last-child {
-                        border-top-right-radius: var(--radius-4);
+            td {
+                box-shadow: inset 0 -1px var(--neutral-a5);
+
+                &.description {
+                    min-width: 260px;
+                }
+            }
+
+            thead {
+                tr {
+                    th {
+                        background-color: var(--color-background-1);
+                        font-weight: 700;
+
+                        &:first-child {
+                            border-top-left-radius: var(--radius-4);
+                        }
+                        &:last-child {
+                            border-top-right-radius: var(--radius-4);
+                        }
                     }
                 }
             }
-        }
 
-        tbody {
-            tr {
-                td {
-                    font-weight: 400;
-                }
-
-                &:last-child {
+            tbody {
+                tr {
                     td {
-                        &:first-child {
-                            border-bottom-left-radius: var(--radius-4);
-                        }
-                        &:last-child {
-                            border-bottom-right-radius: var(--radius-4);
+                        font-weight: 400;
+                    }
+
+                    &:last-child {
+                        td {
+                            &:first-child {
+                                border-bottom-left-radius: var(--radius-4);
+                            }
+                            &:last-child {
+                                border-bottom-right-radius: var(--radius-4);
+                            }
                         }
                     }
                 }

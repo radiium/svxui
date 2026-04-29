@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Flex, Grid, Panel } from 'svxui';
+    import { Box, Grid, Panel } from 'svxui';
 </script>
 
 <Grid
@@ -9,16 +9,19 @@
     gap="3"
     width="100%"
 >
-    <Panel outline style="grid-area: header;">
-        <Flex align="center" justify="center">header</Flex>
-    </Panel>
-    <Panel outline style="grid-area: sidebar;">
-        <Flex align="center" justify="center">sidebar</Flex>
-    </Panel>
-    <Panel outline style="grid-area: main;">
-        <Flex align="center" justify="center">main</Flex>
-    </Panel>
-    <Panel outline style="grid-area: footer;">
-        <Flex align="center" justify="center">footer</Flex>
-    </Panel>
+    <Box gridArea="header">
+        <Panel outline fullWidth fullHeight>header</Panel>
+    </Box>
+
+    <Box gridArea="sidebar">
+        <Panel outline fullWidth fullHeight>sidebar</Panel>
+    </Box>
+
+    <Box gridArea="main">
+        <Panel outline fullWidth fullHeight>main</Panel>
+    </Box>
+
+    <Box gridArea="footer">
+        <Panel outline fullWidth fullHeight>footer</Panel>
+    </Box>
 </Grid>

@@ -9,7 +9,7 @@
 <Button onclick={open}>Open fixed dialog</Button>
 
 <Dialog bind:isOpen layout="fixed">
-    <Panel size="5" variant="soft" outline>
+    <Panel p="5" variant="soft" outline>
         <Flex justify="start" direction="column" gap="3">
             <h2>Dialog title</h2>
             <p>Dialog content</p>

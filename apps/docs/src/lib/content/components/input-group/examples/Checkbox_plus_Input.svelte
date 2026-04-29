@@ -3,7 +3,7 @@
 </script>
 
 <InputGroup>
-    <InputGroupItem style="padding-inline: var(--space-3)">
+    <InputGroupItem class="px-3">
         <Checkbox />
     </InputGroupItem>
     <Input />

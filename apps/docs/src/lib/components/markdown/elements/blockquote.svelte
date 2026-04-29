@@ -5,25 +5,15 @@
     let { children, ...restProps } = $props();
 </script>
 
-<Panel
-    as="blockquote"
-    class="mt-5 mb-0 mx-0 inline-block "
-    color="neutral"
-    variant="soft"
-    size="3"
-    fullWidth
-    outline
-    {...restProps}
->
-    <Flex justify="start" align="center" gap="3" class="blockquote-content">
-        <InfoIcon size="25" class="shrink-0" />
-
+<Panel as="blockquote" variant="soft" p="3" class="my-5 mx-0" outline fullWidth {...restProps}>
+    <Flex justify="start" align="center" gap="3" m="0">
+        <InfoIcon size="25" />
         {@render children?.()}
     </Flex>
 </Panel>
 
 <style>
-    :global(.blockquote-content > p) {
-        margin-top: 0 !important;
+    :global(blockquote svg) {
+        flex-shrink: 0;
     }
 </style>

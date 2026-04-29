@@ -9,7 +9,7 @@ group: {JSON.stringify(group)}
 
 <Flex justify="start" gap="3" direction="column" align="center">
     {#each items as value (value)}
-        <Flex justify="start" as="label" align="center" gap="2">
+        <Flex as="label" justify="start" align="center" gap="2">
             <Checkbox name="checkboxGroup" {value} bind:group />
             label {value}
         </Flex>

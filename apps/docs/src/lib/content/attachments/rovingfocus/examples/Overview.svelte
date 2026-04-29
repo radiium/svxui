@@ -4,7 +4,8 @@
     const items = ['item 1', 'item 2', 'item 3', 'item 4', 'item 5'];
 </script>
 
-<Flex justify="start"
+<Flex
+    justify="start"
     direction="column"
     wrap="wrap"
     gap="1"

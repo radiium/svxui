@@ -15,7 +15,6 @@
         <Panel
             outline
             variant="clear"
-            class="my-3"
             {@attach portal({
                 enabled,
                 target: '#target-id'

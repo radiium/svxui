@@ -33,9 +33,9 @@
     const theme = useTheme();
 </script>
 
-<Flex justify="start" direction="column" gap="3" mt={enableOpenCode ? '' : '6'} width="100%" class="wrapper">
+<Flex justify="start" direction="column" gap="3" class="wrapper w-full {enableOpenCode ? '' : 'mt-6'}">
     {#if enableOpenCode}
-        <Flex justify="end" gap="3" width="100%">
+        <Flex justify="end" gap="3" class="w-full">
             <Text as="label" size="2">
                 <Flex justify="start" gap="2" align="center">
                     Show code
@@ -45,10 +45,10 @@
         </Flex>
     {/if}
 
-    <Panel size="0" variant="soft" color="neutral" outline fullWidth>
+    <Panel p="0" variant="soft" color="neutral" outline fullWidth>
         <Flex justify="start" direction="column">
             {#if meta?.title}
-                <div class="title w-100 py-2 px-3">
+                <div class="title">
                     <Text size="2">{meta.title}</Text>
                 </div>
             {/if}
@@ -90,6 +90,8 @@
         border-top-right-radius: inherit;
         display: flex;
         align-items: center;
+        width: 100%;
+        padding: var(--space-2) var(--space-3);
     }
 
     .example {

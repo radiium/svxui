@@ -9,7 +9,7 @@
 <Button onclick={open}>Open scroll dialog</Button>
 
 <Dialog bind:isOpen layout="scroll">
-    <Panel fullWidth fullHeight size="9">
+    <Panel fullWidth fullHeight p="9">
         <Flex justify="start" direction="column" gap="3">
             <h2>Dialog title</h2>
             <p>

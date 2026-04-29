@@ -10,9 +10,9 @@ category: components
     import { examples } from './examples/index.js'
 </script>
 
-<SectionDemo {...examples.overview }/>
-
 > This component wraps [portal attachment](/docs/attachments/portal) and exposes its behavior as a component.
+
+<SectionDemo {...examples.overview }/>
 
 ## API Reference
 

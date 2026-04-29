@@ -11,15 +11,15 @@
     let { navigation, onSelect }: Props = $props();
 </script>
 
-<Flex justify="start" as="nav" direction="column" width="100%" aria-label="Primary">
+<Flex as="nav" justify="start" direction="column" class="w-full" aria-label="Primary">
     {#each navigation as section, i (i)}
-        <section class="p-0 mb-5">
+        <section>
             {#if section.title}
-                <h4 class="my-0">{section.title}</h4>
+                <h4>{section.title}</h4>
             {/if}
-            <ul class="m-0 p-0">
+            <ul>
                 {#each section.pages as item (item.slug)}
-                    <li class="m-0 p-0">
+                    <li>
                         <a
                             href={item.slugFull}
                             class:active={page.url.pathname.endsWith(item.slugFull)}
@@ -42,8 +42,11 @@
 <style>
     section {
         width: 100%;
+        padding: 0;
+        margin-bottom: var(--space-5);
 
         h4 {
+            margin: 0;
             font-size: var(--font-size-2);
             line-height: var(--line-height-1);
             font-weight: var(--font-weight-medium);
@@ -55,10 +58,13 @@
         ul {
             width: 100%;
             list-style: none;
+            margin: 0;
+            padding: 0;
 
             li {
                 width: 100%;
                 margin: 1px 0;
+                padding: 0;
 
                 a {
                     display: flex;

@@ -16,7 +16,7 @@
     onDestroy(offMetaZ);
 </script>
 
-<ul class="m-0">
+<ul>
     <li>
         <Text align="end">All pressed keys :</Text>
         <Text muted>{hotkeys.all}</Text>

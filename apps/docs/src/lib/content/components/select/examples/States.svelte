@@ -15,7 +15,7 @@
     {/each}
 </Select>
 
-<div style="width: 100%"></div>
+<div class="flex-break"></div>
 
 <Select multiple>
     {#each options as opt (opt)}

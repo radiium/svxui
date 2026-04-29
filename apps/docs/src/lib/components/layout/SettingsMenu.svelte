@@ -4,8 +4,8 @@
     const theme = useTheme();
 </script>
 
-<Flex justify="start" direction="column" gap="3" class="settings-content" data-color="neutral">
-    <Flex justify="start" gap="2" direction="column" width="100%">
+<Flex justify="start" direction="column" gap="3" width="400px" maxWidth="85vw" data-color="neutral">
+    <Flex justify="start" gap="2" direction="column" class="w-full">
         <Text size="4" weight="medium">Theme strategy:</Text>
         <Flex
             justify="start"
@@ -20,6 +20,7 @@
                     variant={theme.mode === item ? 'solid' : 'outline'}
                     size="2"
                     onclick={() => theme.setMode(item)}
+                    class="settings-button"
                 >
                     {item}
                 </Button>
@@ -27,7 +28,7 @@
         </Flex>
     </Flex>
 
-    <Flex justify="start" gap="2" direction="column" style="100%">
+    <Flex justify="start" gap="2" direction="column" width="100%">
         <Text size="4" weight="medium">Radius:</Text>
         <Flex
             justify="start"
@@ -42,6 +43,7 @@
                     variant={theme.radius === item ? 'solid' : 'outline'}
                     size="2"
                     onclick={() => theme.setRadius(item)}
+                    class="settings-button"
                 >
                     {item}
                 </Button>
@@ -66,6 +68,7 @@
                     iconOnly
                     radius="full"
                     title={item}
+                    class="settings-button"
                 ></Button>
             {/each}
         </Flex>
@@ -73,12 +76,7 @@
 </Flex>
 
 <style>
-    :global(.settings-content) {
-        width: 400px;
-        max-width: 85vw;
-    }
-
-    :global(.settings-content .button) {
+    :global(.settings-button) {
         &:focus-visible,
         &.button-active {
             outline: 2px solid white;

@@ -9,13 +9,16 @@
     Enabled
 </Flex>
 
-<Panel
-    size="1"
-    color="neutral"
-    style="width: 200px; max-height: 240px; overflow: scroll;"
-    {@attach scrolllock({ enabled })}
->
-    <Flex justify="start" direction="column" gap="1">
+<Panel p="1" color="neutral">
+    <Flex
+        justify="start"
+        direction="column"
+        gap="1"
+        width="200px"
+        maxHeight="240px"
+        overflow="scroll"
+        {@attach scrolllock({ enabled })}
+    >
         {#each { length: 200 }, i (i)}
             <Button variant="soft" fullWidth>Item {i}</Button>
         {/each}

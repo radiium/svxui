@@ -55,18 +55,14 @@
         </H3>
 
         {#if item.description}
-            <Text as="p" class="mt-5 mb-0 inline-block" size="5">
-                {item.description}
-            </Text>
-
-            <!-- <Text class="mt-3 mb-0" muted>{item.description}</Text> -->
+            <Text as="p" size="5" class="mt-5">{item.description}</Text>
 
             {#each item.tags as tag (tag)}
                 {#if tag.name === 'see'}
-                    <Text as="a" color={themeColor} href={'/docs' + tag.value} class="mt-3 inline-block">
+                    <Text as="a" color={themeColor} href={'/docs' + tag.value} class="mt-3">
                         <Flex justify="start" align="center" gap="1">
                             show
-                            <ArrowSquareOut style="color: var(--neutral-11)" data-color="" />
+                            <ArrowSquareOut data-color="neutral" color="var(--neutral-11)" />
                         </Flex>
                     </Text>
                 {:else}

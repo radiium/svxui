@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Flex, Grid, Panel } from 'svxui';
+    import { Box, Grid, Panel } from 'svxui';
 
     const items = [
         { label: 'A', span: 2 },
@@ -13,8 +13,8 @@
 
 <Grid cols="3" gap="3" flow="row-dense" width="100%">
     {#each items as item (item.label)}
-        <Panel outline size="3" style="grid-column: span {item.span};">
-            <Flex align="center" justify="center">{item.label}</Flex>
-        </Panel>
+        <Box gridColumn="span {item.span}">
+            <Panel outline p="3">{item.label}</Panel>
+        </Box>
     {/each}
 </Grid>

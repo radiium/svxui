@@ -10,10 +10,9 @@ category: components
     import { examples } from './examples/index.js'
 </script>
 
+> This component wraps [AccordionBuilder](/docs/builders/accordion) and exposes its behavior as a renderless component.
 
 <SectionDemo {...examples.overview }/>
-
-> This component wraps [AccordionBuilder](/docs/builders/accordion) and exposes its behavior as a renderless component.
 
 ## Minimal usage
 

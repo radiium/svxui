@@ -19,7 +19,7 @@
 {/if}
 
 {#if description}
-    <Text class="mt-3 mb-0" muted>{description}</Text>
+    <Text muted class="mt-3 mb-0">{description}</Text>
 {/if}
 
 <CodePreview meta={{ enableOpenCode: true, column, hideCode }}>

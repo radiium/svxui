@@ -45,7 +45,7 @@
                 <!-- Tabs content -->
                 {@const content = root.getContent(id, { disabled: disabled })}
                 {#if content.active}
-                    <Panel variant="clear" outline {...content.attrs} style="width: 250px;">
+                    <Panel variant="clear" outline {...content.attrs} style="width: 250px">
                         {description}
                     </Panel>
                 {/if}

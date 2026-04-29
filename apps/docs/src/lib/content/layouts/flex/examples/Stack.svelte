@@ -4,8 +4,6 @@
 
 <Flex direction="column" gap="3" width="100%">
     {#each { length: 5 }, i (i)}
-        <Panel size="3" outline fullWidth>
-            {i + 1}
-        </Panel>
+        <Panel p="3" outline fullWidth>{i + 1}</Panel>
     {/each}
 </Flex>

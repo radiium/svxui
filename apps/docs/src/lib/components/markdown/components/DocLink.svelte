@@ -26,15 +26,15 @@
     underline="always"
     weight="bold"
     target="_blank"
-    class="mt-6 block"
     tabindex={-1}
     title={hrefFull}
     href={hrefFull}
     {color}
     {...restProps}
+    class="mt-6"
 >
     <Button variant="outline" size="3" {color}>
         {@render children?.()}
-        <ArrowSquareOut style="color: var(--neutral-11)" data-color="" />
+        <ArrowSquareOut data-color="neutral" color="var(--accent-11)" />
     </Button>
 </Text>

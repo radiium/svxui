@@ -48,7 +48,7 @@
     });
 </script>
 
-<Flex justify="start" align="center" wrap="wrap" gap="3" p="4" class="flex-auto" width="100%">
+<Flex justify="start" align="center" wrap="wrap" gap="3" class="p-4 flex-auto w-full">
     <Text weight="medium">
         <Code>{name}</Code>
     </Text>
@@ -61,8 +61,10 @@
             <EyeIcon />
             Show code
         </Button>
+
+        <!-- Show code dialog -->
         <Dialog bind:isOpen closeOnBackdropClick closeOnEscape layout="scroll">
-            <Panel variant="surface" outline class="relative">
+            <Panel variant="surface" outline>
                 <Flex align="center" justify="between" gap="3">
                     <!-- Copy to clipboard -->
                     <Button
@@ -72,7 +74,7 @@
                         onclick={copyToClipboard}
                     >
                         {#if clipboard.isCopying}
-                            <CheckAltIcon size="20" data-color="green" style="color: var(--accent-9)" />
+                            <CheckAltIcon size="20" data-color="green" color="var(--accent-9)" />
                         {:else}
                             <ClipboardIcon size="20" />
                         {/if}
@@ -107,7 +109,7 @@
         <!-- Copy to clipboard -->
         <Button size="2" variant="soft" disabled={!clipboard.isAvailable} onclick={copyToClipboard}>
             {#if clipboard.isCopying}
-                <CheckAltIcon size="20" data-color="green" style="color: var(--accent-9)" />
+                <CheckAltIcon size="20" data-color="green" color="var(--accent-9)" />
             {:else}
                 <ClipboardIcon size="20" />
             {/if}

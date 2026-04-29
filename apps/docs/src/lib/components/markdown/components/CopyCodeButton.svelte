@@ -21,7 +21,7 @@
     onclick={() => clipboard.copy(codeString)}
 >
     {#if clipboard.isCopying}
-        <CheckAltIcon size="20" data-color="green" style="color: var(--accent-9)" />
+        <CheckAltIcon size="20" data-color="green" color="var(--accent-9)" />
     {:else}
         <ClipboardIcon size="20" />
     {/if}

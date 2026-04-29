@@ -3,6 +3,6 @@
 </script>
 
 <InputGroup>
-    <InputGroupItem style="padding-inline: var(--space-3)">www</InputGroupItem>
+    <InputGroupItem class="px-3">WWW</InputGroupItem>
     <Input placeholder="Website" />
 </InputGroup>
