@@ -24,7 +24,7 @@ The `<ThemeProvider />` component is used to define the **global theme configura
 <br/>
 It includes:
 
-- the default theme strategy (`system`, `light`, `dark`)
+- the default theme mode (`system`, `light`, `dark`)
 - the default accent color
 - the default border radius
 - the light and dark colors used for the theme meta tag
@@ -46,11 +46,11 @@ This provider should be placed at the root of your application.
 </script>
 
 <ThemeProvider
-    strategy="system"
+    mode="system"
     color="blue"
     radius="none"
 >
-    <!-- The strategy, radius, and color apply to all child components. -->
+    <!-- The mode, radius, and color apply to all child components. -->
     {@render children?.()}
 </ThemeProvider>
 ```
@@ -62,7 +62,7 @@ This provider should be placed at the root of your application.
 The `<ThemeScope />` component allows you to **locally override** part of the global theme configuration for a subtree of components.
 
 It can override:
-- the theme strategy (`system`, `light`, `dark`)
+- the theme mode (`system`, `light`, `dark`)
 - the accent color
 - the border radius
 
@@ -78,7 +78,7 @@ This is useful for scoped theming, such as theming a specific page, layout, or c
 <ThemeScope color="neutral">
     <!--
     The panel and button will have a neutral color by default,
-    but will inherit radius and strategy from the root theme.
+    but will inherit radius and mode from the root theme.
     -->
     <Panel>
         <Button>button</Button>
@@ -90,7 +90,7 @@ This is useful for scoped theming, such as theming a specific page, layout, or c
 
 ### Features
 
-You can update default `strategy`, `color` and `radius` with the theme context via `useThemeRootContext`.
+You can update default `mode`, `color` and `radius` with the theme context via `useTheme`.
 
 ### Update theme
 
