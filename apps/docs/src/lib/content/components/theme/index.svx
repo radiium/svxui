@@ -1,6 +1,6 @@
 ---
 title: Theme
-description: Theme provider components. Wrap your app with ThemeProvider to configure the global theme strategy, color, and radius.
+description: Theme provider components. Wrap your app with ThemeProvider to configure the global theme mode, color, and radius.
 category: components
 ---
 

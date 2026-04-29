@@ -9,7 +9,7 @@
 
 <Flex justify="start" direction="column" gap="3" class="settings-content">
     <Flex justify="start" gap="2" direction="column" width="100%">
-        <Text size="4" weight="medium">Theme strategy:</Text>
+        <Text size="4" weight="medium">Theme modes:</Text>
         <Flex justify="start" gap="2" wrap="wrap">
             {#each strategies as item (item)}
                 <Button

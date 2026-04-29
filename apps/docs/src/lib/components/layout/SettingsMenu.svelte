@@ -6,7 +6,7 @@
 
 <Flex justify="start" direction="column" gap="3" width="400px" maxWidth="85vw" data-color="neutral">
     <Flex justify="start" gap="2" direction="column" class="w-full">
-        <Text size="4" weight="medium">Theme strategy:</Text>
+        <Text size="4" weight="medium">Theme modes:</Text>
         <Flex
             justify="start"
             gap="2"
