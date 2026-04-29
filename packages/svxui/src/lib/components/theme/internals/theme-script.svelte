@@ -57,17 +57,17 @@
             const rootEl = document.documentElement;
             const metaThemeEl = document.querySelector('meta[name="theme-color"]');
 
-            const strategy = localStorage.getItem(modeKey) ?? defaultMode;
-            const radius = localStorage.getItem(radiusKey) ?? defaultRadius;
-            const color = localStorage.getItem(colorKey) ?? defaultColor;
+            const svxuiMode = localStorage.getItem(modeKey) ?? defaultMode;
+            const svxuiRadius = localStorage.getItem(radiusKey) ?? defaultRadius;
+            const svxuiColor = localStorage.getItem(colorKey) ?? defaultColor;
 
             const isLight =
-                strategy === 'light' ||
-                (strategy === 'system' && window.matchMedia('(prefers-color-scheme: light)').matches);
+                svxuiMode === 'light' ||
+                (svxuiMode === 'system' && window.matchMedia('(prefers-color-scheme: light)').matches);
 
             rootEl.setAttribute('data-theme-root', '');
-            rootEl.setAttribute('data-radius', radius);
-            rootEl.setAttribute('data-color', color);
+            rootEl.setAttribute('data-radius', svxuiRadius);
+            rootEl.setAttribute('data-color', svxuiColor);
 
             if (isLight) {
                 rootEl.classList.remove(darkClass);
