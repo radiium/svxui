@@ -17,7 +17,7 @@ npm install svxui
 
 Add the required CSS and wrap your app with `<ThemeProvider/>`. All svxui components must be used inside it.
 
-`tokens.css` and `theme.default.css` are required. See [Styling](/docs/styling) for the full list of available CSS files.
+`theme.default.css` and `tokens.css` are required. See [Styling](/docs/styling) for the full list of available CSS files.
 
 ```svelte title="src/routes/+layout.svelte"
 <script>

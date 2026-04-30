@@ -31,27 +31,41 @@ A set of CSS rules for normalize browsers default styles.
 
 ## 3. Utilities (optional)
 
-A set of utility CSS classes (margin, padding, size, gap, etc...).
+Tailwind-compatible utility classes for spacing, sizing, display, overflow, and layout child properties. No prefix — class names follow Tailwind conventions (`pt-4`, `w-full`, `grow`, etc.).
+
+Import the full bundle or individual files for finer control:
+
+```js
+// Full bundle
+import 'svxui/styles/utilities.css';
+
+// Opt-in individual files
+import 'svxui/styles/utilities.space.css';      // margin, padding
+import 'svxui/styles/utilities.size.css';       // width, height, min/max, size
+import 'svxui/styles/utilities.display.css';    // block, inline, hidden...
+import 'svxui/styles/utilities.overflow.css';   // overflow-hidden, overflow-auto...
+import 'svxui/styles/utilities.flex-child.css'; // grow, shrink, flex-1...
+import 'svxui/styles/utilities.grid-child.css'; // col-span-*, row-start-*...
+```
+
+| Category | Examples |
+|----------|---------|
+| Padding | `p-4`, `px-2`, `pt-6`, `pb-0` |
+| Margin | `m-4`, `mx-auto`, `mt-5`, `-mt-2` |
+| Sizing | `w-full`, `h-screen`, `max-w-fit`, `min-h-0` |
+| Square size | `size-4`, `size-full` |
+| Display | `block`, `inline`, `inline-block`, `contents`, `hidden` |
+| Overflow | `overflow-hidden`, `overflow-auto`, `overflow-y-scroll` |
+| Flex child | `grow`, `shrink-0`, `flex-1`, `flex-none`, `self-center` |
+| Grid child | `col-span-2`, `col-span-full`, `row-start-1` |
+
+The spacing scale uses tokens `0`–`9` mapped to `--space-N` CSS variables. `full` maps to `100%`, `auto` to `auto`.
 
 <DocLink href="/styles/utilities.css" libFolder>View utilities.css on GitHub</DocLink>
 
-## 4. Default palettes (required)
+## 4. Color palettes
 
-Contains the 6 default color palettes used by `<ThemeProvider/>`: neutral, blue, green, yellow, orange, red.
-
-<DocLink href="/styles/theme.default.css" libFolder>View theme.default.css on GitHub</DocLink>
-
-## 5. Color themes (optional)
-
-Import one or more color palettes from the Radix Colors set:
-
-```js
-import 'svxui/styles/colors/blue.css';
-```
-
-<DocLink href="/styles/colors/" libFolder>View color files on GitHub</DocLink>
-
-See [Colors](/docs/colors) for the full list and how to create custom palettes.
+Default palettes and additional Radix color themes are covered in the [Colors](/docs/colors) guide.
 
 ## Usage
 
