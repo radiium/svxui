@@ -4,6 +4,7 @@ description: Understanding and customizing the color system.
 ---
 
 <script lang="ts">
+    import { Badge } from 'svxui';
     import Code from '$lib/components/markdown/elements/code.svelte';
     import DocLink from '$lib/components/markdown/components/DocLink.svelte';
     import ColorGenerator from '$lib/components/color-generator/ColorGenerator.svelte';
@@ -15,13 +16,13 @@ The library's components use [Radix Colors](https://www.radix-ui.com/colors) und
 A default palette is included out of the box — no configuration needed.
 You can extend it with any pre-built Radix palette or generate a custom one, and create color aliases to build a semantic color system (e.g. `primary`, `danger`, `info`).
 
-## Color system
+## How it works
 
 Like the [@radix-ui/themes](https://www.radix-ui.com/themes) library, the components internally use a set of CSS variables prefixed with `--accent-*`.
 These CSS variables are overridden in components by using the `data-color="..."` attribute.
 If no color is defined on a component, the color defined on the parent wrapper component will be applied.
 
-## Default palettes
+## Built-in palettes
 
 By default, the library includes the following color palettes:
 - <Code color="neutral">Neutral</Code> (custom radix color, default)
@@ -32,10 +33,8 @@ By default, the library includes the following color palettes:
 - <Code color="red">Red</Code> (radix tomato)
 
 <DocLink href="/styles/default-colors.css" libFolder>
-    View theme.default.css
+    View theme.default.css on GitHub
 </DocLink>
-
-### Usage
 
 Import `theme.default.css` to load the default palettes:
 
@@ -49,8 +48,14 @@ All standard [Radix colors](https://www.radix-ui.com/colors) are pre-built and e
 Each file contains definitions for both light and dark themes.
 
 <DocLink href="/styles/colors" libFolder>
-    View all available pre-built Radix color palettes
+    View all available pre-built Radix color palettes on GitHub
 </DocLink>
+
+```js
+import 'svxui/styles/colors/amber.css';
+import 'svxui/styles/colors/crimson.css';
+import 'svxui/styles/colors/cyan.css';
+```
 
 ## Custom palettes
 
@@ -62,7 +67,9 @@ Configure your color aliases, then copy the two generated files into your projec
 
 <ColorGenerator />
 
-**Add theme CSS** — copy the generated `theme.css` into your project and import it in your layout instead of `svxui/styles/theme.default.css`:
+### <Badge variant="outline" size="3">Step 2</Badge> Add the theme CSS
+
+Copy the generated `theme.css` into your project and import it in your layout instead of `svxui/styles/theme.default.css`:
 
 ```css
 /* Import your theme */
@@ -73,7 +80,9 @@ Configure your color aliases, then copy the two generated files into your projec
 @import 'svxui/styles/utilities.css';
 ```
 
-**Add TypeScript types** — copy `svxui-colors.d.ts` into your `src/` directory. Make sure it's included in your `tsconfig.json`:
+### 3. Add TypeScript types
+
+Copy `svxui-colors.d.ts` into your `src/` directory. Make sure it's included in your `tsconfig.json`:
 
 ```json
 {
@@ -82,42 +91,6 @@ Configure your color aliases, then copy the two generated files into your projec
 ```
 
 This [augments](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) the `Svxui.ColorMap` interface so the `color` prop on every component is typed to exactly the aliases you defined.
-
-### 2. Import additional palettes (without the generator)
-
-You can also manually import pre-built or custom color palettes:
-
-```svelte title="src/routes/+layout.svelte"
-<script>
-    import 'svxui/styles/colors/crimson.css';
-    import 'svxui/styles/colors/cyan.css';
-    import '$lib/custom-color.css';
-</script>
-```
-
-You can generate a custom palette using the Radix color generator:
-
-<DocLink href="https://www.radix-ui.com/colors/custom">
-    Generate a custom Radix color palette
-</DocLink>
-
-### 3. Configure TypeScript
-
-Override `ColorMap` for TypeScript autocompletion.
-
-```typescript title="src/svxui-colors.d.ts"
-declare global {
-    namespace Svxui {
-        export interface ColorMap {
-            primary: 'crimson';
-            info: 'cyan';
-            danger: 'custom-color';
-        }
-    }
-}
-
-export {};
-```
 
 ### 4. Use in components
 

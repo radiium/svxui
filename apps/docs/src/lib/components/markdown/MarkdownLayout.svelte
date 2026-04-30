@@ -66,7 +66,6 @@
     );
 </script>
 
-/* eslint-disable no-import-assign */
 <header>
     <Panel p="5" variant="soft" fullWidth>
         <Flex justify="start" direction="column" align="start" gap="3" class="w-full">

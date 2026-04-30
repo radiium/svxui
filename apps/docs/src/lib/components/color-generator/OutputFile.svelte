@@ -48,7 +48,7 @@
     });
 </script>
 
-<Flex justify="start" align="center" wrap="wrap" gap="3" class="p-4 flex-auto w-full">
+<Flex justify="start" align="center" direction="column" gap="2" class="p-4 flex-auto w-full">
     <Text weight="medium">
         <Code>{name}</Code>
     </Text>

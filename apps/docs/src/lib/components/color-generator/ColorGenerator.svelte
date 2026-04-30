@@ -1,6 +1,5 @@
 <script lang="ts">
     import { Button, Flex, Panel, Separator, Text } from 'svxui';
-    import CaretDoubleDownIcon from '../icons/CaretDoubleDownIcon.svelte';
     import { ColorGeneratorState } from './color-generator-state.svelte.js';
     import ColorRow from './ColorRow.svelte';
     import OutputFile from './OutputFile.svelte';
@@ -8,7 +7,7 @@
     const state = new ColorGeneratorState();
 </script>
 
-<Flex justify="start" direction="column" align="center" gap="3" class="mt-5">
+<Flex justify="start" direction="column" align="center" gap="5" class="mt-5">
     <!-- Color entries -->
     <Panel as="article" p="0" variant="soft" color="neutral" outline fullWidth>
         <Flex justify="start" direction="column" gap="3">
@@ -69,20 +68,15 @@
         </Flex>
     </Panel>
 
-    <Flex justify="center" align="center" class="w-full">
-        <CaretDoubleDownIcon size="2.5rem" />
-        <div style="width: 30%"></div>
-        <CaretDoubleDownIcon size="2.5rem" />
-    </Flex>
-
-    <!-- Generated outputs -->
     {#if state.isValid}
+        <!-- Generated outputs -->
         <Panel color="neutral" variant="soft" outline p="0" fullWidth>
             <OutputFile name="theme.css" codeHtml={state.cssHtml} />
             <Separator size="4" />
             <OutputFile name="svxui-colors.d.ts" codeHtml={state.dtsHtml} />
         </Panel>
     {:else}
+        <!-- Errors messages -->
         <Panel variant="soft" color="neutral" p="0" outline fullWidth>
             <Flex direction="column" justify="center" align="center" class="w-full p-3">
                 {#if state.isEmpty}
