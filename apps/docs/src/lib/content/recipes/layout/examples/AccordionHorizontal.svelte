@@ -6,7 +6,7 @@
 </script>
 
 <div style="max-width: 100%;">
-    <Panel variant="clear" outline size="0">
+    <Panel variant="clear" outline p="0">
         <Accordion orientation="vertical">
             {#snippet children(accordion)}
                 <Flex justify="start" {...accordion.rootAttrs}>

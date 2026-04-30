@@ -6,7 +6,23 @@ category: recipes
 <script lang="ts">
     import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
     import { examples } from './examples/index.js'
+    import { Grid, Box, Panel, Flex, Text } from 'svxui'
 </script>
+
+<Grid autoFill="200px" gap="3" width="100%">
+{#each examples.items as item}
+
+<Panel variant="soft" fullHeight as="a" href="#{item.title.toLowerCase().replaceAll(' ', '-')}">
+<Flex direction="column" align="center" justify="center" gap="1" >
+
+<Text size="3" muted >{item.title}</Text>
+<Text size="2" muted >{item.description}</Text>
+ 
+</Flex>
+</Panel> 
+
+{/each}
+</Grid>
 
 {#each examples.items as item }
 <SectionDemo {...item }/>

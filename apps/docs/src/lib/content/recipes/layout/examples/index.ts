@@ -17,7 +17,7 @@ import RadioList, { source as RadioListSrc } from './RadioList.svelte?withSource
 export const examples: ExamplesConfig = {
     items: [
         {
-            title: 'Accordion vertical card',
+            title: 'Accordion vertical',
             Component: AccordionVerticalCard,
             ...AccordionVerticalCardSrc
         },

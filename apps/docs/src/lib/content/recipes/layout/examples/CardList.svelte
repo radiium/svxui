@@ -13,7 +13,7 @@
 
 <Flex justify="start" direction="column" gap="3" width="100%" maxWidth="400px">
     {#each items as { id, firstName, lastName, email } (id)}
-        <Panel variant="clear" outline size="3" radius="large" fullWidth>
+        <Panel variant="clear" outline p="3" radius="large" fullWidth>
             <Flex justify="start" align="center" gap="4" width="100%">
                 <img src="https://picsum.photos/40/40" alt="Card image item {id}" style:border-radius="50%" />
                 <Flex

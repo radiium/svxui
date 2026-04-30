@@ -145,7 +145,7 @@ export const loadNavigation = () => {
         componentsSection,
         buildersSection,
         attachmentsSection,
-        utilitiesSection,
-        recipesSection
+        utilitiesSection
+        // recipesSection
     ];
 };

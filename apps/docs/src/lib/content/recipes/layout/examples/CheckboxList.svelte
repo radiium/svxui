@@ -15,7 +15,7 @@
     let group = $state([]);
 </script>
 
-<Panel size="0" variant="clear" outline>
+<Panel p="0" variant="clear" outline>
     <Flex justify="start" direction="column" style="width: 300px;">
         {#each items as { id, label, description }, i (id)}
             <Flex justify="start" as="label" align="center" gap="3" width="100%" py="2" px="3">

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Panel, Flex, Text, Button, Box } from 'svxui';
+    import { Button, Flex, Panel, Text } from 'svxui';
 
     const data = {
         title: 'Card title',
@@ -10,8 +10,8 @@
     };
 </script>
 
-<Box width="300px">
-    <Panel size="5" variant="surface" outline>
+<div style:width="300px">
+    <Panel p="5" variant="surface" outline>
         <Flex justify="start" direction="column" gap="3">
             <Flex as="header" justify="start" direction="column">
                 <Text size="8" weight="bold">{data.title}</Text>
@@ -25,4 +25,4 @@
             </Flex>
         </Flex>
     </Panel>
-</Box>
+</div>

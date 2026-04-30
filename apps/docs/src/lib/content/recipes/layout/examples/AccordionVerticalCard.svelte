@@ -1,6 +1,6 @@
 <script lang="ts">
     import { slide } from 'svelte/transition';
-    import { Accordion, Box, Button, Flex, Panel, Separator, Text } from 'svxui';
+    import { Accordion, Button, Flex, Panel, Separator, Text } from 'svxui';
 
     const items = [
         { id: '1', label: 'Design', description: 'UI, brand identity and design systems' },
@@ -12,8 +12,8 @@
     ];
 </script>
 
-<Box width="300px">
-    <Panel variant="clear" outline size="0">
+<div style:width="300px">
+    <Panel variant="clear" outline p="0">
         <Accordion orientation="vertical">
             {#snippet children(accordion)}
                 <Flex justify="start" direction="column" {...accordion.rootAttrs}>
@@ -23,7 +23,7 @@
 
                         <Flex justify="start" direction="column" {...item.itemAttrs}>
                             <!-- Heading -->
-                            <Flex justify="between" align="center" p="4">
+                            <Flex justify="between" align="center" style="padding: var(--space-4)">
                                 <Text weight="bold" disabled={item.disabled} {...item.headingAttrs}>
                                     {label}
                                 </Text>
@@ -35,10 +35,12 @@
 
                             <!-- Content -->
                             {#if item.expanded}
-                                <div transition:slide={{ duration: 150 }} {...item.contentAttrs}>
-                                    <Box p="4">
-                                        <Text>{description}</Text>
-                                    </Box>
+                                <div
+                                    transition:slide={{ duration: 150 }}
+                                    {...item.contentAttrs}
+                                    style:padding="var(--space-4)"
+                                >
+                                    <Text>{description}</Text>
                                 </div>
                             {/if}
                         </Flex>
@@ -51,4 +53,4 @@
             {/snippet}
         </Accordion>
     </Panel>
-</Box>
+</div>

@@ -16,7 +16,7 @@
     {#snippet children(accordion)}
         <Flex justify="start" direction="column" gap="3" width="300px" {...accordion.rootAttrs}>
             {#each items as { id, label, description } (id)}
-                <Panel variant="clear" outline size="0" radius="none" style="width: 300px;">
+                <Panel variant="clear" outline p="0" radius="none" style="width: 300px;">
                     <!-- Item -->
                     {@const item = accordion.getItem(id)}
 

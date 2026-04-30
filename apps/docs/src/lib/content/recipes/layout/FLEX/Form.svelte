@@ -2,7 +2,7 @@
     import { Button, Checkbox, Flex, Input, Panel, Text } from 'svxui';
 </script>
 
-<Panel variant="clear" outline size="5">
+<Panel variant="clear" outline p="5">
     <Flex justify="start" direction="column" gap="6" as="form" width="300px">
         <Text size="7">Login</Text>
 

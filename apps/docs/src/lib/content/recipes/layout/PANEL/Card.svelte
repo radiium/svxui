@@ -2,8 +2,8 @@
     import { Panel, Flex, Text, Button } from 'svxui';
 </script>
 
-<Panel size="5" variant="solid">
-    <Flex justify="start" direction="column" gap="3" style="width: 300px;">
+<Panel p="5" variant="solid">
+    <Flex justify="start" direction="column" gap="3" width="300px">
         <Flex justify="start" as="header" direction="column">
             <Text size="8" weight="bold" as="h2" class="m-0">Card title</Text>
             <Text size="5" weight="medium" as="p" muted class="m-0">Card subtitle</Text>

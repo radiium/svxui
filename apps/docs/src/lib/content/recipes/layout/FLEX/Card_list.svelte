@@ -6,7 +6,7 @@
 
 <Flex justify="start" direction="column" gap="3" width="350px">
     {#each items as item (item)}
-        <Panel variant="clear" outline size="3" radius="large" fullWidth>
+        <Panel variant="clear" outline p="3" radius="large" fullWidth>
             <Flex justify="start" align="center" gap="4" width="100%">
                 <img
                     src="https://picsum.photos/60/60"
