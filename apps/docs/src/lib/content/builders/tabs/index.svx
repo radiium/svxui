@@ -8,6 +8,8 @@ category: builders
     import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
 </script>
 
+> This builder is also exposed as a renderless [Tabs component](/docs/components/tabs).
+
 ## Usage
 
 ```svelte

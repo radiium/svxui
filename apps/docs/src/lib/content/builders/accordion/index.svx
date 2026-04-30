@@ -8,6 +8,8 @@ category: builders
     import ApiReference from '$lib/components/markdown/components/ApiReference.svelte';
 </script>
 
+> This builder is also exposed as a renderless [Accordion component](/docs/components/accordion).
+
 ## Usage
 
 ```svelte
