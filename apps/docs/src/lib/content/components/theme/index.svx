@@ -12,6 +12,58 @@ category: components
 
 <SectionDemo {...examples.overview }/>
 
+For a full guide on usage, configuration, and `useTheme`, see the [Theming](/docs/theming) page.
+
 ## API Reference
 
 <ApiReference category="components" names={['theme-provider', 'theme-scope']}/>
+
+### Type Definition
+
+#### ThemeContext
+
+```typescript
+/**
+ * Read-only snapshot of the current theme values. Passed to children snippets.
+ */
+export type ThemeContext = {
+    /**
+     * Active mode (system | light | dark)
+     */
+    readonly mode: Mode;
+    /**
+     * Resolved theme — never 'system'; always 'light' or 'dark'
+     */
+    readonly theme: Theme;
+    /**
+     * Active accent color
+     */
+    readonly color: Color;
+    /**
+     * Active border-radius scale
+     */
+    readonly radius: Radius;
+    /**
+     * OS-level color scheme detected via `prefers-color-scheme`, or undefined on SSR
+     */
+    readonly system: Theme | undefined;
+};
+
+/**
+ * ThemeContext extended with setters — exposed by ThemeProvider only
+ */
+export type ThemeRootContext = ThemeContext & {
+    /**
+     * Set the active mode and persist it to storage
+     */
+    setMode(value: Mode): void;
+    /**
+     * Set the active accent color and persist it to storage
+     */
+    setColor(value: Color): void;
+    /**
+     * Set the active radius and persist it to storage
+     */
+    setRadius(value: Radius): void;
+};
+```
