@@ -6,7 +6,7 @@ A modern alternative Svelte 5 component library
 
 ## Overview
 
-Svxui is a Svelte 5 component library inspired by the design system and DX of [@radix-ui/themes](https://www.radix-ui.com), powered by the [Radix color system](https://www.radix-ui.com/colors). It takes a prop-driven approach to customization — for those who'd rather not count utility classes for a living.
+Svxui is a Svelte 5 component library inspired by the design system and DX of [@radix-ui/themes](https://www.radix-ui.com), powered by the [Radix color system](https://www.radix-ui.com/colors). It offers a prop-driven component API and a minimal CSS utility set — no Tailwind required.
 
 The library is organized into five layers, from ready-to-use to fully custom:
 
