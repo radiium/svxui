@@ -84,8 +84,7 @@ mkdirSync(BASE_OUTPUT_DIR);
     {
         src: 'utilities/grid-child.scss',
         dest: 'utilities.grid-child.css'
-    },
-
+    }
 ].forEach(({ src, dest }) => {
     const input = resolve(BASE_INPUT_DIR, src);
     const output = resolve(BASE_OUTPUT_DIR, dest);

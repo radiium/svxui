@@ -1,13 +1,6 @@
 <script lang="ts">
     import Button from '$lib/components/button/components/button.svelte';
-    import {
-        AllRadixColors,
-        Checkbox,
-        Flex,
-        Panel,
-        type PanelProps,
-        type PanelVariant
-    } from '$lib/index.js';
+    import { AllRadixColors, Checkbox, Flex, Panel, type PanelProps, type PanelVariant } from '$lib/index.js';
     import { cartesianProduct, groupBy } from '../../controls/cartesian-product.js';
     import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import ControlSelect from '../../controls/ControlSelect.svelte';
