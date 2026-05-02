@@ -1,0 +1,32 @@
+---
+title: Recipes
+category: base
+---
+
+<script lang="ts">
+    import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { examples } from './recipes/overview/examples/index.js'
+    import { Grid, Box, Panel, Flex, Text } from 'svxui'
+</script>
+
+<Grid autoFill="200px" gap="3" width="100%">
+{#each examples.items as item}
+
+{#if item.title}
+<Panel variant="soft" fullHeight as="a" href="#{item.title.toLowerCase().replaceAll(' ', '-')}">
+<Flex direction="column" align="center" justify="center" gap="1" >
+
+<Text size="3" muted align="center">{item.title}</Text>
+<Text size="2" muted align="center">{item.description}</Text>
+
+</Flex>
+</Panel>
+{/if}
+
+
+{/each}
+</Grid>
+
+{#each examples.items as item }
+<SectionDemo {...item }/>
+{/each}

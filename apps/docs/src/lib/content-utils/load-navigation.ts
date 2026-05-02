@@ -1,4 +1,5 @@
 import BookOpenText from '$lib/components/icons/BookOpenText.svelte';
+import ChefHatIcon from '$lib/components/icons/ChefHatIcon.svelte';
 import DoorOpenIcon from '$lib/components/icons/DoorOpenIcon.svelte';
 import FileCssIcon from '$lib/components/icons/FileCssIcon.svelte';
 import PaletteIcon from '$lib/components/icons/PaletteIcon.svelte';
@@ -41,6 +42,12 @@ export const loadNavigation = () => {
                 slugFull: '/docs/colors',
                 label: 'Colors',
                 IconComponent: PaletteIcon
+            },
+            {
+                slug: 'recipes',
+                slugFull: '/docs/recipes',
+                label: 'Recipes',
+                IconComponent: ChefHatIcon
             }
         ]
     };
@@ -107,38 +114,6 @@ export const loadNavigation = () => {
         }
     }
 
-    const recipesSection: NavSection = {
-        title: 'Recipes',
-        category: 'recipes',
-        pages: [
-            {
-                slug: 'overview',
-                slugFull: '/docs/recipes/overview',
-                label: 'Overview'
-            },
-            {
-                slug: 'layout',
-                slugFull: '/docs/recipes/layout',
-                label: 'Layout'
-            },
-            {
-                slug: 'form',
-                slugFull: '/docs/recipes/form',
-                label: 'Form'
-            },
-            {
-                slug: 'navigation',
-                slugFull: '/docs/recipes/navigation',
-                label: 'Navigation'
-            },
-            {
-                slug: 'feedback',
-                slugFull: '/docs/recipes/feedback',
-                label: 'Feedback'
-            }
-        ]
-    };
-
     return [
         startSection, //
         layoutsSection,
@@ -146,6 +121,5 @@ export const loadNavigation = () => {
         buildersSection,
         attachmentsSection,
         utilitiesSection
-        // recipesSection
     ];
 };
