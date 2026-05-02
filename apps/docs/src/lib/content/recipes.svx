@@ -1,11 +1,11 @@
 ---
 title: Recipes
-category: base
+description: Ready-to-use patterns built with library components
 ---
 
 <script lang="ts">
     import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
-    import { examples } from './recipes/overview/examples/index.js'
+    import { examples } from './recipes/index.js'
     import { Grid, Box, Panel, Flex, Text } from 'svxui'
 </script>
 
@@ -30,3 +30,4 @@ category: base
 {#each examples.items as item }
 <SectionDemo {...item }/>
 {/each}
+
