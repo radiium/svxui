@@ -1,6 +1,7 @@
 <script lang="ts">
     import { slide } from 'svelte/transition';
-    import { Accordion, Button, Flex, Panel, Separator, Text } from 'svxui';
+    import { Accordion, Flex, Panel, Separator, Text } from 'svxui';
+    import PlusIcon from './PlusIcon.svelte';
 
     const items = [
         { id: '1', label: 'Design', description: 'UI, brand identity and design systems' },
@@ -23,24 +24,25 @@
 
                         <Flex justify="start" direction="column" {...item.itemAttrs}>
                             <!-- Heading -->
-                            <Flex justify="between" align="center" style="padding: var(--space-4)">
-                                <Text weight="bold" disabled={item.disabled} {...item.headingAttrs}>
-                                    {label}
-                                </Text>
-                                <!-- Trigger -->
-                                <Button size="1" variant="soft" {...item.triggerAttrs}>
-                                    {item.expanded ? 'close' : 'open'}
-                                </Button>
-                            </Flex>
+
+                            <!-- Trigger -->
+                            <Panel variant="soft" p="0" as="button" {...item.triggerAttrs}>
+                                <!-- Heading -->
+                                <Flex justify="between" align="center" p="4" {...item.headingAttrs}>
+                                    <Text weight="bold" disabled={item.disabled}>
+                                        {label}
+                                    </Text>
+
+                                    <PlusIcon transform="rotate({item.expanded ? '45' : '0'})" />
+                                </Flex>
+                            </Panel>
 
                             <!-- Content -->
                             {#if item.expanded}
-                                <div
-                                    transition:slide={{ duration: 150 }}
-                                    {...item.contentAttrs}
-                                    style:padding="var(--space-4)"
-                                >
-                                    <Text>{description}</Text>
+                                <div transition:slide={{ duration: 150 }} {...item.contentAttrs}>
+                                    <Panel p="4" variant="solid" radius="none">
+                                        <Text>{description}</Text>
+                                    </Panel>
                                 </div>
                             {/if}
                         </Flex>

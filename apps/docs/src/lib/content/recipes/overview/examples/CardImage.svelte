@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Panel, Flex, Text, Button, Box } from 'svxui';
+    import { Box, Button, Flex, Panel, Text } from 'svxui';
 
     const data = {
         title: 'Card title',
@@ -13,7 +13,7 @@
         <img src="https://picsum.photos/300/200" alt="Card background" class="w-full" />
     </Box>
 
-    <Flex justify="start" direction="column" gap="3" style="width: 300px;">
+    <Flex justify="start" direction="column" gap="3" width="300px">
         <Flex as="header" justify="start" direction="column">
             <Text size="8" weight="bold">{data.title}</Text>
             <Text size="5" weight="medium" muted>{data.subtitle}</Text>

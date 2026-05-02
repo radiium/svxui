@@ -18,7 +18,7 @@
             </Flex>
 
             <Flex justify="start" as="label" align="center" gap="2">
-                <Checkbox size="3" name="stayConnected" />
+                <Checkbox size="2" name="stayConnected" />
                 <Text>Stay connected</Text>
             </Flex>
         </Flex>

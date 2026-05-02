@@ -1,6 +1,7 @@
 <script lang="ts">
     import { slide } from 'svelte/transition';
-    import { Accordion, Button, Flex, Panel, Text } from 'svxui';
+    import { Accordion, Flex, Panel, Text } from 'svxui';
+    import CaretIcon from './CaretIcon.svelte';
 
     const items = [
         { id: '1', label: 'Design', description: 'UI, brand identity and design systems' },
@@ -16,21 +17,27 @@
     {#snippet children(accordion)}
         <Flex justify="start" direction="column" gap="3" width="300px" {...accordion.rootAttrs}>
             {#each items as { id, label, description } (id)}
-                <Panel variant="clear" outline p="0" radius="none" style="width: 300px;">
+                <Panel variant="clear" outline p="0" radius="full" fullWidth>
                     <!-- Item -->
                     {@const item = accordion.getItem(id)}
 
                     <Flex justify="start" direction="column" {...item.itemAttrs}>
-                        <!-- Heading -->
-                        <Flex justify="between" align="center" p="4" {...item.headingAttrs}>
-                            <Text weight="bold" disabled={item.disabled}>
-                                {label}
-                            </Text>
-                            <!-- Trigger -->
-                            <Button size="1" variant="soft" {...item.triggerAttrs}>
-                                {item.expanded ? 'close' : 'open'}
-                            </Button>
-                        </Flex>
+                        <!-- Trigger -->
+                        <Panel
+                            variant={item.expanded ? 'solid' : 'soft'}
+                            p="0"
+                            as="button"
+                            {...item.triggerAttrs}
+                        >
+                            <!-- Heading -->
+                            <Flex justify="between" align="center" p="4" {...item.headingAttrs}>
+                                <Text weight="bold" disabled={item.disabled}>
+                                    {label}
+                                </Text>
+
+                                <CaretIcon transform="rotate({item.expanded ? '90' : '0'})" />
+                            </Flex>
+                        </Panel>
 
                         <!-- Content -->
                         {#if item.expanded}
