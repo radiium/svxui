@@ -5,6 +5,7 @@ description: Ready-to-use patterns built with library components
 
 <script lang="ts">
     import SectionDemo from '$lib/components/markdown/components/SectionDemo.svelte';
+    import { stringToId } from '$lib/utils/functions.js';
     import { examples } from './recipes/index.js'
     import { Grid, Box, Panel, Flex, Text } from 'svxui'
 </script>
@@ -13,7 +14,7 @@ description: Ready-to-use patterns built with library components
 {#each examples.items as item}
 
 {#if item.title}
-<Panel variant="soft" fullHeight as="a" href="#{item.title.toLowerCase().replaceAll(' ', '-')}">
+<Panel variant="soft" fullHeight as="a" href="#{stringToId(item.title)}">
 <Flex direction="column" align="center" justify="center" gap="1" >
 
 <Text size="3" muted align="center">{item.title}</Text>

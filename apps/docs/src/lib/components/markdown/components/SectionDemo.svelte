@@ -3,6 +3,7 @@
     import { Text } from 'svxui';
     import H3 from '../elements/h3.svelte';
     import CodePreview from './CodePreview.svelte';
+    import { stringToId } from '$lib/utils/functions';
 
     let {
         title,
@@ -15,7 +16,7 @@
 </script>
 
 {#if title}
-    <H3>{title}</H3>
+    <H3 id={stringToId(title)}>{title}</H3>
 {/if}
 
 {#if description}
