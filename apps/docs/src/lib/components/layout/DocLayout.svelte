@@ -3,6 +3,7 @@
     import { page } from '$app/state';
     import type { NavSection } from '$lib/types';
     import type { Snippet } from 'svelte';
+    import { onMount } from 'svelte';
     import { innerWidth } from 'svelte/reactivity/window';
     import { Button } from 'svxui';
     import ListIcon from '../icons/ListIcon.svelte';
@@ -29,6 +30,7 @@
 
     let mobileMenuOpen = $state(false);
     const toggleMenu = () => (mobileMenuOpen = !mobileMenuOpen);
+    const openMenu = () => (mobileMenuOpen = true);
     const closeMenu = () => (mobileMenuOpen = false);
 
     beforeNavigate((navigation) => {
@@ -37,7 +39,54 @@
             navigation.cancel();
         }
     });
+
+    // Swipe-to-open/close mobile nav
+    const EDGE_THRESHOLD = 30; // px from left edge to start tracking
+    const SWIPE_THRESHOLD = 60; // px horizontal to trigger open/close
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let tracking = false;
+
+    function onTouchStart(e: TouchEvent) {
+        if ((innerWidth.current ?? 0) >= 769) return;
+        const touch = e.touches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+        tracking = touchStartX <= EDGE_THRESHOLD || mobileMenuOpen;
+    }
+
+    function onTouchEnd(e: TouchEvent) {
+        if (!tracking) return;
+
+        tracking = false;
+        const touch = e.changedTouches[0];
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+        if (Math.abs(deltaX) <= Math.abs(deltaY)) return;
+
+        if (deltaX > SWIPE_THRESHOLD && !mobileMenuOpen) {
+            openMenu();
+        } else if (deltaX < -SWIPE_THRESHOLD && mobileMenuOpen) {
+            closeMenu();
+        }
+    }
+
+    onMount(() => {
+        // passive: false required to call preventDefault and block scroll during horizontal swipe
+        function onTouchMove(e: TouchEvent) {
+            if (!tracking) return;
+            const deltaX = e.touches[0].clientX - touchStartX;
+            const deltaY = e.touches[0].clientY - touchStartY;
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+                e.preventDefault();
+            }
+        }
+        document.addEventListener('touchmove', onTouchMove, { passive: false });
+        return () => document.removeEventListener('touchmove', onTouchMove);
+    });
 </script>
+
+<svelte:document ontouchstart={onTouchStart} ontouchend={onTouchEnd} />
 
 <!-- Fixed background -->
 {#if !isBasePage}
@@ -119,9 +168,9 @@
     /* Nav — mobile (overlay) */
     .nav {
         position: fixed;
-        top: 0;
+        top: var(--header-height);
         left: 0;
-        height: 100vh;
+        height: calc(100vh - var(--header-height));
         width: var(--nav-width);
         z-index: 1;
         overflow-y: auto;
