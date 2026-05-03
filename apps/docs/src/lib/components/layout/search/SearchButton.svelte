@@ -22,7 +22,9 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <Panel
-    variant="solid"
+    variant="clear"
+    outline
+    color="neutral"
     p="0"
     as="button"
     onclick={() => (isOpen = true)}
