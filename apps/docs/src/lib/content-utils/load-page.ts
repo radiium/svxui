@@ -28,4 +28,3 @@ export const loadComponentPage = (slug: string) => loadPage('components', slug);
 export const loadUtilityPage = (slug: string) => loadPage('utilities', slug);
 export const loadBuilderPage = (slug: string) => loadPage('builders', slug);
 export const loadAttachmentPage = (slug: string) => loadPage('attachments', slug);
-export const loadRecipePage = (slug: string) => loadPage('recipes', slug);

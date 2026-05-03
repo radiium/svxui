@@ -139,7 +139,7 @@
 
 <svelte:window onkeydown={onKeydown} />
 
-<Dialog bind:isOpen layout="fixed" style="margin-top: 20%">
+<Dialog bind:isOpen layout="fixed" onClose={closeAndReset} style="margin-top: 20%">
     <Panel variant="surface" outline p="0" fullWidth>
         <Flex direction="column" width="500px" maxWidth="90vw" maxHeight="60vh" class="overflow-hidden">
             <Flex align="center" gap="2" px="3" py="2">
