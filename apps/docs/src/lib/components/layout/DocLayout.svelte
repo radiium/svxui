@@ -5,9 +5,6 @@
     import type { Snippet } from 'svelte';
     import { onMount } from 'svelte';
     import { innerWidth } from 'svelte/reactivity/window';
-    import { Button } from 'svxui';
-    import ListIcon from '../icons/ListIcon.svelte';
-    import XIcon from '../icons/XIcon.svelte';
     import BackgroundDots from './BackgroundDots.svelte';
     import MainHeader from './MainHeader.svelte';
     import MainNavigation from './MainNavigation.svelte';
@@ -119,18 +116,7 @@
 
 <!-- Header -->
 <header>
-    {#if !isHomePage}
-        <div class="menu-toggle">
-            <Button iconOnly color="neutral" radius="full" onclick={toggleMenu}>
-                {#if mobileMenuOpen}
-                    <XIcon />
-                {:else}
-                    <ListIcon />
-                {/if}
-            </Button>
-        </div>
-    {/if}
-    <MainHeader />
+    <MainHeader {isHomePage} {mobileMenuOpen} {toggleMenu} />
 </header>
 
 <!-- Content -->
@@ -237,21 +223,6 @@
         }
     }
 
-    /* Burger (mobile only) */
-    .menu-toggle {
-        display: flex;
-        margin-left: auto;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
     /* Medium screen: nav sidebar visible, toc below the header */
     @media (min-width: 769px) {
         .nav {
@@ -273,10 +244,6 @@
             &.is-home-page {
                 margin-left: 0;
             }
-        }
-
-        .menu-toggle {
-            display: none;
         }
     }
 
@@ -316,6 +283,15 @@
                 margin-left: 0;
                 margin-right: 0;
             }
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
         }
     }
 </style>
