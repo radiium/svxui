@@ -52,7 +52,10 @@
     </Flex>
 
     <Flex justify="start" gap="2" direction="column">
-        <Text size="4" weight="medium">Accent color:</Text>
+        <Text size="4" weight="medium">
+            Accent color:
+            <Text muted weight="bold">{theme.color}</Text>
+        </Text>
         <Flex
             justify="start"
             gap="2"

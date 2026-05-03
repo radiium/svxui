@@ -19,7 +19,6 @@
     offset={24}
     closeOnOutsideClick
     closeOnEscape
-    closeOnScroll
     transitionDuration={0}
 >
     {#snippet trigger()}
