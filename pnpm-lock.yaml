@@ -63,6 +63,9 @@ importers:
       '@types/node':
         specifier: ^22
         version: 22.19.8
+      flexsearch:
+        specifier: ^0.8.212
+        version: 0.8.212
       mdsvex:
         specifier: ^0.12.7
         version: 0.12.7(svelte@5.55.5(@typescript-eslint/types@8.59.1))
@@ -1550,6 +1553,9 @@ packages:
 
   flatted@3.3.3:
     resolution: {integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==}
+
+  flexsearch@0.8.212:
+    resolution: {integrity: sha512-wSyJr1GUWoOOIISRu+X2IXiOcVfg9qqBRyCPRUdLMIGJqPzMo+jMRlvE83t14v1j0dRMEaBbER/adQjp6Du2pw==}
 
   fraction.js@5.3.4:
     resolution: {integrity: sha512-1X1NTtiJphryn/uLQz3whtY6jK3fTqoE3ohKs0tT+Ujr1W59oopxmoEh7Lu5p6vBaPbgoM0bzveAW4Qi5RyWDQ==}
@@ -3664,6 +3670,8 @@ snapshots:
       keyv: 4.5.4
 
   flatted@3.3.3: {}
+
+  flexsearch@0.8.212: {}
 
   fraction.js@5.3.4: {}
 

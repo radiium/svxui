@@ -6,6 +6,7 @@
     import { innerWidth } from 'svelte/reactivity/window';
     import { Button } from 'svxui';
     import ListIcon from '../icons/ListIcon.svelte';
+    import XIcon from '../icons/XIcon.svelte';
     import BackgroundDots from './BackgroundDots.svelte';
     import MainHeader from './MainHeader.svelte';
     import MainNavigation from './MainNavigation.svelte';
@@ -69,15 +70,18 @@
 
 <!-- Header -->
 <header>
-    <MainHeader />
-
     {#if !isHomePage}
         <div class="menu-toggle">
             <Button iconOnly color="neutral" radius="full" onclick={toggleMenu}>
-                <ListIcon />
+                {#if mobileMenuOpen}
+                    <XIcon />
+                {:else}
+                    <ListIcon />
+                {/if}
             </Button>
         </div>
     {/if}
+    <MainHeader />
 </header>
 
 <!-- Content -->
