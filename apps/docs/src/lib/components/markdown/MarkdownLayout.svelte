@@ -67,7 +67,7 @@
 </script>
 
 <header>
-    <Panel p="5" variant="soft" fullWidth>
+    <Panel p="5" variant="soft" outline fullWidth>
         <Flex justify="start" direction="column" align="start" gap="3" class="w-full">
             {#if frontmatter?.category}
                 <Badge variant="soft" size="3">{frontmatter.category}</Badge>
