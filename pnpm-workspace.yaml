@@ -1,8 +1,7 @@
 packages:
   - packages/*
   - apps/*
-
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - esbuild
-  - svelte-preprocess
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  svelte-preprocess: true
