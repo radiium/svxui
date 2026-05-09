@@ -13,7 +13,7 @@ export type ClickoutsideOptions = {
      * Can be an array of selector string or HTMLElement.
      * @default []
      */
-    ignoreElements?: (HTMLElement | string | undefined)[];
+    ignoreElements?: (HTMLElement | string | null | undefined)[];
     /**
      * Type of event that triggers the clickoutside detection.
      * @default 'pointerdown'
