@@ -41,7 +41,7 @@ export class FloatingBuilder {
      */
     #pattern: FloatingPatternState = $derived.by(() =>
         FloatingPattern.resolve({
-            open: this.isOpen,
+            open: this.open,
             pattern: this.#options.pattern,
             triggerId: this.#triggerId,
             contentId: this.#contentId
@@ -61,8 +61,8 @@ export class FloatingBuilder {
     /**
      * Returns whether the floating element is currently open
      */
-    get isOpen(): boolean {
-        return this.#options.isOpen === true;
+    get open(): boolean {
+        return this.#options.open === true;
     }
 
     /**
@@ -75,17 +75,17 @@ export class FloatingBuilder {
     /**
      * Open the floating element
      */
-    open = () => (this.#options.isOpen = true);
+    openFloating = () => (this.#options.open = true);
 
     /**
      * Close the floating element
      */
-    close = () => (this.#options.isOpen = false);
+    closeFloating = () => (this.#options.open = false);
 
     /**
      * Toggle the open state
      */
-    toggle = () => (this.#options.isOpen = !this.#options.isOpen);
+    toggle = () => (this.#options.open = !this.#options.open);
 
     /**
      * Focuses a DOM element by reference or selector
@@ -130,7 +130,7 @@ export class FloatingBuilder {
         return {
             // Data attributes
             [this.#triggerDataAttr]: '',
-            'data-state': this.isOpen ? 'open' : 'closed',
+            'data-state': this.open ? 'open' : 'closed',
             // Attachment
             [this.#triggerAttachmentKey]: this.#triggerAttachment,
             // Other attributes from the current pattern
@@ -167,7 +167,7 @@ export class FloatingBuilder {
 
         // Close on backdrop click
         const off = on(node, 'click', () => {
-            if (this.#options.closeOnBackdropClick === true) this.close();
+            if (this.#options.closeOnBackdropClick === true) this.closeFloating();
         });
 
         return () => {
@@ -184,7 +184,7 @@ export class FloatingBuilder {
         return {
             // Data attributes
             [this.#backdropDataAttr]: '',
-            'data-state': this.isOpen ? 'open' : 'closed',
+            'data-state': this.open ? 'open' : 'closed',
             // ARIA attributes
             role: 'button',
             tabindex: -1,
@@ -216,27 +216,27 @@ export class FloatingBuilder {
         const offs = [
             // Trap focus inside content
             focustrap({
-                enabled: this.isOpen && this.#options.focusTrap === true
+                enabled: this.open && this.#options.focusTrap === true
             })(node),
 
             // Close on outside click
             clickoutside({
-                enabled: this.isOpen && this.#options.closeOnOutsideClick === true,
+                enabled: this.open && this.#options.closeOnOutsideClick === true,
                 ignoreElements: [this.#engine.reference, this.#backdropEl].filter(Boolean) as HTMLElement[],
-                onClickOutside: () => this.close()
+                onClickOutside: () => this.closeFloating()
             })(node),
 
             // Close on Escape key
             on(window, 'keydown', (evt: KeyboardEvent) => {
-                if (this.isOpen && this.#options.closeOnEscape === true && evt.key === kbd.ESCAPE) {
-                    this.close();
+                if (this.open && this.#options.closeOnEscape === true && evt.key === kbd.ESCAPE) {
+                    this.closeFloating();
                 }
             }),
 
             // Close on window resize
             on(window, 'resize', () => {
-                if (this.isOpen && this.#options.closeOnResize === true) {
-                    this.close();
+                if (this.open && this.#options.closeOnResize === true) {
+                    this.closeFloating();
                 }
             }),
 
@@ -245,8 +245,8 @@ export class FloatingBuilder {
                 window,
                 'scroll',
                 () => {
-                    if (this.isOpen && this.#options.closeOnScroll === true) {
-                        this.close();
+                    if (this.open && this.#options.closeOnScroll === true) {
+                        this.closeFloating();
                     }
                 },
                 { capture: true }
@@ -271,7 +271,7 @@ export class FloatingBuilder {
         return {
             // Data attributes
             [this.#contentDataAttr]: '',
-            'data-state': this.isOpen ? 'open' : 'closed',
+            'data-state': this.open ? 'open' : 'closed',
             'data-side': this.#engine.state?.side,
             'data-align': this.#engine.state?.alignment,
             // Attachment

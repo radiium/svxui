@@ -6,78 +6,78 @@ import { DialogBuilder } from './dialog-builder.svelte.js';
 describe('DialogBuilder — initial state', () => {
     itWithEffect('starts closed in uncontrolled mode', () => {
         const dialog = new DialogBuilder({});
-        expect(dialog.isOpen).toBe(false);
+        expect(dialog.open).toBe(false);
         dialog.destroy();
     });
 
     itWithEffect('starts closed in controlled mode', () => {
-        const opts = { isOpen: false };
+        const opts = { open: false };
         const dialog = new DialogBuilder(opts);
-        expect(dialog.isOpen).toBe(false);
+        expect(dialog.open).toBe(false);
         dialog.destroy();
     });
 
-    itWithEffect('starts open when controlled isOpen is true', () => {
-        const opts = { isOpen: true };
+    itWithEffect('starts open when controlled open is true', () => {
+        const opts = { open: true };
         const dialog = new DialogBuilder(opts);
-        expect(dialog.isOpen).toBe(true);
+        expect(dialog.open).toBe(true);
         dialog.destroy();
     });
 });
 
 describe('DialogBuilder — open / close / toggle', () => {
-    itWithEffect('open sets isOpen to true', () => {
+    itWithEffect('open sets open to true', () => {
         const dialog = new DialogBuilder({});
-        dialog.open();
-        expect(dialog.isOpen).toBe(true);
+        dialog.openDialog();
+        expect(dialog.open).toBe(true);
         dialog.destroy();
     });
 
-    itWithEffect('close sets isOpen to false', () => {
+    itWithEffect('close sets open to false', () => {
         const dialog = new DialogBuilder({});
-        dialog.open();
-        dialog.close();
-        expect(dialog.isOpen).toBe(false);
+        dialog.openDialog();
+        dialog.closeDialog();
+        expect(dialog.open).toBe(false);
         dialog.destroy();
     });
 
     itWithEffect('close is a no-op when already closed', () => {
         const dialog = new DialogBuilder({});
-        dialog.close();
-        expect(dialog.isOpen).toBe(false);
+        dialog.closeDialog();
+        expect(dialog.open).toBe(false);
         dialog.destroy();
     });
 
     itWithEffect('toggle opens when closed', () => {
         const dialog = new DialogBuilder({});
-        dialog.toggle();
-        expect(dialog.isOpen).toBe(true);
+        dialog.toggleDialog();
+        expect(dialog.open).toBe(true);
         dialog.destroy();
     });
 
     itWithEffect('toggle closes when open', () => {
         const dialog = new DialogBuilder({});
-        dialog.open();
-        dialog.toggle();
-        expect(dialog.isOpen).toBe(false);
+        dialog.openDialog();
+        dialog.toggleDialog();
+        expect(dialog.open).toBe(false);
         dialog.destroy();
     });
 });
 
 describe('DialogBuilder — controlled mode', () => {
     itWithEffect('open mutates the options object', () => {
-        const opts = { isOpen: false };
+        const opts = { open: false };
         const dialog = new DialogBuilder(opts);
-        dialog.open();
-        expect(opts.isOpen).toBe(true);
+        dialog.openDialog();
+        expect(opts.open).toBe(true);
         dialog.destroy();
     });
 
     itWithEffect('close mutates the options object', () => {
-        const opts = { isOpen: true };
+        const opts = { open: true };
         const dialog = new DialogBuilder(opts);
-        dialog.close();
-        expect(opts.isOpen).toBe(false);
+        dialog.closeDialog();
+        expect(opts.open).toBe(false);
         dialog.destroy();
     });
 });
@@ -86,8 +86,8 @@ describe('DialogBuilder — onClose callback', () => {
     itWithEffect('onClose is called with no reason on plain close', () => {
         const onClose = vi.fn();
         const dialog = new DialogBuilder({ onClose });
-        flushSync(() => dialog.open());
-        flushSync(() => dialog.close());
+        flushSync(() => dialog.openDialog());
+        flushSync(() => dialog.closeDialog());
         expect(onClose).toHaveBeenCalledWith(undefined);
         dialog.destroy();
     });
@@ -95,8 +95,8 @@ describe('DialogBuilder — onClose callback', () => {
     itWithEffect('onClose is called with escape reason', () => {
         const onClose = vi.fn();
         const dialog = new DialogBuilder({ onClose });
-        flushSync(() => dialog.open());
-        flushSync(() => dialog.close('escape'));
+        flushSync(() => dialog.openDialog());
+        flushSync(() => dialog.closeDialog('escape'));
         expect(onClose).toHaveBeenCalledWith('escape');
         dialog.destroy();
     });
@@ -104,18 +104,18 @@ describe('DialogBuilder — onClose callback', () => {
     itWithEffect('onClose is called with backdrop reason', () => {
         const onClose = vi.fn();
         const dialog = new DialogBuilder({ onClose });
-        flushSync(() => dialog.open());
-        flushSync(() => dialog.close('backdrop'));
+        flushSync(() => dialog.openDialog());
+        flushSync(() => dialog.closeDialog('backdrop'));
         expect(onClose).toHaveBeenCalledWith('backdrop');
         dialog.destroy();
     });
 });
 
 describe('DialogBuilder — attrs', () => {
-    itWithEffect('backdropAttrs data-state reflects isOpen', () => {
+    itWithEffect('backdropAttrs data-state reflects open', () => {
         const dialog = new DialogBuilder({});
         expect(dialog.backdropAttrs['data-state']).toBe('closed');
-        dialog.open();
+        dialog.openDialog();
         expect(dialog.backdropAttrs['data-state']).toBe('open');
         dialog.destroy();
     });
@@ -127,10 +127,10 @@ describe('DialogBuilder — attrs', () => {
         dialog.destroy();
     });
 
-    itWithEffect('contentAttrs data-state reflects isOpen', () => {
+    itWithEffect('contentAttrs data-state reflects open', () => {
         const dialog = new DialogBuilder({});
         expect(dialog.contentAttrs['data-state']).toBe('closed');
-        dialog.open();
+        dialog.openDialog();
         expect(dialog.contentAttrs['data-state']).toBe('open');
         dialog.destroy();
     });

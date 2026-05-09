@@ -8,7 +8,7 @@
 
     let {
         ref = $bindable(),
-        isOpen = $bindable(false),
+        open = $bindable(),
         onClose,
         layout = 'fixed',
         closeOnBackdropClick = true,
@@ -24,11 +24,11 @@
     }: DialogProps = $props();
 
     const dialog = new DialogBuilder({
-        get isOpen() {
-            return isOpen;
+        get open() {
+            return open;
         },
-        set isOpen(value) {
-            isOpen = value;
+        set open(newOpen) {
+            open = newOpen;
         },
         get onClose() {
             return onClose;
@@ -45,11 +45,11 @@
     });
     onDestroy(() => dialog.destroy());
 
-    let lockScrollEnabled = $derived(dialog.active && dialog.isOpen && lockScroll);
+    let lockScrollEnabled = $derived(dialog.active && dialog.open && lockScroll);
     let previouslyFocusedElement: HTMLElement | null = null;
 
     $effect(() => {
-        if (dialog.isOpen) {
+        if (dialog.open) {
             previouslyFocusedElement = document.activeElement as HTMLElement;
             if (focusTrap) {
                 requestAnimationFrame(() => {
@@ -104,7 +104,7 @@
     </div>
 {:else}
     <!--  -->
-    {#if dialog.isOpen}
+    {#if dialog.open}
         <div
             {...dialog.backdropAttrs}
             class={backdropCssClass}

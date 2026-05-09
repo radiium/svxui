@@ -53,7 +53,7 @@
                                     </div>
                                     {#if prop.type.hint}
                                         <Floating
-                                            bind:isOpen={isOpenList[prop.name]}
+                                            bind:open={isOpenList[prop.name]}
                                             closeOnScroll
                                             closeOnOutsideClick
                                             closeOnEscape

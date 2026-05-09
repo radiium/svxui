@@ -25,7 +25,7 @@ category: builders
 
 <button onclick={() => dialog.open()}>Open dialog</button>
 
-{#if dialog.isOpen}
+{#if dialog.open}
     <div class="backdrop" {...dialog.backdropAttrs}></div>
     <dialog open {...dialog.contentAttrs}>
         <p>Dialog content</p>

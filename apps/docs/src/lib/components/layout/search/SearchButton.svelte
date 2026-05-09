@@ -4,7 +4,7 @@
     import { Button, Flex, Panel, Text } from 'svxui';
     import SearchModal from './SearchModal.svelte';
 
-    let isOpen = $state(false);
+    let open = $state(false);
     let isMac = $state(false);
 
     onMount(() => {
@@ -14,7 +14,7 @@
     function handleKeydown(e: KeyboardEvent) {
         if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
             e.preventDefault();
-            isOpen = true;
+            open = true;
         }
     }
 </script>
@@ -27,7 +27,7 @@
     color="neutral"
     p="0"
     as="button"
-    onclick={() => (isOpen = true)}
+    onclick={() => (open = true)}
     aria-label="Search docs"
     class="search-desktop"
 >
@@ -42,17 +42,11 @@
 </Panel>
 <div class="search-desktop-spacer flex-auto"></div>
 
-<Button
-    variant="clear"
-    iconOnly
-    onclick={() => (isOpen = true)}
-    aria-label="Search docs"
-    class="search-mobile"
->
+<Button variant="clear" iconOnly onclick={() => (open = true)} aria-label="Search docs" class="search-mobile">
     <SearchIcon size="20px" />
 </Button>
 
-<SearchModal bind:isOpen onClose={() => (isOpen = false)} />
+<SearchModal bind:open onClose={() => (open = false)} />
 
 <style>
     kbd {

@@ -8,7 +8,7 @@ export type FloatingBuilderOptions = {
     /**
      * Controls whether the floating element is open
      */
-    isOpen: boolean;
+    open: boolean;
     /**
      * Accessibility pattern to apply (tooltip or popover)
      */

@@ -1,14 +1,14 @@
 <script lang="ts">
     import { Button, Dialog, Flex, Panel } from 'svxui';
 
-    let isOpen = $state(false);
-    const open = () => (isOpen = true);
-    const close = () => (isOpen = false);
+    let open = $state(false);
+    const openDialog = () => (open = true);
+    const closeDialog = () => (open = false);
 </script>
 
-<Button onclick={open}>Open scroll dialog</Button>
+<Button onclick={openDialog}>Open scroll dialog</Button>
 
-<Dialog bind:isOpen layout="scroll">
+<Dialog bind:open layout="scroll">
     <Panel fullWidth fullHeight p="9">
         <Flex justify="start" direction="column" gap="3">
             <h2>Dialog title</h2>
@@ -46,7 +46,7 @@
                 mollis. Nunc egestas enim quis dolor rutrum, pharetra pharetra nisi consectetur. Fusce nisi
                 urna, molestie nec vulputate id, euismod a felis. Maecenas rutrum venenatis nibh sed feugiat.
             </p>
-            <Button onclick={close}>Close</Button>
+            <Button onclick={closeDialog}>Close</Button>
         </Flex>
     </Panel>
 </Dialog>

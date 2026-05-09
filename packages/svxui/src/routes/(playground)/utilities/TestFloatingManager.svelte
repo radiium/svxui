@@ -5,15 +5,15 @@
     import { arrow, autoUpdate, offset, size, type Middleware } from '@floating-ui/dom';
     import { fade } from 'svelte/transition';
 
-    let opened = $state(false);
+    let open = $state(false);
     let arrowEl: SVGSVGElement | undefined = $state(undefined);
 
     const floating = new FloatingBuilder({
-        get isOpen() {
-            return opened;
+        get open() {
+            return open;
         },
-        set isOpen(newOpened: boolean) {
-            opened = newOpened;
+        set open(newOpen: boolean) {
+            open = newOpen;
         },
         engineOptions: {
             placement: 'top',
@@ -49,9 +49,9 @@
     <Flex justify="start" direction="column" gap="3">
         <h2>Floating Manager</h2>
         <Input data-focusclose />
-        <Button {...floating.triggerAttrs} onclick={floating.toggle}>open ({opened})</Button>
+        <Button {...floating.triggerAttrs} onclick={floating.toggle}>open ({open})</Button>
 
-        {#if opened}
+        {#if open}
             <div
                 class="backdrop"
                 {...floating.backdropAttrs}
@@ -68,8 +68,8 @@
                         </div>
 
                         <Flex justify="end" gap="3">
-                            <Button variant="outline" onclick={floating.close}>Cancel</Button>
-                            <Button onclick={floating.close}>Confirm</Button>
+                            <Button variant="outline" onclick={floating.closeFloating}>Cancel</Button>
+                            <Button onclick={floating.closeFloating}>Confirm</Button>
                         </Flex>
                     </Flex>
 

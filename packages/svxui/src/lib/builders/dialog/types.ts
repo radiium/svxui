@@ -2,7 +2,7 @@
  * Input-number state options
  */
 export type DialogBuilderOptions = {
-    isOpen?: boolean;
+    open?: boolean;
     /**
      * Close dialog on backdrop click
      */
@@ -16,13 +16,13 @@ export type DialogBuilderOptions = {
      */
     focusTrap?: boolean;
     /**
-     * Callback called on isOpen change
+     * Callback called on open change
      * @param newValue
      * @returns
      */
     onOpen?: () => void;
     /**
-     * Callback called on isOpen change
+     * Callback called on open change
      * @param newValue
      * @returns
      */
@@ -33,7 +33,6 @@ export type DialogBuilderOptions = {
  * HTML data-attributes written to the dialog backdrop element
  */
 export type DialogBackdropAttributes = {
-    readonly id: string;
     readonly role: 'presentation';
     readonly inert?: true | undefined;
     readonly 'data-state': 'open' | 'closed';
@@ -44,7 +43,6 @@ export type DialogBackdropAttributes = {
  * HTML data-attributes written to the dialog content element
  */
 export type DialogContentAttributes = {
-    readonly id: string;
     readonly tabindex: number;
     readonly role: 'dialog';
     readonly inert?: true | undefined;

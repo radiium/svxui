@@ -49,4 +49,4 @@
 </Grid>
 
 <svelte:window onkeydown={handleKeydown} />
-<SearchModal bind:isOpen={isSearchOpen} onClose={() => (isSearchOpen = false)} />
+<SearchModal bind:open={isSearchOpen} onClose={() => (isSearchOpen = false)} />

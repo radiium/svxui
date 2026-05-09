@@ -1,12 +1,12 @@
 <script lang="ts">
     import { Button, Dialog, Panel } from 'svxui';
 
-    let isOpen = $state(false);
-    const open = () => (isOpen = true);
+    let open = $state(false);
+    const openDialog = () => (open = true);
 </script>
 
-<Button onclick={open}>Open dialog</Button>
+<Button onclick={openDialog}>Open dialog</Button>
 
-<Dialog bind:isOpen>
+<Dialog bind:open>
     <Panel>Dialog content</Panel>
 </Dialog>

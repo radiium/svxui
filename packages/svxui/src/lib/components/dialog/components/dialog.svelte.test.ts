@@ -12,22 +12,22 @@ describe('Dialog component', () => {
     /* ------------------------------------------------- */
 
     describe('Basic Rendering', () => {
-        test('does not render when isOpen is false', async () => {
-            const { container } = renderWithWrapper(Dialog, { isOpen: false });
+        test('does not render when open is false', async () => {
+            const { container } = renderWithWrapper(Dialog, { open: false });
             const dialog = container.querySelector(selector);
 
             expect(dialog).toBeNull();
         });
 
-        test('renders when isOpen is true', async () => {
-            const { container } = renderWithWrapper(Dialog, { isOpen: true });
+        test('renders when open is true', async () => {
+            const { container } = renderWithWrapper(Dialog, { open: true });
             const dialog = container.querySelector(selector);
 
             expect(dialog).not.toBeNull();
         });
 
         test('renders with default props', async () => {
-            const { container } = renderWithWrapper(Dialog, { isOpen: true });
+            const { container } = renderWithWrapper(Dialog, { open: true });
             const dialog = container.querySelector(selector);
 
             expect(dialog?.classList.contains('dialog-content')).toBe(true);
@@ -40,7 +40,7 @@ describe('Dialog component', () => {
             }));
 
             const { container } = renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 children
             });
 
@@ -50,7 +50,7 @@ describe('Dialog component', () => {
 
         test('forwards extra html attributes', async () => {
             const { container } = renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 id: 'my-dialog',
                 'data-testid': 'dialog'
             });
@@ -69,7 +69,7 @@ describe('Dialog component', () => {
         test.each(['fixed', 'scroll', 'fullscreen'] as DialogProps['layout'][])(
             'applies layout %s',
             async (layout: DialogProps['layout']) => {
-                const { container } = renderWithWrapper(Dialog, { isOpen: true, layout });
+                const { container } = renderWithWrapper(Dialog, { open: true, layout });
                 const dialog = container.querySelector(selector);
                 const backdrop = container.querySelector('.dialog-backdrop');
 
@@ -87,7 +87,7 @@ describe('Dialog component', () => {
 
     describe('Backdrop', () => {
         test('renders backdrop when open', async () => {
-            const { container } = renderWithWrapper(Dialog, { isOpen: true });
+            const { container } = renderWithWrapper(Dialog, { open: true });
             const backdrop = container.querySelector('.dialog-backdrop');
 
             expect(backdrop).not.toBeNull();
@@ -95,7 +95,7 @@ describe('Dialog component', () => {
 
         test('applies blurBackdrop class', async () => {
             const { container } = renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 blurBackdrop: true
             });
             const backdrop = container.querySelector('.dialog-backdrop');
@@ -105,7 +105,7 @@ describe('Dialog component', () => {
 
         test('does not apply blurBackdrop in fullscreen layout', async () => {
             const { container } = renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 blurBackdrop: true,
                 layout: 'fullscreen'
             });
@@ -117,7 +117,7 @@ describe('Dialog component', () => {
         test('closes dialog on backdrop click when closeOnBackdropClick is true', async () => {
             const onClose = vi.fn();
             const { container } = renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 closeOnBackdropClick: true,
                 onClose
             });
@@ -131,7 +131,7 @@ describe('Dialog component', () => {
         test('does not close dialog on backdrop click when closeOnBackdropClick is false', async () => {
             const onClose = vi.fn();
             const { container } = renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 closeOnBackdropClick: false,
                 onClose
             });
@@ -151,7 +151,7 @@ describe('Dialog component', () => {
         test('closes dialog on Escape key when closeOnEscape is true', async () => {
             const onClose = vi.fn();
             renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 closeOnEscape: true,
                 onClose
             });
@@ -164,7 +164,7 @@ describe('Dialog component', () => {
         test('does not close dialog on Escape key when closeOnEscape is false', async () => {
             const onClose = vi.fn();
             renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 closeOnEscape: false,
                 onClose
             });
@@ -180,9 +180,9 @@ describe('Dialog component', () => {
     /* ------------------------------------------------- */
 
     describe('keepMounted', () => {
-        test('renders dialog in DOM when keepMounted is true and isOpen is false', async () => {
+        test('renders dialog in DOM when keepMounted is true and open is false', async () => {
             const { container } = renderWithWrapper(Dialog, {
-                isOpen: false,
+                open: false,
                 keepMounted: true
             });
             const dialog = container.querySelector(selector);
@@ -192,7 +192,7 @@ describe('Dialog component', () => {
 
         test('applies keepmounted class on backdrop and dialog', async () => {
             const { container } = renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 keepMounted: true
             });
             const backdrop = container.querySelector('.dialog-backdrop');
@@ -212,7 +212,7 @@ describe('Dialog component', () => {
             let current: HTMLDivElement | undefined = undefined;
 
             renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 get ref() {
                     return current;
                 },
@@ -234,7 +234,7 @@ describe('Dialog component', () => {
     describe('Custom class', () => {
         test('merges custom class with base classes', async () => {
             const { container } = renderWithWrapper(Dialog, {
-                isOpen: true,
+                open: true,
                 class: 'custom-class'
             });
             const dialog = container.querySelector(selector);

@@ -3,11 +3,11 @@
     import { Button, Floating } from 'svxui';
     import SettingsMenu from './SettingsMenu.svelte';
 
-    let isOpen = $state(false);
+    let open = $state(false);
 </script>
 
 <Floating
-    bind:isOpen
+    bind:open
     placement="bottom-end"
     outline
     size="4"
@@ -22,7 +22,7 @@
     transitionDuration={0}
 >
     {#snippet trigger()}
-        <Button size="2" variant="clear" iconOnly onclick={() => (isOpen = !isOpen)}>
+        <Button size="2" variant="clear" iconOnly onclick={() => (open = !open)}>
             <FadersIcon />
         </Button>
     {/snippet}

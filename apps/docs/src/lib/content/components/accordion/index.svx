@@ -19,6 +19,8 @@ category: components
 ```svelte
 <script>
     import { Accordion } from 'svxui';
+
+    const items = ['1', '2', '3', '4'];
 </script>
 
 <Accordion>
@@ -28,10 +30,8 @@ category: components
                 <!-- Create item -->
                 {@const item = accordion.getItem(value)}
 
-
                 <!-- Accordion item wrapper -->
                 <div {...item.itemAttrs}>
-
                     <!-- Heading -->
                     <div {...item.headingAttrs}>
                         <h2>Title {value}</h2>
@@ -53,6 +53,7 @@ category: components
         </div>
     {/snippet}
 </Accordion>
+
 ```
 
 ## API Reference

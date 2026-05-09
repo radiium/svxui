@@ -14,7 +14,7 @@ export type DialogProps = Omit<HTMLAttributes<HTMLDivElement>, 'open' | 'childre
     /**
      * Manage/listen open state
      */
-    isOpen?: boolean;
+    open?: boolean;
     /**
      * Callback when dialog is closed
      */

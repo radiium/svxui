@@ -10,12 +10,12 @@
 
     let { target, children }: Props = $props();
 
-    let isOpen = $state(true);
+    let open = $state(true);
 </script>
 
-<span role="tooltip" onmouseenter={() => (isOpen = true)} onmouseleave={() => (isOpen = false)}>
+<span role="tooltip" onmouseenter={() => (open = true)} onmouseleave={() => (open = false)}>
     <Floating
-        bind:isOpen
+        bind:open
         variant="surface"
         outline
         arrow

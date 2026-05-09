@@ -6,11 +6,11 @@
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let isOpenNested = $state(false);
+    let openNested = $state(false);
     let longContent = $state(false);
 
     const props: DialogProps = $state({
-        isOpen: false,
+        open: false,
         layout: 'fixed',
         closeOnBackdropClick: true,
         closeOnEscape: true,
@@ -22,13 +22,13 @@
         transitionDuration: 250
     });
 
-    const openDialog = () => (props.isOpen = true);
-    const closeDialog = () => (props.isOpen = false);
+    const openDialog = () => (props.open = true);
+    const closeDialog = () => (props.open = false);
 
     let json = $derived(
         JSON.stringify(
             {
-                isOpenNested,
+                openNested,
                 props
             },
             null,
@@ -41,7 +41,7 @@
 
 <Playground>
     {#snippet controls()}
-        <ControlCheckbox label="isOpen" bind:checked={props.isOpen} />
+        <ControlCheckbox label="open" bind:checked={props.open} />
         <ControlSelect label="layout" bind:value={props.layout} options={['fixed', 'scroll', 'fullscreen']} />
         <ControlCheckbox label="closeOnBackdropClick" bind:checked={props.closeOnBackdropClick} />
         <ControlCheckbox label="closeOnEscape" bind:checked={props.closeOnEscape} />
@@ -57,7 +57,7 @@
 
     <Button onclick={openDialog}>Open</Button>
 
-    <Dialog {...props} bind:isOpen={props.isOpen}>
+    <Dialog {...props} bind:open={props.open}>
         <Panel
             color="neutral"
             outline
@@ -111,7 +111,7 @@
                     <p>Dialog paragraph</p>
                 {/if}
 
-                <Button onclick={() => (isOpenNested = true)} variant="outline">Info</Button>
+                <Button onclick={() => (openNested = true)} variant="outline">Info</Button>
 
                 <Flex justify="end" gap="3">
                     <Button onclick={closeDialog} variant="clear">Cancel</Button>
@@ -121,14 +121,14 @@
         </Panel>
     </Dialog>
 
-    <Dialog bind:isOpen={isOpenNested}>
+    <Dialog bind:open={openNested}>
         <Panel color="neutral" outline p="5">
             <Flex justify="start" direction="column" gap="3">
                 <h2>Nested dialog title</h2>
                 <p>Nested dialog paragraph</p>
 
                 <Flex justify="end" gap="3">
-                    <Button onclick={() => (isOpenNested = false)}>close</Button>
+                    <Button onclick={() => (openNested = false)}>close</Button>
                 </Flex>
             </Flex>
         </Panel>

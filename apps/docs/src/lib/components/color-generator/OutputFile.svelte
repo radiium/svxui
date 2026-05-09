@@ -14,7 +14,7 @@
 
     let { name, codeHtml }: Props = $props();
 
-    let isOpen = $state(false);
+    let open = $state(false);
     let code = $derived.by(() => {
         const doc = new DOMParser().parseFromString(codeHtml ?? '', 'text/html');
         return doc.body.textContent || '';
@@ -57,13 +57,13 @@
 
     <Flex justify="start" align="end" wrap="wrap" gap="3">
         <!-- Show code -->
-        <Button size="2" variant="soft" onclick={() => (isOpen = true)}>
+        <Button size="2" variant="soft" onclick={() => (open = true)}>
             <EyeIcon />
             Show code
         </Button>
 
         <!-- Show code dialog -->
-        <Dialog bind:isOpen closeOnBackdropClick closeOnEscape layout="scroll">
+        <Dialog bind:open closeOnBackdropClick closeOnEscape layout="scroll">
             <Panel variant="surface" outline>
                 <Flex align="center" justify="between" gap="3">
                     <!-- Copy to clipboard -->
@@ -94,7 +94,7 @@
                         variant="soft"
                         title="Close 'Show code' dialog"
                         iconOnly
-                        onclick={() => (isOpen = false)}
+                        onclick={() => (open = false)}
                     >
                         <XIcon />
                     </Button>

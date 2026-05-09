@@ -1,19 +1,19 @@
 <script lang="ts">
     import { Floating, Button, Flex } from 'svxui';
 
-    let isOpen = $state(false);
-    const open = () => (isOpen = true);
-    const close = () => (isOpen = false);
+    let open = $state(false);
+    const openFloating = () => (open = true);
+    const closeFloating = () => (open = false);
 </script>
 
-<Floating bind:isOpen>
+<Floating bind:open>
     {#snippet trigger()}
-        <Button onclick={open}>Open</Button>
+        <Button onclick={openFloating}>Open</Button>
     {/snippet}
     {#snippet content()}
         <Flex justify="start" align="center" gap="3">
             Floating content
-            <Button size="1" radius="full" variant="outline" iconOnly onclick={close}>X</Button>
+            <Button size="1" radius="full" variant="outline" iconOnly onclick={closeFloating}>X</Button>
         </Flex>
     {/snippet}
 </Floating>

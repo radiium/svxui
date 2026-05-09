@@ -17,7 +17,7 @@ export type FloatingProps = Omit<HTMLAttributes<HTMLDivElement>, 'color' | 'chil
     /**
      * Manage/listen open state
      */
-    isOpen?: boolean;
+    open?: boolean;
     /**
      * Callback when floating is closed
      */

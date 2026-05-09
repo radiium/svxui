@@ -1,13 +1,13 @@
 <script lang="ts">
     import { Floating, Button } from 'svxui';
 
-    let isOpen = $state(false);
-    const open = () => (isOpen = true);
+    let open = $state(false);
+    const openFloating = () => (open = true);
 </script>
 
-<Floating bind:isOpen closeOnOutsideClick autoUpdate shift flip>
+<Floating bind:open closeOnOutsideClick autoUpdate shift flip>
     {#snippet trigger()}
-        <Button onclick={open}>Open</Button>
+        <Button onclick={openFloating}>Open</Button>
     {/snippet}
     {#snippet content()}
         Floating content

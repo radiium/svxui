@@ -4,13 +4,13 @@
     import { clickoutside, Text } from 'svxui';
     import TOC from './toc.svelte';
 
-    let isOpen = $state<boolean>(false);
+    let open = $state<boolean>(false);
     let summary = $derived(tocState.current?.text || 'On this page');
 
-    const close = () => (isOpen = false);
+    const close = () => (open = false);
 </script>
 
-<details bind:open={isOpen} {@attach clickoutside({ onClickOutside: close })}>
+<details bind:open {@attach clickoutside({ onClickOutside: close })}>
     <summary>
         <Text as="span">{summary}</Text>
         <CaretUpDownIcon size="1rem" />

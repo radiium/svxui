@@ -27,15 +27,15 @@ left: 0;
     import { FloatingBuilder } from 'svxui';
 
     // Controlled open state
-    let isOpen = $state(false);
+    let open = $state(false);
 
     // Initialize floating
     const floating = new FloatingBuilder({
-        get isOpen() {
-            return isOpen;
+        get open() {
+            return open;
         },
-        set isOpen(value) {
-            isOpen = value;
+        set open(value) {
+            open = value;
         },
         pattern: 'popover',
         closeOnOutsideClick: true,
@@ -49,7 +49,7 @@ left: 0;
 </button>
 
 <!-- Content element -->
-{#if isOpen}
+{#if open}
     <div {...floating.contentAttrs} class="popover">
         <p>This is a popover</p>
     </div>

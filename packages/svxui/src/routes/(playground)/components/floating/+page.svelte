@@ -6,10 +6,10 @@
     import ControlSelect from '../../controls/ControlSelect.svelte';
     import Playground from '../../controls/Playground.svelte';
 
-    let isOpenNested = $state(false);
+    let openNested = $state(false);
 
     const props: FloatingProps = $state({
-        isOpen: false,
+        open: false,
         placement: 'bottom',
         color: 'neutral',
         variant: 'solid',
@@ -41,7 +41,7 @@
     let json = $derived(
         JSON.stringify(
             {
-                isOpenNested,
+                openNested,
                 props
             },
             null,
@@ -103,9 +103,9 @@
         <ControlInput label="focusOnClose" bind:value={props.focusOnClose} />
     {/snippet}
 
-    <Floating {...props} bind:isOpen={props.isOpen}>
+    <Floating {...props} bind:open={props.open}>
         {#snippet trigger()}
-            <Button variant="soft" onclick={() => (props.isOpen = !props.isOpen)}>click me</Button>
+            <Button variant="soft" onclick={() => (props.open = !props.open)}>click me</Button>
         {/snippet}
 
         {#snippet content()}
@@ -115,7 +115,7 @@
                 <Input data-floating-input />
 
                 <Floating
-                    bind:isOpen={isOpenNested}
+                    bind:open={openNested}
                     placement="top"
                     closeOnOutsideClick
                     closeOnEscape
@@ -127,8 +127,8 @@
                     {#snippet trigger()}
                         <Button
                             variant="soft"
-                            onmouseenter={() => (isOpenNested = true)}
-                            onmouseout={() => (isOpenNested = false)}
+                            onmouseenter={() => (openNested = true)}
+                            onmouseout={() => (openNested = false)}
                         >
                             Hover me
                         </Button>

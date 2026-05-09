@@ -15,7 +15,7 @@
 
     let {
         ref = $bindable(),
-        isOpen = $bindable(),
+        open = $bindable(),
         onClose = undefined,
         // Theme config
         size = '3',
@@ -38,7 +38,7 @@
         arrowTipRadius = undefined,
         // Portal config
         portal = false,
-        portalTarget = '[data-theme-root]',
+        portalTarget = 'body',
         // Focus config
         focusTrap = false,
         focusOnOpen = undefined,
@@ -61,12 +61,12 @@
     let arrowEl: SVGSVGElement | undefined = $state(undefined);
     const floating = new FloatingBuilder({
         // pattern: 'popover',
-        get isOpen() {
-            return isOpen === true;
+        get open() {
+            return open === true;
         },
-        set isOpen(newIsOpen: boolean) {
-            isOpen = newIsOpen;
-            if (!isOpen) onClose?.();
+        set open(newOpen: boolean) {
+            open = newOpen;
+            if (!open) onClose?.();
         },
         engineOptions: {
             strategy: 'fixed',
@@ -119,7 +119,7 @@
     let active = $derived(layers.length > 0 && layers.at(-1) === id);
     let zIndex = $derived(layers.findIndex((o) => o === id) + 1);
     $effect(() => {
-        if (isOpen) {
+        if (open) {
             untrack(() => layers.push(id));
         } else {
             untrack(() => (layers = layers.filter((o) => o !== id)));
@@ -135,8 +135,8 @@
 </div>
 
 <!-- Floating -->
-<Portal target={portalTarget} enabled={portal && isOpen}>
-    {#if isOpen}
+<Portal target={portalTarget} enabled={portal && open}>
+    {#if open}
         <!-- Backdrop -->
         {#if backdrop}
             <div

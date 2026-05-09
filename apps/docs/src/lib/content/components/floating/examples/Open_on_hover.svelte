@@ -1,14 +1,14 @@
 <script lang="ts">
     import { Floating, Button } from 'svxui';
 
-    let isOpen = $state(false);
-    const open = () => (isOpen = true);
-    const close = () => (isOpen = false);
+    let open = $state(false);
+    const openFloating = () => (open = true);
+    const closeFloating = () => (open = false);
 </script>
 
-<Floating bind:isOpen>
+<Floating bind:open>
     {#snippet trigger()}
-        <Button onmouseenter={open} onmouseleave={close}>Hover</Button>
+        <Button onmouseenter={openFloating} onmouseleave={closeFloating}>Hover</Button>
     {/snippet}
     {#snippet content()}
         Floating content

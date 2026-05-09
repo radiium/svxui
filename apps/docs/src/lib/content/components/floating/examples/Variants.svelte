@@ -1,8 +1,8 @@
 <script lang="ts">
     import { Floating, Button, Select, type FloatingVariant, Flex, Checkbox, SelectOption } from 'svxui';
 
-    let isOpen = $state(false);
-    const open = () => (isOpen = true);
+    let open = $state(false);
+    const openFloating = () => (open = true);
 
     const options: FloatingVariant[] = ['solid', 'soft', 'surface', 'clear'];
     let variant = $state(options[0]);
@@ -21,9 +21,9 @@
     </Flex>
 </Flex>
 
-<Floating bind:isOpen closeOnOutsideClick {variant} {outline}>
+<Floating bind:open closeOnOutsideClick {variant} {outline}>
     {#snippet trigger()}
-        <Button onclick={open}>Open</Button>
+        <Button onclick={openFloating}>Open</Button>
     {/snippet}
     {#snippet content()}
         Floating content

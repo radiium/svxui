@@ -10,12 +10,12 @@ let layers: string[] = $state([]);
 
 /**
  * Manages dialog state, layering, and keyboard interactions.
- * Supports both controlled (external isOpen) and uncontrolled modes.
+ * Supports both controlled (external open) and uncontrolled modes.
  */
 export class DialogBuilder {
     #id: string;
     #options: DialogBuilderOptions;
-    #internalIsOpen: boolean = $state(false);
+    #internalOpen: boolean = $state(false);
     #active: boolean = $derived.by(() => layers.length > 0 && layers.at(-1) === this.#id);
     #index: number = $derived.by(() => layers.indexOf(this.#id));
     #contentAttachmentKey = createAttachmentKey();
@@ -37,7 +37,7 @@ export class DialogBuilder {
         // until destroy() is called manually.
         this.#cleanup = $effect.root(() => {
             $effect(() => {
-                if (!this.isOpen) return;
+                if (!this.open) return;
 
                 // untrack prevents layers mutation from re-triggering the effect.
                 untrack(() => {
@@ -50,14 +50,14 @@ export class DialogBuilder {
                     window.addEventListener('keydown', this.#handleKeydown);
                 });
 
-                // Runs when isOpen switches true → false, or when destroy() is called.
+                // Runs when open switches true → false, or when destroy() is called.
                 return () => {
                     untrack(() => {
                         layers = layers.filter((id) => id !== this.#id);
                         window.removeEventListener('keydown', this.#handleKeydown);
 
                         // Works for both internal close() calls (reason = 'escape' | 'backdrop')
-                        // and external isOpen changes (reason = undefined).
+                        // and external open changes (reason = undefined).
                         this.#options.onClose?.(this.#pendingReason);
                         this.#pendingReason = undefined;
                     });
@@ -66,19 +66,19 @@ export class DialogBuilder {
         });
     }
 
-    get isOpen(): boolean {
-        return 'isOpen' in this.#options //
-            ? this.#options.isOpen === true
-            : this.#internalIsOpen;
+    get open(): boolean {
+        return 'open' in this.#options //
+            ? this.#options.open === true
+            : this.#internalOpen;
     }
 
-    set isOpen(newIsOpen: boolean | undefined) {
-        const isOpen = newIsOpen === true;
+    set open(newOpen: boolean | undefined) {
+        const open = newOpen === true;
 
-        if ('isOpen' in this.#options) {
-            this.#options.isOpen = isOpen;
+        if ('open' in this.#options) {
+            this.#options.open = open;
         } else {
-            this.#internalIsOpen = isOpen;
+            this.#internalOpen = open;
         }
     }
 
@@ -95,19 +95,18 @@ export class DialogBuilder {
      */
     get backdropAttrs(): DialogBackdropAttributes {
         return {
-            id: `${DIALOG_BACKDROP_KEY}-${this.#id}`,
             // ARIA atributes
             role: 'presentation',
             inert: !this.#active ? true : undefined,
             // Data attributes
             [`data-${DIALOG_BACKDROP_KEY}`]: '',
-            'data-state': this.isOpen ? 'open' : 'closed',
+            'data-state': this.open ? 'open' : 'closed',
             // Events
             onclick:
-                this.#active && this.isOpen && this.#options.closeOnBackdropClick
+                this.#active && this.open && this.#options.closeOnBackdropClick
                     ? (event: MouseEvent) => {
                           if (event.target === event.currentTarget) {
-                              this.close('backdrop');
+                              this.closeDialog('backdrop');
                           }
                       }
                     : undefined
@@ -119,7 +118,6 @@ export class DialogBuilder {
      */
     get contentAttrs(): DialogContentAttributes {
         return {
-            id: `${DIALOG_CONTENT_KEY}-${this.#id}`,
             // ARIA atributes
             tabindex: -1,
             role: 'dialog',
@@ -127,12 +125,12 @@ export class DialogBuilder {
             inert: !this.#active ? true : undefined,
             // Data attributes
             [`data-${DIALOG_CONTENT_KEY}`]: '',
-            'data-state': this.isOpen ? 'open' : 'closed',
-            //Attachments
+            'data-state': this.open ? 'open' : 'closed',
+            // Attachments
             [this.#contentAttachmentKey]:
-                this.#active && this.isOpen && this.#options.focusTrap
+                this.#active && this.open && this.#options.focusTrap
                     ? focustrap({
-                          enabled: this.#active && this.isOpen && this.#options.focusTrap
+                          enabled: this.#active && this.open && this.#options.focusTrap
                       })
                     : undefined
         } as const;
@@ -141,33 +139,33 @@ export class DialogBuilder {
     /**
      * Open the dialog
      */
-    open = (): void => {
-        this.isOpen = true;
+    openDialog = (): void => {
+        this.open = true;
     };
 
     /**
      * Close the dialog
      * @param reason optional close reason
      */
-    close = (reason?: 'escape' | 'backdrop'): void => {
-        if (!this.isOpen) return;
+    closeDialog = (reason?: 'escape' | 'backdrop'): void => {
+        if (!this.open) return;
         this.#pendingReason = reason;
-        this.isOpen = false;
+        this.open = false;
     };
 
     /**
      * Toggle the dialog open state
      */
-    toggle = (): void => {
-        if (this.isOpen) {
-            this.close();
+    toggleDialog = (): void => {
+        if (this.open) {
+            this.closeDialog();
         } else {
-            this.open();
+            this.openDialog();
         }
     };
 
     /**
-     * Destoy root effect
+     * Destroy root effect
      */
     destroy = (): void => {
         this.#cleanup?.();
@@ -178,9 +176,9 @@ export class DialogBuilder {
      * @param event
      */
     #handleKeydown = (event: KeyboardEvent): void => {
-        if (this.#active && this.isOpen && this.#options.closeOnEscape) {
+        if (this.#active && this.open && this.#options.closeOnEscape) {
             if (event.key === 'Escape') {
-                this.close('escape');
+                this.closeDialog('escape');
             }
         }
     };
