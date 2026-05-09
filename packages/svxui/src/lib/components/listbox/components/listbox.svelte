@@ -10,6 +10,7 @@
         loop = false,
         activateOnFocus = false,
         orientation = 'vertical',
+        compare,
         children
     }: ListboxProps<Value, Multiple> = $props();
 
@@ -22,6 +23,9 @@
         },
         get onValueChange() {
             return onValueChange;
+        },
+        get compare() {
+            return compare;
         },
         get multiple() {
             return multiple;

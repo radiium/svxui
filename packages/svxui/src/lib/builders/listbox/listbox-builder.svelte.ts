@@ -37,6 +37,9 @@ export class ListboxBuilder<Value, Multiple extends boolean> {
             get onValueChange() {
                 return options.onValueChange;
             },
+            get compare() {
+                return options.compare;
+            },
             get multiple() {
                 return options.multiple;
             }

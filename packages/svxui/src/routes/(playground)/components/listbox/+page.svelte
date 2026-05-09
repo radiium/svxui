@@ -68,6 +68,7 @@
             // eslint-disable-next-line no-console
             console.log(v);
         }}
+        compare={optionsType === 'object' ? (a: any, b: any) => a?.val === b?.val : undefined}
     >
         {#snippet children(rootState)}
             <Panel variant="clear" outline p="2" style="width: 220px;">
@@ -96,10 +97,10 @@
                         {:else}
                             <Button {...item.attrs} variant={item.selected ? 'soft' : 'clear'} align="start">
                                 {#if typeof opt === 'string'}
-                                    {opt}
+                                    {opt} ({item.selected})
                                 {:else if isObject(opt)}
                                     <span>{(opt as (typeof optionsObject)[number]).key}</span>
-                                    ({(opt as (typeof optionsObject)[number]).val})
+                                    ({(opt as (typeof optionsObject)[number]).val}) ({item.selected})
                                 {/if}
                             </Button>
                         {/if}
