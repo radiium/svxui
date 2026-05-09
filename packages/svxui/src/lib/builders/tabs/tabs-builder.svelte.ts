@@ -111,14 +111,6 @@ export class TabsBuilder<Value> {
     };
 
     /**
-     * Destroy internal reactive effects. Call this when the builder is instantiated
-     * outside a Svelte component to avoid memory leaks.
-     */
-    destroy = (): void => {
-        this.#selection.destroy();
-    };
-
-    /**
      * Register a tab item trigger part
      * @param value The tab item value
      * @param id The trigger element id

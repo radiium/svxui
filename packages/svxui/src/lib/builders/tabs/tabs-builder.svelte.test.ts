@@ -6,31 +6,26 @@ describe('TabsBuilder — defaults', () => {
     itWithEffect('exposes a string id', () => {
         const tabs = new TabsBuilder({ value: 'a' });
         expect(tabs.id).toBeTypeOf('string');
-        tabs.destroy();
     });
 
     itWithEffect('defaults orientation to vertical', () => {
         const tabs = new TabsBuilder({ value: 'a' });
         expect(tabs.orientation).toBe('vertical');
-        tabs.destroy();
     });
 
     itWithEffect('defaults disabled to false', () => {
         const tabs = new TabsBuilder({ value: 'a' });
         expect(tabs.disabled).toBe(false);
-        tabs.destroy();
     });
 
     itWithEffect('defaults loop to false', () => {
         const tabs = new TabsBuilder({ value: 'a' });
         expect(tabs.loop).toBe(false);
-        tabs.destroy();
     });
 
     itWithEffect('defaults activateOnFocus to false', () => {
         const tabs = new TabsBuilder({ value: 'a' });
         expect(tabs.activateOnFocus).toBe(false);
-        tabs.destroy();
     });
 });
 
@@ -39,7 +34,6 @@ describe('TabsBuilder — isActive / activate', () => {
         const tabs = new TabsBuilder({ value: 'a' });
         expect(tabs.isActive('a')).toBe(true);
         expect(tabs.isActive('b')).toBe(false);
-        tabs.destroy();
     });
 
     itWithEffect('activate switches the active tab', () => {
@@ -48,7 +42,6 @@ describe('TabsBuilder — isActive / activate', () => {
         tabs.activate('b');
         expect(tabs.isActive('b')).toBe(true);
         expect(tabs.isActive('a')).toBe(false);
-        tabs.destroy();
     });
 
     itWithEffect('activate is a no-op when globally disabled', () => {
@@ -56,7 +49,6 @@ describe('TabsBuilder — isActive / activate', () => {
         const tabs = new TabsBuilder(opts);
         tabs.activate('b');
         expect(tabs.isActive('a')).toBe(true);
-        tabs.destroy();
     });
 
     itWithEffect('onValueChange is called on activation', () => {
@@ -65,7 +57,6 @@ describe('TabsBuilder — isActive / activate', () => {
         const tabs = new TabsBuilder(opts);
         tabs.activate('b');
         expect(onValueChange).toHaveBeenCalledWith('b');
-        tabs.destroy();
     });
 });
 
@@ -77,7 +68,6 @@ describe('TabsBuilder — getTrigger', () => {
         expect(trigger.attrs['data-state']).toBe('active');
         expect(trigger.attrs.role).toBe('tab');
         expect(trigger.attrs['aria-selected']).toBe(true);
-        tabs.destroy();
     });
 
     itWithEffect('inactive trigger has data-state inactive', () => {
@@ -86,7 +76,6 @@ describe('TabsBuilder — getTrigger', () => {
         expect(trigger.active).toBe(false);
         expect(trigger.attrs['data-state']).toBe('inactive');
         expect(trigger.attrs['aria-selected']).toBe(false);
-        tabs.destroy();
     });
 
     itWithEffect('disabled trigger has no aria-selected', () => {
@@ -95,7 +84,6 @@ describe('TabsBuilder — getTrigger', () => {
         expect(trigger.disabled).toBe(true);
         expect(trigger.attrs['aria-selected']).toBeUndefined();
         expect(trigger.attrs.tabindex).toBe(-1);
-        tabs.destroy();
     });
 });
 
@@ -106,7 +94,6 @@ describe('TabsBuilder — getContent', () => {
         expect(content.active).toBe(true);
         expect(content.attrs.hidden).toBeUndefined();
         expect(content.attrs.role).toBe('tabpanel');
-        tabs.destroy();
     });
 
     itWithEffect('inactive content is hidden', () => {
@@ -114,7 +101,6 @@ describe('TabsBuilder — getContent', () => {
         const content = tabs.getContent('b');
         expect(content.active).toBe(false);
         expect(content.attrs.hidden).toBe(true);
-        tabs.destroy();
     });
 });
 
@@ -122,12 +108,10 @@ describe('TabsBuilder — rootAttrs', () => {
     itWithEffect('rootAttrs reflects orientation', () => {
         const tabs = new TabsBuilder({ value: 'a', orientation: 'horizontal' });
         expect(tabs.rootAttrs['data-orientation']).toBe('horizontal');
-        tabs.destroy();
     });
 
     itWithEffect('rootAttrs reflects disabled state', () => {
         const tabs = new TabsBuilder({ value: 'a', disabled: true });
         expect(tabs.rootAttrs['data-disabled']).toBe('');
-        tabs.destroy();
     });
 });

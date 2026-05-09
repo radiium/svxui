@@ -1,4 +1,3 @@
-import { untrack } from 'svelte';
 import type { SelectionStateOptions, SelectionStateValue } from './types.js';
 
 /**
@@ -9,36 +8,24 @@ export class SelectionState<Value, Multiple extends boolean> {
     #internalValue = $state<SelectionStateValue<Value, Multiple>>();
     #options: SelectionStateOptions<Value, Multiple>;
 
-    /** Cleanup function to stop internal reactive effects. */
-    readonly destroy: () => void;
-
     constructor(options: SelectionStateOptions<Value, Multiple>) {
         this.#options = options;
-        let prevMultiple: boolean | undefined; //= options.multiple;
-
-        // When `multiple` changes, coerce the current value to the correct type:
-        // array for multiple mode, undefined for single mode.
-        this.destroy = $effect.root(() => {
-            $effect(() => {
-                if (options.multiple !== prevMultiple) {
-                    untrack(() => {
-                        if (options.multiple && !Array.isArray(options.value)) {
-                            this.#setValue([] as SelectionStateValue<Value, Multiple>);
-                        } else if (!options.multiple && Array.isArray(options.value)) {
-                            this.#setValue(undefined);
-                        }
-                        prevMultiple = options.multiple;
-                    });
-                }
-            });
-        });
     }
 
     /**
      * Current selection value. Reads from external value when controlled.
      */
     get value(): SelectionStateValue<Value, Multiple> {
-        return 'value' in this.#options ? this.#options.value : this.#internalValue;
+        // When `multiple` changes, coerce the current value to the correct type:
+        // array for multiple mode, undefined for single mode.
+        const raw = 'value' in this.#options ? this.#options.value : this.#internalValue;
+        if (this.#options.multiple && !Array.isArray(raw)) {
+            return [] as SelectionStateValue<Value, Multiple>;
+        }
+        if (!this.#options.multiple && Array.isArray(raw)) {
+            return undefined as SelectionStateValue<Value, Multiple>;
+        }
+        return raw;
     }
 
     set value(val: SelectionStateValue<Value, Multiple>) {
@@ -76,10 +63,9 @@ export class SelectionState<Value, Multiple extends boolean> {
      * @param item - The value to check.
      */
     has(item: Value): boolean {
-        const isEqual = this.#options.compare ?? ((a, b) => a === b);
         return this.multiple && Array.isArray(this.value)
-            ? this.value.some((v) => isEqual(v, item))
-            : isEqual(this.value as Value, item);
+            ? this.value.some((v) => this.#isEqual(v, item))
+            : this.#isEqual(this.value as Value, item);
     }
 
     /**
@@ -101,11 +87,13 @@ export class SelectionState<Value, Multiple extends boolean> {
      * @param item - The value to deselect.
      */
     deselect(item: Value): void {
-        const isEqual = this.#options.compare ?? ((a, b) => a === b);
         if (this.multiple && Array.isArray(this.value)) {
-            this.value = this.value.filter((o) => !isEqual(o, item)) as SelectionStateValue<Value, Multiple>;
+            this.value = this.value.filter((o) => !this.#isEqual(o, item)) as SelectionStateValue<
+                Value,
+                Multiple
+            >;
         } else {
-            this.value = isEqual(this.value as Value, item) ? undefined : this.value;
+            this.value = this.#isEqual(this.value as Value, item) ? undefined : this.value;
         }
     }
 
@@ -130,5 +118,9 @@ export class SelectionState<Value, Multiple extends boolean> {
         } else {
             this.value = undefined;
         }
+    }
+
+    get #isEqual() {
+        return this.#options.compare ?? ((a: Value, b: Value) => a === b);
     }
 }

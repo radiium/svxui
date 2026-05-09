@@ -22,10 +22,6 @@ export class ListboxBuilder<Value, Multiple extends boolean> {
 
     /**
      * @param options - Listbox configuration options.
-     *
-     * **Lifecycle note:** `ListboxBuilder` internally uses `SelectionState` which holds a reactive
-     * `$effect.root()`. Call `destroy()` when the builder is instantiated outside a Svelte component
-     * to avoid memory leaks.
      */
     constructor(options: ListboxBuilderOptions<Value, Multiple>) {
         this.#id = useId();
@@ -122,14 +118,6 @@ export class ListboxBuilder<Value, Multiple extends boolean> {
     toggle = (value: Value): void => {
         if (this.disabled) return;
         this.#selection.toggle(value);
-    };
-
-    /**
-     * Destroy internal reactive effects. Call this when the builder is instantiated
-     * outside a Svelte component to avoid memory leaks.
-     */
-    destroy = (): void => {
-        this.#selection.destroy();
     };
 
     /**

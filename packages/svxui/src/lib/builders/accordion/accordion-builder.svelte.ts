@@ -115,14 +115,6 @@ export class AccordionBuilder<Value, Multiple extends boolean> {
     };
 
     /**
-     * Destroy internal reactive effects. Call this when the builder is instantiated
-     * outside a Svelte component to avoid memory leaks.
-     */
-    destroy = (): void => {
-        this.#selection.destroy();
-    };
-
-    /**
      * Accordion root attributes
      */
     get rootAttrs(): AccordionRootAttributes {

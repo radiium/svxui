@@ -6,19 +6,16 @@ describe('AccordionBuilder — defaults', () => {
     itWithEffect('exposes a string id', () => {
         const accordion = new AccordionBuilder({ value: null, multiple: false });
         expect(accordion.id).toBeTypeOf('string');
-        accordion.destroy();
     });
 
     itWithEffect('defaults orientation to vertical', () => {
         const accordion = new AccordionBuilder({ value: null, multiple: false });
         expect(accordion.orientation).toBe('vertical');
-        accordion.destroy();
     });
 
     itWithEffect('defaults disabled to false', () => {
         const accordion = new AccordionBuilder({ value: null, multiple: false });
         expect(accordion.disabled).toBe(false);
-        accordion.destroy();
     });
 
     itWithEffect('multiple reflects the option', () => {
@@ -26,8 +23,6 @@ describe('AccordionBuilder — defaults', () => {
         const multi = new AccordionBuilder({ value: [] as string[], multiple: true });
         expect(single.multiple).toBe(false);
         expect(multi.multiple).toBe(true);
-        single.destroy();
-        multi.destroy();
     });
 });
 
@@ -35,7 +30,6 @@ describe('AccordionBuilder — expand / collapse / toggle', () => {
     itWithEffect('isExpanded returns false initially', () => {
         const accordion = new AccordionBuilder<string, false>({ value: null, multiple: false });
         expect(accordion.isExpanded('a')).toBe(false);
-        accordion.destroy();
     });
 
     itWithEffect('expand sets the item as expanded', () => {
@@ -43,7 +37,6 @@ describe('AccordionBuilder — expand / collapse / toggle', () => {
         const accordion = new AccordionBuilder(opts);
         accordion.expand('a');
         expect(accordion.isExpanded('a')).toBe(true);
-        accordion.destroy();
     });
 
     itWithEffect('collapse removes the expanded state', () => {
@@ -51,7 +44,6 @@ describe('AccordionBuilder — expand / collapse / toggle', () => {
         const accordion = new AccordionBuilder(opts);
         accordion.collapse('a');
         expect(accordion.isExpanded('a')).toBe(false);
-        accordion.destroy();
     });
 
     itWithEffect('toggle expands then collapses', () => {
@@ -61,7 +53,6 @@ describe('AccordionBuilder — expand / collapse / toggle', () => {
         expect(accordion.isExpanded('a')).toBe(true);
         accordion.toggle('a');
         expect(accordion.isExpanded('a')).toBe(false);
-        accordion.destroy();
     });
 
     itWithEffect('disabled blocks expand/collapse/toggle', () => {
@@ -71,7 +62,6 @@ describe('AccordionBuilder — expand / collapse / toggle', () => {
         expect(accordion.isExpanded('a')).toBe(false);
         accordion.toggle('a');
         expect(accordion.isExpanded('a')).toBe(false);
-        accordion.destroy();
     });
 
     itWithEffect('onValueChange is called on expand', () => {
@@ -80,7 +70,6 @@ describe('AccordionBuilder — expand / collapse / toggle', () => {
         const accordion = new AccordionBuilder(opts);
         accordion.expand('a');
         expect(onValueChange).toHaveBeenCalledWith('a');
-        accordion.destroy();
     });
 
     itWithEffect('multiple mode allows several items expanded', () => {
@@ -90,7 +79,6 @@ describe('AccordionBuilder — expand / collapse / toggle', () => {
         accordion.expand('b');
         expect(accordion.isExpanded('a')).toBe(true);
         expect(accordion.isExpanded('b')).toBe(true);
-        accordion.destroy();
     });
 });
 
@@ -101,7 +89,6 @@ describe('AccordionBuilder — getItem', () => {
         expect(item.expanded).toBe(false);
         expect(item.triggerAttrs['aria-expanded']).toBe(false);
         expect(item.triggerAttrs['data-state']).toBe('closed');
-        accordion.destroy();
     });
 
     itWithEffect('expanded item has correct data-state and aria-expanded', () => {
@@ -111,7 +98,6 @@ describe('AccordionBuilder — getItem', () => {
         expect(item.expanded).toBe(true);
         expect(item.triggerAttrs['aria-expanded']).toBe(true);
         expect(item.triggerAttrs['data-state']).toBe('open');
-        accordion.destroy();
     });
 
     itWithEffect('trigger aria-controls points to content id', () => {
@@ -119,14 +105,12 @@ describe('AccordionBuilder — getItem', () => {
         const item = accordion.getItem('a', { id: 'test-id' });
         expect(item.triggerAttrs['aria-controls']).toBe('accordion-content-test-id');
         expect(item.contentAttrs.id).toBe('accordion-content-test-id');
-        accordion.destroy();
     });
 
     itWithEffect('content has role region', () => {
         const accordion = new AccordionBuilder<string, false>({ value: null, multiple: false });
         const item = accordion.getItem('a');
         expect(item.contentAttrs.role).toBe('region');
-        accordion.destroy();
     });
 
     itWithEffect('disabled item has aria-disabled on trigger', () => {
@@ -135,6 +119,5 @@ describe('AccordionBuilder — getItem', () => {
         expect(item.disabled).toBe(true);
         expect(item.triggerAttrs['aria-disabled']).toBe(true);
         expect(item.triggerAttrs.tabindex).toBe(-1);
-        accordion.destroy();
     });
 });
