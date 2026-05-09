@@ -1,6 +1,6 @@
 <script>
     import { Flex, Input, PersistedState } from '$lib/index.js';
-    import ControlButton from '../../controls/ControlButton.svelte';
+    import ControlCheckbox from '../../controls/ControlCheckbox.svelte';
     import Playground from '../../controls/Playground.svelte';
 
     const persisted = new PersistedState('test-key', 'hello world');
@@ -11,18 +11,18 @@
 
 <Playground>
     <Flex justify="start" direction="column" align="start">
-        <ControlButton
-            onclick={() => {
-                if (persisted.connected) {
-                    persisted.disconnect();
-                } else {
+        <ControlCheckbox
+            label="toogle connect"
+            checked={persisted.connected}
+            onCheckedChange={(checked) => {
+                if (checked) {
                     persisted.connect();
+                } else {
+                    persisted.disconnect();
                 }
                 connected = persisted.connected;
             }}
-        >
-            toogle connect ({connected})
-        </ControlButton>
+        />
     </Flex>
 
     <Input bind:value={persisted.current} />
