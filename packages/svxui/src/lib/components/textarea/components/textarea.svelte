@@ -4,6 +4,7 @@
     let {
         ref = $bindable(),
         value = $bindable(),
+        onValueChange = undefined,
         color = undefined,
         size = '2',
         radius = undefined,
@@ -21,6 +22,11 @@
             'textarea-resizable': resizable
         }
     ]);
+
+    function onChange(event: Event & { currentTarget: HTMLTextAreaElement }) {
+        rest.onchange?.(event);
+        onValueChange?.(value);
+    }
 </script>
 
 <textarea
@@ -29,6 +35,7 @@
     {...rest}
     bind:this={ref}
     bind:value
+    onchange={onChange}
     class={cssClass}
     data-color={color}
     data-radius={radius}

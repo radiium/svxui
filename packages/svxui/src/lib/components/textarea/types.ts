@@ -8,6 +8,10 @@ export type TextareaSize = '1' | '2' | '3';
  */
 export type TextareaProps = Omit<HTMLTextareaAttributes, 'color' | 'children'> & {
     /**
+     * Callback called on value change
+     */
+    onValueChange?: (newValue: HTMLTextareaAttributes['value']) => void;
+    /**
      * Reference to the rendered DOM element.
      */
     ref?: HTMLTextAreaElement;
